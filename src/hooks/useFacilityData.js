@@ -13,7 +13,7 @@ export function useFacilityData() {
     async function loadData() {
       try {
         setLoading(true);
-        const response = await fetch('/facilities_map_data.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}facilities_map_data.json`);
 
         if (!response.ok) {
           throw new Error(`Failed to load facility data: ${response.status}`);

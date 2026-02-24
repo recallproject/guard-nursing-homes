@@ -76,7 +76,7 @@ export default function USAMap({ data, onStateSelect }) {
   useEffect(() => {
     async function loadTopoJSON() {
       try {
-        const response = await fetch('/states-10m.json');
+        const response = await fetch(`${import.meta.env.BASE_URL}states-10m.json`);
         const topo = await response.json();
         setTopoData(topo);
       } catch (err) {

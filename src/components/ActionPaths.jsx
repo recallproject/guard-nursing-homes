@@ -4,7 +4,7 @@ export function ActionPaths({ facility }) {
   const [stateResources, setStateResources] = useState(null);
 
   useEffect(() => {
-    fetch('/state_resources.json')
+    fetch(`${import.meta.env.BASE_URL}state_resources.json`)
       .then(res => res.json())
       .then(data => setStateResources(data))
       .catch(err => console.error('Failed to load state resources:', err));
