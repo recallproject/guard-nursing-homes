@@ -1,0 +1,544 @@
+/* ========================================
+   METHODOLOGY PAGE
+   Clean, reference-style documentation
+   ======================================== */
+
+.methodology-page {
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+.methodology-hero {
+  padding: 120px 24px 80px;
+  background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-card) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.methodology-hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.methodology-hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--text-white);
+  margin-bottom: 24px;
+}
+
+.methodology-subtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  color: var(--text-muted);
+  margin-bottom: 32px;
+  font-weight: 400;
+}
+
+.methodology-trust {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+  background: rgba(79, 70, 229, 0.1);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+}
+
+/* ========================================
+   TABLE OF CONTENTS
+   ======================================== */
+.methodology-toc {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 0 24px;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.methodology-toc h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 16px;
+}
+
+.methodology-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.methodology-toc li {
+  margin: 0;
+}
+
+.methodology-toc a {
+  display: block;
+  padding: 12px 16px;
+  color: var(--primary-light);
+  background: rgba(79, 70, 229, 0.05);
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+.methodology-toc a:hover {
+  background: rgba(79, 70, 229, 0.15);
+  transform: translateX(4px);
+  color: var(--primary);
+}
+
+/* ========================================
+   CONTENT SECTIONS
+   ======================================== */
+.methodology-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+.methodology-section {
+  margin-bottom: 80px;
+  padding: 48px 40px;
+  border-radius: 16px;
+  scroll-margin-top: 100px; /* Account for fixed header */
+}
+
+.methodology-section.section-dark {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.methodology-section.section-light {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.methodology-section h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-white);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(79, 70, 229, 0.3);
+}
+
+.methodology-intro {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 32px;
+}
+
+/* ========================================
+   DATA SOURCES
+   ======================================== */
+.methodology-source-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.methodology-source-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all var(--transition-normal);
+}
+
+.methodology-source-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(79, 70, 229, 0.3);
+  box-shadow: var(--shadow-lg);
+}
+
+.methodology-source-card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 12px;
+}
+
+.methodology-source-card p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-cream);
+  margin: 0;
+}
+
+/* ========================================
+   METRICS
+   ======================================== */
+.methodology-metric {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.methodology-metric:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.methodology-metric h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 16px;
+}
+
+.methodology-metric p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 16px;
+}
+
+.methodology-metric code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  color: var(--primary-light);
+  background: rgba(79, 70, 229, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.methodology-formula {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(30, 41, 59, 0.8);
+  border-left: 4px solid var(--primary);
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.methodology-formula-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.methodology-formula-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9375rem;
+  color: var(--text-white);
+  line-height: 1.6;
+}
+
+.methodology-note {
+  background: rgba(234, 88, 12, 0.1);
+  border-left: 4px solid var(--risk-high);
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.methodology-note strong {
+  color: var(--risk-high);
+}
+
+/* ========================================
+   COMPONENTS
+   ======================================== */
+.methodology-component {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.methodology-component:last-child {
+  margin-bottom: 0;
+}
+
+.methodology-component h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 12px;
+}
+
+.methodology-component ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.methodology-component li {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 8px;
+}
+
+.methodology-component li:last-child {
+  margin-bottom: 0;
+}
+
+/* ========================================
+   LIMITATIONS
+   ======================================== */
+.methodology-limitations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.methodology-limitation-item {
+  display: flex;
+  gap: 20px;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all var(--transition-normal);
+}
+
+.methodology-limitation-item:hover {
+  border-color: rgba(79, 70, 229, 0.3);
+  transform: translateX(4px);
+}
+
+.methodology-limitation-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--risk-critical);
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.methodology-limitation-item h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+
+.methodology-limitation-item p {
+  font-size: 0.9375rem;
+  color: var(--text-cream);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ========================================
+   DATA FRESHNESS
+   ======================================== */
+.methodology-freshness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.methodology-freshness-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+}
+
+.methodology-freshness-card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.methodology-data-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 8px;
+}
+
+.methodology-data-note {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ========================================
+   CONTACT
+   ======================================== */
+.methodology-contact-card {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 32px;
+}
+
+.methodology-contact-card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 16px;
+}
+
+.methodology-contact-card p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 16px;
+}
+
+.methodology-contact-card a {
+  color: var(--primary-light);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.methodology-contact-card a:hover {
+  color: var(--primary);
+}
+
+.methodology-contact-card ul {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.methodology-contact-card li {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 8px;
+}
+
+/* ========================================
+   BACK TO TOP BUTTON
+   ======================================== */
+.methodology-back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--text-white);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-normal);
+  z-index: 100;
+}
+
+.methodology-back-to-top:hover {
+  background: var(--primary-light);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2xl), var(--shadow-glow-primary);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .methodology-hero {
+    padding: 100px 20px 60px;
+  }
+
+  .methodology-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .methodology-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .methodology-trust {
+    font-size: 1rem;
+    padding: 20px;
+  }
+
+  .methodology-toc {
+    margin: 32px 20px;
+    padding: 24px;
+  }
+
+  .methodology-toc ul {
+    grid-template-columns: 1fr;
+  }
+
+  .methodology-content {
+    padding: 0 20px 60px;
+  }
+
+  .methodology-section {
+    padding: 32px 24px;
+    margin-bottom: 48px;
+  }
+
+  .methodology-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .methodology-source-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .methodology-metric h3 {
+    font-size: 1.25rem;
+  }
+
+  .methodology-formula {
+    padding: 12px 16px;
+  }
+
+  .methodology-limitation-item {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .methodology-freshness-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .methodology-back-to-top {
+    bottom: 24px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+}

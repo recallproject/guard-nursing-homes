@@ -594,3 +594,146 @@ a:focus-visible {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
 }
+
+/* ========================================
+   COMING SOON PAGE (Pro/Professional/Institutional tools)
+   ======================================== */
+.coming-soon-page {
+  min-height: 100vh;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 24px 4rem;
+}
+
+.coming-soon-page__inner {
+  max-width: 640px;
+  text-align: center;
+}
+
+.coming-soon-page__badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary-light);
+  background: rgba(79, 70, 229, 0.12);
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-page__title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.coming-soon-page__description {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.coming-soon-page__features {
+  text-align: left;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.coming-soon-page__features h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.coming-soon-page__features ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.coming-soon-page__features li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-cream);
+  line-height: 1.5;
+}
+
+.coming-soon-page__features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--primary-light);
+  font-weight: 700;
+}
+
+.coming-soon-page__features li:last-child {
+  margin-bottom: 0;
+}
+
+.coming-soon-page__reassurance {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.coming-soon-page__reassurance p {
+  font-size: 1rem;
+  color: var(--text-cream);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.coming-soon-page__reassurance strong {
+  color: var(--accent-green);
+}
+
+.coming-soon-page__reassurance .btn {
+  font-size: 0.95rem;
+}
+
+.coming-soon-page__footer {
+  padding-top: 1rem;
+}
+
+.coming-soon-page__footer p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.coming-soon-page__link {
+  background: none;
+  border: none;
+  color: var(--primary-light);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.coming-soon-page__link:hover {
+  color: var(--text-white);
+}

@@ -5,21 +5,42 @@ import { useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const teasers = [
+const features = [
   {
-    icon: '\uD83D\uDD14',
-    title: 'Watchlist & Alerts',
-    description: 'Save facilities to your watchlist and get notified when new violations are reported or fines are issued.',
+    icon: '\uD83D\uDD0D',
+    title: 'State Screening Reports',
+    description: 'Filter and export facility data by state for oversight, compliance, or investigation.',
+    coming: true,
   },
   {
-    icon: '\uD83D\uDCC8',
-    title: 'Trend Analysis',
-    description: "See how a facility's safety record has changed over time. Track whether things are improving or declining.",
+    icon: '\uD83D\uDCCA',
+    title: 'Staffing Discrepancy Index',
+    description: 'Find facilities reporting more staff than payroll records show. Ranked by gap percentage.',
+    coming: true,
   },
   {
     icon: '\uD83D\uDD17',
     title: 'Ownership Network Explorer',
-    description: 'See which companies own multiple facilities and how their portfolio performs across states.',
+    description: 'See which companies own multiple facilities and how their portfolios perform across states.',
+    coming: true,
+  },
+  {
+    icon: '\uD83D\uDCC4',
+    title: 'Evidence Packages',
+    description: 'Generate litigation-ready PDF reports with staffing, inspection, and penalty data for any facility.',
+    coming: true,
+  },
+  {
+    icon: '\uD83D\uDD14',
+    title: 'Watchlist & Alerts',
+    description: 'Save facilities you\'re monitoring and track changes over time from a personal dashboard.',
+    coming: true,
+  },
+  {
+    icon: '\uD83D\uDCC8',
+    title: 'Historical Trends',
+    description: 'Track how facility safety records change over time. Quarterly comparisons coming soon.',
+    coming: true,
   },
 ];
 
@@ -29,18 +50,21 @@ export default function ComingSoon() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.coming-soon-card', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top 85%',
-          once: true,
-        },
-      });
+      gsap.fromTo('.coming-soon-card',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      );
     }, sectionRef);
     return () => ctx.revert();
   }, []);
@@ -49,31 +73,32 @@ export default function ComingSoon() {
     <section className="landing-section section-dark" ref={sectionRef}>
       <div className="container">
         <div className="section-header">
-          <h2>Coming Soon</h2>
-          <p>New tools to help you make better decisions</p>
+          <h2>Professional Tools</h2>
+          <p>Built for families, attorneys, regulators, and discharge planners</p>
         </div>
         <div className="coming-soon-grid">
-          {teasers.map((teaser) => (
-            <div className="coming-soon-card" key={teaser.title}>
-              <div className="coming-soon-badge">Coming Soon</div>
-              <div className="coming-soon-icon">{teaser.icon}</div>
-              <h3>{teaser.title}</h3>
-              <p>{teaser.description}</p>
-              <div className="coming-soon-cta">
-                <input
-                  type="email"
-                  className="coming-soon-email"
-                  placeholder="your@email.com"
-                  onClick={(e) => e.stopPropagation()}
-                />
-                <button className="coming-soon-notify-btn">Notify Me</button>
-              </div>
+          {features.map((feature) => (
+            <div
+              className={`coming-soon-card ${feature.live ? 'coming-soon-card--live' : ''}`}
+              key={feature.title}
+              onClick={() => feature.live && navigate(feature.to)}
+              role={feature.live ? 'link' : undefined}
+              style={{ cursor: feature.live ? 'pointer' : 'default' }}
+            >
+              {feature.coming && <div className="coming-soon-badge">Coming Soon</div>}
+              {feature.live && <div className="coming-soon-badge coming-soon-badge--live">Live</div>}
+              <div className="coming-soon-icon">{feature.icon}</div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+              {feature.live && (
+                <span className="coming-soon-link">Explore →</span>
+              )}
             </div>
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: '3rem' }}>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
-            These features are part of GUARD Pro and Professional plans.
+            Everything families need is free. These professional tools are coming soon for attorneys, journalists, hospitals, and regulators.
           </p>
           <button
             className="btn btn-ghost"

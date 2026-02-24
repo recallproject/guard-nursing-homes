@@ -84,7 +84,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* ========================================
@@ -95,7 +95,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
 }
 
 .hero-title-line {
@@ -109,64 +109,51 @@
   white-space: pre;
 }
 
-.hero-expansion {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  text-align: center;
-  margin-top: 0.5rem;
-  opacity: 0;
-}
-
 .hero-title-letter {
   display: inline-block;
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(3rem, 12vw, 8rem);
+  font-size: clamp(2.5rem, 9vw, 6rem);
   font-weight: 400;
   line-height: 0.95;
   color: var(--text-white);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   opacity: 0;
 }
 
-/* ========================================
-   SUBTITLE
-   ======================================== */
-.hero-subtitle {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  font-style: italic;
-  color: var(--text-cream);
-  max-width: 600px;
-  opacity: 0.9;
-  margin: 0;
-}
-
-/* ========================================
-   STATS — COUNT UP
-   ======================================== */
-.hero-stats-header {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
-  font-weight: 500;
+.hero-title-line--the .hero-title-letter {
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  font-weight: 400;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  text-align: center;
-  margin-bottom: -1rem;
+  color: var(--text-muted, #94A3B8);
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* ========================================
+   TAGLINE — Emotional hook
+   ======================================== */
+.hero-tagline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  font-style: italic;
+  color: var(--text-cream, #E2E8F0);
+  max-width: 550px;
+  opacity: 0;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ========================================
+   STATS — COUNT UP (3 columns)
+   ======================================== */
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
   width: 100%;
-  max-width: 1000px;
-  padding: 2rem 0;
+  max-width: 800px;
+  padding: 1.5rem 0;
 }
 
 .hero-stat {
@@ -185,59 +172,81 @@
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Danger stat — zero nurses */
+.hero-stat--danger .hero-stat-value {
+  color: #F87171;
+  text-shadow: 0 2px 20px rgba(248, 113, 113, 0.3);
+}
+
+.hero-stat--danger .hero-stat-label {
+  color: #FCA5A5;
+}
+
 .hero-stat-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 1.3vw, 0.95rem);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.02em;
   color: var(--text-muted);
 }
 
 /* ========================================
-   CTA SECTION
+   DATA DATE LINE
    ======================================== */
-.hero-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  max-width: 600px;
+.hero-data-date {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(148, 163, 184, 0.6);
+  letter-spacing: 0.04em;
+  margin: 0;
   opacity: 0;
 }
 
-.hero-cta-arrow {
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform var(--transition-normal);
-}
-
-.btn-primary:hover .hero-cta-arrow {
-  transform: translateX(4px);
-}
-
-/* Search wrapper */
-.hero-search-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-}
-
-.hero-search-label {
+/* ========================================
+   METHODOLOGY LINK
+   ======================================== */
+.hero-methodology {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.95rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #94A3B8);
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(148, 163, 184, 0.4);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+  opacity: 0;
 }
 
-.hero-search-input {
-  width: 100%;
-  max-width: 500px;
-  background: rgba(30, 41, 59, 0.6);
-  backdrop-filter: blur(12px);
-  cursor: pointer;
+.hero-methodology:hover {
+  color: var(--primary-light, #A5B4FC);
+  border-color: var(--primary-light, #A5B4FC);
+}
+
+/* ========================================
+   TRUST LINE
+   ======================================== */
+.hero-trust {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #94A3B8);
+  opacity: 0;
+  margin: 0;
+}
+
+/* ========================================
+   CTA SECTION — Row layout
+   ======================================== */
+.hero-cta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
 }
 
 /* ========================================
@@ -273,28 +282,44 @@
   }
 
   .hero-content {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
+  }
+
+  .hero-stat {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .hero-stat-value {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
   }
 
   .hero-title-letter {
-    font-size: clamp(2.5rem, 15vw, 4rem);
+    font-size: clamp(2rem, 10vw, 3.5rem);
   }
 
-  .hero-subtitle {
-    font-size: clamp(1rem, 5vw, 1.5rem);
+  .hero-title-line--the .hero-title-letter {
+    font-size: clamp(0.85rem, 3vw, 1.2rem);
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 4vw, 1.35rem);
   }
 
   .hero-cta {
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
   }
 
-  .btn-large {
+  .hero-cta .btn-large {
     width: 100%;
     max-width: 320px;
   }
@@ -306,14 +331,14 @@
 
 @media (max-width: 480px) {
   .hero-stats {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .hero-stat-value {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    font-size: clamp(1.5rem, 7vw, 2rem);
   }
 
   .hero-title-letter {
-    font-size: clamp(2rem, 12vw, 3rem);
+    font-size: clamp(1.5rem, 9vw, 2.5rem);
   }
 }

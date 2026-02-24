@@ -78,32 +78,33 @@ function FacilitySearch({ placeholder, onSelect, selectedFacility, onClear, sear
   );
 }
 
+// Colors readable on light/white background
 function getRiskColor(score) {
-  if (score >= 60) return 'var(--risk-critical)';
-  if (score >= 40) return 'var(--risk-high)';
-  if (score >= 20) return 'var(--risk-elevated)';
-  return 'var(--risk-low)';
+  if (score >= 60) return '#B91C1C';
+  if (score >= 40) return '#C2410C';
+  if (score >= 20) return '#B45309';
+  return '#15803D';
 }
 
 function getFineColor(amount) {
-  if (amount >= 200000) return 'var(--risk-critical)';
-  if (amount >= 50000) return 'var(--risk-high)';
-  if (amount >= 10000) return 'var(--risk-elevated)';
-  return 'var(--risk-low)';
+  if (amount >= 200000) return '#B91C1C';
+  if (amount >= 50000) return '#C2410C';
+  if (amount >= 10000) return '#B45309';
+  return '#15803D';
 }
 
 function getDeficiencyColor(count) {
-  if (count >= 20) return 'var(--risk-critical)';
-  if (count >= 10) return 'var(--risk-high)';
-  if (count >= 5) return 'var(--risk-elevated)';
-  return 'var(--risk-low)';
+  if (count >= 20) return '#B91C1C';
+  if (count >= 10) return '#C2410C';
+  if (count >= 5) return '#B45309';
+  return '#15803D';
 }
 
 function getStarColor(stars) {
-  if (stars >= 4) return 'var(--risk-low)';
-  if (stars >= 3) return 'var(--risk-elevated)';
-  if (stars >= 2) return 'var(--risk-high)';
-  return 'var(--risk-critical)';
+  if (stars >= 4) return '#15803D';
+  if (stars >= 3) return '#B45309';
+  if (stars >= 2) return '#C2410C';
+  return '#B91C1C';
 }
 
 function formatFines(amount) {
@@ -172,7 +173,7 @@ const ComparisonTool = forwardRef(function ComparisonTool({ searchFacilities }, 
       bestHigher: true,
     },
     {
-      label: 'GUARD Risk Score',
+      label: 'Risk Score',
       getValue: (f) => f.composite || 0,
       render: (f) => <span style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{(f.composite || 0).toFixed(1)}</span>,
       getColor: (f) => getRiskColor(f.composite || 0),
@@ -196,31 +197,32 @@ const ComparisonTool = forwardRef(function ComparisonTool({ searchFacilities }, 
       label: 'Harm Citations',
       getValue: (f) => f.harm_count || 0,
       render: (f) => <span style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>{f.harm_count || 0}</span>,
-      getColor: (f) => (f.harm_count || 0) > 0 ? 'var(--risk-critical)' : 'var(--risk-low)',
+      getColor: (f) => (f.harm_count || 0) > 0 ? '#B91C1C' : '#15803D',
       bestHigher: false,
     },
     {
       label: 'Serious Danger Citations',
       getValue: (f) => f.jeopardy_count || 0,
       render: (f) => <span style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>{f.jeopardy_count || 0}</span>,
-      getColor: (f) => (f.jeopardy_count || 0) > 0 ? 'var(--risk-critical)' : 'var(--risk-low)',
+      getColor: (f) => (f.jeopardy_count || 0) > 0 ? '#B91C1C' : '#15803D',
       bestHigher: false,
     },
   ];
 
   return (
-    <section className="landing-section section-dark compare-section" ref={ref}>
+    <section className="landing-section compare-section" ref={ref}>
       <div className="container">
         <div className="section-header">
           <h2>Compare Facilities</h2>
-          <p>Select 2-3 nursing homes to compare side by side</p>
+          <p>Select 2&#x2013;3 nursing homes to compare side by side</p>
+          <span className="compare-free-badge">Free for everyone</span>
         </div>
 
         <div className="compare-inputs">
           {[0, 1, 2].map((index) => (
             <FacilitySearch
               key={index}
-              placeholder={`${index === 2 ? 'Add a third facility (optional)' : `Search facility ${index + 1}...`}`}
+              placeholder={index === 2 ? 'Add a third facility (optional)' : `Facility #${index + 1} — search by name or city`}
               onSelect={(f) => handleSelect(index, f)}
               selectedFacility={facilities[index]}
               onClear={() => handleClear(index)}

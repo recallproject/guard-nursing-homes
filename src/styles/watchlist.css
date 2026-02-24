@@ -1,0 +1,522 @@
+/* ========================================
+   WATCHLIST PAGE
+   Warm, personal dashboard for tracking facilities
+   ======================================== */
+
+.watchlist-page {
+  min-height: 100vh;
+  padding: 80px 24px 60px;
+  background-color: var(--bg-deep);
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.watchlist-header {
+  max-width: 1400px;
+  margin: 0 auto 48px;
+}
+
+.watchlist-header-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.watchlist-header h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--text-white);
+  margin: 0;
+}
+
+.watchlist-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  padding: 0 16px;
+  background-color: var(--primary);
+  color: var(--text-white);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.watchlist-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ========================================
+   LOADING & ERROR STATES
+   ======================================== */
+.watchlist-loading,
+.watchlist-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.watchlist-error h2 {
+  font-size: 2rem;
+  color: var(--risk-critical);
+  margin: 0;
+}
+
+.watchlist-error p {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+.watchlist-empty {
+  max-width: 600px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 48px;
+  background: rgba(30, 41, 59, 0.4);
+  border-radius: 24px;
+  border: 2px dashed rgba(148, 163, 184, 0.3);
+}
+
+.watchlist-empty-icon {
+  font-size: 5rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.watchlist-empty h2 {
+  font-size: 2rem;
+  color: var(--text-white);
+  margin: 0 0 16px;
+}
+
+.watchlist-empty p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin: 0 0 32px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   SUMMARY STATS
+   ======================================== */
+.watchlist-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto 48px;
+}
+
+.watchlist-stat-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  transition: all var(--transition-normal);
+}
+
+.watchlist-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+.watchlist-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+
+.watchlist-stat-value.watchlist-stat-danger {
+  color: var(--risk-critical);
+}
+
+.watchlist-stat-value.watchlist-stat-warning {
+  color: var(--risk-high);
+}
+
+.watchlist-stat-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   CONTROLS
+   ======================================== */
+.watchlist-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto 32px;
+  flex-wrap: wrap;
+}
+
+.watchlist-filters {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.watchlist-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.watchlist-filter-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.watchlist-filter-group select {
+  padding: 10px 16px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text-white);
+  background-color: rgba(30, 41, 59, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.watchlist-filter-group select:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.watchlist-filter-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* ========================================
+   FACILITY GRID
+   ======================================== */
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.watchlist-card {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all var(--transition-normal);
+}
+
+.watchlist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(79, 70, 229, 0.3);
+}
+
+.watchlist-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.watchlist-card-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.watchlist-remove-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--risk-critical);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.watchlist-remove-btn:hover {
+  background: var(--risk-critical);
+  color: var(--text-white);
+  transform: scale(1.1);
+}
+
+.watchlist-card-location {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+}
+
+.watchlist-card-risk {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.watchlist-risk-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.watchlist-risk-badge.risk-critical {
+  background-color: var(--risk-critical);
+}
+
+.watchlist-risk-badge.risk-high {
+  background-color: var(--risk-high);
+}
+
+.watchlist-risk-badge.risk-moderate {
+  background-color: var(--risk-elevated);
+}
+
+.watchlist-risk-badge.risk-low {
+  background-color: var(--risk-low);
+}
+
+.watchlist-stars {
+  font-size: 1.25rem;
+  color: var(--accent-gold);
+}
+
+.watchlist-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.watchlist-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.watchlist-stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.watchlist-stat-text {
+  color: var(--text-muted);
+}
+
+.watchlist-stat-item.stat-danger .watchlist-stat-num,
+.watchlist-stat-item.stat-danger .watchlist-stat-text {
+  color: var(--risk-critical);
+}
+
+.watchlist-stat-item.stat-warning .watchlist-stat-num,
+.watchlist-stat-item.stat-warning .watchlist-stat-text {
+  color: var(--risk-high);
+}
+
+.watchlist-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.watchlist-view-btn {
+  padding: 10px 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: transparent;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.watchlist-view-btn:hover {
+  background: var(--primary);
+  color: var(--text-white);
+  transform: translateX(4px);
+}
+
+.watchlist-added-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ========================================
+   NO RESULTS
+   ======================================== */
+.watchlist-no-results {
+  max-width: 600px;
+  margin: 60px auto;
+  text-align: center;
+  padding: 32px;
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 16px;
+  border: 1px dashed rgba(148, 163, 184, 0.3);
+}
+
+.watchlist-no-results p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ========================================
+   CONFIRMATION MODAL
+   ======================================== */
+.watchlist-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.watchlist-modal {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 480px;
+  width: 90%;
+  animation: slideInUp 0.3s ease;
+}
+
+.watchlist-modal h3 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0 0 12px;
+}
+
+.watchlist-modal p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+  line-height: 1.6;
+}
+
+.watchlist-modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.watchlist-modal-buttons .btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .watchlist-page {
+    padding: 60px 16px 40px;
+  }
+
+  .watchlist-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .watchlist-count-badge {
+    min-width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .watchlist-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .watchlist-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .watchlist-filters {
+    flex-direction: column;
+  }
+
+  .watchlist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .watchlist-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .watchlist-view-btn {
+    text-align: center;
+  }
+
+  .watchlist-added-date {
+    text-align: center;
+  }
+}

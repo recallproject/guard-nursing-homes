@@ -1,12 +1,41 @@
 /* ========================================
-   COMPARISON TOOL
+   COMPARISON TOOL — Light/Beige Theme
    ======================================== */
 
 .compare-section {
-  padding-bottom: 4rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: #F1F0EB;
+  border-top: 1px solid #D6D3CC;
+  border-bottom: 1px solid #D6D3CC;
 }
 
-/* --- Search Inputs --- */
+/* Override section-light text for compare section specifically */
+.compare-section h2 {
+  color: #1E293B !important;
+}
+
+.compare-section .section-header p {
+  color: #475569 !important;
+}
+
+/* Free badge */
+.compare-free-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.3rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #059669 !important;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 20px;
+}
+
+/* --- Search Inputs (light theme) --- */
 .compare-inputs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -25,21 +54,21 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
-  color: var(--text-white);
-  background-color: var(--bg-card);
-  border: 2px solid rgba(255,255,255,0.1);
+  color: #1E293B;
+  background-color: #FFFFFF;
+  border: 2px solid #CBD5E1;
   border-radius: 12px;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .compare-search-input::placeholder {
-  color: var(--text-muted);
+  color: #94A3B8;
 }
 
 .compare-search-input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  border-color: #4F46E5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
 
 .compare-search-dropdown {
@@ -49,10 +78,10 @@
   right: 0;
   z-index: 100;
   margin-top: 4px;
-  background: var(--bg-card);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   border-radius: 12px;
-  box-shadow: var(--shadow-2xl);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
   max-height: 280px;
   overflow-y: auto;
 }
@@ -63,7 +92,7 @@
   padding: 0.75rem 1rem;
   cursor: pointer;
   transition: background 0.15s;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid #F1F5F9;
 }
 
 .compare-search-item:last-child {
@@ -71,29 +100,29 @@
 }
 
 .compare-search-item:hover {
-  background: rgba(79, 70, 229, 0.1);
+  background: #EEF2FF;
 }
 
 .compare-search-item-name {
   font-weight: 600;
-  color: var(--text-white);
+  color: #1E293B;
   font-size: 0.9rem;
 }
 
 .compare-search-item-location {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: #64748B;
   margin-top: 0.15rem;
 }
 
-/* --- Selected Facility Chip --- */
+/* --- Selected Facility Chip (light theme) --- */
 .compare-selected {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
-  background: var(--bg-card);
-  border: 2px solid var(--primary);
+  background: #FFFFFF;
+  border: 2px solid #4F46E5;
   border-radius: 12px;
 }
 
@@ -105,7 +134,7 @@
 
 .compare-selected-name {
   font-weight: 700;
-  color: var(--text-white);
+  color: #1E293B;
   font-size: 0.9rem;
   white-space: nowrap;
   overflow: hidden;
@@ -114,13 +143,13 @@
 
 .compare-selected-location {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: #64748B;
 }
 
 .compare-selected-clear {
   background: none;
   border: none;
-  color: var(--text-muted);
+  color: #94A3B8;
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0 0.25rem;
@@ -129,17 +158,18 @@
 }
 
 .compare-selected-clear:hover {
-  color: var(--risk-critical);
+  color: #DC2626;
 }
 
-/* --- Comparison Table --- */
+/* --- Comparison Table (light/beige theme) --- */
 .compare-table-wrapper {
   max-width: 1000px;
   margin: 0 auto;
   overflow-x: auto;
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: var(--bg-card);
+  border: 1px solid #D6D3CC;
+  background: #FFFFFF;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .compare-table {
@@ -155,9 +185,10 @@
 }
 
 .compare-table thead th {
-  border-bottom: 2px solid rgba(255,255,255,0.1);
+  border-bottom: 2px solid #E2E8F0;
   padding: 1.25rem 1rem;
   vertical-align: bottom;
+  background: #F8FAFC;
 }
 
 .compare-table-label-col {
@@ -171,24 +202,28 @@
 
 .compare-th-name {
   font-weight: 700;
-  color: var(--text-white);
+  color: #1E293B;
   font-size: 0.95rem;
   margin-bottom: 0.25rem;
   cursor: pointer;
 }
 
 .compare-th-name:hover {
-  color: var(--primary-light);
+  color: #4F46E5;
 }
 
 .compare-th-location {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: #64748B;
   font-weight: 400;
 }
 
 .compare-table tbody tr {
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.compare-table tbody tr:nth-child(even) {
+  background: #FAFAF8;
 }
 
 .compare-table tbody tr:last-child {
@@ -198,7 +233,7 @@
 .compare-row-label {
   text-align: left;
   font-weight: 600;
-  color: var(--text-cream);
+  color: #334155;
   font-size: 0.9rem;
 }
 
@@ -206,43 +241,57 @@
   font-weight: 600;
   font-size: 0.95rem;
   position: relative;
+  color: #1E293B;
 }
 
 .compare-cell-best {
-  background: rgba(13, 148, 136, 0.08);
+  background: rgba(16, 185, 129, 0.08);
 }
 
 .compare-stars {
-  color: var(--accent-gold);
+  color: #D97706;
   font-size: 1.1rem;
   letter-spacing: 2px;
 }
 
 .compare-stars-empty {
-  opacity: 0.3;
+  opacity: 0.25;
+  color: #94A3B8;
 }
 
-/* --- Actions --- */
+/* --- Actions (light theme) --- */
 .compare-actions {
   text-align: center;
   margin-top: 1.5rem;
 }
 
-/* --- Empty State --- */
+.compare-section .btn-secondary {
+  color: #475569;
+  border-color: #94A3B8;
+  background: transparent;
+}
+
+.compare-section .btn-secondary:hover {
+  color: #FFFFFF;
+  background: #475569;
+  border-color: #475569;
+}
+
+/* --- Empty State (light theme) --- */
 .compare-empty {
   text-align: center;
   padding: 3rem;
-  color: var(--text-muted);
 }
 
 .compare-empty svg {
-  opacity: 0.3;
+  opacity: 0.25;
   margin-bottom: 1rem;
+  color: #64748B;
 }
 
 .compare-empty p {
   font-size: 1rem;
-  color: var(--text-muted);
+  color: #64748B !important;
 }
 
 /* --- Mobile Responsive --- */

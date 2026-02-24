@@ -201,7 +201,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
       <div className="accountability-disclaimer">
         <h4>ABOUT THIS DATA</h4>
         <p>
-          GUARD identifies patterns and discrepancies in publicly available federal data.
+          The Oversight Report identifies patterns and discrepancies in publicly available federal data.
           These indicators do not constitute evidence of wrongdoing. If you have concerns
           about a facility, contact your state survey agency or the HHS Office of Inspector
           General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.

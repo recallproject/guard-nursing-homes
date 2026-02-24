@@ -6,7 +6,7 @@ export default function Footer({ onExplore, onSearch }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <h3>GUARD</h3>
+            <h3>The Oversight Report</h3>
             <p>
               Nursing home risk data, made accessible.
               Because the people you love deserve transparency.
@@ -33,11 +33,12 @@ export default function Footer({ onExplore, onSearch }) {
               <li><a href="/pricing">Pricing</a></li>
               <li><a href="#methodology">Methodology</a></li>
               <li><a href="#data-sources">Data Sources</a></li>
+              <li><a href="mailto:contact@oversightreports.com">Contact Us</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {currentYear} GUARD. All data sourced from CMS Medicare.gov. Built by Robert Benard.</p>
+          <p>&copy; {currentYear} The Oversight Report. All data sourced from CMS Medicare.gov. Built by Robert Benard.</p>
           <div className="footer-bottom-links">
             <a href="#privacy">Privacy</a>
             <a href="#terms">Terms</a>

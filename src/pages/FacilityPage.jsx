@@ -2,6 +2,7 @@ import { useEffect, useRef, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
+import { haversineDistance } from '../utils/haversine';
 import { BenchmarkBar } from '../components/BenchmarkBar';
 import { NearbyFacilities } from '../components/NearbyFacilities';
 import { DownloadButton } from '../components/DownloadButton';
@@ -37,6 +38,19 @@ export function FacilityPage() {
     ? benchmarks.state[facility.state]
     : {};
   const nationalBenchmarks = benchmarks.national || {};
+
+  // Nearby better-rated facilities (for PDF download)
+  const nearbyForPDF = useMemo(() => {
+    if (!facility || !data?.states || !facility.lat || !facility.lon) return [];
+    const stateData = data.states[facility.state];
+    if (!stateData?.facilities) return [];
+    return stateData.facilities
+      .filter(f => f.ccn !== facility.ccn && f.lat && f.lon)
+      .map(f => ({ ...f, distance: haversineDistance(facility.lat, facility.lon, f.lat, f.lon) }))
+      .filter(f => f.distance <= 15 && (f.composite || 100) <= (facility.composite || 0))
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 5);
+  }, [facility, data]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -105,7 +119,7 @@ export function FacilityPage() {
       <div className="fp-header">
         <Link to="/" className="fp-back">← Back to Map</Link>
         <h2 className="fp-badge">Facility Report Card</h2>
-        <DownloadButton facility={facility} />
+        <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} />
       </div>
 
       <div className="fp-body">
@@ -125,7 +139,7 @@ export function FacilityPage() {
         {/* Bottom Line */}
         <h2>Bottom Line</h2>
         <div className="info-box">{getBottomLine()}</div>
-        <p className="source">Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Compare</a></p>
+        <p className="source">Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership | Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></p>
 
         <hr />
 
@@ -155,7 +169,7 @@ export function FacilityPage() {
         )}
 
         <p className="source">
-          Source: CMS Health Deficiencies Data, processed 2026-02-23 · <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Inspection Report</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
+          Source: CMS Health Deficiencies Data, processed 2026-02-23 | Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Inspection Report</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
         </p>
 
         {/* Benchmark Bars for Safety Metrics */}
@@ -235,7 +249,7 @@ export function FacilityPage() {
         )}
 
         <p className="source">
-          Source: CMS Health Deficiencies Data, processed 2026-02-23 · <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Inspection Report</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
+          Source: CMS Health Deficiencies Data, processed 2026-02-23 | Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Inspection Report</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
         </p>
 
         <hr />
@@ -263,7 +277,7 @@ export function FacilityPage() {
           </div>
         )}
 
-        <p className="source">Source: CMS Penalties Data, processed 2026-02-23 · <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a></p>
+        <p className="source">Source: CMS Penalties Data, processed 2026-02-23 | Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a></p>
 
         {/* Benchmark Bar for Fines */}
         {facility.total_fines > 0 && (
@@ -406,8 +420,24 @@ export function FacilityPage() {
           All data sourced from publicly available CMS datasets. Always visit facilities in person and consult with healthcare professionals.
         </div>
 
+        {/* Download CTA */}
+        <div className="fp-download-cta">
+          <h3>Your Personalized Safety Analysis</h3>
+          <p>Everything on this page is free — always. The downloadable report adds deeper analysis you won't find anywhere else:</p>
+          <ul className="fp-download-features">
+            <li><strong>Clinical context</strong> — what this data actually means for your loved one</li>
+            <li><strong>National percentile rankings</strong> — how this facility compares to all 14,713 nursing homes</li>
+            <li><strong>Ownership deep dive</strong> — the full picture of every facility this owner operates</li>
+            <li><strong>Visit checklist</strong> — tailored to this facility's specific flags</li>
+            <li><strong>Questions to ask</strong> — based on what inspectors actually found here</li>
+          </ul>
+          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="Download Personalized Report (PDF)" variant="prominent" />
+          <span className="fp-download-hint fp-download-hint--promo">Unlimited free downloads through March 31, 2026</span>
+          <span className="fp-download-hint fp-download-hint--future">After March 31: 3 free reports per day | Need more? Go Pro — $12/mo for unlimited reports</span>
+        </div>
+
         <div className="fp-footer-text">
-          GUARD — Nursing Home Risk Data | Data processed 2026-02-23<br />
+          The Oversight Report — Nursing Home Risk Data | Data processed 2026-02-23<br />
           Built by Robert Benard · All data sourced from CMS Medicare.gov
         </div>
 

@@ -115,6 +115,107 @@
   transform: none;
 }
 
+/* Prominent variant — used in CTA sections */
+.download-btn--prominent {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  letter-spacing: 0.02em;
+}
+
+.download-btn--prominent:hover {
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Rate limit message */
+.download-limit-msg {
+  background: #FEF3C7;
+  border: 1px solid #F59E0B;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  color: #92400E;
+  text-align: center;
+}
+
+/* Download CTA section */
+.fp-download-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  margin: 2rem -2rem;
+  background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+  border-top: 1px solid #C7D2FE;
+  border-bottom: 1px solid #C7D2FE;
+}
+
+.fp-download-cta h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1E293B;
+  margin: 0 0 0.75rem 0;
+}
+
+.fp-download-cta p {
+  font-size: 1rem !important;
+  color: #475569 !important;
+  max-width: 550px;
+  margin: 0 auto 1.5rem auto !important;
+  line-height: 1.6;
+  text-align: center !important;
+}
+
+.fp-download-features {
+  text-align: left;
+  max-width: 520px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0;
+  list-style: none;
+}
+
+.fp-download-features li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1.25rem;
+  font-size: 0.95rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.fp-download-features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4F46E5;
+}
+
+.fp-download-features li strong {
+  color: #1E293B;
+}
+
+.fp-download-hint {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #94A3B8;
+}
+
+.fp-download-hint--promo {
+  color: #16A34A;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fp-download-hint--future {
+  font-size: 0.78rem;
+  color: #94A3B8;
+  margin-top: 0.35rem;
+}
+
 /* === Body Content === */
 .fp-body {
   max-width: 800px;
@@ -782,6 +883,21 @@
   .action-link {
     font-size: 0.85rem;
     padding: 5px 10px;
+  }
+
+  .fp-download-cta {
+    margin: 1.5rem -1rem;
+    padding: 2rem 1rem;
+  }
+
+  .fp-download-cta h3 {
+    font-size: 1.25rem;
+  }
+
+  .download-btn--prominent {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
   }
 }
 

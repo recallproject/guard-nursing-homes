@@ -1,0 +1,527 @@
+/* ========================================
+   REFERRAL SCORECARD PAGE
+   For hospital discharge planners
+   ======================================== */
+
+.referral-scorecard-page {
+  min-height: 100vh;
+  background: var(--bg-deep);
+  padding: 3rem 0;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.referral-header {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.referral-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  color: var(--text-white);
+}
+
+.referral-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ========================================
+   TABS
+   ======================================== */
+.referral-tabs {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.referral-tab {
+  flex: 1;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: var(--bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.referral-tab:hover {
+  color: var(--text-white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.referral-tab.active {
+  color: var(--text-white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ========================================
+   INPUT SECTION
+   ======================================== */
+.referral-input-section {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.referral-location-search,
+.referral-ccn-search {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.referral-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.referral-input-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-cream);
+}
+
+.referral-select,
+.referral-input {
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  color: var(--text-white);
+  background-color: var(--bg-elevated);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.referral-select:focus,
+.referral-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+.referral-textarea {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-white);
+  background-color: var(--bg-elevated);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  resize: vertical;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.referral-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+.referral-slider {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-elevated);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.referral-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.referral-slider::-webkit-slider-thumb:hover {
+  background: var(--primary-light);
+}
+
+.referral-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition-fast);
+}
+
+.referral-slider::-moz-range-thumb:hover {
+  background: var(--primary-light);
+}
+
+/* ========================================
+   RESULTS SECTION
+   ======================================== */
+.referral-results {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ========================================
+   OVERALL GRADE CARD
+   ======================================== */
+.referral-grade-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.referral-grade-header {
+  background: var(--bg-elevated);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.referral-grade-header h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--text-white);
+}
+
+.referral-grade-body {
+  padding: 2rem;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.referral-grade-letter {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 5rem;
+  font-weight: 700;
+  border-radius: 12px;
+  color: var(--text-white);
+}
+
+.referral-grade-letter.grade-a {
+  background: var(--risk-low);
+}
+
+.referral-grade-letter.grade-b {
+  background: var(--risk-elevated);
+}
+
+.referral-grade-letter.grade-c {
+  background: var(--risk-high);
+}
+
+.referral-grade-letter.grade-d,
+.referral-grade-letter.grade-f {
+  background: var(--risk-critical);
+}
+
+.referral-grade-stats {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+}
+
+.referral-grade-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.referral-grade-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.referral-grade-stat-value.danger {
+  color: var(--risk-critical);
+}
+
+.referral-grade-stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   EXPORT SECTION
+   ======================================== */
+.referral-export-section {
+  margin-bottom: 2rem;
+}
+
+.referral-export-section h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--text-white);
+}
+
+.referral-export-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ========================================
+   COMPARISON TABLE
+   ======================================== */
+.referral-table-wrapper {
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.referral-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.referral-table thead {
+  background: var(--bg-elevated);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.referral-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.referral-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-fast);
+}
+
+.referral-table th.sortable:hover {
+  color: var(--primary-light);
+}
+
+.referral-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background-color var(--transition-fast);
+}
+
+.referral-table tbody tr:hover {
+  background-color: rgba(79, 70, 229, 0.05);
+}
+
+.referral-table td {
+  padding: 1rem;
+  color: var(--text-cream);
+}
+
+.referral-rank {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--text-white);
+  text-align: center;
+  width: 60px;
+}
+
+.referral-facility-name {
+  font-weight: 600;
+  color: var(--text-white);
+  min-width: 200px;
+}
+
+.referral-stars {
+  color: var(--accent-gold);
+  font-size: 1rem;
+}
+
+.referral-risk-badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-white);
+}
+
+.referral-risk-badge.risk-critical {
+  background-color: var(--risk-critical);
+}
+
+.referral-risk-badge.risk-high {
+  background-color: var(--risk-high);
+}
+
+.referral-risk-badge.risk-elevated {
+  background-color: var(--risk-elevated);
+}
+
+.referral-risk-badge.risk-low {
+  background-color: var(--risk-low);
+}
+
+.referral-flag-danger {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--risk-critical);
+  color: var(--text-white);
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.referral-flag-no {
+  color: var(--text-muted);
+}
+
+/* ========================================
+   QUICK FLAGS
+   ======================================== */
+.referral-quick-flags {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.referral-quick-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  cursor: help;
+}
+
+.referral-quick-flag.flag-red {
+  background-color: var(--risk-critical);
+}
+
+.referral-quick-flag.flag-orange {
+  background-color: var(--risk-high);
+}
+
+.referral-quick-flag.flag-yellow {
+  background-color: var(--risk-elevated);
+}
+
+/* ========================================
+   DATA SOURCE & DISCLAIMER
+   ======================================== */
+.referral-data-source {
+  margin-top: 2rem;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.referral-disclaimer {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-cream);
+  line-height: 1.6;
+}
+
+/* ========================================
+   LOADING & ERROR STATES
+   ======================================== */
+.referral-loading,
+.referral-error {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 3rem;
+}
+
+.referral-error h2 {
+  font-size: 2rem;
+  color: var(--risk-critical);
+}
+
+.referral-error p {
+  color: var(--text-muted);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .referral-tabs {
+    flex-direction: column;
+  }
+
+  .referral-grade-body {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .referral-grade-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .referral-export-buttons {
+    flex-direction: column;
+  }
+
+  .referral-table {
+    font-size: 0.85rem;
+  }
+
+  .referral-table th,
+  .referral-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .referral-facility-name {
+    min-width: 150px;
+  }
+}

@@ -10,79 +10,84 @@ gsap.registerPlugin(ScrollTrigger);
 
 const tiers = [
   {
-    name: 'FREE',
+    name: 'Free',
     price: { monthly: 0, annual: 0 },
-    description: 'For families researching facilities',
+    description: 'For families',
     badge: null,
     features: [
       'Search all 14,713 facilities',
-      'Full safety report cards',
+      'Full report cards with safety scores',
+      'All accountability flags and warnings',
+      'Staffing breakdown (RN/LPN/CNA minutes)',
+      'Inspection history with context',
       'Compare up to 3 facilities',
-      'State rankings and data',
-      'Interactive map',
-      'Basic PDF report (1 per day)',
+      'State map and rankings',
+      '1 PDF download per day',
     ],
-    cta: 'Get Started Free',
+    cta: 'Start Searching',
     ctaLink: '/',
     ctaType: 'primary',
+    disabled: false,
   },
   {
-    name: 'GUARD PRO',
+    name: 'Pro',
     price: { monthly: 12, annual: 99 },
-    description: 'For families managing ongoing care',
+    description: 'For families who want to stay informed',
     badge: 'MOST POPULAR',
+    inherits: 'Everything in Free, plus:',
     features: [
-      'Everything in Free',
-      'Unlimited PDF downloads',
-      'Watchlist — save facilities, get alerts on new violations',
+      'Watchlist — save facilities and get email alerts on new violations',
       'Trend analysis — is this facility getting better or worse?',
-      'Nearby alternatives finder',
-      'Priority email support',
+      'Unlimited PDF downloads',
+      'Nearby alternatives within custom radius',
+      'Priority support',
     ],
-    cta: 'Go Pro',
-    ctaLink: 'mailto:rob@datalinkllc.com?subject=GUARD Pro Subscription',
+    cta: 'Coming Soon',
+    ctaLink: null,
     ctaType: 'primary',
+    disabled: true,
   },
   {
     name: 'Professional',
     price: { monthly: 49, annual: 399 },
-    description: 'For attorneys and care coordinators',
-    badge: 'BEST FOR TEAMS',
+    description: 'For attorneys, journalists, and ombudsmen',
+    badge: null,
+    inherits: 'Everything in Pro, plus:',
     features: [
-      'Everything in Pro',
-      'Evidence packages — litigation-ready PDF bundles',
-      'Bulk facility exports (CSV/PDF)',
-      'Ownership network data',
-      'Multi-user access (up to 5 seats)',
-      'Quarterly state report summaries',
-      'Direct support line',
+      'State Screening Reports — every facility ranked by risk, exportable',
+      'Staffing Discrepancy Index — which facilities\' numbers don\'t match inspections',
+      'Ownership Network Explorer — trace owners across facilities and states',
+      'Evidence Packages — 10-section litigation-ready PDFs',
+      'Bulk CSV exports',
+      'Multi-user access (5 seats)',
     ],
-    cta: 'Contact Us',
-    ctaLink: 'mailto:rob@datalinkllc.com?subject=GUARD Professional Plan',
+    cta: 'Coming Soon',
+    ctaLink: null,
     ctaType: 'secondary',
+    disabled: true,
   },
   {
     name: 'Institutional',
     price: { monthly: 199, annual: null },
-    description: 'For hospitals and health systems',
+    description: 'For hospitals and care coordination teams',
     badge: null,
+    inherits: 'Everything in Professional, plus:',
     features: [
-      'Everything in Professional',
+      'Referral Scorecard — rank the SNFs you send patients to',
       'Unlimited users',
-      'Shareable report links for families',
-      'Referral network scorecard',
-      'Embeddable quality widget',
-      'Dedicated onboarding',
+      'Shareable report links for patient families',
       'Custom branding on shared reports',
+      'Embeddable quality widget',
     ],
     cta: 'Contact Us',
-    ctaLink: 'mailto:rob@datalinkllc.com?subject=GUARD Institutional Plan',
+    ctaLink: 'mailto:contact@oversightreports.com?subject=The Oversight Report Institutional Plan',
     ctaType: 'secondary',
+    disabled: false,
   },
 ];
 
 export default function PricingPage() {
-  const [billingCycle, setBillingCycle] = useState('annual'); // annual or monthly
+  const [billingCycle, setBillingCycle] = useState('monthly'); // annual or monthly
   const navigate = useNavigate();
   const heroRef = useRef(null);
   const gridRef = useRef(null);
@@ -94,61 +99,55 @@ export default function PricingPage() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero title animation
-      gsap.from('.pricing-hero h1', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: 'power3.out',
-      });
+      gsap.fromTo('.pricing-hero h1',
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
+      );
 
-      gsap.from('.pricing-hero p', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        delay: 0.2,
-        ease: 'power3.out',
-      });
+      gsap.fromTo('.pricing-hero p',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power3.out' }
+      );
+
+      gsap.fromTo('.pricing-reassurance',
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' }
+      );
 
       // Billing toggle
-      gsap.from('.billing-toggle', {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        delay: 0.3,
-        ease: 'power3.out',
-      });
+      gsap.fromTo('.billing-toggle',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.3, ease: 'power3.out' }
+      );
 
       // Pricing cards
-      gsap.from('.pricing-card', {
-        opacity: 0,
-        y: 40,
-        duration: 0.7,
-        stagger: 0.1,
-        delay: 0.4,
-        ease: 'power3.out',
-      });
+      gsap.fromTo('.pricing-card',
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, delay: 0.4, ease: 'power3.out', clearProps: 'opacity,transform' }
+      );
 
       // Transparency section
-      gsap.from('.pricing-transparency', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: '.pricing-transparency',
-          start: 'top 80%',
-          once: true,
-        },
-        ease: 'power3.out',
-      });
+      gsap.fromTo('.pricing-transparency',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.pricing-transparency',
+            start: 'top 80%',
+            once: true,
+          },
+        }
+      );
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
   const handleCtaClick = (tier) => {
-    if (tier.name === 'FREE') {
+    if (tier.disabled) return;
+    if (tier.ctaLink === '/') {
       navigate('/');
-    } else {
+    } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;
     }
   };
@@ -171,6 +170,17 @@ export default function PricingPage() {
             From families researching a single facility to institutions managing entire networks.
             Choose the plan that fits your mission.
           </p>
+
+          <div className="pricing-reassurance">
+            <span className="pricing-reassurance-icon">✓</span>
+            <p>
+              <strong>Families:</strong> Everything you need to research a nursing home is free. Always.
+              <br />
+              <span className="pricing-reassurance-sub">
+                Paid plans are for attorneys, journalists, hospitals, and other professionals who need advanced analytics and bulk data tools.
+              </span>
+            </p>
+          </div>
 
           {/* Billing Toggle */}
           <div className="billing-toggle">
@@ -218,7 +228,10 @@ export default function PricingPage() {
                   <div className="pricing-price">
                     <div className="pricing-price-amount">
                       {tier.price.monthly === 0 ? (
-                        <span className="pricing-price-free">FREE</span>
+                        <>
+                          <span className="pricing-price-free">$0</span>
+                          <span className="pricing-price-period">/forever</span>
+                        </>
                       ) : (
                         <>
                           <span className="pricing-price-currency">$</span>
@@ -239,13 +252,19 @@ export default function PricingPage() {
                   <button
                     className={`btn ${
                       tier.ctaType === 'primary' ? 'btn-primary' : 'btn-secondary'
-                    } pricing-cta`}
+                    } pricing-cta ${tier.disabled ? 'pricing-cta-disabled' : ''}`}
                     onClick={() => handleCtaClick(tier)}
+                    disabled={tier.disabled}
                   >
                     {tier.cta}
                   </button>
 
                   <ul className="pricing-features">
+                    {tier.inherits && (
+                      <li className="pricing-feature pricing-feature-inherits">
+                        <span className="pricing-feature-text">{tier.inherits}</span>
+                      </li>
+                    )}
                     {tier.features.map((feature, idx) => (
                       <li key={idx} className="pricing-feature">
                         <span className="pricing-feature-check">✓</span>
@@ -263,21 +282,15 @@ export default function PricingPage() {
       {/* Transparency Section */}
       <section className="pricing-transparency">
         <div className="container-narrow">
-          <h2>Why We Charge</h2>
           <div className="pricing-transparency-quote">
             <p>
-              "Safety data should be free — and it is. Every family can search, compare, and download
-              reports at no cost.
-            </p>
-            <p>
-              Pro features fund the servers, data processing, and development that keep GUARD running
-              and improving. We have no ads, no sponsors, and no conflicts of interest. Your
-              subscription keeps it that way."
+              &ldquo;Safety data should be free — and it is. Pro features fund servers, data processing, and
+              development. No ads, no sponsors, no conflicts of interest. Your subscription keeps it that way.&rdquo;
             </p>
           </div>
           <div className="pricing-author">
-            <div className="pricing-author-name">Robert Benard, NP</div>
-            <div className="pricing-author-title">GUARD Creator</div>
+            <div className="pricing-author-name">— Robert Benard, NP</div>
+            <div className="pricing-author-title">Founder, DataLink Clinical LLC</div>
           </div>
         </div>
       </section>
@@ -286,9 +299,9 @@ export default function PricingPage() {
       <section className="pricing-donation">
         <div className="container-narrow">
           <h3>Not Ready to Subscribe?</h3>
-          <p>If GUARD helped you, consider supporting the project.</p>
+          <p>If The Oversight Report helped you, consider supporting the project.</p>
           <a
-            href="https://ko-fi.com/guarddata"
+            href="https://ko-fi.com/oversightreport"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-secondary"

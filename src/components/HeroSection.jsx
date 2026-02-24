@@ -33,61 +33,87 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
         });
       }
 
+      // Tagline fade in
+      gsap.fromTo(
+        '.hero-tagline',
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.7, delay: 0.6, ease: 'power3.out' }
+      );
+
       // Stats count-up animation
       const statElements = statsRef.current?.querySelectorAll('.hero-stat-value');
-      if (statElements && national) {
+      if (statElements) {
         statElements.forEach((el, index) => {
-          const targetValue = el.dataset.value;
-          const isPercentage = targetValue.includes('%');
-          const isMoney = targetValue.includes('$');
-          const numValue = parseFloat(targetValue.replace(/[^0-9.]/g, ''));
+          const format = el.dataset.format;
 
-          const counter = { value: 0 };
-          gsap.to(counter, {
-            value: numValue,
-            duration: 2,
-            delay: 1 + index * 0.2,
-            ease: 'expo.out',
-            onUpdate: () => {
-              if (isMoney) {
+          gsap.fromTo(
+            el.closest('.hero-stat'),
+            { opacity: 0, y: 25 },
+            { opacity: 1, y: 0, duration: 0.6, delay: 0.9 + index * 0.15, ease: 'power3.out' }
+          );
+
+          if (format === 'ratio') {
+            // "1 in 3" — just fade in, no counter
+            el.textContent = el.dataset.display;
+          } else if (format === 'currency') {
+            const numValue = parseFloat(el.dataset.value);
+            const counter = { value: 0 };
+            gsap.to(counter, {
+              value: numValue,
+              duration: 2.2,
+              delay: 1.0 + index * 0.15,
+              ease: 'expo.out',
+              onUpdate: () => {
                 el.textContent = '$' + Math.round(counter.value).toLocaleString() + 'M';
-              } else if (isPercentage) {
-                el.textContent = counter.value.toFixed(1) + '%';
-              } else {
+              },
+            });
+          } else {
+            const numValue = parseFloat(el.dataset.value);
+            const counter = { value: 0 };
+            gsap.to(counter, {
+              value: numValue,
+              duration: 2.2,
+              delay: 1.0 + index * 0.15,
+              ease: 'expo.out',
+              onUpdate: () => {
                 el.textContent = Math.round(counter.value).toLocaleString();
-              }
-            },
-          });
+              },
+            });
+          }
         });
       }
 
-      // Expansion line fade in
+      // Data freshness line
       gsap.fromTo(
-        '.hero-expansion',
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, duration: 0.8, delay: 1.0, ease: 'power3.out' }
+        '.hero-data-date',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, delay: 1.5, ease: 'power2.out' }
       );
 
-      // CTA button entrance
+      // Methodology link
+      gsap.fromTo(
+        '.hero-methodology',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, delay: 1.6, ease: 'power2.out' }
+      );
+
+      // Trust line
+      gsap.fromTo(
+        '.hero-trust',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.6, delay: 1.8, ease: 'power2.out' }
+      );
+
+      // CTA buttons
       gsap.fromTo(
         ctaRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, delay: 1.8, ease: 'power3.out' }
+        { opacity: 1, y: 0, duration: 0.6, delay: 2.0, ease: 'power3.out' }
       );
     }, heroRef);
 
     return () => ctx.revert();
   }, [national]);
-
-  // Format currency in millions
-  const formatMillions = (value) => {
-    return Math.round(value / 1000000);
-  };
-
-  // Calculate high risk percentage
-  const highRiskPercent = national
-    ? ((national.high_risk / national.total_facilities) * 100).toFixed(1)
-    : 0;
 
   const renderTitle = (text) => {
     return text.split(' ').map((word, wordIndex) => (
@@ -123,13 +149,13 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
 
       <div className="hero-content">
         <div className="hero-title" ref={titleRef}>
-          <div className="hero-title-line">{renderTitle('GUARD')}</div>
-          <div className="hero-expansion">Guidance, Understanding &amp; Advocacy through Risk Disclosure</div>
+          <div className="hero-title-line hero-title-line--the">{renderTitle('THE')}</div>
+          <div className="hero-title-line">{renderTitle('OVERSIGHT')}</div>
+          <div className="hero-title-line">{renderTitle('REPORT')}</div>
         </div>
 
-        <p className="hero-subtitle">Every family deserves the truth.</p>
+        <p className="hero-tagline">Nursing home safety data, independently reviewed.</p>
 
-        <div className="hero-stats-header">The scope of what we monitor</div>
         <div className="hero-stats" ref={statsRef}>
           <div className="hero-stat">
             <div
@@ -138,59 +164,43 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
             >
               0
             </div>
-            <div className="hero-stat-label">Facilities Tracked</div>
+            <div className="hero-stat-label">Every Medicare nursing home in America</div>
           </div>
-          <div className="hero-stat">
+          <div className="hero-stat hero-stat--danger">
             <div
               className="hero-stat-value"
-              data-value="50"
+              data-format="ratio"
+              data-display="1 in 3"
             >
-              0
+              &nbsp;
             </div>
-            <div className="hero-stat-label">States Covered</div>
+            <div className="hero-stat-label">Had days with no registered nurse on site</div>
           </div>
           <div className="hero-stat">
             <div
               className="hero-stat-value"
-              data-value={`$${national ? formatMillions(national.total_fines) : 492}M`}
+              data-value="492"
+              data-format="currency"
             >
               $0M
             </div>
-            <div className="hero-stat-label">In Fines Exposed</div>
-          </div>
-          <div className="hero-stat">
-            <div
-              className="hero-stat-value"
-              data-value="98%"
-            >
-              0%
-            </div>
-            <div className="hero-stat-label">Data Accuracy</div>
+            <div className="hero-stat-label">In federal fines for violations</div>
           </div>
         </div>
+
+        <p className="hero-data-date">Based on CMS data through Q3 2025</p>
+
+        <a href="/methodology" className="hero-methodology">How we calculate these numbers &rarr;</a>
+
+        <p className="hero-trust">100% public data. No industry funding.</p>
 
         <div className="hero-cta" ref={ctaRef}>
-          <button className="btn btn-primary btn-large" onClick={onExploreClick}>
-            EXPLORE YOUR STATE
-            <span className="hero-cta-arrow">▶</span>
+          <button className="btn btn-primary btn-large" onClick={() => { if (onSearch) onSearch(); }}>
+            Search a Facility
           </button>
-
-          <div className="hero-search-wrapper">
-            <span className="hero-search-label">or search by name:</span>
-            <input
-              type="text"
-              className="input input-large hero-search-input"
-              placeholder="Enter facility name or city..."
-              onFocus={(e) => {
-                e.target.blur();
-                if (onSearch) onSearch();
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="hero-scroll-indicator">
-          <div className="hero-scroll-chevron"></div>
+          <button className="btn btn-secondary btn-large" onClick={onExploreClick}>
+            View Your State
+          </button>
         </div>
       </div>
     </section>

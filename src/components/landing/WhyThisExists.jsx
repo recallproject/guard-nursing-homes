@@ -76,7 +76,7 @@ export default function WhyThisExists() {
             scattered across government databases that no one was designed to read.
           </p>
           <p className="mission-body">
-            GUARD pulls together inspection data, fine records, staffing
+            The Oversight Report pulls together inspection data, fine records, staffing
             reports, and complaint histories from CMS and state agencies into one clear
             picture. No spin. No advertising. Just the facts families need to protect
             the people they love.
@@ -97,27 +97,27 @@ export default function WhyThisExists() {
             onKeyDown={(e) => e.key === 'Enter' && setBioOpen(!bioOpen)}
           >
             <div className="author-card-top">
-              <div className="author-avatar" />
-              <div className="author-info">
-                <div className="author-name">Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC</div>
-                <div className="author-title">Nurse Practitioner | Data Researcher</div>
-                <div className="author-org">DataLink Clinical LLC</div>
+              <div className="author-card-identity">
+                <img src="/rob-headshot.png" alt="Robert Benard, NP" className="author-avatar" />
+                <div className="author-info">
+                  <div className="author-name">Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC</div>
+                  <div className="author-title">Nurse Practitioner | Data Researcher</div>
+                  <div className="author-org">DataLink Clinical LLC</div>
+                </div>
               </div>
               <p className="author-quote">&ldquo;Built at the intersection of healthcare, data, and patient advocacy.&rdquo;</p>
               <div className="author-card-toggle">
-                {bioOpen ? '\u2715' : 'Read My Story'}
+                {bioOpen ? '\u2715' : 'About the Founder'}
               </div>
             </div>
             <div className="author-bio" ref={bioRef}>
               <div className="author-bio-inner">
-                <h4>Why I Built GUARD</h4>
+                <h4>Why I Built The Oversight Report</h4>
                 <p>
                   I&rsquo;ve been a registered nurse since 2004 and a board-certified nurse practitioner
                   since 2013 — over 20 years in healthcare. I&rsquo;m double board-certified in
-                  adult-gerontology acute care and psychiatric mental health, and I&rsquo;ve worked across
-                  emergency medicine, trauma, neuro critical care, and addiction medicine. Currently
-                  I work in critical care at Sutter Health and in addiction medicine at Highland
-                  Hospital, part of Alameda Health System.
+                  acute care and psychiatry, and I&rsquo;ve worked across
+                  emergency medicine, trauma, neuro critical care, and addiction medicine.
                 </p>
                 <p>
                   I&rsquo;ve seen firsthand what happens when families don&rsquo;t have the information they
@@ -131,7 +131,7 @@ export default function WhyThisExists() {
                   jargon, and nearly impossible for a regular person to interpret.
                 </p>
                 <p>
-                  GUARD was born from a simple belief: families shouldn&rsquo;t need a healthcare degree
+                  The Oversight Report was born from a simple belief: families shouldn&rsquo;t need a healthcare degree
                   to understand whether a nursing home is safe. I combined my clinical background
                   with data engineering to build a system that pulls all of this information together,
                   scores it, and presents it in plain language — so any family member can walk in
@@ -139,7 +139,7 @@ export default function WhyThisExists() {
                 </p>
                 <p>
                   This isn&rsquo;t funded by nursing home companies. There are no ads, no sponsored
-                  placements, no conflicts of interest. GUARD exists because the people you love
+                  placements, no conflicts of interest. The Oversight Report exists because the people you love
                   deserve transparency.
                 </p>
                 <div className="author-bio-details">
@@ -157,7 +157,7 @@ export default function WhyThisExists() {
                   </div>
                   <div className="author-bio-detail">
                     <strong>Contact</strong>
-                    <span><a href="mailto:rob@datalinkllc.com" onClick={(e) => e.stopPropagation()}>rob@datalinkllc.com</a></span>
+                    <span><a href="mailto:contact@oversightreports.com" onClick={(e) => e.stopPropagation()}>contact@oversightreports.com</a></span>
                   </div>
                 </div>
               </div>
