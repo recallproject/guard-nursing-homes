@@ -29,6 +29,7 @@ const actions = [
     label: 'Download Report',
     description: 'Get a PDF for your records',
     actionKey: 'download',
+    live: true,
   },
 ];
 
@@ -71,7 +72,7 @@ export default function ActionStrip({ onSearch, onCompare, onExplore }) {
         if (onExplore) onExplore();
         break;
       case 'download':
-        // Show coming soon tooltip
+        if (onSearch) onSearch();
         break;
     }
   };
@@ -84,7 +85,7 @@ export default function ActionStrip({ onSearch, onCompare, onExplore }) {
           return (
             <div
               key={action.actionKey}
-              className={`action-card ${action.actionKey === 'download' ? 'action-card-coming-soon' : ''}`}
+              className="action-card"
               onClick={() => handleClick(action.actionKey)}
             >
               <div className="action-card-icon">
@@ -92,9 +93,6 @@ export default function ActionStrip({ onSearch, onCompare, onExplore }) {
               </div>
               <h3 className="action-card-label">{action.label}</h3>
               <p className="action-card-desc">{action.description}</p>
-              {action.actionKey === 'download' && (
-                <span className="action-card-badge">Coming Soon</span>
-              )}
             </div>
           );
         })}
