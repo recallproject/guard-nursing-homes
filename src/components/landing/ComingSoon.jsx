@@ -10,43 +10,37 @@ const features = [
     icon: '\uD83D\uDD0D',
     title: 'State Screening Reports',
     description: 'Filter and export facility data by state for oversight, compliance, or investigation.',
-    live: true,
-    to: '/screening',
+    coming: true,
   },
   {
     icon: '\uD83D\uDCCA',
     title: 'Staffing Discrepancy Index',
     description: 'Find facilities reporting more staff than payroll records show. Ranked by gap percentage.',
-    live: true,
-    to: '/discrepancies',
+    coming: true,
   },
   {
     icon: '\uD83D\uDD17',
     title: 'Ownership Network Explorer',
     description: 'See which companies own multiple facilities and how their portfolios perform across states.',
-    live: true,
-    to: '/ownership',
+    coming: true,
   },
   {
     icon: '\uD83D\uDCC4',
     title: 'Download Reports',
     description: 'Download a detailed PDF safety report for any facility — clinical context, percentile rankings, and a visit checklist.',
-    live: true,
-    to: '/',
+    coming: true,
   },
   {
     icon: '\uD83D\uDD14',
     title: 'Watchlist & Alerts',
     description: 'Save facilities you\'re monitoring and track changes over time from a personal dashboard.',
-    live: true,
-    to: '/watchlist',
+    coming: true,
   },
   {
     icon: '\uD83D\uDCC8',
     title: 'Historical Trends',
     description: 'Track how facility safety records change over time with national snapshot data.',
-    live: true,
-    to: '/trends',
+    coming: true,
   },
 ];
 
@@ -104,7 +98,7 @@ export default function ComingSoon() {
         </div>
         <div style={{ textAlign: 'center', marginTop: '3rem' }}>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
-            Everything families need is free. Professional tools are available now for attorneys, journalists, hospitals, and regulators.
+            Everything families need is free. Professional tools are coming soon for attorneys, journalists, hospitals, and regulators.
           </p>
           <button
             className="btn btn-ghost"
