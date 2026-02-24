@@ -1,0 +1,54 @@
+/* Accountability Flags */
+.accountability-flags { margin: 2rem 0; }
+
+.accountability-flag { margin: 1.5rem 0; border-radius: 8px; overflow: hidden; }
+
+.flag-danger { background: #FEF2F2; border: 1px solid #FECACA; }
+.flag-warning { background: #FFFBEB; border: 1px solid #FDE68A; }
+.flag-neutral { background: #F8FAFC; border: 1px solid #E2E8F0; }
+.flag-good { background: #F0FDF4; border: 1px solid #BBF7D0; }
+
+.flag-header { display: flex; align-items: center; gap: 0.75rem; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.flag-header h4 { margin: 0; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #0F172A; }
+.flag-icon { font-size: 1.1rem; }
+
+.flag-body { padding: 16px; }
+.flag-body p { margin: 0 0 0.75rem; font-size: 0.9rem; line-height: 1.6; color: #475569; }
+.flag-body p:last-child { margin-bottom: 0; }
+.flag-body ul { margin: 0.5rem 0 1rem; padding-left: 1.5rem; }
+.flag-body li { font-size: 0.9rem; color: #1E293B; line-height: 1.6; margin-bottom: 0.5rem; }
+
+.flag-action { padding: 12px; background: rgba(255,255,255,0.6); border-radius: 6px; border: 1px solid rgba(0,0,0,0.04); }
+.flag-action strong { color: #0F172A; }
+
+.flag-alert { font-weight: 600; color: #DC2626 !important; }
+.flag-source { font-size: 0.8rem !important; font-style: italic; color: #94A3B8 !important; }
+
+.flag-severity-label { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.severity-jeopardy { background: #DC2626; color: #FFFFFF; }
+.severity-harm { background: #F59E0B; color: #FFFFFF; }
+
+.fine-amount { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: #DC2626; }
+
+/* Ownership star distribution */
+.ownership-stars-grid { margin: 1rem 0; }
+.ownership-star-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.ownership-star-label { font-size: 0.75rem; min-width: 80px; text-align: right; }
+.ownership-star-bar-track { flex: 1; height: 16px; background: rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+.ownership-star-bar-fill { height: 100%; background: #4F46E5; border-radius: 8px; transition: width 0.4s ease; min-width: 2px; }
+.ownership-star-count { font-size: 0.8rem; color: #64748B; min-width: 80px; font-family: 'JetBrains Mono', monospace; }
+
+/* Disclaimer */
+.accountability-disclaimer { margin: 2rem 0 1rem; padding: 16px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; }
+.accountability-disclaimer h4 { margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #64748B; }
+.accountability-disclaimer p { margin: 0; font-size: 0.85rem; line-height: 1.6; color: #64748B; }
+.accountability-disclaimer a { color: #4F46E5; font-weight: 600; text-decoration: none; }
+.accountability-disclaimer a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .flag-header { padding: 12px; }
+  .flag-body { padding: 12px; }
+  .ownership-star-label { min-width: 60px; font-size: 0.65rem; }
+  .ownership-star-count { min-width: 60px; font-size: 0.75rem; }
+}

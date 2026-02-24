@@ -1,0 +1,440 @@
+/* ========================================
+   PRICING PAGE
+   Dark theme matching GUARD design system
+   ======================================== */
+
+.pricing-page {
+  background-color: var(--bg-deep);
+  min-height: 100vh;
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.pricing-hero {
+  padding: 8rem 0 4rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-card) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.15), transparent 50%);
+  pointer-events: none;
+}
+
+.pricing-hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.pricing-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* ========================================
+   BILLING TOGGLE
+   ======================================== */
+.billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.billing-toggle-btn {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  white-space: nowrap;
+}
+
+.billing-toggle-btn.active {
+  color: var(--text-white);
+  background: var(--primary);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.billing-toggle-save {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-green);
+  background: rgba(16, 185, 129, 0.15);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   PRICING GRID
+   ======================================== */
+.pricing-grid-section {
+  padding: 4rem 0;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: var(--bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(79, 70, 229, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(79, 70, 229, 0.2);
+}
+
+.pricing-card-featured {
+  border-color: var(--primary);
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(79, 70, 229, 0.05) 100%);
+  box-shadow: 0 10px 40px rgba(79, 70, 229, 0.2);
+}
+
+.pricing-card-featured:hover {
+  box-shadow: 0 20px 60px rgba(79, 70, 229, 0.3), var(--shadow-glow-primary);
+}
+
+/* ========================================
+   PRICING BADGE
+   ======================================== */
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-white);
+  background: var(--primary);
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+
+/* ========================================
+   CARD CONTENT
+   ======================================== */
+.pricing-card-header {
+  margin-bottom: 2rem;
+}
+
+.pricing-tier-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.75rem;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.pricing-tier-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* ========================================
+   PRICING DISPLAY
+   ======================================== */
+.pricing-price {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.pricing-price-amount {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25rem;
+  line-height: 1;
+}
+
+.pricing-price-free {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3rem;
+  color: var(--accent-green);
+  font-weight: 400;
+}
+
+.pricing-price-currency {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.pricing-price-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 3.5rem;
+  color: var(--text-white);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pricing-price-period {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pricing-price-savings {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+/* ========================================
+   CTA BUTTON
+   ======================================== */
+.pricing-cta {
+  width: 100%;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+}
+
+/* ========================================
+   FEATURES LIST
+   ======================================== */
+.pricing-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.pricing-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.pricing-feature:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-feature-check {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-light);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.pricing-feature-text {
+  color: var(--text-cream);
+}
+
+/* ========================================
+   TRANSPARENCY SECTION
+   ======================================== */
+.pricing-transparency {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  background: var(--bg-card);
+}
+
+.pricing-transparency h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+.pricing-transparency-quote {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.pricing-transparency-quote p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 1.5rem;
+}
+
+.pricing-transparency-quote p:last-child {
+  margin-bottom: 0;
+}
+
+.pricing-author {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1.5rem 2rem;
+  background: rgba(79, 70, 229, 0.1);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 12px;
+}
+
+.pricing-author-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.pricing-author-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ========================================
+   DONATION SECTION
+   ======================================== */
+.pricing-donation {
+  padding: 4rem 0 6rem;
+  text-align: center;
+  background: var(--bg-deep);
+}
+
+.pricing-donation h3 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  color: var(--text-white);
+}
+
+.pricing-donation p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.pricing-donation .btn {
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1200px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricing-hero {
+    padding: 6rem 0 3rem;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    gap: 3rem;
+  }
+
+  .pricing-card {
+    padding: 2rem;
+  }
+
+  .pricing-badge {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.875rem;
+  }
+
+  .billing-toggle {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .billing-toggle-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pricing-price-value {
+    font-size: 3rem;
+  }
+
+  .pricing-transparency {
+    padding: 4rem 0 3rem;
+  }
+
+  .pricing-transparency-quote p {
+    font-size: 1rem;
+  }
+
+  .pricing-donation {
+    padding: 3rem 0 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-card {
+    padding: 1.5rem;
+  }
+
+  .pricing-tier-name {
+    font-size: 1.5rem;
+  }
+
+  .pricing-price-value {
+    font-size: 2.5rem;
+  }
+
+  .pricing-feature {
+    font-size: 0.9rem;
+  }
+
+  .pricing-author {
+    padding: 1.25rem 1.5rem;
+  }
+}

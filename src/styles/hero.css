@@ -1,0 +1,319 @@
+/* ========================================
+   HERO SECTION — Immersive Landing
+   ======================================== */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* ========================================
+   ANIMATED BACKGROUND
+   ======================================== */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.hero-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 30%, #312E81 60%, #1E293B 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* Floating particles */
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.hero-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   HERO CONTENT
+   ======================================== */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3rem;
+}
+
+/* ========================================
+   TITLE — MASSIVE
+   ======================================== */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1rem;
+}
+
+.hero-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-title-word {
+  display: inline-flex;
+  white-space: pre;
+}
+
+.hero-expansion {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+  opacity: 0;
+}
+
+.hero-title-letter {
+  display: inline-block;
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--text-white);
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+
+/* ========================================
+   SUBTITLE
+   ======================================== */
+.hero-subtitle {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-style: italic;
+  color: var(--text-cream);
+  max-width: 600px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* ========================================
+   STATS — COUNT UP
+   ======================================== */
+.hero-stats-header {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: -1rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1000px;
+  padding: 2rem 0;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--primary-light, #A5B4FC);
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-stat-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+/* ========================================
+   CTA SECTION
+   ======================================== */
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+  opacity: 0;
+}
+
+.hero-cta-arrow {
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform var(--transition-normal);
+}
+
+.btn-primary:hover .hero-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Search wrapper */
+.hero-search-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.hero-search-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.hero-search-input {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+}
+
+/* ========================================
+   SCROLL INDICATOR
+   ======================================== */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.6;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll-chevron {
+  width: 24px;
+  height: 24px;
+  border-left: 2px solid var(--text-white);
+  border-bottom: 2px solid var(--text-white);
+  transform: rotate(-45deg);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1.5rem;
+  }
+
+  .hero-content {
+    gap: 2rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .hero-title-letter {
+    font-size: clamp(2.5rem, 15vw, 4rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+  }
+
+  .hero-cta {
+    gap: 1.5rem;
+  }
+
+  .btn-large {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-scroll-indicator {
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-stats {
+    gap: 1.5rem;
+  }
+
+  .hero-stat-value {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .hero-title-letter {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+}

@@ -1,0 +1,55 @@
+/* Staffing Section */
+.staffing-section { margin: 1rem 0; }
+
+.staffing-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+.staffing-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid #E2E8F0; }
+.staffing-role { font-weight: 700; color: #0F172A; font-size: 1rem; }
+.staffing-role-desc { font-size: 0.85rem; color: #64748B; margin-top: 0.25rem; padding-left: 1rem; }
+.staffing-minutes { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: #0F172A; }
+.staffing-total-row { border-top: 2px solid #0F172A; padding-top: 1rem; font-weight: 700; }
+
+/* Staffing bars */
+.staffing-bar { margin: 1rem 0 1.5rem; }
+.staffing-bar-track { position: relative; height: 24px; background: #F1F5F9; border-radius: 12px; overflow: visible; }
+.staffing-bar-fill { height: 100%; border-radius: 12px; transition: width 0.6s ease; }
+.staffing-bar-marker { position: absolute; top: -4px; bottom: -4px; width: 3px; border-radius: 2px; z-index: 2; }
+.staffing-bar-state { background: #64748B; }
+.staffing-bar-benchmark { background: #0F172A; border: 1px dashed #475569; }
+.staffing-bar-legend { display: flex; justify-content: space-between; font-size: 0.8rem; color: #64748B; margin-top: 0.5rem; flex-wrap: wrap; gap: 0.5rem; }
+
+/* Staffing summary callouts */
+.staffing-summary { padding: 16px; border-radius: 8px; margin: 1.5rem 0; font-size: 0.95rem; line-height: 1.6; }
+.staffing-summary-danger { background: #FEE2E2; border-left: 4px solid #DC2626; color: #991B1B; }
+.staffing-summary-warning { background: #FEF3C7; border-left: 4px solid #F59E0B; color: #92400E; }
+.staffing-summary-ok { background: #DBEAFE; border-left: 4px solid #3B82F6; color: #1E40AF; }
+.staffing-summary-good { background: #D1FAE5; border-left: 4px solid #16A34A; color: #166534; }
+
+/* Zero RN / Contractor warnings */
+.staffing-warning { padding: 12px 16px; background: #FEF3C7; border-radius: 8px; margin: 1rem 0; font-size: 0.9rem; color: #92400E; }
+.staffing-info { padding: 12px 16px; background: #EFF6FF; border-radius: 8px; margin: 1rem 0; font-size: 0.9rem; color: #1E40AF; }
+
+/* Collapsible sections */
+.collapsible-section { margin: 1.5rem 0; border: 1px solid #E2E8F0; border-radius: 8px; overflow: hidden; }
+.collapsible-header { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 14px 16px; background: #F8FAFC; border: none; cursor: pointer; font-size: 0.95rem; font-weight: 700; color: #0F172A; font-family: inherit; text-align: left; transition: background 0.2s; }
+.collapsible-header:hover { background: #F1F5F9; }
+.collapsible-icon { font-size: 1.25rem; color: #64748B; font-weight: 400; width: 24px; text-align: center; }
+.collapsible-body { height: 0; overflow: hidden; }
+.collapsible-inner { padding: 16px; font-size: 0.9rem; line-height: 1.7; color: #475569; }
+.collapsible-inner p { margin: 0 0 1rem; }
+.collapsible-inner ul { margin: 0.5rem 0 1rem; padding-left: 1.5rem; }
+.collapsible-inner li { margin-bottom: 0.5rem; }
+.collapsible-inner a { color: #4F46E5; text-decoration: none; font-weight: 600; }
+.collapsible-inner a:hover { text-decoration: underline; }
+.collapsible-inner .timeline-entry { margin-bottom: 1.25rem; }
+.collapsible-inner .timeline-date { font-weight: 700; color: #0F172A; }
+
+/* State requirement note */
+.state-note { padding: 12px 16px; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0; margin: 1rem 0; font-size: 0.9rem; color: #475569; }
+.state-note strong { color: #0F172A; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .staffing-bar-legend { flex-direction: column; }
+  .staffing-row { flex-direction: column; gap: 0.25rem; }
+  .staffing-minutes { font-size: 1rem; }
+}
