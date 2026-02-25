@@ -40,6 +40,19 @@ export default function FacilityRow({ facility }) {
     navigate(`/facility/${facility.ccn}`);
   };
 
+  const getTrendIndicator = () => {
+    if (!facility.trend_direction) return null;
+
+    if (facility.trend_direction === 'improving') {
+      return <span className="trend-indicator trend-indicator--improving" title="Staffing trend: Improving">↑</span>;
+    } else if (facility.trend_direction === 'declining') {
+      return <span className="trend-indicator trend-indicator--declining" title="Staffing trend: Declining">↓</span>;
+    } else if (facility.trend_direction === 'stable') {
+      return <span className="trend-indicator trend-indicator--stable" title="Staffing trend: Stable">→</span>;
+    }
+    return null;
+  };
+
   return (
     <div className="facility-row" onClick={handleClick}>
       <div className="facility-row-score" style={{ backgroundColor: riskInfo.color }}>
@@ -47,7 +60,10 @@ export default function FacilityRow({ facility }) {
       </div>
       <div className="facility-row-info">
         <div className="facility-row-top">
-          <span className="facility-row-name">{facility.name}</span>
+          <span className="facility-row-name">
+            {facility.name}
+            {getTrendIndicator()}
+          </span>
           <span className="facility-row-city">{facility.city}, {facility.state}</span>
         </div>
         <div className="facility-row-bottom">

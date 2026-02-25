@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { submitLead } from '../utils/submitLead';
 
 /**
  * Email capture modal for AG Toolkit CSV exports
  * Collects name, organization, email (required) + title (optional)
- * Saves submissions to localStorage
+ * Saves submissions to localStorage + sends to webhook if configured
  */
 export function EmailCaptureModal({ state, onSubmit, onClose }) {
   const [form, setForm] = useState({
@@ -16,15 +17,14 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
 
   const isValid = form.name.trim() && form.organization.trim() && form.email.trim() && form.email.includes('@');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isValid) return;
 
-    // Save to localStorage
-    const submissions = JSON.parse(localStorage.getItem('ag_toolkit_submissions') || '[]');
-    submissions.push({ ...form, timestamp: new Date().toISOString() });
-    localStorage.setItem('ag_toolkit_submissions', JSON.stringify(submissions));
+    // Save to localStorage + send to webhook (non-blocking)
+    await submitLead(form);
 
+    // Trigger CSV download immediately
     onSubmit(form);
   };
 

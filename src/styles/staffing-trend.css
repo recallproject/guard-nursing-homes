@@ -1,0 +1,236 @@
+/* Staffing Trend Chart Component */
+
+.staffing-trend-chart {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.staffing-trend-header {
+  margin-bottom: 1.5rem;
+}
+
+.staffing-trend-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.5rem 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.staffing-trend-subtitle {
+  font-size: 0.9rem;
+  color: #64748B;
+  margin: 0;
+}
+
+/* Direction Badges */
+.trend-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.trend-badge--improving {
+  background-color: #D1FAE5;
+  color: #065F46;
+  border: 1px solid #10B981;
+}
+
+.trend-badge--declining {
+  background-color: #FEE2E2;
+  color: #991B1B;
+  border: 1px solid #DC2626;
+}
+
+.trend-badge--stable {
+  background-color: #F1F5F9;
+  color: #475569;
+  border: 1px solid #94A3B8;
+}
+
+/* Legend */
+.staffing-trend-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.legend-color--dashed {
+  background: repeating-linear-gradient(
+    to right,
+    #94A3B8,
+    #94A3B8 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+.legend-label {
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Chart Container */
+.staffing-trend-chart-container {
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 1rem;
+}
+
+.staffing-trend-chart-container svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Pro Gate Overlay */
+.staffing-trend-gate {
+  position: relative;
+  min-height: 300px;
+  margin-bottom: 1rem;
+}
+
+.staffing-trend-blur {
+  filter: blur(8px);
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.staffing-trend-gate-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  background: rgba(248, 250, 252, 0.95);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 2px solid #E2E8F0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.staffing-trend-gate-overlay h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 0.5rem 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.staffing-trend-gate-overlay p {
+  font-size: 0.9rem;
+  color: #64748B;
+  margin: 0 0 1.5rem 0;
+}
+
+.staffing-trend-gate-overlay .btn {
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Tooltip */
+.staffing-trend-tooltip {
+  position: absolute;
+  background-color: rgba(15, 23, 42, 0.95);
+  color: #FFFFFF;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.staffing-trend-tooltip strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #F1F5F9;
+}
+
+/* Source Attribution */
+.staffing-trend-source {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  font-style: italic;
+  margin: 0;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .staffing-trend-chart {
+    padding: 1.5rem;
+  }
+
+  .staffing-trend-title {
+    font-size: 1.25rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .staffing-trend-legend {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .staffing-trend-gate-overlay {
+    padding: 1.5rem;
+  }
+
+  .staffing-trend-gate-overlay h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .staffing-trend-chart {
+    padding: 1rem;
+  }
+
+  .staffing-trend-title {
+    font-size: 1.1rem;
+  }
+
+  .staffing-trend-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .trend-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

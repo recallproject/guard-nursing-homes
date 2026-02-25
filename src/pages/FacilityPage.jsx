@@ -9,6 +9,7 @@ import { DownloadButton } from '../components/DownloadButton';
 import { ActionPaths } from '../components/ActionPaths';
 import StaffingSection from '../components/StaffingSection';
 import AccountabilityFlags from '../components/AccountabilityFlags';
+import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
@@ -206,6 +207,11 @@ export function FacilityPage() {
           facility={facility}
           benchmarks={{ state: stateBenchmarks, national: nationalBenchmarks }}
         />
+
+        {/* Staffing Trend Chart */}
+        {facility.staffing_trend && (
+          <StaffingTrendChart facility={facility} />
+        )}
 
         <hr />
 

@@ -266,6 +266,40 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Trend Indicators */
+.trend-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.trend-indicator--improving {
+  background-color: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.trend-indicator--declining {
+  background-color: rgba(220, 38, 38, 0.15);
+  color: #DC2626;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.trend-indicator--stable {
+  background-color: rgba(148, 163, 184, 0.15);
+  color: #94A3B8;
+  border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 .facility-row-city {
