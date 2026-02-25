@@ -322,6 +322,30 @@
 }
 
 /* ========================================
+   TABLE EXPLAINER
+   ======================================== */
+.ag-toolkit-table-explainer {
+  max-width: 1400px;
+  margin: 0 auto 1.25rem;
+  padding: 0.875rem 1.25rem;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  max-width: 1360px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.ag-toolkit-table-explainer strong {
+  color: var(--text-cream);
+}
+
+/* ========================================
    RESULTS TABLE
    ======================================== */
 .ag-toolkit-table-wrapper {

@@ -272,7 +272,7 @@ export function AGToolkitPage() {
 
     switch (activeTab) {
       case 'staffing':
-        headers = ['Rank', 'Facility', 'CCN', 'City', 'Owner', 'Total HPRD', 'Target HPRD', 'RN HPRD', 'RN Target', 'CNA HPRD', 'CNA Target', 'Stars', 'Jeopardy Count', 'Total Fines'];
+        headers = ['Rank', 'Facility', 'CCN', 'City', 'Owner', 'Nursing Hrs/Day', 'Target Hrs/Day', 'RN Hrs/Day', 'RN Target', 'CNA Hrs/Day', 'CNA Target', 'Stars', 'Jeopardy Count', 'Total Fines'];
         rows = sortedFacilities.map((f, i) => [
           i + 1, f.name, f.ccn, f.city, f.worst_owner || '', (f.total_hprd || 0).toFixed(2), AG_THRESHOLDS.totalHprd,
           (f.rn_hprd || 0).toFixed(2), AG_THRESHOLDS.rnHprd, (f.cna_hprd || 0).toFixed(2), AG_THRESHOLDS.cnaHprd,
@@ -280,7 +280,7 @@ export function AGToolkitPage() {
         ]);
         break;
       case 'zero-rn':
-        headers = ['Rank', 'Facility', 'CCN', 'City', 'Owner', 'Zero-RN Days %', 'Weekend RN HPRD', 'Total HPRD', 'Jeopardy Count', 'Stars', 'Total Fines'];
+        headers = ['Rank', 'Facility', 'CCN', 'City', 'Owner', 'Zero-RN Days %', 'Weekend RN Hrs/Day', 'Nursing Hrs/Day', 'Jeopardy Count', 'Stars', 'Total Fines'];
         rows = sortedFacilities.map((f, i) => [
           i + 1, f.name, f.ccn, f.city, f.worst_owner || '', (f.zero_rn_pct || 0).toFixed(1),
           (f.weekend_rn_hprd || 0).toFixed(2), (f.total_hprd || 0).toFixed(2),
@@ -288,7 +288,7 @@ export function AGToolkitPage() {
         ]);
         break;
       case 'ownership':
-        headers = ['Rank', 'Facility', 'CCN', 'Owner', 'Portfolio Size', 'Risk Score', 'Stars', 'Total HPRD', 'Zero-RN %', 'Jeopardy Count', 'Total Fines'];
+        headers = ['Rank', 'Facility', 'CCN', 'Owner', 'Portfolio Size', 'Risk Score', 'Stars', 'Nursing Hrs/Day', 'Zero-RN %', 'Jeopardy Count', 'Total Fines'];
         rows = sortedFacilities.map((f, i) => [
           i + 1, f.name, f.ccn, f.worst_owner || '', f.owner_portfolio_count || 0,
           (f.composite || 0).toFixed(1), f.stars || 0, (f.total_hprd || 0).toFixed(2),
@@ -353,9 +353,9 @@ export function AGToolkitPage() {
             <th className="sortable" onClick={() => handleSort('name')}>Facility{sortIndicator('name')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('city')}>City{sortIndicator('city')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('owner')}>Owner{sortIndicator('owner')}</th>
-            <th className="sortable" onClick={() => handleSort('total_hprd')}>Total HPRD{sortIndicator('total_hprd')}</th>
-            <th className="sortable" onClick={() => handleSort('rn_hprd')}>RN HPRD{sortIndicator('rn_hprd')}</th>
-            <th className="sortable hide-mobile" onClick={() => handleSort('cna_hprd')}>CNA HPRD{sortIndicator('cna_hprd')}</th>
+            <th className="sortable" onClick={() => handleSort('total_hprd')}>Nursing Hrs/Day{sortIndicator('total_hprd')}</th>
+            <th className="sortable" onClick={() => handleSort('rn_hprd')}>RN Hrs/Day{sortIndicator('rn_hprd')}</th>
+            <th className="sortable hide-mobile" onClick={() => handleSort('cna_hprd')}>CNA Hrs/Day{sortIndicator('cna_hprd')}</th>
             <th className="sortable" onClick={() => handleSort('stars')}>Stars{sortIndicator('stars')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('jeopardy')}>Jeopardy{sortIndicator('jeopardy')}</th>
             <th className="sortable" onClick={() => handleSort('fines')}>Fines{sortIndicator('fines')}</th>
@@ -369,8 +369,8 @@ export function AGToolkitPage() {
             <th className="sortable hide-mobile" onClick={() => handleSort('city')}>City{sortIndicator('city')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('owner')}>Owner{sortIndicator('owner')}</th>
             <th className="sortable" onClick={() => handleSort('zero_rn_pct')}>Zero-RN Days{sortIndicator('zero_rn_pct')}</th>
-            <th className="sortable hide-mobile" onClick={() => handleSort('weekend_rn_hprd')}>Wknd RN HPRD{sortIndicator('weekend_rn_hprd')}</th>
-            <th className="sortable" onClick={() => handleSort('total_hprd')}>Total HPRD{sortIndicator('total_hprd')}</th>
+            <th className="sortable hide-mobile" onClick={() => handleSort('weekend_rn_hprd')}>Weekend RN Hrs{sortIndicator('weekend_rn_hprd')}</th>
+            <th className="sortable" onClick={() => handleSort('total_hprd')}>Nursing Hrs/Day{sortIndicator('total_hprd')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('jeopardy')}>Jeopardy{sortIndicator('jeopardy')}</th>
             <th className="sortable" onClick={() => handleSort('stars')}>Stars{sortIndicator('stars')}</th>
             <th className="sortable" onClick={() => handleSort('fines')}>Fines{sortIndicator('fines')}</th>
@@ -385,7 +385,7 @@ export function AGToolkitPage() {
             <th className="sortable" onClick={() => handleSort('portfolio')}>Portfolio{sortIndicator('portfolio')}</th>
             <th className="sortable" onClick={() => handleSort('composite')}>Risk Score{sortIndicator('composite')}</th>
             <th className="sortable" onClick={() => handleSort('stars')}>Stars{sortIndicator('stars')}</th>
-            <th className="sortable" onClick={() => handleSort('total_hprd')}>Total HPRD{sortIndicator('total_hprd')}</th>
+            <th className="sortable" onClick={() => handleSort('total_hprd')}>Nursing Hrs/Day{sortIndicator('total_hprd')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('zero_rn_pct')}>Zero-RN %{sortIndicator('zero_rn_pct')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('jeopardy')}>Jeopardy{sortIndicator('jeopardy')}</th>
             <th className="sortable" onClick={() => handleSort('fines')}>Fines{sortIndicator('fines')}</th>
@@ -543,14 +543,14 @@ export function AGToolkitPage() {
 
           <div className="ag-toolkit-timeline">
             <strong>April 2024</strong> — CMS finalized the first-ever federal <a href="https://www.federalregister.gov/documents/2024/05/10/2024-08273/medicare-and-medicaid-programs-minimum-staffing-standards-for-long-term-care-facilities-and-medicaid" target="_blank" rel="noopener noreferrer">minimum staffing rule</a> requiring
-            3.48 HPRD (0.55 RN + 2.45 nurse aide) and 24/7 RN coverage for all nursing homes.<br />
+            3.48 nursing hours per resident per day (0.55 RN + 2.45 nurse aide) and 24/7 RN coverage for all nursing homes.<br />
             <strong>July 2025</strong> — Section 71111 of the <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer">One Big Beautiful Bill Act</a> (P.L. 119-21)
             imposed a <a href="https://www.aarp.org/advocacy/one-big-beautiful-bill-nursing-homes/" target="_blank" rel="noopener noreferrer">10-year moratorium</a> on
             enforcement of the staffing rule through September 2034.<br />
             <strong>December 2025</strong> — CMS issued an <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">interim final rule</a> formally
             repealing the 2024 standards, reverting to the prior requirement of just 8 hours of RN coverage per day.<br />
             <strong>February 2026</strong> — 18 state AGs proposed that CMS adopt a targeted version of the
-            3.48 HPRD standard for for-profit homes engaged in related-party transactions and high-risk ownership structures.
+            3.48 hrs/day standard for for-profit homes engaged in related-party transactions and high-risk ownership structures.
           </div>
         </div>
       </div>
@@ -670,6 +670,19 @@ export function AGToolkitPage() {
             <button className="ag-toolkit-export-btn" onClick={handleExportClick} disabled={!sortedFacilities.length}>
               Export State Report
             </button>
+          </div>
+
+          {/* Table explainer */}
+          <div className="ag-toolkit-table-explainer">
+            {activeTab === 'staffing' && (
+              <>Hours per resident per day — how many hours of nursing care each resident receives on average. <strong>Red</strong> = below the AG-proposed minimum. <strong>Green</strong> = meets or exceeds it. The "/" shows actual vs. target.</>
+            )}
+            {activeTab === 'zero-rn' && (
+              <>Federal law requires a registered nurse (RN) on site at least 8 hours every day. "Zero-RN Days" shows the percentage of days in Q3 2025 where the facility reported <strong>no RN hours at all</strong> — based on payroll data the facility submitted to CMS.</>
+            )}
+            {activeTab === 'ownership' && (
+              <>For-profit operators with 5+ facilities where patterns of low staffing, jeopardy citations, or significant fines suggest systemic issues across the portfolio.</>
+            )}
           </div>
 
           {/* Table */}
