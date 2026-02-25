@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
+import { useSubscription, canAccess } from '../hooks/useSubscription';
+import { UpgradePrompt } from '../components/UpgradePrompt';
 import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/screening.css';
 
@@ -23,6 +25,7 @@ export function ScreeningPage() {
   const COMING_SOON = true;
 
   const { data, loading, error } = useFacilityData();
+  const { tier } = useSubscription();
   const navigate = useNavigate();
 
   const [selectedState, setSelectedState] = useState('');
@@ -501,12 +504,21 @@ export function ScreeningPage() {
               Showing {facilities.length} of {stats.totalFacilities} facilities
             </div>
             <div className="screening-export-buttons">
-              <button className="btn btn-secondary" onClick={downloadCSV}>
-                Download CSV
-              </button>
-              <button className="btn btn-secondary" onClick={downloadPDF}>
-                Download PDF
-              </button>
+              {canAccess(tier, 'professional') ? (
+                <>
+                  <button className="btn btn-secondary" onClick={downloadCSV}>
+                    Download CSV
+                  </button>
+                  <button className="btn btn-secondary" onClick={downloadPDF}>
+                    Download PDF
+                  </button>
+                </>
+              ) : (
+                <UpgradePrompt
+                  requiredTier="professional"
+                  featureName="Bulk CSV Export"
+                />
+              )}
             </div>
           </div>
 

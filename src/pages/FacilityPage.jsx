@@ -10,12 +10,15 @@ import { ActionPaths } from '../components/ActionPaths';
 import StaffingSection from '../components/StaffingSection';
 import AccountabilityFlags from '../components/AccountabilityFlags';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
+import { useSubscription, canAccess } from '../hooks/useSubscription';
+import { UpgradePrompt } from '../components/UpgradePrompt';
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
 export function FacilityPage() {
   const { ccn } = useParams();
   const { data, loading, error } = useFacilityData();
+  const { tier } = useSubscription();
   const pageRef = useRef(null);
 
   const facility = data?.states
@@ -236,7 +239,16 @@ export function FacilityPage() {
 
         {/* Staffing Trend Chart */}
         {facility.staffing_trend && (
-          <StaffingTrendChart facility={facility} />
+          canAccess(tier, 'pro') ? (
+            <StaffingTrendChart facility={facility} />
+          ) : (
+            <UpgradePrompt
+              requiredTier="pro"
+              featureName="Staffing Trend Analysis"
+            >
+              <StaffingTrendChart facility={facility} />
+            </UpgradePrompt>
+          )
         )}
 
         <hr />

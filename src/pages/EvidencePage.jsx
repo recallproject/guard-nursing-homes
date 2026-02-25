@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { haversineDistance } from '../utils/haversine';
 import { generateEvidencePDF } from '../utils/generateEvidencePDF';
+import { useSubscription, canAccess } from '../hooks/useSubscription';
+import { UpgradePrompt } from '../components/UpgradePrompt';
 import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/evidence.css';
 
@@ -10,6 +12,7 @@ export function EvidencePage() {
   const COMING_SOON = false;
   const { ccn } = useParams();
   const { data, loading, error } = useFacilityData();
+  const { tier } = useSubscription();
 
   const facility = data?.states
     ? Object.values(data.states).flatMap(state => state.facilities || []).find(f => f.ccn === ccn)
@@ -149,6 +152,29 @@ export function EvidencePage() {
   };
 
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Gate check - if not professional tier, show upgrade prompt
+  if (!canAccess(tier, 'professional')) {
+    return (
+      <div className="ev">
+        <div className="ev-header no-print">
+          <Link to={`/facility/${ccn}`} className="ev-back">Back to Report Card</Link>
+          <h2 className="ev-badge">Evidence Package</h2>
+        </div>
+        <UpgradePrompt
+          requiredTier="professional"
+          featureName="Evidence Package"
+        >
+          <div className="ev-body" style={{ opacity: 0.4 }}>
+            <section className="ev-section ev-cover">
+              <div className="ev-logo">THE OVERSIGHT REPORT</div>
+              <h1 className="ev-facility-name">{facility?.name || 'Facility Name'}</h1>
+            </section>
+          </div>
+        </UpgradePrompt>
+      </div>
+    );
+  }
 
   return (
     <div className="ev">

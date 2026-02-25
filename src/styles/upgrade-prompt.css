@@ -1,0 +1,121 @@
+/* Upgrade Prompt Styles */
+
+.upgrade-gate {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-gate-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.upgrade-prompt {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.upgrade-prompt-header {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.upgrade-prompt-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin: 0 0 12px 0;
+  font-family: var(--font-heading);
+}
+
+.upgrade-prompt-tier {
+  display: inline-block;
+  background: var(--primary);
+  color: var(--text-white);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.upgrade-prompt-body {
+  margin-bottom: 28px;
+}
+
+.upgrade-prompt-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.upgrade-prompt-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  margin-bottom: 8px;
+}
+
+.upgrade-prompt-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.upgrade-prompt-cta {
+  width: 100%;
+  max-width: 280px;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upgrade-prompt-hint {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .upgrade-prompt {
+    padding: 24px;
+    max-width: 100%;
+  }
+
+  .upgrade-prompt-title {
+    font-size: 1.5rem;
+  }
+
+  .upgrade-prompt-price {
+    font-size: 2rem;
+  }
+}

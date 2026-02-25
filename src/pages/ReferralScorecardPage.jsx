@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
+import { useSubscription, canAccess } from '../hooks/useSubscription';
+import { UpgradePrompt } from '../components/UpgradePrompt';
 import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/referral-scorecard.css';
 
@@ -24,6 +26,7 @@ export function ReferralScorecardPage() {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { getAllFacilities, loading, error } = useFacilityData();
+  const { tier } = useSubscription();
 
   // Input method: 'location' or 'ccn'
   const [inputMethod, setInputMethod] = useState('location');
@@ -424,6 +427,30 @@ export function ReferralScorecardPage() {
           'Custom branding on shared reports',
         ]}
       />
+    );
+  }
+
+  // Gate check - if not institutional tier, show upgrade prompt
+  if (!canAccess(tier, 'institutional')) {
+    return (
+      <div className="referral-scorecard-page">
+        <div className="referral-header">
+          <h1>Referral Scorecard</h1>
+          <p className="referral-subtitle">
+            Compare nursing homes side-by-side for discharge planning
+          </p>
+        </div>
+        <UpgradePrompt
+          requiredTier="institutional"
+          featureName="Referral Scorecard"
+        >
+          <div style={{ opacity: 0.4, padding: '40px', textAlign: 'center' }}>
+            <p style={{ fontSize: '1.2rem', color: 'var(--text-secondary)' }}>
+              Advanced facility comparison and discharge planning tools
+            </p>
+          </div>
+        </UpgradePrompt>
+      </div>
     );
   }
 

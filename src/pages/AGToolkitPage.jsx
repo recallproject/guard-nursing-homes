@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
+import { useSubscription, canAccess } from '../hooks/useSubscription';
+import { UpgradePrompt } from '../components/UpgradePrompt';
 import { EmailCaptureModal } from '../components/EmailCaptureModal';
 import '../styles/ag-toolkit.css';
 
@@ -33,6 +35,7 @@ const AG_THRESHOLDS = {
 
 export function AGToolkitPage() {
   const { data, loading, error } = useFacilityData();
+  const { tier } = useSubscription();
   const navigate = useNavigate();
 
   const [selectedState, setSelectedState] = useState('');
@@ -667,9 +670,16 @@ export function AGToolkitPage() {
             <div className="ag-toolkit-result-count">
               Showing {sortedFacilities.length} of {tabCounts[activeTab]} facilities
             </div>
-            <button className="ag-toolkit-export-btn" onClick={handleExportClick} disabled={!sortedFacilities.length}>
-              Export State Report
-            </button>
+            {canAccess(tier, 'professional') ? (
+              <button className="ag-toolkit-export-btn" onClick={handleExportClick} disabled={!sortedFacilities.length}>
+                Export State Report
+              </button>
+            ) : (
+              <UpgradePrompt
+                requiredTier="professional"
+                featureName="Bulk CSV Export"
+              />
+            )}
           </div>
 
           {/* Table explainer */}

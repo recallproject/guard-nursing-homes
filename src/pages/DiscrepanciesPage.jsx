@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
+import { useSubscription, canAccess } from '../hooks/useSubscription';
+import { UpgradePrompt } from '../components/UpgradePrompt';
 import CollapsibleSection from '../components/CollapsibleSection';
 import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/discrepancies.css';
@@ -9,6 +11,7 @@ import '../styles/discrepancies.css';
 export default function DiscrepanciesPage() {
   const COMING_SOON = true;
   const { getAllFacilities, loading, error } = useFacilityData();
+  const { tier } = useSubscription();
   const navigate = useNavigate();
 
   const [selectedState, setSelectedState] = useState('ALL');
@@ -525,12 +528,21 @@ export default function DiscrepanciesPage() {
 
         {/* Export Buttons */}
         <div className="discrepancies-export">
-          <button className="btn btn-secondary" onClick={handleDownloadCSV}>
-            Download CSV
-          </button>
-          <button className="btn btn-secondary" onClick={handleDownloadPDF}>
-            Download PDF
-          </button>
+          {canAccess(tier, 'professional') ? (
+            <>
+              <button className="btn btn-secondary" onClick={handleDownloadCSV}>
+                Download CSV
+              </button>
+              <button className="btn btn-secondary" onClick={handleDownloadPDF}>
+                Download PDF
+              </button>
+            </>
+          ) : (
+            <UpgradePrompt
+              requiredTier="professional"
+              featureName="Bulk CSV Export"
+            />
+          )}
         </div>
 
         {/* Data Context Info Box */}
