@@ -86,6 +86,7 @@ export function FacilityPage() {
   const stars = '⭐'.repeat(Math.max(0, Math.min(5, facility.stars || 0)));
   const propublica = `https://projects.propublica.org/nursing-homes/homes/h-${ccn}`;
   const medicare = `https://www.medicare.gov/care-compare/details/nursing-home/${ccn}`;
+  const hcris = `https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports/Cost-Reports-by-Fiscal-Year`;
 
   // Safety level
   const getSafety = () => {
@@ -268,7 +269,7 @@ export function FacilityPage() {
                   This facility paid over ${(facility.related_party_costs/1000000).toFixed(1)}M to affiliated companies while maintaining a {facility.stars}-star rating.
                 </div>
               )}
-              <p className="financial-source">Source: CMS HCRIS Cost Reports, FY2024 (Worksheet A-8)</p>
+              <p className="financial-source">Source: <a href={hcris} target="_blank" rel="noopener noreferrer">CMS HCRIS Cost Reports</a>, FY2024 (Worksheet A-8) | Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></p>
             </div>
           </UpgradePrompt>
         )}
