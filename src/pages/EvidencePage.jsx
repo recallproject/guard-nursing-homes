@@ -229,7 +229,7 @@ export function EvidencePage() {
               e.preventDefault();
               const email = e.target.elements.email.value;
               if (email) {
-                window.open(`https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform?usp=pp_url&entry.emailAddress=${encodeURIComponent(email)}`, '_blank');
+                window.open(`https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform?usp=pp_url&entry.emailAddress=${encodeURIComponent(email)}`, '_blank');
                 e.target.reset();
               }
             }}>

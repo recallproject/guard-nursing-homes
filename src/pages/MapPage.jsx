@@ -12,14 +12,10 @@ import '../styles/hero.css';
 import '../styles/cards.css';
 import '../styles/state-detail.css';
 import HowItWorks from '../components/landing/HowItWorks';
-import WhatYoullDiscover from '../components/landing/WhatYoullDiscover';
 import SampleReportCard from '../components/landing/SampleReportCard';
-import WhoThisIsFor from '../components/landing/WhoThisIsFor';
 import WhyThisExists from '../components/landing/WhyThisExists';
-import OurData from '../components/landing/OurData';
 import Footer from '../components/landing/Footer';
 import ActionStrip from '../components/landing/ActionStrip';
-import ComingSoon from '../components/landing/ComingSoon';
 import ComparisonTool from '../components/ComparisonTool';
 import '../styles/landing-sections.css';
 import '../styles/comparison.css';
@@ -216,16 +212,32 @@ export function MapPage() {
         />
       )}
 
-      {/* Why This Exists — Section 2 */}
+      {/* How It Works */}
+      {(view === 'hero' || view === 'states') && <HowItWorks />}
+
+      {/* Sample Report Card */}
       {(view === 'hero' || view === 'states') && (
-        <>
-          <WhyThisExists />
-          <OurData />
-        </>
+        <SampleReportCard onSearch={handleSearchOpen} />
       )}
 
-      {/* How It Works — Section 3 */}
-      {(view === 'hero' || view === 'states') && <HowItWorks />}
+      {/* Evidence PDF Upsell */}
+      {(view === 'hero' || view === 'states') && (
+        <section className="landing-section section-dark">
+          <div className="container">
+            <div className="evidence-upsell-card">
+              <h3 className="evidence-upsell-title">Need the full picture?</h3>
+              <p className="evidence-upsell-desc">
+                Our Evidence Report compiles penalties, ownership records, staffing data, and deficiency details from 6 federal databases into one professional PDF. Built for attorneys, journalists, and families who need documentation.
+              </p>
+              <div className="evidence-upsell-price">$29 per facility</div>
+              <div className="evidence-upsell-actions">
+                <a href="/evidence/145995" className="btn btn-secondary">See a Sample PDF</a>
+                <button onClick={handleSearchOpen} className="btn btn-primary">Search a Facility</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Map Section */}
       {(view === 'states' || (view === 'hero' && selectedState === null)) && (
@@ -267,15 +279,14 @@ export function MapPage() {
         <ComparisonTool ref={comparisonRef} searchFacilities={searchFacilities} />
       )}
 
-      {/* Remaining landing sections */}
+      {/* Why This Exists */}
       {(view === 'hero' || view === 'states') && (
-        <>
-          <WhatYoullDiscover />
-          <SampleReportCard onSearch={handleSearchOpen} />
-          <WhoThisIsFor />
-          <ComingSoon onSearch={handleSearchOpen} />
-          <Footer onExplore={handleExploreClick} onSearch={handleSearchOpen} />
-        </>
+        <WhyThisExists />
+      )}
+
+      {/* Footer */}
+      {(view === 'hero' || view === 'states') && (
+        <Footer onExplore={handleExploreClick} onSearch={handleSearchOpen} />
       )}
 
       {/* State Detail Section */}

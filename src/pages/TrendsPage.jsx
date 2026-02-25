@@ -212,8 +212,7 @@ export function TrendsPage() {
 
   const handleNotifySubmit = (e) => {
     e.preventDefault();
-    // Just UI - no backend
-    alert('Thanks! We\'ll notify you when historical trends go live.');
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform', '_blank');
     setNotifyEmail('');
   };
 

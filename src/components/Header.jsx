@@ -68,16 +68,18 @@ export function Header({ onSearchOpen, transparent = false }) {
   const navGroups = [
     {
       label: 'Families',
-      paths: ['/', '/facility', '/watchlist'],
+      paths: ['/', '/facility', '/watchlist', '/evidence'],
       items: [
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes' },
         { to: '/watchlist', label: 'My Favorites', desc: 'Facilities you\'re tracking' },
+        { to: '/evidence/145995', label: 'Evidence Reports', desc: 'Professional PDFs with full documentation' },
       ]
     },
     {
       label: 'Professionals',
-      paths: ['/screening', '/discrepancies', '/ownership', '/evidence', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
+      paths: ['/professionals', '/screening', '/discrepancies', '/ownership', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
       items: [
+        { to: '/professionals', label: 'All Professional Tools', desc: 'Overview of advanced features' },
         { to: '/ag-toolkit', label: 'AG Toolkit', desc: 'Enforcement-ready staffing violation analysis' },
         { to: '/screening', label: 'State Screening', desc: 'AG investigation reports by state' },
         { to: '/chains', label: 'Chain Rankings', desc: 'Compare performance across nursing home chains' },

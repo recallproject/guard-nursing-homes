@@ -32,7 +32,7 @@ export function UpgradePrompt({ requiredTier, featureName, children }) {
           <div className="upgrade-prompt-price">{tierInfo.price}</div>
         </div>
         <div className="upgrade-prompt-footer">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform" target="_blank" rel="noopener noreferrer" className="btn btn-primary upgrade-prompt-cta">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform" target="_blank" rel="noopener noreferrer" className="btn btn-primary upgrade-prompt-cta">
             Join Waitlist
           </a>
           <p className="upgrade-prompt-hint">

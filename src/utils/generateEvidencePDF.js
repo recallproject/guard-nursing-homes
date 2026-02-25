@@ -46,6 +46,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const NATIONAL_AVG = {
     total_hprd: 3.82,
     rn_hprd: 0.54,
+    lpn_hprd: 0.79,
     cna_hprd: 2.18,
     zero_rn_pct: 8.0,
     composite: 32.1,
@@ -98,7 +99,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   /** Force a new page for a new section (unless we're already near the top). */
   function ensureNewSection(minSpace) {
     if (currentY > margin + 15) {
-      if (currentY + (minSpace || 60) > pageHeight - 22) {
+      // More aggressive: force new page if in bottom 20% of page
+      if (currentY > pageHeight * 0.8) {
         addNewPage();
       }
     }
@@ -106,6 +108,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   /** Numbered navy-bar section header. */
   function addSectionHeader(number, title) {
+    // Add breathing room before each section header
+    if (currentY > margin + 20) currentY += 8;
     ensureNewSection(50);
     doc.setFillColor(...NAVY);
     doc.rect(margin, currentY, contentWidth, 10, 'F');
@@ -114,7 +118,12 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFontSize(11);
     doc.text(number + '. ' + title, margin + 4, currentY + 7);
     doc.setTextColor(...BODY);
-    currentY += 14;
+    currentY += 10;
+    // Add thin horizontal rule under section header
+    doc.setDrawColor(...DIVIDER);
+    doc.setLineWidth(0.3);
+    doc.line(margin, currentY, margin + contentWidth, currentY);
+    currentY += 4;
   }
 
   /** A thin rule under sub-headings. */
@@ -248,10 +257,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       parts.push('State inspectors documented ' + bits.join(' and ') + ' — conditions posing serious danger to residents.');
     }
     if (facility.worst_owner && facility.owner_portfolio_count > 1) {
+      // Use computed portfolio data for consistency (matches Section 2)
+      const pf = allFacilities.filter((f) => f.worst_owner === facility.worst_owner);
+      const pfCount = pf.length > 1 ? pf.length : facility.owner_portfolio_count;
+      const pfStars = pf.length > 1
+        ? (pf.reduce((s, f) => s + (f.stars || 0), 0) / pf.length).toFixed(1)
+        : (facility.owner_avg_stars ? facility.owner_avg_stars.toFixed(1) : null);
+      const starsText = pfStars ? pfStars : 'unavailable';
       parts.push(
         'The facility is operated by ' + facility.worst_owner +
-        ', whose portfolio of ' + facility.owner_portfolio_count +
-        ' facilities averages ' + (facility.owner_avg_stars || 'N/A') + ' CMS stars.'
+        ', who controls ' + pfCount + ' facilities in CMS data' +
+        (pfStars ? ' averaging ' + starsText + ' CMS stars.' : '.')
       );
     }
     if (facility.total_hprd && facility.total_hprd < 3.48) {
@@ -260,6 +276,27 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         'Total staffing of ' + num(facility.total_hprd) +
         ' hours per resident per day is ' + gap + '% below the 3.48 HPRD threshold cited by 18 state Attorneys General.'
       );
+    }
+    // Escalation pattern from penalty timeline
+    if (facility.penalty_timeline && facility.penalty_timeline.length >= 2) {
+      const byYear = {};
+      facility.penalty_timeline.forEach((p) => {
+        if (p.amount > 0 && p.date) {
+          const yr = new Date(p.date).getFullYear();
+          byYear[yr] = (byYear[yr] || 0) + p.amount;
+        }
+      });
+      const years = Object.keys(byYear).sort();
+      if (years.length >= 2) {
+        const first = years[0];
+        const last = years[years.length - 1];
+        if (byYear[last] > byYear[first] * 1.3) {
+          parts.push(
+            'Penalties have escalated from ' + fmt(byYear[first]) + ' (' + first + ') to ' +
+            fmt(byYear[last]) + ' (' + last + '), indicating a worsening compliance trajectory.'
+          );
+        }
+      }
     }
     return parts.length > 0 ? parts.join(' ') : 'This facility shows mixed performance in federal data.';
   }
@@ -304,6 +341,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     month: 'long',
     day: 'numeric',
   });
+  const dateStr = new Date().toISOString().split('T')[0];
 
   // ================================================================
   //   PAGE 1 — COVER
@@ -445,15 +483,25 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   currentY += kfBoxH + 12;
 
-  // Date & confidential
+  // Report ID + Date + Data currency
+  const reportId = 'Report #OR-' + facility.ccn + '-' + dateStr.replace(/-/g, '');
   doc.setFontSize(9);
   doc.setTextColor(...STEEL);
+  doc.setFont('courier', 'normal');
+  doc.text(reportId, pageWidth / 2, currentY, { align: 'center' });
+  currentY += 6;
   doc.setFont('helvetica', 'normal');
   doc.text('Generated: ' + today, pageWidth / 2, currentY, { align: 'center' });
   currentY += 5;
   doc.text('Data through: Q3 2025 (staffing) · Dec 2025 (inspections) · Jan 2026 (ownership)', pageWidth / 2, currentY, { align: 'center' });
   currentY += 5;
   doc.text('oversightreports.com', pageWidth / 2, currentY, { align: 'center' });
+  currentY += 8;
+
+  // "Prepared for" blank line
+  doc.setFontSize(8.5);
+  doc.setTextColor(...STEEL);
+  doc.text('Prepared for: ___________________________________________', pageWidth / 2, currentY, { align: 'center' });
   currentY += 10;
 
   doc.setDrawColor(...RED);
@@ -494,19 +542,19 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   // TOC entries — page numbers are approximate, will vary by content
   const tocEntries = [
-    ['1.', 'Executive Summary'],
-    ['2.', 'Ownership Portfolio'],
-    ['3.', 'Staffing Analysis'],
-    ['4.', 'Inspection History'],
-    ['5.', 'Financial Penalties'],
-    ['6.', 'Red Flags & Accountability Indicators'],
-    ['7.', 'Comparison Context'],
-    ['8.', 'Nearby Alternatives'],
-    ['9.', 'Data Sources & Methodology'],
-    ['10.', 'Disclaimer'],
+    ['1.', 'Executive Summary', '3'],
+    ['2.', 'Ownership Portfolio', '3'],
+    ['3.', 'Staffing Analysis', '4'],
+    ['4.', 'Inspection History', '5'],
+    ['5.', 'Financial Penalties', '7'],
+    ['6.', 'Red Flags & Accountability Indicators', '8'],
+    ['7.', 'Comparison Context', '8'],
+    ['8.', 'Nearby Alternatives', '9'],
+    ['9.', 'Data Sources & Methodology', '10'],
+    ['10.', 'Disclaimer', '11'],
   ];
 
-  tocEntries.forEach(([num, title]) => {
+  tocEntries.forEach(([num, title, page]) => {
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...NAVY);
@@ -519,11 +567,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setDrawColor(...DIVIDER);
     doc.setLineWidth(0.15);
     const titleW = doc.getTextWidth(title);
+    const pageW = doc.getTextWidth(page);
     const lineStart = margin + 16 + titleW + 2;
-    const lineEnd = pageWidth - margin;
+    const lineEnd = pageWidth - margin - pageW - 4;
     for (let x = lineStart; x < lineEnd; x += 2) {
       doc.line(x, currentY, x + 0.5, currentY);
     }
+
+    // Right-aligned page number
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    doc.text(page, pageWidth - margin, currentY, { align: 'right' });
 
     currentY += 8;
   });
@@ -601,7 +655,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const summaryText = generateExecutiveSummary();
   const summaryLines = doc.splitTextToSize(summaryText, contentWidth);
   doc.text(summaryLines, margin, currentY);
-  currentY += summaryLines.length * 4.5 + 10;
+  currentY += summaryLines.length * 4.5 + 4;
 
   // ================================================================
   //   SECTION 2 — OWNERSHIP PORTFOLIO
@@ -675,14 +729,14 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       head: [['Facility', 'Location', 'Stars', 'Risk', 'Defs', 'Total Fines']],
       body: ptd,
       theme: 'grid',
-      styles: { fontSize: 7.5, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+      styles: { fontSize: 7.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
       headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 8 },
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: {
-        0: { cellWidth: 52 },
-        1: { cellWidth: 30 },
-        2: { cellWidth: 14, halign: 'center' },
-        3: { cellWidth: 14, halign: 'center' },
+        0: { cellWidth: 48 },
+        1: { cellWidth: 28 },
+        2: { cellWidth: 18, halign: 'center' },
+        3: { cellWidth: 16, halign: 'center' },
         4: { cellWidth: 14, halign: 'right' },
         5: { cellWidth: 28, halign: 'right' },
       },
@@ -726,7 +780,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   const staffRows = [
     ['Registered Nurse (RN)', num(facility.rn_hprd) + ' hrs', NATIONAL_AVG.rn_hprd + ' hrs', facility.rn_hprd ? ((facility.rn_hprd - NATIONAL_AVG.rn_hprd) / NATIONAL_AVG.rn_hprd * 100).toFixed(0) + '%' : 'N/A'],
-    ['Licensed Practical Nurse', num(facility.lpn_hprd) + ' hrs', 'N/A', 'N/A'],
+    ['Licensed Practical Nurse', num(facility.lpn_hprd) + ' hrs', NATIONAL_AVG.lpn_hprd + ' hrs', facility.lpn_hprd ? ((facility.lpn_hprd - NATIONAL_AVG.lpn_hprd) / NATIONAL_AVG.lpn_hprd * 100).toFixed(0) + '%' : 'N/A'],
     ['Certified Nursing Asst', num(facility.cna_hprd) + ' hrs', NATIONAL_AVG.cna_hprd + ' hrs', facility.cna_hprd ? ((facility.cna_hprd - NATIONAL_AVG.cna_hprd) / NATIONAL_AVG.cna_hprd * 100).toFixed(0) + '%' : 'N/A'],
     ['Total Nursing HPRD', num(facility.total_hprd) + ' hrs', NATIONAL_AVG.total_hprd + ' hrs', facility.total_hprd ? ((facility.total_hprd - NATIONAL_AVG.total_hprd) / NATIONAL_AVG.total_hprd * 100).toFixed(0) + '%' : 'N/A'],
     ['Zero-RN Day %', pct(facility.zero_rn_pct), NATIONAL_AVG.zero_rn_pct + '%', facility.zero_rn_pct !== null ? (facility.zero_rn_pct - NATIONAL_AVG.zero_rn_pct).toFixed(1) + '%' : 'N/A'],
@@ -740,7 +794,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     head: [['Metric', 'This Facility', 'National Avg', 'Difference']],
     body: staffRows,
     theme: 'grid',
-    styles: { fontSize: 8.5, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+    styles: { fontSize: 8.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
     headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 9 },
     alternateRowStyles: { fillColor: TABLE_ALT },
     columnStyles: {
@@ -875,7 +929,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       head: [['Date', 'Tag Code', 'Scope / Severity', 'Description']],
       body: defRows,
       theme: 'grid',
-      styles: { fontSize: 7.5, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
+      styles: { fontSize: 7.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
       headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 8 },
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: {
@@ -968,7 +1022,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       head: [['Date', 'Amount', 'Type', 'Description']],
       body: penRows,
       theme: 'grid',
-      styles: { fontSize: 8.5, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+      styles: { fontSize: 8.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
       headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 9 },
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: {
@@ -1083,7 +1137,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     head: [['Metric', 'This Facility', 'National Avg', 'Percentile']],
     body: cmpRows,
     theme: 'grid',
-    styles: { fontSize: 8.5, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+    styles: { fontSize: 8.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
     headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 9 },
     alternateRowStyles: { fillColor: TABLE_ALT },
     columnStyles: {
@@ -1118,8 +1172,13 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...BODY);
+    // Check how many are genuinely better (3+ stars or risk < 40)
+    const goodAlts = nearbyAlternatives.filter((a) => (a.stars >= 3) || (a.composite && a.composite < 40));
+    const qualityNote = goodAlts.length < nearbyAlternatives.length
+      ? ' Note: limited higher-rated alternatives are available in this area; some listed facilities also have significant concerns.'
+      : '';
     const altIntro = 'The following facilities within a reasonable distance have lower risk scores than ' +
-      facility.name + '. This comparison is provided for reference purposes only and does not constitute a recommendation.';
+      facility.name + '. This comparison is provided for reference purposes only and does not constitute a recommendation.' + qualityNote;
     const altLines = doc.splitTextToSize(altIntro, contentWidth);
     doc.text(altLines, margin, currentY);
     currentY += altLines.length * 4.5 + 6;
@@ -1184,7 +1243,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       head: altHead,
       body: altBody,
       theme: 'grid',
-      styles: { fontSize: 7.5, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+      styles: { fontSize: 7.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
       headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 8 },
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: altColStyles,
@@ -1200,9 +1259,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   // ================================================================
-  //   SECTION 9 — METHODOLOGY
+  //   SECTION 9 — METHODOLOGY (always starts on a new page)
   // ================================================================
 
+  addNewPage();
   addSectionHeader(9, 'Data Sources & Methodology');
 
   addSubHeading('Data Sources');
@@ -1288,9 +1348,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY += 6;
 
   // ================================================================
-  //   SECTION 10 — DISCLAIMER
+  //   SECTION 10 — DISCLAIMER (always starts on a new page)
   // ================================================================
 
+  addNewPage();
   addSectionHeader(10, 'Disclaimer');
 
   const disclaimers = [
@@ -1347,6 +1408,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // ================================================================
 
   const cleanName = facility.name.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50);
-  const dateStr = new Date().toISOString().split('T')[0];
-  doc.save('OversightReport_Evidence_' + cleanName + '_' + dateStr + '.pdf');
+  const filename = 'OversightReport_Evidence_' + cleanName + '_' + dateStr + '.pdf';
+
+  doc.save(filename);
 }

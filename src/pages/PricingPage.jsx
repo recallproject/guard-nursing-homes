@@ -170,7 +170,7 @@ export default function PricingPage() {
       navigate('/');
     } else if (tier.stripeKey) {
       // Subscriptions disabled until real auth is connected — open waitlist
-      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform', '_blank');
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform', '_blank');
     } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;
     }

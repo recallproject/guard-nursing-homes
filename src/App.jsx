@@ -2,6 +2,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
 import { FacilityPage } from './pages/FacilityPage';
+import { ProfessionalsPage } from './pages/ProfessionalsPage';
 import PricingPage from './pages/PricingPage';
 import { ScreeningPage } from './pages/ScreeningPage';
 import DiscrepanciesPage from './pages/DiscrepanciesPage';
@@ -31,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MapPage />} />
         <Route path="/facility/:ccn" element={<FacilityPage />} />
+        <Route path="/professionals" element={<ProfessionalsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/screening" element={<ScreeningPage />} />
         <Route path="/discrepancies" element={<DiscrepanciesPage />} />

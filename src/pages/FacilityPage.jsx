@@ -191,12 +191,29 @@ export function FacilityPage() {
           </div>
         )}
 
+        {/* Evidence Report Banner */}
+        <div className="evidence-report-banner">
+          Need this for an investigation or case? <Link to={`/evidence/${ccn}`}>Download the full Evidence Report — $29</Link>
+        </div>
+
         <hr />
 
         {/* Bottom Line */}
         <h2>Bottom Line</h2>
         <div className="info-box">{getBottomLine()}</div>
         <p className="source">Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership | Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></p>
+
+        <hr />
+
+        {/* Evidence Package CTA */}
+        <div className="fp-evidence-cta">
+          <h3>Need This for a Case?</h3>
+          <p>Get a 10-section litigation-ready Evidence Package with everything on this page plus deeper analysis — in one downloadable PDF.</p>
+          <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
+          <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} onClick={() => setShowEvidencePreview(true)}>
+            Preview Evidence Package
+          </button>
+        </div>
 
         <hr />
 
@@ -529,16 +546,6 @@ export function FacilityPage() {
           <span className="fp-download-hint fp-download-hint--future">After March 31: 3 free reports per day | Need more? <Link to="/pricing">Go Pro — $14/mo</Link> for unlimited reports</span>
         </div>
 
-        {/* Evidence Package CTA */}
-        <div className="fp-evidence-cta">
-          <h3>Need This for a Case?</h3>
-          <p>Get a 10-section litigation-ready Evidence Package with everything on this page plus deeper analysis — in one downloadable PDF.</p>
-          <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
-          <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} onClick={() => setShowEvidencePreview(true)}>
-            Preview Evidence Package
-          </button>
-        </div>
-
         {/* Evidence Preview Modal */}
         {showEvidencePreview && facility && (
           <div className="ev-preview-overlay" onClick={() => setShowEvidencePreview(false)}>
@@ -620,7 +627,7 @@ export function FacilityPage() {
                   e.preventDefault();
                   const email = e.target.elements.email.value;
                   if (email) {
-                    window.open(`https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform?usp=pp_url&entry.emailAddress=${encodeURIComponent(email)}`, '_blank');
+                    window.open(`https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform?usp=pp_url&entry.emailAddress=${encodeURIComponent(email)}`, '_blank');
                     e.target.reset();
                     setShowEvidencePreview(false);
                   }

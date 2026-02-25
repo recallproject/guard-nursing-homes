@@ -878,6 +878,46 @@
   border-radius: 20px;
 }
 
+/* --- Evidence PDF Upsell --- */
+.evidence-upsell-card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 2.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+.evidence-upsell-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--text-white);
+  margin-bottom: 1.25rem;
+}
+
+.evidence-upsell-desc {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.evidence-upsell-price {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-light);
+  margin-bottom: 2rem;
+}
+
+.evidence-upsell-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* --- Professional Tools / Coming Soon --- */
 .coming-soon-grid {
   display: grid;
@@ -1365,6 +1405,18 @@
   }
   .author-bio-inner h4 {
     text-align: center;
+  }
+  .evidence-upsell-card {
+    padding: 2rem 1.5rem;
+  }
+  .evidence-upsell-title {
+    font-size: 1.5rem;
+  }
+  .evidence-upsell-desc {
+    font-size: 1rem;
+  }
+  .evidence-upsell-actions {
+    flex-direction: column;
   }
 }
 
