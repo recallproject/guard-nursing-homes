@@ -48,6 +48,33 @@ export function EvidencePage() {
     return alternatives;
   }, [facility, allFacilities]);
 
+  // Ownership portfolio analysis
+  const ownershipPortfolio = useMemo(() => {
+    if (!facility || !facility.worst_owner || !allFacilities.length) {
+      return null;
+    }
+
+    const portfolioFacilities = allFacilities.filter(f => f.worst_owner === facility.worst_owner);
+
+    if (portfolioFacilities.length <= 1) {
+      return null;
+    }
+
+    const states = [...new Set(portfolioFacilities.map(f => f.state))];
+    const avgStars = portfolioFacilities.reduce((sum, f) => sum + (f.stars || 0), 0) / portfolioFacilities.length;
+    const avgFines = portfolioFacilities.reduce((sum, f) => sum + (f.total_fines || 0), 0) / portfolioFacilities.length;
+    const jeopardyFacilities = portfolioFacilities.filter(f => (f.jeopardy_count || 0) > 0).length;
+    const jeopardyPct = (jeopardyFacilities / portfolioFacilities.length) * 100;
+
+    return {
+      count: portfolioFacilities.length,
+      states: states.length,
+      avgStars: avgStars.toFixed(1),
+      avgFines: avgFines,
+      jeopardyPct: jeopardyPct.toFixed(0)
+    };
+  }, [facility, allFacilities]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [ccn]);
@@ -145,7 +172,7 @@ export function EvidencePage() {
   };
 
   const handleDownloadPDF = () => {
-    generateEvidencePDF(facility, nearbyAlternatives);
+    generateEvidencePDF(facility, nearbyAlternatives, allFacilities);
   };
 
   const handlePrint = () => {
@@ -256,6 +283,22 @@ export function EvidencePage() {
             <span className="ev-data-label">Portfolio Size:</span>
             <span className="ev-data-value">{facility.owner_portfolio_count > 1 ? `${facility.owner_portfolio_count} facilities` : '1 facility'}</span>
           </div>
+
+          {ownershipPortfolio && (
+            <>
+              <h3 className="ev-subsection">Ownership Portfolio Analysis</h3>
+              <div className="ev-text-block">
+                <p>
+                  This facility is operated by <strong>{facility.worst_owner}</strong>, who controls{' '}
+                  <strong>{ownershipPortfolio.count} facilities</strong> across{' '}
+                  <strong>{ownershipPortfolio.states} states</strong>.{' '}
+                  Average star rating: <strong>{ownershipPortfolio.avgStars}</strong>.{' '}
+                  Average fines per facility: <strong>{fmt(ownershipPortfolio.avgFines)}</strong>.{' '}
+                  <strong>{ownershipPortfolio.jeopardyPct}%</strong> of portfolio facilities have immediate jeopardy citations.
+                </p>
+              </div>
+            </>
+          )}
         </section>
 
         {/* Section 4: Staffing Analysis */}
@@ -281,6 +324,12 @@ export function EvidencePage() {
           </div>
 
           <h3 className="ev-subsection">Staffing Verification</h3>
+          <div className="ev-text-block">
+            <p>
+              <strong>Data Collection Context:</strong> Staffing data is self-reported by the facility to CMS through the Payroll-Based Journal (PBJ) system. While PBJ data is derived from payroll records, facilities control what is submitted. Independent audits of PBJ accuracy are limited.
+            </p>
+          </div>
+
           <div className="ev-data-row">
             <span className="ev-data-label">Self-Reported RN Hours:</span>
             <span className="ev-data-value">{num(facility.self_report_rn)} hrs</span>
@@ -302,9 +351,21 @@ export function EvidencePage() {
             <span className="ev-data-value">{num(facility.weekend_total_hprd)} hrs</span>
           </div>
 
+          {facility.zero_rn_pct > 0 && (
+            <div className="ev-alert">
+              <strong>Regulatory Context:</strong> Federal law (42 CFR §483.35) requires a registered nurse on site for at least 8 consecutive hours per day, 7 days per week. This facility reported zero RN hours on {pct(facility.zero_rn_pct)} of days, which may indicate a violation of this federal requirement.
+            </div>
+          )}
+
+          {facility.total_hprd < 3.48 && (
+            <div className="ev-alert">
+              <strong>Staffing Standard Context:</strong> In February 2026, 18 state Attorneys General urged CMS to adopt a minimum staffing standard of 3.48 hours per resident per day. This facility provides {num(facility.total_hprd)} HPRD, which is {((1 - facility.total_hprd / 3.48) * 100).toFixed(0)}% below the proposed threshold.
+            </div>
+          )}
+
           {facility.rn_gap_pct > 20 && (
             <div className="ev-alert">
-              Note: Significant discrepancy between self-reported and verified staffing data.
+              <strong>Verification Discrepancy:</strong> This facility shows a {pct(facility.rn_gap_pct)} discrepancy between self-reported and verified staffing levels, which may warrant further investigation.
             </div>
           )}
         </section>
@@ -325,6 +386,12 @@ export function EvidencePage() {
             <span className="ev-data-label">Residents Hurt:</span>
             <span className="ev-data-value">{facility.harm_count || 0}</span>
           </div>
+
+          {facility.jeopardy_count > 0 && (
+            <div className="ev-alert">
+              <strong>Immediate Jeopardy Findings:</strong> Immediate jeopardy citations indicate conditions posing serious danger to residents (42 CFR §488.301). This facility has received {facility.jeopardy_count} such citations.
+            </div>
+          )}
 
           <h3 className="ev-subsection">Deficiency Categories</h3>
           <div className="ev-data-row">
@@ -381,6 +448,12 @@ export function EvidencePage() {
             <span className="ev-data-label">Payment Denials:</span>
             <span className="ev-data-value">{facility.denial_count || 0}</span>
           </div>
+
+          {facility.total_fines > 0 && (
+            <div className="ev-alert">
+              <strong>Civil Monetary Penalties:</strong> CMS imposes civil monetary penalties under 42 CFR §488.438 for facilities that fail to meet federal requirements. This facility has been assessed {fmt(facility.total_fines)} in penalties.
+            </div>
+          )}
         </section>
 
         {/* Section 7: Red Flags / Accountability */}
@@ -400,26 +473,40 @@ export function EvidencePage() {
 
         {/* Section 8: Nearby Alternatives */}
         <section className="ev-section">
-          <h2 className="ev-section-number">7. Nearby Alternatives</h2>
+          <h2 className="ev-section-number">7. Nearby Alternatives Comparison</h2>
 
           {nearbyAlternatives.length > 0 ? (
-            <div className="ev-alternatives">
-              {nearbyAlternatives.map((alt, idx) => (
-                <div key={alt.ccn} className="ev-alternative">
-                  <div className="ev-alternative-header">
-                    <strong>{idx + 1}. {alt.name}</strong>
-                    <span>{alt.distance.toFixed(1)} miles</span>
-                  </div>
-                  <div className="ev-alternative-meta">
-                    {alt.city}, {alt.state}
-                  </div>
-                  <div className="ev-alternative-stats">
-                    <span>Risk Score: {alt.composite?.toFixed(1) || 'N/A'}</span>
-                    <span>Stars: {alt.stars || 0}/5</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <>
+              <div className="ev-text-block">
+                <p>
+                  The following facilities within a reasonable distance have lower risk scores than {facility.name}. This comparison is provided for reference purposes only and does not constitute a recommendation.
+                </p>
+              </div>
+              <table className="ev-table">
+                <thead>
+                  <tr>
+                    <th>Facility Name</th>
+                    <th>Distance</th>
+                    <th>City</th>
+                    <th>Stars</th>
+                    <th>Total HPRD</th>
+                    <th>Total Fines</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {nearbyAlternatives.map((alt) => (
+                    <tr key={alt.ccn}>
+                      <td>{alt.name}</td>
+                      <td>{alt.distance.toFixed(1)} mi</td>
+                      <td>{alt.city}, {alt.state}</td>
+                      <td>{alt.stars || 0}/5</td>
+                      <td>{num(alt.total_hprd)} hrs</td>
+                      <td>{fmt(alt.total_fines || 0)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
           ) : (
             <p className="ev-text-muted">No nearby facilities with better scores found within search radius.</p>
           )}
