@@ -533,8 +533,8 @@ export function AGToolkitPage() {
           Enforcement-ready analysis of nursing home staffing violations
         </p>
         <div className="ag-toolkit-context">
-          On February 2, 2026, <strong>18 state Attorneys General</strong> — led by Massachusetts, California, and
-          New York — <a href="https://www.mass.gov/news/ag-campbell-co-leads-letter-urging-federal-government-to-implement-stronger-minimum-staffing-standards-in-nursing-homes" target="_blank" rel="noopener noreferrer">wrote to CMS</a> urging
+          On February 2, 2026, <strong>18 state Attorneys General</strong> — led by California, Massachusetts, and
+          New York — <a href="https://oag.ca.gov/system/files/attachments/press-docs/Repeal%20of%20Minimum%20Staffing%20Standards%20for%20LTC%20Facilities%20Comment%20Letter%202026.02.02.pdf" target="_blank" rel="noopener noreferrer">wrote to CMS</a> urging
           minimum staffing standards of <strong>3.48 hours per resident day (HPRD)</strong> for for-profit
           nursing homes with high-risk financial practices. This toolkit identifies facilities in your state
           that fail that threshold, have zero-RN days, or show systemic ownership patterns requiring
@@ -548,7 +548,7 @@ export function AGToolkitPage() {
             enforcement of the staffing rule through September 2034.<br />
             <strong>December 2025</strong> — CMS issued an <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">interim final rule</a> formally
             repealing the 2024 standards, reverting to the prior requirement of just 8 hours of RN coverage per day.<br />
-            <strong>February 2026</strong> — 18 state AGs proposed that CMS adopt a targeted version of the
+            <strong>February 2026</strong> — <a href="https://oag.ca.gov/system/files/attachments/press-docs/Repeal%20of%20Minimum%20Staffing%20Standards%20for%20LTC%20Facilities%20Comment%20Letter%202026.02.02.pdf" target="_blank" rel="noopener noreferrer">18 state AGs proposed</a> that CMS adopt a targeted version of the
             3.48 hrs/day standard for for-profit homes engaged in related-party transactions and high-risk ownership structures.
           </div>
         </div>
