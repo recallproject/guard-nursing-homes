@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
@@ -12,6 +12,7 @@ import AccountabilityFlags from '../components/AccountabilityFlags';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
+import { checkoutSingleReport } from '../utils/stripe';
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
@@ -20,6 +21,7 @@ export function FacilityPage() {
   const { data, loading, error } = useFacilityData();
   const { tier } = useSubscription();
   const pageRef = useRef(null);
+  const [showEvidencePreview, setShowEvidencePreview] = useState(false);
 
   const facility = data?.states
     ? Object.values(data.states).flatMap(state => state.facilities || []).find(f => f.ccn === ccn)
@@ -506,11 +508,97 @@ export function FacilityPage() {
         {/* Evidence Package CTA */}
         <div className="fp-evidence-cta">
           <h3>Need This for a Case?</h3>
-          <p>Get a 10-section litigation-ready Evidence Package — staffing verification, inspection history, penalties, ownership network, and nearby alternatives in one PDF.</p>
-          <Link to={`/evidence/${ccn}`} className="btn btn-primary" style={{ display: 'inline-block', marginTop: '0.75rem' }}>
-            Get Evidence Package — $29
-          </Link>
+          <p>Get a 10-section litigation-ready Evidence Package with everything on this page plus deeper analysis — in one downloadable PDF.</p>
+          <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} onClick={() => setShowEvidencePreview(true)}>
+            Preview Evidence Package
+          </button>
         </div>
+
+        {/* Evidence Preview Modal */}
+        {showEvidencePreview && facility && (
+          <div className="ev-preview-overlay" onClick={() => setShowEvidencePreview(false)}>
+            <div className="ev-preview-modal" onClick={e => e.stopPropagation()}>
+              <button className="ev-preview-close" onClick={() => setShowEvidencePreview(false)}>&times;</button>
+              <h2>Evidence Package — {facility.name}</h2>
+              <p className="ev-preview-subtitle">10-section litigation-ready report. Here's what's inside:</p>
+
+              <div className="ev-preview-sections">
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">1</span>
+                  <div>
+                    <strong>Executive Summary</strong>
+                    <p>Risk score: {facility.composite?.toFixed(1) || 'N/A'} · CMS Stars: {facility.stars || 0}/5 · Auto-generated assessment</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">2</span>
+                  <div>
+                    <strong>Ownership Profile</strong>
+                    <p>Owner: {facility.worst_owner || 'N/A'} · Type: {facility.ownership_type || 'N/A'} · Portfolio: {facility.owner_portfolio_count || 1} facilities</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">3</span>
+                  <div>
+                    <strong>Staffing Analysis</strong>
+                    <p>RN: {facility.rn_hprd?.toFixed(1) || 'N/A'} · CNA: {facility.cna_hprd?.toFixed(1) || 'N/A'} · Total: {facility.total_hprd?.toFixed(1) || 'N/A'} HPRD · Zero-RN days: {facility.zero_rn_pct?.toFixed(0) || 0}%</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">4</span>
+                  <div>
+                    <strong>Inspection History</strong>
+                    <p>{facility.total_deficiencies || 0} deficiencies · {facility.jeopardy_count || 0} serious danger · {facility.harm_count || 0} residents hurt</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">5</span>
+                  <div>
+                    <strong>Financial Penalties</strong>
+                    <p>${(facility.total_fines || 0).toLocaleString()} in fines · {facility.fine_count || 0} penalties</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">6</span>
+                  <div>
+                    <strong>Red Flags &amp; Accountability</strong>
+                    <p>Automated pattern detection across all data sources</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">7</span>
+                  <div>
+                    <strong>Nearby Alternatives</strong>
+                    <p>5 closest facilities with better safety records</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">8</span>
+                  <div>
+                    <strong>Methodology &amp; Data Sources</strong>
+                    <p>CMS PBJ, Deficiencies, Penalties, Ownership — all cited</p>
+                  </div>
+                </div>
+                <div className="ev-preview-section">
+                  <span className="ev-preview-num">9</span>
+                  <div>
+                    <strong>Legal Disclaimer</strong>
+                    <p>Proper disclaimers and agency contact information</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="ev-preview-actions">
+                <button className="ev-buy-single" onClick={() => checkoutSingleReport(ccn)}>
+                  Buy This Report — $29
+                </button>
+                <Link to="/pricing" className="ev-subscribe-link" onClick={() => setShowEvidencePreview(false)}>
+                  or subscribe from $59/mo for unlimited reports
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="fp-footer-text">
           The Oversight Report — Nursing Home Risk Data | Data processed 2026-02-23<br />
