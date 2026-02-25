@@ -250,7 +250,7 @@ export function TrendsPage() {
           </div>
           <div className="trends-snapshot-card">
             <div className="trends-snapshot-value trends-stat-warning">{zeroRnPct}%</div>
-            <div className="trends-snapshot-label">Zero-RN Days (>20%)</div>
+            <div className="trends-snapshot-label">Zero-RN Days (&gt;20%)</div>
           </div>
           <div className="trends-snapshot-card">
             <div className="trends-snapshot-value">{formatCurrency(totalFines)}</div>

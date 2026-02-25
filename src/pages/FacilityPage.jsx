@@ -135,6 +135,32 @@ export function FacilityPage() {
         </p>
         <p className="fp-ccn">CMS CCN: {ccn}</p>
 
+        {/* PE/REIT Ownership Badges */}
+        {(facility.pe_owned || facility.reit_owned) && (
+          <div className="ownership-badges">
+            {facility.pe_owned && (
+              <span className="ownership-badge ownership-badge--pe" title={facility.pe_owner_name || 'Private Equity Owned'}>
+                Private Equity Owned
+                {facility.pe_owner_name && <span className="ownership-badge-detail"> · {facility.pe_owner_name}</span>}
+              </span>
+            )}
+            {facility.reit_owned && (
+              <span className="ownership-badge ownership-badge--reit" title={facility.reit_owner_name || 'REIT Owned'}>
+                REIT Owned
+                {facility.reit_owner_name && <span className="ownership-badge-detail"> · {facility.reit_owner_name}</span>}
+              </span>
+            )}
+          </div>
+        )}
+
+        {/* Ownership Change Alert */}
+        {facility.ownership_changed_recently && (
+          <div className="ownership-change-alert">
+            <strong>Ownership Change:</strong> This facility was sold on {facility.ownership_change_date || 'recently'}.
+            {facility.new_owner_name && <> New owner: {facility.new_owner_name}</>}
+          </div>
+        )}
+
         <hr />
 
         {/* Bottom Line */}
