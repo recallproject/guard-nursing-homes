@@ -316,6 +316,9 @@ export function MethodologyPage() {
             <h3>Zero RN Percentage</h3>
             <p>
               Percentage of days in the reporting quarter where the facility logged zero RN hours in PBJ payroll data.
+              Zero-RN days means no Registered Nurse on the payroll that day — LPNs/LVNs and CNAs may still
+              be present, but cannot perform RN-level clinical functions such as IV medication administration,
+              complex assessments, or care plan changes.
             </p>
             <div className="methodology-formula">
               <span className="methodology-formula-label">Formula:</span>
@@ -324,8 +327,9 @@ export function MethodologyPage() {
               </span>
             </div>
             <p className="methodology-note">
-              Federal minimum is 8 hours/day of RN coverage. Any facility with zero_rn_pct &gt; 0 is
-              violating federal standards.
+              CMS PBJ data tracks RN, LPN/LVN, and CNA hours as completely separate categories.
+              When we report zero-RN days, this is based solely on the RN-specific payroll field —
+              no other staff types are counted as RNs.
             </p>
           </div>
         </section>
