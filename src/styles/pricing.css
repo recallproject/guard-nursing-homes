@@ -45,50 +45,38 @@
   position: relative;
 }
 
-/* Reassurance message */
-.pricing-reassurance {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  max-width: 640px;
+/* Mission message */
+.pricing-mission {
+  max-width: 740px;
   margin: 0 auto 2.5rem;
-  padding: 1.25rem 1.75rem;
-  background: rgba(16, 185, 129, 0.06);
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  border-radius: 12px;
-  text-align: left;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.06));
+  border: 2px solid rgba(79, 70, 229, 0.2);
+  border-radius: 16px;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.pricing-reassurance-icon {
-  flex-shrink: 0;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(16, 185, 129, 0.15);
-  color: var(--accent-green);
-  border-radius: 50%;
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-top: 0.1rem;
+.pricing-mission::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.1), transparent 60%);
+  border-radius: 14px;
+  pointer-events: none;
 }
 
-.pricing-reassurance p {
-  font-size: 1rem;
-  line-height: 1.6;
+.pricing-mission p {
+  font-size: 1.05rem;
+  line-height: 1.7;
   color: var(--text-cream);
   margin: 0;
-}
-
-.pricing-reassurance strong {
-  color: var(--accent-green);
-}
-
-.pricing-reassurance-sub {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  position: relative;
+  text-align: left;
+  font-weight: 500;
 }
 
 /* ========================================
@@ -179,6 +167,21 @@
 
 .pricing-card-featured:hover {
   box-shadow: 0 20px 60px rgba(79, 70, 229, 0.3), var(--shadow-glow-primary);
+}
+
+.pricing-card-professional {
+  border-color: rgba(217, 119, 6, 0.3);
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(217, 119, 6, 0.05) 100%);
+}
+
+.pricing-card-professional:hover {
+  border-color: rgba(217, 119, 6, 0.5);
+  box-shadow: 0 20px 60px rgba(217, 119, 6, 0.2), 0 0 30px rgba(217, 119, 6, 0.15);
+}
+
+.pricing-card-institutional {
+  border-color: rgba(107, 114, 128, 0.3);
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(107, 114, 128, 0.05) 100%);
 }
 
 /* ========================================
@@ -277,6 +280,14 @@
   color: var(--accent-green);
 }
 
+.pricing-price-custom {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* ========================================
    CTA BUTTON
    ======================================== */
@@ -342,6 +353,46 @@
   font-weight: 600;
   color: var(--text-muted);
   font-size: 0.9rem;
+}
+
+.pricing-feature-note {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-style: italic;
+}
+
+.pricing-feature-note .pricing-feature-text {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   ACADEMIC ACCESS SECTION
+   ======================================== */
+.pricing-academic {
+  padding: 4rem 0;
+  text-align: center;
+  background: var(--bg-deep);
+}
+
+.pricing-academic h3 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1.25rem;
+  color: var(--text-white);
+}
+
+.pricing-academic p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto 1.75rem;
+}
+
+.pricing-academic .btn {
+  font-size: 1rem;
 }
 
 /* ========================================

@@ -15,14 +15,15 @@ const tiers = [
     description: 'For families',
     badge: null,
     features: [
-      'Search all 14,713 facilities',
-      'Full report cards with safety scores',
-      'All accountability flags and warnings',
-      'Staffing breakdown (RN/LPN/CNA minutes)',
-      'Inspection history with context',
-      'Compare up to 3 facilities',
-      'State map and rankings',
-      '1 PDF download per day',
+      'Search all 14,713 Medicare nursing homes',
+      'Full report cards with safety scores and accountability flags',
+      'Staffing breakdown (RN/LPN/CNA hours per resident)',
+      'Inspection history with plain-English context',
+      'Compare up to 3 facilities side by side',
+      'Interactive state map and rankings',
+      'Chain safety rankings (basic view)',
+      'PE/REIT ownership flags',
+      '1 PDF report per day',
     ],
     cta: 'Start Searching',
     ctaLink: '/',
@@ -31,17 +32,19 @@ const tiers = [
   },
   {
     name: 'Pro',
-    price: { monthly: 12, annual: 99 },
-    description: 'For families who want to stay informed',
+    price: { monthly: 14, annual: 120 },
+    description: 'For families+ / Journalists',
     badge: 'MOST POPULAR',
     inherits: 'Everything in Free, plus:',
     features: [
-      'Watchlist — save facilities and get email alerts on new violations',
-      'Trend analysis — is this facility getting better or worse?',
+      'Staffing trend analysis — is this facility getting better or worse? (quarterly charts)',
+      'Watchlist with email alerts on new violations',
       'Unlimited PDF downloads',
       'Nearby alternatives within custom radius',
+      'Chain performance deep-dive (portfolio maps, facility-level breakdown)',
       'Priority support',
     ],
+    journalistNote: 'Journalists: Contact us for complimentary 90-day Pro access.',
     cta: 'Coming Soon',
     ctaLink: null,
     ctaType: 'primary',
@@ -49,18 +52,19 @@ const tiers = [
   },
   {
     name: 'Professional',
-    price: { monthly: 49, annual: 399 },
-    description: 'For attorneys, journalists, and ombudsmen',
+    price: { monthly: 59, annual: 499 },
+    description: 'For attorneys / Consultants',
     badge: null,
     inherits: 'Everything in Pro, plus:',
     features: [
-      'State Screening Reports — every facility ranked by risk, exportable',
-      'Staffing Discrepancy Index — which facilities\' numbers don\'t match inspections',
-      'Ownership Network Explorer — trace owners across facilities and states',
-      'Evidence Packages — 10-section litigation-ready PDFs',
-      'Bulk CSV exports',
-      'Multi-user access (5 seats)',
+      'Evidence packages — 10-section litigation-ready PDFs with regulatory citations',
+      'Cost report financial data — related-party transactions, revenue mix, balance sheets',
+      'Ownership network explorer — trace owners across facilities and states',
+      'Staffing discrepancy analysis — self-reported vs. payroll-verified staffing',
+      'Bulk CSV exports (state-level, chain-level)',
+      '5 user seats',
     ],
+    singlePurchase: 'Single evidence PDF purchase: $29/report without subscription',
     cta: 'Coming Soon',
     ctaLink: null,
     ctaType: 'secondary',
@@ -68,17 +72,19 @@ const tiers = [
   },
   {
     name: 'Institutional',
-    price: { monthly: 199, annual: null },
-    description: 'For hospitals and care coordination teams',
+    price: { monthly: 299, annual: 'custom' },
+    description: 'For AG offices / Hospitals / Chains',
     badge: null,
     inherits: 'Everything in Professional, plus:',
     features: [
       'Referral Scorecard — rank the SNFs you send patients to',
-      'Unlimited users',
-      'Shareable report links for patient families',
+      'Unlimited user seats',
       'Custom branding on shared reports',
-      'Embeddable quality widget',
+      'API access (coming soon)',
+      'Quarterly briefing reports',
+      'Dedicated support',
     ],
+    siteNote: 'State AG site license: $2,499/yr',
     cta: 'Contact Us',
     ctaLink: 'mailto:contact@oversightreports.com?subject=The Oversight Report Institutional Plan',
     ctaType: 'secondary',
@@ -109,7 +115,7 @@ export default function PricingPage() {
         { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: 'power3.out' }
       );
 
-      gsap.fromTo('.pricing-reassurance',
+      gsap.fromTo('.pricing-mission',
         { opacity: 0, y: 15 },
         { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' }
       );
@@ -124,6 +130,19 @@ export default function PricingPage() {
       gsap.fromTo('.pricing-card',
         { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, delay: 0.4, ease: 'power3.out', clearProps: 'opacity,transform' }
+      );
+
+      // Academic section
+      gsap.fromTo('.pricing-academic',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.pricing-academic',
+            start: 'top 80%',
+            once: true,
+          },
+        }
       );
 
       // Transparency section
@@ -171,14 +190,9 @@ export default function PricingPage() {
             Choose the plan that fits your mission.
           </p>
 
-          <div className="pricing-reassurance">
-            <span className="pricing-reassurance-icon">✓</span>
+          <div className="pricing-mission">
             <p>
-              <strong>Families:</strong> Everything you need to research a nursing home is free. Always.
-              <br />
-              <span className="pricing-reassurance-sub">
-                Paid plans are for attorneys, journalists, hospitals, and other professionals who need advanced analytics and bulk data tools.
-              </span>
+              Safety data is always free. Every family deserves to know if a nursing home is safe — that will never be behind a paywall. Professional analysis tools fund this mission. No ads. No industry money. Just families and professionals who believe in transparency.
             </p>
           </div>
 
@@ -195,7 +209,7 @@ export default function PricingPage() {
               onClick={() => setBillingCycle('annual')}
             >
               Annual
-              <span className="billing-toggle-save">Save up to 31%</span>
+              <span className="billing-toggle-save">Save up to 29%</span>
             </button>
           </div>
         </div>
@@ -213,10 +227,18 @@ export default function PricingPage() {
                   : tier.price.monthly;
               const isAnnual = billingCycle === 'annual' && tier.price.annual !== null;
 
+              const cardClass = tier.badge
+                ? 'pricing-card-featured'
+                : tier.name === 'Professional'
+                  ? 'pricing-card-professional'
+                  : tier.name === 'Institutional'
+                    ? 'pricing-card-institutional'
+                    : '';
+
               return (
                 <div
                   key={tier.name}
-                  className={`pricing-card ${tier.badge ? 'pricing-card-featured' : ''}`}
+                  className={`pricing-card ${cardClass}`}
                 >
                   {tier.badge && <div className="pricing-badge">{tier.badge}</div>}
 
@@ -232,17 +254,28 @@ export default function PricingPage() {
                           <span className="pricing-price-free">$0</span>
                           <span className="pricing-price-period">/forever</span>
                         </>
+                      ) : tier.price.annual === 'custom' ? (
+                        <>
+                          <span className="pricing-price-currency">$</span>
+                          <span className="pricing-price-value">{tier.price.monthly}</span>
+                          <span className="pricing-price-period">/mo</span>
+                        </>
                       ) : (
                         <>
                           <span className="pricing-price-currency">$</span>
                           <span className="pricing-price-value">{displayPrice}</span>
                           <span className="pricing-price-period">
-                            {isAnnual ? '/year' : tier.name === 'Institutional' ? '/mo' : '/mo'}
+                            {isAnnual ? '/year' : '/mo'}
                           </span>
                         </>
                       )}
                     </div>
-                    {isAnnual && savings && tier.price.monthly > 0 && (
+                    {tier.price.annual === 'custom' && billingCycle === 'annual' && (
+                      <div className="pricing-price-custom">
+                        Custom annual pricing available
+                      </div>
+                    )}
+                    {isAnnual && savings && tier.price.monthly > 0 && tier.price.annual !== 'custom' && (
                       <div className="pricing-price-savings">
                         Save ${savings.savings}/year ({savings.savingsPercent}%)
                       </div>
@@ -271,11 +304,42 @@ export default function PricingPage() {
                         <span className="pricing-feature-text">{feature}</span>
                       </li>
                     ))}
+                    {tier.journalistNote && (
+                      <li className="pricing-feature pricing-feature-note">
+                        <span className="pricing-feature-text">{tier.journalistNote}</span>
+                      </li>
+                    )}
+                    {tier.singlePurchase && (
+                      <li className="pricing-feature pricing-feature-note">
+                        <span className="pricing-feature-text">{tier.singlePurchase}</span>
+                      </li>
+                    )}
+                    {tier.siteNote && (
+                      <li className="pricing-feature pricing-feature-note">
+                        <span className="pricing-feature-text">{tier.siteNote}</span>
+                      </li>
+                    )}
                   </ul>
                 </div>
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Academic Access Section */}
+      <section className="pricing-academic">
+        <div className="container-narrow">
+          <h3>Academic Access</h3>
+          <p>
+            Academic researchers with a .edu email can request free Professional-tier access. We ask that you cite The Oversight Report in your methodology.
+          </p>
+          <a
+            href="mailto:contact@oversightreports.com?subject=Academic Access Request"
+            className="btn btn-secondary"
+          >
+            Contact: contact@oversightreports.com
+          </a>
         </div>
       </section>
 
