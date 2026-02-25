@@ -3,7 +3,7 @@
  * Saves to localStorage as backup + sends to webhook if configured
  */
 
-const WEBHOOK_URL = import.meta.env.VITE_LEAD_WEBHOOK_URL || null;
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbweRXptvIFijDS9U_QjPc52SF1mybqPVRGdX0h2Zk9ql6GGxTgJv9e0YAMbkLiZlahGMQ/exec';
 
 export async function submitLead(data) {
   // Always save to localStorage as backup
@@ -16,7 +16,8 @@ export async function submitLead(data) {
     try {
       await fetch(WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           ...data,
           submittedAt: new Date().toISOString(),
