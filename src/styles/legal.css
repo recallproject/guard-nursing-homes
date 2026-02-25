@@ -1,0 +1,100 @@
+/* ========================================
+   TERMS OF USE & PRIVACY POLICY PAGES
+   Clean, readable legal text layout
+   ======================================== */
+
+.legal-page {
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  padding: 7rem 0 4rem;
+}
+
+.legal-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.legal-container h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.legal-updated {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.legal-container h2 {
+  font-size: 1.35rem;
+  color: var(--text-white);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.legal-container p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+  margin-bottom: 1rem;
+}
+
+.legal-container ul {
+  margin: 0.5rem 0 1.5rem 1.5rem;
+  color: var(--text-cream);
+}
+
+.legal-container li {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.legal-container a {
+  color: var(--primary-light);
+  text-decoration: underline;
+  text-decoration-color: rgba(129, 140, 248, 0.4);
+  text-underline-offset: 2px;
+}
+
+.legal-container a:hover {
+  text-decoration-color: var(--primary-light);
+}
+
+.legal-container strong {
+  color: var(--text-white);
+}
+
+.legal-contact {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.2);
+  border-radius: 10px;
+}
+
+.legal-contact p {
+  margin-bottom: 0.5rem;
+}
+
+.legal-contact p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .legal-page {
+    padding: 5rem 0 3rem;
+  }
+
+  .legal-container {
+    padding: 0 1rem;
+  }
+
+  .legal-container h1 {
+    font-size: 1.75rem;
+  }
+}

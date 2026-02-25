@@ -12,6 +12,8 @@ import { WatchlistPage } from './pages/WatchlistPage';
 import { TrendsPage } from './pages/TrendsPage';
 import { MethodologyPage } from './pages/MethodologyPage';
 import { AGToolkitPage } from './pages/AGToolkitPage';
+import { TermsPage } from './pages/TermsPage';
+import { PrivacyPage } from './pages/PrivacyPage';
 import './styles/design.css';
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
         <Route path="/trends" element={<TrendsPage />} />
         <Route path="/methodology" element={<MethodologyPage />} />
         <Route path="/ag-toolkit" element={<AGToolkitPage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
     </>
   );

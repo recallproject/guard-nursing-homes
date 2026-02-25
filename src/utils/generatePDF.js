@@ -411,10 +411,10 @@ export function generatePDF(facility, options = {}) {
     subHeader('Registered Nurse Absence');
     const rnPctVal = Number(facility.zero_rn_pct).toFixed(0);
     calloutBox(
-      `On ${rnPctVal}% of days, this facility had NO registered nurse on site. ` +
-      'Without an RN present, certain critical functions cannot be performed: IV medications cannot be administered, ' +
-      'complex wound care cannot be managed, acute changes in condition may not be recognized promptly, ' +
-      'and physician orders requiring RN assessment cannot be carried out. ' +
+      `On ${rnPctVal}% of days, this facility reported zero registered nurse payroll hours to CMS. ` +
+      'When facilities report zero RN hours, it suggests no RN was available for critical functions: IV medications, ' +
+      'complex wound care, acute condition assessment, ' +
+      'and physician orders requiring RN evaluation. ' +
       'LPNs and CNAs provide valuable care, but there are clinical tasks that only an RN is licensed to perform.',
       'danger'
     );
@@ -1077,9 +1077,9 @@ export function generatePDF(facility, options = {}) {
   y += 4;
   needsPage(50) || (y += 4);
 
-  // Nearby Better Alternatives (if available)
+  // Nearby Facilities for Comparison (if available)
   if (nearbyFacilities && nearbyFacilities.length > 0) {
-    sectionHeader('NEARBY BETTER-RATED ALTERNATIVES', C.goodBar);
+    sectionHeader('NEARBY FACILITIES FOR COMPARISON', C.goodBar);
 
     doc.setFontSize(8.5);
     doc.setFont('helvetica', 'italic');

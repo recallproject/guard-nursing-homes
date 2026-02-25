@@ -235,7 +235,7 @@ export default function StaffingSection({ facility, benchmarks }) {
       {facility.zero_rn_pct > 0 && (
         <div className="staffing-warning">
           ⚠️ This facility reported zero RN hours on {facility.zero_rn_pct}% of days.
-          That means no registered nurse was providing care to any resident.
+          That means this facility reported zero RN payroll hours for those days in federal staffing records.
         </div>
       )}
 
