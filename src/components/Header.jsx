@@ -68,11 +68,12 @@ export function Header({ onSearchOpen, transparent = false }) {
   const navGroups = [
     {
       label: 'Families',
-      paths: ['/', '/facility', '/watchlist', '/trends', '/pricing'],
+      paths: ['/', '/facility', '/watchlist', '/trends', '/high-risk', '/pricing'],
       items: [
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes' },
         { to: '/watchlist', label: 'My Watchlist', desc: 'Track facilities you\'re monitoring' },
         { to: '/trends', label: 'Industry Trends', desc: 'National quality snapshot' },
+        { to: '/high-risk', label: 'High Risk', desc: 'Facilities failing across all dimensions' },
       ]
     },
     {

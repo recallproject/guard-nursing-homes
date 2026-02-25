@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import '../styles/chains.css';
 
@@ -342,7 +343,15 @@ export function ChainsPage() {
                     onClick={() => setExpandedRow(isExpanded ? null : chain.affiliatedEntityId)}
                   >
                     <td className="rank-cell">{rank}</td>
-                    <td className="name-cell">{chain.affiliatedEntity}</td>
+                    <td className="name-cell">
+                      <Link
+                        to={`/chain/${encodeURIComponent(chain.affiliatedEntity)}`}
+                        className="chain-name-link"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {chain.affiliatedEntity}
+                      </Link>
+                    </td>
                     <td>{chain.numberOfFacilities}</td>
                     <td className="hide-mobile">{chain.numberOfStatesAndTerritoriesWithOperations}</td>
                     <td className={getStarClass(chain.averageOverall5StarRating)}>

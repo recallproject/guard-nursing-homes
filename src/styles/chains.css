@@ -226,6 +226,18 @@
   max-width: 300px;
 }
 
+.chain-name-link {
+  color: var(--text-white);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: inline-block;
+}
+
+.chain-name-link:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
 /* Stars */
 .stars {
   display: inline-flex;

@@ -253,6 +253,28 @@ export function FacilityPage() {
 
         <hr />
 
+        {/* Financial Transparency — Related-Party Costs */}
+        {facility.related_party_costs > 0 && (
+          <UpgradePrompt requiredTier="professional" featureName="Financial Transparency Data">
+            <div className="financial-transparency">
+              <h2>Financial Transparency — Where does the money go?</h2>
+              <div className="financial-big-number">
+                ${facility.related_party_costs.toLocaleString()}
+              </div>
+              <p className="financial-label">Paid to affiliated companies in FY{facility.related_party_year}</p>
+              <p className="financial-explainer">Related-party transactions are payments to companies affiliated with the facility's owners — for management fees, real estate leases, or other services. High payments combined with poor quality may indicate profit extraction.</p>
+              {facility.related_party_costs > 1000000 && facility.stars <= 2 && (
+                <div className="financial-flag">
+                  This facility paid over ${(facility.related_party_costs/1000000).toFixed(1)}M to affiliated companies while maintaining a {facility.stars}-star rating.
+                </div>
+              )}
+              <p className="financial-source">Source: CMS HCRIS Cost Reports, FY2024 (Worksheet A-8)</p>
+            </div>
+          </UpgradePrompt>
+        )}
+
+        <hr />
+
         {/* 3. Inspection History */}
         <h2>3. Inspection History — What did the government find?</h2>
 

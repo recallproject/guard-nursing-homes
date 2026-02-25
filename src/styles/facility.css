@@ -1037,3 +1037,95 @@
   color: var(--text-dim, #8892a4);
   font-style: italic;
 }
+
+/* === Financial Transparency Section === */
+.financial-transparency {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.financial-transparency h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0 0 1rem 0;
+}
+
+.financial-big-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #F59E0B;
+  margin: 0.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.financial-label {
+  font-size: 1.1rem;
+  color: #475569;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+}
+
+.financial-explainer {
+  font-size: 0.95rem;
+  color: #64748B;
+  line-height: 1.6;
+  margin: 0.75rem 0;
+}
+
+.financial-flag {
+  background-color: #FEF3C7;
+  border: 2px solid #F59E0B;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  color: #92400E;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.financial-source {
+  font-size: 0.8rem;
+  color: #94A3B8;
+  font-style: italic;
+  margin: 0.75rem 0 0 0;
+}
+
+/* Responsive adjustments for financial section */
+@media (max-width: 768px) {
+  .financial-transparency {
+    padding: 1.25rem;
+  }
+
+  .financial-big-number {
+    font-size: 2rem;
+  }
+
+  .financial-label {
+    font-size: 1rem;
+  }
+
+  .financial-explainer {
+    font-size: 0.9rem;
+  }
+
+  .financial-flag {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .financial-big-number {
+    font-size: 1.75rem;
+  }
+
+  .financial-label {
+    font-size: 0.95rem;
+  }
+}

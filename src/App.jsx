@@ -15,6 +15,8 @@ import { AGToolkitPage } from './pages/AGToolkitPage';
 import { TermsPage } from './pages/TermsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { ChainsPage } from './pages/ChainsPage';
+import { ChainDetailPage } from './pages/ChainDetailPage';
+import HighRiskPage from './pages/HighRiskPage';
 import SuccessPage from './pages/SuccessPage';
 import './styles/design.css';
 
@@ -39,6 +41,8 @@ function App() {
         <Route path="/methodology" element={<MethodologyPage />} />
         <Route path="/ag-toolkit" element={<AGToolkitPage />} />
         <Route path="/chains" element={<ChainsPage />} />
+        <Route path="/chain/:chainName" element={<ChainDetailPage />} />
+        <Route path="/high-risk" element={<HighRiskPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
