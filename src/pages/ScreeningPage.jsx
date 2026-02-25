@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
@@ -389,6 +390,11 @@ export function ScreeningPage() {
 
   return (
     <div className="screening-page">
+      <Helmet>
+        <title>State Screening Reports — Nursing Home Safety by State | The Oversight Report</title>
+        <meta name="description" content="State-level nursing home screening reports. Identify high-risk facilities by state — designed for AG offices, Medicaid Control Units, and investigative journalists." />
+        <link rel="canonical" href="https://oversightreports.com/screening" />
+      </Helmet>
       {/* Header */}
       <div className="screening-header" ref={headerRef}>
         <h1>State Screening Report</h1>

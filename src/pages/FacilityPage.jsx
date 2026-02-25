@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
 import { haversineDistance } from '../utils/haversine';
@@ -122,6 +123,14 @@ export function FacilityPage() {
 
   return (
     <div className="fp" ref={pageRef}>
+      <Helmet>
+        <title>{facility.name} — Safety Report | The Oversight Report</title>
+        <meta name="description" content={`${facility.name} in ${facility.city}, ${facility.state}. ${facility.stars}/5 stars, risk score ${facility.composite?.toFixed(0)}/100. Staffing: ${facility.total_hprd?.toFixed(1)} HPRD. ${facility.total_deficiencies || 0} deficiencies. Independent safety data.`} />
+        <meta property="og:title" content={`${facility.name} — Safety Report`} />
+        <meta property="og:description" content={`${facility.stars}/5 stars · Risk: ${facility.composite?.toFixed(0)}/100 · ${facility.total_deficiencies || 0} deficiencies · ${facility.city}, ${facility.state}`} />
+        <meta property="og:url" content={`https://oversightreports.com/facility/${facility.ccn}`} />
+        <link rel="canonical" href={`https://oversightreports.com/facility/${facility.ccn}`} />
+      </Helmet>
       {/* Header */}
       <div className="fp-header">
         <Link to="/" className="fp-back">← Back to Map</Link>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/landing/Footer';
@@ -185,6 +186,11 @@ export default function PricingPage() {
 
   return (
     <div className="pricing-page" ref={heroRef}>
+      <Helmet>
+        <title>Pricing — Evidence Packages & Professional Plans | The Oversight Report</title>
+        <meta name="description" content="Nursing home evidence packages for families and attorneys. Professional monitoring tools for journalists and care managers." />
+        <link rel="canonical" href="https://oversightreports.com/pricing" />
+      </Helmet>
       {/* Hero Section */}
       <section className="pricing-hero">
         <div className="container-narrow">

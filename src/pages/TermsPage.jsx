@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import '../styles/legal.css';
 
 export function TermsPage() {
@@ -6,6 +7,11 @@ export function TermsPage() {
 
   return (
     <div className="legal-page">
+      <Helmet>
+        <title>Terms of Use | The Oversight Report</title>
+        <meta name="description" content="Terms of use for The Oversight Report nursing home safety data platform." />
+        <link rel="canonical" href="https://oversightreports.com/terms" />
+      </Helmet>
       <div className="legal-container">
         <h1>Terms of Use</h1>
         <p className="legal-updated">Last updated: February 24, 2026</p>

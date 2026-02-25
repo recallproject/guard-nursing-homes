@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
@@ -529,6 +530,11 @@ export function AGToolkitPage() {
 
   return (
     <div className="ag-toolkit-page">
+      <Helmet>
+        <title>Attorney General Toolkit — Nursing Home Enforcement Data | The Oversight Report</title>
+        <meta name="description" content="State-level nursing home enforcement data for Attorneys General. Staffing analysis, worst facilities, chain operators, and accountability metrics by state." />
+        <link rel="canonical" href="https://oversightreports.com/ag-toolkit" />
+      </Helmet>
       {/* Header */}
       <div className="ag-toolkit-header" ref={headerRef}>
         <h1>Attorney General Screening Toolkit</h1>

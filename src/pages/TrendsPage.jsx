@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import '../styles/trends.css';
@@ -218,6 +219,11 @@ export function TrendsPage() {
 
   return (
     <div className="trends-page">
+      <Helmet>
+        <title>Industry Trends — National Nursing Home Snapshot | The Oversight Report</title>
+        <meta name="description" content="National nursing home quality trends. Staffing levels, deficiency patterns, and penalty data across all 14,713 facilities." />
+        <link rel="canonical" href="https://oversightreports.com/trends" />
+      </Helmet>
       {/* Header */}
       <div className="trends-header" ref={headerRef}>
         <h1>Industry Trends</h1>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useWatchlist } from '../hooks/useWatchlist';
@@ -190,6 +191,11 @@ export function WatchlistPage() {
 
   return (
     <div className="watchlist-page">
+      <Helmet>
+        <title>My Watchlist — Facility Monitoring | The Oversight Report</title>
+        <meta name="description" content="Track nursing homes you care about. Get a personalized dashboard of safety data for facilities on your watchlist." />
+        <link rel="canonical" href="https://oversightreports.com/watchlist" />
+      </Helmet>
       {/* Header */}
       <div className="watchlist-header" ref={headerRef}>
         <div className="watchlist-header-top">

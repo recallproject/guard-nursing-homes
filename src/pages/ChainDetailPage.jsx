@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
@@ -293,6 +294,11 @@ export function ChainDetailPage() {
 
   return (
     <div className="chain-detail-page">
+      <Helmet>
+        <title>{decodedChainName} — Chain Performance | The Oversight Report</title>
+        <meta name="description" content={`${decodedChainName} nursing home chain performance data. ${chainData.numberOfFacilities} facilities across ${chainData.numberOfStatesAndTerritoriesWithOperations} states.`} />
+        <link rel="canonical" href={`https://oversightreports.com/chain/${chainName}`} />
+      </Helmet>
       {/* Breadcrumb */}
       <div className="chain-breadcrumb">
         <Link to="/chains">Chain Rankings</Link>

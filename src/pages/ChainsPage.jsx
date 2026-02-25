@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import '../styles/chains.css';
 
@@ -206,6 +207,11 @@ export function ChainsPage() {
 
   return (
     <div className="chains-page">
+      <Helmet>
+        <title>Worst Nursing Home Chains — Chain Rankings | The Oversight Report</title>
+        <meta name="description" content="Rankings of nursing home chains by safety performance. See which corporate operators have the worst inspection records, lowest staffing, and highest fines." />
+        <link rel="canonical" href="https://oversightreports.com/chains" />
+      </Helmet>
       {/* Header */}
       <div className="chains-header" ref={headerRef}>
         <h1>Chain Performance Rankings</h1>

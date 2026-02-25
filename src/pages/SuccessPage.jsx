@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { getTierName } from '../hooks/useSubscription';
 import '../styles/design.css';
 
@@ -28,6 +29,12 @@ export default function SuccessPage() {
   }, []);
 
   return (
+    <>
+    <Helmet>
+      <title>Welcome — Subscription Activated | The Oversight Report</title>
+      <meta name="description" content="Your subscription is now active. Access your nursing home safety tools." />
+      <link rel="canonical" href="https://oversightreports.com/success" />
+    </Helmet>
     <div style={{
       minHeight: '100vh',
       display: 'flex',
@@ -78,5 +85,6 @@ export default function SuccessPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

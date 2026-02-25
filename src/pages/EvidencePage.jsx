@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { haversineDistance } from '../utils/haversine';
 import { generateEvidencePDF } from '../utils/generateEvidencePDF';
@@ -236,6 +237,11 @@ export function EvidencePage() {
 
   return (
     <div className="ev">
+      <Helmet>
+        <title>{facility?.name || 'Facility'} — Evidence Package | The Oversight Report</title>
+        <meta name="description" content={`Evidence package for ${facility?.name || 'facility'} in ${facility?.city || ''}, ${facility?.state || ''}. Comprehensive safety documentation for legal and advocacy use.`} />
+        <link rel="canonical" href={`https://oversightreports.com/evidence/${ccn}`} />
+      </Helmet>
       {/* Header */}
       <div className="ev-header no-print">
         <Link to={`/facility/${ccn}`} className="ev-back">Back to Report Card</Link>

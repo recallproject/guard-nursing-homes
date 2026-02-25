@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import '../styles/legal.css';
 
 export function PrivacyPage() {
@@ -6,6 +7,11 @@ export function PrivacyPage() {
 
   return (
     <div className="legal-page">
+      <Helmet>
+        <title>Privacy Policy | The Oversight Report</title>
+        <meta name="description" content="Privacy policy for The Oversight Report. We use privacy-friendly analytics and never sell your data." />
+        <link rel="canonical" href="https://oversightreports.com/privacy" />
+      </Helmet>
       <div className="legal-container">
         <h1>Privacy Policy</h1>
         <p className="legal-updated">Last updated: February 24, 2026</p>

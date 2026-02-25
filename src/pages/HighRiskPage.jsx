@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import CollapsibleSection from '../components/CollapsibleSection';
@@ -208,6 +209,11 @@ export default function HighRiskPage() {
 
   return (
     <div className="high-risk-page" ref={pageRef}>
+      <Helmet>
+        <title>High Risk Nursing Homes — National Watch List | The Oversight Report</title>
+        <meta name="description" content="Nursing homes that meet multiple high-risk criteria: jeopardy citations, understaffing, high fines, and low ratings." />
+        <link rel="canonical" href="https://oversightreports.com/high-risk" />
+      </Helmet>
       <div className="container-wide">
         {/* Header */}
         <div className="high-risk-header">

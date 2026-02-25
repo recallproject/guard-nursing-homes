@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
@@ -21,12 +22,24 @@ const US_STATES = {
   WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming'
 };
 
+const FACILITY_TYPES = {
+  snf: { label: 'Skilled Nursing', abbr: 'SNF', color: '#3B82F6' },
+  home_health: { label: 'Home Health', abbr: 'HH', color: '#10B981' },
+  hospice: { label: 'Hospice', abbr: 'HSP', color: '#8B5CF6' },
+  irf: { label: 'Rehab - IRF', abbr: 'IRF', color: '#F59E0B' },
+  ltach: { label: 'Long-Term Acute', abbr: 'LTCH', color: '#EF4444' }
+};
+
 export function ReferralScorecardPage() {
-  const COMING_SOON = true;
+  const COMING_SOON = false;
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { getAllFacilities, loading, error } = useFacilityData();
   const { tier } = useSubscription();
+
+  // Post-acute data
+  const [postacuteData, setPostacuteData] = useState(null);
+  const [postacuteLoading, setPostacuteLoading] = useState(true);
 
   // Input method: 'location' or 'ccn'
   const [inputMethod, setInputMethod] = useState('location');
@@ -34,18 +47,49 @@ export function ReferralScorecardPage() {
   // Location search state
   const [selectedState, setSelectedState] = useState('');
   const [cityInput, setCityInput] = useState('');
-  const [radius, setRadius] = useState(25);
+  const [radius, setRadius] = useState(15);
+
+  // Facility type selection
+  const [selectedTypes, setSelectedTypes] = useState({
+    snf: true,
+    home_health: true,
+    hospice: true,
+    irf: true,
+    ltach: true
+  });
 
   // CCN paste state
   const [ccnInput, setCcnInput] = useState('');
 
   // Results
   const [facilities, setFacilities] = useState([]);
-  const [sortBy, setSortBy] = useState('composite'); // composite, name, stars, staffing, fines
+  const [activeFilter, setActiveFilter] = useState('all');
+  const [sortBy, setSortBy] = useState('risk');
   const [sortOrder, setSortOrder] = useState('asc');
+  const [selectedFacilities, setSelectedFacilities] = useState(new Set());
 
   const headerRef = useRef(null);
   const resultsRef = useRef(null);
+
+  // Load postacute data
+  useEffect(() => {
+    async function loadPostacuteData() {
+      try {
+        setPostacuteLoading(true);
+        const response = await fetch(`${import.meta.env.BASE_URL}postacute_facility_data.json`);
+        if (!response.ok) {
+          throw new Error(`Failed to load postacute data: ${response.status}`);
+        }
+        const json = await response.json();
+        setPostacuteData(json);
+      } catch (err) {
+        console.error('Error loading postacute data:', err);
+      } finally {
+        setPostacuteLoading(false);
+      }
+    }
+    loadPostacuteData();
+  }, []);
 
   // Animate on mount
   useEffect(() => {
@@ -72,13 +116,13 @@ export function ReferralScorecardPage() {
   // Load from URL params on mount
   useEffect(() => {
     const ccnParam = searchParams.get('ccns');
-    if (ccnParam && getAllFacilities.length > 0) {
+    if (ccnParam && getAllFacilities.length > 0 && postacuteData) {
       const ccnList = ccnParam.split(',').map(c => c.trim());
       setCcnInput(ccnList.join('\n'));
       setInputMethod('ccn');
       handleCcnSearch(ccnList);
     }
-  }, [searchParams, getAllFacilities]);
+  }, [searchParams, getAllFacilities, postacuteData]);
 
   // Haversine distance in miles
   const haversineDistance = (lat1, lon1, lat2, lon2) => {
@@ -92,6 +136,65 @@ export function ReferralScorecardPage() {
     return R * c;
   };
 
+  // Merge SNF and postacute facilities into unified structure
+  const mergeAllFacilities = () => {
+    const unified = [];
+
+    // Add SNF facilities
+    getAllFacilities.forEach(f => {
+      unified.push({
+        ccn: f.ccn,
+        name: f.name,
+        type: 'snf',
+        address: f.address,
+        city: f.city,
+        state: f.state,
+        zip: f.zip,
+        lat: f.latitude,
+        lon: f.longitude,
+        ownership_type: f.ownership_type || 'Unknown',
+        stars: f.stars,
+        composite_risk: f.composite || 0,
+        key_metrics: {
+          total_hprd: f.total_hprd,
+          rn_hprd: f.rn_hprd,
+          total_deficiencies: f.total_deficiencies,
+          jeopardy_count: f.jeopardy_count,
+          zero_rn_pct: f.zero_rn_pct
+        },
+        flags: [],
+        deficiency_count: f.total_deficiencies || 0,
+        distance: null
+      });
+    });
+
+    // Add postacute facilities
+    if (postacuteData && postacuteData.facilities) {
+      postacuteData.facilities.forEach(f => {
+        unified.push({
+          ccn: f.ccn,
+          name: f.name,
+          type: f.type,
+          address: f.address,
+          city: f.city,
+          state: f.state,
+          zip: f.zip,
+          lat: f.lat,
+          lon: f.lon,
+          ownership_type: f.ownership_type || 'Unknown',
+          stars: f.key_metrics?.quality_of_patient_care_star || null,
+          composite_risk: f.composite_risk || 0,
+          key_metrics: f.key_metrics || {},
+          flags: f.flags || [],
+          deficiency_count: f.deficiency_count || 0,
+          distance: null
+        });
+      });
+    }
+
+    return unified;
+  };
+
   // Handle location search
   const handleLocationSearch = () => {
     if (!selectedState || !cityInput.trim()) {
@@ -99,7 +202,7 @@ export function ReferralScorecardPage() {
       return;
     }
 
-    const allFacs = getAllFacilities;
+    const allFacs = mergeAllFacilities();
 
     // Find facilities in the selected city to get center coordinates
     const cityFacs = allFacs.filter(f =>
@@ -112,26 +215,60 @@ export function ReferralScorecardPage() {
       return;
     }
 
-    // Use the first facility's coordinates as center
-    const centerLat = cityFacs[0].latitude;
-    const centerLon = cityFacs[0].longitude;
-
-    if (!centerLat || !centerLon) {
+    // Use the first facility with coordinates as center
+    const centerFac = cityFacs.find(f => f.lat && f.lon);
+    if (!centerFac) {
       alert('Location data not available for this city');
       return;
     }
 
-    // Find all facilities within radius in this state
+    const centerLat = centerFac.lat;
+    const centerLon = centerFac.lon;
+
+    // Get first 3 digits of center zip for proximity estimation
+    const centerZipPrefix = centerFac.zip ? centerFac.zip.substring(0, 3) : null;
+
+    // Find all facilities within radius or in same state
     const nearby = allFacs
-      .filter(f => f.state === selectedState && f.latitude && f.longitude)
-      .map(f => ({
-        ...f,
-        distance: haversineDistance(centerLat, centerLon, f.latitude, f.longitude)
-      }))
-      .filter(f => f.distance <= radius)
-      .sort((a, b) => a.composite - b.composite); // Sort by risk (best first)
+      .filter(f => {
+        // Must be in selected state
+        if (f.state !== selectedState) return false;
+        // Must match selected facility types
+        if (!selectedTypes[f.type]) return false;
+        return true;
+      })
+      .map(f => {
+        let distance = null;
+        let distanceLabel = 'In state';
+
+        // If facility has coordinates, calculate exact distance
+        if (f.lat && f.lon) {
+          distance = haversineDistance(centerLat, centerLon, f.lat, f.lon);
+          distanceLabel = distance.toFixed(1);
+        } else if (centerZipPrefix && f.zip) {
+          // Estimate from zip code prefix
+          const facZipPrefix = f.zip.substring(0, 3);
+          if (facZipPrefix === centerZipPrefix) {
+            distanceLabel = '< 50 mi';
+            distance = 25; // Arbitrary sort value for zip match
+          }
+        }
+
+        return { ...f, distance, distanceLabel };
+      })
+      .filter(f => {
+        // If we have exact distance, filter by radius
+        if (f.distance !== null && typeof f.distance === 'number') {
+          return f.distance <= radius;
+        }
+        // Otherwise include all in-state facilities
+        return true;
+      })
+      .sort((a, b) => a.composite_risk - b.composite_risk); // Sort by risk (lowest first)
 
     setFacilities(nearby);
+    setActiveFilter('all');
+    setSelectedFacilities(new Set());
   };
 
   // Handle CCN paste search
@@ -143,10 +280,11 @@ export function ReferralScorecardPage() {
       return;
     }
 
-    const allFacs = getAllFacilities;
+    const allFacs = mergeAllFacilities();
     const matched = allFacs
       .filter(f => ccns.includes(f.ccn))
-      .sort((a, b) => a.composite - b.composite); // Sort by risk (best first)
+      .map(f => ({ ...f, distanceLabel: '—' }))
+      .sort((a, b) => a.composite_risk - b.composite_risk); // Sort by risk (lowest first)
 
     if (matched.length === 0) {
       alert('No facilities found with those CCN numbers');
@@ -154,6 +292,26 @@ export function ReferralScorecardPage() {
     }
 
     setFacilities(matched);
+    setActiveFilter('all');
+    setSelectedFacilities(new Set());
+  };
+
+  // Toggle facility type selection
+  const toggleFacilityType = (type) => {
+    setSelectedTypes(prev => ({ ...prev, [type]: !prev[type] }));
+  };
+
+  // Toggle facility selection
+  const toggleFacilitySelection = (ccn) => {
+    setSelectedFacilities(prev => {
+      const next = new Set(prev);
+      if (next.has(ccn)) {
+        next.delete(ccn);
+      } else {
+        next.add(ccn);
+      }
+      return next;
+    });
   };
 
   // Handle sorting
@@ -166,14 +324,21 @@ export function ReferralScorecardPage() {
     }
   };
 
+  // Apply filtering
+  const filteredFacilities = facilities.filter(f => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'high_risk') return f.composite_risk > 60;
+    return f.type === activeFilter;
+  });
+
   // Apply sorting
-  const sortedFacilities = [...facilities].sort((a, b) => {
+  const sortedFacilities = [...filteredFacilities].sort((a, b) => {
     let aVal, bVal;
 
     switch (sortBy) {
-      case 'composite':
-        aVal = a.composite || 0;
-        bVal = b.composite || 0;
+      case 'risk':
+        aVal = a.composite_risk || 0;
+        bVal = b.composite_risk || 0;
         break;
       case 'name':
         aVal = a.name || '';
@@ -187,13 +352,9 @@ export function ReferralScorecardPage() {
         aVal = a.stars || 0;
         bVal = b.stars || 0;
         break;
-      case 'staffing':
-        aVal = a.total_hprd || 0;
-        bVal = b.total_hprd || 0;
-        break;
-      case 'fines':
-        aVal = a.total_fines || 0;
-        bVal = b.total_fines || 0;
+      case 'distance':
+        aVal = a.distance !== null ? a.distance : 999999;
+        bVal = b.distance !== null ? b.distance : 999999;
         break;
       default:
         return 0;
@@ -202,19 +363,42 @@ export function ReferralScorecardPage() {
     return sortOrder === 'asc' ? aVal - bVal : bVal - aVal;
   });
 
-  // Calculate overall grade
-  const getOverallGrade = () => {
-    if (facilities.length === 0) return null;
-    const avgScore = facilities.reduce((sum, f) => sum + (f.composite || 0), 0) / facilities.length;
-    const dangerCount = facilities.filter(f => (f.jeopardy_count || 0) > 0).length;
+  // Get facility type counts
+  const getTypeCounts = () => {
+    const counts = { all: facilities.length, high_risk: 0 };
+    Object.keys(FACILITY_TYPES).forEach(type => {
+      counts[type] = 0;
+    });
 
-    let grade = 'F';
-    if (avgScore < 20) grade = 'A';
-    else if (avgScore < 40) grade = 'B';
-    else if (avgScore < 60) grade = 'C';
-    else if (avgScore < 80) grade = 'D';
+    facilities.forEach(f => {
+      if (f.composite_risk > 60) counts.high_risk++;
+      if (counts[f.type] !== undefined) {
+        counts[f.type]++;
+      }
+    });
 
-    return { grade, avgScore, dangerCount, total: facilities.length };
+    return counts;
+  };
+
+  // Get key metric display
+  const getKeyMetric = (facility) => {
+    const m = facility.key_metrics;
+    if (!m) return '—';
+
+    switch (facility.type) {
+      case 'snf':
+        return m.total_hprd ? `${m.total_hprd.toFixed(1)} hrs` : '—';
+      case 'home_health':
+        return m.quality_of_patient_care_star ? `${m.quality_of_patient_care_star}★ QPC` : '—';
+      case 'hospice':
+        return m.state_recommend_pct ? `${m.state_recommend_pct}% rec` : '—';
+      case 'irf':
+        return m.discharge_to_community_pct ? `${m.discharge_to_community_pct.toFixed(0)}% d2c` : '—';
+      case 'ltach':
+        return m.readmission_rate !== undefined ? `${(m.readmission_rate * 100).toFixed(0)}% readm` : '—';
+      default:
+        return '—';
+    }
   };
 
   // Get risk info
@@ -225,16 +409,9 @@ export function ReferralScorecardPage() {
     return { label: 'LOW RISK', className: 'risk-low' };
   };
 
-  // Format currency
-  const formatCurrency = (amount) => {
-    if (!amount) return '$0';
-    if (amount >= 1000000) return `$${(amount / 1000000).toFixed(1)}M`;
-    if (amount >= 1000) return `$${(amount / 1000).toFixed(0)}K`;
-    return `$${amount.toLocaleString()}`;
-  };
-
   // Render stars
   const renderStars = (count) => {
+    if (!count) return '—';
     const stars = [];
     for (let i = 0; i < 5; i++) {
       stars.push(i < count ? '★' : '☆');
@@ -244,22 +421,21 @@ export function ReferralScorecardPage() {
 
   // Download CSV
   const downloadCSV = () => {
-    if (!facilities.length) return;
+    if (!sortedFacilities.length) return;
 
-    const headers = ['Rank', 'Facility', 'CCN', 'City', 'State', 'Risk Score', 'Stars', 'Staffing (min/day)', 'Total Deficiencies', 'Fines', 'Serious Danger', 'Zero-RN Days %'];
+    const headers = ['Rank', 'Type', 'Facility', 'CCN', 'City', 'State', 'Distance', 'Risk Score', 'Stars', 'Key Metric', 'Ownership'];
     const rows = sortedFacilities.map((f, i) => [
       i + 1,
+      FACILITY_TYPES[f.type]?.abbr || f.type,
       f.name,
       f.ccn,
       f.city,
       f.state,
-      (f.composite || 0).toFixed(1),
-      f.stars || 0,
-      Math.round((f.total_hprd || 0) * 60),
-      f.total_deficiencies || 0,
-      f.total_fines || 0,
-      f.jeopardy_count || 0,
-      (f.zero_rn_pct || 0).toFixed(1)
+      f.distanceLabel || '—',
+      (f.composite_risk || 0).toFixed(1),
+      f.stars || '—',
+      getKeyMetric(f),
+      f.ownership_type
     ]);
 
     const csv = [headers, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
@@ -274,7 +450,7 @@ export function ReferralScorecardPage() {
 
   // Download PDF
   const downloadPDF = async () => {
-    if (!facilities.length) return;
+    if (!sortedFacilities.length) return;
 
     const { default: jsPDF } = await import('jspdf');
     await import('jspdf-autotable');
@@ -289,36 +465,65 @@ export function ReferralScorecardPage() {
     const margin = 15;
     let currentY = margin;
 
+    // Header - Navy theme matching Evidence PDF
+    doc.setFillColor(15, 23, 42);
+    doc.rect(0, 0, pageWidth, 35, 'F');
+
     // Title
-    doc.setFontSize(18);
+    doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.text('Referral Scorecard - Nursing Home Comparison', pageWidth / 2, currentY, { align: 'center' });
-    currentY += 10;
+    doc.setTextColor(255, 255, 255);
+    doc.text('Discharge Planning Report', pageWidth / 2, currentY + 8, { align: 'center' });
+    currentY += 14;
+
+    // Subtitle
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Post-Acute Care Facility Comparison', pageWidth / 2, currentY, { align: 'center' });
+    currentY += 8;
 
     // Date
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
     const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     doc.text(`Generated: ${today}`, pageWidth / 2, currentY, { align: 'center' });
+
+    currentY = 40;
+
+    // Reset text color for body
+    doc.setTextColor(0, 0, 0);
+
+    // Summary
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Summary', margin, currentY);
+    currentY += 7;
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    const avgScore = (sortedFacilities.reduce((sum, f) => sum + (f.composite_risk || 0), 0) / sortedFacilities.length).toFixed(1);
+    const highRiskCount = sortedFacilities.filter(f => (f.composite_risk || 0) > 60).length;
+
+    doc.text(`${sortedFacilities.length} facilities compared`, margin + 3, currentY);
     currentY += 5;
-    doc.text('Source: CMS data via The Oversight Report', pageWidth / 2, currentY, { align: 'center' });
-    currentY += 12;
+    doc.text(`Average Risk Score: ${avgScore}`, margin + 3, currentY);
+    currentY += 5;
+    doc.text(`${highRiskCount} facilities with elevated risk (>60)`, margin + 3, currentY);
+    currentY += 10;
 
-    // Overall grade
-    const gradeInfo = getOverallGrade();
-    if (gradeInfo) {
-      doc.setFontSize(12);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Overall Assessment', margin, currentY);
-      currentY += 7;
-
-      doc.setFontSize(10);
-      doc.setFont('helvetica', 'normal');
-      doc.text(`Average Risk Score: ${gradeInfo.avgScore.toFixed(1)} (Grade: ${gradeInfo.grade})`, margin + 3, currentY);
-      currentY += 5;
-      doc.text(`${gradeInfo.dangerCount} of ${gradeInfo.total} facilities have serious safety concerns`, margin + 3, currentY);
-      currentY += 10;
-    }
+    // Facility types breakdown
+    const counts = getTypeCounts();
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Facility Types:', margin, currentY);
+    currentY += 5;
+    doc.setFont('helvetica', 'normal');
+    Object.entries(FACILITY_TYPES).forEach(([key, info]) => {
+      if (counts[key] > 0) {
+        doc.text(`• ${info.label}: ${counts[key]}`, margin + 3, currentY);
+        currentY += 4;
+      }
+    });
+    currentY += 6;
 
     // Comparison table
     doc.setFontSize(12);
@@ -328,36 +533,32 @@ export function ReferralScorecardPage() {
 
     const tableData = sortedFacilities.map((f, i) => [
       i + 1,
+      FACILITY_TYPES[f.type]?.abbr || f.type,
       f.name,
       f.city + ', ' + f.state,
-      (f.composite || 0).toFixed(1),
-      f.stars || 0,
-      Math.round((f.total_hprd || 0) * 60),
-      f.total_deficiencies || 0,
-      formatCurrency(f.total_fines || 0),
-      f.jeopardy_count || 0,
-      (f.zero_rn_pct || 0).toFixed(0) + '%'
+      f.distanceLabel || '—',
+      (f.composite_risk || 0).toFixed(1),
+      f.stars || '—',
+      getKeyMetric(f)
     ]);
 
     doc.autoTable({
       startY: currentY,
-      head: [['Rank', 'Facility', 'Location', 'Risk', 'Stars', 'Staff', 'Def', 'Fines', 'Danger', 'Zero-RN']],
+      head: [['#', 'Type', 'Facility', 'Location', 'Dist', 'Risk', 'Stars', 'Key Metric']],
       body: tableData,
       theme: 'grid',
       styles: { fontSize: 8, cellPadding: 2 },
       headStyles: { fillColor: [15, 23, 42], textColor: [255, 255, 255], fontStyle: 'bold' },
       margin: { left: margin, right: margin },
       columnStyles: {
-        0: { cellWidth: 12 },
-        1: { cellWidth: 65 },
-        2: { cellWidth: 40 },
-        3: { cellWidth: 15 },
-        4: { cellWidth: 12 },
-        5: { cellWidth: 12 },
-        6: { cellWidth: 12 },
-        7: { cellWidth: 18 },
-        8: { cellWidth: 15 },
-        9: { cellWidth: 18 }
+        0: { cellWidth: 10 },
+        1: { cellWidth: 15 },
+        2: { cellWidth: 60 },
+        3: { cellWidth: 35 },
+        4: { cellWidth: 15 },
+        5: { cellWidth: 15 },
+        6: { cellWidth: 15 },
+        7: { cellWidth: 25 }
       }
     });
 
@@ -367,19 +568,25 @@ export function ReferralScorecardPage() {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'italic');
     const disclaimerText = doc.splitTextToSize(
-      'This scorecard is for informational purposes only. Risk scores indicate areas warranting further investigation. Always visit facilities in person and consult with healthcare professionals before making placement decisions.',
+      'This report is for informational purposes only. Risk scores indicate areas warranting further investigation. Always visit facilities in person and consult with healthcare professionals before making placement decisions.',
       pageWidth - (margin * 2)
     );
     doc.text(disclaimerText, margin, currentY);
 
+    // Footer
+    currentY = doc.internal.pageSize.getHeight() - 10;
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Source: CMS data via GUARD Oversight Platform', pageWidth / 2, currentY, { align: 'center' });
+
     // Save
-    const filename = `Referral_Scorecard_${new Date().toISOString().split('T')[0]}.pdf`;
+    const filename = `Discharge_Planning_Report_${new Date().toISOString().split('T')[0]}.pdf`;
     doc.save(filename);
   };
 
   // Share with family (generate URL)
   const shareWithFamily = () => {
-    if (!facilities.length) return;
+    if (!sortedFacilities.length) return;
 
     const ccns = sortedFacilities.map(f => f.ccn).join(',');
     const url = `${window.location.origin}/referral-scorecard?ccns=${ccns}`;
@@ -391,7 +598,7 @@ export function ReferralScorecardPage() {
     });
   };
 
-  if (loading) {
+  if (loading || postacuteLoading) {
     return (
       <div className="referral-scorecard-page">
         <div className="referral-loading">
@@ -417,14 +624,14 @@ export function ReferralScorecardPage() {
     return (
       <ComingSoonPage
         title="Referral Scorecard"
-        description="For discharge planners and care coordination teams. Rank the skilled nursing facilities your hospital sends patients to — by safety score, staffing, outcomes, and distance. Make data-driven referral decisions."
+        description="For discharge planners and care coordination teams. Rank skilled nursing facilities, home health, hospice, rehab, and long-term acute care facilities by safety score, staffing, outcomes, and distance. Make data-driven referral decisions across all post-acute settings."
         tier="institutional"
         features={[
-          'Rank SNFs by composite risk score within your referral radius',
-          'Compare facilities your hospital actually sends patients to',
-          'Staffing and quality benchmarks for each facility',
+          'Compare all post-acute facility types: SNF, Home Health, Hospice, IRF, LTACH',
+          'Rank facilities by composite risk score within your referral radius',
+          'Type-specific quality metrics for each care setting',
+          'Export discharge planning reports with facility comparisons',
           'Shareable report links for patient families',
-          'Custom branding on shared reports',
         ]}
       />
     );
@@ -437,7 +644,7 @@ export function ReferralScorecardPage() {
         <div className="referral-header">
           <h1>Referral Scorecard</h1>
           <p className="referral-subtitle">
-            Compare nursing homes side-by-side for discharge planning
+            Compare post-acute care facilities side-by-side for discharge planning
           </p>
         </div>
         <UpgradePrompt
@@ -454,15 +661,29 @@ export function ReferralScorecardPage() {
     );
   }
 
-  const overallGrade = getOverallGrade();
+  const typeCounts = getTypeCounts();
+
+  // Get total counts from merged data
+  const allMerged = mergeAllFacilities();
+  const totalCounts = { snf: 0, home_health: 0, hospice: 0, irf: 0, ltach: 0 };
+  allMerged.forEach(f => {
+    if (totalCounts[f.type] !== undefined) {
+      totalCounts[f.type]++;
+    }
+  });
 
   return (
     <div className="referral-scorecard-page">
+      <Helmet>
+        <title>Referral Scorecard — Post-Acute Care Comparison | The Oversight Report</title>
+        <meta name="description" content="Compare post-acute care facilities side-by-side for discharge planning. Rank SNFs, home health, hospice, rehab, and LTACH facilities by safety score." />
+        <link rel="canonical" href="https://oversightreports.com/referral-scorecard" />
+      </Helmet>
       {/* Header */}
       <div className="referral-header" ref={headerRef}>
         <h1>Referral Scorecard</h1>
         <p className="referral-subtitle">
-          Compare nursing homes side-by-side for discharge planning
+          Find safe post-acute care near any location
         </p>
       </div>
 
@@ -486,49 +707,71 @@ export function ReferralScorecardPage() {
       <div className="referral-input-section">
         {inputMethod === 'location' ? (
           <div className="referral-location-search">
+            <div className="referral-input-row">
+              <div className="referral-input-group">
+                <label htmlFor="state-select">State:</label>
+                <select
+                  id="state-select"
+                  value={selectedState}
+                  onChange={(e) => setSelectedState(e.target.value)}
+                  className="referral-select"
+                >
+                  <option value="">Choose a state...</option>
+                  {Object.entries(US_STATES).map(([code, name]) => (
+                    <option key={code} value={code}>{name}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="referral-input-group">
+                <label htmlFor="city-input">City:</label>
+                <input
+                  id="city-input"
+                  type="text"
+                  value={cityInput}
+                  onChange={(e) => setCityInput(e.target.value)}
+                  placeholder="e.g., Chicago"
+                  className="referral-input"
+                />
+              </div>
+            </div>
+
+            {/* Radius Button Group */}
             <div className="referral-input-group">
-              <label htmlFor="state-select">State:</label>
-              <select
-                id="state-select"
-                value={selectedState}
-                onChange={(e) => setSelectedState(e.target.value)}
-                className="referral-select"
-              >
-                <option value="">Choose a state...</option>
-                {Object.entries(US_STATES).map(([code, name]) => (
-                  <option key={code} value={code}>{name}</option>
+              <label>Radius:</label>
+              <div className="referral-radius-buttons">
+                {[5, 10, 15, 25, 50].map(r => (
+                  <button
+                    key={r}
+                    className={`referral-radius-btn ${radius === r ? 'active' : ''}`}
+                    onClick={() => setRadius(r)}
+                  >
+                    {r}
+                  </button>
                 ))}
-              </select>
+                <span className="referral-radius-label">miles</span>
+              </div>
             </div>
 
+            {/* Facility Type Checkboxes */}
             <div className="referral-input-group">
-              <label htmlFor="city-input">City:</label>
-              <input
-                id="city-input"
-                type="text"
-                value={cityInput}
-                onChange={(e) => setCityInput(e.target.value)}
-                placeholder="e.g., Chicago"
-                className="referral-input"
-              />
-            </div>
-
-            <div className="referral-input-group">
-              <label htmlFor="radius-slider">Radius: {radius} miles</label>
-              <input
-                id="radius-slider"
-                type="range"
-                min="5"
-                max="50"
-                step="5"
-                value={radius}
-                onChange={(e) => setRadius(Number(e.target.value))}
-                className="referral-slider"
-              />
+              <label>Facility Types:</label>
+              <div className="referral-type-checkboxes">
+                {Object.entries(FACILITY_TYPES).map(([key, info]) => (
+                  <label key={key} className="referral-type-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={selectedTypes[key]}
+                      onChange={() => toggleFacilityType(key)}
+                    />
+                    <span>{info.label} ({totalCounts[key]?.toLocaleString() || 0})</span>
+                  </label>
+                ))}
+              </div>
             </div>
 
             <button onClick={handleLocationSearch} className="btn btn-primary">
-              Search Facilities
+              Build Scorecard
             </button>
           </div>
         ) : (
@@ -555,46 +798,55 @@ export function ReferralScorecardPage() {
       {/* Results Section */}
       {facilities.length > 0 && (
         <div className="referral-results" ref={resultsRef}>
-          {/* Overall Grade Card */}
-          {overallGrade && (
-            <div className="referral-grade-card">
-              <div className="referral-grade-header">
-                <h2>Overall Assessment</h2>
-              </div>
-              <div className="referral-grade-body">
-                <div className={`referral-grade-letter grade-${overallGrade.grade.toLowerCase()}`}>
-                  {overallGrade.grade}
-                </div>
-                <div className="referral-grade-stats">
-                  <div className="referral-grade-stat">
-                    <span className="referral-grade-stat-value">{overallGrade.avgScore.toFixed(1)}</span>
-                    <span className="referral-grade-stat-label">Average Risk Score</span>
-                  </div>
-                  <div className="referral-grade-stat">
-                    <span className="referral-grade-stat-value danger">{overallGrade.dangerCount}</span>
-                    <span className="referral-grade-stat-label">Serious Safety Concerns</span>
-                  </div>
-                  <div className="referral-grade-stat">
-                    <span className="referral-grade-stat-value">{overallGrade.total}</span>
-                    <span className="referral-grade-stat-label">Facilities Compared</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          {/* Results Header */}
+          <div className="referral-results-header">
+            <h2>
+              Results{selectedState && cityInput && ` near: ${cityInput}, ${selectedState}`}
+              {inputMethod === 'location' && ` | Radius: ${radius} mi`}
+              {' | '}{facilities.length} facilities
+            </h2>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="referral-filter-tabs">
+            <button
+              className={`referral-filter-tab ${activeFilter === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveFilter('all')}
+            >
+              All {typeCounts.all}
+            </button>
+            {Object.entries(FACILITY_TYPES).map(([key, info]) => (
+              typeCounts[key] > 0 && (
+                <button
+                  key={key}
+                  className={`referral-filter-tab ${activeFilter === key ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(key)}
+                >
+                  {info.abbr} {typeCounts[key]}
+                </button>
+              )
+            ))}
+            {typeCounts.high_risk > 0 && (
+              <button
+                className={`referral-filter-tab referral-filter-high-risk ${activeFilter === 'high_risk' ? 'active' : ''}`}
+                onClick={() => setActiveFilter('high_risk')}
+              >
+                High Risk ⚠ {typeCounts.high_risk}
+              </button>
+            )}
+          </div>
 
           {/* Export Options */}
           <div className="referral-export-section">
-            <h3>Export Options</h3>
             <div className="referral-export-buttons">
               <button className="btn btn-secondary" onClick={downloadPDF}>
-                Download PDF
+                Export PDF
               </button>
               <button className="btn btn-secondary" onClick={downloadCSV}>
-                Download CSV
+                Export CSV
               </button>
               <button className="btn btn-secondary" onClick={shareWithFamily}>
-                Share with Family
+                Share Link
               </button>
             </div>
           </div>
@@ -604,69 +856,89 @@ export function ReferralScorecardPage() {
             <table className="referral-table">
               <thead>
                 <tr>
+                  <th>
+                    <input
+                      type="checkbox"
+                      checked={selectedFacilities.size === sortedFacilities.length && sortedFacilities.length > 0}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setSelectedFacilities(new Set(sortedFacilities.map(f => f.ccn)));
+                        } else {
+                          setSelectedFacilities(new Set());
+                        }
+                      }}
+                      title="Select all"
+                    />
+                  </th>
                   <th>Rank</th>
+                  <th>Type</th>
                   <th onClick={() => handleSort('name')} className="sortable">
                     Facility {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th onClick={() => handleSort('city')} className="sortable">
-                    Location {sortBy === 'city' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  <th onClick={() => handleSort('distance')} className="sortable">
+                    Distance {sortBy === 'distance' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th onClick={() => handleSort('composite')} className="sortable">
-                    Risk Score {sortBy === 'composite' && (sortOrder === 'asc' ? '↑' : '↓')}
+                  <th onClick={() => handleSort('risk')} className="sortable">
+                    Risk Score {sortBy === 'risk' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
                   <th onClick={() => handleSort('stars')} className="sortable">
                     Stars {sortBy === 'stars' && (sortOrder === 'asc' ? '↑' : '↓')}
                   </th>
-                  <th onClick={() => handleSort('staffing')} className="sortable">
-                    Staffing (min/day) {sortBy === 'staffing' && (sortOrder === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th>Deficiencies</th>
-                  <th onClick={() => handleSort('fines')} className="sortable">
-                    Fines {sortBy === 'fines' && (sortOrder === 'asc' ? '↑' : '↓')}
-                  </th>
-                  <th>Serious Danger</th>
-                  <th>Zero-RN Days</th>
+                  <th>Key Metric</th>
+                  <th>Ownership</th>
                   <th>Flags</th>
                 </tr>
               </thead>
               <tbody>
                 {sortedFacilities.map((facility, index) => {
-                  const riskInfo = getRiskInfo(facility.composite || 0);
+                  const riskInfo = getRiskInfo(facility.composite_risk || 0);
+                  const typeInfo = FACILITY_TYPES[facility.type];
                   return (
                     <tr key={facility.ccn}>
-                      <td className="referral-rank">{index + 1}</td>
-                      <td className="referral-facility-name">{facility.name}</td>
-                      <td>{facility.city}, {facility.state}</td>
                       <td>
-                        <span className={`referral-risk-badge ${riskInfo.className}`}>
-                          {(facility.composite || 0).toFixed(1)}
+                        <input
+                          type="checkbox"
+                          checked={selectedFacilities.has(facility.ccn)}
+                          onChange={() => toggleFacilitySelection(facility.ccn)}
+                        />
+                      </td>
+                      <td className="referral-rank">{index + 1}</td>
+                      <td>
+                        <span
+                          className="facility-type-badge"
+                          style={{ backgroundColor: typeInfo?.color || '#666' }}
+                        >
+                          {typeInfo?.abbr || facility.type}
                         </span>
                       </td>
-                      <td className="referral-stars">{renderStars(facility.stars || 0)}</td>
-                      <td className="mono">{Math.round((facility.total_hprd || 0) * 60)}</td>
-                      <td className="mono">{facility.total_deficiencies || 0}</td>
-                      <td className="mono">{formatCurrency(facility.total_fines || 0)}</td>
-                      <td>
-                        {(facility.jeopardy_count || 0) > 0 ? (
-                          <span className="referral-flag-danger">{facility.jeopardy_count}</span>
+                      <td className="referral-facility-name">
+                        {facility.type === 'snf' ? (
+                          <Link to={`/facility/${facility.ccn}`}>{facility.name}</Link>
                         ) : (
-                          <span className="referral-flag-no">—</span>
+                          <span title={`${facility.address}, ${facility.city}, ${facility.state} ${facility.zip}`}>
+                            {facility.name}
+                          </span>
                         )}
                       </td>
-                      <td className="mono">{(facility.zero_rn_pct || 0).toFixed(0)}%</td>
+                      <td className="mono">{facility.distanceLabel || '—'}</td>
                       <td>
-                        <div className="referral-quick-flags">
-                          {(facility.jeopardy_count || 0) > 0 && (
-                            <span className="referral-quick-flag flag-red" title="Serious danger citations">⚠</span>
-                          )}
-                          {(facility.rn_gap_pct || 0) > 25 && (
-                            <span className="referral-quick-flag flag-orange" title="Staffing discrepancy >25%">📊</span>
-                          )}
-                          {(facility.zero_rn_pct || 0) > 20 && (
-                            <span className="referral-quick-flag flag-yellow" title="Zero-RN days >20%">👨‍⚕️</span>
-                          )}
-                          {(facility.total_fines || 0) > 100000 && (
-                            <span className="referral-quick-flag flag-orange" title="Fines >$100K">💰</span>
+                        <span className={`referral-risk-badge ${riskInfo.className}`}>
+                          {(facility.composite_risk || 0).toFixed(1)}
+                        </span>
+                      </td>
+                      <td className="referral-stars">{renderStars(facility.stars)}</td>
+                      <td className="mono">{getKeyMetric(facility)}</td>
+                      <td className="referral-ownership">{facility.ownership_type}</td>
+                      <td>
+                        <div className="referral-flags">
+                          {facility.flags && facility.flags.length > 0 ? (
+                            facility.flags.slice(0, 2).map((flag, i) => (
+                              <span key={i} className="referral-flag" title={flag}>
+                                {flag.substring(0, 3)}
+                              </span>
+                            ))
+                          ) : (
+                            <span className="referral-flag-no">—</span>
                           )}
                         </div>
                       </td>
@@ -677,9 +949,16 @@ export function ReferralScorecardPage() {
             </table>
           </div>
 
+          {/* Selected Count */}
+          {selectedFacilities.size > 0 && (
+            <div className="referral-selected-count">
+              {selectedFacilities.size} facilities selected
+            </div>
+          )}
+
           {/* Data Source Footer */}
           <div className="referral-data-source">
-            Data: CMS Care Compare, Payroll-Based Journal (PBJ), Health Deficiencies, Penalties — via data.cms.gov
+            Data: CMS Care Compare, Home Health Compare, Hospice Compare, IRF Compare, LTACH Compare — via data.cms.gov
           </div>
 
           {/* Disclaimer */}

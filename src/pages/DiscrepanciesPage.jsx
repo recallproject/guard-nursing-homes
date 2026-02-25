@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
@@ -416,6 +417,11 @@ export default function DiscrepanciesPage() {
 
   return (
     <div className="discrepancies-page" ref={pageRef}>
+      <Helmet>
+        <title>Staffing Discrepancy Index — Self-Reported vs. Reality | The Oversight Report</title>
+        <meta name="description" content="Facilities where self-reported staffing numbers don't match federal inspection findings. Compare claimed vs. observed staffing levels." />
+        <link rel="canonical" href="https://oversightreports.com/discrepancies" />
+      </Helmet>
       <div className="container-wide">
         {/* Header */}
         <div className="discrepancies-header">

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/methodology.css';
@@ -79,6 +80,11 @@ export function MethodologyPage() {
 
   return (
     <div className="methodology-page">
+      <Helmet>
+        <title>Methodology — How We Score Nursing Homes | The Oversight Report</title>
+        <meta name="description" content="Our composite risk scoring methodology. How we combine CMS staffing data, inspection citations, penalties, and ownership patterns." />
+        <link rel="canonical" href="https://oversightreports.com/methodology" />
+      </Helmet>
       {/* Hero */}
       <div className="methodology-hero">
         <div className="methodology-hero-content">

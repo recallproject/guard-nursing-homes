@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import RiskBadge from '../components/RiskBadge';
 import ComingSoonPage from '../components/ComingSoonPage';
@@ -314,6 +315,11 @@ The Oversight Report identifies patterns and discrepancies in publicly available
 
   return (
     <div className="ownership-page">
+      <Helmet>
+        <title>Nursing Home Ownership Lookup | The Oversight Report</title>
+        <meta name="description" content="Search nursing home owners and operators. See portfolio performance, average ratings, and patterns across all facilities." />
+        <link rel="canonical" href="https://oversightreports.com/ownership" />
+      </Helmet>
       {/* Header */}
       <div className="ownership-header" ref={headerRef}>
         <h1>Ownership Network Explorer</h1>

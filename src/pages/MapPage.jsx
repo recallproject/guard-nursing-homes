@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import HeroSection from '../components/HeroSection';
 import USAMap from '../components/USAMap';
@@ -156,6 +157,11 @@ export function MapPage() {
 
   return (
     <div className="map-page">
+      <Helmet>
+        <title>The Oversight Report — Nursing Home Safety Data</title>
+        <meta name="description" content="Search 14,713 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />
+        <link rel="canonical" href="https://oversightreports.com/" />
+      </Helmet>
       {/* Hero Section */}
       {(view === 'hero' || view === 'states') && (
         <HeroSection
