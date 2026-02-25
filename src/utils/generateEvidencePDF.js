@@ -1,5 +1,7 @@
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import jsPDFModule from 'jspdf';
+import autoTable from 'jspdf-autotable';
+
+const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
 
 /**
  * Generates a professional, litigation-ready Evidence Package PDF
@@ -641,7 +643,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       fmt(NATIONAL_AVG.total_fines)
     ]);
 
-    doc.autoTable({
+    autoTable(doc, {
       startY: currentY,
       head: [['Facility', 'Location', 'Stars', 'Risk', 'Deficiencies', 'Total Fines']],
       body: portfolioTableData,
@@ -763,7 +765,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     ['CMS Stars (Overall)', `${facility.stars || 'N/A'}/5`, `${NATIONAL_AVG.stars}/5`, facility.stars ? `${(facility.stars - NATIONAL_AVG.stars).toFixed(1)}` : 'N/A']
   ];
 
-  doc.autoTable({
+  autoTable(doc, {
     startY: currentY,
     head: [staffingComparison[0]],
     body: staffingComparison.slice(1),
@@ -947,7 +949,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       ];
     });
 
-    doc.autoTable({
+    autoTable(doc, {
       startY: currentY,
       head: [['Scope/Severity', 'Survey Date', 'F-Tag', 'Deficiency Description']],
       body: deficiencyTableData,
@@ -1081,7 +1083,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       ''
     ]);
 
-    doc.autoTable({
+    autoTable(doc, {
       startY: currentY,
       head: [['Date', 'Amount', 'Type', 'Description']],
       body: penaltyTableData,
@@ -1271,7 +1273,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     ['Contract Staffing %', pct(facility.contractor_pct), `${NATIONAL_AVG.contractor_pct}%`, calculatePercentile(facility.contractor_pct, NATIONAL_AVG.contractor_pct, true)]
   ];
 
-  doc.autoTable({
+  autoTable(doc, {
     startY: currentY,
     head: [comparisonData[0]],
     body: comparisonData.slice(1),
@@ -1344,7 +1346,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       ];
     });
 
-    doc.autoTable({
+    autoTable(doc, {
       startY: currentY,
       head: [['Facility', 'Distance', 'City', 'Stars', 'Risk', 'HPRD', 'Fines']],
       body: altData,
