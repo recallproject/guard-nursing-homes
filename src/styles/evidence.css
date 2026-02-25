@@ -433,6 +433,67 @@
   line-height: 1.6;
 }
 
+/* === Purchase Gate === */
+.ev-purchase-gate {
+  position: relative;
+  margin: -200px auto 3rem;
+  max-width: 560px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  z-index: 10;
+}
+
+.ev-purchase-gate h2 {
+  font-family: 'DM Serif Display', serif;
+  color: var(--text-white);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.ev-purchase-gate p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.ev-purchase-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ev-buy-single {
+  background: var(--accent-teal);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ev-buy-single:hover {
+  background: #2dd4a8;
+}
+
+.ev-subscribe-link {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.ev-subscribe-link:hover {
+  color: var(--accent-teal);
+  text-decoration: underline;
+}
+
 /* === Text Utilities === */
 .ev-text-muted {
   color: var(--text-muted);

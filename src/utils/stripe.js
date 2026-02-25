@@ -33,4 +33,21 @@ export function checkout(priceKey) {
   window.location.href = url;
 }
 
+// Single report purchase — $29 one-time
+const SINGLE_REPORT_LINK = null; // Rob: create a $29 one-time Payment Link in Stripe and paste URL here
+
+/**
+ * Redirect to Stripe for a single evidence report purchase
+ * @param {string} ccn - Facility CCN to store for post-payment PDF delivery
+ */
+export function checkoutSingleReport(ccn) {
+  if (!SINGLE_REPORT_LINK) {
+    alert('Single report purchase is coming soon. Subscribe to Professional for immediate access.');
+    return;
+  }
+  localStorage.setItem('pending_tier', 'professional');
+  localStorage.setItem('pending_single_report', ccn);
+  window.location.href = SINGLE_REPORT_LINK;
+}
+
 export { PAYMENT_LINKS };

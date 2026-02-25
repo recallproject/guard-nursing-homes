@@ -5,6 +5,7 @@ import { haversineDistance } from '../utils/haversine';
 import { generateEvidencePDF } from '../utils/generateEvidencePDF';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
+import { checkoutSingleReport } from '../utils/stripe';
 import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/evidence.css';
 
@@ -153,7 +154,7 @@ export function EvidencePage() {
 
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  // Gate check - if not professional tier, show upgrade prompt
+  // Gate check - if not professional tier, show purchase options
   if (!canAccess(tier, 'professional')) {
     return (
       <div className="ev">
@@ -161,17 +162,24 @@ export function EvidencePage() {
           <Link to={`/facility/${ccn}`} className="ev-back">Back to Report Card</Link>
           <h2 className="ev-badge">Evidence Package</h2>
         </div>
-        <UpgradePrompt
-          requiredTier="professional"
-          featureName="Evidence Package"
-        >
-          <div className="ev-body" style={{ opacity: 0.4 }}>
-            <section className="ev-section ev-cover">
-              <div className="ev-logo">THE OVERSIGHT REPORT</div>
-              <h1 className="ev-facility-name">{facility?.name || 'Facility Name'}</h1>
-            </section>
+        <div className="ev-body" style={{ opacity: 0.4, filter: 'blur(3px)', pointerEvents: 'none' }}>
+          <section className="ev-section ev-cover">
+            <div className="ev-logo">THE OVERSIGHT REPORT</div>
+            <h1 className="ev-facility-name">{facility?.name || 'Facility Name'}</h1>
+          </section>
+        </div>
+        <div className="ev-purchase-gate">
+          <h2>Evidence Package — {facility.name}</h2>
+          <p>10-section litigation-ready report with staffing data, inspection history, penalties, ownership profile, and nearby alternatives.</p>
+          <div className="ev-purchase-options">
+            <button className="ev-buy-single" onClick={() => checkoutSingleReport(ccn)}>
+              Buy This Report — $29
+            </button>
+            <Link to="/pricing" className="ev-subscribe-link">
+              or subscribe from $59/mo for unlimited reports
+            </Link>
           </div>
-        </UpgradePrompt>
+        </div>
       </div>
     );
   }
