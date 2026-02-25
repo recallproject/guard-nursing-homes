@@ -675,13 +675,13 @@ export function AGToolkitPage() {
           {/* Table explainer */}
           <div className="ag-toolkit-table-explainer">
             {activeTab === 'staffing' && (
-              <>Hours per resident per day — how many hours of nursing care each resident receives on average. <strong>Red</strong> = below the AG-proposed minimum. <strong>Green</strong> = meets or exceeds it. The "/" shows actual vs. target.</>
+              <>Staffing data from CMS Payroll-Based Journal, Q3 2025. Hours per resident per day — how many hours of nursing care each resident receives on average. <span className="ag-toolkit-text-red">Red</span> = below the AG-proposed minimum. <span className="ag-toolkit-text-green">Green</span> = meets or exceeds it. The "/" shows actual vs. target.</>
             )}
             {activeTab === 'zero-rn' && (
-              <>Federal law requires a registered nurse (RN) on site at least 8 hours every day. "Zero-RN Days" shows the percentage of days in Q3 2025 where the facility reported <strong>no RN hours at all</strong> — based on payroll data the facility submitted to CMS.</>
+              <>Staffing data from CMS Payroll-Based Journal, Q3 2025. Federal law requires a registered nurse (RN) on site at least 8 hours every day. "Zero-RN Days" shows the percentage of days where the facility reported <strong>no RN hours at all</strong> — based on payroll data the facility submitted to CMS.</>
             )}
             {activeTab === 'ownership' && (
-              <>For-profit operators with 5+ facilities where patterns of low staffing, jeopardy citations, or significant fines suggest systemic issues across the portfolio.</>
+              <>Staffing data Q3 2025 · Deficiencies 2017–2025 · Penalties 2023–2025. For-profit operators with 5+ facilities where patterns of low staffing, jeopardy citations, or significant fines suggest systemic issues across the portfolio.</>
             )}
           </div>
 

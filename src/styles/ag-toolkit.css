@@ -325,24 +325,30 @@
    TABLE EXPLAINER
    ======================================== */
 .ag-toolkit-table-explainer {
-  max-width: 1400px;
+  max-width: 1360px;
   margin: 0 auto 1.25rem;
   padding: 0.875rem 1.25rem;
-  margin-left: auto;
-  margin-right: auto;
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 8px;
-  max-width: 1360px;
-  margin-left: 2rem;
-  margin-right: 2rem;
+  text-align: center;
 }
 
 .ag-toolkit-table-explainer strong {
   color: var(--text-cream);
+}
+
+.ag-toolkit-text-red {
+  color: var(--risk-critical);
+  font-weight: 600;
+}
+
+.ag-toolkit-text-green {
+  color: var(--accent-green);
+  font-weight: 600;
 }
 
 /* ========================================
