@@ -1,0 +1,95 @@
+import { useState } from 'react';
+
+/**
+ * Email capture modal for AG Toolkit CSV exports
+ * Collects name, organization, email (required) + title (optional)
+ * Saves submissions to localStorage
+ */
+export function EmailCaptureModal({ state, onSubmit, onClose }) {
+  const [form, setForm] = useState({
+    name: '',
+    organization: '',
+    email: '',
+    title: '',
+    state: state || '',
+  });
+
+  const isValid = form.name.trim() && form.organization.trim() && form.email.trim() && form.email.includes('@');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isValid) return;
+
+    // Save to localStorage
+    const submissions = JSON.parse(localStorage.getItem('ag_toolkit_submissions') || '[]');
+    submissions.push({ ...form, timestamp: new Date().toISOString() });
+    localStorage.setItem('ag_toolkit_submissions', JSON.stringify(submissions));
+
+    onSubmit(form);
+  };
+
+  const handleChange = (field) => (e) => {
+    setForm(prev => ({ ...prev, [field]: e.target.value }));
+  };
+
+  return (
+    <div className="email-modal-overlay" onClick={onClose}>
+      <div className="email-modal" onClick={(e) => e.stopPropagation()}>
+        <h2>Export State Report</h2>
+        <p>Enter your details to download the CSV. Your information helps us understand who uses this data.</p>
+
+        <form onSubmit={handleSubmit}>
+          <div className="email-modal-field">
+            <label>Name <span className="field-required">*</span></label>
+            <input
+              type="text"
+              value={form.name}
+              onChange={handleChange('name')}
+              placeholder="Jane Smith"
+              autoFocus
+            />
+          </div>
+
+          <div className="email-modal-field">
+            <label>Organization <span className="field-required">*</span></label>
+            <input
+              type="text"
+              value={form.organization}
+              onChange={handleChange('organization')}
+              placeholder="Office of the Attorney General"
+            />
+          </div>
+
+          <div className="email-modal-field">
+            <label>Email <span className="field-required">*</span></label>
+            <input
+              type="email"
+              value={form.email}
+              onChange={handleChange('email')}
+              placeholder="jane.smith@state.gov"
+            />
+          </div>
+
+          <div className="email-modal-field">
+            <label>Title (optional)</label>
+            <input
+              type="text"
+              value={form.title}
+              onChange={handleChange('title')}
+              placeholder="Assistant Attorney General"
+            />
+          </div>
+
+          <div className="email-modal-actions">
+            <button type="button" className="email-modal-cancel" onClick={onClose}>
+              Cancel
+            </button>
+            <button type="submit" className="email-modal-submit" disabled={!isValid}>
+              Download CSV
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

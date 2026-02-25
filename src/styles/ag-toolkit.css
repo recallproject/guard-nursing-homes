@@ -1,0 +1,773 @@
+/* ========================================
+   AG SCREENING TOOLKIT PAGE
+   Enforcement-ready analysis for AG offices
+   Follows screening.css patterns
+   ======================================== */
+
+.ag-toolkit-page {
+  min-height: 100vh;
+  background: var(--bg-deep);
+  padding: 3rem 0;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.ag-toolkit-header {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.ag-toolkit-header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: var(--text-white);
+}
+
+.ag-toolkit-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.ag-toolkit-context {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  background: rgba(79, 70, 229, 0.08);
+  border: 1px solid rgba(79, 70, 229, 0.25);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-cream);
+  text-align: left;
+}
+
+.ag-toolkit-context strong {
+  color: var(--primary-light);
+}
+
+/* ========================================
+   STATE SELECTOR
+   ======================================== */
+.ag-toolkit-selector {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ag-toolkit-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-cream);
+}
+
+.ag-toolkit-select {
+  flex: 0 0 300px;
+  padding: 0.875rem 1.25rem;
+  font-size: 1rem;
+  color: var(--text-white);
+  background-color: var(--bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ag-toolkit-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
+}
+
+/* ========================================
+   SUMMARY STATS CARDS
+   ======================================== */
+.ag-toolkit-stats {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.25rem;
+}
+
+.ag-toolkit-stat-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ag-toolkit-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ag-toolkit-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 0.4rem;
+}
+
+.ag-toolkit-stat-value.stat-danger {
+  color: var(--risk-critical);
+}
+
+.ag-toolkit-stat-value.stat-warning {
+  color: var(--risk-elevated);
+}
+
+.ag-toolkit-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.3;
+}
+
+/* ========================================
+   TABS
+   ======================================== */
+.ag-toolkit-tabs {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.ag-toolkit-tab {
+  padding: 0.875rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+  margin-bottom: -2px;
+  white-space: nowrap;
+}
+
+.ag-toolkit-tab:hover {
+  color: var(--text-cream);
+}
+
+.ag-toolkit-tab.active {
+  color: var(--primary-light);
+  border-bottom-color: var(--primary);
+}
+
+.ag-toolkit-tab-count {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+.ag-toolkit-tab.active .ag-toolkit-tab-count {
+  background: rgba(79, 70, 229, 0.2);
+  color: var(--primary-light);
+}
+
+/* ========================================
+   FILTER BAR
+   ======================================== */
+.ag-toolkit-filters {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 1.25rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.ag-toolkit-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ag-toolkit-filter-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-cream);
+  white-space: nowrap;
+}
+
+.ag-toolkit-filter-group select,
+.ag-toolkit-filter-group input[type="number"] {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-white);
+  background-color: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.ag-toolkit-filter-group input[type="number"] {
+  width: 80px;
+}
+
+.ag-toolkit-filter-group select:focus,
+.ag-toolkit-filter-group input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.ag-toolkit-filter-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.ag-toolkit-filter-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-cream);
+  cursor: pointer;
+}
+
+.ag-toolkit-filter-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+/* ========================================
+   TABLE HEADER (Result Count + Export)
+   ======================================== */
+.ag-toolkit-table-header {
+  max-width: 1400px;
+  margin: 0 auto 1.5rem;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ag-toolkit-result-count {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.ag-toolkit-export-btn {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-white);
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ag-toolkit-export-btn:hover {
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+/* ========================================
+   RESULTS TABLE
+   ======================================== */
+.ag-toolkit-table-wrapper {
+  max-width: 1400px;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  overflow-x: auto;
+}
+
+.ag-toolkit-table {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+.ag-toolkit-table thead {
+  background: var(--bg-elevated);
+}
+
+.ag-toolkit-table th {
+  padding: 0.875rem 0.75rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.ag-toolkit-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-fast);
+}
+
+.ag-toolkit-table th.sortable:hover {
+  color: var(--primary-light);
+}
+
+.ag-toolkit-table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+
+.ag-toolkit-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ag-toolkit-table tbody tr:hover {
+  background: rgba(79, 70, 229, 0.1);
+}
+
+.ag-toolkit-table td {
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text-cream);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ag-toolkit-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Cell styles */
+.ag-toolkit-rank {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  width: 50px;
+}
+
+.ag-toolkit-facility-link {
+  background: none;
+  border: none;
+  color: var(--primary-light);
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.ag-toolkit-facility-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.ag-toolkit-owner {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-toolkit-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.ag-toolkit-hprd-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.ag-toolkit-hprd-pass {
+  color: var(--accent-green);
+  font-weight: 600;
+}
+
+.ag-toolkit-hprd-fail {
+  color: var(--risk-critical);
+  font-weight: 600;
+}
+
+.ag-toolkit-stars {
+  font-size: 0.95rem;
+  color: var(--accent-gold);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ag-toolkit-fines {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.ag-toolkit-flag-yes {
+  color: var(--risk-critical);
+  font-weight: 600;
+}
+
+.ag-toolkit-flag-no {
+  color: var(--text-muted);
+}
+
+/* Zero-RN bar */
+.ag-toolkit-zero-rn-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ag-toolkit-zero-rn-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 60px;
+}
+
+.ag-toolkit-zero-rn-fill {
+  height: 100%;
+  background: var(--risk-critical);
+  border-radius: 4px;
+  transition: width var(--transition-normal);
+}
+
+.ag-toolkit-zero-rn-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--risk-critical);
+  min-width: 45px;
+  text-align: right;
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+.ag-toolkit-empty {
+  max-width: 1400px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.ag-toolkit-empty p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* ========================================
+   EMAIL CAPTURE MODAL
+   ======================================== */
+.email-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.email-modal {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: var(--shadow-2xl);
+}
+
+.email-modal h2 {
+  font-size: 1.5rem;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+
+.email-modal p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+  line-height: 1.5;
+}
+
+.email-modal-field {
+  margin-bottom: 1.25rem;
+}
+
+.email-modal-field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-cream);
+  margin-bottom: 0.4rem;
+}
+
+.email-modal-field input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text-white);
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  transition: border-color var(--transition-fast);
+}
+
+.email-modal-field input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.email-modal-field input::placeholder {
+  color: var(--text-muted);
+}
+
+.email-modal-field .field-required {
+  color: var(--risk-critical);
+}
+
+.email-modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.email-modal-actions button {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.email-modal-submit {
+  background: var(--primary);
+  color: var(--text-white);
+}
+
+.email-modal-submit:hover {
+  background: var(--primary-dark);
+}
+
+.email-modal-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.email-modal-cancel {
+  background: var(--bg-elevated);
+  color: var(--text-cream);
+}
+
+.email-modal-cancel:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================================
+   DATA SOURCE FOOTER
+   ======================================== */
+.ag-toolkit-data-source {
+  max-width: 1400px;
+  margin: 2rem auto 1rem;
+  padding: 0 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ========================================
+   DISCLAIMER
+   ======================================== */
+.ag-toolkit-disclaimer {
+  max-width: 1000px;
+  margin: 2rem auto 3rem;
+  padding: 1.5rem;
+  background: rgba(245, 158, 11, 0.1);
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-cream);
+  text-align: center;
+}
+
+/* ========================================
+   LOADING & ERROR STATES
+   ======================================== */
+.ag-toolkit-loading,
+.ag-toolkit-error {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.ag-toolkit-error h2 {
+  color: var(--risk-critical);
+}
+
+.ag-toolkit-error p {
+  color: var(--text-muted);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1200px) {
+  .ag-toolkit-table-wrapper {
+    padding: 0 1rem;
+  }
+
+  .ag-toolkit-table th,
+  .ag-toolkit-table td {
+    padding: 0.625rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ag-toolkit-page {
+    padding: 2rem 0;
+  }
+
+  .ag-toolkit-header {
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .ag-toolkit-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .ag-toolkit-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .ag-toolkit-context {
+    font-size: 0.875rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .ag-toolkit-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .ag-toolkit-select {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .ag-toolkit-stats {
+    padding: 0 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .ag-toolkit-stat-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .ag-toolkit-stat-value {
+    font-size: 1.75rem;
+  }
+
+  .ag-toolkit-tabs {
+    padding: 0 1rem;
+    overflow-x: auto;
+  }
+
+  .ag-toolkit-tab {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .ag-toolkit-filters {
+    padding: 1rem;
+    gap: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .ag-toolkit-filter-group,
+  .ag-toolkit-filter-checkbox {
+    width: 100%;
+  }
+
+  .ag-toolkit-filter-group select {
+    flex: 1;
+  }
+
+  .ag-toolkit-table-header {
+    padding: 0 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ag-toolkit-table-wrapper {
+    padding: 0 0.5rem;
+  }
+
+  .ag-toolkit-table th,
+  .ag-toolkit-table td {
+    padding: 0.5rem 0.375rem;
+    font-size: 0.7rem;
+  }
+
+  /* Hide less critical columns on mobile */
+  .ag-toolkit-table .hide-mobile {
+    display: none;
+  }
+
+  .email-modal {
+    padding: 1.5rem;
+  }
+
+  .ag-toolkit-disclaimer {
+    padding: 1rem;
+    margin: 1.5rem 1rem 2rem;
+  }
+}

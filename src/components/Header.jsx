@@ -77,8 +77,9 @@ export function Header({ onSearchOpen, transparent = false }) {
     },
     {
       label: 'Professionals',
-      paths: ['/screening', '/discrepancies', '/ownership', '/evidence'],
+      paths: ['/screening', '/discrepancies', '/ownership', '/evidence', '/ag-toolkit'],
       items: [
+        { to: '/ag-toolkit', label: 'AG Toolkit', desc: 'Enforcement-ready staffing violation analysis' },
         { to: '/screening', label: 'State Screening', desc: 'AG investigation reports by state' },
         { to: '/discrepancies', label: 'Staffing Discrepancies', desc: 'Facilities overstating staffing levels' },
         { to: '/ownership', label: 'Ownership Networks', desc: 'Explore multi-facility owner portfolios' },
