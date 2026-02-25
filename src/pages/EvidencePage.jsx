@@ -7,7 +7,7 @@ import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/evidence.css';
 
 export function EvidencePage() {
-  const COMING_SOON = true;
+  const COMING_SOON = false;
   const { ccn } = useParams();
   const { data, loading, error } = useFacilityData();
 

@@ -28,7 +28,8 @@ const features = [
     icon: '\uD83D\uDCC4',
     title: 'Download Reports',
     description: 'Download a detailed PDF safety report for any facility — clinical context, percentile rankings, and a visit checklist.',
-    coming: true,
+    live: true,
+    to: '/evidence/:ccn',
   },
   {
     icon: '\uD83D\uDD14',
