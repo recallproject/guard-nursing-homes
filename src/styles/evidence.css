@@ -468,19 +468,21 @@
 }
 
 .ev-buy-single {
-  background: var(--accent-teal);
+  background: var(--primary);
   color: #fff;
   border: none;
-  padding: 0.9rem 2.5rem;
+  padding: 1rem 3rem;
   border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
 }
 
 .ev-buy-single:hover {
-  background: #2dd4a8;
+  background: var(--primary-light);
+  transform: translateY(-1px);
 }
 
 .ev-subscribe-link {
@@ -490,7 +492,7 @@
 }
 
 .ev-subscribe-link:hover {
-  color: var(--accent-teal);
+  color: var(--primary-light);
   text-decoration: underline;
 }
 
