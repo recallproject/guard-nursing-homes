@@ -2,8 +2,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
 /**
- * Generates a litigation-ready Evidence Package PDF
- * B&W printer-friendly, professional formatting
+ * Generates a professional, litigation-ready Evidence Package PDF
  *
  * @param {Object} facility - The facility data object
  * @param {Array} nearbyAlternatives - Array of nearby facilities with better scores
@@ -23,160 +22,346 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   let currentY = margin;
   let pageNumber = 1;
 
-  // Helper functions
-  const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${v.toLocaleString()}`;
-  const pct = (v) => (v === null || v === undefined) ? 'N/A' : `${v.toFixed(0)}%`;
-  const num = (v) => (v === null || v === undefined) ? 'N/A' : v.toFixed(1);
+  // ============= COLOR SCHEME =============
+  const NAVY = [27, 42, 74];
+  const STEEL = [74, 85, 104];
+  const BODY = [26, 32, 44];
+  const LIGHT_BG = [247, 250, 252];
+  const RED_BG = [255, 245, 245];
+  const AMBER_BG = [255, 255, 240];
+  const BLUE_BG = [235, 248, 255];
+  const GREEN = [45, 125, 70];
+  const AMBER = [183, 121, 31];
+  const RED = [197, 48, 48];
+  const WHITE = [255, 255, 255];
+  const TABLE_ALT = [245, 247, 250];
+  const TABLE_HEADER = [27, 42, 74];
 
-  // Footer on every page
-  const addFooter = () => {
+  // ============= NATIONAL AVERAGES =============
+  const NATIONAL_AVG = {
+    total_hprd: 3.82,
+    rn_hprd: 0.54,
+    cna_hprd: 2.18,
+    zero_rn_pct: 8.0,
+    composite: 32.1,
+    total_fines: 28000,
+    stars: 3.2,
+    total_deficiencies: 8.5,
+    contractor_pct: 12.0
+  };
+
+  // ============= HELPER FUNCTIONS =============
+
+  const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${v.toLocaleString()}`;
+  const pct = (v) => (v === null || v === undefined) ? 'N/A' : `${v.toFixed(1)}%`;
+  const num = (v) => (v === null || v === undefined) ? 'N/A' : v.toFixed(2);
+
+  /**
+   * Returns color array based on value vs thresholds
+   */
+  function riskColor(value, thresholds) {
+    if (value === null || value === undefined) return STEEL;
+    if (value >= thresholds.red) return RED;
+    if (value >= thresholds.amber) return AMBER;
+    return GREEN;
+  }
+
+  /**
+   * Adds a navy bar section header
+   */
+  function addSectionHeader(number, title) {
+    checkPageBreak(20);
+    doc.setFillColor(...NAVY);
+    doc.rect(margin, currentY, contentWidth, 10, 'F');
+    doc.setTextColor(...WHITE);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.text(`${number}. ${title}`, margin + 3, currentY + 7);
+    doc.setTextColor(...BODY);
+    currentY += 15;
+  }
+
+  /**
+   * Adds an alert box with colored left border
+   */
+  function addAlertBox(text, type, y, leftMargin, width) {
+    let bgColor, borderColor;
+
+    if (type === 'critical') {
+      bgColor = RED_BG;
+      borderColor = RED;
+    } else if (type === 'warning') {
+      bgColor = AMBER_BG;
+      borderColor = AMBER;
+    } else { // info
+      bgColor = BLUE_BG;
+      borderColor = NAVY;
+    }
+
+    const lines = doc.splitTextToSize(text, width - 8);
+    const boxHeight = (lines.length * 4.5) + 6;
+
+    // Background
+    doc.setFillColor(...bgColor);
+    doc.rect(leftMargin, y, width, boxHeight, 'F');
+
+    // Left border
+    doc.setFillColor(...borderColor);
+    doc.rect(leftMargin, y, 3, boxHeight, 'F');
+
+    // Text
+    doc.setTextColor(...BODY);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(9);
+    doc.text(lines, leftMargin + 5, y + 4);
+
+    return y + boxHeight + 5;
+  }
+
+  /**
+   * Adds a metric box with label, value, and national average
+   */
+  function addMetricBox(label, value, nationalAvg, unit, x, y, width) {
+    const boxHeight = 25;
+
+    // Box background
+    doc.setFillColor(...LIGHT_BG);
+    doc.setDrawColor(...STEEL);
+    doc.setLineWidth(0.3);
+    doc.rect(x, y, width, boxHeight, 'FD');
+
+    // Label
     doc.setFontSize(8);
-    doc.setTextColor(100, 100, 100);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text(label, x + width / 2, y + 5, { align: 'center' });
+
+    // Value
+    doc.setFontSize(18);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    const displayValue = value !== null && value !== undefined ? `${value}${unit}` : 'N/A';
+    doc.text(displayValue, x + width / 2, y + 15, { align: 'center' });
+
+    // National average
+    if (nationalAvg !== null && nationalAvg !== undefined) {
+      doc.setFontSize(7);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...STEEL);
+      doc.text(`Nat'l avg: ${nationalAvg}${unit}`, x + width / 2, y + 21, { align: 'center' });
+    }
+
+    return y + boxHeight + 5;
+  }
+
+  /**
+   * Adds footer to current page
+   */
+  function addFooter(facilityData, pageNum, width, height) {
+    doc.setFontSize(8);
+    doc.setTextColor(...STEEL);
     doc.text(
-      `${facility.name} | CCN: ${facility.ccn}`,
+      `${facilityData.name} | CCN: ${facilityData.ccn}`,
       margin,
-      pageHeight - 10
+      height - 10
     );
     doc.text(
-      `Page ${pageNumber}`,
-      pageWidth - margin,
-      pageHeight - 10,
+      `Page ${pageNum}`,
+      width - margin,
+      height - 10,
       { align: 'right' }
     );
     doc.setFontSize(7);
     doc.text(
-      `Source: CMS Care Compare, PBJ, Health Deficiencies, Penalties (Data through Q3 2025)`,
-      pageWidth / 2,
-      pageHeight - 5,
+      'Source: CMS Provider Data | Generated by The Oversight Report | oversightreports.com',
+      width / 2,
+      height - 5,
       { align: 'center' }
     );
-  };
+  }
 
-  // Add new page helper
-  const addNewPage = () => {
+  /**
+   * Adds a data row (label on left, value on right)
+   */
+  function addDataRow(label, value) {
+    checkPageBreak(8);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text(label, margin + 2, currentY);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    doc.text(value.toString(), pageWidth - margin - 2, currentY, { align: 'right' });
+    currentY += 6;
+  }
+
+  /**
+   * Adds new page
+   */
+  function addNewPage() {
     doc.addPage();
     pageNumber++;
     currentY = margin;
-    addFooter();
-  };
+    addFooter(facility, pageNumber, pageWidth, pageHeight);
+  }
 
-  // Check if we need a new page
-  const checkPageBreak = (requiredSpace) => {
+  /**
+   * Checks if we need a page break
+   */
+  function checkPageBreak(requiredSpace) {
     if (currentY + requiredSpace > pageHeight - 25) {
       addNewPage();
       return true;
     }
     return false;
-  };
-
-  // Section header helper
-  const addSectionHeader = (number, title) => {
-    checkPageBreak(20);
-    doc.setFontSize(14);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(0, 0, 0);
-    doc.text(`${number}. ${title}`, margin, currentY);
-    currentY += 3;
-    doc.setDrawColor(0, 0, 0);
-    doc.setLineWidth(0.5);
-    doc.line(margin, currentY, pageWidth - margin, currentY);
-    currentY += 8;
-  };
-
-  // Data row helper
-  const addDataRow = (label, value) => {
-    checkPageBreak(10);
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(80, 80, 80);
-    doc.text(label, margin + 2, currentY);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(0, 0, 0);
-    doc.text(value.toString(), pageWidth - margin - 2, currentY, { align: 'right' });
-    currentY += 6;
-  };
-
-  // Red flags logic
-  const redFlags = [];
-  if (facility.jeopardy_count > 0) {
-    redFlags.push(`Serious danger citations: ${facility.jeopardy_count}`);
-  }
-  if (facility.harm_count > 0) {
-    redFlags.push(`Residents hurt: ${facility.harm_count}`);
-  }
-  if (facility.rn_gap_pct > 30) {
-    redFlags.push(`Staffing discrepancy: ${pct(facility.rn_gap_pct)} gap`);
-  }
-  if (facility.zero_rn_pct > 25) {
-    redFlags.push(`Zero-RN days: ${pct(facility.zero_rn_pct)}`);
-  }
-  if (facility.total_fines > 100000) {
-    redFlags.push(`High financial penalties: ${fmt(facility.total_fines)}`);
   }
 
-  // Executive summary generator
-  const getExecutiveSummary = () => {
-    const parts = [];
-    const score = facility.composite || 0;
+  // ============= DYNAMIC ASSESSMENT GENERATOR =============
 
-    if (score >= 70) {
-      parts.push('This facility shows significant patterns of concern in federal data.');
-    } else if (score >= 50) {
-      parts.push('This facility shows some patterns of concern in federal data.');
-    } else {
-      parts.push('This facility shows relatively few concerns in federal data.');
+  function generateExecutiveSummary() {
+    const sentences = [];
+
+    // Penalties
+    if (facility.total_fines && facility.total_fines > 0 && facility.fine_count) {
+      sentences.push(
+        `This facility has been assessed ${fmt(facility.total_fines)} in federal penalties across ${facility.fine_count} enforcement action${facility.fine_count > 1 ? 's' : ''}.`
+      );
     }
 
+    // Jeopardy and harm
     if (facility.jeopardy_count > 0 || facility.harm_count > 0) {
-      parts.push(`Inspectors documented serious safety issues including ${facility.jeopardy_count > 0 ? 'conditions posing serious danger to residents' : 'actual harm to residents'}.`);
+      const parts = [];
+      if (facility.jeopardy_count > 0) {
+        parts.push(`${facility.jeopardy_count} instance${facility.jeopardy_count > 1 ? 's' : ''} of immediate jeopardy`);
+      }
+      if (facility.harm_count > 0) {
+        parts.push(`${facility.harm_count} instance${facility.harm_count > 1 ? 's' : ''} of actual harm`);
+      }
+      sentences.push(
+        `State inspectors documented ${parts.join(' and ')} — conditions posing serious danger to residents.`
+      );
+    }
+
+    // Zero RN
+    if (facility.zero_rn_pct > 0) {
+      sentences.push(
+        `The facility reports zero registered nurse coverage on ${facility.zero_rn_pct.toFixed(1)}% of days, a potential violation of 42 CFR §483.35.`
+      );
+    }
+
+    // Ownership
+    if (facility.worst_owner && facility.owner_portfolio_count > 1) {
+      const avgStars = facility.owner_avg_stars || 'N/A';
+      sentences.push(
+        `The facility is operated by ${facility.worst_owner}, whose portfolio of ${facility.owner_portfolio_count} facilities averages ${avgStars} CMS stars.`
+      );
+    }
+
+    // Staffing below threshold
+    if (facility.total_hprd && facility.total_hprd < 3.48) {
+      const gap = ((1 - facility.total_hprd / 3.48) * 100).toFixed(0);
+      sentences.push(
+        `Total staffing of ${facility.total_hprd.toFixed(2)} hours per resident per day is ${gap}% below the 3.48 HPRD threshold cited by 18 state Attorneys General.`
+      );
+    }
+
+    return sentences.length > 0 ? sentences.join(' ') : 'This facility shows mixed performance in federal data.';
+  }
+
+  // ============= KEY FINDINGS GENERATOR =============
+
+  function generateKeyFindings() {
+    const findings = [];
+
+    if (facility.composite >= 60) {
+      findings.push(`High risk score: ${facility.composite.toFixed(1)} (national avg: ${NATIONAL_AVG.composite})`);
+    }
+
+    if (facility.jeopardy_count > 0) {
+      findings.push(`${facility.jeopardy_count} immediate jeopardy citation${facility.jeopardy_count > 1 ? 's' : ''}`);
+    }
+
+    if (facility.zero_rn_pct > 10) {
+      findings.push(`Zero-RN coverage on ${facility.zero_rn_pct.toFixed(1)}% of days`);
     }
 
     if (facility.total_fines > 50000) {
-      parts.push(`Federal regulators have imposed ${fmt(facility.total_fines)} in financial penalties.`);
-    } else if (facility.total_fines === 0) {
-      parts.push('No federal financial penalties recorded in recent data.');
+      findings.push(`${fmt(facility.total_fines)} in federal fines`);
     }
 
-    return parts.join(' ');
-  };
-
-  const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
-  // Compute ownership portfolio analysis
-  let ownershipPortfolio = null;
-  if (facility.worst_owner && allFacilities.length > 0) {
-    const portfolioFacilities = allFacilities.filter(f => f.worst_owner === facility.worst_owner);
-
-    if (portfolioFacilities.length > 1) {
-      const states = [...new Set(portfolioFacilities.map(f => f.state))];
-      const avgStars = portfolioFacilities.reduce((sum, f) => sum + (f.stars || 0), 0) / portfolioFacilities.length;
-      const avgFines = portfolioFacilities.reduce((sum, f) => sum + (f.total_fines || 0), 0) / portfolioFacilities.length;
-      const jeopardyFacilities = portfolioFacilities.filter(f => (f.jeopardy_count || 0) > 0).length;
-      const jeopardyPct = (jeopardyFacilities / portfolioFacilities.length) * 100;
-
-      ownershipPortfolio = {
-        count: portfolioFacilities.length,
-        states: states.length,
-        avgStars: avgStars.toFixed(1),
-        avgFines: avgFines,
-        jeopardyPct: jeopardyPct.toFixed(0)
-      };
+    if (facility.owner_portfolio_count > 10 && facility.owner_avg_stars < 3.0) {
+      findings.push(`Large portfolio (${facility.owner_portfolio_count} facilities) with low average stars`);
     }
+
+    if (findings.length === 0) {
+      findings.push('No major red flags identified in available federal data');
+    }
+
+    return findings;
   }
+
+  // ============= OWNERSHIP PORTFOLIO TABLE =============
+
+  function buildOwnershipPortfolio() {
+    if (!facility.worst_owner || !allFacilities || allFacilities.length === 0) {
+      return null;
+    }
+
+    const portfolioFacilities = allFacilities.filter(f =>
+      f.worst_owner === facility.worst_owner
+    );
+
+    if (portfolioFacilities.length <= 1) {
+      return null;
+    }
+
+    // Sort by composite score descending (worst first)
+    const sorted = portfolioFacilities
+      .sort((a, b) => (b.composite || 0) - (a.composite || 0))
+      .slice(0, 10);
+
+    // Calculate portfolio averages
+    const avgComposite = portfolioFacilities.reduce((sum, f) => sum + (f.composite || 0), 0) / portfolioFacilities.length;
+    const avgStars = portfolioFacilities.reduce((sum, f) => sum + (f.stars || 0), 0) / portfolioFacilities.length;
+    const avgFines = portfolioFacilities.reduce((sum, f) => sum + (f.total_fines || 0), 0) / portfolioFacilities.length;
+
+    return {
+      facilities: sorted,
+      count: portfolioFacilities.length,
+      avgComposite,
+      avgStars,
+      avgFines
+    };
+  }
+
+  // ============= START PDF GENERATION =============
+
+  const today = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
   // ============= PAGE 1: COVER PAGE =============
 
-  // Logo
-  doc.setFontSize(36);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
-  doc.text('THE OVERSIGHT REPORT', pageWidth / 2, 50, { align: 'center' });
-  currentY = 65;
+  // Navy bar at top
+  doc.setFillColor(...NAVY);
+  doc.rect(0, 0, pageWidth, 25, 'F');
 
-  doc.setFontSize(10);
+  // Title on navy bar
+  doc.setTextColor(...WHITE);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(24);
+  doc.text('THE OVERSIGHT REPORT', pageWidth / 2, 15, { align: 'center' });
+
+  currentY = 30;
+
+  // Subtitle
+  doc.setTextColor(...BODY);
+  doc.setFontSize(12);
   doc.setFont('helvetica', 'normal');
-  doc.text('EVIDENCE PACKAGE', pageWidth / 2, currentY, { align: 'center' });
-  currentY += 20;
+  doc.text('Evidence Package', pageWidth / 2, currentY, { align: 'center' });
+  currentY += 15;
 
   // Facility name
   doc.setFontSize(18);
@@ -195,28 +380,108 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.text(`${facility.city}, ${facility.state} ${facility.zip || ''}`, pageWidth / 2, currentY, { align: 'center' });
   currentY += 10;
 
+  // CCN
   doc.setFontSize(9);
-  doc.setTextColor(100, 100, 100);
-  doc.text(`CMS CCN: ${facility.ccn}`, pageWidth / 2, currentY, { align: 'center' });
-  currentY += 25;
-
-  // Confidential notice
-  doc.setDrawColor(200, 0, 0);
-  doc.setLineWidth(1);
-  doc.rect(margin + 30, currentY - 8, contentWidth - 60, 12);
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(200, 0, 0);
-  doc.text('CONFIDENTIAL — Prepared for authorized use', pageWidth / 2, currentY, { align: 'center' });
+  doc.setTextColor(...STEEL);
+  doc.setFont('courier', 'normal');
+  doc.text(`CCN: ${facility.ccn}`, pageWidth / 2, currentY, { align: 'center' });
   currentY += 20;
 
-  // Date generated
+  // Three metric boxes
+  const boxWidth = (contentWidth - 10) / 3;
+  const boxY = currentY;
+
+  // Risk Score
+  const riskColorArray = riskColor(facility.composite, { red: 60, amber: 40 });
+  doc.setFillColor(...LIGHT_BG);
+  doc.rect(margin, boxY, boxWidth, 25, 'F');
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...STEEL);
+  doc.text('RISK SCORE', margin + boxWidth / 2, boxY + 5, { align: 'center' });
+  doc.setFontSize(20);
+  doc.setTextColor(...riskColorArray);
+  doc.text((facility.composite || 0).toFixed(1), margin + boxWidth / 2, boxY + 16, { align: 'center' });
+
+  // CMS Stars
+  doc.setFillColor(...LIGHT_BG);
+  doc.rect(margin + boxWidth + 5, boxY, boxWidth, 25, 'F');
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...STEEL);
+  doc.text('CMS STARS', margin + boxWidth + 5 + boxWidth / 2, boxY + 5, { align: 'center' });
+  doc.setFontSize(20);
+  doc.setTextColor(...BODY);
+  doc.text(`${facility.stars || 0}/5`, margin + boxWidth + 5 + boxWidth / 2, boxY + 16, { align: 'center' });
+  // Star symbols
+  doc.setFontSize(12);
+  const starText = '★'.repeat(facility.stars || 0) + '☆'.repeat(5 - (facility.stars || 0));
+  doc.text(starText, margin + boxWidth + 5 + boxWidth / 2, boxY + 22, { align: 'center' });
+
+  // Total Fines
+  doc.setFillColor(...LIGHT_BG);
+  doc.rect(margin + (boxWidth + 5) * 2, boxY, boxWidth, 25, 'F');
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...STEEL);
+  doc.text('TOTAL FINES', margin + (boxWidth + 5) * 2 + boxWidth / 2, boxY + 5, { align: 'center' });
+  doc.setFontSize(16);
+  doc.setTextColor(...BODY);
+  const fineDisplay = facility.total_fines > 999
+    ? `$${(facility.total_fines / 1000).toFixed(0)}K`
+    : fmt(facility.total_fines);
+  doc.text(fineDisplay, margin + (boxWidth + 5) * 2 + boxWidth / 2, boxY + 16, { align: 'center' });
+
+  currentY = boxY + 32;
+
+  // Key findings box
+  const findings = generateKeyFindings();
+  const findingsBoxHeight = 10 + (findings.length * 6);
+
+  doc.setDrawColor(...NAVY);
+  doc.setFillColor(...LIGHT_BG);
+  doc.setLineWidth(0.5);
+  // Left border
+  doc.setFillColor(...NAVY);
+  doc.rect(margin, currentY, 3, findingsBoxHeight, 'F');
+  // Background
+  doc.setFillColor(...LIGHT_BG);
+  doc.rect(margin + 3, currentY, contentWidth - 3, findingsBoxHeight, 'F');
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...BODY);
+  doc.text('KEY FINDINGS', margin + 5, currentY + 6);
+
   doc.setFontSize(9);
-  doc.setTextColor(80, 80, 80);
+  doc.setFont('helvetica', 'normal');
+  let findingY = currentY + 12;
+  findings.forEach(finding => {
+    doc.text(`• ${finding}`, margin + 5, findingY);
+    findingY += 6;
+  });
+
+  currentY += findingsBoxHeight + 10;
+
+  // Generated date
+  doc.setFontSize(9);
+  doc.setTextColor(...STEEL);
   doc.setFont('helvetica', 'normal');
   doc.text(`Generated: ${today}`, pageWidth / 2, currentY, { align: 'center' });
+  currentY += 6;
+  doc.text('oversightreports.com', pageWidth / 2, currentY, { align: 'center' });
+  currentY += 10;
 
-  addFooter();
+  // Confidential notice
+  doc.setDrawColor(...RED);
+  doc.setLineWidth(1);
+  doc.rect(margin + 30, currentY - 5, contentWidth - 60, 10);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(...RED);
+  doc.text('CONFIDENTIAL — Prepared for authorized use', pageWidth / 2, currentY, { align: 'center' });
+
+  addFooter(facility, pageNumber, pageWidth, pageHeight);
 
   // ============= PAGE 2: TABLE OF CONTENTS =============
 
@@ -224,7 +489,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   doc.setFontSize(18);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
+  doc.setTextColor(...BODY);
   doc.text('TABLE OF CONTENTS', pageWidth / 2, currentY, { align: 'center' });
   currentY += 15;
 
@@ -240,214 +505,450 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     '9. Disclaimer'
   ];
 
-  doc.setFontSize(10);
+  doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
   tocItems.forEach(item => {
-    checkPageBreak(8);
     doc.text(item, margin + 5, currentY);
-    currentY += 7;
+    currentY += 8;
   });
 
-  // ============= PAGE 3: EXECUTIVE SUMMARY =============
+  // ============= PAGE 3+: SECTION 1 — EXECUTIVE SUMMARY =============
 
   addNewPage();
   addSectionHeader(1, 'Executive Summary');
 
-  // Key metrics box
-  doc.setDrawColor(200, 200, 200);
-  doc.setFillColor(248, 250, 252);
-  doc.rect(margin, currentY, contentWidth / 2 - 5, 30, 'FD');
-  doc.rect(margin + contentWidth / 2 + 5, currentY, contentWidth / 2 - 5, 30, 'FD');
+  // Three metric boxes in a row
+  const metricBoxWidth = (contentWidth - 10) / 3;
+  let metricX = margin;
 
-  // Risk score
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(100, 100, 100);
-  doc.text('RISK SCORE', margin + (contentWidth / 4) - 2.5, currentY + 8, { align: 'center' });
-  doc.setFontSize(20);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
-  doc.text((facility.composite?.toFixed(1) || 'N/A'), margin + (contentWidth / 4) - 2.5, currentY + 20, { align: 'center' });
+  currentY = addMetricBox(
+    'RISK SCORE',
+    facility.composite ? facility.composite.toFixed(1) : null,
+    NATIONAL_AVG.composite,
+    '',
+    metricX,
+    currentY,
+    metricBoxWidth
+  );
 
-  // Star rating
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(100, 100, 100);
-  doc.text('CMS STAR RATING', margin + contentWidth / 2 + 5 + (contentWidth / 4) - 2.5, currentY + 8, { align: 'center' });
-  doc.setFontSize(20);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
-  doc.text(`${facility.stars || 0}/5`, margin + contentWidth / 2 + 5 + (contentWidth / 4) - 2.5, currentY + 20, { align: 'center' });
+  currentY -= 30; // Reset to same line
+  metricX += metricBoxWidth + 5;
 
-  currentY += 38;
+  addMetricBox(
+    'CMS STARS',
+    facility.stars || 0,
+    NATIONAL_AVG.stars,
+    '/5',
+    metricX,
+    currentY,
+    metricBoxWidth
+  );
 
-  // Assessment text
+  metricX += metricBoxWidth + 5;
+
+  addMetricBox(
+    'TOTAL FINES',
+    facility.total_fines ? `$${(facility.total_fines / 1000).toFixed(0)}K` : '$0',
+    `$${(NATIONAL_AVG.total_fines / 1000).toFixed(0)}K`,
+    '',
+    metricX,
+    currentY,
+    metricBoxWidth
+  );
+
+  currentY += 30;
+
+  // Assessment paragraph
   doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
+  doc.setTextColor(...BODY);
   doc.text('Assessment:', margin, currentY);
   currentY += 6;
 
   doc.setFont('helvetica', 'normal');
-  const summaryText = doc.splitTextToSize(getExecutiveSummary(), contentWidth);
-  doc.text(summaryText, margin, currentY);
-  currentY += (summaryText.length * 5) + 10;
+  const summaryText = generateExecutiveSummary();
+  const summaryLines = doc.splitTextToSize(summaryText, contentWidth);
+  doc.text(summaryLines, margin, currentY);
+  currentY += (summaryLines.length * 5) + 10;
 
-  // ============= OWNERSHIP PROFILE =============
+  // ============= SECTION 2 — OWNERSHIP PROFILE =============
 
   checkPageBreak(60);
   addSectionHeader(2, 'Ownership Profile');
 
-  addDataRow('Owner Name:', facility.worst_owner || facility.chain_name || 'N/A');
-  addDataRow('Chain Name:', facility.chain_name || 'N/A');
+  addDataRow('Owner Name:', facility.worst_owner || 'N/A');
+  if (facility.chain_name) {
+    addDataRow('Chain Name:', facility.chain_name);
+  }
   addDataRow('Ownership Type:', facility.ownership_type || 'N/A');
-  addDataRow('Portfolio Size:', facility.owner_portfolio_count > 1 ? `${facility.owner_portfolio_count} facilities` : '1 facility');
+  addDataRow('Portfolio Size:', facility.owner_portfolio_count > 1
+    ? `${facility.owner_portfolio_count} facilities`
+    : '1 facility'
+  );
+
+  if (facility.pe_owned && facility.pe_owner_name) {
+    addDataRow('Private Equity Owner:', facility.pe_owner_name);
+  }
+  if (facility.reit_owned && facility.reit_owner_name) {
+    addDataRow('REIT Owner:', facility.reit_owner_name);
+  }
+  if (facility.ownership_changed_recently && facility.ownership_change_date) {
+    addDataRow('Ownership Change:', facility.ownership_change_date);
+    if (facility.new_owner_name) {
+      addDataRow('New Owner:', facility.new_owner_name);
+    }
+  }
 
   currentY += 5;
 
-  // Ownership Portfolio Analysis
-  if (ownershipPortfolio) {
-    checkPageBreak(30);
+  // Ownership Portfolio Table
+  const portfolio = buildOwnershipPortfolio();
+
+  if (portfolio) {
+    checkPageBreak(40);
+
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
     doc.text('Ownership Portfolio Analysis', margin, currentY);
     currentY += 7;
 
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
-    const portfolioText = `This facility is operated by ${facility.worst_owner}, who controls ${ownershipPortfolio.count} facilities across ${ownershipPortfolio.states} states. Average star rating: ${ownershipPortfolio.avgStars}. Average fines per facility: ${fmt(ownershipPortfolio.avgFines)}. ${ownershipPortfolio.jeopardyPct}% of portfolio facilities have immediate jeopardy citations.`;
-    const portfolioLines = doc.splitTextToSize(portfolioText, contentWidth);
-    doc.text(portfolioLines, margin, currentY);
-    currentY += (portfolioLines.length * 5) + 5;
+    const portfolioIntro = `This facility is operated by ${facility.worst_owner}, who controls ${portfolio.count} facilities. The table below shows the 10 highest-risk facilities in this portfolio.`;
+    const portfolioIntroLines = doc.splitTextToSize(portfolioIntro, contentWidth);
+    doc.text(portfolioIntroLines, margin, currentY);
+    currentY += (portfolioIntroLines.length * 5) + 5;
+
+    // Build table data
+    const portfolioTableData = portfolio.facilities.map(f => {
+      const flagsText = (f.flags && f.flags.length > 0)
+        ? f.flags.slice(0, 2).join('; ')
+        : 'None';
+
+      return [
+        f.name,
+        `${f.city}, ${f.state}`,
+        `${f.stars || 0}/5`,
+        (f.composite || 0).toFixed(1),
+        fmt(f.total_fines || 0),
+        flagsText
+      ];
+    });
+
+    // Add summary row
+    portfolioTableData.push([
+      'PORTFOLIO AVERAGE',
+      '',
+      portfolio.avgStars.toFixed(1),
+      portfolio.avgComposite.toFixed(1),
+      fmt(portfolio.avgFines),
+      ''
+    ]);
+
+    portfolioTableData.push([
+      'NATIONAL AVERAGE',
+      '',
+      NATIONAL_AVG.stars.toFixed(1),
+      NATIONAL_AVG.composite.toFixed(1),
+      fmt(NATIONAL_AVG.total_fines),
+      ''
+    ]);
+
+    doc.autoTable({
+      startY: currentY,
+      head: [['Facility', 'Location', 'Stars', 'Risk', 'Fines', 'Flags']],
+      body: portfolioTableData,
+      theme: 'grid',
+      styles: {
+        fontSize: 8,
+        cellPadding: 2,
+        textColor: BODY,
+        lineColor: STEEL,
+        lineWidth: 0.1
+      },
+      headStyles: {
+        fillColor: TABLE_HEADER,
+        textColor: WHITE,
+        fontStyle: 'bold'
+      },
+      alternateRowStyles: {
+        fillColor: TABLE_ALT
+      },
+      columnStyles: {
+        0: { cellWidth: 55 },
+        1: { cellWidth: 30 },
+        2: { cellWidth: 15 },
+        3: { cellWidth: 15 },
+        4: { cellWidth: 25 },
+        5: { cellWidth: 30 }
+      },
+      margin: { left: margin, right: margin }
+    });
+
+    currentY = doc.lastAutoTable.finalY + 5;
   }
 
   currentY += 5;
 
-  // ============= STAFFING ANALYSIS =============
+  // ============= SECTION 3 — STAFFING ANALYSIS =============
 
   checkPageBreak(80);
   addSectionHeader(3, 'Staffing Analysis');
 
-  doc.setFontSize(11);
+  // Three metric boxes
+  metricX = margin;
+
+  currentY = addMetricBox(
+    'TOTAL HPRD',
+    facility.total_hprd,
+    NATIONAL_AVG.total_hprd,
+    ' hrs',
+    metricX,
+    currentY,
+    metricBoxWidth
+  );
+
+  currentY -= 30;
+  metricX += metricBoxWidth + 5;
+
+  addMetricBox(
+    'RN HPRD',
+    facility.rn_hprd,
+    NATIONAL_AVG.rn_hprd,
+    ' hrs',
+    metricX,
+    currentY,
+    metricBoxWidth
+  );
+
+  metricX += metricBoxWidth + 5;
+
+  addMetricBox(
+    'ZERO-RN DAYS',
+    facility.zero_rn_pct,
+    NATIONAL_AVG.zero_rn_pct,
+    '%',
+    metricX,
+    currentY,
+    metricBoxWidth
+  );
+
+  currentY += 30;
+
+  // Data rows
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
-  doc.text('Hours Per Resident Per Day (HPRD)', margin, currentY);
+  doc.setTextColor(...BODY);
+  doc.text('Staffing Breakdown', margin, currentY);
   currentY += 7;
 
   addDataRow('Registered Nurse (RN):', `${num(facility.rn_hprd)} hrs`);
   addDataRow('Licensed Practical Nurse (LPN):', `${num(facility.lpn_hprd)} hrs`);
   addDataRow('Certified Nursing Assistant (CNA):', `${num(facility.cna_hprd)} hrs`);
   addDataRow('Total Nursing:', `${num(facility.total_hprd)} hrs`);
+  addDataRow('Weekend Total:', `${num(facility.weekend_total_hprd)} hrs`);
+  addDataRow('Weekend RN:', `${num(facility.weekend_rn_hprd)} hrs`);
+  addDataRow('Average Census:', facility.avg_census ? facility.avg_census.toFixed(1) : 'N/A');
+
+  if (facility.contractor_pct !== null && facility.contractor_pct !== undefined) {
+    addDataRow('Contract Staffing:', pct(facility.contractor_pct));
+  }
 
   currentY += 5;
-  checkPageBreak(40);
 
-  doc.setFontSize(11);
+  // Staffing verification
+  checkPageBreak(40);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
   doc.text('Staffing Verification', margin, currentY);
   currentY += 7;
 
-  // Add context paragraph
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
-  const contextText = 'Data Collection Context: Staffing data is self-reported by the facility to CMS through the Payroll-Based Journal (PBJ) system. While PBJ data is derived from payroll records, facilities control what is submitted. Independent audits of PBJ accuracy are limited.';
-  const contextLines = doc.splitTextToSize(contextText, contentWidth);
-  doc.text(contextLines, margin, currentY);
-  currentY += (contextLines.length * 5) + 5;
-
-  addDataRow('Self-Reported RN Hours:', `${num(facility.self_report_rn)} hrs`);
+  if (facility.self_report_rn !== null && facility.self_report_rn !== undefined) {
+    addDataRow('Self-Reported RN Hours:', `${num(facility.self_report_rn)} hrs`);
+  }
   addDataRow('Verified RN Hours (Payroll):', `${num(facility.rn_hprd)} hrs`);
-  addDataRow('Discrepancy:', pct(facility.rn_gap_pct));
-  addDataRow('Days Without RN:', pct(facility.zero_rn_pct));
-  addDataRow('Weekend Staffing:', `${num(facility.weekend_total_hprd)} hrs`);
-
-  // Regulatory context alerts
-  if (facility.zero_rn_pct > 0) {
-    currentY += 5;
-    checkPageBreak(20);
-    doc.setDrawColor(0, 0, 0);
-    doc.setFillColor(240, 240, 240);
-    const alertHeight = 18;
-    doc.rect(margin, currentY - 5, contentWidth, alertHeight, 'FD');
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'bold');
-    const zeroRnText = `Regulatory Context: Federal law (42 CFR §483.35) requires a registered nurse on site for at least 8 consecutive hours per day, 7 days per week. This facility reported zero RN hours on ${pct(facility.zero_rn_pct)} of days, which may indicate a violation of this federal requirement.`;
-    const zeroRnLines = doc.splitTextToSize(zeroRnText, contentWidth - 4);
-    doc.text(zeroRnLines, margin + 2, currentY);
-    currentY += (zeroRnLines.length * 4.5) + 7;
-  }
-
-  if (facility.total_hprd < 3.48) {
-    currentY += 5;
-    checkPageBreak(20);
-    doc.setDrawColor(0, 0, 0);
-    doc.setFillColor(240, 240, 240);
-    const belowThresholdPct = ((1 - facility.total_hprd / 3.48) * 100).toFixed(0);
-    const staffingText = `Staffing Standard Context: In February 2026, 18 state Attorneys General urged CMS to adopt a minimum staffing standard of 3.48 hours per resident per day. This facility provides ${num(facility.total_hprd)} HPRD, which is ${belowThresholdPct}% below the proposed threshold.`;
-    const staffingLines = doc.splitTextToSize(staffingText, contentWidth - 4);
-    doc.rect(margin, currentY - 5, contentWidth, (staffingLines.length * 4.5) + 7, 'FD');
-    doc.text(staffingLines, margin + 2, currentY);
-    currentY += (staffingLines.length * 4.5) + 7;
-  }
-
-  if (facility.rn_gap_pct > 20) {
-    currentY += 5;
-    checkPageBreak(15);
-    doc.setDrawColor(0, 0, 0);
-    doc.setFillColor(240, 240, 240);
-    doc.rect(margin, currentY - 5, contentWidth, 12, 'FD');
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'bold');
-    doc.text(`Verification Discrepancy: This facility shows a ${pct(facility.rn_gap_pct)} discrepancy between self-reported and verified staffing levels, which may warrant further investigation.`, margin + 2, currentY);
-    currentY += 10;
+  if (facility.rn_gap_pct !== null && facility.rn_gap_pct !== undefined) {
+    addDataRow('Discrepancy:', pct(facility.rn_gap_pct));
   }
 
   currentY += 5;
 
-  // ============= INSPECTION HISTORY =============
+  // Regulatory context alerts
+  if (facility.zero_rn_pct > 0) {
+    checkPageBreak(25);
+    const zeroRnText = `Regulatory Context (42 CFR §483.35): Federal law requires a registered nurse on site for at least 8 consecutive hours per day, 7 days per week. This facility reported zero RN hours on ${facility.zero_rn_pct.toFixed(1)}% of days, which may indicate a violation of this federal requirement.`;
+    currentY = addAlertBox(zeroRnText, 'info', currentY, margin, contentWidth);
+  }
+
+  if (facility.total_hprd && facility.total_hprd < 3.48) {
+    checkPageBreak(25);
+    const gap = ((1 - facility.total_hprd / 3.48) * 100).toFixed(0);
+    const staffingText = `Staffing Standard Context: In February 2026, 18 state Attorneys General urged CMS to adopt a minimum staffing standard of 3.48 hours per resident per day. This facility provides ${num(facility.total_hprd)} HPRD, which is ${gap}% below the proposed threshold.`;
+    currentY = addAlertBox(staffingText, 'warning', currentY, margin, contentWidth);
+  }
+
+  if (facility.rn_gap_pct && facility.rn_gap_pct > 20) {
+    checkPageBreak(20);
+    const gapText = `Verification Discrepancy: This facility shows a ${pct(facility.rn_gap_pct)} discrepancy between self-reported and verified staffing levels, which may warrant further investigation.`;
+    currentY = addAlertBox(gapText, 'warning', currentY, margin, contentWidth);
+  }
+
+  if (facility.contractor_pct && facility.contractor_pct > 20) {
+    checkPageBreak(25);
+    const contractorText = `Contract Staffing Context: Research in Health Affairs has linked high contract staffing rates to quality concerns. This facility reports ${pct(facility.contractor_pct)} contract staffing, above the national average of ${NATIONAL_AVG.contractor_pct}%.`;
+    currentY = addAlertBox(contractorText, 'info', currentY, margin, contentWidth);
+  }
+
+  currentY += 5;
+
+  // ============= SECTION 4 — INSPECTION HISTORY =============
 
   checkPageBreak(80);
   addSectionHeader(4, 'Inspection History');
 
   addDataRow('Total Deficiencies:', (facility.total_deficiencies || 0).toString());
-  addDataRow('Serious Danger Citations:', (facility.jeopardy_count || 0).toString());
-  addDataRow('Residents Hurt:', (facility.harm_count || 0).toString());
+  addDataRow('Immediate Jeopardy Citations:', (facility.jeopardy_count || 0).toString());
+  addDataRow('Actual Harm Citations:', (facility.harm_count || 0).toString());
 
-  if (facility.jeopardy_count > 0) {
-    currentY += 5;
-    checkPageBreak(18);
-    doc.setDrawColor(0, 0, 0);
-    doc.setFillColor(240, 240, 240);
-    const jeopardyText = `Immediate Jeopardy Findings: Immediate jeopardy citations indicate conditions posing serious danger to residents (42 CFR §488.301). This facility has received ${facility.jeopardy_count} such citations.`;
-    const jeopardyLines = doc.splitTextToSize(jeopardyText, contentWidth - 4);
-    doc.rect(margin, currentY - 5, contentWidth, (jeopardyLines.length * 4.5) + 7, 'FD');
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'bold');
-    doc.text(jeopardyLines, margin + 2, currentY);
-    currentY += (jeopardyLines.length * 4.5) + 7;
+  if (facility.severity_score !== null && facility.severity_score !== undefined) {
+    addDataRow('Severity Score:', facility.severity_score.toFixed(1));
   }
 
   currentY += 5;
-  checkPageBreak(60);
 
-  doc.setFontSize(11);
-  doc.setFont('helvetica', 'bold');
-  doc.text('Deficiency Categories', margin, currentY);
-  currentY += 7;
+  // Top categories
+  if (facility.top_categories && facility.top_categories.length > 0) {
+    checkPageBreak(30);
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    doc.text('Top Deficiency Categories', margin, currentY);
+    currentY += 7;
 
-  addDataRow('Infection Control:', (facility.infection_control_count || 0).toString());
-  addDataRow('Quality of Care:', (facility.quality_of_care_count || 0).toString());
-  addDataRow('Resident Rights:', (facility.resident_rights_count || 0).toString());
-  addDataRow('Administration:', (facility.admin_count || 0).toString());
-  addDataRow('Nutrition:', (facility.nutrition_count || 0).toString());
-  addDataRow('Environment:', (facility.environment_count || 0).toString());
-  addDataRow('Pharmacy Services:', (facility.pharmacy_count || 0).toString());
-  addDataRow('Abuse Prevention:', (facility.abuse_count || 0).toString());
-  addDataRow('Other:', (facility.other_count || 0).toString());
+    facility.top_categories.slice(0, 5).forEach(([category, count]) => {
+      addDataRow(category + ':', count.toString());
+    });
+
+    currentY += 5;
+  }
+
+  // Individual deficiency detail table
+  if (facility.deficiency_details && facility.deficiency_details.length > 0) {
+    checkPageBreak(40);
+
+    doc.setFontSize(11);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Individual Deficiency Details', margin, currentY);
+    currentY += 7;
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Most serious deficiencies documented during state inspections:', margin, currentY);
+    currentY += 7;
+
+    // Sort by severity
+    const severityOrder = { 'L': 0, 'K': 1, 'J': 2, 'I': 3, 'H': 4, 'G': 5, 'F': 6, 'E': 7, 'D': 8, 'C': 9, 'B': 10, 'A': 11 };
+
+    const sortedDeficiencies = [...facility.deficiency_details]
+      .sort((a, b) => {
+        const aSev = a.scope_severity ? a.scope_severity.charAt(0) : 'Z';
+        const bSev = b.scope_severity ? b.scope_severity.charAt(0) : 'Z';
+        const sevDiff = (severityOrder[aSev] || 99) - (severityOrder[bSev] || 99);
+        if (sevDiff !== 0) return sevDiff;
+
+        // Then by date, newest first
+        const aDate = new Date(a.survey_date || 0);
+        const bDate = new Date(b.survey_date || 0);
+        return bDate - aDate;
+      })
+      .slice(0, 15);
+
+    const deficiencyTableData = sortedDeficiencies.map(def => {
+      const date = def.survey_date ? new Date(def.survey_date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }) : 'N/A';
+
+      const ftag = def.ftag || 'N/A';
+      const category = def.category || 'N/A';
+      const severity = def.severity_label || def.scope_severity || 'N/A';
+      const scope = def.scope_label || '';
+      const description = def.description || 'No description available';
+
+      return [
+        date,
+        ftag,
+        category,
+        severity,
+        scope,
+        description.substring(0, 200) + (description.length > 200 ? '...' : '')
+      ];
+    });
+
+    doc.autoTable({
+      startY: currentY,
+      head: [['Date', 'F-Tag', 'Category', 'Severity', 'Scope', 'Description']],
+      body: deficiencyTableData,
+      theme: 'grid',
+      styles: {
+        fontSize: 7,
+        cellPadding: 2,
+        textColor: BODY,
+        lineColor: STEEL,
+        lineWidth: 0.1
+      },
+      headStyles: {
+        fillColor: TABLE_HEADER,
+        textColor: WHITE,
+        fontStyle: 'bold'
+      },
+      alternateRowStyles: {
+        fillColor: TABLE_ALT
+      },
+      columnStyles: {
+        0: { cellWidth: 20 },
+        1: { cellWidth: 15 },
+        2: { cellWidth: 30 },
+        3: { cellWidth: 20 },
+        4: { cellWidth: 20 },
+        5: { cellWidth: 65 }
+      },
+      didParseCell: function(data) {
+        // Color-code severity rows
+        if (data.row.section === 'body') {
+          const severity = data.row.raw[3];
+          if (severity && (severity.includes('Jeopardy') || severity.includes('J'))) {
+            data.cell.styles.fillColor = RED_BG;
+          } else if (severity && (severity.includes('Harm') || severity.includes('K') || severity.includes('L'))) {
+            data.cell.styles.fillColor = AMBER_BG;
+          }
+        }
+      },
+      margin: { left: margin, right: margin }
+    });
+
+    currentY = doc.lastAutoTable.finalY + 5;
+  } else {
+    checkPageBreak(20);
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    doc.text('Individual deficiency details not available. Summary counts shown above.', margin, currentY);
+    currentY += 10;
+  }
+
+  // Jeopardy context
+  if (facility.jeopardy_count > 0) {
+    checkPageBreak(25);
+    const jeopardyText = `Immediate Jeopardy Context (42 CFR §488.301): Immediate jeopardy citations indicate conditions that have caused, or are likely to cause, serious injury, harm, impairment, or death to a resident. This facility has received ${facility.jeopardy_count} such citation${facility.jeopardy_count > 1 ? 's' : ''}.`;
+    currentY = addAlertBox(jeopardyText, 'critical', currentY, margin, contentWidth);
+  }
 
   currentY += 5;
 
-  // ============= FINANCIAL PENALTIES =============
+  // ============= SECTION 5 — FINANCIAL PENALTIES =============
 
   checkPageBreak(40);
   addSectionHeader(5, 'Financial Penalties');
@@ -456,112 +957,255 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   addDataRow('Number of Fines:', (facility.fine_count || 0).toString());
   addDataRow('Payment Denials:', (facility.denial_count || 0).toString());
 
-  if (facility.total_fines > 0) {
-    currentY += 5;
-    checkPageBreak(18);
-    doc.setDrawColor(0, 0, 0);
-    doc.setFillColor(240, 240, 240);
-    const finesText = `Civil Monetary Penalties: CMS imposes civil monetary penalties under 42 CFR §488.438 for facilities that fail to meet federal requirements. This facility has been assessed ${fmt(facility.total_fines)} in penalties.`;
-    const finesLines = doc.splitTextToSize(finesText, contentWidth - 4);
-    doc.rect(margin, currentY - 5, contentWidth, (finesLines.length * 4.5) + 7, 'FD');
-    doc.setFontSize(9);
+  currentY += 5;
+
+  // Individual penalty timeline
+  if (facility.penalty_timeline && facility.penalty_timeline.length > 0) {
+    checkPageBreak(40);
+
+    doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
-    doc.text(finesLines, margin + 2, currentY);
-    currentY += (finesLines.length * 4.5) + 7;
+    doc.setTextColor(...BODY);
+    doc.text('Penalty Timeline', margin, currentY);
+    currentY += 7;
+
+    const penaltyTableData = facility.penalty_timeline.map(penalty => {
+      const date = penalty.date ? new Date(penalty.date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      }) : 'N/A';
+
+      const type = penalty.type || 'N/A';
+      const amount = penalty.amount ? fmt(penalty.amount) : 'N/A';
+
+      let details = '';
+      if (penalty.denial_start_date && penalty.denial_length_days) {
+        const denialDate = new Date(penalty.denial_start_date).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        });
+        details = `Denial from ${denialDate} for ${penalty.denial_length_days} days`;
+      }
+
+      return [date, type, amount, details];
+    });
+
+    doc.autoTable({
+      startY: currentY,
+      head: [['Date', 'Type', 'Amount', 'Details']],
+      body: penaltyTableData,
+      theme: 'grid',
+      styles: {
+        fontSize: 8,
+        cellPadding: 2,
+        textColor: BODY,
+        lineColor: STEEL,
+        lineWidth: 0.1
+      },
+      headStyles: {
+        fillColor: TABLE_HEADER,
+        textColor: WHITE,
+        fontStyle: 'bold'
+      },
+      alternateRowStyles: {
+        fillColor: TABLE_ALT
+      },
+      columnStyles: {
+        0: { cellWidth: 30 },
+        1: { cellWidth: 40 },
+        2: { cellWidth: 30, halign: 'right' },
+        3: { cellWidth: 70 }
+      },
+      margin: { left: margin, right: margin }
+    });
+
+    currentY = doc.lastAutoTable.finalY + 5;
+  }
+
+  // Penalty context
+  if (facility.total_fines > 0) {
+    checkPageBreak(25);
+    const penaltyText = `Civil Monetary Penalties (42 CFR §488.438): CMS imposes civil monetary penalties on facilities that fail to meet federal requirements. Penalties can range from $1,000 to $21,393 per day depending on the severity and scope of noncompliance. This facility has been assessed ${fmt(facility.total_fines)} in total penalties.`;
+    currentY = addAlertBox(penaltyText, 'info', currentY, margin, contentWidth);
+  }
+
+  if (facility.denial_count > 0) {
+    checkPageBreak(25);
+    const denialText = `Payment Denials (42 CFR §488.417): CMS can deny payment for new admissions when facilities are out of compliance. This facility has ${facility.denial_count} payment denial${facility.denial_count > 1 ? 's' : ''} on record.`;
+    currentY = addAlertBox(denialText, 'warning', currentY, margin, contentWidth);
   }
 
   currentY += 5;
 
-  // ============= RED FLAGS =============
+  // ============= SECTION 6 — RED FLAGS =============
 
   checkPageBreak(40);
   addSectionHeader(6, 'Red Flags / Accountability Indicators');
 
-  if (redFlags.length > 0) {
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(0, 0, 0);
+  const redFlags = [];
 
+  if (facility.jeopardy_count > 0) {
+    redFlags.push({
+      text: `Immediate jeopardy: ${facility.jeopardy_count} citation${facility.jeopardy_count > 1 ? 's' : ''}`,
+      context: 'Immediate jeopardy citations (42 CFR §488.301) indicate the most serious form of noncompliance.',
+      type: 'critical'
+    });
+  }
+
+  if (facility.harm_count > 0) {
+    redFlags.push({
+      text: `Actual harm: ${facility.harm_count} citation${facility.harm_count > 1 ? 's' : ''}`,
+      context: 'Actual harm citations indicate residents were negatively affected by facility practices.',
+      type: 'critical'
+    });
+  }
+
+  if (facility.total_hprd && facility.total_hprd < 3.48) {
+    redFlags.push({
+      text: `Total staffing below 3.48 HPRD: ${num(facility.total_hprd)} hours`,
+      context: 'In February 2026, 18 state Attorneys General called this the minimum safe staffing level.',
+      type: 'warning'
+    });
+  }
+
+  if (facility.zero_rn_pct > 25) {
+    redFlags.push({
+      text: `High zero-RN days: ${pct(facility.zero_rn_pct)}`,
+      context: 'Federal law (42 CFR §483.35) requires an RN on site at least 8 hours per day, 7 days per week.',
+      type: 'warning'
+    });
+  }
+
+  if (facility.rn_gap_pct > 30) {
+    redFlags.push({
+      text: `Staffing verification gap: ${pct(facility.rn_gap_pct)}`,
+      context: 'Large discrepancies between self-reported and payroll-verified staffing may warrant investigation.',
+      type: 'warning'
+    });
+  }
+
+  if (facility.total_fines > 100000) {
+    redFlags.push({
+      text: `High financial penalties: ${fmt(facility.total_fines)}`,
+      context: 'Repeated or severe violations can result in substantial civil monetary penalties.',
+      type: 'warning'
+    });
+  }
+
+  if (facility.contractor_pct && facility.contractor_pct > 30) {
+    redFlags.push({
+      text: `High contract staffing: ${pct(facility.contractor_pct)}`,
+      context: 'Research links high contract staffing rates to continuity of care concerns.',
+      type: 'info'
+    });
+  }
+
+  if (redFlags.length > 0) {
     redFlags.forEach(flag => {
-      checkPageBreak(10);
-      doc.text(`• ${flag}`, margin + 3, currentY);
+      checkPageBreak(20);
+
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...BODY);
+      doc.text(`• ${flag.text}`, margin + 2, currentY);
       currentY += 6;
+
+      currentY = addAlertBox(flag.context, flag.type, currentY, margin + 5, contentWidth - 5);
     });
   } else {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'italic');
-    doc.setTextColor(100, 100, 100);
-    doc.text('No major red flags identified in available data.', margin, currentY);
-    currentY += 6;
+    doc.setTextColor(...STEEL);
+    doc.text('No major red flags identified in available federal data.', margin, currentY);
+    currentY += 10;
   }
 
   currentY += 5;
 
-  // ============= NEARBY ALTERNATIVES =============
+  // ============= SECTION 7 — NEARBY ALTERNATIVES =============
 
   checkPageBreak(40);
   addSectionHeader(7, 'Nearby Alternatives Comparison');
 
-  if (nearbyAlternatives.length > 0) {
+  if (nearbyAlternatives && nearbyAlternatives.length > 0) {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
     const introText = `The following facilities within a reasonable distance have lower risk scores than ${facility.name}. This comparison is provided for reference purposes only and does not constitute a recommendation.`;
     const introLines = doc.splitTextToSize(introText, contentWidth);
     doc.text(introLines, margin, currentY);
     currentY += (introLines.length * 5) + 8;
 
-    // Create table using autoTable
-    const tableData = nearbyAlternatives.map(alt => [
-      alt.name,
-      `${alt.distance.toFixed(1)} mi`,
-      `${alt.city}, ${alt.state}`,
-      `${alt.stars || 0}/5`,
-      `${num(alt.total_hprd)} hrs`,
-      fmt(alt.total_fines || 0)
-    ]);
+    // Show up to 10 alternatives
+    const altData = nearbyAlternatives.slice(0, 10).map(alt => {
+      const driveTime = alt.distance ? Math.round(alt.distance * 2) : 'N/A';
+
+      return [
+        alt.name,
+        alt.distance ? `${alt.distance.toFixed(1)} mi (${driveTime} min)` : 'N/A',
+        `${alt.city}, ${alt.state}`,
+        `${alt.stars || 0}/5`,
+        alt.composite ? alt.composite.toFixed(1) : 'N/A',
+        alt.total_hprd ? num(alt.total_hprd) : 'N/A',
+        alt.total_fines ? fmt(alt.total_fines) : '$0'
+      ];
+    });
 
     doc.autoTable({
       startY: currentY,
-      head: [['Facility Name', 'Distance', 'City', 'Stars', 'Total HPRD', 'Total Fines']],
-      body: tableData,
+      head: [['Facility', 'Distance', 'City', 'Stars', 'Risk', 'HPRD', 'Fines']],
+      body: altData,
       theme: 'grid',
       styles: {
-        fontSize: 8,
+        fontSize: 7,
         cellPadding: 2,
-        textColor: [0, 0, 0],
-        lineColor: [0, 0, 0],
+        textColor: BODY,
+        lineColor: STEEL,
         lineWidth: 0.1
       },
       headStyles: {
-        fillColor: [240, 240, 240],
-        textColor: [0, 0, 0],
+        fillColor: TABLE_HEADER,
+        textColor: WHITE,
         fontStyle: 'bold'
       },
-      margin: { left: margin, right: margin },
-      tableWidth: contentWidth
+      alternateRowStyles: {
+        fillColor: TABLE_ALT
+      },
+      columnStyles: {
+        0: { cellWidth: 50 },
+        1: { cellWidth: 30 },
+        2: { cellWidth: 30 },
+        3: { cellWidth: 15 },
+        4: { cellWidth: 15 },
+        5: { cellWidth: 15 },
+        6: { cellWidth: 20 }
+      },
+      margin: { left: margin, right: margin }
     });
 
     currentY = doc.lastAutoTable.finalY + 5;
   } else {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'italic');
-    doc.setTextColor(100, 100, 100);
+    doc.setTextColor(...STEEL);
     doc.text('No nearby facilities with better scores found within search radius.', margin, currentY);
-    currentY += 6;
+    currentY += 10;
   }
 
   currentY += 5;
 
-  // ============= METHODOLOGY =============
+  // ============= SECTION 8 — METHODOLOGY =============
 
   checkPageBreak(80);
   addSectionHeader(8, 'Methodology');
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
+  doc.setTextColor(...BODY);
   doc.text('Data Sources', margin, currentY);
-  currentY += 6;
+  currentY += 7;
 
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
@@ -570,10 +1214,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   const sources = [
     'CMS Care Compare (Provider Information, Star Ratings)',
-    'CMS Payroll-Based Journal (Daily Nurse Staffing)',
-    'CMS Health Deficiencies (State Survey Agency Inspections)',
-    'CMS Penalties (Fines and Payment Denials)',
-    'CMS Ownership Database (Corporate Structure)'
+    'CMS Payroll-Based Journal (Daily Nurse Staffing through Q3 2025)',
+    'CMS Health Deficiencies (State Survey Inspections 2017-December 2025)',
+    'CMS Penalties (Civil Monetary Penalties, Payment Denials 2023-2025)',
+    'CMS Ownership Database (Corporate Structure, January 2026)'
   ];
 
   sources.forEach(source => {
@@ -582,24 +1226,24 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     currentY += 5;
   });
 
-  currentY += 5;
-  checkPageBreak(40);
+  currentY += 8;
+  checkPageBreak(50);
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
-  doc.text('Composite Score Formula', margin, currentY);
-  currentY += 6;
+  doc.text('Composite Risk Score Formula', margin, currentY);
+  currentY += 7;
 
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.text('Weighted composite of multiple factors:', margin, currentY);
+  doc.text('Weighted composite of multiple factors (scale: 0-100):', margin, currentY);
   currentY += 6;
 
   const weights = [
-    'Staffing Levels: 30% (verified payroll vs. self-reported)',
-    'Inspection Results: 25% (deficiencies, serious danger, harm)',
-    'Financial Penalties: 20% (fines, payment denials)',
-    'Ownership History: 15% (portfolio performance, patterns)',
+    'Staffing Levels: 30% (verified payroll vs. self-reported, zero-RN days)',
+    'Inspection Results: 25% (deficiencies, serious danger, harm citations)',
+    'Financial Penalties: 20% (civil monetary penalties, payment denials)',
+    'Ownership History: 15% (portfolio performance, ownership changes)',
     'Quality Measures: 10% (CMS star rating components)'
   ];
 
@@ -609,40 +1253,56 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     currentY += 5;
   });
 
-  currentY += 3;
-  const methodNote = doc.splitTextToSize('Higher scores indicate greater patterns of concern in federal data.', contentWidth - 4);
-  doc.text(methodNote, margin + 2, currentY);
-  currentY += (methodNote.length * 5) + 5;
+  currentY += 5;
+  const methodNote = 'Higher scores indicate greater patterns of concern in federal data. Score thresholds: 0-40 (Low), 40-60 (Moderate), 60+ (High).';
+  const methodLines = doc.splitTextToSize(methodNote, contentWidth - 4);
+  doc.text(methodLines, margin + 2, currentY);
+  currentY += (methodLines.length * 5) + 10;
 
-  // ============= DISCLAIMER =============
+  // ============= SECTION 9 — DISCLAIMER =============
 
-  checkPageBreak(60);
+  checkPageBreak(70);
   addSectionHeader(9, 'Disclaimer');
 
-  doc.setDrawColor(0, 0, 0);
-  doc.setFillColor(248, 248, 248);
-  doc.rect(margin, currentY - 3, contentWidth, 50, 'FD');
+  doc.setDrawColor(...STEEL);
+  doc.setFillColor(...LIGHT_BG);
+  doc.setLineWidth(0.5);
 
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(0, 0, 0);
   const disclaimerParagraphs = [
     'This report is generated from publicly available federal data and is provided for informational purposes only.',
+
     'This document does not constitute legal advice, medical advice, or a recommendation for or against any specific facility. Risk scores represent patterns in federal data that may warrant further investigation.',
+
     'Facilities should be evaluated through personal visits, consultation with healthcare professionals, and review of current inspection reports. Conditions may have changed since data collection.',
+
     'If you have concerns about a nursing home, contact: Your state survey agency (health department), HHS Office of Inspector General (tips.hhs.gov), or National Eldercare Locator (1-800-677-1116).'
   ];
 
-  let disclaimerY = currentY + 2;
+  let disclaimerY = currentY;
+
   disclaimerParagraphs.forEach(para => {
-    const lines = doc.splitTextToSize(para, contentWidth - 6);
+    checkPageBreak(25);
+
+    const lines = doc.splitTextToSize(para, contentWidth - 8);
+    const boxHeight = (lines.length * 5) + 6;
+
+    doc.setFillColor(...LIGHT_BG);
+    doc.rect(margin, disclaimerY, contentWidth, boxHeight, 'FD');
+
+    doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
-    doc.text(lines, margin + 3, disclaimerY);
-    disclaimerY += (lines.length * 4.5) + 2;
+    doc.setTextColor(...BODY);
+    doc.text(lines, margin + 4, disclaimerY + 5);
+
+    disclaimerY += boxHeight + 3;
+    currentY = disclaimerY;
   });
 
-  // Generate filename and trigger download
-  const facilityNameClean = facility.name.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50);
+  // ============= GENERATE AND SAVE =============
+
+  const facilityNameClean = facility.name
+    .replace(/[^a-zA-Z0-9]/g, '_')
+    .substring(0, 50);
   const dateStr = new Date().toISOString().split('T')[0];
   const filename = `OversightReport_Evidence_${facilityNameClean}_${dateStr}.pdf`;
 

@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { haversineDistance } from '../utils/haversine';
@@ -74,6 +74,33 @@ export function EvidencePage() {
       jeopardyPct: jeopardyPct.toFixed(0)
     };
   }, [facility, allFacilities]);
+
+  const [pdfLoading, setPdfLoading] = useState(false);
+
+  const handleDownloadPDF = useCallback(async () => {
+    setPdfLoading(true);
+    try {
+      // Fetch deficiency details on-demand from per-state file
+      let enrichedFacility = { ...facility };
+      if (facility?.state) {
+        try {
+          const resp = await fetch(`${import.meta.env.BASE_URL}deficiency_details/${facility.state}.json`);
+          if (resp.ok) {
+            const stateDeficiencies = await resp.json();
+            const facDetails = stateDeficiencies[String(facility.ccn)];
+            if (facDetails?.deficiency_details) {
+              enrichedFacility.deficiency_details = facDetails.deficiency_details;
+            }
+          }
+        } catch (e) {
+          console.warn('Could not load deficiency details:', e);
+        }
+      }
+      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities);
+    } finally {
+      setPdfLoading(false);
+    }
+  }, [facility, nearbyAlternatives, allFacilities]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -171,10 +198,6 @@ export function EvidencePage() {
     return parts.join(' ');
   };
 
-  const handleDownloadPDF = () => {
-    generateEvidencePDF(facility, nearbyAlternatives, allFacilities);
-  };
-
   const handlePrint = () => {
     window.print();
   };
@@ -221,8 +244,8 @@ export function EvidencePage() {
           <button onClick={handlePrint} className="ev-btn ev-btn-secondary">
             Print Version
           </button>
-          <button onClick={handleDownloadPDF} className="ev-btn ev-btn-primary">
-            Download PDF
+          <button onClick={handleDownloadPDF} className="ev-btn ev-btn-primary" disabled={pdfLoading}>
+            {pdfLoading ? 'Generating PDF...' : 'Download PDF'}
           </button>
         </div>
       </div>
