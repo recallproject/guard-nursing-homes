@@ -503,6 +503,15 @@ export function FacilityPage() {
           <span className="fp-download-hint fp-download-hint--future">After March 31: 3 free reports per day | Need more? Go Pro — $12/mo for unlimited reports</span>
         </div>
 
+        {/* Evidence Package CTA */}
+        <div className="fp-evidence-cta">
+          <h3>Need This for a Case?</h3>
+          <p>Get a 10-section litigation-ready Evidence Package — staffing verification, inspection history, penalties, ownership network, and nearby alternatives in one PDF.</p>
+          <Link to={`/evidence/${ccn}`} className="btn btn-primary" style={{ display: 'inline-block', marginTop: '0.75rem' }}>
+            Get Evidence Package — $29
+          </Link>
+        </div>
+
         <div className="fp-footer-text">
           The Oversight Report — Nursing Home Risk Data | Data processed 2026-02-23<br />
           Built by Robert Benard · All data sourced from CMS Medicare.gov

@@ -212,6 +212,31 @@
   border-bottom: 1px solid #C7D2FE;
 }
 
+.fp-evidence-cta {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  margin: 2rem -2rem;
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 100%);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+}
+
+.fp-evidence-cta h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.75rem 0;
+}
+
+.fp-evidence-cta p {
+  font-size: 0.95rem !important;
+  color: #C7D2FE !important;
+  max-width: 550px;
+  margin: 0 auto !important;
+  line-height: 1.6;
+  text-align: center !important;
+}
+
 .fp-download-cta h3 {
   font-size: 1.5rem;
   font-weight: 800;
