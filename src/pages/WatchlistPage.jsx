@@ -216,7 +216,7 @@ export function WatchlistPage() {
             Start tracking facilities to monitor their risk scores, violations, and staffing levels.
           </p>
           <Link to="/" className="btn btn-primary">
-            Search for a facility
+            Search & Map
           </Link>
         </div>
       ) : (

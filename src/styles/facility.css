@@ -136,6 +136,41 @@
   flex: 1;
 }
 
+/* === Watchlist Toggle === */
+.fp-watchlist-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #64748B;
+  background: transparent;
+  border: 2px solid #E2E8F0;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.fp-watchlist-btn:hover {
+  color: #F59E0B;
+  border-color: #F59E0B;
+}
+
+.fp-watchlist-btn--active {
+  color: #F59E0B;
+  border-color: #F59E0B;
+  background: #FFFBEB;
+}
+
+.fp-watchlist-btn--active:hover {
+  color: #DC2626;
+  border-color: #DC2626;
+  background: #FEF2F2;
+}
+
 /* === Download Button === */
 .download-btn {
   background-color: #4F46E5;

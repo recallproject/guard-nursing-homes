@@ -13,6 +13,7 @@ import AccountabilityFlags from '../components/AccountabilityFlags';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
+import { useWatchlist } from '../hooks/useWatchlist';
 import { checkoutSingleReport } from '../utils/stripe';
 import '../styles/facility.css';
 import '../styles/staffing.css';
@@ -21,6 +22,7 @@ export function FacilityPage() {
   const { ccn } = useParams();
   const { data, loading, error } = useFacilityData();
   const { tier } = useSubscription();
+  const { addFacility, removeFacility, isWatched } = useWatchlist();
   const pageRef = useRef(null);
   const [showEvidencePreview, setShowEvidencePreview] = useState(false);
 
@@ -135,6 +137,13 @@ export function FacilityPage() {
       <div className="fp-header">
         <Link to="/" className="fp-back">← Back to Map</Link>
         <h2 className="fp-badge">Facility Report Card</h2>
+        <button
+          className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
+          onClick={() => isWatched(ccn) ? removeFacility(ccn) : addFacility(ccn)}
+          title={isWatched(ccn) ? 'Remove from watchlist' : 'Add to watchlist'}
+        >
+          {isWatched(ccn) ? '★ Watching' : '☆ Watch'}
+        </button>
         <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} />
       </div>
 
