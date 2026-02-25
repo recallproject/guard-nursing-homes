@@ -533,6 +533,7 @@ export function FacilityPage() {
         <div className="fp-evidence-cta">
           <h3>Need This for a Case?</h3>
           <p>Get a 10-section litigation-ready Evidence Package with everything on this page plus deeper analysis — in one downloadable PDF.</p>
+          <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
           <button className="btn btn-primary" style={{ marginTop: '0.75rem' }} onClick={() => setShowEvidencePreview(true)}>
             Preview Evidence Package
           </button>
@@ -612,6 +613,7 @@ export function FacilityPage() {
                 </div>
               </div>
 
+              <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
               <div className="ev-preview-actions">
                 <p className="ev-coming-soon-label">Coming Soon — Join the Waitlist</p>
                 <form className="ev-waitlist-form" onSubmit={(e) => {

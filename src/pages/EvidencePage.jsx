@@ -222,6 +222,7 @@ export function EvidencePage() {
         <div className="ev-purchase-gate">
           <h2>Evidence Package — {facility.name}</h2>
           <p>10-section litigation-ready report with staffing data, inspection history, penalties, ownership profile, and nearby alternatives.</p>
+          <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
           <div className="ev-purchase-options">
             <p className="ev-coming-soon-label">Coming Soon — Join the Waitlist</p>
             <form className="ev-waitlist-form" onSubmit={(e) => {

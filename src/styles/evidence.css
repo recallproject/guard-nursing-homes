@@ -531,6 +531,16 @@
   text-decoration: underline;
 }
 
+/* === Value Framing === */
+.ev-value-line {
+  font-size: 0.85rem;
+  color: var(--text-muted, rgba(255, 255, 255, 0.5));
+  max-width: 520px;
+  margin: 0.5rem auto 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 /* === Waitlist Form === */
 .ev-coming-soon-label {
   font-size: 1.25rem;
