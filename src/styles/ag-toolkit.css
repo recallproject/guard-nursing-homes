@@ -7,7 +7,7 @@
 .ag-toolkit-page {
   min-height: 100vh;
   background: var(--bg-deep);
-  padding: 3rem 0;
+  padding: 6rem 0 3rem;
 }
 
 /* ========================================
@@ -37,14 +37,39 @@
 .ag-toolkit-context {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 1.75rem;
   background: rgba(79, 70, 229, 0.08);
   border: 1px solid rgba(79, 70, 229, 0.25);
   border-radius: 10px;
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.8;
   color: var(--text-cream);
   text-align: left;
+}
+
+.ag-toolkit-context a {
+  color: var(--primary-light);
+  text-decoration: underline;
+  text-decoration-color: rgba(129, 140, 248, 0.4);
+  text-underline-offset: 2px;
+  transition: text-decoration-color var(--transition-fast);
+}
+
+.ag-toolkit-context a:hover {
+  text-decoration-color: var(--primary-light);
+}
+
+.ag-toolkit-timeline {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(79, 70, 229, 0.2);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.ag-toolkit-timeline strong {
+  color: var(--text-cream);
 }
 
 .ag-toolkit-context strong {

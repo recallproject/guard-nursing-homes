@@ -534,10 +534,24 @@ export function AGToolkitPage() {
           Enforcement-ready analysis of nursing home staffing violations
         </p>
         <div className="ag-toolkit-context">
-          On February 2, 2026, <strong>18 state Attorneys General</strong> wrote to CMS urging minimum staffing
-          standards of <strong>3.48 hours per resident day (HPRD)</strong> for for-profit nursing homes, after CMS
-          repealed the federal staffing mandate. This toolkit identifies facilities in your state that fail
-          that threshold, have zero-RN days, or show systemic ownership patterns requiring enforcement attention.
+          On February 2, 2026, <strong>18 state Attorneys General</strong> — led by Massachusetts, California, and
+          New York — <a href="https://www.mass.gov/news/ag-campbell-co-leads-letter-urging-federal-government-to-implement-stronger-minimum-staffing-standards-in-nursing-homes" target="_blank" rel="noopener noreferrer">wrote to CMS</a> urging
+          minimum staffing standards of <strong>3.48 hours per resident day (HPRD)</strong> for for-profit
+          nursing homes with high-risk financial practices. This toolkit identifies facilities in your state
+          that fail that threshold, have zero-RN days, or show systemic ownership patterns requiring
+          enforcement attention.
+
+          <div className="ag-toolkit-timeline">
+            <strong>April 2024</strong> — CMS finalized the first-ever federal <a href="https://www.federalregister.gov/documents/2024/05/10/2024-08273/medicare-and-medicaid-programs-minimum-staffing-standards-for-long-term-care-facilities-and-medicaid" target="_blank" rel="noopener noreferrer">minimum staffing rule</a> requiring
+            3.48 HPRD (0.55 RN + 2.45 nurse aide) and 24/7 RN coverage for all nursing homes.<br />
+            <strong>July 2025</strong> — Section 71111 of the <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer">One Big Beautiful Bill Act</a> (P.L. 119-21)
+            imposed a <a href="https://www.aarp.org/advocacy/one-big-beautiful-bill-nursing-homes/" target="_blank" rel="noopener noreferrer">10-year moratorium</a> on
+            enforcement of the staffing rule through September 2034.<br />
+            <strong>December 2025</strong> — CMS issued an <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">interim final rule</a> formally
+            repealing the 2024 standards, reverting to the prior requirement of just 8 hours of RN coverage per day.<br />
+            <strong>February 2026</strong> — 18 state AGs proposed that CMS adopt a targeted version of the
+            3.48 HPRD standard for for-profit homes engaged in related-party transactions and high-risk ownership structures.
+          </div>
         </div>
       </div>
 
