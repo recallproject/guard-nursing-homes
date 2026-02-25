@@ -266,6 +266,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
         <div className="state-detail-result-count">
           Showing {visibleFacilities.length} of {facilities.length} facilities
+          <span className="state-detail-hint"> · Click ☆ to add to favorites</span>
         </div>
       </div>
 

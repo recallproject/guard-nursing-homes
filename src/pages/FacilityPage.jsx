@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
@@ -20,10 +20,12 @@ import '../styles/staffing.css';
 
 export function FacilityPage() {
   const { ccn } = useParams();
+  const location = useLocation();
   const { data, loading, error } = useFacilityData();
   const { tier } = useSubscription();
   const { addFacility, removeFacility, isWatched } = useWatchlist();
   const pageRef = useRef(null);
+  const fromState = location.state?.fromState || null;
   const [showEvidencePreview, setShowEvidencePreview] = useState(false);
 
   const facility = data?.states
@@ -135,14 +137,18 @@ export function FacilityPage() {
       </Helmet>
       {/* Header */}
       <div className="fp-header">
-        <Link to="/" className="fp-back">← Back to Map</Link>
+        {fromState ? (
+          <Link to={`/?state=${fromState}`} className="fp-back">← Back to {facility.state} facilities</Link>
+        ) : (
+          <Link to="/" className="fp-back">← Back to Map</Link>
+        )}
         <h2 className="fp-badge">Facility Report Card</h2>
         <button
           className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
           onClick={() => isWatched(ccn) ? removeFacility(ccn) : addFacility(ccn)}
-          title={isWatched(ccn) ? 'Remove from watchlist' : 'Add to watchlist'}
+          title={isWatched(ccn) ? 'Remove from favorites' : 'Add to favorites'}
         >
-          {isWatched(ccn) ? '★ Watching' : '☆ Watch'}
+          {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
         </button>
         <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} />
       </div>
@@ -520,7 +526,7 @@ export function FacilityPage() {
           </ul>
           <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="Download Personalized Report (PDF)" variant="prominent" />
           <span className="fp-download-hint fp-download-hint--promo">Unlimited free downloads through March 31, 2026</span>
-          <span className="fp-download-hint fp-download-hint--future">After March 31: 3 free reports per day | Need more? Go Pro — $12/mo for unlimited reports</span>
+          <span className="fp-download-hint fp-download-hint--future">After March 31: 3 free reports per day | Need more? <Link to="/pricing">Go Pro — $14/mo</Link> for unlimited reports</span>
         </div>
 
         {/* Evidence Package CTA */}

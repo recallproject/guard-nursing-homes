@@ -68,23 +68,23 @@ export function Header({ onSearchOpen, transparent = false }) {
   const navGroups = [
     {
       label: 'Families',
-      paths: ['/', '/facility', '/watchlist', '/trends', '/high-risk', '/pricing'],
+      paths: ['/', '/facility', '/watchlist'],
       items: [
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes' },
-        { to: '/watchlist', label: 'My Watchlist', desc: 'Track facilities you\'re monitoring' },
-        { to: '/trends', label: 'Industry Trends', desc: 'National quality snapshot' },
-        { to: '/high-risk', label: 'High Risk', desc: 'Facilities failing across all dimensions' },
+        { to: '/watchlist', label: 'My Favorites', desc: 'Facilities you\'re tracking' },
       ]
     },
     {
       label: 'Professionals',
-      paths: ['/screening', '/discrepancies', '/ownership', '/evidence', '/ag-toolkit', '/chains'],
+      paths: ['/screening', '/discrepancies', '/ownership', '/evidence', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
       items: [
         { to: '/ag-toolkit', label: 'AG Toolkit', desc: 'Enforcement-ready staffing violation analysis' },
         { to: '/screening', label: 'State Screening', desc: 'AG investigation reports by state' },
         { to: '/chains', label: 'Chain Rankings', desc: 'Compare performance across nursing home chains' },
         { to: '/discrepancies', label: 'Staffing Discrepancies', desc: 'Facilities overstating staffing levels' },
         { to: '/ownership', label: 'Ownership Networks', desc: 'Explore multi-facility owner portfolios' },
+        { to: '/high-risk', label: 'High Risk', desc: 'Facilities failing across all dimensions' },
+        { to: '/trends', label: 'Industry Trends', desc: 'National quality snapshot' },
       ]
     },
     {
@@ -102,7 +102,6 @@ export function Header({ onSearchOpen, transparent = false }) {
         { to: '/pricing', label: 'Pricing', desc: 'Free for families, Pro for professionals' },
         { to: '/terms', label: 'Terms of Use', desc: 'Legal terms and disclaimers' },
         { to: '/privacy', label: 'Privacy Policy', desc: 'How we handle your data' },
-        { href: 'mailto:contact@oversightreports.com', label: 'Contact Us', desc: 'Questions, feedback, or partnerships' },
       ]
     }
   ];

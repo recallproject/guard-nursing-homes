@@ -22,12 +22,13 @@ const US_STATES = {
 
 export function WatchlistPage() {
   const { getFacility, loading, error } = useFacilityData();
-  const { watchlist, removeFacility } = useWatchlist();
+  const { watchlist, removeFacility, clearWatchlist } = useWatchlist();
   const navigate = useNavigate();
 
   const [sortBy, setSortBy] = useState('date'); // date, risk, name, state
   const [filterState, setFilterState] = useState('all');
   const [showConfirmRemove, setShowConfirmRemove] = useState(null);
+  const [showConfirmClear, setShowConfirmClear] = useState(false);
 
   const headerRef = useRef(null);
   const contentRef = useRef(null);
@@ -168,7 +169,7 @@ export function WatchlistPage() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `OversightReport_Watchlist_${new Date().toISOString().split('T')[0]}.csv`;
+    a.download = `OversightReport_Favorites_${new Date().toISOString().split('T')[0]}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -192,31 +193,31 @@ export function WatchlistPage() {
   return (
     <div className="watchlist-page">
       <Helmet>
-        <title>My Watchlist — Facility Monitoring | The Oversight Report</title>
-        <meta name="description" content="Track nursing homes you care about. Get a personalized dashboard of safety data for facilities on your watchlist." />
+        <title>My Favorites — Facility Monitoring | The Oversight Report</title>
+        <meta name="description" content="Track nursing homes you care about. Get a personalized dashboard of safety data for your favorite facilities." />
         <link rel="canonical" href="https://oversightreports.com/watchlist" />
       </Helmet>
       {/* Header */}
       <div className="watchlist-header" ref={headerRef}>
         <div className="watchlist-header-top">
-          <h1>My Watchlist</h1>
+          <h1>My Favorites</h1>
           {facilities.length > 0 && (
             <span className="watchlist-count-badge">{facilities.length}</span>
           )}
         </div>
-        <p className="watchlist-subtitle">Track facilities you're monitoring</p>
+        <p className="watchlist-subtitle">Track facilities you care about</p>
       </div>
 
       {/* Empty State */}
       {facilities.length === 0 ? (
         <div className="watchlist-empty">
           <div className="watchlist-empty-icon">★</div>
-          <h2>No facilities on your watchlist yet</h2>
+          <h2>No favorites yet</h2>
           <p>
-            Start tracking facilities to monitor their risk scores, violations, and staffing levels.
+            Click the ☆ on any facility to add it here. Compare them side by side, then export a spreadsheet of your picks.
           </p>
-          <Link to="/" className="btn btn-primary">
-            Search & Map
+          <Link to="/" state={{ jumpToMap: true }} className="btn btn-primary">
+            Explore the Map
           </Link>
         </div>
       ) : (
@@ -265,9 +266,17 @@ export function WatchlistPage() {
               </div>
             </div>
 
-            <button className="btn btn-secondary" onClick={downloadCSV}>
-              Download CSV
-            </button>
+            <div className="watchlist-actions">
+              <div className="watchlist-export">
+                <button className="btn btn-secondary" onClick={downloadCSV}>
+                  Export Spreadsheet
+                </button>
+                <span className="watchlist-export-hint">Opens in Excel, Google Sheets, or Numbers</span>
+              </div>
+              <button className="watchlist-clear-btn" onClick={() => setShowConfirmClear(true)}>
+                Clear All
+              </button>
+            </div>
           </div>
 
           {/* Facility List */}
@@ -354,7 +363,7 @@ export function WatchlistPage() {
       {showConfirmRemove && (
         <div className="watchlist-modal-overlay" onClick={cancelRemove}>
           <div className="watchlist-modal" onClick={(e) => e.stopPropagation()}>
-            <h3>Remove from Watchlist?</h3>
+            <h3>Remove from Favorites?</h3>
             <p>Are you sure you want to stop tracking this facility?</p>
             <div className="watchlist-modal-buttons">
               <button className="btn btn-secondary" onClick={cancelRemove}>
@@ -362,6 +371,24 @@ export function WatchlistPage() {
               </button>
               <button className="btn btn-primary" onClick={confirmRemove}>
                 Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Clear All Confirmation Modal */}
+      {showConfirmClear && (
+        <div className="watchlist-modal-overlay" onClick={() => setShowConfirmClear(false)}>
+          <div className="watchlist-modal" onClick={(e) => e.stopPropagation()}>
+            <h3>Clear All Favorites?</h3>
+            <p>This will remove all {facilities.length} facilities from your list.</p>
+            <div className="watchlist-modal-buttons">
+              <button className="btn btn-secondary" onClick={() => setShowConfirmClear(false)}>
+                Cancel
+              </button>
+              <button className="btn btn-primary watchlist-clear-confirm" onClick={() => { clearWatchlist(); setShowConfirmClear(false); }}>
+                Clear All
               </button>
             </div>
           </div>

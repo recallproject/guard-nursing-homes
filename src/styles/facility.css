@@ -65,6 +65,7 @@
 /* === Page Wrapper === */
 .fp {
   min-height: 100vh;
+  padding-top: 80px;
   background-color: #FFFFFF;
   color: #1E293B;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -442,6 +443,16 @@
   font-size: 0.78rem;
   color: #94A3B8;
   margin-top: 0.35rem;
+}
+
+.fp-download-hint--future a {
+  color: #4F46E5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.fp-download-hint--future a:hover {
+  text-decoration: underline;
 }
 
 /* === Body Content === */

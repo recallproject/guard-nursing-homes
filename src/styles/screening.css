@@ -6,7 +6,7 @@
 .screening-page {
   min-height: 100vh;
   background: var(--bg-deep);
-  padding: 3rem 0;
+  padding: 100px 0 3rem;
 }
 
 /* ========================================

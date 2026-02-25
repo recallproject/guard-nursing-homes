@@ -40,6 +40,27 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
         { opacity: 1, y: 0, duration: 0.7, delay: 0.6, ease: 'power3.out' }
       );
 
+      // Secondary tagline
+      gsap.fromTo(
+        '.hero-tagline-secondary',
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.8, ease: 'power3.out' }
+      );
+
+      // CTA buttons — right after taglines
+      gsap.fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 1.0, ease: 'power3.out' }
+      );
+
+      // Tertiary line
+      gsap.fromTo(
+        '.hero-tertiary',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, delay: 1.3, ease: 'power2.out' }
+      );
+
       // Stats count-up animation
       const statElements = statsRef.current?.querySelectorAll('.hero-stat-value');
       if (statElements) {
@@ -49,11 +70,10 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
           gsap.fromTo(
             el.closest('.hero-stat'),
             { opacity: 0, y: 25 },
-            { opacity: 1, y: 0, duration: 0.6, delay: 0.9 + index * 0.15, ease: 'power3.out' }
+            { opacity: 1, y: 0, duration: 0.6, delay: 1.4 + index * 0.15, ease: 'power3.out' }
           );
 
           if (format === 'ratio') {
-            // "1 in 3" — just fade in, no counter
             el.textContent = el.dataset.display;
           } else if (format === 'currency') {
             const numValue = parseFloat(el.dataset.value);
@@ -61,7 +81,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
             gsap.to(counter, {
               value: numValue,
               duration: 2.2,
-              delay: 1.0 + index * 0.15,
+              delay: 1.5 + index * 0.15,
               ease: 'expo.out',
               onUpdate: () => {
                 el.textContent = '$' + Math.round(counter.value).toLocaleString() + 'M';
@@ -73,7 +93,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
             gsap.to(counter, {
               value: numValue,
               duration: 2.2,
-              delay: 1.0 + index * 0.15,
+              delay: 1.5 + index * 0.15,
               ease: 'expo.out',
               onUpdate: () => {
                 el.textContent = Math.round(counter.value).toLocaleString();
@@ -87,28 +107,21 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
       gsap.fromTo(
         '.hero-data-date',
         { opacity: 0 },
-        { opacity: 1, duration: 0.5, delay: 1.5, ease: 'power2.out' }
+        { opacity: 1, duration: 0.5, delay: 2.0, ease: 'power2.out' }
       );
 
       // Methodology link
       gsap.fromTo(
         '.hero-methodology',
         { opacity: 0 },
-        { opacity: 1, duration: 0.5, delay: 1.6, ease: 'power2.out' }
+        { opacity: 1, duration: 0.5, delay: 2.1, ease: 'power2.out' }
       );
 
       // Trust line
       gsap.fromTo(
         '.hero-trust',
         { opacity: 0 },
-        { opacity: 1, duration: 0.6, delay: 1.8, ease: 'power2.out' }
-      );
-
-      // CTA buttons
-      gsap.fromTo(
-        ctaRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, delay: 2.0, ease: 'power3.out' }
+        { opacity: 1, duration: 0.6, delay: 2.3, ease: 'power2.out' }
       );
     }, heroRef);
 
@@ -154,7 +167,19 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
           <div className="hero-title-line">{renderTitle('REPORT')}</div>
         </div>
 
-        <p className="hero-tagline">Nursing home safety data, independently reviewed.</p>
+        <p className="hero-tagline">Looking into a nursing home? See their inspections, staffing, and track record here.</p>
+        <p className="hero-tagline-secondary">Covers all 14,713 Medicare-certified nursing homes — over 95% of facilities nationwide.</p>
+
+        <div className="hero-cta" ref={ctaRef}>
+          <button className="btn btn-primary btn-large" onClick={() => { if (onSearch) onSearch(); }}>
+            Search a Facility
+          </button>
+          <button className="btn btn-secondary btn-large" onClick={onExploreClick}>
+            View Your State
+          </button>
+        </div>
+
+        <p className="hero-tertiary">Nursing home safety data, independently reviewed.</p>
 
         <div className="hero-stats" ref={statsRef}>
           <div className="hero-stat">
@@ -193,15 +218,6 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
         <a href="/methodology" className="hero-methodology">How we calculate these numbers &rarr;</a>
 
         <p className="hero-trust">100% public data. No industry funding.</p>
-
-        <div className="hero-cta" ref={ctaRef}>
-          <button className="btn btn-primary btn-large" onClick={() => { if (onSearch) onSearch(); }}>
-            Search a Facility
-          </button>
-          <button className="btn btn-secondary btn-large" onClick={onExploreClick}>
-            View Your State
-          </button>
-        </div>
       </div>
     </section>
   );

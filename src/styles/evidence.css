@@ -6,6 +6,7 @@
 /* === Page Container === */
 .ev {
   min-height: 100vh;
+  padding-top: 80px;
   background-color: var(--bg-deep);
   color: var(--text-cream);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;

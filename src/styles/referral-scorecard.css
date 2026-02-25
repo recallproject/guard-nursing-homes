@@ -6,7 +6,7 @@
 .referral-scorecard-page {
   min-height: 100vh;
   background: var(--bg-deep);
-  padding: 3rem 0;
+  padding: 100px 0 3rem;
 }
 
 /* ========================================
@@ -87,6 +87,12 @@
   gap: 1.5rem;
 }
 
+.referral-input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
 .referral-input-group {
   display: flex;
   flex-direction: column;
@@ -136,42 +142,80 @@
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2);
 }
 
-.referral-slider {
-  width: 100%;
-  height: 6px;
-  background: var(--bg-elevated);
-  border-radius: 3px;
-  outline: none;
-  -webkit-appearance: none;
+/* ========================================
+   RADIUS BUTTON GROUP
+   ======================================== */
+.referral-radius-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
-.referral-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: var(--primary);
-  border-radius: 50%;
+.referral-radius-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background-color: var(--bg-elevated);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
   cursor: pointer;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
-.referral-slider::-webkit-slider-thumb:hover {
-  background: var(--primary-light);
+.referral-radius-btn:hover {
+  color: var(--text-white);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.referral-slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: var(--primary);
-  border-radius: 50%;
+.referral-radius-btn.active {
+  color: var(--text-white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.referral-radius-label {
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ========================================
+   FACILITY TYPE CHECKBOXES
+   ======================================== */
+.referral-type-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.referral-type-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-elevated);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
   cursor: pointer;
-  border: none;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
-.referral-slider::-moz-range-thumb:hover {
-  background: var(--primary-light);
+.referral-type-checkbox:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.referral-type-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
+.referral-type-checkbox span {
+  font-size: 0.95rem;
+  color: var(--text-cream);
+  user-select: none;
 }
 
 /* ========================================
@@ -183,96 +227,90 @@
   padding: 0 2rem;
 }
 
-/* ========================================
-   OVERALL GRADE CARD
-   ======================================== */
-.referral-grade-card {
-  background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  overflow: hidden;
-}
-
-.referral-grade-header {
-  background: var(--bg-elevated);
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.referral-grade-header h2 {
+.referral-results-header h2 {
   font-size: 1.5rem;
-  margin: 0;
   color: var(--text-white);
+  margin-bottom: 1.5rem;
 }
 
-.referral-grade-body {
-  padding: 2rem;
+/* ========================================
+   FILTER TABS
+   ======================================== */
+.referral-filter-tabs {
   display: flex;
-  gap: 3rem;
-  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
-.referral-grade-letter {
-  flex-shrink: 0;
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'DM Serif Display', serif;
-  font-size: 5rem;
-  font-weight: 700;
-  border-radius: 12px;
-  color: var(--text-white);
-}
-
-.referral-grade-letter.grade-a {
-  background: var(--risk-low);
-}
-
-.referral-grade-letter.grade-b {
-  background: var(--risk-elevated);
-}
-
-.referral-grade-letter.grade-c {
-  background: var(--risk-high);
-}
-
-.referral-grade-letter.grade-d,
-.referral-grade-letter.grade-f {
-  background: var(--risk-critical);
-}
-
-.referral-grade-stats {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 2rem;
-}
-
-.referral-grade-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.referral-grade-stat-value {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-white);
-}
-
-.referral-grade-stat-value.danger {
-  color: var(--risk-critical);
-}
-
-.referral-grade-stat-label {
-  font-size: 0.9rem;
+.referral-filter-tab {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: var(--text-muted);
+  background-color: var(--bg-card);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.referral-filter-tab:hover {
+  color: var(--text-white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.referral-filter-tab.active {
+  color: var(--text-white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.referral-filter-tab.referral-filter-high-risk {
+  color: var(--risk-critical);
+  border-color: var(--risk-critical);
+}
+
+.referral-filter-tab.referral-filter-high-risk.active {
+  color: var(--text-white);
+  background-color: var(--risk-critical);
+  border-color: var(--risk-critical);
+}
+
+/* ========================================
+   FACILITY TYPE BADGES
+   ======================================== */
+.facility-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-white);
+  border-radius: 4px;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.facility-type-badge.snf {
+  background-color: #3B82F6;
+}
+
+.facility-type-badge.home_health {
+  background-color: #10B981;
+}
+
+.facility-type-badge.hospice {
+  background-color: #8B5CF6;
+}
+
+.facility-type-badge.irf {
+  background-color: #F59E0B;
+}
+
+.facility-type-badge.ltach {
+  background-color: #EF4444;
 }
 
 /* ========================================
@@ -280,12 +318,6 @@
    ======================================== */
 .referral-export-section {
   margin-bottom: 2rem;
-}
-
-.referral-export-section h3 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  color: var(--text-white);
 }
 
 .referral-export-buttons {
@@ -351,6 +383,13 @@
   color: var(--text-cream);
 }
 
+.referral-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--primary);
+}
+
 .referral-rank {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
@@ -363,6 +402,17 @@
   font-weight: 600;
   color: var(--text-white);
   min-width: 200px;
+}
+
+.referral-facility-name a {
+  color: var(--text-white);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.referral-facility-name a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
 }
 
 .referral-stars {
@@ -397,14 +447,29 @@
   background-color: var(--risk-low);
 }
 
-.referral-flag-danger {
+.referral-ownership {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ========================================
+   FLAGS
+   ======================================== */
+.referral-flags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.referral-flag {
   display: inline-block;
   padding: 0.25rem 0.5rem;
-  background-color: var(--risk-critical);
+  background-color: var(--risk-elevated);
   color: var(--text-white);
   border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .referral-flag-no {
@@ -412,35 +477,18 @@
 }
 
 /* ========================================
-   QUICK FLAGS
+   SELECTED COUNT
    ======================================== */
-.referral-quick-flags {
-  display: flex;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.referral-quick-flag {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  cursor: help;
-}
-
-.referral-quick-flag.flag-red {
-  background-color: var(--risk-critical);
-}
-
-.referral-quick-flag.flag-orange {
-  background-color: var(--risk-high);
-}
-
-.referral-quick-flag.flag-yellow {
-  background-color: var(--risk-elevated);
+.referral-selected-count {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-light);
+  text-align: center;
 }
 
 /* ========================================
@@ -499,13 +547,21 @@
     flex-direction: column;
   }
 
-  .referral-grade-body {
-    flex-direction: column;
-    gap: 2rem;
+  .referral-input-row {
+    grid-template-columns: 1fr;
   }
 
-  .referral-grade-stats {
+  .referral-radius-buttons {
+    flex-wrap: wrap;
+  }
+
+  .referral-type-checkboxes {
     grid-template-columns: 1fr;
+  }
+
+  .referral-filter-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
   }
 
   .referral-export-buttons {

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useSearchParams, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import HeroSection from '../components/HeroSection';
@@ -25,8 +26,13 @@ import '../styles/comparison.css';
 
 export function MapPage() {
   const { data, loading, error, searchFacilities } = useFacilityData();
-  const [view, setView] = useState('hero'); // hero, states, detail
-  const [selectedState, setSelectedState] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const jumpToMap = location.state?.jumpToMap || searchParams.get('view') === 'map';
+  const initState = searchParams.get('state') || null;
+  const initView = jumpToMap ? 'states' : initState ? 'detail' : 'hero';
+  const [view, setView] = useState(initView);
+  const [selectedState, setSelectedState] = useState(initState);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileMapVisible, setMobileMapVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -34,6 +40,28 @@ export function MapPage() {
   const mapSectionRef = useRef(null);
   const stateDetailRef = useRef(null);
   const comparisonRef = useRef(null);
+
+  // Handle URL params and location state for deep-linking
+  useEffect(() => {
+    const stateParam = searchParams.get('state');
+    const viewParam = searchParams.get('view');
+    const jump = location.state?.jumpToMap;
+
+    if (stateParam && data?.states?.[stateParam]) {
+      setSelectedState(stateParam);
+      setView('detail');
+      setSearchParams({}, { replace: true });
+    } else if (stateParam && data && !data.states?.[stateParam]) {
+      setSelectedState(null);
+      setView('states');
+      setSearchParams({}, { replace: true });
+    } else if (viewParam === 'map' || jump) {
+      setView('states');
+      if (viewParam) setSearchParams({}, { replace: true });
+      // Clear location state so back button doesn't re-trigger
+      if (jump) window.history.replaceState({}, '');
+    }
+  }, [searchParams, location.state, data]);
 
   // Handle keyboard shortcuts
   useEffect(() => {

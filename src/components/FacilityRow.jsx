@@ -40,7 +40,7 @@ export default function FacilityRow({ facility }) {
   };
 
   const handleClick = () => {
-    navigate(`/facility/${facility.ccn}`);
+    navigate(`/facility/${facility.ccn}`, { state: { fromState: facility.state } });
   };
 
   const getTrendIndicator = () => {
@@ -67,7 +67,7 @@ export default function FacilityRow({ facility }) {
           e.stopPropagation();
           watched ? removeFacility(facility.ccn) : addFacility(facility.ccn);
         }}
-        title={watched ? 'Remove from watchlist' : 'Add to watchlist'}
+        title={watched ? 'Remove from favorites' : 'Add to favorites'}
       >
         {watched ? '★' : '☆'}
       </button>

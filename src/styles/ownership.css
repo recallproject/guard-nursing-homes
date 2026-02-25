@@ -6,7 +6,7 @@
 .ownership-page {
   min-height: 100vh;
   background-color: var(--bg-deep);
-  padding: 4rem 0;
+  padding: 100px 0 3rem;
 }
 
 /* ========================================

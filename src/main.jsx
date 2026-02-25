@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx';
+import { WatchlistProvider } from './hooks/useWatchlist';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -42,7 +43,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <HelmetProvider>
       <ErrorBoundary>
         <BrowserRouter>
-          <App />
+          <WatchlistProvider>
+            <App />
+          </WatchlistProvider>
         </BrowserRouter>
       </ErrorBoundary>
     </HelmetProvider>
