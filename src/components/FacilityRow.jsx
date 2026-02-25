@@ -1,7 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import { useWatchlist } from '../hooks/useWatchlist';
 
 export default function FacilityRow({ facility }) {
   const navigate = useNavigate();
+  const { addFacility, removeFacility, isWatched } = useWatchlist();
+  const watched = isWatched(facility.ccn);
 
   const getRiskInfo = (score) => {
     if (score >= 60) return { label: 'CRITICAL', color: 'var(--risk-critical)' };
@@ -58,6 +61,16 @@ export default function FacilityRow({ facility }) {
       <div className="facility-row-score" style={{ backgroundColor: riskInfo.color }}>
         <span className="facility-row-score-num">{score.toFixed(0)}</span>
       </div>
+      <button
+        className={`facility-row-watch ${watched ? 'facility-row-watch--active' : ''}`}
+        onClick={(e) => {
+          e.stopPropagation();
+          watched ? removeFacility(facility.ccn) : addFacility(facility.ccn);
+        }}
+        title={watched ? 'Remove from watchlist' : 'Add to watchlist'}
+      >
+        {watched ? '★' : '☆'}
+      </button>
       <div className="facility-row-info">
         <div className="facility-row-top">
           <span className="facility-row-name">

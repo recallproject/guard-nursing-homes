@@ -247,6 +247,31 @@
   color: #fff;
 }
 
+.facility-row-watch {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #475569;
+  padding: 0.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.facility-row-watch:hover {
+  color: #F59E0B;
+  transform: scale(1.2);
+}
+
+.facility-row-watch--active {
+  color: #F59E0B;
+}
+
+.facility-row-watch--active:hover {
+  color: #DC2626;
+}
+
 .facility-row-info {
   flex: 1;
   min-width: 0;
