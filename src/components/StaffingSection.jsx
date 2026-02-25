@@ -234,8 +234,16 @@ export default function StaffingSection({ facility, benchmarks }) {
       {/* Zero RN Days Warning */}
       {facility.zero_rn_pct > 0 && (
         <div className="staffing-warning">
-          ⚠️ This facility reported zero RN hours on {facility.zero_rn_pct}% of days.
-          That means this facility reported zero RN payroll hours for those days in federal staffing records.
+          ⚠️ This facility reported zero RN hours on {facility.zero_rn_pct}% of days (Q3 2025).
+          Federal law requires RN coverage for at least 8 consecutive hours per day (42 CFR §483.35).
+          Days with zero reported RN hours may indicate a violation of this requirement.
+          Without an RN present, certain clinical functions cannot be performed — including
+          IV medication administration, complex wound assessment, and evaluation of acute changes in condition.
+          <br /><br />
+          <em>PBJ data is self-reported by facilities and not routinely audited by CMS.
+          Zero reported hours could reflect an actual staffing gap or a reporting error — both are concerning.</em>
+          <br />
+          <span className="staffing-source">Source: CMS Payroll-Based Journal, Q3 2025</span>
         </div>
       )}
 
@@ -253,45 +261,62 @@ export default function StaffingSection({ facility, benchmarks }) {
       {/* Federal Staffing Standards Timeline */}
       <CollapsibleSection title="Federal Staffing Standards — Timeline">
         <p>
-          <span className="timeline-date">Until 2024:</span> No specific federal minimum. Nursing homes were
-          required to have "sufficient staff" to meet residents' needs,
-          but no number was defined. Only hard rule: at least 1 RN on
-          duty for 8 hours per day.
+          <span className="timeline-date">Current federal requirement (42 CFR §483.35):</span> An RN
+          must be on site for at least 8 consecutive hours per day, 7 days per week. A full-time RN
+          must serve as Director of Nursing. Facilities must have "sufficient" licensed nursing staff
+          24 hours per day. There is no federal minimum hours-per-resident-day (HPRD) requirement.
         </p>
 
         <div className="timeline-entry">
           <p>
-            <span className="timeline-date">April 2024:</span> CMS finalized new minimum standards requiring:
+            <span className="timeline-date">May 2024:</span> CMS finalized a rule that would have required:
           </p>
           <ul>
-            <li>At least 33 minutes of RN care per resident per day</li>
-            <li>At least 147 minutes of CNA care per resident per day</li>
-            <li>At least 209 minutes total nursing care per resident per day</li>
-            <li>An RN physically in the building 24/7</li>
+            <li>3.48 total nursing hours per resident per day (0.55 RN + 2.45 CNA)</li>
+            <li>24/7 on-site RN coverage</li>
           </ul>
         </div>
 
         <p>
-          <span className="timeline-date">December 2025:</span> These standards were repealed through the
-          One Big Beautiful Bill Act (Public Law 119-21, Section 71111).
-          The law prohibits CMS from enforcing any minimum staffing
-          numbers until at least October 1, 2034.
+          <span className="timeline-date">April–June 2025:</span> Federal courts in Texas and Iowa
+          struck down the rule. It never took effect at any facility.
         </p>
 
         <p>
-          <span className="timeline-date">Current federal requirement:</span> "Sufficient" nursing staff —
-          with no specific number defined. An RN must be on duty at
-          least 8 hours per day. Some states have their own stricter
-          requirements.
+          <span className="timeline-date">July 4, 2025:</span> The{' '}
+          <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer">
+            One Big Beautiful Bill Act
+          </a>{' '}
+          (§71111) blocked enforcement of any staffing mandate through September 30, 2034.
+        </p>
+
+        <p>
+          <span className="timeline-date">December 2, 2025:</span> CMS issued an{' '}
+          <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">
+            interim final rule
+          </a>{' '}
+          formally repealing the 2024 standards.
+        </p>
+
+        <p>
+          <span className="timeline-date">February 2, 2026:</span>{' '}
+          <a href="https://oag.ca.gov/system/files/attachments/press-docs/Repeal%20of%20Minimum%20Staffing%20Standards%20for%20LTC%20Facilities%20Comment%20Letter%202026.02.02.pdf" target="_blank" rel="noopener noreferrer">
+            18 state attorneys general
+          </a>{' '}
+          asked CMS to implement a targeted staffing standard (3.48 HPRD) for for-profit nursing homes
+          with high-risk financial practices, including related-party transactions and private equity ownership.
         </p>
 
         <p>
           <strong>Sources:</strong><br />
-          <a href="https://www.federalregister.gov/documents/2024/05/10/2024-08273/medicare-and-medicaid-programs-minimum-staffing-standards-for-long-term-care-facilities-and-medicaid" target="_blank" rel="noopener noreferrer">
-            2024 Final Rule (Federal Register)
+          <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-B/section-483.35" target="_blank" rel="noopener noreferrer">
+            42 CFR §483.35 (current federal requirements)
           </a><br />
-          <a href="https://nursinghome411.org/federal-staffing-standard/" target="_blank" rel="noopener noreferrer">
-            Safety Benchmark Research
+          <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">
+            CMS Repeal IFR (Dec 2025)
+          </a><br />
+          <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer">
+            One Big Beautiful Bill Act §71111
           </a>
         </p>
       </CollapsibleSection>

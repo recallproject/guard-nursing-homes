@@ -623,3 +623,22 @@
 .discrepancies-page .collapsible-inner {
   padding: 1.5rem;
 }
+
+/* ========================================
+   INFO BOX
+   ======================================== */
+
+.discrepancies-info-box {
+  background-color: rgba(79, 70, 229, 0.1);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--text-white);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.discrepancies-info-box p {
+  margin: 0;
+}

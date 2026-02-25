@@ -98,6 +98,7 @@ export function MethodologyPage() {
           <li><a href="#data-sources">Data Sources</a></li>
           <li><a href="#key-metrics">Key Metrics Explained</a></li>
           <li><a href="#what-we-dont-do">What We Don't Do</a></li>
+          <li><a href="#regulatory-context">Federal Staffing Requirements</a></li>
           <li><a href="#data-freshness">Data Freshness</a></li>
           <li><a href="#contact">Contact & Corrections</a></li>
         </ul>
@@ -388,11 +389,143 @@ export function MethodologyPage() {
           </div>
         </section>
 
-        {/* Section 4: Data Freshness */}
+        {/* Section 4: Federal Regulatory Context */}
+        <section
+          id="regulatory-context"
+          className="methodology-section section-light"
+          ref={el => sectionsRef.current[3] = el}
+        >
+          <h2>Federal Nursing Home Staffing Requirements</h2>
+          <p className="methodology-intro">
+            Understanding the current regulatory framework is critical for interpreting staffing data on this site.
+          </p>
+
+          <div className="methodology-metric">
+            <h3>Current Federal Law (42 CFR §483.35)</h3>
+            <p>
+              All Medicare/Medicaid-certified nursing homes must meet these requirements:
+            </p>
+            <ul>
+              <li>A registered nurse (RN) on site for at least 8 consecutive hours per day, 7 days per week</li>
+              <li>A full-time RN serving as Director of Nursing</li>
+              <li>"Sufficient numbers" of licensed nursing staff 24 hours per day to meet residents' needs</li>
+            </ul>
+            <p className="methodology-note">
+              <strong>Important:</strong> There is currently no federal minimum hours-per-resident-day (HPRD) requirement.
+              The "sufficient" standard is qualitative, not quantitative.
+            </p>
+            <div className="methodology-formula">
+              <span className="methodology-formula-label">Source:</span>
+              <span className="methodology-formula-value">
+                <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-B/section-483.35" target="_blank" rel="noopener noreferrer">
+                  42 CFR §483.35 (Code of Federal Regulations)
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <div className="methodology-metric">
+            <h3>The 2024 Staffing Rule (Never Took Effect)</h3>
+            <p>
+              In May 2024, CMS finalized a rule that would have established the first-ever federal minimum staffing requirements:
+            </p>
+            <ul>
+              <li>3.48 total nursing hours per resident per day (0.55 RN + 2.45 CNA)</li>
+              <li>24/7 on-site RN coverage</li>
+            </ul>
+            <p>
+              <strong>April–June 2025:</strong> Federal courts in Texas and Iowa struck down the rule before it took effect.
+            </p>
+            <p>
+              <strong>July 4, 2025:</strong> The{' '}
+              <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer">
+                One Big Beautiful Bill Act
+              </a>{' '}
+              (§71111) blocked enforcement of any federal staffing mandate through September 30, 2034.
+            </p>
+            <p>
+              <strong>December 2, 2025:</strong> CMS formally{' '}
+              <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">
+                repealed the 2024 standards
+              </a>{' '}
+              via interim final rule (effective February 2, 2026).
+            </p>
+            <p className="methodology-note">
+              <strong>Critical fact:</strong> The 24/7 RN requirement never took effect at any facility.
+            </p>
+          </div>
+
+          <div className="methodology-metric">
+            <h3>State-Level Variation</h3>
+            <p>
+              Approximately 14 states have their own staffing requirements that exceed the federal baseline:
+            </p>
+            <ul>
+              <li>Some states require 24/7 RN coverage (the federal rule only requires 8 hours)</li>
+              <li>A few states impose minimum HPRD thresholds (e.g., California requires 3.5 HPRD)</li>
+              <li>State requirements remain in effect regardless of federal changes</li>
+            </ul>
+          </div>
+
+          <div className="methodology-metric">
+            <h3>The 18-State AG Letter (February 2, 2026)</h3>
+            <p>
+              On February 2, 2026,{' '}
+              <a href="https://oag.ca.gov/system/files/attachments/press-docs/Repeal%20of%20Minimum%20Staffing%20Standards%20for%20LTC%20Facilities%20Comment%20Letter%202026.02.02.pdf" target="_blank" rel="noopener noreferrer">
+                18 state attorneys general
+              </a>{' '}
+              — led by California, Massachusetts, and New York — asked CMS to implement a <strong>targeted</strong> staffing
+              standard (3.48 HPRD) for:
+            </p>
+            <ul>
+              <li>For-profit nursing homes</li>
+              <li>With high-risk financial practices (related-party transactions, private equity ownership)</li>
+            </ul>
+            <p className="methodology-note">
+              <strong>Key distinction:</strong> The AGs requested a targeted rule for high-risk operators, not a universal mandate for all facilities.
+              They also asked CMS to lift the suspension of ownership disclosure requirements.
+            </p>
+          </div>
+
+          <div className="methodology-metric">
+            <h3>How This Affects Our Analysis</h3>
+            <p>
+              When we report "zero-RN days," we are identifying potential violations of the <strong>existing</strong> federal
+              requirement (8 hours per day). This is not about the repealed 24/7 rule — it's about facilities that may
+              not be meeting the current baseline standard that has been in place since 1987.
+            </p>
+          </div>
+
+          <div className="methodology-metric">
+            <h3>How Can a Facility Report Zero RN Hours?</h3>
+            <p>
+              Federal law requires a registered nurse on site for at least 8 consecutive hours every day. Yet CMS payroll data shows thousands of facilities reporting days with zero RN hours. There are several possible explanations:
+            </p>
+            <ul>
+              <li>The facility actually had no RN working that day — a potential violation of 42 CFR §483.35(b)(1).</li>
+              <li>The facility had an RN present but failed to submit accurate payroll data to CMS — a reporting compliance issue.</li>
+              <li>The facility submitted incomplete or erroneous PBJ data — which CMS does not routinely audit or verify against actual payroll records.</li>
+            </ul>
+            <p>
+              All three scenarios are concerning. Scenario 1 is a staffing violation. Scenarios 2 and 3 mean the public staffing data families rely on may not reflect reality.
+            </p>
+            <p>
+              CMS conducts on-site inspections roughly every 12–15 months. Between inspections, there is no real-time monitoring of whether facilities meet the 8-hour RN requirement. Enforcement is complaint-driven: if no one reports the gap, it may not be investigated until the next scheduled survey.
+            </p>
+            <p>
+              Some facilities — particularly small or rural homes — may qualify for a federal waiver of the 8-hour RN requirement due to workforce unavailability (42 CFR §483.35(e)). However, a waiver does not eliminate the requirement for licensed nursing coverage. Even with a waiver, a facility must still have a licensed nurse (RN or LPN) on duty and an RN available by phone.
+            </p>
+            <p>
+              We present this data as reported by facilities to CMS. We do not independently verify staffing levels. Families with concerns about a specific facility's staffing should contact their state survey agency or the CMS regional office.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 5: Data Freshness */}
         <section
           id="data-freshness"
           className="methodology-section section-dark"
-          ref={el => sectionsRef.current[3] = el}
+          ref={el => sectionsRef.current[4] = el}
         >
           <h2>Data Freshness</h2>
           <p className="methodology-intro">
@@ -420,11 +553,11 @@ export function MethodologyPage() {
           </p>
         </section>
 
-        {/* Section 5: Contact */}
+        {/* Section 6: Contact */}
         <section
           id="contact"
           className="methodology-section section-light"
-          ref={el => sectionsRef.current[4] = el}
+          ref={el => sectionsRef.current[5] = el}
         >
           <h2>Contact & Corrections</h2>
           <p className="methodology-intro">

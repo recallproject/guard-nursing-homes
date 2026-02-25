@@ -174,7 +174,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
             >
               &nbsp;
             </div>
-            <div className="hero-stat-label">Reported days with zero RN payroll hours</div>
+            <div className="hero-stat-label">Had days with zero registered nurse hours</div>
           </div>
           <div className="hero-stat">
             <div

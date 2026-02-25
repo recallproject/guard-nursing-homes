@@ -411,11 +411,9 @@ export function generatePDF(facility, options = {}) {
     subHeader('Registered Nurse Absence');
     const rnPctVal = Number(facility.zero_rn_pct).toFixed(0);
     calloutBox(
-      `On ${rnPctVal}% of days, this facility reported zero registered nurse payroll hours to CMS. ` +
-      'When facilities report zero RN hours, it suggests no RN was available for critical functions: IV medications, ' +
-      'complex wound care, acute condition assessment, ' +
-      'and physician orders requiring RN evaluation. ' +
-      'LPNs and CNAs provide valuable care, but there are clinical tasks that only an RN is licensed to perform.',
+      `Federal law requires RN coverage for at least 8 hours per day. This facility reported zero RN hours on ${rnPctVal}% of days. ` +
+      'During those periods, the highest-credentialed person in the building may have been an LPN or CNA, who cannot legally perform ' +
+      'certain clinical functions such as assessing acute changes in condition or initiating certain medication orders.',
       'danger'
     );
   }
@@ -454,10 +452,10 @@ export function generatePDF(facility, options = {}) {
     needsPage(25);
     subHeader('Staffing Data Discrepancy');
     calloutBox(
-      `This facility self-reports ${Math.round(facility.rn_gap_pct)}% more RN hours than verified payroll records show. ` +
-      'CMS requires facilities to submit payroll-based staffing data quarterly. When the numbers a facility advertises ' +
-      'differ significantly from what payroll records confirm, it raises questions about the accuracy of their staffing claims. ' +
-      'Ask to see the posted daily staffing schedule and compare it to what you observe during visits.',
+      `This facility's reported staffing hours are ${Math.round(facility.rn_gap_pct)}% higher than what payroll records support. ` +
+      'When what a facility reports to the government doesn\'t match what they actually pay their staff, it raises questions about the accuracy of their public staffing data. ' +
+      'Ask to see the posted daily staffing schedule — facilities are required to display this publicly. ' +
+      'Source: CMS PBJ Staffing Data vs. CMS Provider-Reported Staffing',
       'warning'
     );
   }
@@ -727,7 +725,7 @@ export function generatePDF(facility, options = {}) {
 
   // Zero-RN days callout
   if (facility.zero_rn_pct > 10) {
-    let zeroText = `On ${pct(facility.zero_rn_pct)} of days, there was NO registered nurse in the building. Residents had no access to RN-level care during these periods.`;
+    let zeroText = `Federal law requires RN coverage for at least 8 hours per day. On ${pct(facility.zero_rn_pct)} of days, this facility reported zero RN hours. During those periods, the highest-credentialed person in the building may have been an LPN or CNA, who cannot legally perform certain clinical functions such as assessing acute changes in condition or initiating certain medication orders.`;
     if (hasPercentiles && percentiles.zero_rn_pct != null) {
       zeroText += ` This is worse than ${percentiles.zero_rn_pct}% of facilities nationally.`;
     }
@@ -765,7 +763,7 @@ export function generatePDF(facility, options = {}) {
     );
   }
 
-  sourceText('Source: CMS Payroll-Based Journal (PBJ) Daily Staffing Data  |  PBJ is mandatory -- facilities submit actual payroll hours quarterly');
+  sourceText('Source: CMS Payroll-Based Journal data, Q3 2025  |  PBJ is mandatory -- facilities submit actual payroll hours quarterly');
 
   // ═══════════════════════════════════════════════════
   //  PAGE 5: THE OWNER PICTURE

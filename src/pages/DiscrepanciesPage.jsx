@@ -533,6 +533,13 @@ export default function DiscrepanciesPage() {
           </button>
         </div>
 
+        {/* Data Context Info Box */}
+        <div className="discrepancies-info-box">
+          <p>
+            Staffing data from CMS Payroll-Based Journal, Q3 2025. Federal law (42 CFR §483.35) requires a registered nurse on site for at least 8 consecutive hours per day, 7 days per week. "Zero-RN Days" shows the percentage of days where the facility reported no RN hours at all — based on payroll data submitted to CMS. Days with zero reported RN hours may indicate a violation of this federal requirement, or may reflect a data reporting error. Note: "Total Staff Hrs/Day" includes all staff combined (CNA + LPN + RN) — a high number does not mean RNs were present.
+          </p>
+        </div>
+
         {/* Table */}
         <div className="discrepancies-table-container" ref={tableRef}>
           <table className="discrepancies-table">
