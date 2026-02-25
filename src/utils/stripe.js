@@ -34,7 +34,7 @@ export function checkout(priceKey) {
 }
 
 // Single report purchase — $29 one-time
-const SINGLE_REPORT_LINK = null; // Rob: create a $29 one-time Payment Link in Stripe and paste URL here
+const SINGLE_REPORT_LINK = 'https://buy.stripe.com/00wfZh5Z63m53DubNR0x204';
 
 /**
  * Redirect to Stripe for a single evidence report purchase
