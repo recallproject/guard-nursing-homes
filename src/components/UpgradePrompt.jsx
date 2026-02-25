@@ -32,11 +32,11 @@ export function UpgradePrompt({ requiredTier, featureName, children }) {
           <div className="upgrade-prompt-price">{tierInfo.price}</div>
         </div>
         <div className="upgrade-prompt-footer">
-          <Link to="/pricing" className="btn btn-primary upgrade-prompt-cta">
-            Subscribe to {tierInfo.name}
-          </Link>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform" target="_blank" rel="noopener noreferrer" className="btn btn-primary upgrade-prompt-cta">
+            Join Waitlist
+          </a>
           <p className="upgrade-prompt-hint">
-            View all plan features and pricing
+            Coming soon · <Link to="/pricing">View all plans</Link>
           </p>
         </div>
       </div>

@@ -14,7 +14,7 @@ import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
 import { useWatchlist } from '../hooks/useWatchlist';
-import { checkoutSingleReport } from '../utils/stripe';
+
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
@@ -613,11 +613,21 @@ export function FacilityPage() {
               </div>
 
               <div className="ev-preview-actions">
-                <button className="ev-buy-single" onClick={() => checkoutSingleReport(ccn)}>
-                  Buy This Report — $29
-                </button>
+                <p className="ev-coming-soon-label">Coming Soon — Join the Waitlist</p>
+                <form className="ev-waitlist-form" onSubmit={(e) => {
+                  e.preventDefault();
+                  const email = e.target.elements.email.value;
+                  if (email) {
+                    window.open(`https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform?usp=pp_url&entry.emailAddress=${encodeURIComponent(email)}`, '_blank');
+                    e.target.reset();
+                    setShowEvidencePreview(false);
+                  }
+                }}>
+                  <input type="email" name="email" placeholder="Enter your email" required className="ev-waitlist-input" />
+                  <button type="submit" className="ev-waitlist-btn">Notify Me</button>
+                </form>
                 <Link to="/pricing" className="ev-subscribe-link" onClick={() => setShowEvidencePreview(false)}>
-                  or subscribe from $59/mo for unlimited reports
+                  View all plans →
                 </Link>
               </div>
             </div>

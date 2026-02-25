@@ -47,7 +47,7 @@ const tiers = [
       'Priority support',
     ],
     journalistNote: 'Journalists: Contact us for complimentary 90-day Pro access.',
-    cta: 'Subscribe',
+    cta: 'Join Waitlist',
     stripeKey: { monthly: 'pro_monthly', annual: 'pro_annual' },
     ctaType: 'primary',
     disabled: false,
@@ -66,8 +66,8 @@ const tiers = [
       'Bulk CSV exports (state-level, chain-level)',
       '5 user seats',
     ],
-    singlePurchase: 'Single evidence PDF purchase: $29/report without subscription',
-    cta: 'Subscribe',
+    singlePurchase: 'Single evidence PDF purchase: coming soon — join the waitlist',
+    cta: 'Join Waitlist',
     stripeKey: { monthly: 'professional_monthly', annual: 'professional_annual' },
     ctaType: 'secondary',
     disabled: false,
@@ -169,8 +169,8 @@ export default function PricingPage() {
     if (tier.ctaLink === '/') {
       navigate('/');
     } else if (tier.stripeKey) {
-      const key = billingCycle === 'annual' ? tier.stripeKey.annual : tier.stripeKey.monthly;
-      checkout(key);
+      // Subscriptions disabled until real auth is connected — open waitlist
+      window.open('https://docs.google.com/forms/d/e/1FAIpQLSdemsYSy34izMr2ik-XRsK7-zXOvoOveCjjbVvjEQWrWOYCTg/viewform', '_blank');
     } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;
     }
