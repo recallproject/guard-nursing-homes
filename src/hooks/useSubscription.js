@@ -1,8 +1,8 @@
 /**
  * useSubscription hook
  *
- * Returns the current user's subscription tier. For now it always returns 'free' since we have no auth.
- * Later this will connect to Stripe for real subscription status.
+ * Returns the current user's subscription tier from localStorage.
+ * Set by the success page after Stripe payment.
  *
  * Tier hierarchy: free < pro < professional < institutional
  */
@@ -17,17 +17,23 @@ const TIER_HIERARCHY = {
 };
 
 /**
- * Main hook - returns subscription status
+ * Main hook - returns subscription status from localStorage
  */
 export function useSubscription() {
-  const [tier, setTier] = useState('free');
+  const [tier, setTier] = useState(() => {
+    return localStorage.getItem('subscription_tier') || 'free';
+  });
   const [loading, setLoading] = useState(false);
 
-  // For now, always return 'free'
-  // When auth is added, this will check Stripe status
   useEffect(() => {
-    // Placeholder for future Stripe integration
-    setLoading(false);
+    // Listen for storage changes (e.g. if user subscribes in another tab)
+    const handleStorage = (e) => {
+      if (e.key === 'subscription_tier') {
+        setTier(e.newValue || 'free');
+      }
+    };
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
   }, []);
 
   return {
