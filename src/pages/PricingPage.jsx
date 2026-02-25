@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/landing/Footer';
 import { useNavigate } from 'react-router-dom';
+import { checkout } from '../utils/stripe';
 import '../styles/design.css';
 import '../styles/pricing.css';
 
@@ -45,10 +46,10 @@ const tiers = [
       'Priority support',
     ],
     journalistNote: 'Journalists: Contact us for complimentary 90-day Pro access.',
-    cta: 'Coming Soon',
-    ctaLink: null,
+    cta: 'Subscribe',
+    stripeKey: { monthly: 'pro_monthly', annual: 'pro_annual' },
     ctaType: 'primary',
-    disabled: true,
+    disabled: false,
   },
   {
     name: 'Professional',
@@ -65,10 +66,10 @@ const tiers = [
       '5 user seats',
     ],
     singlePurchase: 'Single evidence PDF purchase: $29/report without subscription',
-    cta: 'Coming Soon',
-    ctaLink: null,
+    cta: 'Subscribe',
+    stripeKey: { monthly: 'professional_monthly', annual: 'professional_annual' },
     ctaType: 'secondary',
-    disabled: true,
+    disabled: false,
   },
   {
     name: 'Institutional',
@@ -166,6 +167,9 @@ export default function PricingPage() {
     if (tier.disabled) return;
     if (tier.ctaLink === '/') {
       navigate('/');
+    } else if (tier.stripeKey) {
+      const key = billingCycle === 'annual' ? tier.stripeKey.annual : tier.stripeKey.monthly;
+      checkout(key);
     } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;
     }
@@ -286,8 +290,7 @@ export default function PricingPage() {
                     className={`btn ${
                       tier.ctaType === 'primary' ? 'btn-primary' : 'btn-secondary'
                     } pricing-cta ${tier.disabled ? 'pricing-cta-disabled' : ''}`}
-                    onClick={() => handleCtaClick(tier)}
-                    disabled={tier.disabled}
+                    onClick={(e) => { e.stopPropagation(); handleCtaClick(tier); }}
                   >
                     {tier.cta}
                   </button>
