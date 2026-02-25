@@ -15,7 +15,7 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
     state: state || '',
   });
 
-  const isValid = form.name.trim() && form.organization.trim() && form.email.trim() && form.email.includes('@');
+  const isValid = form.name.trim() && form.email.trim() && form.email.includes('@');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
     <div className="email-modal-overlay" onClick={onClose}>
       <div className="email-modal" onClick={(e) => e.stopPropagation()}>
         <h2>Export State Report</h2>
-        <p>Enter your details to download the CSV. Your information helps us understand who uses this data.</p>
+        <p>Just your name and email to download. We'll never share your info.</p>
 
         <form onSubmit={handleSubmit}>
           <div className="email-modal-field">
@@ -51,12 +51,12 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
           </div>
 
           <div className="email-modal-field">
-            <label>Organization <span className="field-required">*</span></label>
+            <label>Organization (optional)</label>
             <input
               type="text"
               value={form.organization}
               onChange={handleChange('organization')}
-              placeholder="Office of the Attorney General"
+              placeholder="e.g. law firm, news outlet, or leave blank"
             />
           </div>
 
