@@ -356,7 +356,7 @@ export function AGToolkitPage() {
             <th className="sortable" onClick={() => handleSort('total_hprd')}>Nursing Hrs/Day{sortIndicator('total_hprd')}</th>
             <th className="sortable" onClick={() => handleSort('rn_hprd')}>RN Hrs/Day{sortIndicator('rn_hprd')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('cna_hprd')}>CNA Hrs/Day{sortIndicator('cna_hprd')}</th>
-            <th className="sortable" onClick={() => handleSort('stars')}>Stars{sortIndicator('stars')}</th>
+            <th className="sortable" onClick={() => handleSort('stars')}>CMS Stars{sortIndicator('stars')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('jeopardy')}>Jeopardy{sortIndicator('jeopardy')}</th>
             <th className="sortable" onClick={() => handleSort('fines')}>Fines{sortIndicator('fines')}</th>
           </tr>
@@ -370,9 +370,9 @@ export function AGToolkitPage() {
             <th className="sortable hide-mobile" onClick={() => handleSort('owner')}>Owner{sortIndicator('owner')}</th>
             <th className="sortable" onClick={() => handleSort('zero_rn_pct')}>Zero-RN Days{sortIndicator('zero_rn_pct')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('weekend_rn_hprd')}>Weekend RN Hrs{sortIndicator('weekend_rn_hprd')}</th>
-            <th className="sortable" onClick={() => handleSort('total_hprd')}>Nursing Hrs/Day{sortIndicator('total_hprd')}</th>
+            <th className="sortable" onClick={() => handleSort('total_hprd')}>Total Staff Hrs/Day{sortIndicator('total_hprd')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('jeopardy')}>Jeopardy{sortIndicator('jeopardy')}</th>
-            <th className="sortable" onClick={() => handleSort('stars')}>Stars{sortIndicator('stars')}</th>
+            <th className="sortable" onClick={() => handleSort('stars')}>CMS Stars{sortIndicator('stars')}</th>
             <th className="sortable" onClick={() => handleSort('fines')}>Fines{sortIndicator('fines')}</th>
           </tr>
         );
@@ -384,7 +384,7 @@ export function AGToolkitPage() {
             <th className="sortable hide-mobile" onClick={() => handleSort('owner')}>Owner{sortIndicator('owner')}</th>
             <th className="sortable" onClick={() => handleSort('portfolio')}>Portfolio{sortIndicator('portfolio')}</th>
             <th className="sortable" onClick={() => handleSort('composite')}>Risk Score{sortIndicator('composite')}</th>
-            <th className="sortable" onClick={() => handleSort('stars')}>Stars{sortIndicator('stars')}</th>
+            <th className="sortable" onClick={() => handleSort('stars')}>CMS Stars{sortIndicator('stars')}</th>
             <th className="sortable" onClick={() => handleSort('total_hprd')}>Nursing Hrs/Day{sortIndicator('total_hprd')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('zero_rn_pct')}>Zero-RN %{sortIndicator('zero_rn_pct')}</th>
             <th className="sortable hide-mobile" onClick={() => handleSort('jeopardy')}>Jeopardy{sortIndicator('jeopardy')}</th>
@@ -459,9 +459,8 @@ export function AGToolkitPage() {
             </td>
             <td className="ag-toolkit-hprd-cell hide-mobile">{(f.weekend_rn_hprd || 0).toFixed(2)}</td>
             <td className="ag-toolkit-hprd-cell">
-              <span className={hprdClass(f.total_hprd || 0, AG_THRESHOLDS.totalHprd)}>
-                {(f.total_hprd || 0).toFixed(2)}
-              </span>
+              {(f.total_hprd || 0).toFixed(2)}
+              <span className="ag-toolkit-staff-note">CNA+LPN+RN</span>
             </td>
             <td className="hide-mobile">
               {(f.jeopardy_count || 0) > 0 ? (
@@ -678,7 +677,7 @@ export function AGToolkitPage() {
               <>Staffing data from CMS Payroll-Based Journal, Q3 2025. Hours per resident per day — how many hours of nursing care each resident receives on average. <span className="ag-toolkit-text-red">Red</span> = below the AG-proposed minimum. <span className="ag-toolkit-text-green">Green</span> = meets or exceeds it. The "/" shows actual vs. target.</>
             )}
             {activeTab === 'zero-rn' && (
-              <>Staffing data from CMS Payroll-Based Journal, Q3 2025. Federal law requires a registered nurse (RN) on site at least 8 hours every day. "Zero-RN Days" shows the percentage of days where the facility reported <strong>no RN hours at all</strong> — based on payroll data the facility submitted to CMS.</>
+              <>Staffing data from CMS Payroll-Based Journal, Q3 2025. Federal law requires a registered nurse (RN) on site at least 8 hours every day. "Zero-RN Days" shows the percentage of days where the facility reported <strong>no RN hours at all</strong> — based on payroll data submitted to CMS. Note: "Total Staff Hrs/Day" includes <strong>all staff combined</strong> (CNA + LPN + RN) — a high number does not mean RNs were present.</>
             )}
             {activeTab === 'ownership' && (
               <>Staffing data Q3 2025 · Deficiencies 2017–2025 · Penalties 2023–2025. For-profit operators with 5+ facilities where patterns of low staffing, jeopardy citations, or significant fines suggest systemic issues across the portfolio.</>
