@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
 import { haversineDistance } from '../utils/haversine';
+import { checkoutSingleReport } from '../utils/stripe';
 import { BenchmarkBar } from '../components/BenchmarkBar';
 import { NearbyFacilities } from '../components/NearbyFacilities';
 import { DownloadButton } from '../components/DownloadButton';
@@ -622,22 +623,10 @@ export function FacilityPage() {
 
               <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
               <div className="ev-preview-actions">
-                <p className="ev-coming-soon-label">Coming Soon — Join the Waitlist</p>
-                <form className="ev-waitlist-form" onSubmit={(e) => {
-                  e.preventDefault();
-                  const email = e.target.elements.email.value;
-                  if (email) {
-                    window.open(`https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform?usp=pp_url&entry.emailAddress=${encodeURIComponent(email)}`, '_blank');
-                    e.target.reset();
-                    setShowEvidencePreview(false);
-                  }
-                }}>
-                  <input type="email" name="email" placeholder="Enter your email" required className="ev-waitlist-input" />
-                  <button type="submit" className="ev-waitlist-btn">Notify Me</button>
-                </form>
-                <Link to="/pricing" className="ev-subscribe-link" onClick={() => setShowEvidencePreview(false)}>
-                  View all plans →
-                </Link>
+                <button className="ev-buy-btn" onClick={() => { setShowEvidencePreview(false); checkoutSingleReport(ccn); }}>
+                  Download Evidence Report — $29
+                </button>
+                <p className="ev-or-subscribe">or <Link to="/pricing" onClick={() => setShowEvidencePreview(false)}>subscribe for unlimited access</Link></p>
               </div>
             </div>
           </div>
