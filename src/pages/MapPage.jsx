@@ -40,6 +40,7 @@ export function MapPage() {
   const mapSectionRef = useRef(null);
   const stateDetailRef = useRef(null);
   const comparisonRef = useRef(null);
+  const initialScrollDone = useRef(false);
 
   // Handle URL params and location state for deep-linking
   useEffect(() => {
@@ -95,15 +96,22 @@ export function MapPage() {
   }, []);
 
   // Smooth transitions between views
+  // Depends on [view, loading] so deep-link scrolls fire after data loads
   useEffect(() => {
+    if (loading) return; // Don't scroll while loading — refs aren't in DOM yet
+    const isInitial = !initialScrollDone.current;
+    initialScrollDone.current = true;
+    // Use instant scroll on deep-link arrival so user doesn't see hero flash
+    const behavior = isInitial ? 'instant' : 'smooth';
+
     if (view === 'states' && mapSectionRef.current) {
-      mapSectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      mapSectionRef.current.scrollIntoView({ behavior });
     } else if (view === 'detail' && stateDetailRef.current) {
-      stateDetailRef.current.scrollIntoView({ behavior: 'smooth' });
+      stateDetailRef.current.scrollIntoView({ behavior });
     } else if (view === 'hero') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior });
     }
-  }, [view]);
+  }, [view, loading]);
 
   // Handle state selection
   function handleStateSelect(stateCode) {
@@ -265,7 +273,7 @@ export function MapPage() {
           <WhatYoullDiscover />
           <SampleReportCard onSearch={handleSearchOpen} />
           <WhoThisIsFor />
-          <ComingSoon />
+          <ComingSoon onSearch={handleSearchOpen} />
           <Footer onExplore={handleExploreClick} onSearch={handleSearchOpen} />
         </>
       )}

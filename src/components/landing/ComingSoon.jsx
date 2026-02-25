@@ -29,7 +29,7 @@ const features = [
     title: 'Download Reports',
     description: 'Download a detailed PDF safety report for any facility — clinical context, percentile rankings, and a visit checklist.',
     live: true,
-    to: '/evidence/:ccn',
+    action: 'search',
   },
   {
     icon: '\uD83D\uDD14',
@@ -45,7 +45,7 @@ const features = [
   },
 ];
 
-export default function ComingSoon() {
+export default function ComingSoon({ onSearch }) {
   const sectionRef = useRef(null);
   const navigate = useNavigate();
 
@@ -82,7 +82,10 @@ export default function ComingSoon() {
             <div
               className={`coming-soon-card ${feature.live ? 'coming-soon-card--live' : ''}`}
               key={feature.title}
-              onClick={() => feature.live && navigate(feature.to)}
+              onClick={() => {
+                if (feature.action === 'search' && onSearch) { onSearch(); }
+                else if (feature.live && feature.to) { navigate(feature.to); }
+              }}
               role={feature.live ? 'link' : undefined}
               style={{ cursor: feature.live ? 'pointer' : 'default' }}
             >
@@ -92,7 +95,9 @@ export default function ComingSoon() {
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
               {feature.live && (
-                <span className="coming-soon-link">Explore →</span>
+                <span className="coming-soon-link">
+                  {feature.action === 'search' ? 'Search a Facility →' : 'Explore →'}
+                </span>
               )}
             </div>
           ))}

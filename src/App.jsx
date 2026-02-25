@@ -18,6 +18,7 @@ import { ChainsPage } from './pages/ChainsPage';
 import { ChainDetailPage } from './pages/ChainDetailPage';
 import HighRiskPage from './pages/HighRiskPage';
 import SuccessPage from './pages/SuccessPage';
+import FeedbackButton from './components/FeedbackButton';
 import './styles/design.css';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
       </Routes>
+      <FeedbackButton />
     </>
   );
 }

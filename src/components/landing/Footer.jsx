@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer({ onExplore, onSearch }) {
   const currentYear = new Date().getFullYear();
 
@@ -30,18 +32,17 @@ export default function Footer({ onExplore, onSearch }) {
           <div className="footer-col">
             <h4>About</h4>
             <ul>
-              <li><a href="/pricing">Pricing</a></li>
-              <li><a href="#methodology">Methodology</a></li>
-              <li><a href="#data-sources">Data Sources</a></li>
-              <li><a href="mailto:contact@oversightreports.com">Contact Us</a></li>
+              <li><Link to="/pricing">Pricing</Link></li>
+              <li><Link to="/methodology">Methodology</Link></li>
+              <li><Link to="/methodology">Data Sources</Link></li>
             </ul>
           </div>
         </div>
         <div className="footer-bottom">
           <p>&copy; {currentYear} The Oversight Report. All data sourced from CMS Medicare.gov. Built by Robert Benard.</p>
           <div className="footer-bottom-links">
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
+            <Link to="/privacy">Privacy</Link>
+            <Link to="/terms">Terms</Link>
           </div>
         </div>
       </div>
