@@ -99,6 +99,7 @@ export function EvidencePage() {
         }
       }
       generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities);
+      window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state}});
     } finally {
       setPdfLoading(false);
     }
@@ -106,7 +107,10 @@ export function EvidencePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [ccn]);
+    if (facility) {
+      window.plausible && window.plausible('Evidence-Page-View', {props: {facility: facility.name, ccn: facility.ccn}});
+    }
+  }, [ccn, facility]);
 
   if (COMING_SOON) {
     return (

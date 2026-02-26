@@ -147,7 +147,7 @@ export function FacilityPage() {
         <div className="fp-watchlist-group">
           <button
             className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
-            onClick={() => isWatched(ccn) ? removeFacility(ccn) : addFacility(ccn)}
+            onClick={() => { if (!isWatched(ccn)) { addFacility(ccn); window.plausible && window.plausible('Star-Favorite', {props: {facility: facility.name, ccn: facility.ccn}}); } else { removeFacility(ccn); } }}
             title={isWatched(ccn) ? 'Remove from favorites' : 'Add to favorites'}
           >
             {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}

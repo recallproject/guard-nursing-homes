@@ -8,7 +8,13 @@
     <script async src="https://plausible.io/js/pa-2_DR6EjagoQ_Mk-ZRdCaL.js"></script>
     <script>
       window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+      plausible.init();
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest('a[href]');
+        if (a && a.hostname && a.hostname !== location.hostname) {
+          window.plausible('Outbound-Link', {props: {url: a.href.slice(0, 200)}});
+        }
+      });
     </script>
 
     <meta name="description" content="Search 14,713 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />

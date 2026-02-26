@@ -58,6 +58,7 @@ export default function SearchOverlay({ onClose, searchFacilities }) {
 
   // Navigate to facility page
   const handleSelectFacility = (facility) => {
+    window.plausible && window.plausible('Facility-Search', {props: {query: query.slice(0, 100), facility: facility.name, ccn: facility.ccn}});
     navigate(`/facility/${facility.ccn}`);
     onClose();
   };

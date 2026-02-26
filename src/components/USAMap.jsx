@@ -200,6 +200,7 @@ export default function USAMap({ data, onStateSelect }) {
         const fips = d.id;
         const stateCode = FIPS_TO_STATE[fips];
         if (data.states[stateCode]) {
+          window.plausible && window.plausible('State-Map-Click', {props: {state: stateCode}});
           onStateSelect(stateCode);
         }
       });

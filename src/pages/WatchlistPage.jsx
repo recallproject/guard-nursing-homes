@@ -206,6 +206,7 @@ export function WatchlistPage() {
   };
 
   const handleCompareSelected = () => {
+    window.plausible && window.plausible('Compare-Used', {props: {count: String(selectedForCompare.size)}});
     setShowCompare(true);
     setTimeout(() => {
       if (comparisonRef.current) {
