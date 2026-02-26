@@ -68,25 +68,18 @@ export function Header({ onSearchOpen, transparent = false }) {
   const navGroups = [
     {
       label: 'Families',
-      paths: ['/', '/facility', '/watchlist', '/evidence'],
+      paths: ['/', '/facility', '/watchlist'],
       items: [
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes' },
-        { to: '/watchlist', label: 'My Favorites', desc: 'Facilities you\'re tracking' },
-        { to: '/evidence/145995', label: 'Evidence Reports', desc: 'Professional PDFs with full documentation' },
+        { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
       ]
     },
     {
       label: 'Professionals',
-      paths: ['/professionals', '/screening', '/discrepancies', '/ownership', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
+      paths: ['/professionals', '/evidence', '/screening', '/discrepancies', '/ownership', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
       items: [
-        { to: '/professionals', label: 'All Professional Tools', desc: 'Overview of advanced features' },
-        { to: '/ag-toolkit', label: 'AG Toolkit', desc: 'Enforcement-ready staffing violation analysis' },
-        { to: '/screening', label: 'State Screening', desc: 'AG investigation reports by state' },
-        { to: '/chains', label: 'Chain Rankings', desc: 'Compare performance across nursing home chains' },
-        { to: '/discrepancies', label: 'Staffing Discrepancies', desc: 'Facilities overstating staffing levels' },
-        { to: '/ownership', label: 'Ownership Networks', desc: 'Explore multi-facility owner portfolios' },
-        { to: '/high-risk', label: 'High Risk', desc: 'Facilities failing across all dimensions' },
-        { to: '/trends', label: 'Industry Trends', desc: 'National quality snapshot' },
+        { to: '/professionals', label: 'All Professional Tools', desc: 'AG toolkit, chain rankings, ownership networks & more' },
+        { to: '/evidence/145995', label: 'Evidence Reports', desc: 'Litigation-ready PDFs — $29 per facility' },
       ]
     },
     {

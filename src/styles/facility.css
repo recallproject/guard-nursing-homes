@@ -195,6 +195,29 @@
   background: #FEF2F2;
 }
 
+/* === Watchlist Group + Compare Hint === */
+.fp-watchlist-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.fp-compare-hint {
+  font-size: 0.8rem;
+  color: #94A3B8;
+}
+
+.fp-compare-hint a {
+  color: #818CF8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.fp-compare-hint a:hover {
+  text-decoration: underline;
+}
+
 /* === Download Button === */
 .download-btn {
   background-color: #4F46E5;
@@ -452,29 +475,24 @@
 .fp-download-hint {
   display: block;
   margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #94A3B8;
+}
+
+.fp-download-upsell {
+  display: block;
+  margin-top: 0.5rem;
   font-size: 0.8rem;
-  color: #94A3B8;
+  color: #64748b;
 }
 
-.fp-download-hint--promo {
-  color: #16A34A;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.fp-download-hint--future {
-  font-size: 0.78rem;
-  color: #94A3B8;
-  margin-top: 0.35rem;
-}
-
-.fp-download-hint--future a {
+.fp-download-upsell a {
   color: #4F46E5;
   font-weight: 600;
   text-decoration: none;
 }
 
-.fp-download-hint--future a:hover {
+.fp-download-upsell a:hover {
   text-decoration: underline;
 }
 

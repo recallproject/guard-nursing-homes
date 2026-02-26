@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
 import { FacilityPage } from './pages/FacilityPage';
@@ -49,6 +49,7 @@ function App() {
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/compare" element={<Navigate to="/watchlist" replace />} />
       </Routes>
       <FeedbackButton />
     </>

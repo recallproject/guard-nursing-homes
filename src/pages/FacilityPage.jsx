@@ -24,7 +24,7 @@ export function FacilityPage() {
   const location = useLocation();
   const { data, loading, error } = useFacilityData();
   const { tier } = useSubscription();
-  const { addFacility, removeFacility, isWatched } = useWatchlist();
+  const { watchlist, addFacility, removeFacility, isWatched } = useWatchlist();
   const pageRef = useRef(null);
   const fromState = location.state?.fromState || null;
   const [showEvidencePreview, setShowEvidencePreview] = useState(false);
@@ -144,13 +144,20 @@ export function FacilityPage() {
           <Link to="/" className="fp-back">← Back to Map</Link>
         )}
         <h2 className="fp-badge">Facility Report Card</h2>
-        <button
-          className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
-          onClick={() => isWatched(ccn) ? removeFacility(ccn) : addFacility(ccn)}
-          title={isWatched(ccn) ? 'Remove from favorites' : 'Add to favorites'}
-        >
-          {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
-        </button>
+        <div className="fp-watchlist-group">
+          <button
+            className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
+            onClick={() => isWatched(ccn) ? removeFacility(ccn) : addFacility(ccn)}
+            title={isWatched(ccn) ? 'Remove from favorites' : 'Add to favorites'}
+          >
+            {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
+          </button>
+          <span className="fp-compare-hint">
+            {watchlist.length >= 2
+              ? <Link to="/watchlist">You have {watchlist.length} favorites — compare them →</Link>
+              : 'Star facilities to compare them in My Favorites'}
+          </span>
+        </div>
         <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} />
       </div>
 
@@ -543,8 +550,8 @@ export function FacilityPage() {
             <li><strong>Questions to ask</strong> — based on what inspectors actually found here</li>
           </ul>
           <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="Download Personalized Report (PDF)" variant="prominent" />
-          <span className="fp-download-hint fp-download-hint--promo">Unlimited free downloads through March 31, 2026</span>
-          <span className="fp-download-hint fp-download-hint--future">After March 31: 3 free reports per day | Need more? <Link to="/pricing">Go Pro — $14/mo</Link> for unlimited reports</span>
+          <span className="fp-download-hint">Free forever. No login required.</span>
+          <span className="fp-download-upsell">Need a litigation-ready document? <Link to={`/evidence/${facility.ccn}`}>Get the Evidence Report — $29</Link></span>
         </div>
 
         {/* Evidence Preview Modal */}
