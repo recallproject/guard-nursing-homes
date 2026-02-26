@@ -351,8 +351,8 @@ export default function StaffingSection({ facility, benchmarks }) {
         <p>
           <strong>Why the mix matters:</strong> RNs can catch early warning signs of serious problems
           (infections, strokes, medication reactions) that LPNs and CNAs might miss.
-          Research shows that facilities with more RN hours have fewer hospitalizations,
-          pressure ulcers, and deaths.
+          Studies have linked higher RN staffing levels to fewer hospitalizations,
+          pressure ulcers, and deaths (Needleman et al., NEJM, 2011).
         </p>
       </CollapsibleSection>
     </div>

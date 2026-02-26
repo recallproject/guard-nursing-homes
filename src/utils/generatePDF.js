@@ -91,7 +91,7 @@ export function generatePDF(facility, options = {}) {
   const interpretPercentile = (pctVal, metric, higherIsWorse = true) => {
     if (pctVal == null) return '';
     if (higherIsWorse) {
-      if (pctVal >= 90) return 'Among the worst nationally';
+      if (pctVal >= 90) return 'In the highest-risk 10% nationally';
       if (pctVal >= 75) return 'Worse than most facilities';
       if (pctVal >= 50) return 'Worse than average';
       if (pctVal >= 25) return 'Better than average';
@@ -468,7 +468,7 @@ export function generatePDF(facility, options = {}) {
     calloutBox(
       `This facility is operated by ${facility.worst_owner}, which runs ${ownerGroup.length} facilities total. ` +
       `Their portfolio averages ${ownerAvgStars.toFixed(1)} stars (national average: 3.2) and ${ownerBelowAvgPct}% of their facilities ` +
-      'are rated below average. Research shows that ownership patterns are one of the strongest predictors of care quality -- ' +
+      'are rated below average. Peer-reviewed studies have linked ownership patterns to care quality outcomes (Harrington et al., Health Affairs, 2012) -- ' +
       'operators who underperform across multiple facilities often have systemic issues with staffing budgets, training, or oversight.',
       'warning'
     );
@@ -758,7 +758,7 @@ export function generatePDF(facility, options = {}) {
   if (facility.pct_contract != null && facility.pct_contract > 15) {
     needsPage(14);
     calloutBox(
-      `${Math.round(facility.pct_contract)}% of nursing hours come from contract (agency) staff. Research shows that heavy reliance on temporary staff is associated with lower care continuity and more medication errors, as agency nurses are less familiar with individual residents.`,
+      `${Math.round(facility.pct_contract)}% of nursing hours come from contract (agency) staff. Studies have linked heavy reliance on temporary staff to lower care continuity and more medication errors (Duan-Porter et al., Annals of Internal Medicine, 2023), as agency nurses are less familiar with individual residents.`,
       'warning'
     );
   }

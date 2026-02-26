@@ -540,7 +540,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
       ) : (
         /* Leaderboard View */
         <div className="ownership-leaderboard" ref={leaderboardRef}>
-          <h2>Worst Owners</h2>
+          <h2>Lowest-Performing Owners</h2>
 
           {/* Tabs */}
           <div className="leaderboard-tabs">

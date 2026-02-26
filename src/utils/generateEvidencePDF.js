@@ -699,7 +699,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.text(pLines, margin, currentY);
     currentY += pLines.length * 4.5 + 6;
 
-    addSubHeading('Worst-Performing Siblings');
+    addSubHeading('Lowest-Performing Facilities in Portfolio');
 
     const ptd = portfolio.facilities.map((f) => {
       const marker = f.ccn === facility.ccn ? '>> ' : '';
