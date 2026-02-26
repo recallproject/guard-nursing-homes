@@ -70,7 +70,7 @@ export function Header({ onSearchOpen, transparent = false }) {
       label: 'Families',
       paths: ['/', '/facility', '/watchlist'],
       items: [
-        { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes' },
+        { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes', state: { jumpToMap: true } },
         { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
       ]
     },
@@ -151,6 +151,7 @@ export function Header({ onSearchOpen, transparent = false }) {
                         <Link
                           key={item.to}
                           to={item.to}
+                          state={item.state}
                           className={`site-header__dropdown-item ${isActive(item.to) ? 'site-header__dropdown-item--active' : ''}`}
                           onClick={() => setActiveDropdown(null)}
                         >
@@ -230,6 +231,7 @@ export function Header({ onSearchOpen, transparent = false }) {
                     <Link
                       key={item.to}
                       to={item.to}
+                      state={item.state}
                       className={`mobile-menu__item ${isActive(item.to) ? 'mobile-menu__item--active' : ''}`}
                       onClick={() => setMobileOpen(false)}
                     >
