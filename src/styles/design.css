@@ -8,19 +8,19 @@
    COLOR PALETTE — BOLD & SATURATED
    ======================================== */
 :root {
-  /* Backgrounds — Slate Palette */
-  --bg-deep: #0F172A;       /* Slate 900 — main bg */
-  --bg-card: #1E293B;       /* Slate 800 */
-  --bg-card-hover: #334155; /* Slate 700 */
-  --bg-card-elevated: #334155; /* Slate 700 */
-  --bg-card-light: #334155; /* Slate 700 */
-  --bg-elevated: #334155;   /* Hover states */
+  /* Backgrounds — Navy/Indigo Palette (matches v3 mockup) */
+  --bg-deep: #0f0d2e;       /* Deep navy — main bg */
+  --bg-card: #1a1640;       /* Navy card */
+  --bg-card-hover: #231e52; /* Navy hover */
+  --bg-card-elevated: #2a2460; /* Elevated navy */
+  --bg-card-light: #2a2460; /* Light navy */
+  --bg-elevated: #231e52;   /* Hover states */
   --bg-light: #F8FAFC;      /* Slate 50 — light sections */
-  --bg-footer: #020617;     /* Slate 950 */
+  --bg-footer: #0a0825;     /* Deepest navy */
 
   /* Borders */
-  --border: #334155;        /* Slate 700 */
-  --border-subtle: #1E293B; /* Slate 800 */
+  --border: #2d2760;        /* Indigo border */
+  --border-subtle: #221d4a; /* Subtle indigo border */
 
   /* Primary — Bold Indigo */
   --primary: #4F46E5;       /* Indigo 600 */
@@ -53,8 +53,9 @@
 
   /* Text */
   --text-white: #FFFFFF;
-  --text-cream: #F1F5F9;    /* Slate 100 */
-  --text-muted: #94A3B8;    /* Slate 400 */
+  --text-cream: #e6edf3;    /* Light text */
+  --text-secondary: #9d97b8; /* Muted lavender */
+  --text-muted: #6b6590;    /* Deep muted purple */
   --text-dark: #0F172A;     /* For light cards */
   --text-dark-muted: #64748B; /* Slate 500 for light cards */
 

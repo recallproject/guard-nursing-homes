@@ -231,7 +231,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #94A3B8;
+  color: #9d97b8;
   margin: 0 0 0.75rem 0;
 }
 
@@ -271,7 +271,7 @@
 .report-clinical-attribution {
   display: block;
   font-size: 0.78rem;
-  color: #94A3B8;
+  color: #9d97b8;
   font-style: italic;
   margin-top: 0.25rem;
 }
@@ -309,7 +309,7 @@
   display: block;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #94A3B8;
+  color: #9d97b8;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-top: 0.25rem;
@@ -323,7 +323,7 @@
 .report-benchmark-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #94A3B8;
+  color: #9d97b8;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -356,7 +356,7 @@
   transform: translateX(-50%);
   font-size: 0.65rem;
   font-weight: 700;
-  color: #94A3B8;
+  color: #9d97b8;
   white-space: nowrap;
 }
 
@@ -418,7 +418,7 @@
 .report-question-context {
   font-size: 0.8rem;
   font-style: italic;
-  color: #94A3B8;
+  color: #9d97b8;
 }
 
 /* What's included */
@@ -436,7 +436,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #94A3B8;
+  color: #9d97b8;
   margin-bottom: 0.75rem;
 }
 
@@ -536,7 +536,7 @@
 
 .report-nearby-distance {
   font-size: 0.78rem;
-  color: #94A3B8;
+  color: #9d97b8;
   font-weight: 500;
 }
 
@@ -551,7 +551,7 @@
 /* Secondary button on light backgrounds */
 .section-light .btn-secondary {
   color: #1E293B;
-  border-color: #94A3B8;
+  border-color: #9d97b8;
   background: transparent;
   cursor: pointer;
 }
@@ -1119,7 +1119,7 @@
 
 .epm-findings-list li {
   font-size: 0.7rem;
-  color: #94A3B8;
+  color: #9d97b8;
   padding: 0.2rem 0;
   padding-left: 1rem;
   position: relative;
@@ -1144,7 +1144,7 @@
   grid-template-columns: 2fr 1fr 1fr 1fr;
   padding: 0.45rem 0.75rem;
   font-size: 0.7rem;
-  color: #94A3B8;
+  color: #9d97b8;
   border-bottom: 1px solid #f1f5f9;
 }
 
@@ -1781,7 +1781,7 @@
 .author-bio-inner p {
   font-size: 0.95rem;
   line-height: 1.7;
-  color: #94A3B8;
+  color: #9d97b8;
   margin: 0 0 1rem 0;
 }
 
@@ -1804,7 +1804,7 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #94A3B8;
+  color: #9d97b8;
 }
 
 .author-bio-detail span {

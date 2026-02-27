@@ -1,7 +1,7 @@
 /* Staffing Table (v3 dark theme — matches mockup) */
 .staffing-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
-.staffing-table th { text-align: left; padding: 10px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted, #94A3B8); border-bottom: 1px solid var(--border, #334155); }
-.staffing-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--border-subtle, #1E293B); color: var(--text-cream, #E2E8F0); }
+.staffing-table th { text-align: left; padding: 10px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted, #6b6590); border-bottom: 1px solid var(--border, #2d2760); }
+.staffing-table td { padding: 12px 16px; font-size: 14px; border-bottom: 1px solid var(--border-subtle, #221d4a); color: var(--text-cream, #e6edf3); }
 .staffing-table tr:last-child td { border-bottom: none; }
 .staffing-role { font-weight: 600; color: var(--text-white, #FFFFFF); }
 .staffing-desc { font-size: 12px; color: var(--text-secondary, #9d97b8); margin-top: 2px; }
