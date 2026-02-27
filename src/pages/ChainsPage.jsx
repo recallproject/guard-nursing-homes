@@ -13,9 +13,11 @@ export function ChainsPage() {
   const [minFacilities, setMinFacilities] = useState('all');
   const [hasAbuse, setHasAbuse] = useState(false);
   const [forProfitOnly, setForProfitOnly] = useState(false);
+  const [ahcaBoardOnly, setAhcaBoardOnly] = useState(false);
   const [sortBy, setSortBy] = useState('totalFines');
   const [expandedRow, setExpandedRow] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [ahcaData, setAhcaData] = useState(null);
 
   const headerRef = useRef(null);
   const statsRef = useRef(null);
@@ -43,6 +45,14 @@ export function ChainsPage() {
         setError(err.message);
         setLoading(false);
       });
+  }, []);
+
+  // Load AHCA data
+  useEffect(() => {
+    fetch('/data/ahca_board_chains.json')
+      .then(r => r.json())
+      .then(d => setAhcaData(d))
+      .catch(() => {});
   }, []);
 
   // Animate on mount
@@ -75,7 +85,7 @@ export function ChainsPage() {
         );
       }
     }
-  }, [searchTerm, minFacilities, hasAbuse, forProfitOnly, sortBy, currentPage]);
+  }, [searchTerm, minFacilities, hasAbuse, forProfitOnly, ahcaBoardOnly, sortBy, currentPage]);
 
   // Filter and sort
   const filteredChains = chains
@@ -98,6 +108,11 @@ export function ChainsPage() {
 
       // For-profit only
       if (forProfitOnly && chain.percentOfFacilitiesClassifiedAsForProfit < 50) {
+        return false;
+      }
+
+      // AHCA Board only
+      if (ahcaBoardOnly && !ahcaData?.[chain.affiliatedEntity.toUpperCase()]) {
         return false;
       }
 
@@ -317,6 +332,20 @@ export function ChainsPage() {
               For-profit only
             </label>
           </div>
+
+          <div className="filter-group checkbox-group">
+            <label>
+              <input
+                type="checkbox"
+                checked={ahcaBoardOnly}
+                onChange={(e) => {
+                  setAhcaBoardOnly(e.target.checked);
+                  setCurrentPage(1);
+                }}
+              />
+              AHCA Board chains
+            </label>
+          </div>
         </div>
 
         <div className="chains-count">
@@ -355,13 +384,23 @@ export function ChainsPage() {
                   >
                     <td className="rank-cell">{rank}</td>
                     <td className="name-cell">
-                      <Link
-                        to={`/chain/${encodeURIComponent(chain.affiliatedEntity)}`}
-                        className="chain-name-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {chain.affiliatedEntity}
-                      </Link>
+                      <div className="chain-name-wrapper">
+                        <Link
+                          to={`/chain/${encodeURIComponent(chain.affiliatedEntity)}`}
+                          className="chain-name-link"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {chain.affiliatedEntity}
+                        </Link>
+                        {ahcaData?.[chain.affiliatedEntity.toUpperCase()] && (
+                          <span
+                            className="ahca-badge"
+                            title="This chain's leadership serves on the Board of the nursing home industry's largest lobbying organization"
+                          >
+                            🏛 AHCA Board
+                          </span>
+                        )}
+                      </div>
                     </td>
                     <td>{chain.numberOfFacilities}</td>
                     <td className="hide-mobile">{chain.numberOfStatesAndTerritoriesWithOperations}</td>

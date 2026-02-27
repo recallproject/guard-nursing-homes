@@ -176,6 +176,14 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
   const stateName = stateNames[stateCode] || stateCode;
 
+  // Compute high-risk count from facilities
+  const highRiskCount = stateData.facilities.filter((f) => (f.composite || 0) >= 40).length;
+
+  // Compute avg per facility fine
+  const avgFinePerFacility = stateSummary.count > 0
+    ? stateSummary.total_fines / stateSummary.count
+    : 0;
+
   return (
     <div className="state-detail">
       <div className="state-detail-header" ref={headerRef}>
@@ -185,28 +193,43 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
         <div className="state-detail-title-section">
           <h2 className="state-detail-title">{stateName}</h2>
+
+          {/* 2A: Contextual sentence */}
+          <p className="state-detail-context">
+            {stateSummary.count} Medicare-certified nursing facilities in {stateName}. {highRiskCount} flagged high-risk based on inspection data, staffing records, and penalty history. Updated Q3 2025.
+          </p>
+
           <div className="state-detail-stats-row">
             <div className="state-detail-stat">
               <span className="state-detail-stat-value">{stateSummary.count}</span>
               <span className="state-detail-stat-label">Facilities</span>
+              <span className="state-detail-stat-cta">Search by name or city below</span>
             </div>
             <div className="state-detail-stat">
               <span className="state-detail-stat-value state-detail-stat-danger">
                 {stateSummary.high_risk}
               </span>
               <span className="state-detail-stat-label">High Risk</span>
+              <button
+                className="state-detail-stat-cta state-detail-stat-cta--link"
+                onClick={() => setFilterBy('high-risk')}
+              >
+                View highest-risk facilities →
+              </button>
             </div>
             <div className="state-detail-stat">
               <span className="state-detail-stat-value">
                 {stateSummary.avg_composite?.toFixed(1) || '0.0'}
               </span>
               <span className="state-detail-stat-label">Avg Score</span>
+              <span className="state-detail-stat-cta">National avg: 28.4</span>
             </div>
             <div className="state-detail-stat">
               <span className="state-detail-stat-value">
                 {formatFines(stateSummary.total_fines)}
               </span>
               <span className="state-detail-stat-label">Total Fines</span>
+              <span className="state-detail-stat-cta">{formatFines(avgFinePerFacility)} per facility</span>
             </div>
           </div>
         </div>

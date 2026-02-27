@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(10, 10, 26, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -24,7 +24,7 @@
 }
 
 .site-header--compact {
-  background: rgba(15, 23, 42, 0.97);
+  background: rgba(10, 10, 26, 0.97);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -199,6 +199,47 @@
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
+}
+
+/* ── Favorites Icon ── */
+.site-header__favorites-btn {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  position: relative;
+  transition: color 0.2s, background 0.2s;
+}
+
+.site-header__favorites-btn:hover {
+  color: #e3b341;
+  background: rgba(227, 179, 65, 0.08);
+}
+
+.site-header__fav-star--filled {
+  color: #e3b341;
+}
+
+.site-header__fav-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: #e3b341;
+  color: #0a0a1a;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .site-header__search-btn {
@@ -433,6 +474,11 @@
 
   .site-header__hamburger {
     display: flex;
+  }
+
+  .site-header__favorites-btn {
+    padding: 6px 8px;
+    font-size: 16px;
   }
 }
 

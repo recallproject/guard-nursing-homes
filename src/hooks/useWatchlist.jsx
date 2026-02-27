@@ -31,12 +31,19 @@ export function WatchlistProvider({ children }) {
     }
   }, [watchlist]);
 
-  const addFacility = useCallback((ccn) => {
+  const [lastAdded, setLastAdded] = useState(null);
+
+  const addFacility = useCallback((ccn, name) => {
     if (!ccn) return;
     setWatchlist(prev => {
       if (prev.some(item => item.ccn === ccn)) return prev;
       return [...prev, { ccn, addedAt: new Date().toISOString() }];
     });
+    setLastAdded({ ccn, name, timestamp: Date.now() });
+  }, []);
+
+  const clearLastAdded = useCallback(() => {
+    setLastAdded(null);
   }, []);
 
   const removeFacility = useCallback((ccn) => {
@@ -52,7 +59,7 @@ export function WatchlistProvider({ children }) {
   }, []);
 
   return (
-    <WatchlistContext.Provider value={{ watchlist, addFacility, removeFacility, isWatched, clearWatchlist }}>
+    <WatchlistContext.Provider value={{ watchlist, addFacility, removeFacility, isWatched, clearWatchlist, lastAdded, clearLastAdded }}>
       {children}
     </WatchlistContext.Provider>
   );

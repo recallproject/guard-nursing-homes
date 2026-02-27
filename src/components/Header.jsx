@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useWatchlist } from '../hooks/useWatchlist';
 import '../styles/header.css';
 
 /**
@@ -14,6 +15,8 @@ export function Header({ onSearchOpen, transparent = false }) {
   const location = useLocation();
   const navRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
+  const { watchlist } = useWatchlist();
+  const watchlistCount = watchlist.length;
 
   // Compact on scroll
   useEffect(() => {
@@ -78,8 +81,11 @@ export function Header({ onSearchOpen, transparent = false }) {
       label: 'Professionals',
       paths: ['/professionals', '/evidence', '/screening', '/discrepancies', '/ownership', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
       items: [
-        { to: '/professionals', label: 'All Professional Tools', desc: 'AG toolkit, chain rankings, ownership networks & more' },
-        { to: '/evidence/145995', label: 'Evidence Reports', desc: 'Litigation-ready PDFs — $29 per facility' },
+        { to: '/professionals', label: 'All Professional Tools', desc: 'Full toolkit overview' },
+        { to: '/chains', label: 'Chain Rankings', desc: 'Compare the largest nursing home operators' },
+        { to: '/high-risk', label: 'High-Risk Facilities', desc: 'Worst-performing facilities nationally' },
+        { to: '/screening', label: 'State Screening', desc: 'Filter and export by state' },
+        { to: '/evidence/145995', label: 'Evidence Reports', desc: 'Litigation-ready PDFs — $29' },
       ]
     },
     {
@@ -168,6 +174,14 @@ export function Header({ onSearchOpen, transparent = false }) {
 
           {/* Actions */}
           <div className="site-header__actions">
+            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Favorites (${watchlistCount})`}>
+              <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
+                {watchlistCount > 0 ? '★' : '☆'}
+              </span>
+              {watchlistCount > 0 && (
+                <span className="site-header__fav-badge">{watchlistCount}</span>
+              )}
+            </Link>
             {onSearchOpen && (
               <button
                 className="site-header__search-btn"

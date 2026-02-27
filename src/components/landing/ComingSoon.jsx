@@ -10,19 +10,22 @@ const features = [
     icon: '\uD83D\uDD0D',
     title: 'State Screening Reports',
     description: 'Filter and export facility data by state for oversight, compliance, or investigation.',
-    coming: true,
+    live: true,
+    to: '/screening',
   },
   {
     icon: '\uD83D\uDCCA',
     title: 'Staffing Discrepancy Index',
     description: 'Find facilities reporting more staff than payroll records show. Ranked by gap percentage.',
-    coming: true,
+    live: true,
+    to: '/discrepancies',
   },
   {
     icon: '\uD83D\uDD17',
     title: 'Ownership Network Explorer',
     description: 'See which companies own multiple facilities and how their portfolios perform across states.',
-    coming: true,
+    live: true,
+    to: '/ownership',
   },
   {
     icon: '\uD83D\uDCC4',
@@ -32,16 +35,32 @@ const features = [
     action: 'search',
   },
   {
-    icon: '\uD83D\uDD14',
-    title: 'Watchlist & Alerts',
-    description: 'Save facilities you\'re monitoring and track changes over time from a personal dashboard.',
-    coming: true,
+    icon: '\u2B50',
+    title: 'Favorites & Compare',
+    description: 'Save facilities, compare them side-by-side, and export a spreadsheet of your picks.',
+    live: true,
+    to: '/watchlist',
   },
   {
     icon: '\uD83D\uDCC8',
     title: 'Historical Trends',
     description: 'Track how facility safety records change over time with national snapshot data.',
-    coming: true,
+    live: true,
+    to: '/trends',
+  },
+  {
+    icon: '\uD83C\uDFE2',
+    title: 'Chain Rankings',
+    description: 'Compare the largest nursing home chains by fines, staffing, deficiencies, and abuse citations.',
+    live: true,
+    to: '/chains',
+  },
+  {
+    icon: '\uD83D\uDEA8',
+    title: 'High-Risk Facilities',
+    description: 'The worst-performing nursing homes nationally — ranked by composite risk score.',
+    live: true,
+    to: '/high-risk',
   },
 ];
 
@@ -104,7 +123,7 @@ export default function ComingSoon({ onSearch }) {
         </div>
         <div style={{ textAlign: 'center', marginTop: '3rem' }}>
           <p style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
-            Everything families need is free. Professional tools are coming soon for attorneys, journalists, hospitals, and regulators.
+            Everything families need is free. Professional tools are live — built for attorneys, journalists, hospitals, and regulators.
           </p>
           <button
             className="btn btn-ghost"

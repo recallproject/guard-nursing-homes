@@ -28,6 +28,7 @@ export function FacilityPage() {
   const pageRef = useRef(null);
   const fromState = location.state?.fromState || null;
   const [showEvidencePreview, setShowEvidencePreview] = useState(false);
+  const [ahcaData, setAhcaData] = useState(null);
 
   const facility = data?.states
     ? Object.values(data.states).flatMap(state => state.facilities || []).find(f => f.ccn === ccn)
@@ -74,6 +75,14 @@ export function FacilityPage() {
       window.plausible && window.plausible('Facility-Page-View', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state, stars: String(facility.stars || '')}});
     }
   }, [facility?.ccn]);
+
+  // Load AHCA data
+  useEffect(() => {
+    fetch('/data/ahca_board_chains.json')
+      .then(r => r.json())
+      .then(d => setAhcaData(d))
+      .catch(() => {});
+  }, []);
 
   if (loading) {
     return (
@@ -154,7 +163,7 @@ export function FacilityPage() {
         <div className="fp-watchlist-group">
           <button
             className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
-            onClick={() => { if (!isWatched(ccn)) { addFacility(ccn); window.plausible && window.plausible('Star-Favorite', {props: {facility: facility.name, ccn: facility.ccn}}); } else { removeFacility(ccn); } }}
+            onClick={() => { if (!isWatched(ccn)) { addFacility(ccn, facility.name); window.plausible && window.plausible('Star-Favorite', {props: {facility: facility.name, ccn: facility.ccn}}); } else { removeFacility(ccn); } }}
             title={isWatched(ccn) ? 'Remove from favorites' : 'Add to favorites'}
           >
             {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
@@ -203,6 +212,18 @@ export function FacilityPage() {
           <div className="ownership-change-alert">
             <strong>Ownership Change:</strong> This facility was sold on {facility.ownership_change_date || 'recently'}.
             {facility.new_owner_name && <> New owner: {facility.new_owner_name}</>}
+          </div>
+        )}
+
+        {/* AHCA Board Context */}
+        {facility.chain_name && ahcaData?.[facility.chain_name.toUpperCase()] && (
+          <div className="ahca-context-line">
+            <span className="ahca-context-icon">🏛</span>
+            This facility's parent chain ({facility.chain_name}) is led by an AHCA Board of Governors member. AHCA spent $17M+ since 2020 lobbying on nursing home policy, including against federal staffing requirements.
+            {' '}
+            <span className="ahca-context-source">
+              Source: AHCA Board announcement (ahcancal.org) · OpenSecrets.org
+            </span>
           </div>
         )}
 
@@ -296,18 +317,16 @@ export function FacilityPage() {
           benchmarks={{ state: stateBenchmarks, national: nationalBenchmarks }}
         />
 
-        {/* Staffing Trend Chart */}
+        {/* Staffing Discrepancy Alert */}
+        {facility.rn_gap_pct > 30 && (
+          <div className="alert-box-yellow" style={{ marginTop: '12px' }}>
+            <strong>⚠ Staffing Discrepancy:</strong> This facility self-reports <strong>{facility.rn_gap_pct.toFixed(0)}% more RN hours</strong> than verified payroll records show. When what a facility tells the government doesn't match what they actually pay their staff, it raises questions about accuracy. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
+          </div>
+        )}
+
+        {/* Staffing Trend Chart - NO LONGER PAYWALLED */}
         {facility.staffing_trend && (
-          canAccess(tier, 'pro') ? (
-            <StaffingTrendChart facility={facility} />
-          ) : (
-            <UpgradePrompt
-              requiredTier="pro"
-              featureName="Staffing Trend Analysis"
-            >
-              <StaffingTrendChart facility={facility} />
-            </UpgradePrompt>
-          )
+          <StaffingTrendChart facility={facility} />
         )}
 
         <hr />
@@ -426,46 +445,46 @@ export function FacilityPage() {
 
         {/* 6. Questions to Ask */}
         <h2>6. Questions to Ask When You Visit</h2>
-        <p>These questions are tailored to this facility's specific record:</p>
+        <p>Tailored to this facility's specific record:</p>
 
-        {facility.zero_rn_pct > 10 && (
+        {facility.zero_rn_pct > 0 && (
           <div className="question-card">
-            <strong>Q: How many registered nurses are on duty right now? What is your weekend staffing like?</strong><br />
-            <span className="context"><em>Context:</em> This facility had zero RN days {pct(facility.zero_rn_pct)} of the time.</span>
+            <strong>How many registered nurses are on duty right now? What about weekends?</strong><br />
+            <span className="context">This facility reported zero RN hours on {pct(facility.zero_rn_pct)} of days. Without an RN present, certain clinical functions cannot be performed — including IV medication administration, complex wound assessment, and evaluation of acute changes in condition.</span>
           </div>
         )}
 
         {facility.jeopardy_count > 0 && (
           <div className="question-card">
-            <strong>Q: What corrective actions were taken after the serious danger citation?</strong><br />
-            <span className="context"><em>Context:</em> Government inspectors found serious danger to residents {facility.jeopardy_count} time(s).</span>
+            <strong>What corrective actions were taken after the serious danger citations?</strong><br />
+            <span className="context">Government inspectors found serious danger to residents {facility.jeopardy_count} time{facility.jeopardy_count > 1 ? 's' : ''} — risk of serious injury or death.</span>
           </div>
         )}
 
         {facility.rn_gap_pct > 30 && (
           <div className="question-card">
-            <strong>Q: Can I see your actual staffing schedules for the past month?</strong><br />
-            <span className="context"><em>Context:</em> Facility reports {pct(facility.rn_gap_pct)} more RN hours than payroll records show.</span>
+            <strong>Can I see your actual staffing schedules for the past month?</strong><br />
+            <span className="context">Facility reports {pct(facility.rn_gap_pct)} more RN hours than payroll records show. When what a facility tells the government doesn't match what they actually pay their staff, it raises questions about accuracy.</span>
           </div>
         )}
 
         {facility.total_fines > 50000 && (
           <div className="question-card">
-            <strong>Q: What changes have you made since being fined by the government?</strong><br />
-            <span className="context"><em>Context:</em> Total fines: {fmt(facility.total_fines)}</span>
+            <strong>What changes have you made since being fined {fmt(facility.total_fines)}?</strong><br />
+            <span className="context">This is {((facility.total_fines / (stateBenchmarks.total_fines || 1)).toFixed(0))}× the state average fine amount.</span>
           </div>
         )}
 
-        {facility.owner_portfolio_count > 10 && (
+        {facility.chain_facility_count > 10 && (
           <div className="question-card">
-            <strong>Q: How does this facility's staffing compare to the owner's other facilities?</strong><br />
-            <span className="context"><em>Context:</em> This owner operates {facility.owner_portfolio_count} facilities.</span>
+            <strong>How does staffing here compare to the operator's other {facility.chain_facility_count} facilities?</strong><br />
+            <span className="context">Multi-facility operators can have widely varying quality across their portfolio.</span>
           </div>
         )}
 
         <div className="question-card">
-          <strong>Q: Can I visit at different times of day, including evenings and weekends?</strong><br />
-          <span className="context"><em>Why it matters:</em> Staffing levels and care quality can vary dramatically by time and day.</span>
+          <strong>Can I visit at different times — evenings, weekends, mealtimes?</strong><br />
+          <span className="context">Staffing and care quality can vary dramatically by time of day and day of the week.</span>
         </div>
 
         <hr />
@@ -519,6 +538,26 @@ export function FacilityPage() {
 
         <hr />
 
+        {/* Free Report CTA */}
+        <div className="free-report-cta">
+          <h3>Download Your Free Safety Report</h3>
+          <p style={{ fontSize: '1rem', color: '#475569', maxWidth: '560px', margin: '0 auto' }}>
+            Everything above — packaged into a shareable PDF with your facility's personalized analysis.
+          </p>
+          <div className="free-report-features">
+            <span>All inspection data</span>
+            <span>Staffing analysis & trends</span>
+            <span>Financial transparency</span>
+            <span>Ownership breakdown</span>
+            <span>Visit questions & checklist</span>
+            <span>Nearby alternatives</span>
+          </div>
+          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="↓ Download Free Report (PDF)" variant="prominent" />
+          <div className="free-report-note">Free forever. No login. No email required.</div>
+        </div>
+
+        <hr />
+
         {/* Glossary */}
         <h2>Glossary</h2>
         <table className="fp-glossary">
@@ -539,26 +578,8 @@ export function FacilityPage() {
         <hr />
 
         {/* Disclaimer */}
-        <div className="callout box-yellow">
-          <strong>Educational Use Disclaimer</strong><br />
-          This analysis is for informational purposes only. Risk scores indicate areas warranting further investigation, not confirmed issues.
-          All data sourced from publicly available CMS datasets. Always visit facilities in person and consult with healthcare professionals.
-        </div>
-
-        {/* Download CTA */}
-        <div className="fp-download-cta">
-          <h3>Your Personalized Safety Analysis</h3>
-          <p>Everything on this page is free — always. The downloadable report adds deeper analysis you won't find anywhere else:</p>
-          <ul className="fp-download-features">
-            <li><strong>Clinical context</strong> — what this data actually means for your loved one</li>
-            <li><strong>National percentile rankings</strong> — how this facility compares to all 14,713 nursing homes</li>
-            <li><strong>Ownership deep dive</strong> — the full picture of every facility this owner operates</li>
-            <li><strong>Visit checklist</strong> — tailored to this facility's specific flags</li>
-            <li><strong>Questions to ask</strong> — based on what inspectors actually found here</li>
-          </ul>
-          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="Download Personalized Report (PDF)" variant="prominent" />
-          <span className="fp-download-hint">Free forever. No login required.</span>
-          <span className="fp-download-upsell">Need a litigation-ready document? <Link to={`/evidence/${facility.ccn}`}>Get the Evidence Report — $29</Link></span>
+        <div className="disclaimer-box">
+          <strong>About This Data:</strong> The Oversight Report identifies patterns and discrepancies in publicly available federal data. These indicators do not constitute evidence of wrongdoing. If you have concerns about a facility, contact your state survey agency or the HHS Office of Inspector General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
         </div>
 
         {/* Evidence Preview Modal */}

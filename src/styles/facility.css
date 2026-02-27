@@ -62,6 +62,34 @@
   font-weight: 700;
 }
 
+/* === AHCA Context Line === */
+.ahca-context-line {
+  background: rgba(124, 106, 239, 0.08);
+  border: 1px solid rgba(124, 106, 239, 0.2);
+  border-left: 3px solid rgba(124, 106, 239, 0.6);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.ahca-context-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.ahca-context-source {
+  font-size: 0.75rem;
+  color: #64748B;
+  font-style: italic;
+}
+
 /* === Evidence Report Banner === */
 .evidence-report-banner {
   background-color: #F8FAFC;
@@ -589,6 +617,23 @@
   background-color: #D1FAE5;
   color: #065F46;
   border-left-color: #16A34A;
+}
+
+/* Alert Box Yellow (for discrepancies) */
+.alert-box-yellow {
+  padding: 16px 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(227, 179, 65, 0.25);
+  background-color: rgba(227, 179, 65, 0.12);
+  color: #92400E;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.alert-box-yellow strong {
+  color: #D97706;
+  font-weight: 700;
 }
 
 /* === Info Box (Blue — Bottom Line, Ownership) === */
@@ -1356,4 +1401,114 @@
   .financial-label {
     font-size: 0.95rem;
   }
+}
+
+/* === Resources Grid (What You Can Do) === */
+.resources-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resource-card {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.resource-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #DC2626;
+  margin-bottom: 0.5rem;
+}
+
+.resource-card-desc {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.resource-link {
+  font-size: 0.85rem;
+  color: #4F46E5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.resource-link:hover {
+  text-decoration: underline;
+}
+
+/* === Free Report CTA === */
+.free-report-cta {
+  background-color: #F8FAFC;
+  border: 2px solid #16A34A;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin: 3rem 0 2rem;
+}
+
+.free-report-cta h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #0F172A;
+}
+
+.free-report-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.5rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.free-report-features span::before {
+  content: "✓ ";
+  color: #16A34A;
+  font-weight: 700;
+}
+
+.free-report-note {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #64748B;
+}
+
+/* === Disclaimer === */
+.disclaimer-box {
+  background-color: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 2rem 0;
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.disclaimer-box strong {
+  color: #0F172A;
+}
+
+.disclaimer-box a {
+  color: #4F46E5;
+  text-decoration: none;
+}
+
+.disclaimer-box a:hover {
+  text-decoration: underline;
 }

@@ -223,7 +223,13 @@
 .name-cell {
   font-weight: 600;
   color: var(--text-white);
-  max-width: 300px;
+  max-width: 350px;
+}
+
+.chain-name-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .chain-name-link {
@@ -236,6 +242,22 @@
 .chain-name-link:hover {
   color: var(--primary-light);
   text-decoration: underline;
+}
+
+.ahca-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  background: var(--accent-purple-soft);
+  border: 1px solid rgba(124, 106, 239, 0.3);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-purple);
+  white-space: nowrap;
+  cursor: help;
+  width: fit-content;
 }
 
 /* Stars */

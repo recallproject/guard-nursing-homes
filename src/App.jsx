@@ -20,11 +20,14 @@ import { ChainDetailPage } from './pages/ChainDetailPage';
 import HighRiskPage from './pages/HighRiskPage';
 import SuccessPage from './pages/SuccessPage';
 import FeedbackButton from './components/FeedbackButton';
+import { SaveToast } from './components/SaveToast';
+import { useWatchlist } from './hooks/useWatchlist';
 import './styles/design.css';
 
 function App() {
   const location = useLocation();
   const isLandingPage = location.pathname === '/' || location.pathname === '';
+  const { lastAdded, clearLastAdded } = useWatchlist();
 
   return (
     <>
@@ -52,6 +55,11 @@ function App() {
         <Route path="/compare" element={<Navigate to="/watchlist" replace />} />
       </Routes>
       <FeedbackButton />
+      <SaveToast
+        visible={!!lastAdded}
+        facilityName={lastAdded?.name}
+        onDismiss={clearLastAdded}
+      />
     </>
   );
 }

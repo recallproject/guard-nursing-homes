@@ -97,6 +97,76 @@
 }
 
 /* ========================================
+   AHCA BOARD CALLOUT
+   ======================================== */
+.ahca-callout {
+  max-width: 1400px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  background: var(--accent-purple-soft);
+  border-left: 4px solid var(--accent-purple);
+  border-radius: 8px;
+}
+
+.ahca-callout-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-white);
+}
+
+.ahca-icon {
+  font-size: 1.5rem;
+}
+
+.ahca-callout-body {
+  font-size: 0.95rem;
+  color: var(--text-cream);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.ahca-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.ahca-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ahca-metric-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ahca-metric-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.ahca-callout-source {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
    CHAIN SUMMARY
    ======================================== */
 .chain-summary {
@@ -575,5 +645,14 @@
 
   .chain-disclaimer {
     padding: 1.5rem;
+  }
+
+  .ahca-callout {
+    padding: 1.5rem;
+    margin: 0 1rem 2rem;
+  }
+
+  .ahca-metrics {
+    grid-template-columns: 1fr;
   }
 }

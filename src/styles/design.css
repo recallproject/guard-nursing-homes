@@ -8,18 +8,39 @@
    COLOR PALETTE — BOLD & SATURATED
    ======================================== */
 :root {
-  /* Backgrounds */
-  --bg-deep: #0F172A;       /* Slate 900 — main bg */
-  --bg-card: #1E293B;       /* Slate 800 — card bg on dark */
-  --bg-card-light: #FFFFFF; /* White cards (facility cards) */
-  --bg-elevated: #334155;   /* Slate 700 — hover states */
-  --bg-light: #F8FAFC;      /* Slate 50 — light sections */
-  --bg-footer: #020617;     /* Slate 950 — footer */
+  /* Backgrounds — Navy/Indigo Palette */
+  --bg-deep: #0a0a1a;       /* Deep navy — main bg */
+  --bg-card: #12122a;       /* Card navy */
+  --bg-card-hover: #1a1a3e; /* Card hover */
+  --bg-card-elevated: #1e1e42; /* Elevated card */
+  --bg-card-light: #1a1a3e; /* Card light (dark mode) */
+  --bg-elevated: #1a1a3e;   /* Hover states */
+  --bg-light: #12122a;      /* Light sections (dark mode) */
+  --bg-footer: #060612;     /* Footer */
+
+  /* Borders */
+  --border: #2a2a5a;        /* Indigo border */
+  --border-subtle: #1e1e42; /* Subtle border */
 
   /* Primary — Bold Indigo */
   --primary: #4F46E5;       /* Indigo 600 */
   --primary-light: #818CF8; /* Indigo 400 */
   --primary-dark: #3730A3;  /* Indigo 800 */
+
+  /* Accent colors (matching mockups) */
+  --accent-red: #f85149;
+  --accent-red-soft: rgba(248, 81, 73, 0.15);
+  --accent-orange: #d29922;
+  --accent-orange-soft: rgba(210, 153, 34, 0.15);
+  --accent-green: #3fb950;
+  --accent-green-soft: rgba(63, 185, 80, 0.12);
+  --accent-blue: #7c8aff;
+  --accent-blue-soft: rgba(124, 138, 255, 0.10);
+  --accent-purple: #7c6aef;
+  --accent-purple-soft: rgba(124, 106, 239, 0.12);
+  --accent-teal: #39d0ba;
+  --accent-amber: #e3b341;
+  --accent-yellow-soft: rgba(227, 179, 65, 0.12);
 
   /* Risk Spectrum — VIVID, FULL OPACITY */
   --risk-critical: #DC2626; /* Red 600 */
@@ -292,7 +313,7 @@ a:focus-visible {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   color: var(--text-white);
-  background-color: rgba(30, 41, 59, 0.8);
+  background-color: rgba(18, 18, 42, 0.8);
   backdrop-filter: blur(12px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;

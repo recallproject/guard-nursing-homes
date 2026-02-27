@@ -16,6 +16,7 @@ export function ChainDetailPage() {
   const [error, setError] = useState(null);
   const [sortBy, setSortBy] = useState('stars');
   const [sortDirection, setSortDirection] = useState('asc');
+  const [ahcaData, setAhcaData] = useState(null);
 
   const { data: facilityData, loading: facilityLoading } = useFacilityData();
   const { tier } = useSubscription();
@@ -30,6 +31,14 @@ export function ChainDetailPage() {
       window.plausible && window.plausible('Chain-Page-View', {props: {chain: decodedChainName, facilityCount: String(chainData.facilityCount || '')}});
     }
   }, [chainData?.affiliatedEntity]);
+
+  // Load AHCA data
+  useEffect(() => {
+    fetch('/data/ahca_board_chains.json')
+      .then(r => r.json())
+      .then(d => setAhcaData(d))
+      .catch(() => {});
+  }, []);
 
   // Load chain data
   useEffect(() => {
@@ -265,6 +274,9 @@ export function ChainDetailPage() {
   // Check access
   const hasAccess = canAccess(tier, 'pro');
 
+  // Check if this chain has an AHCA board member
+  const ahcaInfo = ahcaData?.[decodedChainName.toUpperCase()];
+
   if (!hasAccess) {
     return (
       <div className="chain-detail-page">
@@ -320,6 +332,39 @@ export function ChainDetailPage() {
           Detailed performance analysis across all {chainFacilities.length} facilities
         </p>
       </div>
+
+      {/* AHCA Board Connection */}
+      {ahcaInfo && (
+        <div className="ahca-callout">
+          <div className="ahca-callout-header">
+            <span className="ahca-icon">🏛</span>
+            <strong>Industry Lobbying Connection</strong>
+          </div>
+          <p className="ahca-callout-body">
+            <strong>{ahcaInfo.board_member}</strong> ({ahcaInfo.position}) serves on the Board of Governors of the American Health Care Association (AHCA), the nursing home industry's largest trade and lobbying organization.
+          </p>
+          <p className="ahca-callout-body">
+            AHCA has spent over $17 million since 2020 lobbying on nursing home policy, including against federal staffing requirements.
+          </p>
+          <div className="ahca-metrics">
+            <div className="ahca-metric">
+              <span className="ahca-metric-label">This chain's RN staffing:</span>
+              <span className="ahca-metric-value">{ahcaInfo.rn_hprd} hrs/resident/day</span>
+            </div>
+            <div className="ahca-metric">
+              <span className="ahca-metric-label">National average:</span>
+              <span className="ahca-metric-value">{ahcaInfo.national_avg_rn_hprd} hrs/resident/day</span>
+            </div>
+            <div className="ahca-metric">
+              <span className="ahca-metric-label">Percentile:</span>
+              <span className="ahca-metric-value">{ahcaInfo.rn_percentile}th among major chains</span>
+            </div>
+          </div>
+          <p className="ahca-callout-source">
+            Sources: {ahcaInfo.source} · OpenSecrets.org · FEC.gov PAC disbursement records
+          </p>
+        </div>
+      )}
 
       {/* Key Stats */}
       <div className="chain-stats" ref={statsRef}>
