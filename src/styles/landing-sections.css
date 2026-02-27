@@ -33,17 +33,17 @@
 .section-light h3,
 .section-light h4,
 .section-light h5 {
-  color: var(--text-dark);
+  color: var(--text-white);
 }
 
 .section-light p,
 .section-light span,
 .section-light li {
-  color: var(--text-dark-muted);
+  color: var(--text-muted);
 }
 
 .section-light .section-header p {
-  color: var(--text-dark-muted);
+  color: var(--text-muted);
 }
 
 /* --- Dark Section --- */
@@ -521,7 +521,7 @@
 }
 
 .section-light .report-nearby-name {
-  color: #0F172A !important;
+  color: var(--text-white) !important;
 }
 
 .report-nearby-name {
@@ -531,7 +531,7 @@
 }
 
 .section-light .report-nearby-distance {
-  color: #64748B !important;
+  color: var(--text-muted) !important;
 }
 
 .report-nearby-distance {
@@ -550,14 +550,14 @@
 
 /* Secondary button on light backgrounds */
 .section-light .btn-secondary {
-  color: #1E293B;
-  border-color: #64748B;
+  color: var(--text-cream);
+  border-color: var(--text-muted);
   background: transparent;
   cursor: pointer;
 }
 
 .section-light .btn-secondary:hover:not(:disabled) {
-  background-color: #1E293B;
+  background-color: var(--primary);
   color: #fff;
   border-color: #1E293B;
 }
@@ -725,7 +725,7 @@
 }
 
 .section-light .mission-quote {
-  color: var(--text-dark);
+  color: var(--text-cream);
 }
 
 /* Decorative quote mark removed — text is strong enough without it */
@@ -746,7 +746,7 @@
 }
 
 .section-light .mission-author-name {
-  color: var(--text-dark);
+  color: var(--text-white);
 }
 
 .mission-author-role {
@@ -754,7 +754,7 @@
 }
 
 .section-light .mission-author-role {
-  color: var(--text-dark-muted);
+  color: var(--text-muted);
 }
 
 .mission-body {
@@ -781,7 +781,7 @@
 }
 
 .section-light .trust-item {
-  color: var(--text-dark);
+  color: var(--text-cream);
 }
 
 .trust-item-icon {
