@@ -8,19 +8,19 @@
    COLOR PALETTE — BOLD & SATURATED
    ======================================== */
 :root {
-  /* Backgrounds — Navy/Indigo Palette */
-  --bg-deep: #0a0a1a;       /* Deep navy — main bg */
-  --bg-card: #12122a;       /* Card navy */
-  --bg-card-hover: #1a1a3e; /* Card hover */
-  --bg-card-elevated: #1e1e42; /* Elevated card */
-  --bg-card-light: #1a1a3e; /* Card light (dark mode) */
-  --bg-elevated: #1a1a3e;   /* Hover states */
-  --bg-light: #12122a;      /* Light sections (dark mode) */
-  --bg-footer: #060612;     /* Footer */
+  /* Backgrounds — Slate Palette */
+  --bg-deep: #0F172A;       /* Slate 900 — main bg */
+  --bg-card: #1E293B;       /* Slate 800 */
+  --bg-card-hover: #334155; /* Slate 700 */
+  --bg-card-elevated: #334155; /* Slate 700 */
+  --bg-card-light: #334155; /* Slate 700 */
+  --bg-elevated: #334155;   /* Hover states */
+  --bg-light: #1E293B;      /* Slate 800 */
+  --bg-footer: #020617;     /* Slate 950 */
 
   /* Borders */
-  --border: #2a2a5a;        /* Indigo border */
-  --border-subtle: #1e1e42; /* Subtle border */
+  --border: #334155;        /* Slate 700 */
+  --border-subtle: #1E293B; /* Slate 800 */
 
   /* Primary — Bold Indigo */
   --primary: #4F46E5;       /* Indigo 600 */
@@ -313,7 +313,7 @@ a:focus-visible {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   color: var(--text-white);
-  background-color: rgba(18, 18, 42, 0.8);
+  background-color: rgba(30, 41, 59, 0.8);
   backdrop-filter: blur(12px);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
