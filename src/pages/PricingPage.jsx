@@ -5,6 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/landing/Footer';
 import { useNavigate } from 'react-router-dom';
 import '../styles/design.css';
+import { checkoutSingleReport } from '../utils/stripe';
 import '../styles/pricing.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -117,6 +118,7 @@ export default function PricingPage() {
     if (tier.ctaLink === '/') {
       navigate('/');
     } else if (tier.ctaLink === '/evidence') {
+      // Go to evidence preview page where they can select a facility
       navigate('/evidence');
     } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;

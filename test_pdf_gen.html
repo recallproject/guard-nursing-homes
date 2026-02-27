@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>PDF Test</title></head>
+<body>
+<h2>Evidence PDF Generator Test</h2>
+<p>Loading facility data...</p>
+<script type="module">
+import { generateEvidencePDF } from '/src/utils/generateEvidencePDF.js';
+
+const resp = await fetch('/facilities_map_data.json');
+const data = await resp.json();
+
+const allFacilities = [];
+let facility = null;
+const targetCCN = '145995'; // Archer Heights
+
+for (const [state, stateData] of Object.entries(data.states)) {
+  if (stateData.facilities) {
+    for (const f of stateData.facilities) {
+      allFacilities.push(f);
+      if (f.ccn === targetCCN) facility = f;
+    }
+  }
+}
+
+if (!facility) {
+  document.body.innerHTML += '<p style="color:red">Facility not found!</p>';
+} else {
+  document.body.innerHTML += `<p>Found: ${facility.name} (${facility.ccn})</p>`;
+  document.body.innerHTML += `<p>Stars: ${facility.stars} | Fines: $${facility.total_fines?.toLocaleString()} | Defs: ${facility.total_deficiencies}</p>`;
+
+  const nearby = allFacilities
+    .filter(f => f.state === facility.state && f.ccn !== facility.ccn && (f.composite || 100) < (facility.composite || 0))
+    .sort((a, b) => (a.composite || 100) - (b.composite || 100))
+    .slice(0, 5);
+
+  document.body.innerHTML += '<p>Generating PDF... (will auto-download)</p>';
+
+  try {
+    generateEvidencePDF(facility, nearby, allFacilities);
+    document.body.innerHTML += '<p style="color:green">PDF generated and downloaded!</p>';
+  } catch(err) {
+    document.body.innerHTML += `<p style="color:red">Error: ${err.message}</p>`;
+    console.error(err);
+  }
+}
+</script>
+</body>
+</html>

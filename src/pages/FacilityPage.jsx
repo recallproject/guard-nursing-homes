@@ -25,6 +25,7 @@ export function FacilityPage() {
   const [showEvidencePreview, setShowEvidencePreview] = useState(false);
   const [ahcaData, setAhcaData] = useState(null);
   const [openAccordion, setOpenAccordion] = useState(null);
+  const [deficiencyDetails, setDeficiencyDetails] = useState(null);
 
   const facility = data?.states
     ? Object.values(data.states).flatMap(state => state.facilities || []).find(f => f.ccn === ccn)
@@ -79,6 +80,19 @@ export function FacilityPage() {
       .then(d => setAhcaData(d))
       .catch(() => {});
   }, []);
+
+  // Load deficiency details for this facility's state
+  useEffect(() => {
+    if (!facility?.state) return;
+    fetch(`${import.meta.env.BASE_URL}deficiency_details/${facility.state}.json`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (d && d[ccn]) {
+          setDeficiencyDetails(d[ccn].deficiency_details || []);
+        }
+      })
+      .catch(() => {});
+  }, [facility?.state, ccn]);
 
   if (loading) {
     return (
@@ -274,47 +288,74 @@ export function FacilityPage() {
             {facility.jeopardy_count > 0 && <> <strong style={{ color: 'var(--accent-red, #f85149)' }}>{facility.jeopardy_count}</strong> were classified as <strong style={{ color: 'var(--accent-red, #f85149)' }}>serious danger</strong> — the most severe level.</>}
           </p>
           <ul className="deficiency-list">
-            {facility.jeopardy_count > 0 && (
-              <li className="deficiency-item">
-                <span className="deficiency-severity severity-danger">Serious Danger</span>
-                <div>
-                  <div className="deficiency-text">
-                    {facility.jeopardy_count} citation(s) — conditions so serious that residents faced risk of serious injury or death
-                  </div>
-                </div>
-              </li>
+            {deficiencyDetails && deficiencyDetails.length > 0 ? (
+              <>
+                {deficiencyDetails
+                  .sort((a, b) => {
+                    const severityOrder = { 'Immediate Jeopardy': 0, 'Actual Harm': 1 };
+                    return (severityOrder[a.severity_label] ?? 2) - (severityOrder[b.severity_label] ?? 2);
+                  })
+                  .slice(0, 7)
+                  .map((def, idx) => {
+                    const severityClass = def.severity_label === 'Immediate Jeopardy' ? 'severity-danger'
+                      : def.severity_label === 'Actual Harm' ? 'severity-harm' : 'severity-minor';
+                    const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Danger'
+                      : def.severity_label === 'Actual Harm' ? 'Residents Hurt' : 'Minor';
+                    const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
+                    const surveyLabel = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
+                    return (
+                      <li className="deficiency-item" key={idx}>
+                        <span className={`deficiency-severity ${severityClass}`}>{severityText}</span>
+                        <div>
+                          <div className="deficiency-text">{def.description}</div>
+                          <div className="deficiency-category">{def.category}</div>
+                          <div className="deficiency-date">{surveyLabel} · {year}</div>
+                        </div>
+                      </li>
+                    );
+                  })}
+              </>
+            ) : (
+              <>
+                {facility.jeopardy_count > 0 && (
+                  <li className="deficiency-item">
+                    <span className="deficiency-severity severity-danger">Serious Danger</span>
+                    <div>
+                      <div className="deficiency-text">
+                        {facility.jeopardy_count} citation(s) — conditions so serious that residents faced risk of serious injury or death
+                      </div>
+                    </div>
+                  </li>
+                )}
+                {facility.harm_count > 0 && (
+                  <li className="deficiency-item">
+                    <span className="deficiency-severity severity-harm">Residents Hurt</span>
+                    <div>
+                      <div className="deficiency-text">
+                        {facility.harm_count} citation(s) — facility practices caused actual harm to residents
+                      </div>
+                    </div>
+                  </li>
+                )}
+                {minorCount > 0 && (
+                  <li className="deficiency-item">
+                    <span className="deficiency-severity severity-minor">Minor</span>
+                    <div>
+                      <div className="deficiency-text">
+                        {minorCount} citation(s) — technical violations that did not cause direct harm
+                      </div>
+                    </div>
+                  </li>
+                )}
+              </>
             )}
-            {facility.harm_count > 0 && (
-              <li className="deficiency-item">
-                <span className="deficiency-severity severity-harm">Residents Hurt</span>
-                <div>
-                  <div className="deficiency-text">
-                    {facility.harm_count} citation(s) — facility practices caused actual harm to residents
-                  </div>
-                </div>
-              </li>
-            )}
-            {minorCount > 0 && (
-              <li className="deficiency-item">
-                <span className="deficiency-severity severity-minor">Minor</span>
-                <div>
-                  <div className="deficiency-text">
-                    {minorCount} citation(s) — technical violations that did not cause direct harm
-                  </div>
-                </div>
-              </li>
-            )}
-            {facility.top_categories && facility.top_categories.map(([category, count]) => (
-              <li className="deficiency-item" key={category}>
-                <span className="deficiency-severity severity-minor">Category</span>
-                <div>
-                  <div className="deficiency-text">{category}: {count} citation(s)</div>
-                  <div className="deficiency-category"><a href={propublica} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>View inspection details →</a></div>
-                </div>
-              </li>
-            ))}
           </ul>
-          <p className="source">Source: CMS Health Deficiencies Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></p>
+          {deficiencyDetails && deficiencyDetails.length > 7 && (
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '12px' }}>
+              Showing 7 of {deficiencyDetails.length} citations · <a href={propublica} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>View all {deficiencyDetails.length} deficiencies →</a>
+            </p>
+          )}
+          <div className="source-line">Source: CMS Health Deficiencies Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></div>
         </div>
 
         {/* Section 03 — How Much Care Do Residents Get? */}
@@ -477,7 +518,7 @@ export function FacilityPage() {
           <div className="ownership-grid">
             <div className="ownership-card">
               <div className="ownership-card-label">Operator</div>
-              <div style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px' }}>
+              <div style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px', color: 'var(--text-white)' }}>
                 {facility.worst_owner || 'Unknown'}
               </div>
               <div style={{ fontSize: '14px', color: 'var(--text-secondary, #9d97b8)' }}>
@@ -494,21 +535,37 @@ export function FacilityPage() {
                 </div>
               )}
             </div>
-            {facility.ownership_type && (
-              <div className="ownership-card">
-                <div className="ownership-card-label">Ownership Type</div>
-                <div style={{ fontSize: '16px', fontWeight: 700, marginBottom: '8px' }}>
-                  {facility.ownership_type}
-                </div>
-                {facility.chain_name && (
-                  <div style={{ fontSize: '14px', color: 'var(--text-secondary, #9d97b8)' }}>
-                    Chain: {facility.chain_name}
-                  </div>
-                )}
+            <div className="ownership-card">
+              <div className="ownership-card-label">Rating Distribution</div>
+              <div style={{ marginTop: '8px' }}>
+                {(() => {
+                  // Compute star distribution from all facilities with the same owner
+                  const ownerName = facility.worst_owner;
+                  const ownerFacs = ownerName ? allFacilities.filter(f => f.worst_owner === ownerName) : [];
+                  const total = ownerFacs.length || 1;
+                  const dist = [0, 0, 0, 0, 0]; // index 0=1star, 4=5star
+                  ownerFacs.forEach(f => {
+                    const s = Math.max(1, Math.min(5, f.stars || 1));
+                    dist[s - 1]++;
+                  });
+                  return [5, 4, 3, 2, 1].map(star => {
+                    const count = dist[star - 1];
+                    const pctVal = Math.round((count / total) * 100);
+                    return (
+                      <div className="star-dist" key={star}>
+                        <span className="star-dist-label">{star} ⭐</span>
+                        <div style={{ flex: 1, height: '6px', background: 'var(--bg-card-elevated, #2a2460)', borderRadius: '3px' }}>
+                          <div className="star-dist-bar" style={{ width: `${pctVal}%`, height: '6px' }} />
+                        </div>
+                        <span className="star-dist-count">{count} ({pctVal}%)</span>
+                      </div>
+                    );
+                  });
+                })()}
               </div>
-            )}
+            </div>
           </div>
-          <p className="source">Source: CMS Care Compare, ownership records</p>
+          <div className="source-line">Source: CMS Care Compare, ownership records</div>
         </div>
 
         {/* Section 07 — Questions to Ask */}
@@ -605,6 +662,25 @@ export function FacilityPage() {
           </div>
           <button className="btn-evidence" onClick={() => setShowEvidencePreview(true)}>Preview Evidence Package</button>
           <div className="paid-upsell-note">One-time purchase. Instant download. Used by attorneys, journalists, and regulators.</div>
+        </div>
+
+        {/* Professional Plans — Coming Soon */}
+        <div className="pro-plans">
+          <h3>Professional Plans — Coming Soon</h3>
+          <div className="pro-plans-grid">
+            <div className="pro-plan-card">
+              <div className="pro-plan-name">Pro</div>
+              <div className="pro-plan-price">$14/mo</div>
+              <div className="pro-plan-features">Watchlist alerts · Unlimited PDF exports · Bulk facility comparison · API access</div>
+              <button className="btn-waitlist" onClick={() => window.open('mailto:contact@oversightreports.com?subject=Pro Waitlist', '_blank')}>Join Waitlist</button>
+            </div>
+            <div className="pro-plan-card">
+              <div className="pro-plan-name">Enterprise</div>
+              <div className="pro-plan-price">$59/mo</div>
+              <div className="pro-plan-features">Cost report deep dives · Multi-facility dashboards · Custom data exports · Priority support</div>
+              <button className="btn-waitlist" onClick={() => window.open('mailto:contact@oversightreports.com?subject=Enterprise Waitlist', '_blank')}>Join Waitlist</button>
+            </div>
+          </div>
         </div>
 
         {/* Data Sources */}

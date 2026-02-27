@@ -1691,3 +1691,24 @@
   .data-cell-value { font-size: 20px; }
   .comparison-label { min-width: 70px; font-size: 11px; }
 }
+
+/* ── DEFICIENCY DATE (v3) ── */
+.deficiency-date { font-size: 12px; color: var(--text-muted, #94A3B8); margin-top: 2px; }
+
+/* ── STAR DISTRIBUTION (v3) ── */
+.star-dist { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-size: 13px; }
+.star-dist-bar { height: 6px; border-radius: 3px; background: var(--accent-amber, #e3b341); }
+.star-dist-label { color: var(--text-secondary, #9d97b8); min-width: 40px; }
+.star-dist-count { color: var(--text-muted, #94A3B8); font-size: 12px; min-width: 60px; text-align: right; }
+
+/* ── PRO PLANS (v3) ── */
+.pro-plans { background: var(--bg-card, #1E293B); border: 1px solid var(--border, #334155); border-radius: 12px; padding: 28px 32px; margin-bottom: 40px; }
+.pro-plans h3 { font-size: 16px; font-weight: 600; color: var(--text-secondary, #9d97b8); margin-bottom: 16px; }
+.pro-plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) { .pro-plans-grid { grid-template-columns: 1fr; } }
+.pro-plan-card { border: 1px solid var(--border, #334155); border-radius: 8px; padding: 20px; }
+.pro-plan-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: var(--text-white, #FFFFFF); }
+.pro-plan-price { font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--accent-purple, #7c6aef); margin-bottom: 8px; }
+.pro-plan-features { font-size: 12px; color: var(--text-secondary, #9d97b8); line-height: 1.8; }
+.btn-waitlist { display: inline-block; margin-top: 12px; padding: 8px 20px; border: 1px solid var(--accent-purple, #7c6aef); border-radius: 6px; background: transparent; color: var(--accent-purple, #7c6aef); font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.btn-waitlist:hover { background: rgba(124, 106, 239, 0.12); }

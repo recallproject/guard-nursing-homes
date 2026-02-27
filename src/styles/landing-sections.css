@@ -26,24 +26,24 @@
 
 /* --- Light Section Text Override --- */
 .section-light {
-  background-color: var(--bg-deep);
+  background-color: var(--bg-light);
 }
 
 .section-light h2,
 .section-light h3,
 .section-light h4,
 .section-light h5 {
-  color: var(--text-white);
+  color: #0F172A;
 }
 
 .section-light p,
 .section-light span,
 .section-light li {
-  color: var(--text-muted);
+  color: #475569;
 }
 
 .section-light .section-header p {
-  color: var(--text-muted);
+  color: #64748B;
 }
 
 /* --- Dark Section --- */
@@ -293,7 +293,7 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1E293B;
   line-height: 1.2;
 }
 
@@ -390,7 +390,7 @@
 .report-problem-category {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1E293B;
 }
 
 .report-problem-count {
@@ -410,7 +410,7 @@
 
 .report-question strong {
   font-size: 0.9rem;
-  color: #FFFFFF;
+  color: #1E293B;
   display: block;
   margin-bottom: 0.25rem;
 }
@@ -521,17 +521,17 @@
 }
 
 .section-light .report-nearby-name {
-  color: var(--text-white) !important;
+  color: #1E293B !important;
 }
 
 .report-nearby-name {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #1E293B;
 }
 
 .section-light .report-nearby-distance {
-  color: var(--text-muted) !important;
+  color: #64748B !important;
 }
 
 .report-nearby-distance {
@@ -593,7 +593,7 @@
 
 .report-row-label {
   font-weight: 600;
-  color: var(--text-white);
+  color: #1E293B;
   font-size: 0.95rem;
 }
 
@@ -725,7 +725,7 @@
 }
 
 .section-light .mission-quote {
-  color: var(--text-cream);
+  color: #1E293B;
 }
 
 /* Decorative quote mark removed — text is strong enough without it */
@@ -746,7 +746,7 @@
 }
 
 .section-light .mission-author-name {
-  color: var(--text-white);
+  color: #0F172A;
 }
 
 .mission-author-role {
@@ -754,7 +754,7 @@
 }
 
 .section-light .mission-author-role {
-  color: var(--text-muted);
+  color: #64748B;
 }
 
 .mission-body {
@@ -781,7 +781,7 @@
 }
 
 .section-light .trust-item {
-  color: var(--text-cream);
+  color: #1E293B;
 }
 
 .trust-item-icon {
@@ -1715,25 +1715,25 @@
 .author-name {
   font-weight: 700;
   font-size: 1rem;
-  color: #FFFFFF;
+  color: #0F172A;
 }
 
 .author-title {
   font-size: 0.875rem;
-  color: #94A3B8;
+  color: #64748B;
 }
 
 .author-org {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #1E293B;
 }
 
 .author-quote {
   font-style: italic;
   font-size: 0.9rem;
   margin: 0;
-  color: #94A3B8;
+  color: #64748B;
   line-height: 1.5;
   padding-left: 0.5rem;
   border-left: 3px solid #C7D2FE;

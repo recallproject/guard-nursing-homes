@@ -68,8 +68,8 @@ export function NearbyFacilities({ facility }) {
       }
     });
 
-    // Return top 10
-    return results.slice(0, 10);
+    // Return top 5
+    return results.slice(0, 5);
   }, [facility, data, radius, sortBy]);
 
   if (!facility || !facility.lat || !facility.lon) {
