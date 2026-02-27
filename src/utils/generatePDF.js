@@ -44,7 +44,7 @@ export function generatePDF(facility, options = {}) {
   let page = 1;
 
   // ── Formatting Helpers ──
-  const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${Number(v).toLocaleString()}`;
+  const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${Math.round(Number(v)).toLocaleString()}`;
   const pct = (v) => (v == null) ? 'N/A' : `${Number(v).toFixed(0)}%`;
   const num = (v) => (v == null) ? 'N/A' : Number(v).toLocaleString();
   const rnMin = facility.rn_hprd ? Math.round(facility.rn_hprd * 60) : 0;
@@ -349,7 +349,7 @@ export function generatePDF(facility, options = {}) {
   if (facility.zero_rn_pct > 25)
     bottomParts.push(`On ${pct(facility.zero_rn_pct)} of days, there was NO registered nurse in the building.`);
   if (facility.owner_portfolio_count > 1)
-    bottomParts.push(`The same company runs ${facility.owner_portfolio_count} other facilities${facility.owner_avg_fines ? ` with average fines of ${fmt(facility.owner_avg_fines)} each` : ''}.`);
+    bottomParts.push(`The same company runs ${facility.owner_portfolio_count} other facilities${facility.owner_avg_fines ? ` with average fines of ${fmt(facility.owner_avg_fines)} among those penalized` : ''}.`);
   if (bottomParts.length === 0)
     bottomParts.push('This facility has no major issues recorded in recent CMS data.');
 
@@ -452,7 +452,7 @@ export function generatePDF(facility, options = {}) {
     needsPage(25);
     subHeader('Staffing Data Discrepancy');
     calloutBox(
-      `This facility's reported staffing hours are ${Math.round(facility.rn_gap_pct)}% higher than what payroll records support. ` +
+      `${Math.round(facility.rn_gap_pct)}% of this facility's self-reported RN hours are not verified by payroll records. ` +
       'When what a facility reports to the government doesn\'t match what they actually pay their staff, it raises questions about the accuracy of their public staffing data. ' +
       'Ask to see the posted daily staffing schedule — facilities are required to display this publicly. ' +
       'Source: CMS PBJ Staffing Data vs. CMS Provider-Reported Staffing',
@@ -735,7 +735,7 @@ export function generatePDF(facility, options = {}) {
   // Data mismatch callout
   if (facility.rn_gap_pct > 20) {
     calloutBox(
-      `DATA MISMATCH: This facility reports ${facility.rn_gap_pct?.toFixed(0)}% more RN hours than payroll records show. The actual staffing may be significantly lower than advertised. Ask to see real schedules.`,
+      `DATA MISMATCH: Payroll records account for only ${(100 - (facility.rn_gap_pct || 0)).toFixed(0)}% of this facility's self-reported RN hours. The actual staffing may be significantly lower than advertised. Ask to see real schedules.`,
       'warning'
     );
   }
@@ -948,7 +948,7 @@ export function generatePDF(facility, options = {}) {
   if (facility.rn_gap_pct > 30) {
     questions.push({
       q: 'Can I see your actual staffing schedules for the past month?',
-      why: `Facility reports ${pct(facility.rn_gap_pct)} more RN hours than payroll shows.`
+      why: `Payroll records account for only ${pct(100 - facility.rn_gap_pct)} of self-reported RN hours.`
     });
   }
   if (facility.total_fines > 50000) {

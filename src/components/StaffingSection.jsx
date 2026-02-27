@@ -24,6 +24,7 @@ export default function StaffingSection({ facility, benchmarks }) {
   const totalClass = totalMinutes < SAFETY_BENCHMARK_TOTAL ? 'val-red' : '';
 
   return (
+    <>
     <table className="staffing-table">
       <thead>
         <tr>
@@ -75,5 +76,9 @@ export default function StaffingSection({ facility, benchmarks }) {
         </tr>
       </tbody>
     </table>
+    <div style={{ fontSize: '11px', color: 'var(--text-muted, #6b6590)', marginTop: '8px', lineHeight: '1.4' }}>
+      RN and Total hours from CMS Payroll-Based Journal (mandatory payroll records). LPN and CNA hours from CMS Provider Information (facility self-reported). Totals may not equal the sum of individual roles due to different data sources.
+    </div>
+    </>
   );
 }

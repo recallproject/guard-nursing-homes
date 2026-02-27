@@ -115,7 +115,7 @@ export function FacilityPage() {
   }
 
   // Helpers
-  const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${v.toLocaleString()}`;
+  const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${Math.round(v).toLocaleString()}`;
   const pct = (v) => (v === null || v === undefined) ? 'N/A' : `${v.toFixed(0)}%`;
   const stars = '⭐'.repeat(Math.max(0, Math.min(5, facility.stars || 0)));
   const propublica = `https://projects.propublica.org/nursing-homes/homes/h-${ccn}`;
@@ -134,7 +134,7 @@ export function FacilityPage() {
     if (facility.zero_rn_pct > 25)
       parts.push(`On <strong>${pct(facility.zero_rn_pct)} of days</strong>, there was no registered nurse in the building.`);
     if (facility.owner_portfolio_count > 1)
-      parts.push(`The same company runs <strong>${facility.owner_portfolio_count} other facilities</strong>${facility.owner_avg_fines ? ` with average fines of ${fmt(facility.owner_avg_fines)} each` : ''}.`);
+      parts.push(`The same company runs <strong>${facility.owner_portfolio_count} other facilities</strong>${facility.owner_avg_fines ? ` with average fines of ${fmt(facility.owner_avg_fines)} among those penalized` : ''}.`);
     if (parts.length === 0)
       parts.push('This facility has no major issues recorded in recent CMS data.');
     return parts.join(' ');
@@ -375,7 +375,7 @@ export function FacilityPage() {
 
           {facility.rn_gap_pct > 30 && (
             <div className="alert-box-yellow" style={{ marginTop: '12px' }}>
-              <strong>⚠ Staffing Discrepancy:</strong> This facility self-reports <strong>{facility.rn_gap_pct.toFixed(0)}% more RN hours</strong> than verified payroll records show. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
+              <strong>⚠ Staffing Discrepancy:</strong> <strong>{facility.rn_gap_pct.toFixed(0)}%</strong> of this facility's self-reported RN hours are not verified by payroll records. It claims {(facility.self_report_rn * 60).toFixed(0)} min/resident/day but payroll shows {(facility.rn_hprd * 60).toFixed(0)} min. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
             </div>
           )}
 
@@ -495,7 +495,7 @@ export function FacilityPage() {
             <div className="section-number">05</div>
             <div className="section-title">Financial Transparency</div>
             <div className="financial-card">
-              <div className="financial-amount">${facility.related_party_costs.toLocaleString()}</div>
+              <div className="financial-amount">${Math.round(facility.related_party_costs).toLocaleString()}</div>
               <div className="financial-label">
                 Paid to affiliated companies in FY{facility.related_party_year || '2024'}. Related-party transactions are payments to companies affiliated with the facility's owners — for management fees, real estate leases, or other services. High payments combined with poor quality may indicate profit extraction.
               </div>
@@ -591,7 +591,7 @@ export function FacilityPage() {
           {facility.rn_gap_pct > 30 && (
             <div className="question-item">
               <div className="question-text">Can I see your actual staffing schedules for the past month?</div>
-              <div className="question-context">Facility reports {facility.rn_gap_pct.toFixed(0)}% more RN hours than payroll records show.</div>
+              <div className="question-context">Payroll records account for only {(100 - facility.rn_gap_pct).toFixed(0)}% of self-reported RN hours.</div>
             </div>
           )}
 
@@ -761,7 +761,7 @@ export function FacilityPage() {
                   <span className="ev-preview-num">5</span>
                   <div>
                     <strong>Financial Penalties</strong>
-                    <p>${(facility.total_fines || 0).toLocaleString()} in fines · {facility.fine_count || 0} penalties</p>
+                    <p>${Math.round(facility.total_fines || 0).toLocaleString()} in fines · {facility.fine_count || 0} penalties</p>
                   </div>
                 </div>
                 <div className="ev-preview-section">
