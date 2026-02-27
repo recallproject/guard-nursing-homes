@@ -1,0 +1,61 @@
+{
+  "AMERICARE SENIOR LIVING": {
+    "board_member": "Chris Wright",
+    "position": "AHCA Chair",
+    "company_name": "iCare Health Network",
+    "rn_hprd": 0.50,
+    "national_avg_rn_hprd": 0.66,
+    "rn_percentile": 26,
+    "total_fines": 165229,
+    "source": "AHCA Board of Governors 2025-2026 announcement (ahcancal.org)"
+  },
+  "THE ENSIGN GROUP": {
+    "board_member": "Barry Port",
+    "position": "Multifacility Representative",
+    "company_name": "The Ensign Group",
+    "rn_hprd": 0.50,
+    "national_avg_rn_hprd": 0.66,
+    "rn_percentile": 46,
+    "total_fines": 7409413,
+    "fine_rank": "5th highest of 296 major chains",
+    "source": "AHCA Board of Governors 2025-2026 announcement (ahcancal.org)"
+  },
+  "EVANGELICAL GOOD SAMARITAN SOCIETY": {
+    "board_member": "Nate Schema",
+    "position": "Vice Chair",
+    "company_name": "The Evangelical Lutheran Good Samaritan Society",
+    "rn_hprd": 0.90,
+    "national_avg_rn_hprd": 0.66,
+    "rn_percentile": 88,
+    "total_fines": 2194844,
+    "source": "AHCA Board of Governors 2025-2026 announcement (ahcancal.org)"
+  },
+  "MISSION HEALTH COMMUNITIES": {
+    "board_member": "Tina Thomas",
+    "position": "Secretary/Treasurer",
+    "company_name": "Mission Health Communities",
+    "rn_hprd": 0.60,
+    "national_avg_rn_hprd": 0.66,
+    "rn_percentile": 65,
+    "total_fines": 839211,
+    "source": "AHCA Board of Governors 2025-2026 announcement (ahcancal.org)"
+  },
+  "VIVAGE SENIOR LIVING": {
+    "board_member": "Jay Moskowitz",
+    "position": "Regional Multifacility Representative",
+    "company_name": "Vivage",
+    "rn_hprd": 0.70,
+    "national_avg_rn_hprd": 0.66,
+    "rn_percentile": 83,
+    "total_fines": 156446,
+    "source": "AHCA Board of Governors 2025-2026 announcement (ahcancal.org)"
+  },
+  "_meta": {
+    "ahca_lobbying_total": "$17M+ since 2020",
+    "ahca_pac_disbursements": "$221,000 in 2025-2026 cycle to 41 candidates",
+    "section_71111": "One Big Beautiful Bill Act §71111 — 10-year moratorium on staffing mandates (signed July 4, 2025)",
+    "lobbying_source": "OpenSecrets.org, FEC.gov disbursement records",
+    "pac_source": "FEC.gov, AHCA PAC Committee ID C00040998",
+    "last_updated": "2026-02-27"
+  }
+}
