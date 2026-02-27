@@ -550,8 +550,8 @@
 
 /* Secondary button on light backgrounds */
 .section-light .btn-secondary {
-  color: var(--text-cream);
-  border-color: var(--text-muted);
+  color: #1E293B;
+  border-color: #94A3B8;
   background: transparent;
   cursor: pointer;
 }
@@ -559,7 +559,7 @@
 .section-light .btn-secondary:hover:not(:disabled) {
   background-color: var(--primary);
   color: #fff;
-  border-color: #1E293B;
+  border-color: var(--primary);
 }
 
 /* Risk badge pulse animation for HIGH RISK */
@@ -880,11 +880,11 @@
 
 /* --- Two Reports Section --- */
 .two-reports-section .section-header h2 {
-  color: var(--text-white);
+  color: #0F172A;
 }
 
 .two-reports-section .section-header p {
-  color: var(--text-muted);
+  color: #475569;
 }
 
 .two-reports-grid {
@@ -958,7 +958,7 @@
 .two-reports-tagline {
   font-size: 1rem;
   font-weight: 600;
-  color: #94A3B8;
+  color: #475569;
   margin: 0 0 1rem;
   text-align: center;
 }
@@ -970,7 +970,7 @@
 .two-reports-search-cta {
   text-align: center;
   font-size: 0.95rem;
-  color: #64748b;
+  color: #334155;
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid #e2e8f0;
