@@ -70,23 +70,35 @@ export function computeBenchmarks(data) {
       });
     });
 
-    // Compute state averages
+    // Compute state averages (rounded for clean display)
     stateAverages[stateCode] = {};
     metrics.forEach(metric => {
-      stateAverages[stateCode][metric] =
-        stateCounts[metric] > 0
-          ? stateTotals[metric] / stateCounts[metric]
-          : null;
+      const raw = stateCounts[metric] > 0
+        ? stateTotals[metric] / stateCounts[metric]
+        : null;
+      if (raw === null) {
+        stateAverages[stateCode][metric] = null;
+      } else if (metric === 'total_fines') {
+        stateAverages[stateCode][metric] = Math.round(raw);
+      } else {
+        stateAverages[stateCode][metric] = Math.round(raw * 10) / 10;
+      }
     });
   }
 
-  // Compute national averages
+  // Compute national averages (rounded for clean display)
   const nationalAverages = {};
   metrics.forEach(metric => {
-    nationalAverages[metric] =
-      nationalCounts[metric] > 0
-        ? nationalTotals[metric] / nationalCounts[metric]
-        : null;
+    const raw = nationalCounts[metric] > 0
+      ? nationalTotals[metric] / nationalCounts[metric]
+      : null;
+    if (raw === null) {
+      nationalAverages[metric] = null;
+    } else if (metric === 'total_fines') {
+      nationalAverages[metric] = Math.round(raw);
+    } else {
+      nationalAverages[metric] = Math.round(raw * 10) / 10;
+    }
   });
 
   cachedBenchmarks = {
