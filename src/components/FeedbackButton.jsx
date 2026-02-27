@@ -15,6 +15,7 @@ export default function FeedbackButton() {
       rel="noopener noreferrer"
       className="feedback-fab"
       title="Share feedback"
+      onClick={() => { window.plausible && window.plausible('Feedback-Form-Click'); }}
     >
       <span className="feedback-fab-icon">💬</span>
       <span className="feedback-fab-text">Feedback</span>

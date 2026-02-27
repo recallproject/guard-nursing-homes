@@ -17,6 +17,11 @@ export default function HighRiskPage() {
   const pageRef = useRef(null);
   const ROWS_PER_PAGE = 50;
 
+  // Plausible: track high-risk page view
+  useEffect(() => {
+    window.plausible && window.plausible('High-Risk-Page-View');
+  }, []);
+
   // Entrance animation
   useEffect(() => {
     if (pageRef.current) {

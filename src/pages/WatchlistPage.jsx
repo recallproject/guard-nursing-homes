@@ -36,6 +36,11 @@ export function WatchlistPage() {
   const headerRef = useRef(null);
   const contentRef = useRef(null);
 
+  // Plausible: track watchlist page view
+  useEffect(() => {
+    window.plausible && window.plausible('Watchlist-Page-View');
+  }, []);
+
   // Animate on mount
   useEffect(() => {
     if (headerRef.current) {

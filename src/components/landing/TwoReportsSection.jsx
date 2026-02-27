@@ -78,6 +78,7 @@ export default function TwoReportsSection({ onSearch }) {
   }, []);
 
   const handleDownloadFamily = () => {
+    window.plausible && window.plausible('Sample-PDF-Download', {props: {type: 'family'}});
     setGeneratingFamily(true);
     setTimeout(() => {
       try {
@@ -215,6 +216,7 @@ export default function TwoReportsSection({ onSearch }) {
               className="btn btn-primary two-reports-download"
               href="/samples/OversightReport_Sample_Evidence_Report.pdf"
               download
+              onClick={() => { window.plausible && window.plausible('Sample-PDF-Download', {props: {type: 'evidence'}}); }}
             >
               Download Free Sample
             </a>

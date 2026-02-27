@@ -7,6 +7,7 @@ export function DownloadButton({ facility, nearbyFacilities = [], allFacilities 
   const handleDownload = async () => {
     if (!facility || isGenerating) return;
 
+    window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state}});
     try {
       setIsGenerating(true);
       setTimeout(() => {

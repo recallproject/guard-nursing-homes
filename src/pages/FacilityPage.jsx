@@ -68,6 +68,13 @@ export function FacilityPage() {
     window.scrollTo(0, 0);
   }, [ccn]);
 
+  // Plausible: track facility page view
+  useEffect(() => {
+    if (facility) {
+      window.plausible && window.plausible('Facility-Page-View', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state, stars: String(facility.stars || '')}});
+    }
+  }, [facility?.ccn]);
+
   if (loading) {
     return (
       <div className="fp">

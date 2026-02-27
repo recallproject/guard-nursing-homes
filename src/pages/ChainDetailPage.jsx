@@ -24,6 +24,13 @@ export function ChainDetailPage() {
   const statsRef = useRef(null);
   const tableRef = useRef(null);
 
+  // Plausible: track chain page view
+  useEffect(() => {
+    if (chainData) {
+      window.plausible && window.plausible('Chain-Page-View', {props: {chain: decodedChainName, facilityCount: String(chainData.facilityCount || '')}});
+    }
+  }, [chainData?.affiliatedEntity]);
+
   // Load chain data
   useEffect(() => {
     fetch('/data/chain_performance.json')

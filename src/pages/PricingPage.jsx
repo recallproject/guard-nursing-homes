@@ -102,6 +102,7 @@ export default function PricingPage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    window.plausible && window.plausible('Pricing-Page-View');
   }, []);
 
   useEffect(() => {

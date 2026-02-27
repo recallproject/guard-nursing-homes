@@ -23,6 +23,11 @@ export function ChainsPage() {
 
   const ROWS_PER_PAGE = 50;
 
+  // Plausible: track chains list page view
+  useEffect(() => {
+    window.plausible && window.plausible('Chains-List-View');
+  }, []);
+
   // Load data
   useEffect(() => {
     fetch('/data/chain_performance.json')

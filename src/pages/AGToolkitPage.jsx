@@ -41,6 +41,11 @@ export function AGToolkitPage() {
 
   const [selectedState, setSelectedState] = useState('');
   const [activeTab, setActiveTab] = useState('staffing');
+
+  // Plausible: track AG toolkit page view
+  useEffect(() => {
+    window.plausible && window.plausible('AG-Toolkit-View');
+  }, []);
   const [sortBy, setSortBy] = useState('');
   const [sortOrder, setSortOrder] = useState('desc');
   const [showModal, setShowModal] = useState(false);

@@ -132,6 +132,7 @@ export function NearbyFacilities({ facility }) {
               key={f.ccn}
               to={`/facility/${f.ccn}`}
               className="nearby-card"
+              onClick={() => { window.plausible && window.plausible('Nearby-Facilities-Click', {props: {from_facility: facility.ccn, to_facility: f.ccn}}); }}
             >
               <div className="nearby-card-header">
                 <h3 className="nearby-card-name">{f.name}</h3>

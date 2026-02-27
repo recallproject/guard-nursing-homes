@@ -17,6 +17,11 @@ export default function DiscrepanciesPage() {
 
   const [selectedState, setSelectedState] = useState('ALL');
   const [ownershipFilter, setOwnershipFilter] = useState('ALL');
+
+  // Plausible: track discrepancies page view
+  useEffect(() => {
+    window.plausible && window.plausible('Discrepancies-Page-View');
+  }, []);
   const [minGap, setMinGap] = useState(25);
   const [hasSeriousDanger, setHasSeriousDanger] = useState(false);
   const [hasZeroRN, setHasZeroRN] = useState(false);
