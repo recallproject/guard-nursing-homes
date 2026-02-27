@@ -36,7 +36,7 @@ export default function FacilityRow({ facility }) {
     if (!amount) return null;
     if (amount >= 1000000) return '$' + (amount / 1000000).toFixed(1) + 'M';
     if (amount >= 1000) return '$' + (amount / 1000).toFixed(0) + 'K';
-    return '$' + amount.toLocaleString();
+    return '$' + Math.round(amount).toLocaleString();
   };
 
   const handleClick = () => {

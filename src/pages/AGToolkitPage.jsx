@@ -259,7 +259,7 @@ export function AGToolkitPage() {
     if (!amount) return '$0';
     if (amount >= 1000000) return `$${(amount / 1000000).toFixed(1)}M`;
     if (amount >= 1000) return `$${Math.round(amount / 1000)}K`;
-    return `$${amount.toLocaleString()}`;
+    return `$${Math.round(amount).toLocaleString()}`;
   }
 
   function renderStars(count) {

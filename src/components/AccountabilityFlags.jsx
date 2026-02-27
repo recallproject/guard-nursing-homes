@@ -146,7 +146,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
             <h4>FINE HISTORY</h4>
           </div>
           <div className="flag-body">
-            <p>Total fines: <strong className="fine-amount">${facility.total_fines.toLocaleString()}</strong></p>
+            <p>Total fines: <strong className="fine-amount">${Math.round(facility.total_fines).toLocaleString()}</strong></p>
             <p>Number of separate fines: {facility.fine_count}</p>
             {facility.denial_count > 0 && (
               <p>Payment denials: {facility.denial_count} (CMS temporarily stopped paying for new admissions)</p>

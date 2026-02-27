@@ -114,7 +114,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
     if (amount >= 1000) {
       return '$' + (amount / 1000).toFixed(0) + 'K';
     }
-    return '$' + amount.toLocaleString();
+    return '$' + Math.round(amount).toLocaleString();
   };
 
   // Get state full name

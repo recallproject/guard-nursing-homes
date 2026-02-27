@@ -46,7 +46,7 @@ export default function FacilityCard({ facility }) {
     if (amount >= 1000) {
       return '$' + (amount / 1000).toFixed(0) + 'K';
     }
-    return '$' + amount.toLocaleString();
+    return '$' + Math.round(amount).toLocaleString();
   };
 
   const handleClick = () => {

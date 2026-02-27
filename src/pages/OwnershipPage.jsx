@@ -212,7 +212,7 @@ Total facilities: ${selectedOwner.count}
 States: ${selectedOwner.states.join(', ')}
 Average risk score: ${selectedOwner.avgComposite}
 Average star rating: ${selectedOwner.avgStars} / 5
-Total fines (3yr): $${selectedOwner.totalFines.toLocaleString()}
+Total fines (3yr): $${Math.round(selectedOwner.totalFines).toLocaleString()}
 Serious danger citations: ${selectedOwner.jeopardyCount} facilities
 Staffing discrepancies: ${selectedOwner.staffingDiscrepancies} facilities
 
@@ -514,7 +514,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
                         {f.total_hprd ? (f.total_hprd * 60).toFixed(0) : 'N/A'}
                       </td>
                       <td className="mono">
-                        ${(f.total_fines || 0).toLocaleString()}
+                        ${Math.round(f.total_fines || 0).toLocaleString()}
                       </td>
                       <td className={`mono ${(f.jeopardy_count || 0) > 0 ? 'text-danger' : ''}`}>
                         {f.jeopardy_count || 0}
