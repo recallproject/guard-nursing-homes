@@ -167,8 +167,8 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
           <div className="hero-title-line">{renderTitle('REPORT')}</div>
         </div>
 
-        <p className="hero-tagline">Looking into a nursing home? See their inspections, staffing, and track record here.</p>
-        <p className="hero-tagline-secondary">Covers all 14,713 Medicare-certified nursing homes — over 95% of facilities nationwide.</p>
+        <p className="hero-tagline">Search any nursing home in America.</p>
+        <p className="hero-tagline-secondary">Inspections, staffing, fines, and ownership for all 14,713 Medicare-certified facilities.</p>
 
         <div className="hero-cta" ref={ctaRef}>
           <button className="btn btn-primary btn-large" onClick={() => { if (onSearch) onSearch(); }}>
