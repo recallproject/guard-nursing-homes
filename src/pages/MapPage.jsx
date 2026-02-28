@@ -2,21 +2,14 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
-import HeroSection from '../components/HeroSection';
+import LandingV4 from '../components/landing/LandingV4';
 import USAMap from '../components/USAMap';
 import StateDetail from '../components/StateDetail';
 import SearchOverlay from '../components/SearchOverlay';
 import '../styles/design.css';
 import '../styles/map.css';
-import '../styles/hero.css';
 import '../styles/cards.css';
 import '../styles/state-detail.css';
-import HowItWorks from '../components/landing/HowItWorks';
-import TwoReportsSection from '../components/landing/TwoReportsSection';
-import WhyThisExists from '../components/landing/WhyThisExists';
-import Footer from '../components/landing/Footer';
-import ActionStrip from '../components/landing/ActionStrip';
-import '../styles/landing-sections.css';
 
 export function MapPage() {
   const { data, loading, error, searchFacilities } = useFacilityData();
@@ -189,26 +182,13 @@ export function MapPage() {
         <meta name="description" content="Search 14,713 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />
         <link rel="canonical" href="https://oversightreports.com/" />
       </Helmet>
-      {/* Hero Section */}
+      {/* V4 Landing Page */}
       {(view === 'hero' || view === 'states') && (
-        <HeroSection
-          national={data.national}
-          onExploreClick={handleExploreClick}
+        <LandingV4
           onSearch={handleSearchOpen}
-        />
-      )}
-
-      {/* Action Strip */}
-      {(view === 'hero' || view === 'states') && (
-        <ActionStrip
-          onSearch={handleSearchOpen}
-          onCompare={handleScrollToCompare}
           onExplore={handleExploreClick}
         />
       )}
-
-      {/* How It Works */}
-      {(view === 'hero' || view === 'states') && <HowItWorks />}
 
       {/* Map Section — immediate interaction */}
       {(view === 'states' || (view === 'hero' && selectedState === null)) && (
@@ -243,78 +223,6 @@ export function MapPage() {
             </div>
           )}
         </section>
-      )}
-
-      {/* Two Reports. Two Audiences. */}
-      {(view === 'hero' || view === 'states') && (
-        <TwoReportsSection onSearch={handleSearchOpen} />
-      )}
-
-      {/* Pricing Comparison: Family Report vs Evidence Report */}
-      {(view === 'hero' || view === 'states') && (
-        <section className="landing-section section-dark">
-          <div className="container">
-            <div className="pricing-comparison">
-              <h2 className="pricing-comparison-title">Simple, Transparent Pricing</h2>
-              <p className="pricing-comparison-subtitle">The data is free. Always. Professional documentation is available when you need it.</p>
-              <p className="pricing-comparison-justification">Families get everything they need for free — always. The Evidence Report adds formal documentation designed for legal filings, investigations, and regulatory action. Anyone can purchase one.</p>
-              <div className="pricing-comparison-grid">
-                {/* Free Card */}
-                <div className="pricing-compare-card pricing-compare-free">
-                  <div className="pricing-compare-badge">Always Free</div>
-                  <h3>Family Report</h3>
-                  <div className="pricing-compare-price">Free</div>
-                  <p className="pricing-compare-subtitle-card">Plain-language safety guide for your loved one</p>
-                  <ul className="pricing-compare-features">
-                    <li>Risk scores for 14,713 facilities</li>
-                    <li>Clinical context in plain English</li>
-                    <li>Printable visit checklist &amp; questions to ask</li>
-                    <li>Nearby safer alternatives</li>
-                    <li>Resources &amp; helplines</li>
-                    <li>Compare favorites side-by-side</li>
-                  </ul>
-                  <button onClick={handleSearchOpen} className="btn btn-secondary pricing-compare-cta">Search Facilities</button>
-                  <a href="#two-reports" className="pricing-compare-cta pricing-compare-cta-sample" onClick={(e) => { e.preventDefault(); document.querySelector('.two-reports-section')?.scrollIntoView({ behavior: 'smooth' }); }}>View Sample Report</a>
-                  <p className="pricing-compare-fine-print">No login required. No email required. Just search.</p>
-                  <p className="pricing-compare-context">Search any facility → get a personalized Family Report on their page</p>
-                </div>
-                {/* $29 Card */}
-                <div className="pricing-compare-card pricing-compare-paid">
-                  <div className="pricing-compare-badge pricing-compare-badge-paid">For Professionals</div>
-                  <h3>Evidence Report</h3>
-                  <div className="pricing-compare-price">$29</div>
-                  <p className="pricing-compare-subtitle-card">Per facility &middot; One-time purchase &middot; Litigation-ready</p>
-                  <ul className="pricing-compare-features">
-                    <li className="pricing-compare-inherits">Everything in the Family Report, plus:</li>
-                    <li>11-page downloadable PDF</li>
-                    <li>Full penalty timeline with exact dollar amounts &amp; dates</li>
-                    <li>Ownership portfolio analysis with sibling facility performance</li>
-                    <li>Individual deficiency details sorted by severity</li>
-                    <li>Regulatory citations (42 CFR references)</li>
-                    <li>Composite risk score methodology</li>
-                    <li>Data sources with verification links</li>
-                    <li>Formatted for discovery, FOIA, and investigations</li>
-                  </ul>
-                  <button onClick={handleSearchOpen} className="btn btn-primary pricing-compare-cta">Buy Evidence Report — $29</button>
-                  <a href="/samples/OversightReport_Sample_Evidence_Report.pdf" className="pricing-compare-cta pricing-compare-cta-sample" download>Download Sample Evidence Report</a>
-                  <p className="pricing-compare-fine-print">Real facility data. Real CMS records. This is exactly what you get.</p>
-                  <p className="pricing-compare-context">Available on any facility page → covers one facility with full documentation</p>
-                </div>
-              </div>
-              <p className="pricing-comparison-footer">Need unlimited access? <a href="/pricing">Pro and Business tiers</a> coming soon.</p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* Why This Exists */}
-      {(view === 'hero' || view === 'states') && (
-        <WhyThisExists />
-      )}
-
-      {/* Footer */}
-      {(view === 'hero' || view === 'states') && (
-        <Footer onExplore={handleExploreClick} onSearch={handleSearchOpen} />
       )}
 
       {/* State Detail Section */}
