@@ -93,7 +93,7 @@
 /* === Evidence Report Banner === */
 .evidence-report-banner {
   background-color: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #D7E0EA;
   border-radius: 8px;
   padding: 0.75rem 1rem;
   margin: 1rem 0;
@@ -101,7 +101,7 @@
   color: #64748B;
   text-align: center;
   line-height: 1.5;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .evidence-report-banner a {
@@ -1575,12 +1575,12 @@
 /* ── BOTTOM LINE CARD ── */
 .bottom-line-card {
   background: #FFFFFF;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #D7E0EA;
   border-left: 4px solid var(--accent-red, #DC2626);
   border-radius: 8px;
   padding: 24px 28px;
   margin-bottom: 32px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 .bottom-line-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-red, #DC2626); margin-bottom: 12px; }
 .bottom-line-text { font-size: 17px; line-height: 1.7; color: #1E293B; }
@@ -1591,7 +1591,7 @@
 
 /* ── DATA GRID ── */
 .data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 20px; }
-.data-cell { background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px 20px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04); }
+.data-cell { background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 8px; padding: 16px 20px; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06); }
 .data-cell-value { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 500; margin-bottom: 4px; color: #0F172A; }
 .data-cell-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #64748B; }
 .data-cell-context { font-size: 12px; color: #64748B; margin-top: 6px; }

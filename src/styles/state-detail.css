@@ -251,6 +251,14 @@
   padding: 1rem 24px;
   display: flex;
   flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 1px solid #D7E0EA;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  overflow: hidden;
 }
 
 .facility-row {
@@ -260,15 +268,19 @@
   padding: 1rem 1.5rem;
   cursor: pointer;
   transition: background 0.15s;
-  border-bottom: 1px solid #E8EDF2;
+  border-bottom: 1px solid #EDF1F7;
+}
+
+.facility-row:last-child {
+  border-bottom: none;
 }
 
 .facility-row:nth-child(even) {
-  background: rgba(255,255,255,0.02);
+  background: #F8FAFC;
 }
 
 .facility-row:hover {
-  background: rgba(79,70,229,0.08);
+  background: #F0F7FF;
 }
 
 .facility-row-score {
