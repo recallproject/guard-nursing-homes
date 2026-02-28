@@ -61,7 +61,7 @@
 /* ── HERO ── */
 .v4-hero {
   text-align: center;
-  padding: 72px 40px 56px;
+  padding: 136px 40px 56px;
   background: var(--bg-white);
   border-bottom: 1px solid var(--border);
 }
@@ -312,7 +312,7 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
-  .v4-hero { padding: 48px 20px 40px; }
+  .v4-hero { padding: 100px 20px 40px; }
   .v4-hero-title { font-size: 32px; }
   .v4-section { padding: 0 20px; }
   .v4-stats-row { grid-template-columns: 1fr; gap: 24px; padding: 48px 20px 0; }
@@ -331,4 +331,10 @@
 @media (max-width: 800px) {
   .v4-diff-grid { grid-template-columns: 1fr; }
   .v4-use-cases { grid-template-columns: 1fr; }
+}
+
+
+/* ── Override dark map-page background when v4 landing is active ── */
+.map-page:has(.v4-landing) {
+  background: #F7F9FC;
 }

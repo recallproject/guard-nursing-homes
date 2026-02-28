@@ -190,8 +190,8 @@ export function MapPage() {
         />
       )}
 
-      {/* Map Section — immediate interaction */}
-      {(view === 'states' || (view === 'hero' && selectedState === null)) && (
+      {/* Map Section — only when user clicks Browse by State */}
+      {view === 'states' && (
         <section className="map-section" ref={mapSectionRef}>
           <div className="map-section-title">
             <h2>Select Your State</h2>

@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <Header transparent={isLandingPage} />
+      <Header transparent={isLandingPage} lightMode={isLandingPage} />
       <Routes>
         <Route path="/" element={<MapPage />} />
         <Route path="/facility/:ccn" element={<FacilityPage />} />

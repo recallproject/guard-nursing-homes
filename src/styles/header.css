@@ -490,3 +490,95 @@
 
 /* Ensure content below header isn't hidden */
 /* Pages should add their own padding-top: ~80px */
+
+
+/* ========================================
+   LIGHT MODE — Landing Page Header
+   ======================================== */
+.site-header--light {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #D7E0EA;
+}
+
+.site-header--light.site-header--transparent {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #D7E0EA;
+}
+
+.site-header--light.site-header--compact {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.site-header--light .site-header__logo-text {
+  color: #1D3557;
+}
+
+.site-header--light .site-header__group-label {
+  color: #64748B;
+}
+
+.site-header--light .site-header__group-label:hover {
+  color: #0F172A;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.site-header--light .site-header__group--active .site-header__group-label {
+  color: #2B6CB0;
+}
+
+.site-header--light .site-header__dropdown {
+  background: #FFFFFF;
+  border: 1px solid #D7E0EA;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.site-header--light .site-header__dropdown-item:hover {
+  background: rgba(43, 108, 176, 0.06);
+}
+
+.site-header--light .site-header__dropdown-label {
+  color: #0F172A;
+}
+
+.site-header--light .site-header__dropdown-desc {
+  color: #64748B;
+}
+
+.site-header--light .site-header__search-btn {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid #D7E0EA;
+  color: #64748B;
+}
+
+.site-header--light .site-header__search-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: #0F172A;
+  border-color: #94A3B8;
+}
+
+.site-header--light .site-header__search-label {
+  color: #64748B;
+}
+
+.site-header--light .site-header__kbd {
+  background: rgba(0, 0, 0, 0.06);
+  color: #94A3B8;
+  border-color: #D7E0EA;
+}
+
+.site-header--light .site-header__fav-star {
+  color: #94A3B8;
+}
+
+.site-header--light .site-header__fav-star--filled {
+  color: #f59e0b;
+}
+
+.site-header--light .site-header__hamburger span {
+  background: #334155;
+}

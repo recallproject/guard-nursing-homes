@@ -8,7 +8,7 @@ import '../styles/header.css';
  * Families / Professionals / Hospitals
  * Mobile hamburger menu
  */
-export function Header({ onSearchOpen, transparent = false }) {
+export function Header({ onSearchOpen, transparent = false, lightMode = false }) {
   const [isCompact, setIsCompact] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -109,7 +109,7 @@ export function Header({ onSearchOpen, transparent = false }) {
 
   return (
     <>
-      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''}`} ref={navRef}>
+      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''}`} ref={navRef}>
         <div className="site-header__inner">
           {/* Brand */}
           <Link to="/" className="site-header__brand">
