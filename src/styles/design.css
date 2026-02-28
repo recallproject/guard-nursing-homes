@@ -8,66 +8,66 @@
    COLOR PALETTE — BOLD & SATURATED
    ======================================== */
 :root {
-  /* Backgrounds — Navy/Indigo Palette (matches v3 mockup) */
-  --bg-deep: #0f0d2e;       /* Deep navy — main bg */
-  --bg-card: #1a1640;       /* Navy card */
-  --bg-card-hover: #231e52; /* Navy hover */
-  --bg-card-elevated: #2a2460; /* Elevated navy */
-  --bg-card-light: #2a2460; /* Light navy */
-  --bg-elevated: #231e52;   /* Hover states */
-  --bg-light: #F8FAFC;      /* Slate 50 — light sections */
-  --bg-footer: #0a0825;     /* Deepest navy */
+  /* Backgrounds — Light Institutional Palette (v4 cohesive) */
+  --bg-deep: #F2F5F9;       /* Light cool gray — main bg */
+  --bg-card: #FFFFFF;        /* White card */
+  --bg-card-hover: #F0F4F8;  /* Hovered card */
+  --bg-card-elevated: #FFFFFF; /* Elevated card */
+  --bg-card-light: #F7F9FC;  /* Light tint */
+  --bg-elevated: #F0F4F8;    /* Hover states */
+  --bg-light: #F8FAFC;       /* Slate 50 — light sections */
+  --bg-footer: #1D3557;      /* Navy footer — anchors bottom */
 
   /* Borders */
-  --border: #2d2760;        /* Indigo border */
-  --border-subtle: #221d4a; /* Subtle indigo border */
+  --border: #D7E0EA;         /* Cool gray border */
+  --border-subtle: #E8EDF2;  /* Subtle gray border */
 
-  /* Primary — Bold Indigo */
-  --primary: #4F46E5;       /* Indigo 600 */
-  --primary-light: #818CF8; /* Indigo 400 */
-  --primary-dark: #3730A3;  /* Indigo 800 */
+  /* Primary — Blue (matching v4 landing) */
+  --primary: #2B6CB0;        /* Blue 700 */
+  --primary-light: #4A90D9;  /* Blue 500 */
+  --primary-dark: #1D4E7E;   /* Blue 900 */
 
-  /* Accent colors (matching mockups) */
-  --accent-red: #f85149;
-  --accent-red-soft: rgba(248, 81, 73, 0.15);
-  --accent-orange: #d29922;
-  --accent-orange-soft: rgba(210, 153, 34, 0.15);
-  --accent-green: #3fb950;
-  --accent-green-soft: rgba(63, 185, 80, 0.12);
-  --accent-blue: #7c8aff;
-  --accent-blue-soft: rgba(124, 138, 255, 0.10);
-  --accent-purple: #7c6aef;
-  --accent-purple-soft: rgba(124, 106, 239, 0.12);
-  --accent-teal: #39d0ba;
-  --accent-amber: #e3b341;
-  --accent-yellow-soft: rgba(227, 179, 65, 0.12);
+  /* Accent colors */
+  --accent-red: #DC2626;
+  --accent-red-soft: rgba(220, 38, 38, 0.08);
+  --accent-orange: #D97706;
+  --accent-orange-soft: rgba(217, 119, 6, 0.08);
+  --accent-green: #059669;
+  --accent-green-soft: rgba(5, 150, 105, 0.08);
+  --accent-blue: #2B6CB0;
+  --accent-blue-soft: rgba(43, 108, 176, 0.06);
+  --accent-purple: #7C3AED;
+  --accent-purple-soft: rgba(124, 58, 237, 0.06);
+  --accent-teal: #0D9488;
+  --accent-amber: #D97706;
+  --accent-yellow-soft: rgba(217, 119, 6, 0.06);
 
-  /* Risk Spectrum — VIVID, FULL OPACITY */
-  --risk-critical: #DC2626; /* Red 600 */
-  --risk-high: #EA580C;     /* Orange 600 */
-  --risk-elevated: #D97706; /* Amber 600 */
-  --risk-low: #0D9488;      /* Teal 600 */
+  /* Risk Spectrum — same vivid, works on light */
+  --risk-critical: #DC2626;
+  --risk-high: #EA580C;
+  --risk-elevated: #D97706;
+  --risk-low: #0D9488;
 
   /* Accent */
-  --accent-gold: #F59E0B;   /* Stars */
+  --accent-gold: #D97706;
 
   /* Text */
-  --text-white: #FFFFFF;
-  --text-cream: #e6edf3;    /* Light text */
-  --text-secondary: #9d97b8; /* Muted lavender */
-  --text-muted: #6b6590;    /* Deep muted purple */
-  --text-dark: #0F172A;     /* For light cards */
-  --text-dark-muted: #64748B; /* Slate 500 for light cards */
+  --text-white: #0F172A;     /* Primary text (dark on light) */
+  --text-cream: #1E293B;     /* Slightly lighter */
+  --text-secondary: #475569; /* Slate 600 */
+  --text-muted: #64748B;     /* Slate 500 */
+  --text-dark: #0F172A;      /* For light cards */
+  --text-dark-muted: #64748B;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow-primary: 0 0 20px rgba(79, 70, 229, 0.5);
-  --shadow-glow-red: 0 0 20px rgba(220, 38, 38, 0.5);
-  --shadow-glow-teal: 0 0 20px rgba(13, 148, 136, 0.5);
+  /* Shadows — lighter, softer */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  --shadow-glow-primary: 0 0 20px rgba(43, 108, 176, 0.15);
+  --shadow-glow-red: 0 0 20px rgba(220, 38, 38, 0.15);
+  --shadow-glow-teal: 0 0 20px rgba(13, 148, 136, 0.15);
 
   /* Transitions */
   --transition-fast: 0.15s ease;
