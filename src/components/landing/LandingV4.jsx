@@ -1,8 +1,127 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import RiskBadge from '../RiskBadge';
 import '../../styles/landing-v4.css';
 
-export default function LandingV4({ onSearch, onExplore }) {
+function InlineSearch({ searchFacilities, placeholder, onFallbackSearch }) {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const navigate = useNavigate();
+  const wrapperRef = useRef(null);
+  const inputRef = useRef(null);
+
+  // Debounced search
+  useEffect(() => {
+    if (!query || query.trim().length < 2) {
+      setResults([]);
+      setIsOpen(false);
+      return;
+    }
+    const timeout = setTimeout(() => {
+      if (searchFacilities) {
+        const r = searchFacilities(query);
+        setResults(r.slice(0, 8));
+        setIsOpen(r.length > 0);
+        setActiveIndex(-1);
+      }
+    }, 200);
+    return () => clearTimeout(timeout);
+  }, [query, searchFacilities]);
+
+  // Close on click outside
+  useEffect(() => {
+    function handleClick(e) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  function handleSelect(facility) {
+    window.plausible && window.plausible('Facility-Search', { props: { query: query.slice(0, 100), facility: facility.name, ccn: facility.ccn } });
+    navigate(`/facility/${facility.ccn}`);
+    setIsOpen(false);
+    setQuery('');
+  }
+
+  function handleKeyDown(e) {
+    if (!isOpen || results.length === 0) {
+      if (e.key === 'Enter' && onFallbackSearch) {
+        onFallbackSearch();
+      }
+      return;
+    }
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActiveIndex(prev => Math.min(prev + 1, results.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActiveIndex(prev => Math.max(prev - 1, -1));
+    } else if (e.key === 'Enter' && activeIndex >= 0) {
+      e.preventDefault();
+      handleSelect(results[activeIndex]);
+    } else if (e.key === 'Escape') {
+      setIsOpen(false);
+      inputRef.current?.blur();
+    }
+  }
+
+  return (
+    <div className="v4-search-container" ref={wrapperRef}>
+      <div className={`v4-search-box ${isOpen ? 'v4-search-box--active' : ''}`}>
+        <svg className="v4-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input
+          ref={inputRef}
+          className="v4-search-input"
+          type="text"
+          placeholder={placeholder || "Search by facility name, city, or ZIP code"}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => { if (results.length > 0) setIsOpen(true); }}
+          onKeyDown={handleKeyDown}
+          autoComplete="off"
+        />
+        {query.length > 0 && (
+          <button className="v4-search-clear" onClick={() => { setQuery(''); setResults([]); setIsOpen(false); inputRef.current?.focus(); }} aria-label="Clear search">&times;</button>
+        )}
+      </div>
+
+      {isOpen && results.length > 0 && (
+        <div className="v4-search-dropdown">
+          {results.map((facility, i) => (
+            <div
+              key={facility.ccn}
+              className={`v4-search-result ${i === activeIndex ? 'v4-search-result--active' : ''}`}
+              onClick={() => handleSelect(facility)}
+              onMouseEnter={() => setActiveIndex(i)}
+            >
+              <div className="v4-search-result-info">
+                <div className="v4-search-result-name">{facility.name}</div>
+                <div className="v4-search-result-location">{facility.city}, {facility.state}</div>
+              </div>
+              <RiskBadge score={facility.composite} />
+            </div>
+          ))}
+          <div className="v4-search-dropdown-hint">
+            {results.length >= 8 ? 'Keep typing to narrow results...' : `${results.length} result${results.length !== 1 ? 's' : ''}`}
+          </div>
+        </div>
+      )}
+
+      {query.trim().length >= 2 && !isOpen && results.length === 0 && (
+        <div className="v4-search-dropdown">
+          <div className="v4-search-no-results">No facilities found for "{query}"</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
   const navigate = useNavigate();
   const statsRef = useRef(null);
   const countersAnimated = useRef(false);
@@ -72,20 +191,7 @@ export default function LandingV4({ onSearch, onExplore }) {
           Inspections, staffing, fines, and ownership for all 14,713 Medicare-certified facilities.
         </p>
 
-        <div className="v4-search-container">
-          <div className="v4-search-box" onClick={() => onSearch && onSearch()}>
-            <input
-              className="v4-search-input"
-              type="text"
-              placeholder="Search by facility name, city, or ZIP code"
-              readOnly
-              onClick={() => onSearch && onSearch()}
-            />
-            <button className="v4-search-btn" onClick={(e) => { e.stopPropagation(); onSearch && onSearch(); }}>
-              Search a Facility
-            </button>
-          </div>
-        </div>
+        <InlineSearch searchFacilities={searchFacilities} onFallbackSearch={onSearch} />
 
         <div className="v4-or-browse">
           or <a href="#" onClick={(e) => { e.preventDefault(); onExplore && onExplore(); }}>Browse by State</a>
@@ -257,10 +363,7 @@ export default function LandingV4({ onSearch, onExplore }) {
         <h2>Search any nursing facility</h2>
         <p>14,713 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
         <div className="v4-final-search">
-          <div className="v4-search-box" onClick={() => onSearch && onSearch()}>
-            <input className="v4-search-input" type="text" placeholder="Facility name, city, or ZIP code" readOnly onClick={() => onSearch && onSearch()} />
-            <button className="v4-search-btn" onClick={(e) => { e.stopPropagation(); onSearch && onSearch(); }}>Search facilities</button>
-          </div>
+          <InlineSearch searchFacilities={searchFacilities} placeholder="Facility name, city, or ZIP code" onFallbackSearch={onSearch} />
         </div>
         <div className="v4-final-trust">Public CMS data · No industry funding · No ads · No paywalls on safety data</div>
       </section>

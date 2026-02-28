@@ -187,6 +187,7 @@ export function MapPage() {
         <LandingV4
           onSearch={handleSearchOpen}
           onExplore={handleExploreClick}
+          searchFacilities={searchFacilities}
         />
       )}
 

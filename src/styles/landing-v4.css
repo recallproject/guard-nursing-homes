@@ -94,37 +94,7 @@
   line-height: 1.6;
 }
 
-/* ── SEARCH ── */
-.v4-search-container { max-width: 600px; margin: 0 auto 16px; }
-.v4-search-box {
-  display: flex;
-  align-items: center;
-  background: var(--bg-white);
-  border: 2px solid var(--border);
-  border-radius: 10px;
-  padding: 4px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-  cursor: text;
-}
-.v4-search-box:focus-within,
-.v4-search-box:hover {
-  border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(43, 108, 176, 0.08), 0 4px 16px rgba(0,0,0,0.04);
-}
-.v4-search-input {
-  flex: 1; border: none; background: transparent;
-  padding: 14px 20px; font-size: 16px;
-  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif;
-  color: var(--text); outline: none; cursor: text;
-}
-.v4-search-input::placeholder { color: var(--text-muted); }
-.v4-search-btn {
-  padding: 11px 24px; background: var(--navy); color: #FFFFFF;
-  border: none; border-radius: 7px; font-size: 15px; font-weight: 600;
-  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif; cursor: pointer;
-  white-space: nowrap; transition: background 0.2s;
-}
-.v4-search-btn:hover { background: #152a47; }
+/* ── SEARCH (old styles removed — now in INLINE SEARCH DROPDOWN section below) ── */
 .v4-or-browse { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; text-align: center; }
 .v4-or-browse a { color: var(--blue); text-decoration: none; font-weight: 600; }
 .v4-or-browse a:hover { text-decoration: underline; }
@@ -337,4 +307,166 @@
 /* ── Override dark map-page background when v4 landing is active ── */
 .map-page:has(.v4-landing) {
   background: #F7F9FC;
+}
+
+
+/* ── INLINE SEARCH DROPDOWN ── */
+.v4-search-container {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.v4-search-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #FFFFFF;
+  border: 2px solid #D7E0EA;
+  border-radius: 12px;
+  padding: 4px 8px 4px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.v4-search-box:focus-within,
+.v4-search-box--active {
+  border-color: #2B6CB0;
+  box-shadow: 0 0 0 4px rgba(43, 108, 176, 0.08);
+}
+
+.v4-search-icon {
+  flex-shrink: 0;
+  color: #94A3B8;
+}
+
+.v4-search-box:focus-within .v4-search-icon {
+  color: #2B6CB0;
+}
+
+.v4-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 1.05rem;
+  color: #0F172A;
+  padding: 14px 0;
+  min-width: 0;
+}
+
+.v4-search-input::placeholder {
+  color: #94A3B8;
+}
+
+.v4-search-clear {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.v4-search-clear:hover {
+  color: #0F172A;
+  background: #F0F4F8;
+}
+
+/* Dropdown */
+.v4-search-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #D7E0EA;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+  z-index: 500;
+  max-height: 420px;
+  overflow-y: auto;
+  animation: v4DropdownIn 0.15s ease-out;
+}
+
+@keyframes v4DropdownIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.v4-search-result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  border-bottom: 1px solid #F0F4F8;
+  transition: background 0.1s;
+}
+
+.v4-search-result:last-of-type {
+  border-bottom: none;
+}
+
+.v4-search-result:hover,
+.v4-search-result--active {
+  background: #F0F7FF;
+}
+
+.v4-search-result-info {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.v4-search-result-name {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #1D3557;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.v4-search-result-location {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.82rem;
+  color: #64748B;
+  margin-top: 2px;
+}
+
+.v4-search-dropdown-hint {
+  padding: 10px 18px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.78rem;
+  color: #94A3B8;
+  text-align: center;
+  border-top: 1px solid #F0F4F8;
+}
+
+.v4-search-no-results {
+  padding: 28px 18px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.9rem;
+  color: #64748B;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .v4-search-dropdown {
+    max-height: 320px;
+  }
+  .v4-search-result {
+    padding: 12px 14px;
+  }
+  .v4-search-result-name {
+    font-size: 0.88rem;
+    white-space: normal;
+  }
 }
