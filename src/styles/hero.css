@@ -199,7 +199,7 @@
 }
 
 .hero-stat--danger .hero-stat-label {
-  color: #FCA5A5;
+  color: #991B1B;
 }
 
 .hero-stat-label {
@@ -278,10 +278,10 @@
 
 @keyframes hero-glow {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(79, 70, 229, 0.4), 0 0 20px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 0 8px rgba(79, 70, 229, 0.4), 0 0 20px rgba(43, 108, 176, 0.08);
   }
   50% {
-    box-shadow: 0 0 16px rgba(79, 70, 229, 0.7), 0 0 40px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 0 16px rgba(79, 70, 229, 0.7), 0 0 40px rgba(43, 108, 176, 0.15);
   }
   opacity: 0;
 }

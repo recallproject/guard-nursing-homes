@@ -86,9 +86,9 @@
 }
 
 .trends-snapshot-card {
-  background: rgba(30, 41, 59, 0.6);
+  background: #FFFFFF;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
   border-radius: 16px;
   padding: 32px;
   text-align: center;
@@ -98,7 +98,7 @@
 .trends-snapshot-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: rgba(79, 70, 229, 0.3);
+  border-color: rgba(43, 108, 176, 0.15);
 }
 
 .trends-snapshot-value {
@@ -129,9 +129,9 @@
    STATE COMPARISON TABLE
    ======================================== */
 .trends-table-wrapper {
-  background: rgba(30, 41, 59, 0.6);
+  background: #FFFFFF;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -154,7 +154,7 @@
   text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 2px solid #E2E8F0;
 }
 
 .trends-table th.sortable {
@@ -168,12 +168,12 @@
 }
 
 .trends-table tbody tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid #E8EDF2;
   transition: background-color var(--transition-fast);
 }
 
 .trends-table tbody tr:hover {
-  background-color: rgba(79, 70, 229, 0.05);
+  background-color: rgba(43, 108, 176, 0.03);
 }
 
 .trends-table tbody tr.trends-row-highlight {
@@ -232,10 +232,10 @@
   padding: 48px;
   background: linear-gradient(
     135deg,
-    rgba(30, 41, 59, 0.4) 0%,
+    #FFFFFF 0%,
     rgba(51, 65, 85, 0.3) 100%
   );
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
   border-radius: 24px;
   overflow: hidden;
 }
@@ -249,9 +249,9 @@
   bottom: 0;
   background: linear-gradient(
     45deg,
-    rgba(79, 70, 229, 0.05),
+    rgba(43, 108, 176, 0.03),
     rgba(129, 140, 248, 0.05),
-    rgba(79, 70, 229, 0.05)
+    rgba(43, 108, 176, 0.03)
   );
   background-size: 200% 200%;
   animation: gradientShift 8s ease infinite;
@@ -272,8 +272,8 @@
 }
 
 .trends-coming-card {
-  background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #FFFFFF;
+  border: 1px solid #E8EDF2;
   border-radius: 16px;
   padding: 32px;
   text-align: center;
@@ -333,9 +333,9 @@
   height: 2px;
   background: linear-gradient(
     90deg,
-    rgba(79, 70, 229, 0.3),
+    rgba(43, 108, 176, 0.15),
     rgba(129, 140, 248, 0.5),
-    rgba(79, 70, 229, 0.3)
+    rgba(43, 108, 176, 0.15)
   );
   border-radius: 2px;
   opacity: 0.3;
@@ -352,7 +352,7 @@
 
 .trends-coming-bar {
   flex: 1;
-  background: rgba(79, 70, 229, 0.2);
+  background: rgba(43, 108, 176, 0.1);
   border-radius: 4px;
   opacity: 0.3;
 }
@@ -374,7 +374,7 @@
 .trends-coming-map-dot {
   width: 16px;
   height: 16px;
-  background: rgba(79, 70, 229, 0.3);
+  background: rgba(43, 108, 176, 0.15);
   border-radius: 50%;
   opacity: 0.3;
 }
@@ -390,7 +390,7 @@
 .trends-coming-timeline-dot {
   width: 12px;
   height: 12px;
-  background: rgba(79, 70, 229, 0.3);
+  background: rgba(43, 108, 176, 0.15);
   border-radius: 50%;
   opacity: 0.3;
   position: relative;
@@ -403,7 +403,7 @@
   left: 100%;
   width: 40px;
   height: 2px;
-  background: rgba(79, 70, 229, 0.2);
+  background: rgba(43, 108, 176, 0.1);
   transform: translateY(-50%);
 }
 
@@ -419,7 +419,7 @@
   margin: 0 auto;
   padding: 32px;
   background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
   border-radius: 16px;
   text-align: center;
 }

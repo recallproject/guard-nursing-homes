@@ -598,7 +598,7 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1rem;
   color: var(--text-white);
-  background: rgba(30, 41, 59, 0.8);
+  background: #FFFFFF;
   border: 2px solid rgba(255, 255, 255, 0.15);
   border-radius: 8px;
   outline: none;
@@ -607,7 +607,7 @@
 
 .ev-waitlist-input:focus {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
 }
 
 .ev-waitlist-input::placeholder {

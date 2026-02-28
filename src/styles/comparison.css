@@ -67,8 +67,8 @@
 
 .compare-search-input:focus {
   outline: none;
-  border-color: #4F46E5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+  border-color: #2B6CB0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.08);
 }
 
 .compare-search-dropdown {
@@ -122,7 +122,7 @@
   justify-content: space-between;
   padding: 0.75rem 1rem;
   background: #FFFFFF;
-  border: 2px solid #4F46E5;
+  border: 2px solid #2B6CB0;
   border-radius: 12px;
 }
 
@@ -209,7 +209,7 @@
 }
 
 .compare-th-name:hover {
-  color: #4F46E5;
+  color: #2B6CB0;
 }
 
 .compare-th-location {

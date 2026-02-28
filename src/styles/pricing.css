@@ -26,7 +26,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.15), transparent 50%);
+  background: radial-gradient(circle at 50% 0%, rgba(43, 108, 176, 0.08), transparent 50%);
   pointer-events: none;
 }
 
@@ -51,7 +51,7 @@
   margin: 0 auto 2.5rem;
   padding: 1.75rem 2rem;
   background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.06));
-  border: 2px solid rgba(79, 70, 229, 0.2);
+  border: 2px solid rgba(43, 108, 176, 0.1);
   border-radius: 16px;
   position: relative;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -64,7 +64,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.1), transparent 60%);
+  background: radial-gradient(circle at 50% 0%, rgba(43, 108, 176, 0.06), transparent 60%);
   border-radius: 14px;
   pointer-events: none;
 }
@@ -87,7 +87,7 @@
   align-items: center;
   gap: 0.5rem;
   background: var(--bg-card);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid #E2E8F0;
   border-radius: 12px;
   padding: 0.5rem;
   position: relative;
@@ -111,7 +111,7 @@
 .billing-toggle-btn.active {
   color: var(--text-white);
   background: var(--primary);
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 4px 12px rgba(43, 108, 176, 0.15);
 }
 
 .billing-toggle-save {
@@ -144,7 +144,7 @@
 
 .pricing-card {
   background: var(--bg-card);
-  border: 2px solid rgba(255, 255, 255, 0.08);
+  border: 2px solid #E8EDF2;
   border-radius: 20px;
   padding: 2.5rem;
   position: relative;
@@ -155,18 +155,18 @@
 
 .pricing-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(79, 70, 229, 0.3);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(79, 70, 229, 0.2);
+  border-color: rgba(43, 108, 176, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(43, 108, 176, 0.1);
 }
 
 .pricing-card-featured {
   border-color: var(--primary);
-  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(79, 70, 229, 0.05) 100%);
-  box-shadow: 0 10px 40px rgba(79, 70, 229, 0.2);
+  background: linear-gradient(180deg, var(--bg-card) 0%, rgba(43, 108, 176, 0.03) 100%);
+  box-shadow: 0 10px 40px rgba(43, 108, 176, 0.1);
 }
 
 .pricing-card-featured:hover {
-  box-shadow: 0 20px 60px rgba(79, 70, 229, 0.3), var(--shadow-glow-primary);
+  box-shadow: 0 20px 60px rgba(43, 108, 176, 0.15), var(--shadow-glow-primary);
 }
 
 .pricing-card-professional {
@@ -346,7 +346,7 @@
 .pricing-feature-inherits {
   margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid #E8EDF2;
 }
 
 .pricing-feature-inherits .pricing-feature-text {
@@ -358,7 +358,7 @@
 .pricing-feature-note {
   margin-top: 1.25rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid #E8EDF2;
   font-style: italic;
 }
 
@@ -431,8 +431,8 @@
   align-items: center;
   gap: 0.25rem;
   padding: 1.5rem 2rem;
-  background: rgba(79, 70, 229, 0.1);
-  border: 1px solid rgba(79, 70, 229, 0.2);
+  background: rgba(43, 108, 176, 0.06);
+  border: 1px solid rgba(43, 108, 176, 0.1);
   border-radius: 12px;
 }
 

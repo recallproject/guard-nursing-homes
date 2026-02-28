@@ -141,7 +141,7 @@
 
 .feature-card {
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid #E8EDF2;
   border-radius: 16px;
   padding: 2.5rem;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
@@ -156,7 +156,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(79, 70, 229, 0.15);
+  background: rgba(43, 108, 176, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -449,7 +449,7 @@
 .report-includes-list span {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #4F46E5;
+  color: #2B6CB0;
   background: rgba(79, 70, 229, 0.08);
   padding: 0.25rem 0.6rem;
   border-radius: 20px;
@@ -642,9 +642,9 @@
 }
 
 .audience-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: #E8EDF2;
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #E8EDF2;
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
@@ -653,14 +653,14 @@
 
 .audience-card:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.08);
+  background: #E8EDF2;
 }
 
 .audience-card-icon {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(79, 70, 229, 0.2);
+  background: rgba(43, 108, 176, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -788,7 +788,7 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(79, 70, 229, 0.1);
+  background: rgba(43, 108, 176, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -811,8 +811,8 @@
 }
 
 .action-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid #E8EDF2;
   border-radius: 16px;
   padding: 2rem 1.5rem;
   text-align: center;
@@ -822,10 +822,10 @@
 }
 
 .action-card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(79, 70, 229, 0.3);
+  background: #E8EDF2;
+  border-color: rgba(43, 108, 176, 0.15);
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 20px rgba(43, 108, 176, 0.06);
 }
 
 .action-card-coming-soon {
@@ -840,7 +840,7 @@
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: rgba(79, 70, 229, 0.15);
+  background: rgba(43, 108, 176, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -874,7 +874,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--primary-light);
-  background: rgba(79, 70, 229, 0.15);
+  background: rgba(43, 108, 176, 0.08);
   border-radius: 20px;
 }
 
@@ -920,9 +920,9 @@
 }
 
 .two-reports-tag--paid {
-  color: #4F46E5;
+  color: #2B6CB0;
   background: rgba(79, 70, 229, 0.08);
-  border: 1px solid rgba(79, 70, 229, 0.2);
+  border: 1px solid rgba(43, 108, 176, 0.1);
 }
 
 .two-reports-preview {
@@ -1278,8 +1278,8 @@
 }
 
 .pricing-compare-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1.5px solid #E8EDF2;
   border-radius: 20px;
   padding: 2.5rem 2rem;
   text-align: left;
@@ -1463,7 +1463,7 @@
 
 .coming-soon-card {
   background: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #E8EDF2;
   border-radius: 16px;
   padding: 2rem;
   text-align: center;
@@ -1478,7 +1478,7 @@
 .coming-soon-card--live:hover {
   border-color: var(--primary);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.15);
+  box-shadow: 0 8px 24px rgba(43, 108, 176, 0.08);
 }
 
 .coming-soon-badge {
@@ -1493,7 +1493,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--primary-light);
-  background: rgba(79, 70, 229, 0.15);
+  background: rgba(43, 108, 176, 0.08);
   border-radius: 20px;
 }
 
@@ -1546,7 +1546,7 @@
   font-size: 0.8rem;
   color: var(--text-white);
   background: var(--bg-elevated);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid #E2E8F0;
   border-radius: 8px;
 }
 
@@ -1634,7 +1634,7 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #E8EDF2;
   padding-top: 2rem;
   display: flex;
   align-items: center;
@@ -1679,8 +1679,8 @@
 
 .author-card-expanded {
   max-width: 750px;
-  border-color: #818CF8;
-  box-shadow: 0 8px 32px rgba(79,70,229,0.15);
+  border-color: #4A90D9;
+  box-shadow: 0 8px 32px rgba(43, 108, 176, 0.08);
 }
 
 .author-card-top {
@@ -1744,7 +1744,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #4F46E5;
+  color: #2B6CB0;
   white-space: nowrap;
   padding: 6px 14px;
   border-radius: 20px;
@@ -1754,7 +1754,7 @@
 }
 
 .author-card:hover .author-card-toggle {
-  background: rgba(79,70,229,0.15);
+  background: rgba(43, 108, 176, 0.08);
 }
 
 /* Bio expandable section */
@@ -1766,7 +1766,7 @@
 
 .author-bio-inner {
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(79,70,229,0.1);
+  border-top: 1px solid rgba(43, 108, 176, 0.06);
   margin-top: 1.5rem;
 }
 
@@ -1813,7 +1813,7 @@
 }
 
 .author-bio-detail a {
-  color: #4F46E5;
+  color: #2B6CB0;
   text-decoration: none;
   font-weight: 600;
 }

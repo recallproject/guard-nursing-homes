@@ -4,7 +4,7 @@
 .accountability-flag { margin: 1.5rem 0; border-radius: 8px; overflow: hidden; }
 
 .flag-danger { background: #FEF2F2; border: 1px solid #FECACA; }
-.flag-warning { background: #FFFBEB; border: 1px solid #FDE68A; }
+.flag-warning { background: #FFFBEB; border: 1px solid #92400E; }
 .flag-neutral { background: #F8FAFC; border: 1px solid #E2E8F0; }
 .flag-good { background: #F0FDF4; border: 1px solid #BBF7D0; }
 
@@ -35,14 +35,14 @@
 .ownership-star-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
 .ownership-star-label { font-size: 0.75rem; min-width: 80px; text-align: right; }
 .ownership-star-bar-track { flex: 1; height: 16px; background: rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
-.ownership-star-bar-fill { height: 100%; background: #4F46E5; border-radius: 8px; transition: width 0.4s ease; min-width: 2px; }
+.ownership-star-bar-fill { height: 100%; background: #2B6CB0; border-radius: 8px; transition: width 0.4s ease; min-width: 2px; }
 .ownership-star-count { font-size: 0.8rem; color: #64748B; min-width: 80px; font-family: 'JetBrains Mono', monospace; }
 
 /* Disclaimer */
 .accountability-disclaimer { margin: 2rem 0 1rem; padding: 16px; background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; }
 .accountability-disclaimer h4 { margin: 0 0 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #64748B; }
 .accountability-disclaimer p { margin: 0; font-size: 0.85rem; line-height: 1.6; color: #64748B; }
-.accountability-disclaimer a { color: #4F46E5; font-weight: 600; text-decoration: none; }
+.accountability-disclaimer a { color: #2B6CB0; font-weight: 600; text-decoration: none; }
 .accountability-disclaimer a:hover { text-decoration: underline; }
 
 /* Responsive */

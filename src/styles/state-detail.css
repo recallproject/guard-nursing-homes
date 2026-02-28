@@ -53,8 +53,8 @@
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 2rem;
   padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .state-detail-stat {
@@ -118,7 +118,7 @@
   padding: 2rem;
   background: var(--bg-card);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
 }
 
 .state-detail-control-group {
@@ -144,7 +144,7 @@
   font-weight: 500;
   color: var(--text-white);
   background-color: var(--bg-elevated);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid #E2E8F0;
   border-radius: 8px;
   cursor: pointer;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
@@ -153,7 +153,7 @@
 .state-detail-select:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
 }
 
 .state-detail-search-wrapper {
@@ -217,7 +217,7 @@
   gap: 0;
   border-radius: 8px;
   overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 2px solid #E2E8F0;
   align-self: flex-end;
 }
 
@@ -260,7 +260,7 @@
   padding: 1rem 1.5rem;
   cursor: pointer;
   transition: background 0.15s;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid #E8EDF2;
 }
 
 .facility-row:nth-child(even) {

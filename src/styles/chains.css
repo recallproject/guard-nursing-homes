@@ -50,7 +50,7 @@
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
 }
 
 .stat-value {
@@ -95,7 +95,7 @@
 .search-input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.06);
 }
 
 .search-input::placeholder {
@@ -188,7 +188,7 @@
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .chains-table th:first-child {
@@ -198,7 +198,7 @@
 .chains-table tbody tr.chain-row {
   cursor: pointer;
   transition: var(--transition-fast);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid #E8EDF2;
 }
 
 .chains-table tbody tr.chain-row:hover {
@@ -341,7 +341,7 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #E2E8F0;
   padding-bottom: 0.5rem;
 }
 
@@ -362,7 +362,7 @@
 }
 
 .expanded-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #E2E8F0;
   padding-top: 1.5rem;
 }
 
@@ -420,7 +420,7 @@
   padding: 2rem;
   background: var(--bg-card);
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #E2E8F0;
 }
 
 .chains-disclaimer p {
@@ -446,7 +446,7 @@
 .loading-spinner {
   width: 50px;
   height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.1);
+  border: 4px solid #E2E8F0;
   border-top-color: var(--primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
