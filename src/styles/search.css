@@ -8,8 +8,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(15, 23, 42, 0.95);
-  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
   z-index: 10000;
   display: flex;
   align-items: flex-start;
@@ -34,24 +34,24 @@
 .search-input {
   width: 100%;
   padding: 1.75rem 2rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-white);
-  background-color: var(--bg-card);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 2px solid #D7E0EA;
   border-radius: 16px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .search-input::placeholder {
-  color: var(--text-muted);
+  color: #94A3B8;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.2), var(--shadow-xl);
+  border-color: #2B6CB0;
+  box-shadow: 0 0 0 4px rgba(43, 108, 176, 0.1), 0 8px 32px rgba(0,0,0,0.08);
 }
 
 /* Search results */
@@ -70,17 +70,17 @@
   justify-content: space-between;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: var(--bg-card);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #FFFFFF;
+  border: 1px solid #D7E0EA;
   border-radius: 12px;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all 0.2s;
 }
 
 .search-result-item:hover {
-  border-color: var(--primary);
+  border-color: #2B6CB0;
   transform: translateX(6px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
 }
 
 .search-result-info {
@@ -92,10 +92,10 @@
 }
 
 .search-result-name {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--text-white);
+  color: #1D3557;
   line-height: 1.3;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -103,26 +103,26 @@
 }
 
 .search-result-location {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: #64748B;
 }
 
 /* No results */
 .search-no-results {
   text-align: center;
   padding: 4rem 2rem;
-  color: var(--text-muted);
+  color: #64748B;
   font-size: 1.1rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Close hint */
 .search-close-hint {
   text-align: center;
   margin-top: 2.5rem;
-  color: var(--text-muted);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #94A3B8;
+  font-family: 'IBM Plex Sans', 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
   opacity: 0.7;
 }
