@@ -17,7 +17,7 @@
 }
 .hiw-step-label.visible { opacity: 1; transform: translateY(0); }
 .hiw-step-num {
-  font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--blue, #2B6CB0); margin-bottom: 3px;
 }
