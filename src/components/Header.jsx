@@ -82,10 +82,6 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
       paths: ['/professionals', '/evidence', '/screening', '/discrepancies', '/ownership', '/ag-toolkit', '/chains', '/high-risk', '/trends'],
       items: [
         { to: '/professionals', label: 'All Professional Tools', desc: 'Full toolkit overview' },
-        { to: '/chains', label: 'Chain Rankings', desc: 'Compare the largest nursing home operators' },
-        { to: '/high-risk', label: 'High-Risk Facilities', desc: 'Worst-performing facilities nationally' },
-        { to: '/screening', label: 'State Screening', desc: 'Filter and export by state' },
-        { to: '/evidence/145995', label: 'Evidence Reports', desc: 'Litigation-ready PDFs — $29' },
       ]
     },
     {
@@ -187,6 +183,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
               <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
                 {watchlistCount > 0 ? '★' : '☆'}
               </span>
+              <span className="site-header__fav-label">Favorites</span>
               {watchlistCount > 0 && (
                 <span className="site-header__fav-badge">{watchlistCount}</span>
               )}

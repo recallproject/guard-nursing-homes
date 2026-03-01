@@ -241,7 +241,7 @@
 .site-header__favorites-btn {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   padding: 6px 10px;
   border-radius: 6px;
   text-decoration: none;
@@ -258,6 +258,21 @@
 
 .site-header__fav-star--filled {
   color: #e3b341;
+}
+
+.site-header__fav-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-left: 2px;
+  color: var(--text-dim, #64748B);
+}
+.site-header__favorites-btn:hover .site-header__fav-label {
+  color: #e3b341;
+}
+
+@media (max-width: 768px) {
+  .site-header__fav-label { display: none; }
 }
 
 .site-header__fav-badge {
