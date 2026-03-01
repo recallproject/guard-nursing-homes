@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — The Oversight Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;0,8..60,800;1,8..60,400;1,8..60,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --bg-warm: #F5F4F0;
+    --bg-card: #FFFFFF;
+    --bg-accent: #F0EFEB;
+    --border: #E2E0D8;
+    --border-light: #ECEAE3;
+    --text: #1C1917;
+    --text-body: #2C2A26;
+    --text-dim: #57534E;
+    --text-muted: #8C8780;
+    --green: #166534;
+    --green-light: #15803D;
+    --green-bg: #F0FDF4;
+    --green-border: #BBF7D0;
+    --green-accent: #22C55E;
+    --blue: #1E40AF;
+    --blue-bg: #EFF6FF;
+    --amber: #92400E;
+    --amber-bg: #FFFBEB;
+    --rule: #D4D0C8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text-body);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 250, 247, 0.95);
+    backdrop-filter: blur(12px);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+  .nav-logo {
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'IBM Plex Mono', monospace;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+  .nav-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-link {
+    font-size: 14px;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--text); }
+  .nav-link.active { color: var(--green); font-weight: 600; }
+  .nav-cta {
+    padding: 8px 20px;
+    background: var(--green);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 40px 120px;
+  }
+
+  /* ── HEADER ── */
+  .page-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 14px;
+  }
+
+  .page-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .page-subtitle {
+    font-size: 19px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  /* ── PROFILE BLOCK ── */
+  .profile-block {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .profile-photo {
+    width: 152px;
+    height: 190px;
+    border-radius: 10px;
+    background: var(--bg-accent);
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-placeholder {
+    text-align: center;
+    padding: 16px;
+  }
+  .photo-placeholder-icon {
+    font-size: 44px;
+    margin-bottom: 6px;
+    opacity: 0.35;
+  }
+  .photo-placeholder-text {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .profile-info { flex: 1; }
+  .profile-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .profile-title {
+    font-size: 15px;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  .profile-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .credential {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .credential-marker {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--rule);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ── BODY TEXT ── */
+  .body-section {
+    margin-bottom: 44px;
+  }
+  .body-section h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: -0.3px;
+  }
+  .body-section p {
+    font-size: 17px;
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+  .body-section p:last-child { margin-bottom: 0; }
+  .body-section p em {
+    font-style: italic;
+    color: var(--text);
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    border-left: 3px solid var(--green);
+    padding: 20px 0 20px 28px;
+    margin: 40px 0;
+    background: linear-gradient(90deg, var(--green-bg) 0%, transparent 100%);
+    border-radius: 0 8px 8px 0;
+  }
+  .pullquote p {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 21px;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .pullquote-attr {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  /* ── FEATURED BOX ── */
+  .featured-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 40px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .featured-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .featured-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .featured-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .featured-icon {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+    border-radius: 4px;
+    padding: 3px 8px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+  .featured-text {
+    font-size: 15px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .featured-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .featured-text a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .featured-text a:hover { text-decoration: underline; }
+  .featured-placeholder {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* ── RESEARCH CITATIONS ── */
+  .research-section {
+    margin-bottom: 44px;
+  }
+  .research-section h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  .research-section .section-note {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .citation {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .citation:last-child { margin-bottom: 0; }
+  .citation-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: #1E40AF;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: 4px;
+    padding: 2px 7px;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+  }
+  .citation-text {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+  .citation-text .author-highlight {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .citation-venue {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* ── TRAINING GRID ── */
+  .training-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .training-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .training-institution {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .training-detail {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.55;
+  }
+
+  /* ── DATA PRINCIPLES ── */
+  .principles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  .principle {
+    padding: 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .principle-number {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+  }
+  .principle-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .principle-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.65;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    margin-top: 52px;
+    padding-top: 52px;
+    border-top: 1px solid var(--border);
+  }
+  .contact-section h2 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .contact-section p {
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .contact-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--green);
+    text-decoration: none;
+    padding: 12px 22px;
+    border: 1px solid var(--green-border);
+    border-radius: 8px;
+    background: var(--green-bg);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-btn:hover {
+    border-color: var(--green-accent);
+    background: #ECFDF5;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-warm);
+  }
+  .footer-line {
+    font-size: 14px;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+  .footer-line:last-child { margin-bottom: 0; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 14px;
+  }
+  .footer-link {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .footer-link:hover { color: var(--text-dim); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .page { padding: 40px 20px 80px; }
+    .page-title { font-size: 30px; }
+    .profile-block { flex-direction: column; gap: 24px; }
+    .profile-photo { width: 120px; height: 150px; }
+    .training-grid { grid-template-columns: 1fr; }
+    .principles { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .nav { padding: 12px 20px; }
+    .pullquote { padding-left: 20px; }
+  }
+
+  /* ── SUBTLE ENTRANCE ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .fade-in.d1 { animation-delay: 0.08s; }
+  .fade-in.d2 { animation-delay: 0.16s; }
+  .fade-in.d3 { animation-delay: 0.24s; }
+  .fade-in.d4 { animation-delay: 0.32s; }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav class="nav">
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">OR</div>
+    <span class="nav-name">The Oversight Report</span>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="nav-link">Search</a>
+    <a href="#" class="nav-link">Browse by State</a>
+    <a href="#" class="nav-link">For Professionals</a>
+    <a href="#" class="nav-link">Methodology</a>
+    <a href="#" class="nav-link active">About</a>
+    <a href="#" class="nav-cta">Evidence PDF</a>
+  </div>
+</nav>
+
+<!-- ═══════ CONTENT ═══════ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="fade-in">
+    <div class="page-label">About the Builder</div>
+    <h1 class="page-title">Built at the Bedside,<br>Not in a Boardroom</h1>
+    <p class="page-subtitle">The Oversight Report was created by a working clinician who watched the system fail patients — and built the tool that nobody else would.</p>
+  </div>
+
+  <!-- PROFILE BLOCK -->
+  <div class="profile-block fade-in d1">
+    <div class="profile-photo">
+      <div class="photo-placeholder">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--border); margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: var(--text-muted); font-weight: 600;">RB</span>
+        </div>
+        <div class="photo-placeholder-text">Photo here</div>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="profile-name">Rob Benard, NP</div>
+      <div class="profile-title">Nurse Practitioner · Acute Care, Critical Care & Psychiatry</div>
+      <div class="profile-credentials">
+        <div class="credential">
+          <div class="credential-marker"></div>
+          <span>Addiction Medicine Consult Service — Highland Hospital, Oakland</span>
+        </div>
+        <div class="credential">
+          <div class="credential-marker"></div>
+          <span>Critical Care & Neurocritical Care — Sutter Health, San Francisco</span>
+        </div>
+        <div class="credential">
+          <div class="credential-marker"></div>
+          <span>20+ years of bedside clinical experience</span>
+        </div>
+        <div class="credential">
+          <div class="credential-marker"></div>
+          <span>DataLink Clinical LLC — under Dr. Andrew Herring</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE STORY -->
+  <div class="body-section fade-in d2">
+    <h2>Why This Exists</h2>
+    <p>I've spent two decades in acute care — ICU beds, trauma bays, psych emergencies, and now addiction medicine. The one thing that connects all of it is what happens at discharge. A patient stabilizes, and then somebody has to figure out where they go next.</p>
+    <p>For nursing homes, home health, dialysis, hospice — the question is always the same. A family member at the bedside, exhausted, scared, asks: <em>"Is this place any good?"</em></p>
+    <p>I never had a good answer. The data existed — scattered across half a dozen government websites, buried in spreadsheets nobody reads, formatted for regulators instead of families. So I built the tool I wished I'd had for the last 20 years.</p>
+  </div>
+
+  <div class="pullquote fade-in d2">
+    <p>"Families shouldn't need a research team to figure out if a nursing home is safe. The data is public. It should act like it."</p>
+    <div class="pullquote-attr">— Rob Benard, NP</div>
+  </div>
+
+  <div class="body-section fade-in d3">
+    <h2>What The Oversight Report Does</h2>
+    <p>The platform integrates multiple federal datasets from the Centers for Medicare & Medicaid Services to provide a complete safety picture of every Medicare-certified nursing facility in the country — 14,713 and counting. That includes staffing verified against actual payroll records, inspection deficiency histories, federal penalties, ownership network mapping, and financial transparency data that no other consumer tool surfaces.</p>
+    <p>Every data point is sourced from public federal records. No industry funding. No facility sponsorship. No advertising. The data says what it says.</p>
+  </div>
+
+  <!-- FEATURED / PRESS -->
+  <div class="featured-box fade-in d3">
+    <div class="featured-label">Featured In</div>
+    <div class="featured-item">
+      <div class="featured-icon">PRESS</div>
+      <div class="featured-text">
+        <strong>[Publication Name]</strong> — "[Article Title]"
+        <div class="featured-placeholder">← Placeholder: article with Rob's quote</div>
+      </div>
+    </div>
+    <div class="featured-item">
+      <div class="featured-icon">HDSR</div>
+      <div class="featured-text">
+        <strong>Harvard Data Science Review</strong> — Quoted in <a href="https://hdsr.mitpress.mit.edu/pub/m4mz70zp/release/5" target="_blank">"Navigating the AI Safari"</a> (Issue 8.1, Winter 2026)
+        <br><span style="font-size: 13px; color: var(--text-muted);">Endorsement cited by Editor-in-Chief Prof. Xiao-Li Meng · MIT Press</span>
+      </div>
+    </div>
+    <div class="featured-item">
+      <div class="featured-icon">EDU</div>
+      <div class="featured-text">
+        <strong>Harvard Data Science Initiative</strong> — Agentic AI: Contextualized and Applied
+        <br><span style="font-size: 13px; color: var(--text-muted);">2.5-week intensive · AGENT Framework for healthcare workflow redesign · Certificate of Attendance</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESEARCH & PRESENTATIONS -->
+  <div class="research-section fade-in d3">
+    <h2>Research & Presentations</h2>
+    <p class="section-note">Contributing author — data collection and clinical patient care.</p>
+
+    <div class="citation">
+      <div class="citation-badge">AMERSA 2024</div>
+      <div class="citation-text">
+        Heeney M, Anderson E, Lind K, Sirey L, Ullal M, Liang A, <span class="author-highlight">Benard R</span>, Herring A. "High-Dose Fentanyl and Buprenorphine Continuation as Support for the Treatment of Buprenorphine Precipitated Withdrawal."
+      </div>
+      <div class="citation-venue">
+        Alameda Health System, Division of Addiction Medicine. Presented at AMERSA National Conference, 2024.
+      </div>
+    </div>
+
+    <div class="citation">
+      <div class="citation-badge">AMERSA 2024</div>
+      <div class="citation-text">
+        Heeney M, Anderson E, Sirey L, Ullal M, Liang A, <span class="author-highlight">Benard R</span>, Lind K, Herring A. "Evaluation of Outcomes of Extended-Release Buprenorphine Administered During Emergency Department and Inpatient Visits."
+      </div>
+      <div class="citation-venue">
+        Alameda Health System, Division of Addiction Medicine. Presented at AMERSA National Conference, 2024.
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATION & TRAINING -->
+  <div class="body-section fade-in d3">
+    <h2>Education & Training</h2>
+    <div class="training-grid">
+      <div class="training-card">
+        <div class="training-institution">Highland Hospital, Oakland</div>
+        <div class="training-detail">Addiction Medicine Consult Service<br>Nurse Practitioner</div>
+      </div>
+      <div class="training-card">
+        <div class="training-institution">Sutter Health, San Francisco</div>
+        <div class="training-detail">Critical Care & Neurocritical Care<br>Nurse Practitioner</div>
+      </div>
+      <div class="training-card">
+        <div class="training-institution">Harvard Data Science Initiative</div>
+        <div class="training-detail">Agentic AI: Contextualized and Applied<br>AGENT Framework · Certificate of Attendance</div>
+      </div>
+      <div class="training-card">
+        <div class="training-institution">Clinical Experience</div>
+        <div class="training-detail">20+ years across acute care, critical care, psychiatry, and addiction medicine</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATA PRINCIPLES -->
+  <div class="body-section fade-in d4">
+    <h2>Data Principles</h2>
+    <p>Every decision about this platform starts from one question: does this help the person at the bedside make a safer choice?</p>
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-number">01</div>
+        <div class="principle-title">Public Data, Properly Shown</div>
+        <div class="principle-desc">Every number on this site comes from publicly available CMS datasets. We don't create scores — we surface what the government already collected and make it readable.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-number">02</div>
+        <div class="principle-title">No Industry Funding</div>
+        <div class="principle-desc">No facility pays to be listed. No chain sponsors content. No advertising. The data has no financial relationship with the facilities it describes.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-number">03</div>
+        <div class="principle-title">Cross-Referenced, Not Summarized</div>
+        <div class="principle-desc">Star ratings hide more than they reveal. We cross-reference staffing against payroll, ownership against quality patterns, and financial flows against outcomes.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-number">04</div>
+        <div class="principle-title">Clinician-Led</div>
+        <div class="principle-desc">This platform is designed by someone who's made discharge referrals, not by someone who's studied them from a desk. The questions it answers are the ones clinicians actually ask.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT THIS ISN'T -->
+  <div class="body-section fade-in d4">
+    <h2>What This Isn't</h2>
+    <p>The Oversight Report is not a rating system. It doesn't assign letter grades or tell families what to do. It gives them the same data that regulators, attorneys, and journalists use — in a format that a family member at 2 a.m. can actually understand. What they do with it is their decision. But it should be an informed one.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-section fade-in d4">
+    <h2>Get in Touch</h2>
+    <p>Media inquiries, institutional partnerships, professional subscriptions, or questions about the data — I read everything.</p>
+    <div class="contact-row">
+      <a href="/cdn-cgi/l/email-protection#8cefe3e2f8edeff8cce3fae9feffe5ebe4f8fee9fce3fef8ffa2efe3e1" class="contact-btn">
+        ✉&ensp;<span class="__cf_email__" data-cfemail="95f6fafbe1f4f6e1d5fae3f0e7e6fcf2fde1e7f0e5fae7e1e6bbf6faf8">[email&#160;protected]</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div class="footer">
+  <div class="footer-line">Built by a bedside nurse practitioner · Public CMS data · No industry funding</div>
+  <div class="footer-line" style="font-size: 13px; color: var(--text-muted);">The Oversight Report — oversightreports.com</div>
+  <div class="footer-links">
+    <a href="#" class="footer-link">Methodology</a>
+    <a href="#" class="footer-link">Data Sources</a>
+    <a href="#" class="footer-link"
