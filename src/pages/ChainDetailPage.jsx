@@ -275,6 +275,9 @@ export function ChainDetailPage() {
   // Pro features (CSV export, alerts, bulk analysis) can be gated later
   const hasAccess = true;
 
+  // Check if this chain has an AHCA board member
+  const ahcaInfo = ahcaData?.[decodedChainName.toUpperCase()];
+
   if (loading || facilityLoading) {
     return (
       <div className="chain-detail-page">
