@@ -165,6 +165,12 @@ export default function HowItWorks() {
 
       <div className="hiw-scroll" ref={scrollRef}>
         <div className="hiw-sticky">
+          {/* Scroll hint — above step label */}
+          <div className={`hiw-scroll-hint ${scrollProgress > 0.05 ? 'hidden' : ''}`}>
+            <div className="hiw-scroll-hint-text">Scroll to explore</div>
+            <svg className="hiw-scroll-hint-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </div>
+
           <div className={`hiw-step-label ${step.num ? 'visible' : ''}`}>
             <div className="hiw-step-num">{step.num}</div>
             <div className="hiw-step-title">{step.title}</div>
@@ -311,12 +317,6 @@ export default function HowItWorks() {
 
               </div>
             </div>
-          </div>
-
-          {/* Scroll hint */}
-          <div className={`hiw-scroll-hint ${scrollProgress > 0.05 ? 'hidden' : ''}`}>
-            <div className="hiw-scroll-hint-text">Scroll to explore</div>
-            <svg className="hiw-scroll-hint-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
           </div>
 
           {/* Progress bar */}
