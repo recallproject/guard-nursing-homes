@@ -41,19 +41,71 @@ export default function ComparePage() {
         </div>
       </section>
 
-      {/* ============ TABLE OF CONTENTS ============ */}
-      <section style={{ padding: '48px 0 0' }}>
+      {/* ============ GUIDE (replaces flat TOC) ============ */}
+      <section className="compare-guide-section">
         <div className="container-narrow">
-          <div className="compare-toc">
-            <h3>On This Page</h3>
-            <ul className="compare-toc-list">
-              <li><a href="#government"><span className="toc-number">1</span> Government Tools</a></li>
-              <li><a href="#journalism"><span className="toc-number">2</span> Journalism &amp; Advocacy</a></li>
-              <li><a href="#referral"><span className="toc-number">3</span> Referral Sites</a></li>
-              <li><a href="#rankings"><span className="toc-number">4</span> Rankings Sites</a></li>
-              <li><a href="#comparison"><span className="toc-number">5</span> Side-by-Side Comparison</a></li>
-              <li><a href="#our-approach"><span className="toc-number">6</span> Our Approach</a></li>
-            </ul>
+          <div className="compare-guide">
+            <h2 className="compare-guide-heading">What You'll Find on This Page</h2>
+            <p className="compare-guide-sub">
+              Click any section to jump straight there. We've organized every major nursing home
+              search tool by who runs it and how they make money.
+            </p>
+            <div className="compare-guide-grid">
+              <a href="#government" className="compare-guide-card">
+                <div className="compare-guide-icon compare-guide-icon--gov">🏛</div>
+                <div className="compare-guide-text">
+                  <div className="compare-guide-title">
+                    Government Tools
+                    <span className="compare-guide-badge compare-guide-badge--safe">FREE</span>
+                  </div>
+                  <div className="compare-guide-desc">Medicare Care Compare &amp; the Special Focus Facility list. Official federal data — no conflicts, no commissions.</div>
+                </div>
+              </a>
+              <a href="#journalism" className="compare-guide-card">
+                <div className="compare-guide-icon compare-guide-icon--journalism">📰</div>
+                <div className="compare-guide-text">
+                  <div className="compare-guide-title">
+                    Journalism &amp; Advocacy
+                    <span className="compare-guide-badge compare-guide-badge--safe">FREE</span>
+                  </div>
+                  <div className="compare-guide-desc">ProPublica Nursing Home Inspect &amp; LTCCC/NursingHome411. Independent, no industry funding.</div>
+                </div>
+              </a>
+              <a href="#referral" className="compare-guide-card">
+                <div className="compare-guide-icon compare-guide-icon--referral">⚠</div>
+                <div className="compare-guide-text">
+                  <div className="compare-guide-title">
+                    Referral Sites
+                    <span className="compare-guide-badge compare-guide-badge--caution">CONFLICT</span>
+                  </div>
+                  <div className="compare-guide-desc">A Place for Mom, Caring.com, SeniorAdvisor. They earn up to $12,000 per referral. Senate investigation, FTC action.</div>
+                </div>
+              </a>
+              <a href="#rankings" className="compare-guide-card">
+                <div className="compare-guide-icon compare-guide-icon--rankings">📊</div>
+                <div className="compare-guide-text">
+                  <div className="compare-guide-title">
+                    Rankings &amp; Reviews
+                    <span className="compare-guide-badge compare-guide-badge--partial">PARTIAL</span>
+                  </div>
+                  <div className="compare-guide-desc">U.S. News &amp; Newsweek. Reputable brands, but rankings rely on star ratings CMS admits are gameable.</div>
+                </div>
+              </a>
+              <a href="#comparison" className="compare-guide-card">
+                <div className="compare-guide-icon compare-guide-icon--matrix">⚖</div>
+                <div className="compare-guide-text">
+                  <div className="compare-guide-title">Side-by-Side Comparison</div>
+                  <div className="compare-guide-desc">12 features compared across 5 tools. See exactly which tools surface staffing, penalties, and ownership data.</div>
+                </div>
+              </a>
+              <a href="#our-approach" className="compare-guide-card">
+                <div className="compare-guide-icon compare-guide-icon--ours">🔍</div>
+                <div className="compare-guide-text">
+                  <div className="compare-guide-title">Our Approach</div>
+                  <div className="compare-guide-desc">What The Oversight Report does, what it doesn't, and how we make money. We built this page to be honest — including about ourselves.</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </section>

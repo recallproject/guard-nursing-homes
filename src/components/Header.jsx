@@ -119,6 +119,14 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
 
           {/* Desktop Nav */}
           <nav className="site-header__nav" aria-label="Main navigation">
+            {/* Top-level Compare link (no dropdown) */}
+            <Link
+              to="/compare"
+              className={`site-header__top-link ${isActive('/compare') ? 'site-header__top-link--active' : ''}`}
+            >
+              Compare
+            </Link>
+
             {navGroups.map((group) => (
               <div
                 key={group.label}
@@ -227,6 +235,15 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
                 &#x2715;
               </button>
             </div>
+
+            {/* Top-level Compare link */}
+            <Link
+              to="/compare"
+              className={`mobile-menu__standalone-link ${isActive('/compare') ? 'mobile-menu__standalone-link--active' : ''}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              Compare Tools
+            </Link>
 
             {navGroups.map((group) => (
               <div key={group.label} className="mobile-menu__group">

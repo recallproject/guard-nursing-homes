@@ -351,6 +351,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
         <div className="v4-footer-main">Public CMS data · No industry funding · Built by a bedside clinician</div>
         <div className="v4-footer-sub">The Oversight Report — oversightreports.com</div>
         <div className="v4-footer-links">
+          <Link to="/compare" className="v4-footer-link">Compare Tools</Link>
           <Link to="/methodology" className="v4-footer-link">Methodology</Link>
           <Link to="/methodology" className="v4-footer-link">Data Sources</Link>
           <Link to="/pricing" className="v4-footer-link">Evidence PDFs</Link>
