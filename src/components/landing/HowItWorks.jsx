@@ -138,15 +138,19 @@ export default function HowItWorks() {
       else if (p < 0.38) s = 1;
       else if (p < 0.75) s = 2;
       else s = 3;
-      setActiveScene(prev => {
-        if (prev !== s) buildScene(s);
-        return s;
-      });
+      buildScene(s);
+      setActiveScene(s);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    // Fire once on mount
-    setTimeout(onScroll, 100);
-    return () => window.removeEventListener('scroll', onScroll);
+    // Use IntersectionObserver to trigger scene 0 when visible
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        buildScene(0);
+        obs.disconnect();
+      }
+    }, { threshold: 0.1 });
+    if (scrollRef.current) obs.observe(scrollRef.current);
+    return () => { window.removeEventListener('scroll', onScroll); obs.disconnect(); };
   }, [buildScene]);
 
   const step = STEPS[activeScene];
@@ -311,8 +315,13 @@ export default function HowItWorks() {
 
           {/* Scroll hint */}
           <div className={`hiw-scroll-hint ${scrollProgress > 0.05 ? 'hidden' : ''}`}>
-            <div className="hiw-scroll-hint-text">Scroll to see how</div>
-            <svg className="hiw-scroll-hint-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+            <div className="hiw-scroll-hint-text">Scroll to explore</div>
+            <svg className="hiw-scroll-hint-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </div>
+
+          {/* Progress bar */}
+          <div className="hiw-progress-track">
+            <div className="hiw-progress-fill" style={{ width: `${scrollProgress * 100}%` }} />
           </div>
 
         </div>
