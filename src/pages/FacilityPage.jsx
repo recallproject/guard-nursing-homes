@@ -639,7 +639,7 @@ export function FacilityPage() {
             <span>Visit questions &amp; checklist</span>
             <span>Nearby alternatives</span>
           </div>
-          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="↓ Download Free Report (PDF)" variant="prominent" />
+          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="Download Free Report (PDF)" variant="prominent" />
           <div className="free-report-note">Free forever. No login. No email required.</div>
         </div>
 
