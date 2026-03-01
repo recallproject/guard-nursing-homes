@@ -2,7 +2,15 @@
    HOW IT WORKS — Scroll Animation
    ══════════════════════════════════════════ */
 .hiw-wrapper { max-width: 100%; }
-.hiw-wrapper .v4-section-header { margin: 24px 0 16px; }
+.hiw-wrapper .v4-section-header {
+  margin: 24px auto 16px;
+  max-width: 720px;
+  padding: 32px 40px 28px;
+  background: #FFFFFF;
+  border: 1px solid #D7E0EA;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(29, 53, 87, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
+}
 .hiw-scroll { height: 600vh; position: relative; }
 .hiw-sticky {
   position: sticky; top: 0; height: 100vh;
