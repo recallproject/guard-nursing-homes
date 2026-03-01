@@ -48,17 +48,16 @@
   width: 100%;
   padding: 1.5rem 2rem;
   font-size: 1.25rem;
-  color: var(--text-white);
-  background-color: rgba(30, 41, 59, 0.9);
-  backdrop-filter: blur(12px);
-  border: 2px solid #E2E8F0;
+  color: #0F172A;
+  background-color: #FFFFFF;
+  border: 2px solid #D7E0EA;
   border-radius: 16px;
   transition: all var(--transition-normal);
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .ownership-search-input::placeholder {
-  color: var(--text-muted);
+  color: #94A3B8;
 }
 
 .ownership-search-input:focus {

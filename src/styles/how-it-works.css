@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════
    HOW IT WORKS — Scroll Animation
    ══════════════════════════════════════════ */
-.hiw-wrapper { max-width: 100%; overflow: hidden; }
+.hiw-wrapper { max-width: 100%; }
 .hiw-scroll { height: 600vh; position: relative; }
 .hiw-sticky {
   position: sticky; top: 0; height: 100vh;
@@ -300,4 +300,26 @@
   .hiw-viewport { height: 380px; }
   .hiw-report-page { padding: 0 20px 40px; }
   .hiw-rpt-topbar-right { display: none; }
+}
+
+/* ── SCROLL INDICATOR ── */
+.hiw-scroll-hint {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  opacity: 0.7; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.hiw-scroll-hint.hidden { opacity: 0; }
+.hiw-scroll-hint-text {
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-muted, #94A3B8);
+}
+.hiw-scroll-hint-arrow {
+  width: 20px; height: 20px; color: var(--text-muted, #94A3B8);
+  animation: hiw-bounce 2s ease-in-out infinite;
+}
+@keyframes hiw-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }

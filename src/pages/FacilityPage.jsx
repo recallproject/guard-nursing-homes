@@ -554,7 +554,7 @@ export function FacilityPage() {
                     return (
                       <div className="star-dist" key={star}>
                         <span className="star-dist-label">{star} ⭐</span>
-                        <div style={{ flex: 1, height: '6px', background: 'var(--bg-card-elevated, #2a2460)', borderRadius: '3px' }}>
+                        <div style={{ flex: 1, height: '6px', background: '#E2E8F0', borderRadius: '3px' }}>
                           <div className="star-dist-bar" style={{ width: `${pctVal}%`, height: '6px' }} />
                         </div>
                         <span className="star-dist-count">{count} ({pctVal}%)</span>

@@ -48,6 +48,7 @@ function CountUp({ target, prefix = '', suffix = '', duration = 600 }) {
 export default function HowItWorks() {
   const scrollRef = useRef(null);
   const [activeScene, setActiveScene] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const builtRef = useRef([false, false, false, false]);
 
   // Typed text state
@@ -125,7 +126,9 @@ export default function HowItWorks() {
       const rect = scrollRef.current.getBoundingClientRect();
       const scrolled = -rect.top;
       const total = scrollRef.current.offsetHeight - window.innerHeight;
+      if (total <= 0) return;
       const p = Math.max(0, Math.min(1, scrolled / total));
+      setScrollProgress(p);
       let s;
       if (p < 0.18) s = 0;
       else if (p < 0.38) s = 1;
@@ -301,6 +304,13 @@ export default function HowItWorks() {
               </div>
             </div>
           </div>
+
+          {/* Scroll hint */}
+          <div className={`hiw-scroll-hint ${scrollProgress > 0.05 ? 'hidden' : ''}`}>
+            <div className="hiw-scroll-hint-text">Scroll to see how</div>
+            <svg className="hiw-scroll-hint-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </div>
+
         </div>
       </div>
     </div>
