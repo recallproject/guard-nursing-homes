@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask a Clinician — Intake Form Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #EDF1F7;
+      --bg-card: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --primary: #2B6CB0;
+      --primary-light: #4A90D9;
+      --primary-dark: #1D4E7E;
+      --accent-red: #DC2626;
+      --accent-green: #059669;
+      --accent-teal: #0D9488;
+      --accent-orange: #D97706;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      background: linear-gradient(135deg, #1D3557 0%, #2B6CB0 100%);
+      padding: 100px 24px 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 24px;
+      padding: 8px 20px;
+      color: #fff;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .hero-badge .badge-icon {
+      font-size: 1.1rem;
+    }
+
+    /* ---- Main Layout ---- */
+    .main {
+      max-width: 960px;
+      margin: -40px auto 60px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ---- Form Card ---- */
+    .form-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .form-card h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-card .form-intro {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    /* ---- Form Fields ---- */
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .form-group .label-hint {
+      font-weight: 400;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      background: var(--bg-light);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Facility search field */
+    .facility-search-wrapper {
+      position: relative;
+    }
+
+    .facility-search-wrapper input {
+      padding-left: 40px;
+    }
+
+    .facility-search-wrapper .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* ---- Concern Checkboxes ---- */
+    .concern-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .concern-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .concern-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .concern-option:hover {
+      border-color: var(--primary);
+      background: rgba(43, 108, 176, 0.03);
+    }
+
+    .concern-option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ---- Tier Selector ---- */
+    .tier-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .tier-option {
+      border: 2px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      position: relative;
+    }
+
+    .tier-option:hover {
+      border-color: var(--primary);
+    }
+
+    .tier-option.selected {
+      border-color: var(--primary);
+      background: rgba(43, 108, 176, 0.04);
+    }
+
+    .tier-option .tier-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .tier-option .tier-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .tier-option .tier-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .tier-option .tier-badge {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ---- Submit Button ---- */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #1D3557, #2B6CB0);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-md);
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .submit-btn .btn-subtext {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 4px;
+    }
+
+    /* ---- Sidebar ---- */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .sidebar-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    /* What You Get */
+    .deliverable-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .deliverable-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .deliverable-list li .check {
+      color: var(--accent-green);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Turnaround */
+    .turnaround-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(13, 148, 136, 0.06);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 12px;
+    }
+
+    .turnaround-box .clock {
+      font-size: 1.5rem;
+    }
+
+    .turnaround-box div {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .turnaround-box strong {
+      color: var(--accent-teal);
+    }
+
+    /* Clinician Card */
+    .clinician-card {
+      text-align: center;
+    }
+
+    .clinician-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1D3557, #2B6CB0);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      margin: 0 auto 12px;
+    }
+
+    .clinician-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+    }
+
+    .clinician-title {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .clinician-bio {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    /* Trust Signals */
+    .trust-signals {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .trust-signal {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .trust-signal .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(43, 108, 176, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    /* ---- Guarantee Banner ---- */
+    .guarantee {
+      background: rgba(5, 150, 105, 0.06);
+      border: 1px solid rgba(5, 150, 105, 0.15);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .guarantee .shield {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .guarantee p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .guarantee strong {
+      color: var(--accent-green);
+    }
+
+    /* ---- Bottom Disclaimer ---- */
+    .disclaimer {
+      max-width: 960px;
+      margin: 0 auto 60px;
+      padding: 0 24px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Ask a Clinician About Your Facility</h1>
+    <p>
+      Get a personalized, plain-English assessment of any nursing home in America —
+      written by a nurse practitioner, not a search algorithm.
+    </p>
+    <div class="hero-badge">
+      <span class="badge-icon">&#9734;</span>
+      Reviewed by a licensed NP with 20+ years of bedside experience
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- LEFT: FORM -->
+    <div class="form-card">
+      <h2>Tell Us About Your Situation</h2>
+      <p class="form-intro">
+        We'll pull the latest CMS data on your facility and add clinical context
+        a family can actually understand. Most reports are delivered within 48 hours.
+      </p>
+
+      <!-- Facility -->
+      <div class="form-group">
+        <label>Facility Name or CCN Number</label>
+        <div class="facility-search-wrapper">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" placeholder="e.g. Sunrise Care Center or 145231" />
+        </div>
+      </div>
+
+      <!-- State -->
+      <div class="form-group">
+        <label>State</label>
+        <select>
+          <option value="">Select state...</option>
+          <option>Alabama</option>
+          <option>Alaska</option>
+          <option>Arizona</option>
+          <option>California</option>
+          <option>Florida</option>
+          <option>Illinois</option>
+          <option>New York</option>
+          <option>Texas</option>
+          <!-- abbreviated for mockup -->
+        </select>
+      </div>
+
+      <!-- Relationship -->
+      <div class="form-group">
+        <label>Your Relationship to the Resident</label>
+        <select>
+          <option value="">Select...</option>
+          <option>Son / Daughter</option>
+          <option>Spouse / Partner</option>
+          <option>Grandchild</option>
+          <option>Sibling</option>
+          <option>Legal Guardian / POA</option>
+          <option>Friend / Other Family</option>
+          <option>Attorney / Advocate</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- Situation -->
+      <div class="form-group">
+        <label>
+          What's Your Situation?
+          <span class="label-hint">(Choose all that apply)</span>
+        </label>
+        <div class="concern-grid">
+          <label class="concern-option">
+            <input type="checkbox" /> Choosing a facility
+          </label>
+          <label class="concern-option">
+            <input type="checkbox" /> Already placed — concerned
+          </label>
+          <label class="concern-option">
+            <input type="checkbox" /> Considering a transfer
+          </label>
+          <label class="concern-option">
+            <input type="checkbox" /> Post-hospital discharge
+          </label>
+          <label class="concern-option">
+            <input type="checkbox" /> Evaluating quality of care
+          </label>
+          <label class="concern-option">
+            <input type="checkbox" /> Investigating an incident
+          </label>
+        </div>
+      </div>
+
+      <!-- Specific Concerns -->
+      <div class="form-group">
+        <label>
+          What Are You Most Worried About?
+          <span class="label-hint">(Tell us in your own words)</span>
+        </label>
+        <textarea placeholder="Example: My mom has been there 6 months and she's lost 15 pounds. The staff seems overwhelmed and I never see the same nurse twice. I'm not sure if this is normal or if I should be worried..."></textarea>
+      </div>
+
+      <!-- Tier Selection -->
+      <div class="form-group">
+        <label>Choose Your Report</label>
+        <div class="tier-options">
+          <div class="tier-option selected">
+            <div class="tier-price">$49</div>
+            <div class="tier-name">Family Brief</div>
+            <div class="tier-desc">Data summary + clinical interpretation in plain English</div>
+          </div>
+          <div class="tier-option">
+            <div class="tier-badge">+ CALL</div>
+            <div class="tier-price">$149</div>
+            <div class="tier-name">Brief + Consultation</div>
+            <div class="tier-desc">Written report + 30-min phone call to walk through it together</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label>Your Email</label>
+        <input type="email" placeholder="Where should we send the report?" />
+      </div>
+
+      <!-- Submit -->
+      <button class="submit-btn">
+        Get Your Facility Assessment
+        <span class="btn-subtext">Secure payment via Stripe. Report delivered within 48 hours.</span>
+      </button>
+
+      <!-- Guarantee -->
+      <div class="guarantee">
+        <span class="shield">&#128737;</span>
+        <p>
+          <strong>100% money-back guarantee.</strong> If the report doesn't answer your questions,
+          we'll refund you in full — no questions asked.
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- What You Get -->
+      <div class="sidebar-card">
+        <h3>What You'll Receive</h3>
+        <ul class="deliverable-list">
+          <li><span class="check">&#10003;</span> Safety overview with plain-English risk assessment</li>
+          <li><span class="check">&#10003;</span> Staffing analysis — how this facility compares to state and national averages</li>
+          <li><span class="check">&#10003;</span> Inspection red flags — what the deficiency patterns actually mean</li>
+          <li><span class="check">&#10003;</span> Ownership context — who runs this facility and how their other homes perform</li>
+          <li><span class="check">&#10003;</span> Clinician's note — what an experienced NP would tell their own family</li>
+          <li><span class="check">&#10003;</span> 3 nearby alternatives ranked by safety data</li>
+          <li><span class="check">&#10003;</span> Questions to ask the facility (specific to their data)</li>
+        </ul>
+        <div class="turnaround-box">
+          <span class="clock">&#9201;</span>
+          <div>
+            Delivered within <strong>48 hours</strong><br/>
+            to your email as a PDF
+          </div>
+        </div>
+      </div>
+
+      <!-- Who Reviews It -->
+      <div class="sidebar-card clinician-card">
+        <div class="clinician-avatar">RB</div>
+        <div class="clinician-name">Robert Benard, NP</div>
+        <div class="clinician-title">Nurse Practitioner &middot; 20+ Years Clinical Experience</div>
+        <p class="clinician-bio">
+          Robert spent two decades at the bedside in acute and long-term care settings
+          before building The Oversight Report. Every facility assessment is personally
+          reviewed by him — not generated by AI, not written by an intern.
+        </p>
+      </div>
+
+      <!-- Trust Signals -->
+      <div class="sidebar-card">
+        <h3>Why Families Trust Us</h3>
+        <div class="trust-signals">
+          <div class="trust-signal">
+            <div class="icon">&#128202;</div>
+            <span>Data from CMS — the same source regulators use</span>
+          </div>
+          <div class="trust-signal">
+            <div class="icon">&#128176;</div>
+            <span>We don't take money from nursing homes. Ever.</span>
+          </div>
+          <div class="trust-signal">
+            <div class="icon">&#129657;</div>
+            <span>Written by a clinician, not a marketing team</span>
+          </div>
+          <div class="trust-signal">
+            <div class="icon">&#128274;</div>
+            <span>Your information stays private — we never share or sell data</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <p class="disclaimer">
+    This service provides data analysis and clinical perspective to help families make informed decisions.
+    It is not a substitute for medical advice, legal counsel, or an in-person facility evaluation.
+    All data is sourced from publicly available CMS datasets. &copy; 2026 DataLink Clinical LLC.
+  </p>
+
+</body>
+</html>

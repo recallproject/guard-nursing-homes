@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 1 — Facility Page Tooltips &amp; Explainers Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #EDF1F7;
+      --bg-card: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --primary: #2B6CB0;
+      --primary-light: #4A90D9;
+      --accent-red: #DC2626;
+      --accent-green: #059669;
+      --accent-teal: #0D9488;
+      --accent-orange: #D97706;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 40px 24px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .page-title h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .page-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .mockup-section {
+      max-width: 900px;
+      margin: 0 auto 60px;
+    }
+
+    .mockup-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .mockup-section > p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    /* ============================================
+       PATTERN 1: Inline Tooltips
+       ============================================ */
+    .facility-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(0,0,0,0.06);
+      margin-bottom: 24px;
+    }
+
+    .facility-card h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* Stat Row with Tooltip */
+    .stat-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .stat-value.good { color: var(--accent-green); }
+    .stat-value.warning { color: var(--accent-orange); }
+    .stat-value.danger { color: var(--accent-red); }
+
+    /* Tooltip Trigger */
+    .tooltip-trigger {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(43, 108, 176, 0.08);
+      color: var(--primary);
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: help;
+      flex-shrink: 0;
+    }
+
+    .tooltip-trigger:hover .tooltip-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .tooltip-content {
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 10px);
+      transform: translateX(-50%) translateY(4px);
+      width: 320px;
+      background: #1D3557;
+      color: #fff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+
+    .tooltip-content::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 12px;
+      background: #1D3557;
+      border-radius: 2px;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .tooltip-content .tooltip-title {
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .tooltip-content .tooltip-benchmark {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Benchmark bar */
+    .stat-benchmark {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .benchmark-bar {
+      width: 80px;
+      height: 6px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .benchmark-fill {
+      height: 100%;
+      border-radius: 3px;
+    }
+
+    .benchmark-fill.good { background: var(--accent-green); }
+    .benchmark-fill.warning { background: var(--accent-orange); }
+    .benchmark-fill.danger { background: var(--accent-red); }
+
+    /* ============================================
+       PATTERN 2: Contextual Explainer Banners
+       ============================================ */
+    .explainer-banner {
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .explainer-banner--info {
+      background: rgba(43, 108, 176, 0.05);
+      border: 1px solid rgba(43, 108, 176, 0.12);
+    }
+
+    .explainer-banner--warning {
+      background: rgba(217, 119, 6, 0.05);
+      border: 1px solid rgba(217, 119, 6, 0.15);
+    }
+
+    .explainer-banner--danger {
+      background: rgba(220, 38, 38, 0.04);
+      border: 1px solid rgba(220, 38, 38, 0.12);
+    }
+
+    .explainer-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .explainer-text h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .explainer-banner--info h4 { color: var(--primary); }
+    .explainer-banner--warning h4 { color: var(--accent-orange); }
+    .explainer-banner--danger h4 { color: var(--accent-red); }
+
+    .explainer-text p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .explainer-text .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 6px;
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* ============================================
+       PATTERN 3: Expandable "What Does This Mean?" Section
+       ============================================ */
+    .expand-section {
+      background: var(--bg-card);
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .expand-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .expand-header:hover {
+      background: rgba(43, 108, 176, 0.02);
+    }
+
+    .expand-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .expand-header-left .icon {
+      font-size: 1.1rem;
+    }
+
+    .expand-header-left span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .expand-arrow {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+
+    .expand-section.open .expand-arrow {
+      transform: rotate(180deg);
+    }
+
+    .expand-body {
+      display: none;
+      padding: 0 20px 20px;
+    }
+
+    .expand-section.open .expand-body {
+      display: block;
+    }
+
+    .expand-body p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .expand-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .expand-body .key-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 14px;
+      background: rgba(43, 108, 176, 0.04);
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .expand-body .key-point .bullet {
+      color: var(--primary);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .expand-body .key-point span {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       PATTERN 4: Deficiency Tag Explainer
+       ============================================ */
+    .deficiency-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .def-tag {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: help;
+    }
+
+    .def-tag--ij {
+      background: rgba(220, 38, 38, 0.08);
+      color: var(--accent-red);
+      border: 1px solid rgba(220, 38, 38, 0.15);
+    }
+
+    .def-tag--aij {
+      background: rgba(217, 119, 6, 0.08);
+      color: var(--accent-orange);
+      border: 1px solid rgba(217, 119, 6, 0.15);
+    }
+
+    .def-tag--pattern {
+      background: rgba(220, 38, 38, 0.06);
+      color: var(--accent-red);
+      border: 1px solid rgba(220, 38, 38, 0.12);
+    }
+
+    .def-tag--substandard {
+      background: rgba(217, 119, 6, 0.06);
+      color: var(--accent-orange);
+      border: 1px solid rgba(217, 119, 6, 0.12);
+    }
+
+    .def-tag--isolated {
+      background: rgba(43, 108, 176, 0.06);
+      color: var(--primary);
+      border: 1px solid rgba(43, 108, 176, 0.1);
+    }
+
+    .def-tag:hover .tag-tooltip {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .tag-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      width: 280px;
+      background: #1D3557;
+      color: #fff;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      line-height: 1.5;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      pointer-events: none;
+    }
+
+    .tag-tooltip strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.82rem;
+    }
+
+    /* ============================================
+       PATTERN 5: CTA Banner for Level 2
+       ============================================ */
+    .consult-cta {
+      background: linear-gradient(135deg, #1D3557 0%, #2B6CB0 100%);
+      border-radius: 14px;
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .consult-cta-text h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .consult-cta-text p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .consult-cta-btn {
+      background: #fff;
+      color: var(--primary);
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.15s;
+      cursor: pointer;
+      border: none;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .consult-cta-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    /* ---- Separator ---- */
+    .sep {
+      height: 1px;
+      background: rgba(0,0,0,0.06);
+      margin: 48px 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">
+    <h1>Level 1 — Free Tooltips &amp; Explainers</h1>
+    <p>Five patterns for helping families understand facility data without leaving the page</p>
+  </div>
+
+  <!-- ============ PATTERN 1: INLINE TOOLTIPS ============ -->
+  <div class="mockup-section">
+    <h2>Pattern 1: Inline Tooltips on Data Points</h2>
+    <p>Hover the (?) icons to see plain-English explanations appear next to each metric</p>
+
+    <div class="facility-card">
+      <h3>Staffing</h3>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          RN Hours Per Resident Day
+          <span class="tooltip-trigger">
+            ?
+            <div class="tooltip-content">
+              <div class="tooltip-title">What is RN HPRD?</div>
+              This is how many hours of care from a <strong>Registered Nurse</strong> each
+              resident gets in a 24-hour period. RNs are the most trained nurses on staff —
+              they assess conditions, manage medications, and catch problems early.
+              <div class="tooltip-benchmark">
+                National avg: 0.66 hrs &middot; Proposed federal minimum: 0.55 hrs
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class="stat-benchmark">
+          <div class="stat-value danger">0.42</div>
+          <div class="benchmark-bar"><div class="benchmark-fill danger" style="width: 36%"></div></div>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          Total Nurse Staffing HPRD
+          <span class="tooltip-trigger">
+            ?
+            <div class="tooltip-content">
+              <div class="tooltip-title">Total Nurse Staffing</div>
+              This combines hours from RNs, LPNs, and CNAs — everyone who provides
+              direct nursing care. A higher number means more hands available per resident.
+              <div class="tooltip-benchmark">
+                National avg: 3.82 hrs &middot; Proposed federal minimum: 3.48 hrs
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class="stat-benchmark">
+          <div class="stat-value warning">3.21</div>
+          <div class="benchmark-bar"><div class="benchmark-fill warning" style="width: 58%"></div></div>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          Zero-RN Days (Q3 2025)
+          <span class="tooltip-trigger">
+            ?
+            <div class="tooltip-content">
+              <div class="tooltip-title">What are Zero-RN Days?</div>
+              Days when this facility reported <strong>zero Registered Nurse hours</strong> on
+              the payroll. That means no RN was on duty — no one qualified to assess a
+              sudden change in condition, a medication reaction, or a fall injury.
+              <div class="tooltip-benchmark">
+                Any number above 0 is a concern. More than 10/quarter is a serious red flag.
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class="stat-benchmark">
+          <div class="stat-value danger">23 days</div>
+          <div class="benchmark-bar"><div class="benchmark-fill danger" style="width: 85%"></div></div>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          Staff Turnover (RN)
+          <span class="tooltip-trigger">
+            ?
+            <div class="tooltip-content">
+              <div class="tooltip-title">RN Turnover Rate</div>
+              The percentage of RNs who left this facility in the past year. High turnover
+              means residents constantly see new faces, care plans get lost in transitions,
+              and institutional knowledge disappears.
+              <div class="tooltip-benchmark">
+                National avg: ~52% &middot; Below 40% is considered good
+              </div>
+            </div>
+          </span>
+        </div>
+        <div class="stat-benchmark">
+          <div class="stat-value danger">78%</div>
+          <div class="benchmark-bar"><div class="benchmark-fill danger" style="width: 78%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============ PATTERN 2: CONTEXTUAL BANNERS ============ -->
+  <div class="mockup-section">
+    <h2>Pattern 2: Contextual Explainer Banners</h2>
+    <p>Automatically triggered based on facility data — appears above the relevant section when something needs context</p>
+
+    <div class="explainer-banner explainer-banner--danger">
+      <span class="explainer-icon">&#9888;</span>
+      <div class="explainer-text">
+        <h4>This facility had 23 days with no RN on duty last quarter</h4>
+        <p>
+          A Registered Nurse is the most qualified person on a nursing home floor. When
+          there's no RN, there's no one trained to assess a sudden change in condition,
+          catch a medication error, or make a clinical judgment in an emergency. The federal
+          government proposed requiring 24/7 RN coverage — that rule was repealed in December 2025.
+        </p>
+        <a class="learn-more">What should I do about this? &rarr;</a>
+      </div>
+    </div>
+
+    <div class="explainer-banner explainer-banner--warning">
+      <span class="explainer-icon">&#128260;</span>
+      <div class="explainer-text">
+        <h4>This facility changed ownership in 2024</h4>
+        <p>
+          When a nursing home is sold, care quality often dips during the transition — new management,
+          new policies, sometimes new staff. Research shows that facilities acquired by private equity
+          firms see a measurable decline in staffing levels in the first two years after acquisition.
+        </p>
+        <a class="learn-more">See the new owner's other facilities &rarr;</a>
+      </div>
+    </div>
+
+    <div class="explainer-banner explainer-banner--info">
+      <span class="explainer-icon">&#128176;</span>
+      <div class="explainer-text">
+        <h4>$1.2M in related-party transactions (FY2024)</h4>
+        <p>
+          This facility paid $1.2 million to companies owned or controlled by the same parent
+          corporation. This is legal, but it's a common way money gets extracted from facilities
+          that receive Medicare and Medicaid funding. It means some of the money that could go to
+          staffing, supplies, or maintenance is instead flowing to affiliated entities.
+        </p>
+        <a class="learn-more">View financial breakdown &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============ PATTERN 3: EXPANDABLE SECTIONS ============ -->
+  <div class="mockup-section">
+    <h2>Pattern 3: "What Does This Mean?" Expandable Sections</h2>
+    <p>Placed below complex data sections — family clicks to get the plain-English version</p>
+
+    <div class="expand-section open">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="expand-header-left">
+          <span class="icon">&#128218;</span>
+          <span>What do these staffing numbers actually mean?</span>
+        </div>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expand-body">
+        <p>
+          Nursing homes report their staffing to CMS through payroll records (called PBJ data).
+          These numbers tell you how much direct nursing care each resident gets in a 24-hour period.
+        </p>
+        <div class="key-point">
+          <span class="bullet">&#8226;</span>
+          <span><strong>RN HPRD of 0.42</strong> means each resident gets about 25 minutes of
+          Registered Nurse time per day. The national average is 40 minutes. Your facility is
+          providing about 36% less RN care than average.</span>
+        </div>
+        <div class="key-point">
+          <span class="bullet">&#8226;</span>
+          <span><strong>23 Zero-RN days</strong> means that for roughly 1 out of every 4 days
+          last quarter, there was no RN on duty at all. If your family member had a sudden
+          medical change on those days, the most qualified person available was an LPN.</span>
+        </div>
+        <div class="key-point">
+          <span class="bullet">&#8226;</span>
+          <span><strong>78% RN turnover</strong> means that over the past year, more than 3 out of
+          4 RNs who worked here have left. Your family member is almost certainly being cared for by
+          people who haven't been there long enough to know their medical history.</span>
+        </div>
+        <p>
+          <strong>What families can do:</strong> Ask the facility directly — "How many RNs are on
+          duty right now? How many were on duty last weekend?" If they can't or won't answer,
+          that tells you something.
+        </p>
+      </div>
+    </div>
+
+    <div class="expand-section">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="expand-header-left">
+          <span class="icon">&#128218;</span>
+          <span>What are deficiency tags and severity levels?</span>
+        </div>
+        <span class="expand-arrow">&#9660;</span>
+      </div>
+      <div class="expand-body">
+        <p>
+          When state inspectors visit a nursing home, they document problems as "deficiencies."
+          Each deficiency has a severity level that tells you how serious it was:
+        </p>
+        <div class="key-point">
+          <span class="bullet" style="color: var(--accent-red);">&#9679;</span>
+          <span><strong>Immediate Jeopardy (IJ)</strong> — The most serious. A resident was in
+          immediate danger of serious injury or death. This triggers urgent corrective action.</span>
+        </div>
+        <div class="key-point">
+          <span class="bullet" style="color: var(--accent-orange);">&#9679;</span>
+          <span><strong>Actual Harm</strong> — A resident was hurt, but not in immediate danger.
+          This could be a fall that caused a fracture, a medication error that caused a reaction,
+          or a pressure ulcer that developed from lack of repositioning.</span>
+        </div>
+        <div class="key-point">
+          <span class="bullet" style="color: var(--primary);">&#9679;</span>
+          <span><strong>No Actual Harm, Potential for More Than Minimal Harm</strong> — Nobody was
+          hurt yet, but inspectors found conditions that could lead to harm. Think of it as a
+          warning sign.</span>
+        </div>
+        <p>
+          <strong>Pattern vs. Isolated:</strong> "Pattern" means the problem was found across
+          multiple residents or over time. "Isolated" means it was a one-time occurrence. A
+          pattern of actual harm is much more concerning than an isolated deficiency.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============ PATTERN 4: DEFICIENCY TAG TOOLTIPS ============ -->
+  <div class="mockup-section">
+    <h2>Pattern 4: Deficiency Tag Tooltips</h2>
+    <p>Hover each tag to see what it means — these appear on inspection results</p>
+
+    <div class="facility-card">
+      <h3>Latest Inspection — March 2025</h3>
+      <div class="deficiency-tags">
+        <span class="def-tag def-tag--ij">
+          Immediate Jeopardy
+          <span class="tag-tooltip">
+            <strong>Immediate Jeopardy</strong>
+            The most serious finding. Inspectors determined a resident was in
+            immediate danger of serious injury or death. This requires the facility
+            to take corrective action within 23 days or face termination from Medicare/Medicaid.
+          </span>
+        </span>
+        <span class="def-tag def-tag--pattern">
+          Pattern
+          <span class="tag-tooltip">
+            <strong>Pattern of Deficiency</strong>
+            This problem wasn't a one-time event — inspectors found it affecting
+            multiple residents or occurring repeatedly. Patterns indicate systemic
+            issues, not just a single mistake.
+          </span>
+        </span>
+        <span class="def-tag def-tag--substandard">
+          Substandard Quality of Care
+          <span class="tag-tooltip">
+            <strong>Substandard Quality of Care</strong>
+            The facility failed to meet one or more of the federal requirements that
+            directly affect resident health and safety. This triggers additional oversight
+            and can affect the facility's star rating.
+          </span>
+        </span>
+        <span class="def-tag def-tag--isolated">
+          Isolated
+          <span class="tag-tooltip">
+            <strong>Isolated Deficiency</strong>
+            This problem affected a single resident or was a one-time occurrence.
+            Less concerning than a pattern, but still worth noting — especially
+            if combined with more severe tags.
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============ PATTERN 5: LEVEL 2 CTA ============ -->
+  <div class="mockup-section">
+    <h2>Pattern 5: "Get Expert Help" CTA</h2>
+    <p>Placed at the bottom of every facility page — the bridge from Level 1 (free) to Level 2 (paid)</p>
+
+    <div class="consult-cta">
+      <div class="consult-cta-text">
+        <h3>Not sure what this data means for your family?</h3>
+        <p>Get a personalized assessment from a nurse practitioner who can read between the numbers.</p>
+      </div>
+      <button class="consult-cta-btn">Ask a Clinician — $49</button>
+    </div>
+  </div>
+
+</body>
+</html>
