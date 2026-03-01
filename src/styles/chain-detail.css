@@ -166,6 +166,15 @@
   border-top: 1px solid #E2E8F0;
 }
 
+.ahca-callout-source a {
+  color: #2563EB;
+  text-decoration: none;
+}
+
+.ahca-callout-source a:hover {
+  text-decoration: underline;
+}
+
 /* ========================================
    CHAIN SUMMARY
    ======================================== */
@@ -501,11 +510,31 @@
   border: 1px solid #E2E8F0;
 }
 
+.chain-disclaimer-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary, #475569);
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-align: center;
+}
+
 .chain-disclaimer p {
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.6;
   text-align: center;
+}
+
+.chain-disclaimer a {
+  color: #2563EB;
+  text-decoration: none;
+}
+
+.chain-disclaimer a:hover {
+  text-decoration: underline;
 }
 
 /* ========================================
