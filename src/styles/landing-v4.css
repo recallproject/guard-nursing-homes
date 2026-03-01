@@ -161,7 +161,7 @@
 .v4-care-card.irf::before { background: var(--teal); }
 .v4-care-card.ltch::before { background: var(--amber); }
 
-.v4-care-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+.v4-care-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; padding-right: 95px; }
 .v4-care-card-icon {
   width: 40px; height: 40px; border-radius: 8px;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
@@ -216,6 +216,15 @@
 @keyframes v4-pulse-amber {
   0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
+}
+.v4-badge-dot-amber {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--badge-amber);
+  display: inline-block;
+  animation: v4-pulse-amber-dot 2.8s ease-in-out infinite;
+}
+@keyframes v4-pulse-amber-dot {
+  0%, 100% { opacity: 0.4; box-shadow: none; }
+  50% { opacity: 1; box-shadow: 0 0 6px rgba(217, 119, 6, 0.4); }
 }
 
 /* ── WHO USES THIS ── */

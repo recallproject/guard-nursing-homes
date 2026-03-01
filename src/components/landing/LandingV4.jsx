@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import RiskBadge from '../RiskBadge';
+import HowItWorks from './HowItWorks';
 import '../../styles/landing-v4.css';
+import '../../styles/how-it-works.css';
 
 function InlineSearch({ searchFacilities, placeholder, onFallbackSearch }) {
   const [query, setQuery] = useState('');
@@ -221,31 +223,8 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
         Based on CMS data through Q3 2025 · <Link to="/methodology">How we calculate these numbers</Link>
       </div>
 
-      {/* ═══════ 3. WHAT'S INCLUDED (01-06) ═══════ */}
-      <div className="v4-section">
-        <div className="v4-section-header">
-          <div className="v4-section-label">What's Included</div>
-          <div className="v4-section-title">Data in Every Facility Report</div>
-          <div className="v4-section-sub">Data you won't find assembled anywhere else</div>
-        </div>
-
-        <div className="v4-diff-grid">
-          {[
-            { num: '01', title: 'Staffing Verified Against Payroll', desc: "Cross-references what facilities report to the government against what they actually pay their staff. When those numbers don't match, the report flags it." },
-            { num: '02', title: 'Ownership Network Mapping', desc: "See every facility an operator runs — with quality distributions for the entire portfolio. Same owner, full picture across all their locations." },
-            { num: '03', title: 'Inspection Citations and Penalties', desc: "Federal and state inspection history, severity classifications, scope of harm, and monetary penalties — organized chronologically with context." },
-            { num: '04', title: 'Financial Transparency', desc: "Related-party transactions from federal cost reports. See where Medicare dollars flow between facility owners and their affiliated companies." },
-            { num: '05', title: 'Evidence PDFs', desc: "Exhibit-numbered, 10-section documents compiled from 12 CMS databases. Used by attorneys, journalists, regulators, and ombudsman offices." },
-            { num: '06', title: 'Facility-Specific Visit Questions', desc: "Not generic checklists. Questions generated from this facility's actual deficiencies, staffing gaps, and penalty history." },
-          ].map(d => (
-            <div className="v4-diff-card v4-fade-in" key={d.num}>
-              <div className="v4-diff-number">{d.num}</div>
-              <div className="v4-diff-title">{d.title}</div>
-              <div className="v4-diff-desc">{d.desc}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      {/* ═══════ 3. HOW IT WORKS — SCROLL ANIMATION ═══════ */}
+      <HowItWorks />
 
       {/* ═══════ 4. COVERAGE — CARE TYPE CARDS ═══════ */}
       <div className="v4-section">
@@ -288,7 +267,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
             { cls: 'dialysis', name: 'Dialysis Centers', count: '7,929 facilities', desc: 'Outpatient dialysis clinics and hospital-based units. Patient outcomes, infection rates, staffing, and quality star ratings.', tags: ['Quality Measures', 'Patient Outcomes', 'Inspections'], icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg> },
           ].map(card => (
             <div className={`v4-care-card ${card.cls} is-coming v4-fade-in`} key={card.cls}>
-              <div className="v4-card-badge coming">Coming Soon</div>
+              <div className="v4-card-badge coming"><span className="v4-badge-dot-amber"></span> Coming Soon</div>
               <div className="v4-care-card-header">
                 <div className={`v4-care-card-icon ${card.cls}`}>{card.icon}</div>
                 <div>
