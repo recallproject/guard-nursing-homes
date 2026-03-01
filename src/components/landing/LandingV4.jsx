@@ -208,15 +208,15 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
       <div className="v4-stats-row" ref={statsRef}>
         <div className="v4-stat-item v4-fade-in">
           <div className="v4-stat-value neutral" data-target="14713" data-prefix="" data-suffix="">0</div>
-          <div className="v4-stat-label">Every Medicare nursing home<br/>in America</div>
+          <div className="v4-stat-label">Facilities reviewed — every Medicare<br/>nursing home in America</div>
         </div>
         <div className="v4-stat-item v4-fade-in">
-          <div className="v4-stat-value warning" data-target="3" data-prefix="1 in " data-suffix="" data-is-ratio="true">1 in 0</div>
-          <div className="v4-stat-label">Had days with zero registered<br/>nurse hours</div>
+          <div className="v4-stat-value neutral" data-target="5" data-prefix="" data-suffix="">0</div>
+          <div className="v4-stat-label">Federal databases cross-referenced<br/>so you don't have to</div>
         </div>
         <div className="v4-stat-item v4-fade-in">
           <div className="v4-stat-value money" data-target="492" data-prefix="$" data-suffix="M">$0M</div>
-          <div className="v4-stat-label">In federal fines<br/>for violations</div>
+          <div className="v4-stat-label">In federal fines exposed —<br/>searchable by facility</div>
         </div>
       </div>
       <div className="v4-stats-source">
