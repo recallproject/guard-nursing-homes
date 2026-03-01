@@ -67,7 +67,7 @@
   text-align: center; padding: 50px 40px 40px; background: #FFFFFF; height: 100%;
 }
 .hiw-s1-eyebrow {
-  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
   letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--text-muted, #94A3B8); margin-bottom: 18px;
   opacity: 0; transition: opacity 0.4s;
@@ -121,7 +121,7 @@
 /* ── SCENE 2: EVIDENCE ── */
 .hiw-evidence-page { padding: 28px 36px; background: #FFFFFF; }
 .hiw-ev-header {
-  font-family: 'IBM Plex Mono', monospace; font-size: 9.5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: var(--text-muted, #94A3B8); margin-bottom: 22px;
   opacity: 0; transition: opacity 0.4s;
@@ -142,7 +142,7 @@
 .hiw-chk-name { font-size: 14px; font-weight: 600; color: var(--navy, #1D3557); }
 .hiw-chk-desc { font-size: 11.5px; color: var(--text-muted, #94A3B8); margin-top: 1px; }
 .hiw-chk-count {
-  font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
   color: var(--text-dim, #64748B); flex-shrink: 0;
 }
 .hiw-finding {
@@ -191,7 +191,7 @@
 .hiw-rpt-meta { font-size: 13px; color: var(--text-dim, #64748B); }
 .hiw-rpt-meta a { color: var(--blue, #2B6CB0); text-decoration: none; }
 .hiw-rpt-ccn {
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
   color: var(--text-muted, #94A3B8); margin-top: 4px;
 }
 
@@ -213,7 +213,7 @@
 .hiw-rpt-sec { margin-bottom: 14px; opacity: 0; transition: opacity 0.4s; }
 .hiw-rpt-sec.in { opacity: 1; }
 .hiw-rpt-sec-num {
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
   color: var(--blue, #2B6CB0); margin-bottom: 2px;
 }
 .hiw-rpt-sec-title {
@@ -230,7 +230,7 @@
 }
 .hiw-rpt-card.in { opacity: 1; transform: translateY(0); }
 .hiw-rpt-val {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: clamp(22px, 2.6vw, 30px); font-weight: 600; margin-bottom: 5px;
 }
 .hiw-rpt-val.val-red { color: #B42318; }
@@ -264,7 +264,7 @@
   padding: 40px; background: #FFFFFF; height: 100%;
 }
 .hiw-cta-num {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: clamp(38px, 5vw, 56px); font-weight: 700;
   color: var(--navy, #1D3557); margin-bottom: 4px;
   opacity: 0; transition: opacity 0.5s;
@@ -311,7 +311,7 @@
 }
 .hiw-scroll-hint.hidden { opacity: 0; }
 .hiw-scroll-hint-text {
-  font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-dim, #64748B);
 }

@@ -28,7 +28,7 @@
 }
 
 .legal-updated {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.82rem;
   color: var(--text-muted);
   margin-bottom: 2.5rem;
