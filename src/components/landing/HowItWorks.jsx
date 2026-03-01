@@ -324,6 +324,12 @@ export default function HowItWorks() {
             <div className="hiw-progress-fill" style={{ width: `${scrollProgress * 100}%` }} />
           </div>
 
+          {/* Keep scrolling hint — visible at end of scroll */}
+          <div className={`hiw-keep-scrolling ${scrollProgress > 0.92 ? 'visible' : ''}`}>
+            <span>Keep scrolling</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          </div>
+
         </div>
       </div>
     </div>

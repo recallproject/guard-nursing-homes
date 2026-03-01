@@ -55,7 +55,7 @@
 .v4-care-card.is-coming.v4-visible .v4-care-card-header,
 .v4-care-card.is-coming.v4-visible .v4-care-card-desc,
 .v4-care-card.is-coming.v4-visible .v4-care-card-data {
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 /* ── HERO ── */
@@ -190,14 +190,24 @@
 .v4-diff-title { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
 .v4-diff-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
 
+/* ── COVERAGE PANE ── */
+.v4-coverage-pane {
+  background: linear-gradient(180deg, #E8EDF4 0%, #F0F4F8 100%);
+  border-top: 1px solid #D7E0EA;
+  border-bottom: 1px solid #D7E0EA;
+  padding: 16px 0 32px;
+  margin: 32px 0;
+}
+
 /* ── CARE TYPE CARDS ── */
 .v4-care-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 14px; margin-bottom: 64px; }
 .v4-care-card {
-  background: var(--bg-white); border: 1px solid var(--border); border-radius: 10px;
+  background: #FFFFFF; border: 1px solid var(--border); border-radius: 10px;
   padding: 24px; position: relative; overflow: hidden; transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 16px rgba(29, 53, 87, 0.07), 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 .v4-care-card.is-live { cursor: pointer; }
-.v4-care-card.is-live:hover { border-color: var(--blue); box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+.v4-care-card.is-live:hover { border-color: var(--blue); box-shadow: 0 8px 24px rgba(29, 53, 87, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04); }
 .v4-care-card.is-coming { cursor: default; }
 .v4-care-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;

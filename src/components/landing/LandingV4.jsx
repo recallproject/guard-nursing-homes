@@ -230,13 +230,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ 3. HOW IT WORKS — SCROLL ANIMATION ═══════ */}
       <HowItWorks />
 
-      {/* Keep scrolling hint */}
-      <div className="v4-keep-scrolling">
-        <span>Keep scrolling</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
-      </div>
-
-      {/* ═══════ 4. COVERAGE — CARE TYPE CARDS ═══════ */}
+      <div className="v4-coverage-pane">
       <div className="v4-section">
         <div className="v4-section-header">
           <div className="v4-section-label">Coverage</div>
@@ -292,6 +286,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
             </div>
           ))}
         </div>
+      </div>
       </div>
 
       {/* ═══════ 5. WHO USES THIS ═══════ */}

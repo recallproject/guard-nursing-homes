@@ -36,6 +36,24 @@
   color: var(--navy, #1D3557);
 }
 
+/* Keep scrolling hint */
+.hiw-keep-scrolling {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted, #94A3B8);
+  opacity: 0; transform: translateY(-4px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hiw-keep-scrolling.visible { opacity: 1; transform: translateY(0); }
+.hiw-keep-scrolling svg {
+  animation: hiw-bounce 2s ease-in-out infinite;
+}
+@keyframes hiw-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
 /* Browser frame */
 .hiw-browser-wrap { width: 100%; max-width: 900px; }
 .hiw-browser {
