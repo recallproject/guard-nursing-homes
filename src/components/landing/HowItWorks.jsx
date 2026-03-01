@@ -127,6 +127,10 @@ export default function HowItWorks() {
       const scrolled = -rect.top;
       const total = scrollRef.current.offsetHeight - window.innerHeight;
       if (total <= 0) return;
+      
+      // Don't activate until the scroll container is at least partially in view
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      
       const p = Math.max(0, Math.min(1, scrolled / total));
       setScrollProgress(p);
       let s;
