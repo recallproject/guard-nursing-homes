@@ -17,6 +17,9 @@ export function ChainDetailPage() {
   const [sortBy, setSortBy] = useState('stars');
   const [sortDirection, setSortDirection] = useState('asc');
   const [ahcaData, setAhcaData] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [stateFilter, setStateFilter] = useState('');
+  const ITEMS_PER_PAGE = 25;
 
   const { data: facilityData, loading: facilityLoading } = useFacilityData();
   const { tier } = useSubscription();
@@ -128,6 +131,29 @@ export function ChainDetailPage() {
 
     return sorted;
   }, [chainFacilities, sortBy, sortDirection]);
+
+  // Get unique states for filter
+  const uniqueStates = useMemo(() => {
+    const states = [...new Set(chainFacilities.map(f => f.state).filter(Boolean))].sort();
+    return states;
+  }, [chainFacilities]);
+
+  // Filter + paginate
+  const filteredFacilities = useMemo(() => {
+    if (!stateFilter) return sortedFacilities;
+    return sortedFacilities.filter(f => f.state === stateFilter);
+  }, [sortedFacilities, stateFilter]);
+
+  const totalPages = Math.ceil(filteredFacilities.length / ITEMS_PER_PAGE);
+  const paginatedFacilities = filteredFacilities.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
+  // Reset page when sort/filter changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortBy, sortDirection, stateFilter]);
 
   // Compute chain summary stats
   const chainStats = useMemo(() => {
@@ -487,9 +513,23 @@ export function ChainDetailPage() {
       {/* All Facilities Table */}
       <div className="chain-facilities">
         <div className="facilities-header">
-          <h2>All Facilities ({chainFacilities.length})</h2>
-          <div className="facilities-hint">
-            Click column headers to sort
+          <h2>All Facilities ({filteredFacilities.length}{stateFilter ? ` in ${stateFilter}` : ''})</h2>
+          <div className="facilities-controls">
+            {uniqueStates.length > 1 && (
+              <select
+                className="state-filter"
+                value={stateFilter}
+                onChange={(e) => setStateFilter(e.target.value)}
+              >
+                <option value="">All States ({chainFacilities.length})</option>
+                {uniqueStates.map(st => (
+                  <option key={st} value={st}>
+                    {st} ({chainFacilities.filter(f => f.state === st).length})
+                  </option>
+                ))}
+              </select>
+            )}
+            <div className="facilities-hint">Click column headers to sort</div>
           </div>
         </div>
 
@@ -521,7 +561,7 @@ export function ChainDetailPage() {
               </tr>
             </thead>
             <tbody>
-              {sortedFacilities.map((facility) => (
+              {paginatedFacilities.map((facility) => (
                 <tr key={facility.ccn} className="facility-row">
                   <td className="facility-name-cell col-name">
                     <Link to={`/facility/${facility.ccn}`} className="facility-link">
@@ -547,6 +587,29 @@ export function ChainDetailPage() {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="facilities-pagination">
+            <button
+              className="pagination-btn"
+              onClick={() => { setCurrentPage(p => Math.max(1, p - 1)); tableRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+              disabled={currentPage === 1}
+            >
+              ← Previous
+            </button>
+            <span className="pagination-info">
+              Page {currentPage} of {totalPages} &nbsp;·&nbsp; Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredFacilities.length)} of {filteredFacilities.length}
+            </span>
+            <button
+              className="pagination-btn"
+              onClick={() => { setCurrentPage(p => Math.min(totalPages, p + 1)); tableRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }}
+              disabled={currentPage === totalPages}
+            >
+              Next →
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Data Sources */}

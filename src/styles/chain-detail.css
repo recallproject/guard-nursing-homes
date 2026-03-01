@@ -607,6 +607,81 @@
 }
 
 /* ========================================
+   FACILITIES TABLE CONTROLS
+   ======================================== */
+.facilities-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.state-filter {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border: 1px solid #D7E0EA;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #334155;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.state-filter:hover,
+.state-filter:focus {
+  border-color: #2B6CB0;
+  outline: none;
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+.facilities-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1rem;
+  margin-top: 0;
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  border-radius: 0 0 14px 14px;
+  border-left: 1px solid #D7E0EA;
+  border-right: 1px solid #D7E0EA;
+  border-bottom: 1px solid #D7E0EA;
+}
+
+.pagination-btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border: 1px solid #D7E0EA;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #2B6CB0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #EFF6FF;
+  border-color: #2B6CB0;
+}
+
+.pagination-btn:disabled {
+  color: #CBD5E1;
+  cursor: not-allowed;
+  border-color: #E2E8F0;
+}
+
+.pagination-info {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: #64748B;
+}
+
+/* ========================================
    DATA SOURCES / DISCLAIMER
    ======================================== */
 .chain-disclaimer {
