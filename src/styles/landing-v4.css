@@ -55,7 +55,7 @@
 .v4-care-card.is-coming.v4-visible .v4-care-card-header,
 .v4-care-card.is-coming.v4-visible .v4-care-card-desc,
 .v4-care-card.is-coming.v4-visible .v4-care-card-data {
-  opacity: 0.4;
+  opacity: 0.7;
 }
 
 /* ── HERO ── */
@@ -154,6 +154,21 @@
 }
 .v4-stats-source a { color: var(--text-dim); text-decoration: none; border-bottom: 1px dashed var(--text-muted); }
 .v4-stats-source a:hover { color: var(--blue); border-color: var(--blue); }
+
+/* ── KEEP SCROLLING HINT ── */
+.v4-keep-scrolling {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 32px 0 16px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted, #94A3B8);
+}
+.v4-keep-scrolling svg {
+  animation: v4-bounce 2s ease-in-out infinite;
+}
+@keyframes v4-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
 
 /* ── SECTIONS ── */
 .v4-section { max-width: 1060px; margin: 0 auto; padding: 0 40px; }
