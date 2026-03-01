@@ -10,7 +10,7 @@ import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/discrepancies.css';
 
 export default function DiscrepanciesPage() {
-  const COMING_SOON = true;
+  const COMING_SOON = false;
   const { getAllFacilities, loading, error } = useFacilityData();
   const { tier } = useSubscription();
   const navigate = useNavigate();

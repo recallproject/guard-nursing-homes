@@ -541,14 +541,14 @@ export function MethodologyPage() {
           <div className="methodology-freshness-grid">
             <div className="methodology-freshness-card">
               <h4>Current Data Version</h4>
-              <p className="methodology-data-date">Q4 2024</p>
-              <p className="methodology-data-note">Last updated: December 2024</p>
+              <p className="methodology-data-date">Q3 2025</p>
+              <p className="methodology-data-note">Last updated: December 2025</p>
             </div>
 
             <div className="methodology-freshness-card">
               <h4>Next Expected Update</h4>
-              <p className="methodology-data-date">Q1 2025</p>
-              <p className="methodology-data-note">Anticipated: March 2025</p>
+              <p className="methodology-data-date">Q4 2025</p>
+              <p className="methodology-data-note">Anticipated: March 2026</p>
             </div>
           </div>
 

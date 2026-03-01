@@ -22,12 +22,11 @@ export function TrendsPage() {
   const { data, getAllFacilities, loading, error } = useFacilityData();
   const [sortBy, setSortBy] = useState('risk');
   const [sortOrder, setSortOrder] = useState('desc');
-  const [notifyEmail, setNotifyEmail] = useState('');
 
   const headerRef = useRef(null);
   const snapshotRef = useRef(null);
   const stateTableRef = useRef(null);
-  const comingSoonRef = useRef(null);
+  const trendsRef = useRef(null);
 
   // Animate on mount
   useEffect(() => {
@@ -59,9 +58,9 @@ export function TrendsPage() {
       );
     }
 
-    if (comingSoonRef.current) {
+    if (trendsRef.current) {
       tl.fromTo(
-        comingSoonRef.current,
+        trendsRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
         '-=0.2'
@@ -210,11 +209,56 @@ export function TrendsPage() {
     return `$${Math.round(amount).toLocaleString()}`;
   };
 
-  const handleNotifySubmit = (e) => {
-    e.preventDefault();
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLSeBTqx33UcwI5WWWpas9b_UifCaSMStQyQZNxtuEsvh-hPg7w/viewform', '_blank');
-    setNotifyEmail('');
-  };
+  // Calculate national quarterly trends from facility staffing_trend data
+  const quarterLabels = ['Q2 2024', 'Q3 2024', 'Q4 2024', 'Q3 2025'];
+  const quarterlyNational = quarterLabels.map(q => {
+    const vals = { rn_hprd: [], total_hprd: [], zero_rn_pct: [], contractor_pct: [] };
+    facilities.forEach(fac => {
+      const trend = fac.staffing_trend;
+      if (!trend || !trend.quarters) return;
+      const idx = trend.quarters.indexOf(q);
+      if (idx === -1) return;
+      if (trend.rn_hprd?.[idx] != null) vals.rn_hprd.push(trend.rn_hprd[idx]);
+      if (trend.total_hprd?.[idx] != null) vals.total_hprd.push(trend.total_hprd[idx]);
+      if (trend.zero_rn_pct?.[idx] != null) vals.zero_rn_pct.push(trend.zero_rn_pct[idx]);
+      if (trend.contractor_pct?.[idx] != null) vals.contractor_pct.push(trend.contractor_pct[idx]);
+    });
+    const avg = arr => arr.length > 0 ? arr.reduce((s, v) => s + v, 0) / arr.length : 0;
+    return {
+      quarter: q,
+      n: vals.rn_hprd.length,
+      rn_hprd: avg(vals.rn_hprd),
+      total_hprd: avg(vals.total_hprd),
+      zero_rn_pct: avg(vals.zero_rn_pct),
+      contractor_pct: avg(vals.contractor_pct),
+    };
+  });
+
+  // Calculate staffing direction distribution
+  const directionCounts = { improving: 0, stable: 0, declining: 0, unknown: 0 };
+  facilities.forEach(fac => {
+    const dir = fac.staffing_trend?.direction || fac.trend_direction || 'unknown';
+    if (dir === 'improving') directionCounts.improving++;
+    else if (dir === 'declining') directionCounts.declining++;
+    else if (dir === 'stable') directionCounts.stable++;
+    else directionCounts.unknown++;
+  });
+  const dirTotal = directionCounts.improving + directionCounts.stable + directionCounts.declining;
+
+  // Aggregate penalty trends by year
+  const penaltyByYear = {};
+  facilities.forEach(fac => {
+    if (!fac.penalty_timeline) return;
+    fac.penalty_timeline.forEach(p => {
+      const yr = p.date?.substring(0, 4);
+      if (!yr || yr < '2023') return;
+      if (!penaltyByYear[yr]) penaltyByYear[yr] = { count: 0, total: 0 };
+      penaltyByYear[yr].count++;
+      penaltyByYear[yr].total += (p.amount || 0);
+    });
+  });
+  const penaltyYears = Object.keys(penaltyByYear).sort();
+  const maxPenaltyTotal = Math.max(...penaltyYears.map(y => penaltyByYear[y].total), 1);
 
   return (
     <div className="trends-page">
@@ -325,84 +369,119 @@ export function TrendsPage() {
         </div>
       </div>
 
-      {/* Coming Soon Section */}
-      <div className="trends-section trends-coming-soon" ref={comingSoonRef}>
-        <h2>Historical Trends — Coming Soon</h2>
+      {/* Historical Trends — Real Data */}
+      <div className="trends-section" ref={trendsRef}>
+        <h2>Staffing Trends by Quarter</h2>
         <p className="trends-section-subtitle">
-          Track changes over time to spot emerging patterns and systemic issues
+          National averages across {quarterlyNational[0]?.n?.toLocaleString()}+ facilities with quarterly PBJ data
         </p>
 
-        <div className="trends-coming-grid">
-          <div className="trends-coming-card">
-            <div className="trends-coming-lock">🔒</div>
-            <h3>Risk Score Trends Over Time</h3>
-            <p>Track facility risk scores month-by-month to identify deteriorating conditions</p>
-            <div className="trends-coming-placeholder">
-              <div className="trends-coming-chart-lines">
-                <div className="trends-coming-line"></div>
-                <div className="trends-coming-line"></div>
-                <div className="trends-coming-line"></div>
-              </div>
-            </div>
+        {/* Staffing bar chart */}
+        <div className="trends-chart-card">
+          <h3 className="trends-chart-title">Average RN Hours Per Resident Day</h3>
+          <div className="trends-bar-chart">
+            {quarterlyNational.map((q, i) => {
+              const maxVal = Math.max(...quarterlyNational.map(x => x.rn_hprd));
+              const pct = maxVal > 0 ? (q.rn_hprd / maxVal) * 100 : 0;
+              const isLatest = i === quarterlyNational.length - 1;
+              return (
+                <div key={q.quarter} className="trends-bar-group">
+                  <div className="trends-bar-value">{q.rn_hprd.toFixed(3)}</div>
+                  <div className="trends-bar-track">
+                    <div
+                      className={`trends-bar-fill ${isLatest ? 'bar-accent' : ''}`}
+                      style={{ height: `${pct}%` }}
+                    />
+                  </div>
+                  <div className="trends-bar-label">{q.quarter}</div>
+                </div>
+              );
+            })}
           </div>
+          <p className="trends-chart-insight">
+            RN hours have increased from {quarterlyNational[0]?.rn_hprd.toFixed(3)} to {quarterlyNational[quarterlyNational.length - 1]?.rn_hprd.toFixed(3)} HPRD
+            — a {(((quarterlyNational[quarterlyNational.length - 1]?.rn_hprd - quarterlyNational[0]?.rn_hprd) / quarterlyNational[0]?.rn_hprd) * 100).toFixed(1)}% change since Q2 2024.
+          </p>
+        </div>
 
-          <div className="trends-coming-card">
-            <div className="trends-coming-lock">🔒</div>
-            <h3>Staffing Changes by Quarter</h3>
-            <p>Monitor staffing levels and gaps across the industry</p>
-            <div className="trends-coming-placeholder">
-              <div className="trends-coming-chart-bars">
-                <div className="trends-coming-bar"></div>
-                <div className="trends-coming-bar"></div>
-                <div className="trends-coming-bar"></div>
-                <div className="trends-coming-bar"></div>
-              </div>
-            </div>
+        {/* Zero-RN trend */}
+        <div className="trends-chart-card">
+          <h3 className="trends-chart-title">Days with Zero RN Staffing (National Average %)</h3>
+          <div className="trends-bar-chart">
+            {quarterlyNational.map((q, i) => {
+              const maxVal = Math.max(...quarterlyNational.map(x => x.zero_rn_pct));
+              const pct = maxVal > 0 ? (q.zero_rn_pct / maxVal) * 100 : 0;
+              const isLatest = i === quarterlyNational.length - 1;
+              return (
+                <div key={q.quarter} className="trends-bar-group">
+                  <div className="trends-bar-value">{q.zero_rn_pct.toFixed(1)}%</div>
+                  <div className="trends-bar-track">
+                    <div
+                      className={`trends-bar-fill bar-danger ${isLatest ? 'bar-accent-green' : ''}`}
+                      style={{ height: `${pct}%` }}
+                    />
+                  </div>
+                  <div className="trends-bar-label">{q.quarter}</div>
+                </div>
+              );
+            })}
           </div>
+          <p className="trends-chart-insight">
+            Zero-RN days dropped from {quarterlyNational[0]?.zero_rn_pct.toFixed(1)}% to {quarterlyNational[quarterlyNational.length - 1]?.zero_rn_pct.toFixed(1)}%
+            — fewer facilities are going entire days without a registered nurse on site.
+          </p>
+        </div>
 
-          <div className="trends-coming-card">
-            <div className="trends-coming-lock">🔒</div>
-            <h3>Penalty Trends by State</h3>
-            <p>See how enforcement patterns shift state-by-state</p>
-            <div className="trends-coming-placeholder">
-              <div className="trends-coming-chart-map">
-                <div className="trends-coming-map-dot"></div>
-                <div className="trends-coming-map-dot"></div>
-                <div className="trends-coming-map-dot"></div>
+        {/* Direction distribution */}
+        <div className="trends-chart-card">
+          <h3 className="trends-chart-title">Staffing Trajectory (Q2 2024 → Q3 2025)</h3>
+          <div className="trends-direction-bars">
+            <div className="trends-direction-row">
+              <span className="trends-direction-label trends-dir-improving">Improving</span>
+              <div className="trends-direction-track">
+                <div className="trends-direction-fill dir-green" style={{ width: `${(directionCounts.improving / dirTotal * 100)}%` }} />
               </div>
+              <span className="trends-direction-value">{directionCounts.improving.toLocaleString()} ({(directionCounts.improving / dirTotal * 100).toFixed(1)}%)</span>
             </div>
-          </div>
-
-          <div className="trends-coming-card">
-            <div className="trends-coming-lock">🔒</div>
-            <h3>Ownership Change Tracking</h3>
-            <p>Track private equity acquisitions and ownership transfers</p>
-            <div className="trends-coming-placeholder">
-              <div className="trends-coming-chart-timeline">
-                <div className="trends-coming-timeline-dot"></div>
-                <div className="trends-coming-timeline-dot"></div>
-                <div className="trends-coming-timeline-dot"></div>
+            <div className="trends-direction-row">
+              <span className="trends-direction-label trends-dir-stable">Stable</span>
+              <div className="trends-direction-track">
+                <div className="trends-direction-fill dir-amber" style={{ width: `${(directionCounts.stable / dirTotal * 100)}%` }} />
               </div>
+              <span className="trends-direction-value">{directionCounts.stable.toLocaleString()} ({(directionCounts.stable / dirTotal * 100).toFixed(1)}%)</span>
+            </div>
+            <div className="trends-direction-row">
+              <span className="trends-direction-label trends-dir-declining">Declining</span>
+              <div className="trends-direction-track">
+                <div className="trends-direction-fill dir-red" style={{ width: `${(directionCounts.declining / dirTotal * 100)}%` }} />
+              </div>
+              <span className="trends-direction-value">{directionCounts.declining.toLocaleString()} ({(directionCounts.declining / dirTotal * 100).toFixed(1)}%)</span>
             </div>
           </div>
         </div>
 
-        {/* Notify Form */}
-        <div className="trends-notify-box">
-          <h3>Get notified when trends go live</h3>
-          <form className="trends-notify-form" onSubmit={handleNotifySubmit}>
-            <input
-              type="email"
-              className="input"
-              placeholder="your@email.com"
-              value={notifyEmail}
-              onChange={(e) => setNotifyEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn btn-primary">
-              Notify Me
-            </button>
-          </form>
+        {/* Penalty trends by year */}
+        <div className="trends-chart-card">
+          <h3 className="trends-chart-title">Penalty Enforcement by Year</h3>
+          <div className="trends-bar-chart trends-bar-chart-wide">
+            {penaltyYears.map((yr, i) => {
+              const pct = (penaltyByYear[yr].total / maxPenaltyTotal) * 100;
+              const isLatest = i === penaltyYears.length - 1;
+              return (
+                <div key={yr} className="trends-bar-group">
+                  <div className="trends-bar-value">{formatCurrency(penaltyByYear[yr].total)}</div>
+                  <div className="trends-bar-track">
+                    <div
+                      className={`trends-bar-fill bar-penalty ${isLatest ? 'bar-accent' : ''}`}
+                      style={{ height: `${pct}%` }}
+                    />
+                  </div>
+                  <div className="trends-bar-label">{yr}</div>
+                  <div className="trends-bar-sublabel">{penaltyByYear[yr].count.toLocaleString()} penalties</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       {/* Disclaimer */}
