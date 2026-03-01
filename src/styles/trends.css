@@ -709,3 +709,95 @@
     font-size: 0.75rem;
   }
 }
+
+
+/* ========================================
+   CHARTS GRID — 2x2 layout
+   ======================================== */
+.trends-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media (max-width: 900px) {
+  .trends-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   STATE SEARCH + COMPACT VIEW
+   ======================================== */
+.trends-state-search {
+  margin-bottom: 1.25rem;
+}
+
+.trends-state-search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.65rem 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: var(--text-white);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.trends-state-search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+}
+
+.trends-state-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.trends-compact-group {
+  margin-bottom: 1.5rem;
+}
+
+.trends-compact-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.trends-label-worst {
+  color: #DC2626;
+}
+
+.trends-label-best {
+  color: #059669;
+}
+
+.trends-table-compact {
+  margin-bottom: 0;
+}
+
+.trends-show-all-btn {
+  display: block;
+  margin: 1.5rem auto 0;
+  padding: 0.65rem 1.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.trends-show-all-btn:hover {
+  background: var(--primary);
+  color: #FFFFFF;
+}

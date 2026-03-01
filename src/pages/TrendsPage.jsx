@@ -22,6 +22,8 @@ export function TrendsPage() {
   const { data, getAllFacilities, loading, error } = useFacilityData();
   const [sortBy, setSortBy] = useState('risk');
   const [sortOrder, setSortOrder] = useState('desc');
+  const [showAllStates, setShowAllStates] = useState(false);
+  const [stateSearch, setStateSearch] = useState('');
 
   const headerRef = useRef(null);
   const snapshotRef = useRef(null);
@@ -260,6 +262,27 @@ export function TrendsPage() {
   const penaltyYears = Object.keys(penaltyByYear).sort();
   const maxPenaltyTotal = Math.max(...penaltyYears.map(y => penaltyByYear[y].total), 1);
 
+  // Determine which states to show
+  const getDisplayStates = () => {
+    // If searching, filter by search
+    if (stateSearch.trim()) {
+      return sortedStates.filter(s =>
+        s.name.toLowerCase().includes(stateSearch.toLowerCase()) ||
+        s.code.toLowerCase().includes(stateSearch.toLowerCase())
+      );
+    }
+    // If expanded, show all
+    if (showAllStates) return sortedStates;
+    // Default: top 5 worst + top 5 best
+    const byRisk = [...stateArray].sort((a, b) => parseFloat(b.avgRisk) - parseFloat(a.avgRisk));
+    const worst5 = byRisk.slice(0, 5);
+    const best5 = byRisk.slice(-5).reverse();
+    return { worst5, best5 };
+  };
+
+  const displayStates = getDisplayStates();
+  const isCompactView = !showAllStates && !stateSearch.trim();
+
   return (
     <div className="trends-page">
       <Helmet>
@@ -267,10 +290,11 @@ export function TrendsPage() {
         <meta name="description" content="National nursing home quality trends. Staffing levels, deficiency patterns, and penalty data across all 14,713 facilities." />
         <link rel="canonical" href="https://oversightreports.com/trends" />
       </Helmet>
+
       {/* Header */}
       <div className="trends-header" ref={headerRef}>
         <h1>Industry Trends</h1>
-        <p className="trends-subtitle">National nursing home quality snapshot</p>
+        <p className="trends-subtitle">National nursing home quality snapshot across {totalFacilities.toLocaleString()} facilities</p>
       </div>
 
       {/* Current Snapshot */}
@@ -312,178 +336,268 @@ export function TrendsPage() {
         </div>
       </div>
 
-      {/* State Comparison */}
-      <div className="trends-section">
-        <h2>State Comparison</h2>
-        <p className="trends-section-subtitle">
-          Ranked by average risk score — facilities vary widely by state
-        </p>
-        <div className="trends-table-wrapper" ref={stateTableRef}>
-          <table className="trends-table">
-            <thead>
-              <tr>
-                <th onClick={() => handleSort('name')} className="sortable">
-                  State {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
-                <th onClick={() => handleSort('facilities')} className="sortable">
-                  Facilities {sortBy === 'facilities' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
-                <th onClick={() => handleSort('risk')} className="sortable">
-                  Avg Risk {sortBy === 'risk' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
-                <th onClick={() => handleSort('stars')} className="sortable">
-                  Avg Stars {sortBy === 'stars' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
-                <th onClick={() => handleSort('danger')} className="sortable">
-                  % Serious Danger {sortBy === 'danger' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
-                <th onClick={() => handleSort('fines')} className="sortable">
-                  Avg Fines {sortBy === 'fines' && (sortOrder === 'asc' ? '↑' : '↓')}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedStates.map(state => (
-                <tr
-                  key={state.code}
-                  className={top5Worst.includes(state.code) ? 'trends-row-highlight' : ''}
-                >
-                  <td className="trends-state-name">{state.name}</td>
-                  <td className="mono">{state.facilities.toLocaleString()}</td>
-                  <td>
-                    <span className={`trends-risk-badge ${
-                      parseFloat(state.avgRisk) >= 40 ? 'risk-high' :
-                      parseFloat(state.avgRisk) >= 20 ? 'risk-moderate' :
-                      'risk-low'
-                    }`}>
-                      {state.avgRisk}
-                    </span>
-                  </td>
-                  <td className="trends-stars">{state.avgStars}</td>
-                  <td className="mono">{state.seriousDangerPct}%</td>
-                  <td className="mono">{formatCurrency(state.avgFines)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Historical Trends — Real Data */}
+      {/* ====== TRENDS FIRST ====== */}
       <div className="trends-section" ref={trendsRef}>
         <h2>Staffing Trends by Quarter</h2>
         <p className="trends-section-subtitle">
           National averages across {quarterlyNational[0]?.n?.toLocaleString()}+ facilities with quarterly PBJ data
         </p>
 
-        {/* Staffing bar chart */}
-        <div className="trends-chart-card">
-          <h3 className="trends-chart-title">Average RN Hours Per Resident Day</h3>
-          <div className="trends-bar-chart">
-            {quarterlyNational.map((q, i) => {
-              const maxVal = Math.max(...quarterlyNational.map(x => x.rn_hprd));
-              const pct = maxVal > 0 ? (q.rn_hprd / maxVal) * 100 : 0;
-              const isLatest = i === quarterlyNational.length - 1;
-              return (
-                <div key={q.quarter} className="trends-bar-group">
-                  <div className="trends-bar-value">{q.rn_hprd.toFixed(3)}</div>
-                  <div className="trends-bar-track">
-                    <div
-                      className={`trends-bar-fill ${isLatest ? 'bar-accent' : ''}`}
-                      style={{ height: `${pct}%` }}
-                    />
+        <div className="trends-charts-grid">
+          {/* RN HPRD chart */}
+          <div className="trends-chart-card">
+            <h3 className="trends-chart-title">RN Hours Per Resident Day</h3>
+            <div className="trends-bar-chart">
+              {quarterlyNational.map((q, i) => {
+                const maxVal = Math.max(...quarterlyNational.map(x => x.rn_hprd));
+                const pct = maxVal > 0 ? (q.rn_hprd / maxVal) * 100 : 0;
+                const isLatest = i === quarterlyNational.length - 1;
+                return (
+                  <div key={q.quarter} className="trends-bar-group">
+                    <div className="trends-bar-value">{q.rn_hprd.toFixed(3)}</div>
+                    <div className="trends-bar-track">
+                      <div className={`trends-bar-fill ${isLatest ? 'bar-accent' : ''}`} style={{ height: `${pct}%` }} />
+                    </div>
+                    <div className="trends-bar-label">{q.quarter}</div>
                   </div>
-                  <div className="trends-bar-label">{q.quarter}</div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <p className="trends-chart-insight">
+              +{(((quarterlyNational[quarterlyNational.length - 1]?.rn_hprd - quarterlyNational[0]?.rn_hprd) / quarterlyNational[0]?.rn_hprd) * 100).toFixed(1)}% since Q2 2024
+            </p>
           </div>
-          <p className="trends-chart-insight">
-            RN hours have increased from {quarterlyNational[0]?.rn_hprd.toFixed(3)} to {quarterlyNational[quarterlyNational.length - 1]?.rn_hprd.toFixed(3)} HPRD
-            — a {(((quarterlyNational[quarterlyNational.length - 1]?.rn_hprd - quarterlyNational[0]?.rn_hprd) / quarterlyNational[0]?.rn_hprd) * 100).toFixed(1)}% change since Q2 2024.
-          </p>
-        </div>
 
-        {/* Zero-RN trend */}
-        <div className="trends-chart-card">
-          <h3 className="trends-chart-title">Days with Zero RN Staffing (National Average %)</h3>
-          <div className="trends-bar-chart">
-            {quarterlyNational.map((q, i) => {
-              const maxVal = Math.max(...quarterlyNational.map(x => x.zero_rn_pct));
-              const pct = maxVal > 0 ? (q.zero_rn_pct / maxVal) * 100 : 0;
-              const isLatest = i === quarterlyNational.length - 1;
-              return (
-                <div key={q.quarter} className="trends-bar-group">
-                  <div className="trends-bar-value">{q.zero_rn_pct.toFixed(1)}%</div>
-                  <div className="trends-bar-track">
-                    <div
-                      className={`trends-bar-fill bar-danger ${isLatest ? 'bar-accent-green' : ''}`}
-                      style={{ height: `${pct}%` }}
-                    />
+          {/* Zero-RN chart */}
+          <div className="trends-chart-card">
+            <h3 className="trends-chart-title">Days with Zero RN Staffing</h3>
+            <div className="trends-bar-chart">
+              {quarterlyNational.map((q, i) => {
+                const maxVal = Math.max(...quarterlyNational.map(x => x.zero_rn_pct));
+                const pct = maxVal > 0 ? (q.zero_rn_pct / maxVal) * 100 : 0;
+                const isLatest = i === quarterlyNational.length - 1;
+                return (
+                  <div key={q.quarter} className="trends-bar-group">
+                    <div className="trends-bar-value">{q.zero_rn_pct.toFixed(1)}%</div>
+                    <div className="trends-bar-track">
+                      <div className={`trends-bar-fill bar-danger ${isLatest ? 'bar-accent-green' : ''}`} style={{ height: `${pct}%` }} />
+                    </div>
+                    <div className="trends-bar-label">{q.quarter}</div>
                   </div>
-                  <div className="trends-bar-label">{q.quarter}</div>
+                );
+              })}
+            </div>
+            <p className="trends-chart-insight">
+              Dropped from {quarterlyNational[0]?.zero_rn_pct.toFixed(1)}% to {quarterlyNational[quarterlyNational.length - 1]?.zero_rn_pct.toFixed(1)}%
+            </p>
+          </div>
+
+          {/* Direction distribution */}
+          <div className="trends-chart-card">
+            <h3 className="trends-chart-title">Staffing Trajectory</h3>
+            <div className="trends-direction-bars">
+              <div className="trends-direction-row">
+                <span className="trends-direction-label trends-dir-improving">Improving</span>
+                <div className="trends-direction-track">
+                  <div className="trends-direction-fill dir-green" style={{ width: `${(directionCounts.improving / dirTotal * 100)}%` }} />
                 </div>
-              );
-            })}
+                <span className="trends-direction-value">{(directionCounts.improving / dirTotal * 100).toFixed(0)}%</span>
+              </div>
+              <div className="trends-direction-row">
+                <span className="trends-direction-label trends-dir-stable">Stable</span>
+                <div className="trends-direction-track">
+                  <div className="trends-direction-fill dir-amber" style={{ width: `${(directionCounts.stable / dirTotal * 100)}%` }} />
+                </div>
+                <span className="trends-direction-value">{(directionCounts.stable / dirTotal * 100).toFixed(0)}%</span>
+              </div>
+              <div className="trends-direction-row">
+                <span className="trends-direction-label trends-dir-declining">Declining</span>
+                <div className="trends-direction-track">
+                  <div className="trends-direction-fill dir-red" style={{ width: `${(directionCounts.declining / dirTotal * 100)}%` }} />
+                </div>
+                <span className="trends-direction-value">{(directionCounts.declining / dirTotal * 100).toFixed(0)}%</span>
+              </div>
+            </div>
+            <p className="trends-chart-insight">
+              {directionCounts.declining.toLocaleString()} facilities declining staffing over 4 quarters
+            </p>
           </div>
-          <p className="trends-chart-insight">
-            Zero-RN days dropped from {quarterlyNational[0]?.zero_rn_pct.toFixed(1)}% to {quarterlyNational[quarterlyNational.length - 1]?.zero_rn_pct.toFixed(1)}%
-            — fewer facilities are going entire days without a registered nurse on site.
-          </p>
-        </div>
 
-        {/* Direction distribution */}
-        <div className="trends-chart-card">
-          <h3 className="trends-chart-title">Staffing Trajectory (Q2 2024 → Q3 2025)</h3>
-          <div className="trends-direction-bars">
-            <div className="trends-direction-row">
-              <span className="trends-direction-label trends-dir-improving">Improving</span>
-              <div className="trends-direction-track">
-                <div className="trends-direction-fill dir-green" style={{ width: `${(directionCounts.improving / dirTotal * 100)}%` }} />
-              </div>
-              <span className="trends-direction-value">{directionCounts.improving.toLocaleString()} ({(directionCounts.improving / dirTotal * 100).toFixed(1)}%)</span>
-            </div>
-            <div className="trends-direction-row">
-              <span className="trends-direction-label trends-dir-stable">Stable</span>
-              <div className="trends-direction-track">
-                <div className="trends-direction-fill dir-amber" style={{ width: `${(directionCounts.stable / dirTotal * 100)}%` }} />
-              </div>
-              <span className="trends-direction-value">{directionCounts.stable.toLocaleString()} ({(directionCounts.stable / dirTotal * 100).toFixed(1)}%)</span>
-            </div>
-            <div className="trends-direction-row">
-              <span className="trends-direction-label trends-dir-declining">Declining</span>
-              <div className="trends-direction-track">
-                <div className="trends-direction-fill dir-red" style={{ width: `${(directionCounts.declining / dirTotal * 100)}%` }} />
-              </div>
-              <span className="trends-direction-value">{directionCounts.declining.toLocaleString()} ({(directionCounts.declining / dirTotal * 100).toFixed(1)}%)</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Penalty trends by year */}
-        <div className="trends-chart-card">
-          <h3 className="trends-chart-title">Penalty Enforcement by Year</h3>
-          <div className="trends-bar-chart trends-bar-chart-wide">
-            {penaltyYears.map((yr, i) => {
-              const pct = (penaltyByYear[yr].total / maxPenaltyTotal) * 100;
-              const isLatest = i === penaltyYears.length - 1;
-              return (
-                <div key={yr} className="trends-bar-group">
-                  <div className="trends-bar-value">{formatCurrency(penaltyByYear[yr].total)}</div>
-                  <div className="trends-bar-track">
-                    <div
-                      className={`trends-bar-fill bar-penalty ${isLatest ? 'bar-accent' : ''}`}
-                      style={{ height: `${pct}%` }}
-                    />
+          {/* Penalty trends */}
+          <div className="trends-chart-card">
+            <h3 className="trends-chart-title">Penalty Enforcement</h3>
+            <div className="trends-bar-chart trends-bar-chart-wide">
+              {penaltyYears.map((yr, i) => {
+                const pct = (penaltyByYear[yr].total / maxPenaltyTotal) * 100;
+                const isLatest = i === penaltyYears.length - 1;
+                return (
+                  <div key={yr} className="trends-bar-group">
+                    <div className="trends-bar-value">{formatCurrency(penaltyByYear[yr].total)}</div>
+                    <div className="trends-bar-track">
+                      <div className={`trends-bar-fill bar-penalty ${isLatest ? 'bar-accent' : ''}`} style={{ height: `${pct}%` }} />
+                    </div>
+                    <div className="trends-bar-label">{yr}</div>
+                    <div className="trends-bar-sublabel">{penaltyByYear[yr].count.toLocaleString()} penalties</div>
                   </div>
-                  <div className="trends-bar-label">{yr}</div>
-                  <div className="trends-bar-sublabel">{penaltyByYear[yr].count.toLocaleString()} penalties</div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* ====== STATE COMPARISON — COMPACT ====== */}
+      <div className="trends-section">
+        <h2>State Comparison</h2>
+        <p className="trends-section-subtitle">
+          How does your state stack up? Top and bottom states by average risk score.
+        </p>
+
+        {/* State search */}
+        <div className="trends-state-search">
+          <input
+            type="text"
+            className="trends-state-search-input"
+            placeholder="Search for a state..."
+            value={stateSearch}
+            onChange={(e) => { setStateSearch(e.target.value); setShowAllStates(false); }}
+          />
+        </div>
+
+        <div className="trends-table-wrapper" ref={stateTableRef}>
+          {isCompactView ? (
+            <>
+              {/* Worst 5 */}
+              <div className="trends-compact-group">
+                <h3 className="trends-compact-label trends-label-worst">Highest Risk States</h3>
+                <table className="trends-table trends-table-compact">
+                  <thead>
+                    <tr>
+                      <th>State</th>
+                      <th>Facilities</th>
+                      <th>Avg Risk</th>
+                      <th>Avg Stars</th>
+                      <th>% Serious Danger</th>
+                      <th>Avg Fines</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {displayStates.worst5?.map(state => (
+                      <tr key={state.code} className="trends-row-highlight">
+                        <td className="trends-state-name">{state.name}</td>
+                        <td className="mono">{state.facilities.toLocaleString()}</td>
+                        <td>
+                          <span className={`trends-risk-badge ${parseFloat(state.avgRisk) >= 40 ? 'risk-high' : parseFloat(state.avgRisk) >= 20 ? 'risk-moderate' : 'risk-low'}`}>
+                            {state.avgRisk}
+                          </span>
+                        </td>
+                        <td className="trends-stars">{state.avgStars}</td>
+                        <td className="mono">{state.seriousDangerPct}%</td>
+                        <td className="mono">{formatCurrency(state.avgFines)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Best 5 */}
+              <div className="trends-compact-group">
+                <h3 className="trends-compact-label trends-label-best">Lowest Risk States</h3>
+                <table className="trends-table trends-table-compact">
+                  <thead>
+                    <tr>
+                      <th>State</th>
+                      <th>Facilities</th>
+                      <th>Avg Risk</th>
+                      <th>Avg Stars</th>
+                      <th>% Serious Danger</th>
+                      <th>Avg Fines</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {displayStates.best5?.map(state => (
+                      <tr key={state.code}>
+                        <td className="trends-state-name">{state.name}</td>
+                        <td className="mono">{state.facilities.toLocaleString()}</td>
+                        <td>
+                          <span className={`trends-risk-badge ${parseFloat(state.avgRisk) >= 40 ? 'risk-high' : parseFloat(state.avgRisk) >= 20 ? 'risk-moderate' : 'risk-low'}`}>
+                            {state.avgRisk}
+                          </span>
+                        </td>
+                        <td className="trends-stars">{state.avgStars}</td>
+                        <td className="mono">{state.seriousDangerPct}%</td>
+                        <td className="mono">{formatCurrency(state.avgFines)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <button
+                className="trends-show-all-btn"
+                onClick={() => setShowAllStates(true)}
+              >
+                Show all {stateArray.length} states
+              </button>
+            </>
+          ) : (
+            <>
+              <table className="trends-table">
+                <thead>
+                  <tr>
+                    <th onClick={() => handleSort('name')} className="sortable">
+                      State {sortBy === 'name' && (sortOrder === 'asc' ? '↑' : '↓')}
+                    </th>
+                    <th onClick={() => handleSort('facilities')} className="sortable">
+                      Facilities {sortBy === 'facilities' && (sortOrder === 'asc' ? '↑' : '↓')}
+                    </th>
+                    <th onClick={() => handleSort('risk')} className="sortable">
+                      Avg Risk {sortBy === 'risk' && (sortOrder === 'asc' ? '↑' : '↓')}
+                    </th>
+                    <th onClick={() => handleSort('stars')} className="sortable">
+                      Avg Stars {sortBy === 'stars' && (sortOrder === 'asc' ? '↑' : '↓')}
+                    </th>
+                    <th onClick={() => handleSort('danger')} className="sortable">
+                      % Serious Danger {sortBy === 'danger' && (sortOrder === 'asc' ? '↑' : '↓')}
+                    </th>
+                    <th onClick={() => handleSort('fines')} className="sortable">
+                      Avg Fines {sortBy === 'fines' && (sortOrder === 'asc' ? '↑' : '↓')}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(Array.isArray(displayStates) ? displayStates : sortedStates).map(state => (
+                    <tr
+                      key={state.code}
+                      className={top5Worst.includes(state.code) ? 'trends-row-highlight' : ''}
+                    >
+                      <td className="trends-state-name">{state.name}</td>
+                      <td className="mono">{state.facilities.toLocaleString()}</td>
+                      <td>
+                        <span className={`trends-risk-badge ${parseFloat(state.avgRisk) >= 40 ? 'risk-high' : parseFloat(state.avgRisk) >= 20 ? 'risk-moderate' : 'risk-low'}`}>
+                          {state.avgRisk}
+                        </span>
+                      </td>
+                      <td className="trends-stars">{state.avgStars}</td>
+                      <td className="mono">{state.seriousDangerPct}%</td>
+                      <td className="mono">{formatCurrency(state.avgFines)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {showAllStates && (
+                <button
+                  className="trends-show-all-btn"
+                  onClick={() => setShowAllStates(false)}
+                >
+                  Show top & bottom only
+                </button>
+              )}
+            </>
+          )}
+        </div>
+      </div>
+
       {/* Disclaimer */}
       <div className="screening-disclaimer" style={{ maxWidth: '1000px', margin: '2rem auto 3rem' }}>
         The Oversight Report identifies patterns and discrepancies in publicly available federal data. These indicators do not constitute evidence of wrongdoing. If you have concerns about a facility, contact your state survey agency or the HHS Office of Inspector General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
