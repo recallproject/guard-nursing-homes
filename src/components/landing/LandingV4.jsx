@@ -205,22 +205,26 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
       </section>
 
       {/* ═══════ 2. IMPACT STATS ═══════ */}
-      <div className="v4-stats-row" ref={statsRef}>
-        <div className="v4-stat-item v4-fade-in">
-          <div className="v4-stat-value neutral" data-target="14713" data-prefix="" data-suffix="">0</div>
-          <div className="v4-stat-label">Facilities reviewed — every Medicare<br/>nursing home in America</div>
+      <div className="v4-stats-strip">
+        <div className="v4-stats-panel">
+          <div className="v4-stats-row" ref={statsRef}>
+            <div className="v4-stat-item v4-fade-in">
+              <div className="v4-stat-value neutral" data-target="14713" data-prefix="" data-suffix="">0</div>
+              <div className="v4-stat-label">Facilities reviewed — every Medicare<br/>nursing home in America</div>
+            </div>
+            <div className="v4-stat-item v4-fade-in">
+              <div className="v4-stat-value neutral" data-target="6" data-prefix="" data-suffix="">0</div>
+              <div className="v4-stat-label">Federal databases cross-referenced<br/>so you don't have to</div>
+            </div>
+            <div className="v4-stat-item v4-fade-in">
+              <div className="v4-stat-value money" data-target="492" data-prefix="$" data-suffix="M">$0M</div>
+              <div className="v4-stat-label">In federal fines exposed —<br/>searchable by facility</div>
+            </div>
+          </div>
+          <div className="v4-stats-source">
+            Based on CMS data through Q3 2025 · <Link to="/methodology">How we calculate these numbers</Link>
+          </div>
         </div>
-        <div className="v4-stat-item v4-fade-in">
-          <div className="v4-stat-value neutral" data-target="6" data-prefix="" data-suffix="">0</div>
-          <div className="v4-stat-label">Federal databases cross-referenced<br/>so you don't have to</div>
-        </div>
-        <div className="v4-stat-item v4-fade-in">
-          <div className="v4-stat-value money" data-target="492" data-prefix="$" data-suffix="M">$0M</div>
-          <div className="v4-stat-label">In federal fines exposed —<br/>searchable by facility</div>
-        </div>
-      </div>
-      <div className="v4-stats-source">
-        Based on CMS data through Q3 2025 · <Link to="/methodology">How we calculate these numbers</Link>
       </div>
 
       {/* ═══════ 3. HOW IT WORKS — SCROLL ANIMATION ═══════ */}

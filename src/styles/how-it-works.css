@@ -31,7 +31,7 @@
 .hiw-browser-wrap { width: 100%; max-width: 900px; }
 .hiw-browser {
   background: #FFFFFF; border-radius: 12px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.03);
+  box-shadow: 0 16px 64px rgba(0,0,0,0.12), 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
   border: 1px solid var(--border, #D7E0EA); overflow: hidden;
 }
 .hiw-browser-bar {

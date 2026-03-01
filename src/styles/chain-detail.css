@@ -452,17 +452,17 @@
 .facilities-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
-/* Column widths — must add up to 100% */
-.col-name   { width: 26%; }
-.col-city   { width: 14%; }
-.col-state  { width: 8%; text-align: center; }
-.col-stars  { width: 12%; text-align: center; }
-.col-hprd   { width: 12%; text-align: right; }
-.col-zero   { width: 13%; text-align: right; }
-.col-fines  { width: 15%; text-align: right; }
+/* Column widths — min-widths to prevent collapse */
+.col-name   { min-width: 240px; }
+.col-city   { min-width: 100px; }
+.col-state  { min-width: 50px; text-align: center; }
+.col-stars  { min-width: 100px; text-align: center; }
+.col-hprd   { min-width: 90px; text-align: right; }
+.col-zero   { min-width: 100px; text-align: right; }
+.col-fines  { min-width: 100px; text-align: right; }
 
 .facilities-table thead {
   background: #F8FAFC;
@@ -526,8 +526,8 @@
 
 .facility-name-cell {
   font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .facility-name-cell .facility-link {
