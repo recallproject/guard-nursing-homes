@@ -324,17 +324,16 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ 7. BUILDER ═══════ */}
       <div className="v4-builder-section">
         <div className="v4-builder-label">Who Built This</div>
-        <div className="v4-builder-name">Rob Benard, NP</div>
-        <div className="v4-builder-title-text">Nurse Practitioner — Acute Care, Critical Care, Addiction Medicine</div>
+        <div className="v4-builder-name">Robert Benard, NP</div>
+        <div className="v4-builder-title-text">Nurse Practitioner · AGACNP-BC, PMHNP-BC</div>
         <div className="v4-builder-bio">
           Twenty years at the bedside taught me that families deserve better tools for the hardest decisions in healthcare. The Oversight Report exists because the data was always public — nobody had assembled it into something usable.
         </div>
         <div className="v4-builder-creds">
           <span className="v4-builder-cred">Highland Hospital / Sutter Health</span>
-          <span className="v4-builder-cred">AMERSA 2024</span>
           <span className="v4-builder-cred">Cited: Harvard Data Science Review</span>
         </div>
-        <Link to="/methodology" className="v4-builder-link">Read the full story</Link>
+        <Link to="/about" className="v4-builder-link">Read the full story</Link>
       </div>
 
       {/* ═══════ 8. FINAL CTA ═══════ */}
@@ -355,7 +354,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
           <Link to="/methodology" className="v4-footer-link">Methodology</Link>
           <Link to="/methodology" className="v4-footer-link">Data Sources</Link>
           <Link to="/pricing" className="v4-footer-link">Evidence PDFs</Link>
-          <Link to="/methodology" className="v4-footer-link">About</Link>
+          <Link to="/about" className="v4-footer-link">About</Link>
           <a href="mailto:contact@oversightreports.com" className="v4-footer-link">Contact</a>
         </div>
       </footer>

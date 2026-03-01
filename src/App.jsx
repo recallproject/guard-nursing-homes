@@ -18,7 +18,9 @@ import { PrivacyPage } from './pages/PrivacyPage';
 import { ChainsPage } from './pages/ChainsPage';
 import { ChainDetailPage } from './pages/ChainDetailPage';
 import HighRiskPage from './pages/HighRiskPage';
+import AboutPage from './pages/AboutPage';
 import SuccessPage from './pages/SuccessPage';
+import ComparePage from './pages/ComparePage';
 import FeedbackButton from './components/FeedbackButton';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
@@ -49,10 +51,11 @@ function App() {
         <Route path="/chains" element={<ChainsPage />} />
         <Route path="/chain/:chainName" element={<ChainDetailPage />} />
         <Route path="/high-risk" element={<HighRiskPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/compare" element={<Navigate to="/watchlist" replace />} />
+        <Route path="/compare" element={<ComparePage />} />
       </Routes>
       <FeedbackButton />
       <SaveToast

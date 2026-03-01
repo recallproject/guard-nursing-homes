@@ -97,8 +97,9 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
     },
     {
       label: 'About',
-      paths: ['/methodology', '/pricing'],
+      paths: ['/about', '/methodology', '/pricing'],
       items: [
+        { to: '/about', label: 'About', desc: 'Who built this and why' },
         { to: '/methodology', label: 'Methodology', desc: 'How we calculate every number' },
         { to: '/pricing', label: 'Pricing', desc: 'Free for families, Pro for professionals' },
         { to: '/terms', label: 'Terms of Use', desc: 'Legal terms and disclaimers' },
