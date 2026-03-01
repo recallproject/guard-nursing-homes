@@ -211,7 +211,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
           <div className="v4-stat-label">Facilities reviewed — every Medicare<br/>nursing home in America</div>
         </div>
         <div className="v4-stat-item v4-fade-in">
-          <div className="v4-stat-value neutral" data-target="5" data-prefix="" data-suffix="">0</div>
+          <div className="v4-stat-value neutral" data-target="6" data-prefix="" data-suffix="">0</div>
           <div className="v4-stat-label">Federal databases cross-referenced<br/>so you don't have to</div>
         </div>
         <div className="v4-stat-item v4-fade-in">
