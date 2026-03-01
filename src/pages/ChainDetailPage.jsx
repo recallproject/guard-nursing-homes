@@ -533,59 +533,53 @@ export function ChainDetailPage() {
           </div>
         </div>
 
-        <div className="facilities-table-container" ref={tableRef}>
-          <table className="facilities-table">
-            <thead>
-              <tr>
-                <th onClick={() => handleSort('name')} className="sortable col-name">
-                  Facility {sortBy === 'name' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-                <th onClick={() => handleSort('city')} className="sortable col-city hide-mobile">
-                  City {sortBy === 'city' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-                <th onClick={() => handleSort('state')} className="sortable col-state">
-                  State {sortBy === 'state' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-                <th onClick={() => handleSort('stars')} className="sortable col-stars">
-                  Stars {sortBy === 'stars' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-                <th onClick={() => handleSort('hprd')} className="sortable col-hprd hide-mobile">
-                  Staffing Hrs {sortBy === 'hprd' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-                <th onClick={() => handleSort('zero_rn')} className="sortable col-zero hide-mobile">
-                  Days w/ No RN {sortBy === 'zero_rn' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-                <th onClick={() => handleSort('fines')} className="sortable col-fines">
-                  Fines {sortBy === 'fines' && (sortDirection === 'asc' ? '▲' : '▼')}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedFacilities.map((facility) => (
-                <tr key={facility.ccn} className="facility-row">
-                  <td className="facility-name-cell col-name">
-                    <Link to={`/facility/${facility.ccn}`} className="facility-link">
-                      {facility.name}
-                    </Link>
-                  </td>
-                  <td className="hide-mobile col-city">{facility.city}</td>
-                  <td className="col-state">{facility.state}</td>
-                  <td className={`col-stars ${getStarClass(facility.stars)}`}>
-                    {renderStars(facility.stars)}
-                  </td>
-                  <td className={`hide-mobile col-hprd ${getHPRDClass(facility.total_hprd)}`}>
-                    {facility.total_hprd ? facility.total_hprd.toFixed(2) : 'N/A'}
-                  </td>
-                  <td className="hide-mobile col-zero">
-                    {pct(facility.zero_rn_pct)}
-                  </td>
-                  <td className={`col-fines ${facility.total_fines > 0 ? 'risk-critical' : ''}`}>
-                    {formatCurrency(facility.total_fines)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="ftable" ref={tableRef}>
+          <div className="ftable-header">
+            <div className="ftable-cell ftable-name" onClick={() => handleSort('name')}>
+              Facility {sortBy === 'name' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+            <div className="ftable-cell ftable-city hide-mobile" onClick={() => handleSort('city')}>
+              City {sortBy === 'city' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+            <div className="ftable-cell ftable-state" onClick={() => handleSort('state')}>
+              ST {sortBy === 'state' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+            <div className="ftable-cell ftable-stars" onClick={() => handleSort('stars')}>
+              Stars {sortBy === 'stars' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+            <div className="ftable-cell ftable-hprd hide-mobile" onClick={() => handleSort('hprd')}>
+              HPRD {sortBy === 'hprd' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+            <div className="ftable-cell ftable-zero hide-mobile" onClick={() => handleSort('zero_rn')}>
+              No RN {sortBy === 'zero_rn' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+            <div className="ftable-cell ftable-fines" onClick={() => handleSort('fines')}>
+              Fines {sortBy === 'fines' && (sortDirection === 'asc' ? '▲' : '▼')}
+            </div>
+          </div>
+          {paginatedFacilities.map((facility, idx) => (
+            <div key={facility.ccn} className={`ftable-row ${idx % 2 === 1 ? 'ftable-row-alt' : ''}`}>
+              <div className="ftable-cell ftable-name">
+                <Link to={`/facility/${facility.ccn}`} className="facility-link">
+                  {facility.name}
+                </Link>
+              </div>
+              <div className="ftable-cell ftable-city hide-mobile">{facility.city}</div>
+              <div className="ftable-cell ftable-state">{facility.state}</div>
+              <div className={`ftable-cell ftable-stars ${getStarClass(facility.stars)}`}>
+                {renderStars(facility.stars)}
+              </div>
+              <div className={`ftable-cell ftable-hprd hide-mobile ${getHPRDClass(facility.total_hprd)}`}>
+                {facility.total_hprd ? facility.total_hprd.toFixed(2) : 'N/A'}
+              </div>
+              <div className="ftable-cell ftable-zero hide-mobile">
+                {pct(facility.zero_rn_pct)}
+              </div>
+              <div className={`ftable-cell ftable-fines ${facility.total_fines > 0 ? 'risk-critical' : ''}`}>
+                {formatCurrency(facility.total_fines)}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Pagination */}
