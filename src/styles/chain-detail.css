@@ -452,7 +452,17 @@
 .facilities-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
+
+/* Column widths — must add up to 100% */
+.col-name   { width: 26%; }
+.col-city   { width: 14%; }
+.col-state  { width: 8%; text-align: center; }
+.col-stars  { width: 12%; text-align: center; }
+.col-hprd   { width: 12%; text-align: right; }
+.col-zero   { width: 13%; text-align: right; }
+.col-fines  { width: 15%; text-align: right; }
 
 .facilities-table thead {
   background: #F8FAFC;
@@ -516,7 +526,8 @@
 
 .facility-name-cell {
   font-weight: 600;
-  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .facility-name-cell .facility-link {
@@ -587,8 +598,10 @@
   color: #16A34A;
 }
 
-/* Monospace values in table */
-.facilities-table td:nth-child(n+4) {
+/* Monospace for numeric columns */
+.col-hprd,
+.col-zero,
+.col-fines {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 0.85rem;
 }

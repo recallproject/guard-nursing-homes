@@ -497,25 +497,25 @@ export function ChainDetailPage() {
           <table className="facilities-table">
             <thead>
               <tr>
-                <th onClick={() => handleSort('name')} className="sortable">
-                  Facility Name {sortBy === 'name' && (sortDirection === 'asc' ? '▲' : '▼')}
+                <th onClick={() => handleSort('name')} className="sortable col-name">
+                  Facility {sortBy === 'name' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
-                <th onClick={() => handleSort('city')} className="sortable hide-mobile">
+                <th onClick={() => handleSort('city')} className="sortable col-city hide-mobile">
                   City {sortBy === 'city' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
-                <th onClick={() => handleSort('state')} className="sortable">
+                <th onClick={() => handleSort('state')} className="sortable col-state">
                   State {sortBy === 'state' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
-                <th onClick={() => handleSort('stars')} className="sortable">
+                <th onClick={() => handleSort('stars')} className="sortable col-stars">
                   Stars {sortBy === 'stars' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
-                <th onClick={() => handleSort('hprd')} className="sortable hide-mobile">
-                  Total HPRD {sortBy === 'hprd' && (sortDirection === 'asc' ? '▲' : '▼')}
+                <th onClick={() => handleSort('hprd')} className="sortable col-hprd hide-mobile">
+                  Staffing Hrs {sortBy === 'hprd' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
-                <th onClick={() => handleSort('zero_rn')} className="sortable hide-mobile">
-                  Zero-RN % {sortBy === 'zero_rn' && (sortDirection === 'asc' ? '▲' : '▼')}
+                <th onClick={() => handleSort('zero_rn')} className="sortable col-zero hide-mobile">
+                  Days w/ No RN {sortBy === 'zero_rn' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
-                <th onClick={() => handleSort('fines')} className="sortable">
+                <th onClick={() => handleSort('fines')} className="sortable col-fines">
                   Fines {sortBy === 'fines' && (sortDirection === 'asc' ? '▲' : '▼')}
                 </th>
               </tr>
@@ -523,23 +523,23 @@ export function ChainDetailPage() {
             <tbody>
               {sortedFacilities.map((facility) => (
                 <tr key={facility.ccn} className="facility-row">
-                  <td className="facility-name-cell">
+                  <td className="facility-name-cell col-name">
                     <Link to={`/facility/${facility.ccn}`} className="facility-link">
                       {facility.name}
                     </Link>
                   </td>
-                  <td className="hide-mobile">{facility.city}</td>
-                  <td>{facility.state}</td>
-                  <td className={getStarClass(facility.stars)}>
+                  <td className="hide-mobile col-city">{facility.city}</td>
+                  <td className="col-state">{facility.state}</td>
+                  <td className={`col-stars ${getStarClass(facility.stars)}`}>
                     {renderStars(facility.stars)}
                   </td>
-                  <td className={`hide-mobile ${getHPRDClass(facility.total_hprd)}`}>
+                  <td className={`hide-mobile col-hprd ${getHPRDClass(facility.total_hprd)}`}>
                     {facility.total_hprd ? facility.total_hprd.toFixed(2) : 'N/A'}
                   </td>
-                  <td className="hide-mobile">
+                  <td className="hide-mobile col-zero">
                     {pct(facility.zero_rn_pct)}
                   </td>
-                  <td className={facility.total_fines > 0 ? 'risk-critical' : ''}>
+                  <td className={`col-fines ${facility.total_fines > 0 ? 'risk-critical' : ''}`}>
                     {formatCurrency(facility.total_fines)}
                   </td>
                 </tr>
