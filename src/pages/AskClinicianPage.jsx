@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { checkoutClinicianReport } from '../utils/stripe';
+import { useFacilityData } from '../hooks/useFacilityData';
+import FacilityTypeahead from '../components/facility/FacilityTypeahead';
 import '../styles/ask-clinician.css';
 
 const SITUATIONS = [
@@ -42,6 +44,7 @@ const DELIVERABLES = [
 
 export default function AskClinicianPage() {
   const navigate = useNavigate();
+  const { searchFacilities } = useFacilityData();
   const [facility, setFacility] = useState('');
   const [state, setState] = useState('');
   const [relationship, setRelationship] = useState('');
@@ -119,11 +122,12 @@ export default function AskClinicianPage() {
 
           {/* Facility */}
           <div className="ac-field">
-            <label className="ac-label">Facility Name or CCN Number</label>
-            <div className="ac-search-wrap">
-              <svg className="ac-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" placeholder="e.g. Sunrise Care Center or 145231" value={facility} onChange={e => setFacility(e.target.value)} />
-            </div>
+            <label className="ac-label">Facility Name, City, or CCN Number</label>
+            <FacilityTypeahead
+              searchFacilities={searchFacilities}
+              value={facility}
+              onChange={setFacility}
+            />
           </div>
 
           {/* State */}
