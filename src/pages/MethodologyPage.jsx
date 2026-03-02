@@ -82,7 +82,7 @@ export function MethodologyPage() {
     <div className="methodology-page">
       <Helmet>
         <title>Methodology — How We Score Nursing Homes | The Oversight Report</title>
-        <meta name="description" content="Our composite risk scoring methodology. How we combine CMS staffing data, inspection citations, penalties, and ownership patterns." />
+        <meta name="description" content="Our composite risk scoring methodology. How we combine CMS staffing data, inspection citations, penalties, and ownership patterns. Includes our AI governance framework and data integrity safeguards." />
         <link rel="canonical" href="https://oversightreports.com/methodology" />
       </Helmet>
       {/* Hero */}
@@ -102,10 +102,14 @@ export function MethodologyPage() {
         <h3>Quick Navigation</h3>
         <ul>
           <li><a href="#data-sources">Data Sources</a></li>
+          <li><a href="#how-reports-are-built">How Reports Are Built</a></li>
+          <li><a href="#who-reviews">Who Reviews This Data</a></li>
+          <li><a href="#ai-governance">AI Governance & Data Integrity</a></li>
           <li><a href="#key-metrics">Key Metrics Explained</a></li>
           <li><a href="#what-we-dont-do">What We Don't Do</a></li>
           <li><a href="#regulatory-context">Federal Staffing Requirements</a></li>
           <li><a href="#data-freshness">Data Freshness</a></li>
+          <li><a href="#transparency-changes">Data Transparency Changes</a></li>
           <li><a href="#contact">Contact & Corrections</a></li>
         </ul>
       </div>
@@ -164,14 +168,217 @@ export function MethodologyPage() {
                 these surveys on behalf of CMS.
               </p>
             </div>
+
+            <div className="methodology-source-card">
+              <h4>MDS Quality Measures</h4>
+              <p>
+                Clinical quality indicators reported quarterly by every nursing home, based on resident assessments.
+                Includes antipsychotic medication rates, pressure ulcers, falls with injury, urinary tract infections,
+                depression, and more. Source: CMS MDS 3.0.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Claims-Based Quality Measures</h4>
+              <p>
+                Outcome measures derived from Medicare claims data — including 30-day re-hospitalization rates,
+                emergency room visits, and discharge to community rates for short-stay (rehab) patients.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>SNF Quality Reporting Program (QRP)</h4>
+              <p>
+                Measures reported under the IMPACT Act, including functional improvement at discharge, Medicare
+                spending per beneficiary, healthcare-associated infection rates, and COVID-19 vaccination rates
+                for both residents and staff.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>SNF Value-Based Purchasing (VBP)</h4>
+              <p>
+                CMS performance scores and Medicare payment adjustments. Includes staff turnover rates,
+                re-hospitalization performance, and whether the facility received a Medicare payment bonus or penalty.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Fire Safety Deficiencies</h4>
+              <p>
+                Separate from health inspections. Fire code violations, sprinkler system issues, blocked exits,
+                and emergency preparedness deficiencies. Every nursing home receives periodic fire safety inspections.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Special Focus Facility (SFF) List</h4>
+              <p>
+                CMS designation for facilities with a pattern of serious quality issues. Approximately 88 of 14,713
+                facilities are designated SFF at any time. These facilities receive twice the normal inspection frequency.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Section 2: Key Metrics */}
+        {/* Section 2: How Reports Are Built */}
         <section
-          id="key-metrics"
+          id="how-reports-are-built"
           className="methodology-section section-dark"
           ref={el => sectionsRef.current[1] = el}
+        >
+          <h2>How Reports Are Built</h2>
+          <p className="methodology-intro">
+            The Oversight Report is built by a nurse practitioner using automated tools. We believe in full transparency
+            about what's human and what's machine in our process.
+          </p>
+
+          <div className="methodology-source-grid">
+            <div className="methodology-source-card">
+              <h4>Data Pipeline (Automated)</h4>
+              <p>
+                We download raw CSV files directly from CMS federal databases. These files are processed through
+                automated scripts that clean, merge, and structure the data across multiple datasets — linking
+                inspection records with staffing data, penalty histories, ownership filings, and quality measures.
+                No data is altered, fabricated, or estimated. Every number traces back to a specific CMS source file.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Report Generation (AI-Assisted)</h4>
+              <p>
+                Individual facility reports and PDF documents are assembled programmatically using AI-assisted code.
+                This includes structuring data into readable formats, calculating comparative metrics (national averages,
+                percentiles), and generating consistent report layouts. The technology allows us to produce reports for
+                all 14,713 facilities — something that would be impossible to do manually.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Clinical Interpretation (Human)</h4>
+              <p>
+                Every piece of contextual language on this site — what a metric means, why it matters, what families
+                should look for — is written or reviewed by Robert Benard, NP, a board-certified nurse practitioner
+                with 20+ years of acute care hospital experience. The clinical framing comes from bedside experience,
+                not an algorithm. When a report says "this is a red flag," that judgment comes from a clinician who
+                has seen what understaffing looks like at 3am.
+              </p>
+            </div>
+          </div>
+
+          <p className="methodology-note">
+            <strong>Our approach:</strong> We use automation and AI to do what machines do well: process large datasets
+            quickly and consistently. We use clinical expertise to do what machines cannot: interpret data in the context
+            of real patient care. This combination is what allows a small team to provide transparency across every
+            Medicare-certified nursing home in the country.
+          </p>
+        </section>
+
+        {/* Section 3: Who Reviews This Data */}
+        <section
+          id="who-reviews"
+          className="methodology-section section-light"
+          ref={el => sectionsRef.current[2] = el}
+        >
+          <h2>Who Reviews This Data</h2>
+
+          <div className="methodology-bio-card">
+            <div className="methodology-bio-avatar">RB</div>
+            <h3>Robert Benard, NP</h3>
+            <p className="methodology-bio-credentials">AGACNP-BC &middot; PMHNP-BC</p>
+            <p className="methodology-bio-subtitle">Board-Certified Nurse Practitioner &middot; 20+ Years Clinical Experience</p>
+            <p className="methodology-bio-text">
+              Robert has spent 20+ years at the bedside in acute care hospitals. He reviews and interprets every
+              report — the clinical context comes from real experience, not an algorithm.
+            </p>
+            <a href="mailto:contact@oversightreports.com" className="methodology-bio-email">contact@oversightreports.com</a>
+          </div>
+
+          <div className="methodology-metric" style={{ marginTop: '32px' }}>
+            <h3>Independence</h3>
+            <p>
+              The Oversight Report is operated under DataLink Clinical LLC. This project is independent — it receives
+              no funding from the nursing home industry, healthcare systems, insurance companies, or government agencies.
+              Our revenue comes from optional paid services (data interpretation reports), not from the facilities we analyze.
+              No facility can pay to change their data or how it is presented on this site.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 4: AI Governance & Data Integrity */}
+        <section
+          id="ai-governance"
+          className="methodology-section section-dark"
+          ref={el => sectionsRef.current[3] = el}
+        >
+          <h2>AI Governance & Data Integrity</h2>
+          <p className="methodology-intro">
+            AI tools can produce errors — including "hallucinations," where a system generates plausible-sounding but
+            fabricated information. In healthcare, this is unacceptable. We have designed our process specifically to
+            minimize this risk, informed by responsible AI principles from Harvard's Data Science Initiative and
+            established governance frameworks.
+          </p>
+
+          <div className="methodology-source-grid">
+            <div className="methodology-source-card">
+              <h4>Ground Truth Verification</h4>
+              <p>
+                Our AI tools process structured government datasets — rows and columns from CMS CSV files with defined
+                fields and values. We do not ask AI to generate medical facts, predict outcomes, or produce clinical
+                assessments from unstructured input. Every number displayed on this site can be verified against the
+                original CMS source file. This design eliminates the most common source of AI hallucination: generating
+                information that doesn't exist in the source data.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Clinician Oversight (HITL)</h4>
+              <p>
+                The Human-in-the-Loop (HITL) model is widely recognized as the standard for responsible AI deployment
+                in healthcare settings. At The Oversight Report, a board-certified nurse practitioner reviews all clinical
+                interpretation, contextual language, and risk characterization. AI processes the data. A clinician decides
+                what it means. This separation ensures that clinical judgment — the part that requires experience and
+                accountability — is never delegated to a machine.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Full Traceability</h4>
+              <p>
+                Every metric on this site includes its data source, calculation method, and the specific CMS dataset it
+                comes from. Our methodology is fully documented. Any researcher, journalist, or regulator can download the
+                same CMS files we use and reproduce our results independently. We do not use proprietary models, black-box
+                scoring, or opaque algorithms. If you disagree with a number, you can check our work.
+              </p>
+            </div>
+
+            <div className="methodology-source-card">
+              <h4>Quality Checks</h4>
+              <p>
+                Before any data reaches the site, we run automated validation checks against known constraints: facility
+                counts match CMS totals, staffing hours fall within plausible ranges, deficiency counts reconcile across
+                datasets, and penalty amounts match published CMS records. When discrepancies arise between datasets, we
+                flag them rather than silently resolve them. We also monitor for CMS data quality issues — such as
+                facilities reporting zero staffing hours while maintaining high star ratings — and note these anomalies explicitly.
+              </p>
+            </div>
+          </div>
+
+          <p className="methodology-note" style={{ marginTop: '24px' }}>
+            <strong>Our framework:</strong> Our approach is guided by principles from Harvard's Data Science Initiative
+            frameworks for responsible AI governance: transparency in how systems work, accountability for outputs, human
+            oversight of high-stakes decisions, and verifiability of results. We believe that using AI responsibly in
+            healthcare means being honest about what it does, what it doesn't do, and who is accountable when something
+            goes wrong. At The Oversight Report, the answer to that last question is always the same: the clinician whose
+            name is on every report.
+          </p>
+        </section>
+
+        {/* Section 5: Key Metrics */}
+        <section
+          id="key-metrics"
+          className="methodology-section section-light"
+          ref={el => sectionsRef.current[4] = el}
         >
           <h2>Key Metrics Explained</h2>
           <p className="methodology-intro">
@@ -341,11 +548,11 @@ export function MethodologyPage() {
           </div>
         </section>
 
-        {/* Section 3: What We Don't Do */}
+        {/* Section 6: What We Don't Do */}
         <section
           id="what-we-dont-do"
-          className="methodology-section section-light"
-          ref={el => sectionsRef.current[2] = el}
+          className="methodology-section section-dark"
+          ref={el => sectionsRef.current[5] = el}
         >
           <h2>What We Don't Do</h2>
           <p className="methodology-intro">
@@ -395,11 +602,11 @@ export function MethodologyPage() {
           </div>
         </section>
 
-        {/* Section 4: Federal Regulatory Context */}
+        {/* Section 7: Federal Regulatory Context */}
         <section
           id="regulatory-context"
           className="methodology-section section-light"
-          ref={el => sectionsRef.current[3] = el}
+          ref={el => sectionsRef.current[6] = el}
         >
           <h2>Federal Nursing Home Staffing Requirements</h2>
           <p className="methodology-intro">
@@ -527,11 +734,11 @@ export function MethodologyPage() {
           </div>
         </section>
 
-        {/* Section 5: Data Freshness */}
+        {/* Section 8: Data Freshness */}
         <section
           id="data-freshness"
           className="methodology-section section-dark"
-          ref={el => sectionsRef.current[4] = el}
+          ref={el => sectionsRef.current[7] = el}
         >
           <h2>Data Freshness</h2>
           <p className="methodology-intro">
@@ -541,14 +748,14 @@ export function MethodologyPage() {
           <div className="methodology-freshness-grid">
             <div className="methodology-freshness-card">
               <h4>Current Data Version</h4>
-              <p className="methodology-data-date">Q3 2025</p>
-              <p className="methodology-data-note">Last updated: December 2025</p>
+              <p className="methodology-data-date">February 2026</p>
+              <p className="methodology-data-note">18 CMS datasets integrated</p>
             </div>
 
             <div className="methodology-freshness-card">
-              <h4>Next Expected Update</h4>
-              <p className="methodology-data-date">Q4 2025</p>
-              <p className="methodology-data-note">Anticipated: March 2026</p>
+              <h4>Last Downloaded</h4>
+              <p className="methodology-data-date">March 2, 2026</p>
+              <p className="methodology-data-note">Next CMS refresh: ~April 2026</p>
             </div>
           </div>
 
@@ -559,11 +766,55 @@ export function MethodologyPage() {
           </p>
         </section>
 
-        {/* Section 6: Contact */}
+        {/* Section 9: Government Data Transparency Changes */}
+        <section
+          id="transparency-changes"
+          className="methodology-section section-light"
+          ref={el => sectionsRef.current[8] = el}
+        >
+          <h2>Government Data Transparency Changes</h2>
+          <p className="methodology-intro">
+            We track changes to what the federal government makes publicly available. When CMS removes data from
+            public view, we document it here and explain how it affects what families can see.
+          </p>
+
+          <div className="methodology-metric">
+            <h3>Complaint Counts Removed from Care Compare (February 25, 2026)</h3>
+            <p>
+              On February 25, 2026, CMS removed complaint investigation counts from the Care Compare website.
+              Previously, families could see how many complaints had been filed against a nursing home. This
+              information is no longer available on the official CMS site.
+            </p>
+            <p>
+              The Oversight Report reconstructed complaint counts from publicly available federal inspection records
+              (CMS Health Deficiencies and Inspection Dates files). Each inspection record includes a flag indicating
+              whether it was triggered by a complaint investigation. We count these flags per facility to calculate
+              complaint investigation totals.
+            </p>
+            <p>
+              This is not estimated or modeled data — it is a direct count from the same federal records CMS previously
+              used. We archived these datasets before the removal and will continue to provide this information as long
+              as the underlying inspection records remain publicly available.
+            </p>
+          </div>
+
+          <div className="methodology-metric">
+            <h3>Ownership Disclosure Suspension</h3>
+            <p>
+              CMS has suspended certain enhanced ownership disclosure requirements that were part of the 2024 regulatory
+              package. We continue to report ownership data using the currently available CMS Ownership file, which
+              includes owner names, organization types, and ownership percentages. Readers should be aware that some
+              previously proposed disclosure enhancements (such as detailed private equity and real estate investment
+              trust identification) may not be reflected in current CMS data.
+            </p>
+          </div>
+        </section>
+
+        {/* Section 10: Contact */}
         <section
           id="contact"
-          className="methodology-section section-light"
-          ref={el => sectionsRef.current[5] = el}
+          className="methodology-section section-dark"
+          ref={el => sectionsRef.current[9] = el}
         >
           <h2>Contact & Corrections</h2>
           <p className="methodology-intro">

@@ -59,7 +59,7 @@ export default function AboutPage() {
         {/* WHY THIS EXISTS */}
         <div className="about-section">
           <h2>Why This Exists</h2>
-          <p>I've spent two decades in acute care — ICU beds, trauma bays, psych emergencies, and now addiction medicine. The one thing that connects all of it is what happens at discharge. A patient stabilizes, and then somebody has to figure out where they go next.</p>
+          <p>I've spent 20+ years in acute care — ICU beds, trauma bays, psych emergencies, and now addiction medicine. The one thing that connects all of it is what happens at discharge. A patient stabilizes, and then somebody has to figure out where they go next.</p>
           <p>For nursing homes, home health, dialysis, hospice — the question is always the same. A family member at the bedside, exhausted, scared, asks: <em>"Is this place any good?"</em></p>
           <p>I never had a good answer. The data existed — scattered across half a dozen government websites, buried in spreadsheets nobody reads, formatted for regulators instead of families. So I built the tool I wished I'd had for the last 20 years.</p>
         </div>
