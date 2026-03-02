@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import RiskBadge from '../RiskBadge';
 import HowItWorks from './HowItWorks';
 import '../../styles/landing-v4.css';
 import '../../styles/how-it-works.css';
@@ -80,7 +79,7 @@ function InlineSearch({ searchFacilities, placeholder, onFallbackSearch }) {
           ref={inputRef}
           className="v4-search-input"
           type="text"
-          placeholder={placeholder || "Search by facility name, city, or ZIP code"}
+          placeholder={placeholder || "Search by name, city, state, ZIP, or CCN"}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => { if (results.length > 0) setIsOpen(true); }}
@@ -105,7 +104,7 @@ function InlineSearch({ searchFacilities, placeholder, onFallbackSearch }) {
                 <div className="v4-search-result-name">{facility.name}</div>
                 <div className="v4-search-result-location">{facility.city}, {facility.state}</div>
               </div>
-              <RiskBadge score={facility.composite} />
+              <div className="v4-search-result-meta">{facility.state} · {facility.ccn}</div>
             </div>
           ))}
           <div className="v4-search-dropdown-hint">
