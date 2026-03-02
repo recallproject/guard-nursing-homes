@@ -687,7 +687,7 @@ export function FacilityPage() {
             A 10-section professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 6 CMS databases into a single documented report.
           </div>
           <div className="paid-features">
-            <span className="paid-feature">Exhibit-numbered citations</span>
+            <span className="paid-feature">Numbered source citations</span>
             <span className="paid-feature">Multi-year trend analysis</span>
             <span className="paid-feature">Side-by-side state/national comparisons</span>
             <span className="paid-feature">Full ownership network map</span>

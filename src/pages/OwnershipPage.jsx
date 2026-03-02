@@ -7,7 +7,7 @@ import '../styles/ownership.css';
 import gsap from 'gsap';
 
 export default function OwnershipPage() {
-  const COMING_SOON = true;
+  const COMING_SOON = false;
   const { getAllFacilities, loading, error } = useFacilityData();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);

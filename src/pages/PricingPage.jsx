@@ -56,7 +56,7 @@ const tiers = [
     badge: 'DOCUMENTED & CITED',
     inherits: 'Everything in Free, plus:',
     features: [
-      'Exhibit-numbered citations',
+      'Numbered source citations for every data point',
       'Multi-year trend analysis',
       'Side-by-side state/national comparisons',
       'Full ownership network map',
