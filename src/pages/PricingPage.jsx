@@ -262,7 +262,7 @@ export default function PricingPage() {
           <h3>Not Ready to Subscribe?</h3>
           <p>If The Oversight Report helped you, consider supporting the project.</p>
           <a
-            href="https://ko-fi.com/oversightreport"
+            href="https://ko-fi.com/oversightreports"
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-secondary"
