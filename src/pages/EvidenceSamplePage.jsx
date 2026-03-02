@@ -59,6 +59,7 @@ export default function EvidenceSamplePage() {
               ↓ Download Sample Report (PDF)
             </a>
             <div className="ev-sample-download-note">8 pages · No email required · Watermarked sample</div>
+            <div className="ev-sample-confidential">Confidential — Prepared for authorized use</div>
           </div>
         </div>
 

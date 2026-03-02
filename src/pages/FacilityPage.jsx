@@ -696,6 +696,7 @@ export function FacilityPage() {
           </div>
           <button className="btn-evidence" onClick={() => setShowEvidencePreview(true)}>Preview Evidence Package</button>
           <div className="paid-upsell-note">One-time purchase. Instant download. Used by attorneys, journalists, and regulators.</div>
+          <a href="/evidence-sample" className="paid-upsell-sample-link">↓ See a full sample report</a>
         </div>
 
         {/* Professional Plans — Coming Soon */}

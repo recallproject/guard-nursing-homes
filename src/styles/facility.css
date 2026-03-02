@@ -1687,6 +1687,8 @@
 .btn-evidence { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: #7C3AED; color: white; font-size: 15px; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; font-family: inherit; transition: transform 0.2s, box-shadow 0.2s; }
 .btn-evidence:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(124,106,239,0.3); }
 .paid-upsell-note { margin-top: 12px; font-size: 12px; color: var(--text-muted, #6b6590); }
+.paid-upsell-sample-link { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--accent-primary, #2B6CB0); text-decoration: none; }
+.paid-upsell-sample-link:hover { text-decoration: underline; }
 
 /* ── V3 RESPONSIVE ── */
 @media (max-width: 768px) {
