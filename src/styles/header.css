@@ -622,6 +622,18 @@
   color: #64748B;
 }
 
+/* Light mode: Compare link visible on white bg */
+.site-header--light .site-header__top-link {
+  color: #64748B;
+}
+.site-header--light .site-header__top-link:hover {
+  color: #0F172A;
+  background: rgba(0, 0, 0, 0.04);
+}
+.site-header--light .site-header__top-link--active {
+  color: #2B6CB0;
+}
+
 .site-header--light .site-header__search-btn {
   background: rgba(0, 0, 0, 0.04);
   border: 1px solid #D7E0EA;
