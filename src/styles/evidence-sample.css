@@ -34,26 +34,26 @@
   margin: 0 auto;
 }
 
-/* Download Card — styled to mirror Evidence PDF cover */
+/* Download Card — light, professional */
 .ev-sample-download-section {
   margin-bottom: 56px;
 }
 .ev-sample-download-card {
-  background: #0F1629;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-primary, #e2e8f0);
   border-radius: 12px;
   padding: 40px 32px 36px;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(15, 22, 41, 0.25), 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   position: relative;
   overflow: hidden;
 }
-/* Subtle texture overlay */
 .ev-sample-download-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #DC2626, #2B6CB0, #DC2626);
+  height: 3px;
+  background: var(--accent-primary, #2B6CB0);
 }
 .ev-sample-download-header {
   margin-bottom: 24px;
@@ -64,9 +64,8 @@
   font-size: 0.6rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background: rgba(255,255,255,0.12);
-  color: rgba(255,255,255,0.7);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: var(--accent-primary, #2B6CB0);
+  color: #fff;
   padding: 3px 12px;
   border-radius: 4px;
   margin-bottom: 14px;
@@ -75,14 +74,14 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary, #1a202c);
   margin: 0 0 6px;
   letter-spacing: -0.01em;
 }
 .ev-sample-facility-meta {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
-  color: rgba(255,255,255,0.5);
+  color: var(--text-muted, #718096);
   letter-spacing: 0.03em;
 }
 .ev-sample-metrics {
@@ -91,8 +90,8 @@
   gap: 12px;
   margin-bottom: 28px;
   padding: 20px 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid var(--border-primary, #e2e8f0);
+  border-bottom: 1px solid var(--border-primary, #e2e8f0);
 }
 .ev-sample-metric {
   text-align: center;
@@ -101,15 +100,15 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary, #1a202c);
 }
 .ev-sample-metric-value.ev-sample-red {
-  color: #F87171;
+  color: #DC2626;
 }
 .ev-sample-metric-label {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
-  color: rgba(255,255,255,0.45);
+  color: var(--text-muted, #718096);
   margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -119,34 +118,33 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 1rem;
-  color: #0F1629;
-  background: #ffffff;
+  color: #fff;
+  background: var(--accent-primary, #2B6CB0);
   padding: 14px 40px;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.15s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(43,108,176,0.2);
 }
 .ev-sample-download-btn:hover {
-  background: #f1f5f9;
+  background: #245a9e;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(43,108,176,0.3);
 }
 .ev-sample-download-note {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-muted, #718096);
   margin-top: 12px;
-  letter-spacing: 0.02em;
 }
 .ev-sample-confidential {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.6rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: var(--text-muted, #718096);
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  border-top: 1px solid var(--border-primary, #e2e8f0);
 }
 
 /* What's Inside Grid */
@@ -237,24 +235,25 @@
   margin: 0;
 }
 
-/* Bottom CTA — dark panel with presence */
+/* Bottom CTA */
 .ev-sample-cta {
   text-align: center;
   padding: 48px 40px;
-  background: #0F1629;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-primary, #e2e8f0);
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(15, 22, 41, 0.2);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 .ev-sample-cta h2 {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text-primary, #1a202c);
   margin: 0 0 8px;
 }
 .ev-sample-cta p {
   font-size: 0.92rem;
-  color: rgba(255,255,255,0.6);
+  color: var(--text-secondary, #4a5568);
   margin: 0 0 24px;
 }
 .ev-sample-cta-buttons {
@@ -266,30 +265,29 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
-  color: #0F1629;
-  background: #ffffff;
+  color: #fff;
+  background: var(--accent-primary, #2B6CB0);
   padding: 12px 28px;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.15s;
 }
-.ev-sample-cta-btn-primary:hover { background: #f1f5f9; }
+.ev-sample-cta-btn-primary:hover { background: #245a9e; }
 .ev-sample-cta-btn-secondary {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 600;
   font-size: 0.92rem;
-  color: rgba(255,255,255,0.8);
+  color: var(--accent-primary, #2B6CB0);
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid var(--accent-primary, #2B6CB0);
   padding: 12px 28px;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.15s;
 }
 .ev-sample-cta-btn-secondary:hover {
-  background: rgba(255,255,255,0.1);
-  color: #ffffff;
-  border-color: rgba(255,255,255,0.4);
+  background: var(--accent-primary, #2B6CB0);
+  color: #fff;
 }
 
 /* Responsive */
