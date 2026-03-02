@@ -137,7 +137,7 @@ export default function PricingPage() {
     if (tier.ctaLink === '/') {
       navigate('/');
     } else if (tier.ctaLink === '/evidence') {
-      window.open('/samples/evidence-report-sample.pdf', '_blank');
+      navigate('/evidence-sample');
     } else if (tier.ctaLink === '/ask-a-clinician') {
       navigate('/ask-a-clinician');
     } else if (tier.ctaLink) {
