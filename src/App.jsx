@@ -22,6 +22,7 @@ import AboutPage from './pages/AboutPage';
 import SuccessPage from './pages/SuccessPage';
 import ComparePage from './pages/ComparePage';
 import AskClinicianPage from './pages/AskClinicianPage';
+import AskClinicianSubmittedPage from './pages/AskClinicianSubmittedPage';
 import FeedbackButton from './components/FeedbackButton';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
@@ -58,6 +59,7 @@ function App() {
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/ask-a-clinician" element={<AskClinicianPage />} />
+        <Route path="/ask-a-clinician-submitted" element={<AskClinicianSubmittedPage />} />
       </Routes>
       <FeedbackButton />
       <SaveToast

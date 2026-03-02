@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import '../styles/ask-clinician.css';
 
@@ -40,15 +40,66 @@ const DELIVERABLES = [
 ];
 
 export default function AskClinicianPage() {
+  const navigate = useNavigate();
   const [facility, setFacility] = useState('');
   const [state, setState] = useState('');
   const [relationship, setRelationship] = useState('');
   const [situations, setSituations] = useState([]);
   const [worry, setWorry] = useState('');
   const [email, setEmail] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const toggleSituation = (s) => {
     setSituations(prev => prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s]);
+  };
+
+  const handleSubmit = async () => {
+    // Validate required fields
+    if (!facility.trim()) { setError('Please enter a facility name or CCN.'); return; }
+    if (!email.trim()) { setError('Please enter your email address.'); return; }
+    if (!/\S+@\S+\.\S+/.test(email)) { setError('Please enter a valid email address.'); return; }
+    setError('');
+    setSubmitting(true);
+
+    // Track event
+    window.plausible && window.plausible('Ask-Clinician-Submit', { props: { facility, state } });
+
+    // Build the form data summary for the email
+    const formSummary = [
+      `Facility: ${facility}`,
+      `State: ${state || 'Not specified'}`,
+      `Relationship: ${relationship || 'Not specified'}`,
+      `Situation: ${situations.join(', ') || 'Not specified'}`,
+      `Concerns: ${worry || 'None provided'}`,
+      `Email: ${email}`,
+    ].join('\n');
+
+    // OPTION 1: If Formspree endpoint is configured, submit there
+    const FORMSPREE_ID = ''; // TODO: Rob — go to formspree.io, create free form, paste ID here
+    if (FORMSPREE_ID) {
+      try {
+        await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            facility, state, relationship,
+            situations: situations.join(', '),
+            worry, email,
+            _subject: `Ask a Clinician Request: ${facility}`,
+          }),
+        });
+      } catch (e) { /* fallback below */ }
+    }
+
+    // OPTION 2: Always also open mailto as backup (opens email client)
+    // This ensures you get the request even without Formspree
+    const mailtoBody = encodeURIComponent(formSummary);
+    const mailtoSubject = encodeURIComponent(`Ask a Clinician Request: ${facility}`);
+
+    // Navigate to submitted page (which explains next steps)
+    navigate('/ask-a-clinician-submitted', { state: { facility, email, formSummary } });
+    setSubmitting(false);
   };
 
   return (
@@ -143,9 +194,12 @@ export default function AskClinicianPage() {
             This service provides interpretation of publicly available government data about nursing facilities. It does not constitute medical advice, clinical guidance, or a professional recommendation about the care of any individual. No nurse-patient or provider-patient relationship is created by purchasing or receiving this report. This is not a substitute for consultation with a healthcare provider, attorney, or in-person facility evaluation.
           </p>
 
+          {/* Error message */}
+          {error && <p className="ac-error">{error}</p>}
+
           {/* Submit */}
-          <button className="ac-submit-btn">
-            Ask a Clinician — $49
+          <button className="ac-submit-btn" onClick={handleSubmit} disabled={submitting}>
+            {submitting ? 'Submitting...' : 'Get Your Facility Report — $49'}
             <span className="ac-btn-sub">Secure payment via Stripe. Report delivered within 48 hours.</span>
           </button>
 

@@ -58,11 +58,11 @@
 
 /* Main layout */
 .ac-main {
-  max-width: 960px;
+  max-width: 1040px;
   margin: -36px auto 0;
   padding: 0 24px 48px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 340px;
   gap: 28px;
   align-items: start;
 }
@@ -291,4 +291,21 @@
   .ac-form-card { padding: 24px; }
   .ac-concern-grid { grid-template-columns: 1fr; }
   .ac-hero { padding: 100px 20px 40px; }
+}
+
+
+/* Error message */
+.ac-error {
+  font-size: 0.84rem;
+  color: #DC2626;
+  background: rgba(220, 38, 38, 0.05);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+.ac-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
 }
