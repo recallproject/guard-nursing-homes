@@ -36,6 +36,9 @@ export function checkout(priceKey) {
 // Single report purchase — $29 one-time
 const SINGLE_REPORT_LINK = 'https://buy.stripe.com/00wfZh5Z63m53DubNR0x204';
 
+// Ask a Clinician — $49 one-time
+const CLINICIAN_REPORT_LINK = 'https://buy.stripe.com/28EaEX1IQ4q92zqbNR0x205';
+
 /**
  * Redirect to Stripe for a single evidence report purchase
  * @param {string} ccn - Facility CCN to store for post-payment PDF delivery
@@ -48,6 +51,17 @@ export function checkoutSingleReport(ccn) {
   localStorage.setItem('pending_tier', 'professional');
   localStorage.setItem('pending_single_report', ccn);
   window.location.href = SINGLE_REPORT_LINK;
+}
+
+/**
+ * Redirect to Stripe for Ask a Clinician report
+ * @param {string} email - Customer email to prefill
+ */
+export function checkoutClinicianReport(email) {
+  const url = email
+    ? `${CLINICIAN_REPORT_LINK}?prefilled_email=${encodeURIComponent(email)}`
+    : CLINICIAN_REPORT_LINK;
+  window.location.href = url;
 }
 
 export { PAYMENT_LINKS };

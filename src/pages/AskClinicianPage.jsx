@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { checkoutClinicianReport } from '../utils/stripe';
 import '../styles/ask-clinician.css';
 
 const SITUATIONS = [
@@ -55,7 +56,6 @@ export default function AskClinicianPage() {
   };
 
   const handleSubmit = async () => {
-    // Validate required fields
     if (!facility.trim()) { setError('Please enter a facility name or CCN.'); return; }
     if (!email.trim()) { setError('Please enter your email address.'); return; }
     if (!/\S+@\S+\.\S+/.test(email)) { setError('Please enter a valid email address.'); return; }
@@ -65,18 +65,8 @@ export default function AskClinicianPage() {
     // Track event
     window.plausible && window.plausible('Ask-Clinician-Submit', { props: { facility, state } });
 
-    // Build the form data summary for the email
-    const formSummary = [
-      `Facility: ${facility}`,
-      `State: ${state || 'Not specified'}`,
-      `Relationship: ${relationship || 'Not specified'}`,
-      `Situation: ${situations.join(', ') || 'Not specified'}`,
-      `Concerns: ${worry || 'None provided'}`,
-      `Email: ${email}`,
-    ].join('\n');
-
-    // OPTION 1: If Formspree endpoint is configured, submit there
-    const FORMSPREE_ID = ''; // TODO: Rob — go to formspree.io, create free form, paste ID here
+    // Email form data to Rob via Formspree
+    const FORMSPREE_ID = ''; // TODO: Rob — sign up at formspree.io (free), create form, paste ID here
     if (FORMSPREE_ID) {
       try {
         await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
@@ -89,17 +79,11 @@ export default function AskClinicianPage() {
             _subject: `Ask a Clinician Request: ${facility}`,
           }),
         });
-      } catch (e) { /* fallback below */ }
+      } catch (e) { /* Stripe redirect still happens */ }
     }
 
-    // OPTION 2: Always also open mailto as backup (opens email client)
-    // This ensures you get the request even without Formspree
-    const mailtoBody = encodeURIComponent(formSummary);
-    const mailtoSubject = encodeURIComponent(`Ask a Clinician Request: ${facility}`);
-
-    // Navigate to submitted page (which explains next steps)
-    navigate('/ask-a-clinician-submitted', { state: { facility, email, formSummary } });
-    setSubmitting(false);
+    // Redirect to Stripe checkout — prefill their email
+    checkoutClinicianReport(email);
   };
 
   return (
