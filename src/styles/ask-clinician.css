@@ -309,3 +309,12 @@
   cursor: not-allowed;
   transform: none !important;
 }
+
+.ac-clinician-creds {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #2B6CB0;
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
