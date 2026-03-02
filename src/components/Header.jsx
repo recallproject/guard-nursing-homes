@@ -75,6 +75,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
       items: [
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes', state: { jumpToMap: true } },
         { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
+        { to: '/ask-a-clinician', label: 'Ask a Clinician', desc: 'Facility report from an NP — $49' },
       ]
     },
     {

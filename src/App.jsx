@@ -21,6 +21,7 @@ import HighRiskPage from './pages/HighRiskPage';
 import AboutPage from './pages/AboutPage';
 import SuccessPage from './pages/SuccessPage';
 import ComparePage from './pages/ComparePage';
+import AskClinicianPage from './pages/AskClinicianPage';
 import FeedbackButton from './components/FeedbackButton';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
@@ -56,6 +57,7 @@ function App() {
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/compare" element={<ComparePage />} />
+        <Route path="/ask-a-clinician" element={<AskClinicianPage />} />
       </Routes>
       <FeedbackButton />
       <SaveToast

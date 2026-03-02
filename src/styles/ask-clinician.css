@@ -1,0 +1,277 @@
+/* ═══════════════════════════════════════
+   ASK A CLINICIAN — Intake Page
+   ═══════════════════════════════════════ */
+.ac-page { background: #EDF1F7; min-height: 100vh; }
+
+/* Hero */
+.ac-hero {
+  background: linear-gradient(135deg, #1D3557 0%, #2B6CB0 100%);
+  padding: 120px 24px 56px;
+  text-align: center;
+}
+.ac-hero-title {
+  font-family: 'Source Serif 4', 'DM Serif Display', Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.ac-hero-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: rgba(255,255,255,0.8);
+  font-size: 1.05rem;
+  max-width: 580px;
+  margin: 0 auto 24px;
+  line-height: 1.6;
+}
+.ac-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 8px 20px;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Main layout */
+.ac-main {
+  max-width: 960px;
+  margin: -36px auto 0;
+  padding: 0 24px 48px;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Form card */
+.ac-form-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 8px 24px rgba(29, 53, 87, 0.08), 0 2px 6px rgba(0,0,0,0.03);
+  border: 1px solid #D7E0EA;
+}
+.ac-form-heading {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1D3557;
+  margin-bottom: 6px;
+}
+.ac-form-intro {
+  font-size: 0.9rem;
+  color: #64748B;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* Fields */
+.ac-field { margin-bottom: 22px; }
+.ac-label {
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #1D3557;
+  margin-bottom: 6px;
+}
+.ac-hint { font-weight: 400; color: #94A3B8; font-size: 0.8rem; }
+
+.ac-field input,
+.ac-field select,
+.ac-field textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid #D7E0EA;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  color: #0F172A;
+  background: #F8FAFC;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.ac-field input:focus,
+.ac-field select:focus,
+.ac-field textarea:focus {
+  outline: none;
+  border-color: #2B6CB0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+}
+.ac-field textarea { min-height: 110px; resize: vertical; }
+.ac-field input::placeholder,
+.ac-field textarea::placeholder { color: #94A3B8; }
+
+/* Facility search */
+.ac-search-wrap { position: relative; }
+.ac-search-wrap input { padding-left: 38px; }
+.ac-search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); }
+
+/* Concern checkboxes */
+.ac-concern-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.ac-concern-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid #D7E0EA;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 0.86rem;
+  color: #475569;
+}
+.ac-concern-option:hover { border-color: #2B6CB0; background: rgba(43,108,176,0.03); }
+.ac-concern-option.selected { border-color: #2B6CB0; background: rgba(43,108,176,0.06); color: #1D3557; font-weight: 600; }
+.ac-concern-option input[type="checkbox"] { width: 16px; height: 16px; accent-color: #2B6CB0; flex-shrink: 0; }
+
+/* Disclaimer in form */
+.ac-form-disclaimer {
+  font-size: 0.72rem;
+  color: #94A3B8;
+  line-height: 1.6;
+  margin: 20px 0 16px;
+  padding: 14px 16px;
+  background: #F8FAFC;
+  border: 1px solid #E8EDF2;
+  border-radius: 8px;
+}
+
+/* Submit */
+.ac-submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #1D3557, #2B6CB0);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 12px rgba(29, 53, 87, 0.2);
+}
+.ac-submit-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(29, 53, 87, 0.25); }
+.ac-btn-sub {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* Guarantee */
+.ac-guarantee {
+  background: rgba(5, 150, 105, 0.05);
+  border: 1px solid rgba(5, 150, 105, 0.15);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 16px;
+}
+.ac-guarantee svg { flex-shrink: 0; margin-top: 1px; }
+.ac-guarantee p { font-size: 0.82rem; color: #475569; line-height: 1.5; }
+.ac-guarantee strong { color: #059669; }
+
+/* Sidebar */
+.ac-sidebar { display: flex; flex-direction: column; gap: 20px; }
+.ac-sidebar-card {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(29, 53, 87, 0.07), 0 1px 4px rgba(0,0,0,0.03);
+  border: 1px solid #D7E0EA;
+}
+.ac-sidebar-title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1D3557;
+  margin-bottom: 14px;
+}
+
+/* Deliverables */
+.ac-deliverables { list-style: none; padding: 0; margin: 0; }
+.ac-deliverables li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px 0;
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.5;
+}
+.ac-deliverables li svg { flex-shrink: 0; margin-top: 2px; }
+
+/* Turnaround */
+.ac-turnaround {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(13, 148, 136, 0.05);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 14px;
+  font-size: 0.84rem;
+  color: #475569;
+}
+.ac-turnaround strong { color: #0D9488; }
+
+/* Clinician card */
+.ac-clinician-card { text-align: center; }
+.ac-avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: linear-gradient(135deg, #1D3557, #2B6CB0);
+  color: #FFFFFF;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.4rem; font-weight: 700;
+  margin: 0 auto 10px;
+}
+.ac-clinician-name { font-weight: 700; font-size: 0.95rem; color: #1D3557; }
+.ac-clinician-title { font-size: 0.8rem; color: #94A3B8; margin-bottom: 10px; }
+.ac-clinician-bio { font-size: 0.82rem; color: #475569; line-height: 1.5; text-align: left; }
+
+/* Trust signals */
+.ac-trust-signals { display: flex; flex-direction: column; gap: 10px; }
+.ac-trust-signal { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: #475569; }
+.ac-trust-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: rgba(43, 108, 176, 0.06);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.ac-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+  text-align: center;
+}
+.ac-footer p {
+  font-size: 0.75rem;
+  color: #94A3B8;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ac-main { grid-template-columns: 1fr; }
+  .ac-form-card { padding: 24px; }
+  .ac-concern-grid { grid-template-columns: 1fr; }
+  .ac-hero { padding: 100px 20px 40px; }
+}
