@@ -1,0 +1,63 @@
+/* ═══════════════════════════════════════
+   EXPLAINER BANNERS — Auto-triggered
+   ═══════════════════════════════════════ */
+.xb-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.xb {
+  border-radius: 12px;
+  padding: 18px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Variants */
+.xb--danger {
+  background: rgba(220, 38, 38, 0.04);
+  border: 1px solid rgba(220, 38, 38, 0.14);
+}
+.xb--warning {
+  background: rgba(217, 119, 6, 0.04);
+  border: 1px solid rgba(217, 119, 6, 0.14);
+}
+.xb--info {
+  background: rgba(43, 108, 176, 0.04);
+  border: 1px solid rgba(43, 108, 176, 0.12);
+}
+
+.xb-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+  line-height: 1;
+}
+
+.xb-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.xb--danger .xb-title { color: #991B1B; }
+.xb--warning .xb-title { color: #92400E; }
+.xb--info .xb-title { color: #1D4E7E; }
+
+.xb-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .xb { padding: 14px 16px; gap: 10px; }
+  .xb-title { font-size: 0.84rem; }
+  .xb-body { font-size: 0.8rem; }
+}

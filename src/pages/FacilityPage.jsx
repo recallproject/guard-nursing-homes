@@ -13,6 +13,9 @@ import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useWatchlist } from '../hooks/useWatchlist';
 
 import ClinicianCTA from '../components/ClinicianCTA';
+import ExplainerBanners from '../components/facility/ExplainerBanners';
+import MetricTooltip from '../components/facility/MetricTooltip';
+import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisMean';
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
@@ -359,6 +362,9 @@ export function FacilityPage() {
           <div className="source-line">Source: CMS Health Deficiencies Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></div>
         </div>
 
+        {/* Contextual explainer banners — auto-triggered by data */}
+        <ExplainerBanners facility={facility} />
+
         {/* Section 03 — How Much Care Do Residents Get? */}
         <div className="section">
           <div className="section-number">03</div>
@@ -381,6 +387,33 @@ export function FacilityPage() {
           )}
 
           {facility.staffing_trend && <StaffingTrendChart facility={facility} />}
+
+          {/* What does this mean? — plain English staffing explainer */}
+          <WhatDoesThisMean question="What do these staffing numbers actually mean?">
+            <p>
+              Nursing homes report their staffing to CMS through payroll records (called PBJ data).
+              These numbers tell you how much direct nursing care each resident gets in a 24-hour period.
+            </p>
+            {facility.rn_hprd && (
+              <KeyPoint>
+                <strong>RN time: {Math.round(facility.rn_hprd * 60)} minutes/day</strong> means each resident gets about {Math.round(facility.rn_hprd * 60)} minutes of Registered Nurse care per day.
+                {facility.rn_hprd < 0.55 ? " That's below the federal standard of 33 minutes." : ""}
+              </KeyPoint>
+            )}
+            {facility.zero_rn_pct > 0 && (
+              <KeyPoint color="#DC2626">
+                <strong>Zero-RN days</strong> — on {pct(facility.zero_rn_pct)} of days, there was no Registered Nurse on duty at all. If a resident had a sudden medical change on those days, no one qualified to assess it was available.
+              </KeyPoint>
+            )}
+            {facility.rn_turnover > 50 && (
+              <KeyPoint color="#D97706">
+                <strong>{Math.round(facility.rn_turnover)}% RN turnover</strong> — over the past year, more than half the RNs who worked here have left. Residents are being cared for by staff who may not know their medical history.
+              </KeyPoint>
+            )}
+            <p>
+              <strong>What families can do:</strong> Ask the facility directly — "How many RNs are on duty right now? How many were on duty last weekend?" If they can't or won't answer, that tells you something.
+            </p>
+          </WhatDoesThisMean>
 
           {/* Accordion: Federal Staffing Standards */}
           <div className={`accordion ${openAccordion === 'timeline' ? 'open' : ''}`} onClick={() => setOpenAccordion(openAccordion === 'timeline' ? null : 'timeline')}>

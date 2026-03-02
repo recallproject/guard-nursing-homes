@@ -8,6 +8,8 @@
   background: linear-gradient(135deg, #1D3557 0%, #2B6CB0 100%);
   padding: 120px 24px 56px;
   text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .ac-hero-title {
   font-family: 'Source Serif 4', 'DM Serif Display', Georgia, serif;

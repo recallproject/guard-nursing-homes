@@ -1,0 +1,86 @@
+/* ═══════════════════════════════════════
+   METRIC TOOLTIP — (?) hover explainers
+   ═══════════════════════════════════════ */
+.mt-trigger {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: rgba(43, 108, 176, 0.09);
+  color: #2B6CB0;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: help;
+  flex-shrink: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  transition: background 0.15s;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+.mt-trigger:hover { background: rgba(43, 108, 176, 0.16); }
+
+.mt-tooltip {
+  position: absolute;
+  left: 50%;
+  width: 300px;
+  background: #1D3557;
+  color: #FFFFFF;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.55;
+  z-index: 200;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.mt-above {
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+}
+.mt-below {
+  top: calc(100% + 10px);
+  transform: translateX(-50%);
+}
+
+/* Arrow */
+.mt-above::after,
+.mt-below::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #1D3557;
+  transform: translateX(-50%) rotate(45deg);
+}
+.mt-above::after { bottom: -5px; }
+.mt-below::before { top: -5px; }
+
+.mt-title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.83rem;
+  margin-bottom: 5px;
+  color: rgba(255, 255, 255, 0.95);
+}
+.mt-body {
+  display: block;
+  color: rgba(255, 255, 255, 0.82);
+}
+.mt-benchmark {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.73rem;
+  color: rgba(255, 255, 255, 0.65);
+}

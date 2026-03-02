@@ -1,3 +1,5 @@
+import MetricTooltip from './facility/MetricTooltip';
+
 export default function StaffingSection({ facility, benchmarks }) {
   // Convert HPRD to minutes
   const rnMinutes = Math.round(facility.rn_hprd * 60);
@@ -37,7 +39,11 @@ export default function StaffingSection({ facility, benchmarks }) {
       <tbody>
         <tr>
           <td>
-            <div className="staffing-role">Registered Nurses (RNs)</div>
+            <div className="staffing-role">Registered Nurses (RNs)
+              <MetricTooltip title="What is RN HPRD?" benchmark="National avg: ~40 min · Federal standard: 33 min">
+                This is how many minutes of care from a Registered Nurse each resident gets in a 24-hour period. RNs are the most trained nurses on staff — they assess conditions, manage medications, and catch problems early.
+              </MetricTooltip>
+            </div>
             <div className="staffing-desc">Assessments, medications, complex care decisions</div>
           </td>
           <td><strong className={rnClass}>{rnMinutes} min</strong></td>
@@ -48,7 +54,11 @@ export default function StaffingSection({ facility, benchmarks }) {
           <>
             <tr>
               <td>
-                <div className="staffing-role">Licensed Practical Nurses (LPNs)</div>
+                <div className="staffing-role">Licensed Practical Nurses (LPNs)
+                  <MetricTooltip title="What do LPNs do?" benchmark="No federal minimum for LPN hours specifically">
+                    LPNs handle medications, wound care, and vital signs. They work under RN supervision and provide essential day-to-day nursing tasks. More LPN minutes generally means more hands-on clinical care.
+                  </MetricTooltip>
+                </div>
                 <div className="staffing-desc">Medications, wound care, vital signs</div>
               </td>
               <td>{lpnMinutes} min</td>
@@ -57,7 +67,11 @@ export default function StaffingSection({ facility, benchmarks }) {
             </tr>
             <tr>
               <td>
-                <div className="staffing-role">Certified Nursing Assistants (CNAs)</div>
+                <div className="staffing-role">Certified Nursing Assistants (CNAs)
+                  <MetricTooltip title="What do CNAs do?" benchmark="CNAs provide ~60% of all direct nursing care in most facilities">
+                    CNAs provide the most hands-on care — bathing, dressing, feeding, and repositioning residents. They spend the most time at the bedside and are often the first to notice when something is wrong.
+                  </MetricTooltip>
+                </div>
                 <div className="staffing-desc">Bathing, feeding, dressing, daily personal care</div>
               </td>
               <td>{cnaMinutes} min</td>
@@ -68,7 +82,11 @@ export default function StaffingSection({ facility, benchmarks }) {
         )}
         <tr style={{ borderTop: '2px solid var(--border)' }}>
           <td>
-            <div className="staffing-role">Total Nursing Care</div>
+            <div className="staffing-role">Total Nursing Care
+              <MetricTooltip title="Total Staffing" benchmark="National avg: ~3.8 hrs · Safety benchmark: 4.1 hrs">
+                This combines hours from RNs, LPNs, and CNAs — everyone who provides direct nursing care. A higher number means more hands available per resident per day.
+              </MetricTooltip>
+            </div>
           </td>
           <td><strong className={totalClass}>{totalMinutes} min ({totalHours} hrs)</strong></td>
           <td>{stateAvgTotalMinutes != null ? `${stateAvgTotalMinutes} min` : '—'}</td>
