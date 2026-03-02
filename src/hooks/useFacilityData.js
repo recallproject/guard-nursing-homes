@@ -71,12 +71,14 @@ export function useFacilityData() {
         if (!stateData.facilities) continue;
 
         for (const facility of stateData.facilities) {
-          // Match on name, city, or CCN
+          // Match on name, city, CCN, ZIP, or state
           const matchesName = facility.name?.toLowerCase().includes(searchTerm);
           const matchesCity = facility.city?.toLowerCase().includes(searchTerm);
           const matchesCCN = facility.ccn?.includes(searchTerm);
+          const matchesZip = facility.zip?.startsWith(searchTerm);
+          const matchesState = stateCode.toLowerCase() === searchTerm || facility.state?.toLowerCase() === searchTerm;
 
-          if (matchesName || matchesCity || matchesCCN) {
+          if (matchesName || matchesCity || matchesCCN || matchesZip || matchesState) {
             results.push(facility);
           }
 
