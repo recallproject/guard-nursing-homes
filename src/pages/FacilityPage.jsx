@@ -12,6 +12,7 @@ import StaffingSection from '../components/StaffingSection';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useWatchlist } from '../hooks/useWatchlist';
 
+import ClinicianCTA from '../components/ClinicianCTA';
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
@@ -804,6 +805,8 @@ export function FacilityPage() {
             </div>
           </div>
         )}
+
+        <ClinicianCTA />
 
         <div className="fp-footer-text">
           The Oversight Report — Nursing Home Risk Data | Data processed 2026-02-23<br />
