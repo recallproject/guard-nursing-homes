@@ -134,7 +134,7 @@ export default function WhyThisExists() {
                   The Oversight Report was born from a simple belief: families shouldn&rsquo;t need a healthcare degree
                   to understand whether a nursing home is safe. I combined my clinical background
                   with data engineering to build a system that pulls all of this information together,
-                  scores it, and presents it in plain language — so any family member can walk in
+                  scores it, and presents it so any family member can walk in
                   informed.
                 </p>
                 <p>

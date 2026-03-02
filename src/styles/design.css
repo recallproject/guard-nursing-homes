@@ -266,7 +266,7 @@ a:focus-visible {
 
 .btn-primary {
   background-color: var(--primary);
-  color: var(--text-white);
+  color: #FFFFFF;
   box-shadow: var(--shadow-lg);
 }
 

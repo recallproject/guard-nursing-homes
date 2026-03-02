@@ -30,7 +30,7 @@ const STATES = [
 ];
 
 const DELIVERABLES = [
-  'Safety overview with plain-English interpretation of facility data',
+  "Safety overview — what this facility's record actually tells us",
   'Staffing analysis — how this facility compares to state and national averages',
   'Inspection findings — what the deficiency patterns tell us about this facility',
   'Ownership context — who operates this facility and how their other homes perform',
@@ -55,15 +55,15 @@ export default function AskClinicianPage() {
     <div className="ac-page">
       <Helmet>
         <title>Ask a Clinician — The Oversight Report</title>
-        <meta name="description" content="Get a plain-English interpretation of any nursing home's public safety data, prepared by a licensed Nurse Practitioner." />
+        <meta name="description" content="Get a clinician's interpretation of any nursing home's public safety data. Written by a licensed Nurse Practitioner with 20+ years of experience." />
       </Helmet>
 
       {/* HERO */}
       <section className="ac-hero">
         <h1 className="ac-hero-title">Ask a Clinician About Your Facility</h1>
         <p className="ac-hero-sub">
-          Get a plain-English interpretation of your facility's public safety record
-          — prepared by a nurse practitioner, not a search algorithm.
+          Get a clinician's interpretation of your facility's public safety record
+          — written by a nurse practitioner, not a search algorithm.
         </p>
         <div className="ac-hero-badge">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -145,7 +145,7 @@ export default function AskClinicianPage() {
 
           {/* Submit */}
           <button className="ac-submit-btn">
-            Get Your Facility Report — $49
+            Ask a Clinician — $49
             <span className="ac-btn-sub">Secure payment via Stripe. Report delivered within 48 hours.</span>
           </button>
 

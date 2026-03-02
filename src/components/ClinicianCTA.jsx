@@ -7,7 +7,7 @@ export default function ClinicianCTA() {
       <div className="clin-cta-banner">
         <div className="clin-cta-text">
           <h3 className="clin-cta-heading">Not sure what this data means for your family?</h3>
-          <p className="clin-cta-sub">Get a plain-English interpretation of this facility's public safety record — prepared by a nurse practitioner, not a search algorithm.</p>
+          <p className="clin-cta-sub">A nurse practitioner reviews this facility's safety record and answers the questions families actually ask.</p>
         </div>
         <Link to="/ask-a-clinician" className="clin-cta-btn">Ask a Clinician — $49</Link>
       </div>
