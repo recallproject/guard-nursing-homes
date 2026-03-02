@@ -763,7 +763,7 @@ export default function ComparePage() {
                   <td className="compare-matrix-ours-cell matrix-yes">Yes</td>
                 </tr>
                 <tr>
-                  <td>Evidence / litigation support</td>
+                  <td>Documented evidence reports</td>
                   <td className="matrix-no">No</td>
                   <td className="matrix-no">No</td>
                   <td className="matrix-no">No</td>
@@ -816,7 +816,7 @@ export default function ComparePage() {
                   <li>Ownership change alerts (sold within 3 years)</li>
                   <li>Watchlist — follow specific facilities for changes</li>
                   <li>AG enforcement toolkit for state attorneys general</li>
-                  <li>Evidence reports for litigation support</li>
+                  <li>Professionally documented evidence reports</li>
                 </ul>
               </div>
               <div className="compare-does-col compare-does-col--no">

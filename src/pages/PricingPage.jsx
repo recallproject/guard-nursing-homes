@@ -30,11 +30,30 @@ const tiers = [
     ctaType: 'primary',
   },
   {
+    name: 'Ask a Clinician',
+    price: '$49',
+    period: 'one-time',
+    description: 'For families who want expert context',
+    badge: 'NEW',
+    features: [
+      'Everything in Free, plus:',
+      'Plain-English data interpretation by an NP',
+      'Staffing & inspection analysis in context',
+      'Ownership background & related facilities',
+      '3 nearby alternatives ranked by safety data',
+      'Questions to ask the facility administrator',
+      'Delivered to your email within 48 hours',
+    ],
+    cta: 'Get Your Facility Report',
+    ctaLink: '/ask-a-clinician',
+    ctaType: 'primary',
+  },
+  {
     name: 'Evidence Report',
     price: '$29',
     period: 'one-time',
     description: 'For attorneys & journalists',
-    badge: 'LITIGATION-READY',
+    badge: 'DOCUMENTED & CITED',
     inherits: 'Everything in Free, plus:',
     features: [
       'Exhibit-numbered citations',
@@ -118,8 +137,9 @@ export default function PricingPage() {
     if (tier.ctaLink === '/') {
       navigate('/');
     } else if (tier.ctaLink === '/evidence') {
-      // Go to evidence preview page where they can select a facility
       navigate('/evidence');
+    } else if (tier.ctaLink === '/ask-a-clinician') {
+      navigate('/ask-a-clinician');
     } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;
     }

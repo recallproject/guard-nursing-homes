@@ -116,7 +116,7 @@ export function EvidencePage() {
     return (
       <ComingSoonPage
         title="Evidence Packages"
-        description="Generate comprehensive, litigation-ready PDF reports for any facility. Ten sections covering staffing, inspections, penalties, ownership, quality measures, and nearby alternatives — everything an attorney or ombudsman needs in one document."
+        description="Generate comprehensive, professionally documented PDF reports for any facility. Ten sections covering staffing, inspections, penalties, ownership, quality measures, and nearby alternatives — everything an attorney or ombudsman needs in one document."
         tier="professional"
         features={[
           '10-section facility analysis in a single PDF',
@@ -226,7 +226,7 @@ export function EvidencePage() {
         </div>
         <div className="ev-purchase-gate">
           <h2>Evidence Package — {facility.name}</h2>
-          <p>10-section litigation-ready report with staffing data, inspection history, penalties, ownership profile, and nearby alternatives.</p>
+          <p>10-section professionally documented report with staffing data, inspection history, penalties, ownership profile, and nearby alternatives.</p>
           <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
           <div className="ev-purchase-options">
             <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn)}>

@@ -4,7 +4,7 @@ import autoTable from 'jspdf-autotable';
 const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
 
 /**
- * Generates a professional, litigation-ready Evidence Package PDF.
+ * Generates a professional, documented Evidence Package PDF.
  *
  * @param {Object} facility - The facility data object
  * @param {Array} nearbyAlternatives - Array of nearby facilities with better scores

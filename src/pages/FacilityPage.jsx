@@ -651,7 +651,7 @@ export function FacilityPage() {
             <span className="paid-price">$29</span>
           </div>
           <div className="paid-upsell-desc">
-            A 10-section litigation-ready Evidence Package. Everything in the free report plus deeper analysis — compiled from 6 CMS databases into a single professional document.
+            A 10-section professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 6 CMS databases into a single documented report.
           </div>
           <div className="paid-features">
             <span className="paid-feature">Exhibit-numbered citations</span>
@@ -727,7 +727,7 @@ export function FacilityPage() {
             <div className="ev-preview-modal" onClick={e => e.stopPropagation()}>
               <button className="ev-preview-close" onClick={() => setShowEvidencePreview(false)}>&times;</button>
               <h2>Evidence Package — {facility.name}</h2>
-              <p className="ev-preview-subtitle">10-section litigation-ready report. Here's what's inside:</p>
+              <p className="ev-preview-subtitle">10-section professionally documented report. Here's what's inside:</p>
 
               <div className="ev-preview-sections">
                 <div className="ev-preview-section">
