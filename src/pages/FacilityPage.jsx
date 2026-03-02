@@ -842,8 +842,11 @@ export function FacilityPage() {
         <ClinicianCTA />
 
         <div className="fp-footer-text">
+          <p style={{ fontSize: '0.72rem', color: 'var(--text-muted, #94A3B8)', lineHeight: '1.6', maxWidth: '680px', margin: '0 auto 10px', opacity: 0.85 }}>
+            Reports are prepared using the professional knowledge of a licensed Nurse Practitioner applied to publicly available CMS regulatory data. The Oversight Report is an independent service with no financial ties to any nursing facility or chain. Reports are informational — not medical advice — and do not create a provider-patient relationship.
+          </p>
           The Oversight Report — Nursing Home Risk Data | Data processed 2026-02-23<br />
-          Built by Robert Benard · All data sourced from CMS Medicare.gov
+          Built by Robert Benard, NP · DataLink Clinical LLC · All data sourced from CMS Medicare.gov
         </div>
 
         <div className="fp-footer-nav">

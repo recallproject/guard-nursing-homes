@@ -1637,8 +1637,23 @@
   border-top: 1px solid #E8EDF2;
   padding-top: 2rem;
   display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-disclaimer {
+  font-size: 0.75rem !important;
+  color: var(--text-muted) !important;
+  line-height: 1.6;
+  max-width: 640px;
+  opacity: 0.85;
+}
+
+.footer-bottom-row {
+  display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .footer-bottom p {
