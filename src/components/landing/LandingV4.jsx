@@ -227,7 +227,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
       </div>
 
       {/* ═══════ 3. HOW IT WORKS — SCROLL ANIMATION ═══════ */}
-      <HowItWorks />
+      <HowItWorks onSearchFacility={onExplore} />
 
       <div className="v4-coverage-pane">
       <div className="v4-section">

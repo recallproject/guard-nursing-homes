@@ -45,7 +45,7 @@ function CountUp({ target, prefix = '', suffix = '', duration = 600 }) {
   return <span ref={elRef}>{prefix}{target > 1000 ? val.toLocaleString() : val}{suffix}</span>;
 }
 
-export default function HowItWorks() {
+export default function HowItWorks({ onSearchFacility }) {
   const scrollRef = useRef(null);
   const [activeScene, setActiveScene] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -310,7 +310,9 @@ export default function HowItWorks() {
                     <div className={`hiw-cta-num ${ctaIn.num ? 'in' : ''}`}>14,713</div>
                     <div className={`hiw-cta-sub ${ctaIn.sub ? 'in' : ''}`}>Every Medicare nursing home in America</div>
                     <div className={`hiw-cta-head ${ctaIn.head ? 'in' : ''}`}>We ran this analysis for every facility in the country.</div>
-                    <Link to="/" className={`hiw-cta-btn ${ctaIn.btn ? 'in' : ''}`}>Search a facility &#8594;</Link>
+                    <button className={`hiw-cta-btn ${ctaIn.btn ? 'in' : ''}`} onClick={() => {
+                      if (onSearchFacility) onSearchFacility();
+                    }}>Search a facility &#8594;</button>
                     <div className={`hiw-cta-link ${ctaIn.link ? 'in' : ''}`}><Link to="/methodology">Read our methodology</Link></div>
                   </div>
                 </div>
