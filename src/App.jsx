@@ -24,6 +24,7 @@ import ComparePage from './pages/ComparePage';
 import AskClinicianPage from './pages/AskClinicianPage';
 import AskClinicianSubmittedPage from './pages/AskClinicianSubmittedPage';
 import EvidenceSamplePage from './pages/EvidenceSamplePage';
+import KnowYourRightsPage from './pages/KnowYourRightsPage';
 import FeedbackButton from './components/FeedbackButton';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
@@ -62,6 +63,7 @@ function App() {
         <Route path="/ask-a-clinician" element={<AskClinicianPage />} />
         <Route path="/ask-a-clinician-submitted" element={<AskClinicianSubmittedPage />} />
         <Route path="/evidence-sample" element={<EvidenceSamplePage />} />
+        <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
       </Routes>
       <FeedbackButton />
       <SaveToast

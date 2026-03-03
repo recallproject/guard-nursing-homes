@@ -19,6 +19,128 @@ import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisM
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
+// Quality measure categories — organized by clinical theme, matching mockup v2
+const QM_CATEGORIES = [
+  {
+    key: 'memory',
+    label: 'Memory Care',
+    direction: '\u2193 Lower is better for all measures in this category',
+    measures: [
+      { code: '481', type: 'mds', stay: 'ls', name: 'Antipsychotic medication', lower: true,
+        explain: 'Percentage of long-stay residents receiving antipsychotic medications \u2014 drugs designed for schizophrenia and bipolar disorder but frequently used off-label to sedate dementia patients. The FDA has a black-box warning against this use in elderly dementia patients due to increased risk of death.' },
+      { code: '452', type: 'mds', stay: 'ls', name: 'Anti-anxiety & sedative medication', lower: true,
+        explain: 'Percentage of residents receiving anti-anxiety or hypnotic medications. These include benzodiazepines (Xanax, Ativan, Valium) which increase fall risk in the elderly by 40\u201360%.' },
+      { code: '409', type: 'mds', stay: 'ls', name: 'Physical restraints', lower: true,
+        explain: 'Percentage of residents physically restrained. Physical restraints cause injury, pressure sores, and psychological trauma. Federal law requires facilities to be restraint-free except in documented emergencies.' },
+      { code: '408', type: 'mds', stay: 'ls', name: 'Depressive symptoms', lower: true,
+        explain: 'Percentage of residents showing signs of depression. Low numbers can sometimes reflect poor screening rather than good care.' },
+      { code: '410', type: 'mds', stay: 'ls', name: 'Falls with major injury', lower: true,
+        explain: 'Percentage of long-stay residents who experienced a fall resulting in major injury (fractures, head trauma, dislocations). High rates correlate with understaffing and sedative medication use.' },
+    ]
+  },
+  {
+    key: 'body',
+    label: 'Body & Basic Care',
+    direction: '\u2193 Lower is better for all measures in this category',
+    measures: [
+      { code: '479', type: 'mds', stay: 'ls', name: 'Pressure ulcers (bedsores)', lower: true,
+        explain: 'Percentage of long-stay residents who developed new or worsening pressure ulcers (bedsores). This is a standard CMS quality indicator tracked for all long-stay residents.' },
+      { code: '407', type: 'mds', stay: 'ls', name: 'Urinary tract infections', lower: true,
+        explain: 'Percentage of residents with UTIs. For elderly residents, UTIs can cause delirium, falls, and hospitalization. Often caused by delayed incontinence care or poor hygiene.' },
+      { code: '406', type: 'mds', stay: 'ls', name: 'Catheter left in', lower: true,
+        explain: 'Percentage of residents with an indwelling urinary catheter. Catheters should be removed as soon as medically possible; each additional day increases infection risk by 3\u20137%.' },
+      { code: '404', type: 'mds', stay: 'ls', name: 'Significant weight loss', lower: true,
+        explain: 'Percentage of residents who experienced unintentional weight loss of 5%+ in 30 days (or 10% in 180 days). Can indicate inadequate feeding assistance, depression, or neglect.' },
+      { code: '401', type: 'mds', stay: 'ls', name: 'Ability to do daily tasks declined', lower: true,
+        explain: 'Percentage of residents who lost ability to perform basic ADLs (dressing, eating, bathing). Functional decline accelerates when staff do tasks for residents instead of helping them maintain independence.' },
+      { code: '451', type: 'mds', stay: 'ls', name: 'Walking ability worsened', lower: true,
+        explain: 'Percentage of residents who could walk but experienced a mobility decline. Once a resident stops walking, recovery is rare. Facilities should actively maintain mobility through walking programs.' },
+      { code: '480', type: 'mds', stay: 'ls', name: 'New or worsened incontinence', lower: true,
+        explain: 'Percentage who developed new or worsened bladder/bowel control. Incontinence management requires regular toileting schedules, a direct measure of staffing adequacy.' },
+    ]
+  },
+  {
+    key: 'rehab',
+    label: 'Rehab & Short-Stay',
+    direction: '\u2193 Lower is better for most measures \u00b7 "Discharged to community" = higher is better',
+    measures: [
+      { code: '521', type: 'claims', name: 'Re-hospitalized within 30 days', lower: true,
+        explain: 'Percentage of patients admitted for short-term rehab who end up back in the hospital within 30 days. This is a Medicare claims-based measure \u2014 actual hospital readmissions, not self-reported.' },
+      { code: '522', type: 'claims', name: 'Emergency room visits', lower: true,
+        explain: 'Percentage of short-stay residents who visited the ER. ER visits during a skilled nursing stay often indicate deterioration the facility couldn\'t manage on-site.' },
+      { code: '434', type: 'mds', stay: 'ss', name: 'Newly started on antipsychotics', lower: true,
+        explain: 'Percentage of short-stay patients newly put on antipsychotics they weren\'t taking before admission. Starting antipsychotics during a rehab stay is a red flag for chemical sedation.' },
+    ]
+  },
+  {
+    key: 'vaccines',
+    label: 'Vaccines',
+    direction: '\u2191 Higher is better for all vaccine measures',
+    subgroups: [
+      { label: 'COVID-19 Vaccination', noBorder: true, measures: [
+        { code: 'covid_res', type: 'qrp_num', name: 'Residents up to date on COVID-19', lower: false,
+          explain: 'Percentage of residents who are up to date on COVID-19 vaccination. COVID remains a leading cause of infectious disease death in nursing homes. Source: SNF QRP (Measure S_045).' },
+        { code: 'covid_staff', type: 'qrp_num', name: 'Staff up to date on COVID-19', lower: false,
+          explain: 'Percentage of healthcare staff who are up to date on COVID-19 vaccination. Unvaccinated staff are more likely to introduce COVID into the facility and transmit it to vulnerable residents. Source: SNF QRP (Measure S_041).' },
+      ]},
+      { label: 'Flu & Pneumococcal \u2014 Long-Stay', measures: [
+        { code: '454', type: 'mds', stay: 'ls', name: 'Flu vaccine', lower: false,
+          explain: 'Percentage of long-stay residents who received the seasonal flu vaccine. Flu outbreaks in nursing homes can be fatal.' },
+        { code: '415', type: 'mds', stay: 'ls', name: 'Pneumococcal vaccine', lower: false,
+          explain: 'Percentage of long-stay residents who received the pneumococcal vaccine. Pneumonia is a leading cause of death in nursing home residents.' },
+      ]},
+      { label: 'Flu & Pneumococcal \u2014 Short-Stay', measures: [
+        { code: '472', type: 'mds', stay: 'ss', name: 'Flu vaccine', lower: false,
+          explain: 'Percentage of short-stay residents who received the flu vaccine during their stay. Short-stay patients are often post-surgical and immunocompromised.' },
+        { code: '430', type: 'mds', stay: 'ss', name: 'Pneumococcal vaccine', lower: false,
+          explain: 'Percentage of short-stay residents who received the pneumococcal vaccine. Many short-stay patients are elderly and at high risk for pneumonia.' },
+      ]},
+    ]
+  },
+  {
+    key: 'workforce',
+    label: 'Workforce',
+    direction: '\u2193 Lower turnover is better \u00b7 Weekend staffing should match weekday staffing',
+    custom: true,  // rendered with custom logic, not QM indicators
+  },
+];
+
+// Get the facility's score for a measure definition
+function getMeasureScore(qm, m) {
+  if (!qm) return null;
+  if (m.type === 'mds') return qm.mds?.[m.stay]?.[m.code]?.s ?? null;
+  if (m.type === 'claims') { const v = qm.claims?.[m.code]; return v ? (v.adj ?? v.obs ?? null) : null; }
+  if (m.type === 'qrp_num') return qm.qrp?.[m.code] ?? null;
+  return null;
+}
+
+// Color coding: compare facility score to national average
+function getQmColor(score, avg, lower) {
+  if (score == null || avg == null || avg === 0) return 'green';
+  if (lower) {
+    if (score > avg * 1.5) return 'red';
+    if (score > avg * 1.1) return 'orange';
+    return 'green';
+  } else {
+    if (score < avg * 0.7) return 'red';
+    if (score < avg * 0.9) return 'orange';
+    return 'green';
+  }
+}
+
+// Compute "worst" flag color for a category tab
+function getCategoryFlag(qm, measures, avgs) {
+  let worst = 'green';
+  for (const m of measures) {
+    const score = getMeasureScore(qm, m);
+    const avg = avgs[m.stay ? `${m.type}_${m.stay}_${m.code}` : `${m.type}_${m.code}`];
+    const c = getQmColor(score, avg, m.lower);
+    if (c === 'red') return 'red';
+    if (c === 'orange') worst = 'orange';
+  }
+  return worst;
+}
+
 export function FacilityPage() {
   const { ccn } = useParams();
   const location = useLocation();
@@ -30,6 +152,8 @@ export function FacilityPage() {
   const [ahcaData, setAhcaData] = useState(null);
   const [openAccordion, setOpenAccordion] = useState(null);
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
+  const [qmTab, setQmTab] = useState('memory');
+  const [expandedQm, setExpandedQm] = useState(null);
 
   const facility = data?.states
     ? Object.values(data.states).flatMap(state => state.facilities || []).find(f => f.ccn === ccn)
@@ -65,6 +189,32 @@ export function FacilityPage() {
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 5);
   }, [facility, data]);
+
+  // Compute national averages for quality measures across all facilities
+  const nationalQmAvgs = useMemo(() => {
+    if (!allFacilities.length) return {};
+    const sums = {};
+    const counts = {};
+    const addVal = (key, val) => {
+      if (val != null && !isNaN(val)) {
+        sums[key] = (sums[key] || 0) + val;
+        counts[key] = (counts[key] || 0) + 1;
+      }
+    };
+    allFacilities.forEach(f => {
+      const qm = f.quality_measures;
+      if (!qm) return;
+      Object.entries(qm.mds?.ls || {}).forEach(([code, v]) => addVal(`mds_ls_${code}`, v.s));
+      Object.entries(qm.mds?.ss || {}).forEach(([code, v]) => addVal(`mds_ss_${code}`, v.s));
+      Object.entries(qm.claims || {}).forEach(([code, v]) => addVal(`claims_${code}`, v.adj ?? v.obs));
+      // COVID vaccination rates from QRP (numeric)
+      if (qm.qrp?.covid_res != null) addVal('qrp_num_covid_res', qm.qrp.covid_res);
+      if (qm.qrp?.covid_staff != null) addVal('qrp_num_covid_staff', qm.qrp.covid_staff);
+    });
+    const avgs = {};
+    Object.keys(sums).forEach(k => { avgs[k] = sums[k] / counts[k]; });
+    return avgs;
+  }, [allFacilities]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -121,7 +271,10 @@ export function FacilityPage() {
   // Helpers
   const fmt = (v) => (!v && v !== 0) ? 'N/A' : `$${Math.round(v).toLocaleString()}`;
   const pct = (v) => (v === null || v === undefined) ? 'N/A' : `${v.toFixed(0)}%`;
-  const stars = '⭐'.repeat(Math.max(0, Math.min(5, facility.stars || 0)));
+  const starCount = Math.max(0, Math.min(5, facility.stars || 0));
+  const starsFilled = '★'.repeat(starCount);
+  const starsEmpty = '☆'.repeat(5 - starCount);
+  const safetyColor = starCount <= 1 ? '#DC2626' : starCount <= 2 ? '#EA580C' : starCount <= 3 ? '#D97706' : '#059669';
   const propublica = `https://projects.propublica.org/nursing-homes/homes/h-${ccn}`;
   const medicare = `https://www.medicare.gov/care-compare/details/nursing-home/${ccn}`;
   const hcris = `https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports/Cost-Reports-by-Fiscal-Year`;
@@ -183,10 +336,23 @@ export function FacilityPage() {
       </div>
 
       <div className="fp-body">
-        {/* Facility Name + Meta */}
-        <h1 className="fp-name">{facility.name}</h1>
+        <div className="fp-intro-card" style={{ borderTop: `4px solid ${safetyColor}` }}>
+        {/* Facility Name + Star Badge */}
+        <div className="fp-name-row">
+          <h1 className="fp-name">{facility.name}</h1>
+          <div className="fp-star-badge" style={{ '--safety-color': safetyColor }}>
+            <div className="fp-star-badge-number">{starCount}</div>
+            <div className="fp-star-badge-label">out of 5</div>
+          </div>
+        </div>
+        <div className="fp-star-row">
+          <span className="fp-stars-visual" style={{ '--safety-color': safetyColor }}>
+            <span className="fp-stars-filled">{starsFilled}</span><span className="fp-stars-empty">{starsEmpty}</span>
+          </span>
+          <span className="fp-star-caption">CMS Overall Rating <MetricTooltip title="CMS Five-Star Rating">CMS rates every nursing home 1–5 stars based on inspections, staffing, and quality measures. But this rating has serious limitations — it combines very different data types into a single score, and the staffing component relies partly on self-reported data that facilities can inflate. Use it as a starting point, not the final word.</MetricTooltip></span>
+        </div>
         <p className="fp-meta">
-          {facility.city}, {facility.state} | {facility.beds || '—'} beds | CMS Rating: {facility.stars || 0} {stars}
+          {facility.city}, {facility.state} | {facility.beds || '—'} beds
           {' · '}
           <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Report</a>
           {' · '}
@@ -240,135 +406,500 @@ export function FacilityPage() {
             Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
           </div>
         </div>
+        </div>{/* end fp-intro-card */}
 
         {/* Section 01 — Safety Score */}
         <div className="section">
-          <div className="section-number">01</div>
-          <div className="section-title">Safety Score</div>
-          <div className="data-grid">
-            <div className="data-cell">
-              <div className={`data-cell-value ${(facility.total_deficiencies || 0) > 20 ? 'val-red' : 'val-green'}`}>
-                {facility.total_deficiencies || 0}
+          <div className="section-header-row">
+            <div className="section-number">01</div>
+            <div className="section-title">Safety Score</div>
+            <span className="badge-updated">Updated</span>
+            <span className="badge-source">6 METRICS</span>
+          </div>
+          <p className="section-subtitle">6 key safety metrics — all drawn from federal CMS data, not the facility's self-reported numbers</p>
+          <div className="data-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          {/* Row 1 */}
+          {(() => {
+            const val = facility.total_deficiencies || 0;
+            const natlAvg = nationalBenchmarks.total_deficiencies || 28.4;
+            const stateAvg = stateBenchmarks.total_deficiencies;
+            const sevColor = val > natlAvg * 2 ? 'var(--accent-red, #DC2626)' : val > natlAvg ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
+            const pctPos = Math.min(100, (val / (natlAvg * 3)) * 100);
+            const avgPos = Math.min(100, (natlAvg / (natlAvg * 3)) * 100);
+            return (
+              <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
+                <div className={`data-cell-value ${val > 20 ? 'val-red' : 'val-green'}`}>{val}</div>
+                <div className="data-cell-label">Total Deficiencies <MetricTooltip title="What are deficiencies?" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>Every nursing home is inspected at least once a year by state surveyors. A "deficiency" is a specific problem they found — anything from a minor paperwork issue to a condition that put residents in serious danger. More deficiencies generally means more problems found during inspections.</MetricTooltip></div>
+                <div className="data-cell-context">State avg: {stateAvg?.toFixed(1) || 'N/A'} · National: {natlAvg.toFixed(1)}</div>
+                <div className="data-cell-position">
+                  <div className="position-track">
+                    <div className="position-avg" style={{ left: `${avgPos}%` }} title="National avg" />
+                    <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
+                  </div>
+                  <div className="position-labels"><span>Better</span><span>Worse</span></div>
+                </div>
               </div>
-              <div className="data-cell-label">Total Deficiencies</div>
-              <div className="data-cell-context">
-                State avg: {stateBenchmarks.total_deficiencies?.toFixed(1) || 'N/A'} · National: {nationalBenchmarks.total_deficiencies?.toFixed(1) || 'N/A'}
+            );
+          })()}
+          {(() => {
+            const val = facility.jeopardy_count || 0;
+            const natlAvg = nationalBenchmarks.jeopardy_count || 0.7;
+            const stateAvg = stateBenchmarks.jeopardy_count;
+            const sevColor = val > 0 ? 'var(--accent-red, #DC2626)' : 'var(--accent-green, #059669)';
+            const maxScale = Math.max(5, natlAvg * 5);
+            const pctPos = Math.min(100, (val / maxScale) * 100);
+            const avgPos = Math.min(100, (natlAvg / maxScale) * 100);
+            return (
+              <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
+                <div className={`data-cell-value ${val > 0 ? 'val-red' : 'val-green'}`}>{val}</div>
+                <div className="data-cell-label">Serious Danger <MetricTooltip title="'Immediate Jeopardy' — the worst finding" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>This is the most severe deficiency level. Inspectors concluded that conditions were so dangerous that residents faced risk of serious injury or death. Any number above zero is a red flag. Many facilities in the country have never received this citation.</MetricTooltip></div>
+                <div className="data-cell-context">State avg: {stateAvg?.toFixed(1) || 'N/A'} · National: {natlAvg.toFixed(1)}</div>
+                <div className="data-cell-position">
+                  <div className="position-track">
+                    <div className="position-avg" style={{ left: `${avgPos}%` }} title="National avg" />
+                    <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
+                  </div>
+                  <div className="position-labels"><span>Better</span><span>Worse</span></div>
+                </div>
               </div>
-            </div>
-            <div className="data-cell">
-              <div className={`data-cell-value ${(facility.jeopardy_count || 0) > 0 ? 'val-red' : 'val-green'}`}>
-                {facility.jeopardy_count || 0}
+            );
+          })()}
+          {(() => {
+            const val = facility.total_fines || 0;
+            const natlAvg = nationalBenchmarks.total_fines || 47000;
+            const stateAvg = stateBenchmarks.total_fines;
+            const sevColor = val > natlAvg * 2 ? 'var(--accent-red, #DC2626)' : val > 0 ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
+            const maxScale = Math.max(natlAvg * 4, val * 1.2);
+            const pctPos = Math.min(100, (val / maxScale) * 100);
+            const avgPos = Math.min(100, (natlAvg / maxScale) * 100);
+            return (
+              <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
+                <div className={`data-cell-value ${val > 50000 ? 'val-red' : val > 0 ? 'val-orange' : 'val-green'}`}>{fmt(val)}</div>
+                <div className="data-cell-label">Total Fines <MetricTooltip title="CMS monetary penalties" benchmark={`State avg: ${fmt(stateAvg)} · National: ${fmt(natlAvg)}`}>When CMS finds serious problems, they can fine a facility. Fines typically range from a few thousand dollars to hundreds of thousands. Some facilities treat fines as a cost of doing business. Compare this number to the state and national averages to see where this facility stands.</MetricTooltip></div>
+                <div className="data-cell-context">State avg: {fmt(stateAvg)}</div>
+                <div className="data-cell-position">
+                  <div className="position-track">
+                    <div className="position-avg" style={{ left: `${avgPos}%` }} title="National avg" />
+                    <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
+                  </div>
+                  <div className="position-labels"><span>Better</span><span>Worse</span></div>
+                </div>
               </div>
-              <div className="data-cell-label">Serious Danger</div>
-              <div className="data-cell-context">
-                State avg: {stateBenchmarks.jeopardy_count?.toFixed(1) || 'N/A'} · National: {nationalBenchmarks.jeopardy_count?.toFixed(1) || 'N/A'}
+            );
+          })()}
+          {/* Row 2 */}
+          {(() => {
+            const val = facility.zero_rn_pct || 0;
+            const sevColor = val > 5 ? 'var(--accent-red, #DC2626)' : val > 0 ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
+            const pctPos = Math.min(100, val);
+            return (
+              <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
+                <div className={`data-cell-value ${val > 5 ? 'val-red' : 'val-green'}`}>{pct(facility.zero_rn_pct)}</div>
+                <div className="data-cell-label">Zero-RN Days <MetricTooltip title="Days with no Registered Nurse">The percentage of days last quarter when this facility had zero Registered Nurse hours. An RN is the most qualified clinical professional on a nursing home floor — they assess changes in condition, catch medication errors, and handle emergencies. Federal law requires an RN on site at least 8 hours a day.</MetricTooltip></div>
+                <div className="data-cell-context">Days with no registered nurse on site</div>
+                <div className="data-cell-position">
+                  <div className="position-track">
+                    <div className="position-avg" style={{ left: '0%' }} title="Ideal: 0%" />
+                    <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
+                  </div>
+                  <div className="position-labels"><span>0%</span><span>100%</span></div>
+                </div>
               </div>
-            </div>
-            <div className="data-cell">
-              <div className={`data-cell-value ${(facility.total_fines || 0) > 50000 ? 'val-red' : (facility.total_fines || 0) > 0 ? 'val-orange' : 'val-green'}`}>
-                {fmt(facility.total_fines)}
+            );
+          })()}
+          {(() => {
+            const complaintDates = new Set((deficiencyDetails || []).filter(d => d.is_complaint === true).map(d => d.survey_date));
+            const complaintInvestigations = complaintDates.size;
+            const natlAvg = 7;
+            const sevColor = complaintInvestigations > natlAvg ? 'var(--accent-red, #DC2626)' : complaintInvestigations > 3 ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
+            const maxScale = Math.max(natlAvg * 3, complaintInvestigations * 1.2);
+            const pctPos = Math.min(100, (complaintInvestigations / maxScale) * 100);
+            const avgPos = Math.min(100, (natlAvg / maxScale) * 100);
+            return (
+              <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
+                <div className={`data-cell-value ${complaintInvestigations > 7 ? 'val-red' : complaintInvestigations > 3 ? 'val-orange' : 'val-green'}`}>{complaintInvestigations}</div>
+                <div className="data-cell-label">Complaint Investigations <MetricTooltip title="Complaint-triggered inspections" benchmark="National avg: 7 (last 3 years)">When someone files a complaint about a nursing home, CMS may send surveyors for an unannounced investigation. Each date represents a separate complaint survey visit. A high number may indicate recurring problems reported by residents, families, or staff.</MetricTooltip></div>
+                <div className="data-cell-context">Last 3 years · avg: {natlAvg}</div>
+                <div className="data-cell-position">
+                  <div className="position-track">
+                    <div className="position-avg" style={{ left: `${avgPos}%` }} title="National avg" />
+                    <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
+                  </div>
+                  <div className="position-labels"><span>Better</span><span>Worse</span></div>
+                </div>
+                <div className="stat-card-callout">
+                  <strong>CMS removed</strong> this from Care Compare on 2/25/26. We rebuilt it from inspection records.
+                </div>
               </div>
-              <div className="data-cell-label">Total Fines</div>
-              <div className="data-cell-context">
-                State avg: {fmt(stateBenchmarks.total_fines)}
+            );
+          })()}
+          {(() => {
+            const fireDefs = facility.fire_deficiency_count || 0;
+            const natlAvg = 14.3;
+            const sevColor = fireDefs > natlAvg ? 'var(--accent-red, #DC2626)' : fireDefs > 5 ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
+            const maxScale = Math.max(natlAvg * 3, fireDefs * 1.2);
+            const pctPos = Math.min(100, (fireDefs / maxScale) * 100);
+            const avgPos = Math.min(100, (natlAvg / maxScale) * 100);
+            return (
+              <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
+                <div className={`data-cell-value ${fireDefs > 14.3 ? 'val-red' : fireDefs > 5 ? 'val-orange' : 'val-green'}`}>{fireDefs}</div>
+                <div className="data-cell-label">Fire Safety Violations <MetricTooltip title="Life Safety Code violations" benchmark="National avg: 14.3">Fire safety deficiencies are cited during Life Safety Code inspections — a separate survey from the health inspection. These cover fire alarms, sprinkler systems, emergency exits, smoke barriers, and electrical safety. Facilities with many fire safety violations may have deferred maintenance.</MetricTooltip></div>
+                <div className="data-cell-context">Nat'l avg: {natlAvg}{fireDefs <= natlAvg && fireDefs > 0 ? ' \u2713' : ''}</div>
+                <div className="data-cell-position">
+                  <div className="position-track">
+                    <div className="position-avg" style={{ left: `${avgPos}%` }} title="National avg" />
+                    <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
+                  </div>
+                  <div className="position-labels"><span>Better</span><span>Worse</span></div>
+                </div>
               </div>
-            </div>
-            <div className="data-cell">
-              <div className={`data-cell-value ${(facility.zero_rn_pct || 0) > 5 ? 'val-red' : 'val-green'}`}>
-                {pct(facility.zero_rn_pct)}
-              </div>
-              <div className="data-cell-label">Zero-RN Days</div>
-              <div className="data-cell-context">Days with no registered nurse on site</div>
-            </div>
+            );
+          })()}
           </div>
         </div>
 
         {/* Section 02 — What Did Inspectors Find? */}
         <div className="section">
-          <div className="section-number">02</div>
-          <div className="section-title">What Did Inspectors Find?</div>
+          <div className="section-header-row">
+            <div className="section-number">02</div>
+            <div className="section-title">What Did Inspectors Find?</div>
+            <span className="badge-updated">Updated</span>
+            <span className="badge-source">CMS Deficiencies</span>
+          </div>
+          <p className="section-subtitle">Health inspection results — severity-graded citations from unannounced federal surveys</p>
+
+          {/* Computed stats from deficiency details */}
+          {(() => {
+            const avgDaysToCorrect = deficiencyDetails?.length > 0
+              ? Math.round(deficiencyDetails.filter(d => d.correction_date && d.survey_date).reduce((sum, d) => {
+                  const diff = (new Date(d.correction_date) - new Date(d.survey_date)) / (1000 * 60 * 60 * 24);
+                  return sum + Math.max(0, diff);
+                }, 0) / (deficiencyDetails.filter(d => d.correction_date && d.survey_date).length || 1))
+              : null;
+
+            const ftagSurveys = {};
+            deficiencyDetails?.forEach(d => {
+              if (d.ftag) {
+                if (!ftagSurveys[d.ftag]) ftagSurveys[d.ftag] = new Set();
+                ftagSurveys[d.ftag].add(d.survey_date);
+              }
+            });
+            const repeatCount = Object.values(ftagSurveys).filter(s => s.size > 1).length;
+
+            return (
+              <>
+                {deficiencyDetails && deficiencyDetails.length > 0 && (
+                  <div className="data-grid" style={{ gridTemplateColumns: '1fr 1fr', marginBottom: '20px' }}>
+                    {avgDaysToCorrect != null && (
+                      <div className="data-cell">
+                        <div className={`data-cell-value ${avgDaysToCorrect > 40 ? 'val-red' : avgDaysToCorrect > 32 ? 'val-orange' : 'val-green'}`}>{avgDaysToCorrect} days</div>
+                        <div className="data-cell-label">Avg Days to Correct</div>
+                        <div className="data-cell-context">Nat'l avg: 32 days</div>
+                      </div>
+                    )}
+                    <div className="data-cell">
+                      <div className={`data-cell-value ${repeatCount > 5 ? 'val-red' : repeatCount > 3 ? 'val-orange' : 'val-green'}`}>{repeatCount}</div>
+                      <div className="data-cell-label">Repeat Offender Citations</div>
+                      <div className="data-cell-context">Same F-tag cited again</div>
+                    </div>
+                  </div>
+                )}
+
+                {deficiencyDetails && deficiencyDetails.length > 0 && (avgDaysToCorrect > 32 || repeatCount > 3) && (
+                  <div className="verdict-banner caution">
+                    <div className="verdict-icon caution">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    </div>
+                    <div className="verdict-text">
+                      <h3 className="caution">
+                        {repeatCount > 3 ? 'Slow to Fix Problems & Repeat Offender' : 'Slow to Correct Deficiencies'}
+                      </h3>
+                      <p>
+                        {avgDaysToCorrect > 32 && <>Takes <strong>{avgDaysToCorrect} days on average</strong> to correct problems — {Math.round((avgDaysToCorrect / 32 - 1) * 100)}% longer than the national average of 32 days. </>}
+                        {repeatCount > 0 && <><strong>{repeatCount} violation{repeatCount !== 1 ? 's' : ''}</strong> cited in multiple inspection cycles.</>}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </>
+            );
+          })()}
+
           <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px' }}>
             {facility.total_deficiencies || 0} total deficiency citations.
             {facility.jeopardy_count > 0 && <> <strong style={{ color: 'var(--accent-red, #f85149)' }}>{facility.jeopardy_count}</strong> were classified as <strong style={{ color: 'var(--accent-red, #f85149)' }}>serious danger</strong> — the most severe level.</>}
           </p>
-          <ul className="deficiency-list">
-            {deficiencyDetails && deficiencyDetails.length > 0 ? (
+          {/* Deficiency cards — collapsible: show 3, expand for rest */}
+          {deficiencyDetails && deficiencyDetails.length > 0 ? (() => {
+            const sorted = [...deficiencyDetails].sort((a, b) => {
+              const severityOrder = { 'Immediate Jeopardy': 0, 'Actual Harm': 1 };
+              return (severityOrder[a.severity_label] ?? 2) - (severityOrder[b.severity_label] ?? 2);
+            });
+            const INITIAL_SHOW = 3;
+            const showAll = openAccordion === 'deficiency-list';
+            const visible = showAll ? sorted : sorted.slice(0, INITIAL_SHOW);
+            const remaining = sorted.length - INITIAL_SHOW;
+
+            return (
               <>
-                {deficiencyDetails
-                  .sort((a, b) => {
-                    const severityOrder = { 'Immediate Jeopardy': 0, 'Actual Harm': 1 };
-                    return (severityOrder[a.severity_label] ?? 2) - (severityOrder[b.severity_label] ?? 2);
-                  })
-                  .slice(0, 7)
-                  .map((def, idx) => {
+                <div className="deficiency-cards">
+                  {visible.map((def, idx) => {
                     const severityClass = def.severity_label === 'Immediate Jeopardy' ? 'severity-danger'
                       : def.severity_label === 'Actual Harm' ? 'severity-harm' : 'severity-minor';
                     const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Danger'
                       : def.severity_label === 'Actual Harm' ? 'Residents Hurt' : 'Minor';
                     const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
                     const surveyLabel = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
+                    const ftagNum = def.ftag ? def.ftag.replace('F-0', 'F').replace('F-', 'F') : '';
                     return (
-                      <li className="deficiency-item" key={idx}>
+                      <div className="deficiency-card" key={idx}>
                         <span className={`deficiency-severity ${severityClass}`}>{severityText}</span>
-                        <div>
-                          <div className="deficiency-text">{def.description}</div>
-                          <div className="deficiency-category">{def.category}</div>
-                          <div className="deficiency-date">{surveyLabel} · {year}</div>
+                        <div className="deficiency-card-body">
+                          <div className="deficiency-text">{def.description}{ftagNum && <> ({ftagNum})</>}</div>
+                          <div className="deficiency-meta">{surveyLabel} · {year} · Category: {def.category}</div>
                         </div>
-                      </li>
+                      </div>
                     );
                   })}
-              </>
-            ) : (
-              <>
-                {facility.jeopardy_count > 0 && (
-                  <li className="deficiency-item">
-                    <span className="deficiency-severity severity-danger">Serious Danger</span>
-                    <div>
-                      <div className="deficiency-text">
-                        {facility.jeopardy_count} citation(s) — conditions so serious that residents faced risk of serious injury or death
-                      </div>
-                    </div>
-                  </li>
-                )}
-                {facility.harm_count > 0 && (
-                  <li className="deficiency-item">
-                    <span className="deficiency-severity severity-harm">Residents Hurt</span>
-                    <div>
-                      <div className="deficiency-text">
-                        {facility.harm_count} citation(s) — facility practices caused actual harm to residents
-                      </div>
-                    </div>
-                  </li>
-                )}
-                {minorCount > 0 && (
-                  <li className="deficiency-item">
-                    <span className="deficiency-severity severity-minor">Minor</span>
-                    <div>
-                      <div className="deficiency-text">
-                        {minorCount} citation(s) — technical violations that did not cause direct harm
-                      </div>
-                    </div>
-                  </li>
+                </div>
+                {remaining > 0 && (
+                  <button
+                    className="deficiency-expand-btn"
+                    onClick={() => setOpenAccordion(showAll ? null : 'deficiency-list')}
+                  >
+                    {showAll ? '▲ Show fewer' : `▼ Show ${remaining} more citation${remaining !== 1 ? 's' : ''}`}
+                  </button>
                 )}
               </>
-            )}
-          </ul>
-          {deficiencyDetails && deficiencyDetails.length > 7 && (
-            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginTop: '12px' }}>
-              Showing 7 of {deficiencyDetails.length} citations · <a href={propublica} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>View all {deficiencyDetails.length} deficiencies →</a>
-            </p>
+            );
+          })() : (
+            <div className="deficiency-cards">
+              {facility.jeopardy_count > 0 && (
+                <div className="deficiency-card">
+                  <span className="deficiency-severity severity-danger">Serious Danger</span>
+                  <div className="deficiency-card-body">
+                    <div className="deficiency-text">{facility.jeopardy_count} citation(s) — conditions so serious that residents faced risk of serious injury or death</div>
+                  </div>
+                </div>
+              )}
+              {facility.harm_count > 0 && (
+                <div className="deficiency-card">
+                  <span className="deficiency-severity severity-harm">Residents Hurt</span>
+                  <div className="deficiency-card-body">
+                    <div className="deficiency-text">{facility.harm_count} citation(s) — facility practices caused actual harm to residents</div>
+                  </div>
+                </div>
+              )}
+              {minorCount > 0 && (
+                <div className="deficiency-card">
+                  <span className="deficiency-severity severity-minor">Minor</span>
+                  <div className="deficiency-card-body">
+                    <div className="deficiency-text">{minorCount} citation(s) — technical violations that did not cause direct harm</div>
+                  </div>
+                </div>
+              )}
+            </div>
           )}
           <div className="source-line">Source: CMS Health Deficiencies Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></div>
+
+          <WhatDoesThisMean question="How do nursing home inspections work?">
+            <p>
+              Every nursing home that accepts Medicare or Medicaid money must be inspected at least once every 12–15 months by state surveyors working for CMS. Surveyors arrive unannounced and spend several days observing care, reviewing records, and interviewing residents and staff.
+            </p>
+            <KeyPoint>
+              <strong>"Serious Danger" (Immediate Jeopardy)</strong> means inspectors found conditions so dangerous that residents faced imminent risk of serious injury or death. This is the most severe finding possible.
+            </KeyPoint>
+            <KeyPoint color="#D97706">
+              <strong>"Residents Hurt" (Actual Harm)</strong> means inspectors documented that facility practices caused real, measurable harm to one or more residents.
+            </KeyPoint>
+            <KeyPoint color="#64748B">
+              <strong>Minor deficiencies</strong> are problems that didn't cause direct harm but could if not corrected — things like documentation gaps, medication storage issues, or infection control lapses.
+            </KeyPoint>
+            <p>
+              <strong>Why this matters:</strong> Deficiency counts alone don't tell the whole story. A facility with 5 serious-danger citations is far more concerning than one with 30 minor paperwork issues. Always look at the severity, not just the total.
+            </p>
+          </WhatDoesThisMean>
+        </div>
+
+        {/* Section 03 — Complaints & Abuse History */}
+        <div className="section">
+          <div className="section-header-row">
+            <div className="section-number">03</div>
+            <div className="section-title">Complaints &amp; Abuse History</div>
+            <span className="badge-new">New</span>
+            <span className="badge-source">CMS Inspections</span>
+          </div>
+          <p className="section-subtitle">Complaint investigations, abuse and neglect citations, and Special Focus Facility status</p>
+
+          {/* SFF Banner */}
+          {facility.flags?.some(f => f.includes('SPECIAL FOCUS')) && (
+            <div className="sff-banner">
+              <span className="sff-dot" />
+              <div className="sff-content">
+                <span className="sff-label">CMS Special Focus Facility (SFF)</span>
+                <span className="sff-explain">Designated by CMS as one of approximately 88 nursing homes (out of 14,713) with a persistent pattern of serious quality issues. SFF facilities receive twice the normal inspection frequency. This is an official federal designation — not our assessment.</span>
+              </div>
+            </div>
+          )}
+
+          {(() => {
+            // Compute complaint stats from deficiency details
+            const complaintDefs = deficiencyDetails?.filter(d => d.is_complaint === true) || [];
+
+            // Count unique complaint investigation dates
+            const complaintDates = new Set(complaintDefs.map(d => d.survey_date));
+            const complaintInvestigations = complaintDates.size;
+
+            // Abuse/neglect citations (F600-F609)
+            const abuseDefs = (deficiencyDetails || []).filter(d => {
+              if (!d.ftag) return false;
+              const num = parseInt(d.ftag.replace(/[^0-9]/g, ''));
+              return num >= 600 && num <= 609;
+            });
+
+            // Complaint investigations by year (count unique survey dates, not individual citations)
+            const complaintDatesByYear = {};
+            complaintDefs.forEach(d => {
+              const yr = d.survey_date ? new Date(d.survey_date).getFullYear() : null;
+              if (yr) {
+                if (!complaintDatesByYear[yr]) complaintDatesByYear[yr] = new Set();
+                complaintDatesByYear[yr].add(d.survey_date);
+              }
+            });
+            const complaintsByYear = {};
+            Object.entries(complaintDatesByYear).forEach(([yr, dates]) => { complaintsByYear[yr] = dates.size; });
+            const years = Object.keys(complaintsByYear).sort((a, b) => b - a);
+            const maxComplaintsInYear = Math.max(...Object.values(complaintsByYear), 7);
+
+            // Led to penalties
+            const penaltyCount = facility.fine_count || 0;
+
+            return (
+              <>
+                {/* Summary stat cards */}
+                <div className="data-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginBottom: '20px' }}>
+                  <div className="data-cell">
+                    <div className={`data-cell-value ${complaintInvestigations > 7 ? 'val-red' : complaintInvestigations > 3 ? 'val-orange' : 'val-green'}`}>{complaintInvestigations}</div>
+                    <div className="data-cell-label">Complaint Investigations</div>
+                    <div className="data-cell-context">Last 3 years · avg: 7</div>
+                  </div>
+                  <div className="data-cell">
+                    <div className={`data-cell-value ${abuseDefs.length > 0 ? 'val-red' : 'val-green'}`}>{abuseDefs.length}</div>
+                    <div className="data-cell-label">Abuse/Neglect Citations</div>
+                    <div className="data-cell-context">F600–F609 range</div>
+                  </div>
+                  <div className="data-cell">
+                    <div className={`data-cell-value ${penaltyCount > 0 ? 'val-orange' : 'val-green'}`}>{penaltyCount}</div>
+                    <div className="data-cell-label">Led to Penalties</div>
+                    <div className="data-cell-context">Fines or sanctions</div>
+                  </div>
+                </div>
+
+                {/* Verdict banner */}
+                {(complaintInvestigations > 5 || abuseDefs.length > 0) && (
+                  <div className={`verdict-banner ${abuseDefs.length > 0 ? 'concern' : 'caution'}`}>
+                    <div className={`verdict-icon ${abuseDefs.length > 0 ? 'concern' : 'caution'}`}>
+                      {abuseDefs.length > 0 ? (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                      ) : (
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                      )}
+                    </div>
+                    <div className="verdict-text">
+                      <h3 className={abuseDefs.length > 0 ? 'concern' : 'caution'}>
+                        {abuseDefs.length > 0 ? 'Pattern of Complaints With Abuse Citations' : 'Above-Average Complaint Activity'}
+                      </h3>
+                      <p>
+                        <strong>{complaintInvestigations} complaint investigation{complaintInvestigations !== 1 ? 's' : ''}</strong> in 3 years
+                        {complaintInvestigations > 7 && <> — above the 7.0 national average</>}
+                        {abuseDefs.length > 0 && <>. <strong>{abuseDefs.length} resulted in formal abuse or neglect citation{abuseDefs.length !== 1 ? 's' : ''}</strong> under F600–F609, the federal standards for resident protection from abuse</>}
+                        .
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* CMS callout note */}
+                <div className="cms-callout">
+                  <div className="cms-callout-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                  </div>
+                  <p><strong>Note:</strong> CMS removed complaint counts from Care Compare on Feb 25, 2026. We rebuilt this number from publicly available federal inspection records. <Link to="/methodology#transparency-changes">How we calculate this →</Link></p>
+                </div>
+
+                {/* Complaint Investigations by Year */}
+                {years.length > 0 && (
+                  <>
+                    <div className="complaints-sub-label">Complaint Investigations by Year</div>
+                    {years.map(yr => (
+                      <div key={yr} className="yr-row">
+                        <div className="yr-label">{yr}</div>
+                        <div className="yr-track">
+                          <div
+                            className={`yr-fill ${complaintsByYear[yr] > 3 ? 'red' : 'orange'}`}
+                            style={{ width: `${(complaintsByYear[yr] / maxComplaintsInYear) * 100}%` }}
+                          >
+                            {complaintsByYear[yr]}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </>
+                )}
+
+                {/* Abuse & Neglect Citations sub-section */}
+                {abuseDefs.length > 0 && (
+                  <>
+                    <div className="complaints-sub-label">Abuse &amp; Neglect Citations</div>
+                    {abuseDefs.map((def, idx) => {
+                      const ftagNum = def.ftag ? def.ftag.replace('F-0', 'F').replace('F-', 'F') : '';
+                      const isActualHarm = def.severity_label === 'Immediate Jeopardy' || def.severity_label === 'Actual Harm';
+                      const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
+                      const harmLabel = def.severity_label === 'Immediate Jeopardy' ? 'Actual Harm' : def.severity_label === 'Actual Harm' ? 'Actual Harm' : 'No Actual Harm';
+                      const surveyType = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
+                      return (
+                        <div key={idx} className={`abuse-item${isActualHarm ? ' severe' : ''}`}>
+                          <span className={`f-tag ${isActualHarm ? 'red' : 'orange'}`}>{ftagNum}</span>
+                          <div>
+                            <div className="abuse-text">{def.description}</div>
+                            <div className="abuse-detail">{harmLabel} · {surveyType} · {year}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </>
+                )}
+              </>
+            );
+          })()}
+
+          <div className="source-line" style={{ marginTop: '16px' }}>Source: CMS Health Deficiencies &amp; Inspection Records · <a href="https://data.cms.gov" target="_blank" rel="noopener noreferrer">data.cms.gov</a></div>
+          <WhatDoesThisMean question="What are complaint investigations?">
+            <p>
+              Anyone can file a complaint about a nursing home — a resident, family member, staff member, or visitor. When CMS or a state survey agency receives a complaint, they investigate it separately from the regular annual survey.
+            </p>
+            <KeyPoint>
+              <strong>If inspectors find a problem</strong> during a complaint investigation, they issue a deficiency citation — just like in a standard inspection. Those citations appear in this section.
+            </KeyPoint>
+            <KeyPoint color="#D97706">
+              <strong>CMS removed complaint counts from Care Compare in February 2026.</strong> We reconstructed complaint-triggered citations from detailed inspection records so you can still see this important context.
+            </KeyPoint>
+            <p>
+              <strong>How to file a complaint:</strong> Contact your state&rsquo;s Long-Term Care Ombudsman or file directly with your state survey agency. Complaints can be made anonymously.
+            </p>
+          </WhatDoesThisMean>
         </div>
 
         {/* Contextual explainer banners — auto-triggered by data */}
         <ExplainerBanners facility={facility} />
 
-        {/* Section 03 — How Much Care Do Residents Get? */}
+        {/* Section 04 — How Much Care Do Residents Get? */}
         <div className="section">
-          <div className="section-number">03</div>
-          <div className="section-title">How Much Care Do Residents Get?</div>
+          <div className="section-header-row">
+            <div className="section-number">04</div>
+            <div className="section-title">How Much Care Do Residents Get?</div>
+            <span className="badge-updated">Updated</span>
+          </div>
           <StaffingSection
             facility={facility}
             benchmarks={{ state: stateBenchmarks, national: nationalBenchmarks }}
@@ -477,9 +1008,446 @@ export function FacilityPage() {
           </div>
         </div>
 
-        {/* Section 04 — Fines & Penalties */}
+        {/* Section 05 — How Are Residents Doing? (Quality Measures) */}
         <div className="section">
-          <div className="section-number">04</div>
+          <div className="section-header-row">
+            <div className="section-number">05</div>
+            <div className="section-title">How Are Residents Doing?</div>
+            <span className="badge-new">New</span>
+            <span className="badge-source">CMS MDS + Claims QM &middot; Feb 2026</span>
+          </div>
+          {facility.quality_measures ? (() => {
+            const qm = facility.quality_measures;
+
+            // Helper: get verdict for a category
+            const getVerdict = (catKey) => {
+              if (catKey === 'memory') {
+                const ap = getMeasureScore(qm, { code: '481', type: 'mds', stay: 'ls' });
+                const apAvg = nationalQmAvgs['mds_ls_481'];
+                if (ap != null && apAvg != null && ap > apAvg * 1.5) {
+                  return { level: 'concern', title: 'Above-Average Antipsychotic Use',
+                    text: <>This facility&rsquo;s antipsychotic medication rate is <strong>{ap.toFixed(1)}%</strong> &mdash; the national average is <strong>{apAvg.toFixed(1)}%</strong>. CMS excludes residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome from this measure.</> };
+                }
+                if (ap != null && apAvg != null && ap > apAvg * 1.1) {
+                  return { level: 'caution', title: 'Antipsychotic Rate Above Average',
+                    text: <>Antipsychotic medication rate of <strong>{ap.toFixed(1)}%</strong> vs the <strong>{apAvg.toFixed(1)}% national average</strong>. CMS excludes residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome from this measure.</> };
+                }
+                return null;
+              }
+              if (catKey === 'body') {
+                const pu = getMeasureScore(qm, { code: '479', type: 'mds', stay: 'ls' });
+                const puAvg = nationalQmAvgs['mds_ls_479'];
+                const uti = getMeasureScore(qm, { code: '407', type: 'mds', stay: 'ls' });
+                const utiAvg = nationalQmAvgs['mds_ls_407'];
+                const puBad = pu != null && puAvg != null && pu > puAvg * 1.3;
+                const utiBad = uti != null && utiAvg != null && uti > utiAvg * 1.3;
+                if (puBad && utiBad) {
+                  return { level: 'concern', title: 'Elevated Bedsore & Infection Rates',
+                    text: <>Above-average pressure ulcers and urinary tract infections &mdash; the two clearest indicators of understaffing. Bedsores happen when residents aren&rsquo;t being repositioned. UTIs happen when residents aren&rsquo;t getting basic hygiene care.</> };
+                }
+                if (puBad || utiBad) {
+                  return { level: 'caution', title: puBad ? 'Above-Average Bedsore Rate' : 'Above-Average UTI Rate',
+                    text: puBad
+                      ? <><strong>{pu.toFixed(1)}%</strong> of residents developed bedsores vs <strong>{puAvg.toFixed(1)}%</strong> national average. Bedsores are almost entirely preventable with proper repositioning.</>
+                      : <><strong>{uti.toFixed(1)}%</strong> of residents have UTIs vs <strong>{utiAvg.toFixed(1)}%</strong> national average. UTIs in nursing homes often indicate delayed incontinence care.</> };
+                }
+                return null;
+              }
+              if (catKey === 'rehab') {
+                const rh = getMeasureScore(qm, { code: '521', type: 'claims' });
+                const rhAvg = nationalQmAvgs['claims_521'];
+                if (rh != null && rhAvg != null && rh > rhAvg * 1.3) {
+                  return { level: 'concern', title: 'High Re-hospitalization Rate',
+                    text: <>This facility sends <strong>{rh.toFixed(1)}%</strong> of short-stay patients back to the hospital within 30 days &mdash; well above the <strong>{rhAvg.toFixed(1)}% national average</strong>. If you&rsquo;re choosing a facility for post-surgical rehab, this is the most important number.</> };
+                }
+                if (rh != null && rhAvg != null && rh > rhAvg * 1.1) {
+                  return { level: 'caution', title: 'Above-Average Re-hospitalization',
+                    text: <><strong>{rh.toFixed(1)}%</strong> re-hospitalization rate vs <strong>{rhAvg.toFixed(1)}%</strong> national average. Short-stay patients returning to the hospital is a sign the facility may not be managing complications well.</> };
+                }
+                return null;
+              }
+              if (catKey === 'vaccines') {
+                const covidRes = getMeasureScore(qm, { code: 'covid_res', type: 'qrp_num' });
+                const covidResAvg = nationalQmAvgs['qrp_num_covid_res'];
+                const covidStaff = getMeasureScore(qm, { code: 'covid_staff', type: 'qrp_num' });
+                const covidStaffAvg = nationalQmAvgs['qrp_num_covid_staff'];
+                // Check COVID rates first (more clinically relevant)
+                if (covidRes != null && covidResAvg != null && covidRes < covidResAvg * 0.7) {
+                  return { level: 'concern', title: 'Low COVID-19 Vaccination Rates',
+                    text: <>Only <strong>{covidRes.toFixed(1)}%</strong> of residents are up to date on COVID-19 vaccination vs <strong>{covidResAvg.toFixed(1)}%</strong> national average{covidStaff != null ? <> and <strong>{covidStaff.toFixed(1)}%</strong> of staff</> : ''}. In a congregate care setting where outbreaks can be lethal, this is a gap in infection prevention.</> };
+                }
+                if (covidRes != null && covidResAvg != null && covidRes < covidResAvg * 0.9) {
+                  return { level: 'caution', title: 'Below-Average COVID-19 Vaccination',
+                    text: <><strong>{covidRes.toFixed(1)}%</strong> of residents up to date on COVID-19 vs <strong>{covidResAvg.toFixed(1)}%</strong> national average. Vaccination reduces severe illness and death in the elderly.</> };
+                }
+                const flu = getMeasureScore(qm, { code: '454', type: 'mds', stay: 'ls' });
+                const fluAvg = nationalQmAvgs['mds_ls_454'];
+                if (flu != null && fluAvg != null && flu < fluAvg * 0.85) {
+                  return { level: 'caution', title: 'Below-Average Vaccination Rates',
+                    text: <>Flu vaccination rate of <strong>{flu.toFixed(1)}%</strong> is below the <strong>{fluAvg.toFixed(1)}%</strong> national average. In a congregate care setting, low vaccination rates increase outbreak risk for all residents.</> };
+                }
+                return null;
+              }
+              return null;
+            };
+
+            // Render a single indicator card
+            const renderIndicator = (m) => {
+              const score = getMeasureScore(qm, m);
+              if (score == null) return null;
+              const avgKey = m.stay ? `${m.type}_${m.stay}_${m.code}` : `${m.type}_${m.code}`;
+              const avg = nationalQmAvgs[avgKey];
+              const color = getQmColor(score, avg, m.lower);
+              const indicatorId = `${m.type}-${m.code}`;
+              const isExp = expandedQm === indicatorId;
+              const maxScale = m.lower ? Math.max(score, avg || 1, 1) * 2.5 : 100;
+              const barW = Math.min(score / maxScale * 100, 100);
+              const mrkL = avg != null ? Math.min(avg / maxScale * 100, 100) : null;
+
+              return (
+                <div key={m.code} className={`qm-indicator${isExp ? ' expanded' : ''}`}>
+                  <div className="qm-indicator-header">
+                    <div className="qm-indicator-name">
+                      {m.name}
+                      <button className="qm-info-btn" onClick={() => setExpandedQm(isExp ? null : indicatorId)}>?</button>
+                    </div>
+                    <div className="qm-indicator-values">
+                      <span className={`qm-fval ${color}`}>{score.toFixed(1)}%</span>
+                      {avg != null && <>
+                        <span className="qm-vs">vs</span>
+                        <span className="qm-natl">{avg.toFixed(1)}% avg</span>
+                      </>}
+                    </div>
+                  </div>
+                  <div className="qm-bar-wrap">
+                    <div className={`qm-bar ${color}`} style={{ width: `${barW}%` }} />
+                    {mrkL != null && <div className="qm-natl-marker" style={{ left: `${mrkL}%` }} />}
+                  </div>
+                  <div className="qm-explainer">
+                    <div className="qm-explainer-inner">
+                      <strong>What this means:</strong> {score.toFixed(1)}% of residents &mdash; {m.explain}
+                      {avg != null && <> National average: {avg.toFixed(1)}%.</>}
+                      {' '}<em>Source: {m.type === 'claims' ? `Claims-Based Quality Measures (Code ${m.code})` : m.type === 'qrp_num' ? 'SNF Quality Reporting Program' : `MDS Quality Measures (Code ${m.code})`}</em>
+                    </div>
+                  </div>
+                </div>
+              );
+            };
+
+            return (
+              <>
+                <p className="qm-subtitle">
+                  Federal quality measures for all long-stay and short-stay residents &mdash; reported quarterly by every Medicare-certified nursing home.
+                </p>
+
+                {/* Category tabs */}
+                <div className="qm-tabs">
+                  {QM_CATEGORIES.map(cat => {
+                    if (cat.custom) {
+                      // Workforce tab: count based on available facility-level fields
+                      const wfCount = [facility.total_turnover, facility.rn_turnover].filter(v => v != null).length
+                        + (facility.weekend_total_hprd != null && facility.total_hprd != null ? 1 : 0);
+                      const wfFlag = facility.total_turnover != null && facility.total_turnover > 55 ? 'red' : facility.total_turnover != null && facility.total_turnover > 46.4 ? 'orange' : 'green';
+                      return (
+                        <button key={cat.key} className={`qm-tab${qmTab === cat.key ? ' active' : ''}`} onClick={() => { setQmTab(cat.key); setExpandedQm(null); }}>
+                          {cat.label} <span className="tab-count">{wfCount}</span> <span className={`tab-flag ${wfFlag}`} />
+                        </button>
+                      );
+                    }
+                    const allM = cat.subgroups ? cat.subgroups.flatMap(g => g.measures) : cat.measures;
+                    const count = allM.filter(m => getMeasureScore(qm, m) != null).length;
+                    const flag = getCategoryFlag(qm, allM, nationalQmAvgs);
+                    return (
+                      <button key={cat.key} className={`qm-tab${qmTab === cat.key ? ' active' : ''}`} onClick={() => { setQmTab(cat.key); setExpandedQm(null); }}>
+                        {cat.label} <span className="tab-count">{count}</span> <span className={`tab-flag ${flag}`} />
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Active panel */}
+                {QM_CATEGORIES.filter(cat => qmTab === cat.key).map(cat => {
+                  // --- Workforce tab: custom rendering ---
+                  if (cat.custom && cat.key === 'workforce') {
+                    const totalTurn = facility.total_turnover;
+                    const rnTurn = facility.rn_turnover;
+                    const adminLeft = facility.admin_turnover;
+                    const wkndHprd = facility.weekend_total_hprd;
+                    const wkdayHprd = facility.total_hprd;
+                    const wkndDrop = (wkdayHprd && wkndHprd) ? Math.round((1 - wkndHprd / wkdayHprd) * 100) : null;
+
+                    // Verdict
+                    const highTurnover = totalTurn != null && totalTurn > 55;
+                    const bigWkndDrop = wkndDrop != null && wkndDrop > 25;
+                    const wfVerdict = (highTurnover || bigWkndDrop) ? {
+                      level: highTurnover ? 'concern' : 'caution',
+                      title: highTurnover && bigWkndDrop ? 'High Staff Turnover & Weekend Staffing Drop'
+                        : highTurnover ? 'High Staff Turnover'
+                        : 'Significant Weekend Staffing Drop',
+                      text: (highTurnover ? `${totalTurn}% annual nursing staff turnover \u2014 most nurses leave within a year. Continuity of care suffers when the people caring for your loved one are constantly changing.` : '')
+                        + (highTurnover && bigWkndDrop ? ' ' : '')
+                        + (bigWkndDrop ? `Weekends see a ${wkndDrop}% staffing drop vs weekdays.` : ''),
+                    } : null;
+
+                    return (
+                      <div key={cat.key}>
+                        {wfVerdict && (
+                          <div className={`verdict-banner ${wfVerdict.level}`}>
+                            <div className={`verdict-icon ${wfVerdict.level}`}>
+                              {wfVerdict.level === 'concern' ? (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                              ) : (
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                              )}
+                            </div>
+                            <div className="verdict-text">
+                              <h3 className={wfVerdict.level}>{wfVerdict.title}</h3>
+                              <p>{wfVerdict.text}</p>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="qm-indicators">
+                          {/* Nursing staff turnover */}
+                          {totalTurn != null && (() => {
+                            const natl = 46.4;
+                            const barColor = totalTurn > 60 ? 'red' : totalTurn > natl ? 'orange' : 'green';
+                            const barW = Math.min(totalTurn, 100);
+                            const natlPos = Math.min(natl, 100);
+                            return (
+                              <div className={`qm-indicator${expandedQm === 'wf_total_turn' ? ' expanded' : ''}`}>
+                                <div className="qm-indicator-header">
+                                  <div className="qm-indicator-name">
+                                    Nursing staff turnover rate
+                                    <button className="qm-info-btn" onClick={() => setExpandedQm(expandedQm === 'wf_total_turn' ? null : 'wf_total_turn')}>?</button>
+                                  </div>
+                                  <div className="qm-indicator-values">
+                                    <span className={`qm-fval ${barColor}`}>{totalTurn}%</span>
+                                    <span className="qm-vs">vs</span>
+                                    <span className="qm-natl">{natl}%</span>
+                                  </div>
+                                </div>
+                                <div className="qm-bar-wrap">
+                                  <div className={`qm-bar ${barColor}`} style={{ width: `${barW}%` }} />
+                                  <div className="qm-natl-marker" style={{ left: `${natlPos}%` }} />
+                                </div>
+                                <div className="qm-explainer">
+                                  <div className="qm-explainer-inner">
+                                    <strong>What this means:</strong> {totalTurn}% of nursing staff (RNs, LPNs, CNAs) left in the last year. National average: {natl}%. Every 10% increase in turnover is associated with measurable declines in quality indicators including falls, pressure ulcers, and medication errors. <em>Source: CMS Provider Info</em>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })()}
+
+                          {/* RN turnover */}
+                          {rnTurn != null && (() => {
+                            const natl = 43.6;
+                            const barColor = rnTurn > 55 ? 'red' : rnTurn > natl ? 'orange' : 'green';
+                            const barW = Math.min(rnTurn, 100);
+                            const natlPos = Math.min(natl, 100);
+                            return (
+                              <div className={`qm-indicator${expandedQm === 'wf_rn_turn' ? ' expanded' : ''}`}>
+                                <div className="qm-indicator-header">
+                                  <div className="qm-indicator-name">
+                                    Registered Nurse (RN) turnover
+                                    <button className="qm-info-btn" onClick={() => setExpandedQm(expandedQm === 'wf_rn_turn' ? null : 'wf_rn_turn')}>?</button>
+                                  </div>
+                                  <div className="qm-indicator-values">
+                                    <span className={`qm-fval ${barColor}`}>{rnTurn}%</span>
+                                    <span className="qm-vs">vs</span>
+                                    <span className="qm-natl">{natl}%</span>
+                                  </div>
+                                </div>
+                                <div className="qm-bar-wrap">
+                                  <div className={`qm-bar ${barColor}`} style={{ width: `${barW}%` }} />
+                                  <div className="qm-natl-marker" style={{ left: `${natlPos}%` }} />
+                                </div>
+                                <div className="qm-explainer">
+                                  <div className="qm-explainer-inner">
+                                    <strong>What this means:</strong> {rnTurn}% of Registered Nurses left in the last year. National average: {natl}%. RNs are the most critical clinical staff &mdash; they assess residents, manage medications, and oversee care plans. High RN turnover means less experienced eyes on your loved one. <em>Source: CMS Provider Info</em>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })()}
+
+                          {/* Weekend staffing drop */}
+                          {wkndDrop != null && (() => {
+                            const barColor = wkndDrop > 30 ? 'red' : wkndDrop > 15 ? 'orange' : 'green';
+                            const barW = Math.min(Math.abs(wkndDrop), 60);
+                            return (
+                              <div className={`qm-indicator${expandedQm === 'wf_wknd_drop' ? ' expanded' : ''}`}>
+                                <div className="qm-indicator-header">
+                                  <div className="qm-indicator-name">
+                                    Weekend staffing drop
+                                    <button className="qm-info-btn" onClick={() => setExpandedQm(expandedQm === 'wf_wknd_drop' ? null : 'wf_wknd_drop')}>?</button>
+                                  </div>
+                                  <div className="qm-indicator-values">
+                                    <span className={`qm-fval ${barColor}`}>{wkndDrop > 0 ? '-' : '+'}{Math.abs(wkndDrop)}%</span>
+                                    <span className="qm-vs">weekday &rarr; weekend</span>
+                                  </div>
+                                </div>
+                                <div className="qm-bar-wrap">
+                                  <div className={`qm-bar ${barColor}`} style={{ width: `${barW}%` }} />
+                                </div>
+                                <div className="qm-explainer">
+                                  <div className="qm-explainer-inner">
+                                    <strong>What this means:</strong> Staffing drops {Math.abs(wkndDrop)}% on weekends compared to weekdays ({wkndHprd?.toFixed(2)} vs {wkdayHprd?.toFixed(2)} total nurse hours per resident per day). Residents need the same care on Saturday as on Tuesday. Weekend cuts mean fewer people to answer call lights, administer medications, reposition bedridden residents, and respond to emergencies. <em>Source: CMS PBJ Daily Staffing</em>
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          })()}
+
+                          {/* Administrator turnover */}
+                          {adminLeft != null && adminLeft > 0 && (
+                            <div className={`qm-indicator${expandedQm === 'wf_admin' ? ' expanded' : ''}`}>
+                              <div className="qm-indicator-header">
+                                <div className="qm-indicator-name">
+                                  Administrators who left
+                                  <button className="qm-info-btn" onClick={() => setExpandedQm(expandedQm === 'wf_admin' ? null : 'wf_admin')}>?</button>
+                                </div>
+                                <div className="qm-indicator-values">
+                                  <span className={`qm-fval ${adminLeft >= 2 ? 'red' : 'orange'}`}>{adminLeft}</span>
+                                  <span className="qm-vs">vs</span>
+                                  <span className="qm-natl">0.5 avg</span>
+                                </div>
+                              </div>
+                              <div className="qm-bar-wrap">
+                                <div className={`qm-bar ${adminLeft >= 2 ? 'red' : 'orange'}`} style={{ width: `${Math.min(adminLeft * 20, 80)}%` }} />
+                                <div className="qm-natl-marker" style={{ left: '10%' }} />
+                              </div>
+                              <div className="qm-explainer">
+                                <div className="qm-explainer-inner">
+                                  <strong>What this means:</strong> {adminLeft} administrator{adminLeft !== 1 ? 's' : ''} left this facility in the reporting period. National average: 0.5. Administrator turnover disrupts facility operations, regulatory compliance, and care culture. <em>Source: CMS Provider Info</em>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+
+                        {facility.total_turnover == null && facility.rn_turnover == null && wkndDrop == null && (
+                          <p style={{ fontSize: '14px', color: '#64748B' }}>Workforce data not available for this facility.</p>
+                        )}
+
+                        <div className="qm-direction-note">{cat.direction}</div>
+                      </div>
+                    );
+                  }
+
+                  const verdict = getVerdict(cat.key);
+                  return (
+                    <div key={cat.key}>
+                      {/* Verdict banner */}
+                      {verdict && (
+                        <div className={`verdict-banner ${verdict.level}`}>
+                          <div className={`verdict-icon ${verdict.level}`}>
+                            {verdict.level === 'concern' ? (
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            ) : (
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            )}
+                          </div>
+                          <div className="verdict-text">
+                            <h3 className={verdict.level}>{verdict.title}</h3>
+                            <p>{verdict.text}</p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Flat measures (Memory Care, Body & Basic Care, Rehab) */}
+                      {cat.measures && (
+                        <div className="qm-indicators">
+                          {cat.measures.map(renderIndicator)}
+                        </div>
+                      )}
+
+                      {/* Subgrouped measures (Vaccines) */}
+                      {cat.subgroups && cat.subgroups.map((sg) => (
+                        <div key={sg.label}>
+                          <div className={`qm-sub-label${sg.noBorder ? ' no-border' : ''}`}>{sg.label}</div>
+                          <div className="qm-indicators">
+                            {sg.measures.map(renderIndicator)}
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* QRP + VBP combined panel (Rehab tab only) */}
+                      {cat.key === 'rehab' && (qm.qrp || qm.vbp) && (
+                        <>
+                          <div className="qm-sub-label">SNF Quality Reporting &amp; Value-Based Purchasing</div>
+                          <div className="qrp-vbp-grid">
+                            {[
+                              { key: 'ppr', label: 'Preventable Readmissions' },
+                              { key: 'dtc', label: 'Discharge to Community' },
+                              { key: 'hai', label: 'Healthcare-Associated Infections' },
+                            ].map(({ key, label }) => {
+                              const val = qm.qrp?.[key];
+                              if (!val) return null;
+                              const n = (val + '').toLowerCase();
+                              const color = n.includes('better') ? 'green' : n.includes('worse') ? 'red' : 'orange';
+                              const display = n.includes('better') ? 'Above National Rate' : n.includes('worse') ? 'Below National Rate' : 'At National Rate';
+                              return (
+                                <div key={key} className="qrp-vbp-card">
+                                  <div className="qrp-vbp-label">{label}</div>
+                                  <div className={`qrp-vbp-value ${color}`}>{display}</div>
+                                </div>
+                              );
+                            })}
+                            {qm.vbp?.r && (
+                              <div className="qrp-vbp-card">
+                                <div className="qrp-vbp-label">CMS Performance Ranking</div>
+                                <div className={`qrp-vbp-value ${qm.vbp.r > 10000 ? 'red' : qm.vbp.r > 5000 ? 'orange' : 'green'}`}>#{qm.vbp.r.toLocaleString()} <span className="qrp-vbp-of">of 13,726</span></div>
+                              </div>
+                            )}
+                            {qm.vbp?.rr != null && (
+                              <div className="qrp-vbp-card">
+                                <div className="qrp-vbp-label">Readmission Rate</div>
+                                <div className={`qrp-vbp-value ${qm.vbp.rr > 0.2 ? 'red' : qm.vbp.rr > 0.15 ? 'orange' : 'green'}`}>{(qm.vbp.rr * 100).toFixed(1)}%</div>
+                              </div>
+                            )}
+                          </div>
+                        </>
+                      )}
+
+                      <div className="qm-direction-note">{cat.direction}</div>
+                    </div>
+                  );
+                })}
+
+                {/* Disclaimer */}
+                <div className="qm-disclaimer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                  <div>
+                    <strong>Data sources:</strong> MDS Quality Measures (assessment-based), Claims-Based Quality Measures (Medicare claims), SNF Quality Reporting Program (including COVID-19 vaccination data), SNF Value-Based Purchasing. National averages calculated from all 14,713 Medicare-certified nursing homes. Antipsychotic rates exclude residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation &mdash; no single metric above average automatically indicates poor care. <Link to="/methodology">Methodology</Link> &middot; <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">Verify on CMS.gov &rarr;</a>
+                  </div>
+                </div>
+
+                <WhatDoesThisMean question="What are quality measures and where do they come from?">
+                  <p>
+                    Quality measures capture what&rsquo;s actually happening to residents &mdash; not just whether staff showed up. They come from three different data streams.
+                  </p>
+                  <KeyPoint>
+                    <strong>MDS assessments</strong> are clinical evaluations completed by nursing home staff for every resident, regularly updated. They capture things like falls, weight loss, pressure ulcers, and medication use.
+                  </KeyPoint>
+                  <KeyPoint color="#D97706">
+                    <strong>Claims-based measures</strong> come from Medicare billing data and track hospitalizations and ER visits &mdash; harder to manipulate than self-reported data.
+                  </KeyPoint>
+                  <KeyPoint color="#64748B">
+                    <strong>QRP and VBP</strong> are federal programs that compare facilities to national benchmarks and tie Medicare payment to performance. A facility ranked in the bottom quartile nationally faces payment reductions.
+                  </KeyPoint>
+                </WhatDoesThisMean>
+              </>
+            );
+          })() : (
+            <p style={{ fontSize: '14px', color: '#64748B' }}>Quality measure data not available for this facility.</p>
+          )}
+        </div>
+
+        {/* Section 06 — Fines & Penalties */}
+        <div className="section">
+          <div className="section-number">06</div>
           <div className="section-title">Fines &amp; Penalties</div>
           {facility.total_fines > 0 ? (
             <>
@@ -521,13 +1489,31 @@ export function FacilityPage() {
             </div>
           )}
           <p className="source">Source: CMS Penalties Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a></p>
+
+          <WhatDoesThisMean question="What do these fines actually mean?">
+            <p>
+              CMS can impose monetary penalties when inspectors find serious problems. Fines range from a few thousand dollars for minor violations to hundreds of thousands for conditions that endangered or harmed residents.
+            </p>
+            <KeyPoint>
+              <strong>Context matters:</strong> A $50,000 fine at a large chain-owned facility generating millions in revenue may be a rounding error. The same fine at a small independent home could be devastating. Compare fines to the state and national averages shown above.
+            </KeyPoint>
+            <KeyPoint color="#D97706">
+              <strong>Repeat fines</strong> are a stronger signal than a single penalty. If a facility has been fined multiple times, it may mean the underlying problems weren't fixed — or management decided paying fines was cheaper than improving care.
+            </KeyPoint>
+            <p>
+              <strong>What families can do:</strong> Ask the facility — "I see you were fined [amount]. What changes were made?" A good facility will have a clear answer. Evasiveness is a warning sign.
+            </p>
+          </WhatDoesThisMean>
         </div>
 
-        {/* Section 05 — Financial Transparency */}
+        {/* Section 07 — Financial Transparency */}
         {facility.related_party_costs > 0 && (
           <div className="section">
-            <div className="section-number">05</div>
-            <div className="section-title">Financial Transparency</div>
+            <div className="section-header-row">
+              <div className="section-number">07</div>
+              <div className="section-title">Financial Transparency</div>
+              <span className="badge-updated">Updated</span>
+            </div>
             <div className="financial-card">
               <div className="financial-amount">${Math.round(facility.related_party_costs).toLocaleString()}</div>
               <div className="financial-label">
@@ -542,13 +1528,139 @@ export function FacilityPage() {
                 Source: <a href={hcris} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>CMS HCRIS Cost Reports</a>, FY2024 (Worksheet A-8) · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>Medicare Care Compare</a>
               </div>
             </div>
+
+            <WhatDoesThisMean question="What are related-party transactions and why should I care?">
+              <p>
+                A "related-party transaction" is when a nursing home pays money to another company that is owned or controlled by the same people. For example, the nursing home's parent company might also own a staffing agency, a real estate company, or a management firm — and the nursing home pays those affiliated companies for services.
+              </p>
+              <KeyPoint>
+                <strong>This is legal</strong> — but it's one of the primary ways money gets extracted from facilities that receive taxpayer-funded Medicare and Medicaid payments. Every dollar that flows to an affiliated company is a dollar that didn't go to staffing, supplies, or facility maintenance.
+              </KeyPoint>
+              <KeyPoint color="#DC2626">
+                <strong>Red flag combination:</strong> High related-party payments + low staffing + low star ratings is a pattern that researchers and regulators look for as a potential indicator of profit extraction at the expense of care quality.
+              </KeyPoint>
+              <p>
+                <strong>Where this data comes from:</strong> CMS requires all nursing homes to file annual cost reports (HCRIS). Worksheet A-8 specifically breaks out payments to related parties.
+              </p>
+            </WhatDoesThisMean>
           </div>
         )}
 
-        {/* Section 06 — Who Runs This Place? */}
+        {/* Section 08 — Fire Safety */}
         <div className="section">
-          <div className="section-number">06</div>
-          <div className="section-title">Who Runs This Place?</div>
+          <div className="section-header-row">
+            <div className="section-number">08</div>
+            <div className="section-title">Fire Safety</div>
+            <span className="badge-new">New</span>
+            <span className="badge-source">CMS FIRE SAFETY</span>
+          </div>
+          <p className="section-subtitle">A separate inspection system from health deficiencies — most families never check this data</p>
+          {(facility.fire_deficiency_count || 0) === 0 ? (
+            <div className="data-cell" style={{ maxWidth: '360px' }}>
+              <div className="data-cell-value val-green">0</div>
+              <div className="data-cell-label">No fire safety deficiencies on record</div>
+              <div className="data-cell-context">No citations from fire safety inspections</div>
+            </div>
+          ) : (
+            <>
+              <div className="data-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                <div className="data-cell">
+                  <div className={`data-cell-value ${(facility.fire_deficiency_count || 0) > 14.3 ? 'val-red' : (facility.fire_deficiency_count || 0) > 5 ? 'val-orange' : 'val-green'}`}>
+                    {facility.fire_deficiency_count || 0}
+                  </div>
+                  <div className="data-cell-label">Fire Code Violations</div>
+                  <div className="data-cell-context">Nat'l avg: 14.3</div>
+                </div>
+                <div className="data-cell">
+                  {(() => {
+                    const seriousCount = (facility.fire_deficiencies || []).filter(d => d.scope_severity && (d.scope_severity.startsWith('K') || d.scope_severity.startsWith('L'))).length;
+                    return (
+                      <>
+                        <div className={`data-cell-value ${seriousCount > 0 ? 'val-red' : 'val-green'}`}>
+                          {seriousCount}
+                        </div>
+                        <div className="data-cell-label">Serious K-Level</div>
+                        <div className="data-cell-context">Direct risk to residents</div>
+                      </>
+                    );
+                  })()}
+                </div>
+                <div className="data-cell">
+                  {(() => {
+                    const uncorrectedCount = (facility.fire_deficiencies || []).filter(d => !d.corrected).length;
+                    return (
+                      <>
+                        <div className={`data-cell-value ${uncorrectedCount > 5 ? 'val-red' : uncorrectedCount > 0 ? 'val-orange' : 'val-green'}`}>
+                          {uncorrectedCount}
+                        </div>
+                        <div className="data-cell-label">Still Uncorrected</div>
+                        <div className="data-cell-context">At last inspection</div>
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+              {(facility.fire_deficiency_count || 0) > 14.3 && (
+                <div className="verdict-banner caution">
+                  <div className="verdict-icon caution">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  </div>
+                  <div className="verdict-text">
+                    <h3 className="caution">Above-Average Fire Code Violations</h3>
+                    <p><strong>{facility.fire_deficiency_count} fire safety violations</strong> — above the 14.3 national average. Fire safety inspections are entirely separate from health inspections. Issues include sprinkler systems, blocked exits, and evacuation plans. <strong>Most residents cannot evacuate on their own.</strong></p>
+                  </div>
+                </div>
+              )}
+              {facility.fire_deficiencies && facility.fire_deficiencies.length > 0 && (
+                <ul className="deficiency-list" style={{ marginTop: '16px' }}>
+                  {facility.fire_deficiencies.slice(0, 5).map((def, idx) => {
+                    const severityClass = def.severity_label === 'Immediate Jeopardy' ? 'severity-danger'
+                      : def.severity_label === 'Actual Harm' ? 'severity-harm' : 'severity-minor';
+                    const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Danger'
+                      : def.severity_label === 'Actual Harm' ? 'Residents Hurt' : 'Minor';
+                    const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
+                    return (
+                      <li className="deficiency-item" key={idx}>
+                        <span className={`deficiency-severity ${severityClass}`}>{severityText}</span>
+                        <div>
+                          <div className="deficiency-text">{def.description}</div>
+                          {def.category && <div className="deficiency-category">{def.category}</div>}
+                          <div className="deficiency-date">Fire Safety Inspection · {year}</div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </>
+          )}
+          <div className="source-line" style={{ marginTop: '16px' }}>Source: CMS Fire Safety Deficiency Data</div>
+          <WhatDoesThisMean question="How are fire safety inspections different?">
+            <p>
+              Fire safety inspections are conducted separately from standard health inspections. They are carried out by fire marshals or life safety code inspectors, not the same state surveyors who do health surveys.
+            </p>
+            <KeyPoint>
+              <strong>What they check:</strong> Sprinkler systems, emergency exits, fire alarms, door hardware, evacuation plans, smoking policies, and emergency preparedness. These are structural and procedural safeguards designed to protect residents who may not be able to evacuate on their own.
+            </KeyPoint>
+            <KeyPoint color="#DC2626">
+              <strong>Immediate jeopardy citations</strong> in fire safety inspections are rare and serious — they indicate conditions that put residents at immediate risk in the event of a fire or emergency.
+            </KeyPoint>
+            <p>
+              <strong>Why this matters:</strong> Nursing home residents are among the most vulnerable in a fire emergency. Many have limited mobility, use oxygen or other equipment, and depend entirely on staff to evacuate them safely.
+            </p>
+          </WhatDoesThisMean>
+        </div>
+
+        {/* Section 09 — Who Runs This Place? */}
+        <div className="section">
+          <div className="section-header-row">
+            <div className="section-number">09</div>
+            <div className="section-title">Who Runs This Place?</div>
+            <span className="badge-updated">Updated</span>
+          </div>
+          <p style={{ fontSize: '13px', color: 'var(--text-secondary, #9d97b8)', marginBottom: '16px', marginTop: '8px' }}>
+            Operator details, PE/REIT ownership badges, chain stats — plus ownership change tracking
+          </p>
           <div className="ownership-grid">
             <div className="ownership-card">
               <div className="ownership-card-label">Operator</div>
@@ -599,12 +1711,73 @@ export function FacilityPage() {
               </div>
             </div>
           </div>
+
+          {/* Ownership Change Timeline */}
+          {(facility.ownership_changed_recently || (facility.num_owners && facility.num_owners > 1)) && (
+            <>
+              <div className="complaints-sub-label" style={{ marginTop: '24px' }}>Ownership History</div>
+              <div className="ownership-timeline">
+                {facility.ownership_changed_recently && facility.ownership_change_date && (
+                  <div className="tl-item">
+                    <div className="tl-col">
+                      <div className="tl-dot red" />
+                      <div className="tl-line" />
+                    </div>
+                    <div>
+                      <div className="tl-date">{facility.ownership_change_date}</div>
+                      <div className="tl-event">Acquired by {facility.new_owner_name || 'New Owner'}</div>
+                      {facility.pe_owned && <div className="tl-detail">Private equity-backed</div>}
+                    </div>
+                  </div>
+                )}
+                <div className="tl-item">
+                  <div className="tl-col">
+                    <div className="tl-dot muted" />
+                  </div>
+                  <div>
+                    <div className="tl-date">CMS Records</div>
+                    <div className="tl-event">{facility.num_owners || 1} total owner{(facility.num_owners || 1) !== 1 ? 's' : ''} on file</div>
+                    <div className="tl-detail">Per CMS ownership disclosure filings</div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Verdict banner for frequent ownership changes */}
+          {((facility.num_owners || 0) > 5 || (facility.ownership_changed_recently && (facility.num_owners || 0) > 3)) && (
+            <div className="verdict-banner caution">
+              <div className="verdict-icon caution">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div className="verdict-text">
+                <h3 className="caution">Frequent Ownership Changes</h3>
+                <p><strong>{facility.num_owners} owners on CMS records.</strong> Frequent ownership changes are associated with care disruptions. New owners may cut staff, change vendors, or restructure operations. Research shows quality typically dips in the 1-2 years following an acquisition.{facility.pe_owned ? ' The current operator is private equity-backed.' : ''}</p>
+              </div>
+            </div>
+          )}
+
           <div className="source-line">Source: CMS Care Compare, ownership records</div>
+
+          <WhatDoesThisMean question="Why does ownership matter for care quality?">
+            <p>
+              Research consistently shows that who owns a nursing home affects the quality of care residents receive. Facilities owned by large for-profit chains and private equity firms tend to have lower staffing levels, more deficiencies, and higher rates of resident harm compared to nonprofit and independent facilities.
+            </p>
+            <KeyPoint>
+              <strong>Portfolio performance tells a story.</strong> If a company runs 20 facilities and most are rated 1–2 stars, that's a systemic pattern — not bad luck. Look at the star distribution above to see how this owner's other facilities are doing.
+            </KeyPoint>
+            <KeyPoint color="#D97706">
+              <strong>Recent ownership changes</strong> often lead to care disruptions. New owners may cut staff, change vendors, or restructure operations. Research shows quality typically dips in the 1–2 years following an acquisition, especially by private equity.
+            </KeyPoint>
+            <p>
+              <strong>What families can do:</strong> Search the owner's name on this site to see all their facilities. If most are poorly rated, that tells you something about how this company operates.
+            </p>
+          </WhatDoesThisMean>
         </div>
 
-        {/* Section 07 — Questions to Ask */}
+        {/* Section 10 — Questions to Ask */}
         <div className="section">
-          <div className="section-number">07</div>
+          <div className="section-number">10</div>
           <div className="section-title">Questions to Ask When You Visit</div>
           <p style={{ fontSize: '14px', color: 'var(--text-secondary, #9d97b8)', marginBottom: '16px' }}>Tailored to this facility's specific record:</p>
 
@@ -649,9 +1822,9 @@ export function FacilityPage() {
           </div>
         </div>
 
-        {/* Section 08 — What You Can Do */}
+        {/* Section 11 — What You Can Do */}
         <div className="section">
-          <div className="section-number">08</div>
+          <div className="section-number">11</div>
           <div className="section-title">What You Can Do</div>
           <ActionPaths facility={facility} />
         </div>

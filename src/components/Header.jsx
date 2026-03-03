@@ -76,6 +76,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes', state: { jumpToMap: true } },
         { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
         { to: '/ask-a-clinician', label: 'Ask a Clinician', desc: 'Facility report from an NP — $49' },
+        { to: '/know-your-rights', label: 'Know Your Rights', desc: 'Discharge appeals & safety resources' },
       ]
     },
     {
@@ -111,7 +112,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
         <div className="site-header__inner">
           {/* Brand */}
           <Link to="/" className="site-header__brand">
-            <span className="site-header__logo-text">The Oversight Report</span>
+            <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -224,7 +225,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
         <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
           <nav className="mobile-menu" onClick={(e) => e.stopPropagation()} aria-label="Mobile navigation">
             <div className="mobile-menu__header">
-              <span className="site-header__logo-text">The Oversight Report</span>
+              <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
               <button
                 className="mobile-menu__close"
                 onClick={() => setMobileOpen(false)}

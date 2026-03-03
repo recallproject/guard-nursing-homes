@@ -64,16 +64,20 @@
 }
 
 .site-header__logo-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #1D3557;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #0F172A;
   transition: font-size var(--transition-normal);
 }
 
+.site-header__logo-text .logo-accent {
+  color: #2B6CB0;
+}
+
 .site-header--compact .site-header__logo-text {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 /* ========================================
@@ -588,7 +592,19 @@
 }
 
 .site-header--light .site-header__logo-text {
-  color: #1D3557;
+  color: #FFFFFF;
+}
+
+.site-header--light .site-header__logo-text .logo-accent {
+  color: #5BA8E8;
+}
+
+.site-header--light.site-header--compact .site-header__logo-text {
+  color: #0F172A;
+}
+
+.site-header--light.site-header--compact .site-header__logo-text .logo-accent {
+  color: #2B6CB0;
 }
 
 .site-header--light .site-header__group-label {

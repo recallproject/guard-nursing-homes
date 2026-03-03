@@ -48,16 +48,7 @@ export default function ExplainerBanners({ facility }) {
     );
   }
 
-  // WARNING: Very high RN turnover
-  const rnTurnover = facility.rn_turnover;
-  if (rnTurnover && rnTurnover > 70) {
-    banners.push(
-      <ExplainerBanner key="turnover" variant="warning" icon="🚪"
-        title={`RN turnover rate: ${rnTurnover.toFixed(0)}% — significantly above average`}>
-        More than {Math.round(rnTurnover / 10) * 10 / 100 >= 0.7 ? 'two-thirds' : 'half'} of the RNs who worked here in the past year have left. High turnover means residents constantly see new faces, care plans get lost in transitions, and the staff who remain are often stretched thin covering for vacancies.
-      </ExplainerBanner>
-    );
-  }
+  // RN turnover banner moved to Workforce tab in Quality Measures (Section 05)
 
   if (banners.length === 0) return null;
 

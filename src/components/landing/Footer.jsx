@@ -8,7 +8,7 @@ export default function Footer({ onExplore, onSearch }) {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <h3>The Oversight Report</h3>
+            <h3 style={{fontFamily: "'DM Serif Display', serif", fontWeight: 400, letterSpacing: '-0.01em'}}>The <span style={{color: '#5BA8E8'}}>Oversight</span> Report</h3>
             <p>
               Nursing home risk data, made accessible.
               Because the people you love deserve transparency.
