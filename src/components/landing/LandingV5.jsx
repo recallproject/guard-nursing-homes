@@ -242,15 +242,18 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
   return (
     <div className="v5-landing">
 
-      {/* ═══════ CMS ALERT BANNER ═══════ */}
+      {/* ═══════ CMS ALERT CARD ═══════ */}
       {!cmsAlertDismissed && (
-        <div className="v5-cms-alert">
-          <div className="v5-cms-alert-inner">
-            <strong>CMS Removed Key Safety Data (Feb 2025)</strong>
-            <span className="v5-cms-alert-sep">&mdash;</span>
-            <span>Complaint allegation counts and facility-reported incidents were pulled from Care Compare due to iQIES transition errors. The Oversight Report has rebuilt this data independently.</span>
-            <button className="v5-cms-alert-close" onClick={() => setCmsAlertDismissed(true)} aria-label="Dismiss">&times;</button>
+        <div className="v5-cms-alert-card">
+          <div className="v5-cms-alert-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
+          <div className="v5-cms-alert-text">
+            <div className="v5-cms-alert-headline">CMS removed complaint investigation data from Care Compare on 2/25/26.</div>
+            <div className="v5-cms-alert-body">Families can no longer see how many complaints were filed against a facility. <strong>We rebuilt it from inspection records.</strong> Every facility on this site still shows complaint counts, investigation outcomes, and patterns over time.</div>
+            <Link to="/methodology" className="v5-cms-alert-link">See what CMS removed and what we kept &rarr;</Link>
+          </div>
+          <button className="v5-cms-alert-dismiss" onClick={() => setCmsAlertDismissed(true)} aria-label="Dismiss">&times;</button>
         </div>
       )}
 
@@ -467,6 +470,23 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
       </div>
 
+      {/* ═══════ TRUST / SOCIAL PROOF STRIP ═══════ */}
+      <div className="v5-trust-quote-strip">
+        <div className="v5-trust-quote-inner">
+          <div className="v5-trust-quote">
+            <blockquote>
+              "I built this because I watched the system fail patients — and the data to prove it was public but buried. No one should have to be a data scientist to know if a nursing home is safe."
+            </blockquote>
+            <cite>Rob Benard, NP <span>— Board-Certified Nurse Practitioner</span></cite>
+          </div>
+          <div className="v5-trust-badges">
+            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--navy)'}}>&#9670;</span> Cited: Harvard Data Science Review</div>
+            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--orange)'}}>&#9650;</span> 418 upvotes on r/nursing</div>
+            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--blue)'}}>&#9632;</span> 14,713 facilities analyzed</div>
+          </div>
+        </div>
+      </div>
+
       {/* ═══════ WHO USES THIS ═══════ */}
       <div className="v5-section">
         <div className="v5-section-header">
@@ -491,20 +511,6 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
       </div>
 
-      {/* ═══════ TRUST STRIP ═══════ */}
-      <div className="v5-trust-strip">
-        <div className="v5-trust-inner">
-          <span className="v5-trust-item">Public CMS Data</span>
-          <span className="v5-trust-sep">&middot;</span>
-          <span className="v5-trust-item">No Industry Funding</span>
-          <span className="v5-trust-sep">&middot;</span>
-          <span className="v5-trust-item">Clinician-Built</span>
-          <span className="v5-trust-sep">&middot;</span>
-          <span className="v5-trust-item">18 Federal Databases</span>
-          <span className="v5-trust-sep">&middot;</span>
-          <span className="v5-trust-item">Updated Quarterly</span>
-        </div>
-      </div>
 
       {/* ═══════ HOW IT WORKS ═══════ */}
       <div className="v5-section">
@@ -546,20 +552,6 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
       </div>
 
-      {/* ═══════ BUILDER ═══════ */}
-      <div className="v5-builder-section">
-        <div className="v5-builder-label">Who Built This</div>
-        <div className="v5-builder-name">Robert Benard, NP</div>
-        <div className="v5-builder-title">Nurse Practitioner &middot; AGACNP-BC, PMHNP-BC</div>
-        <div className="v5-builder-bio">
-          Twenty years at the bedside taught me that families deserve better tools for the hardest decisions in healthcare. The Oversight Report exists because the data was always public — nobody had assembled it into something usable.
-        </div>
-        <div className="v5-builder-creds">
-          <span className="v5-builder-cred">Highland Hospital / Sutter Health</span>
-          <span className="v5-builder-cred">Cited: Harvard Data Science Review</span>
-        </div>
-        <Link to="/about" className="v5-builder-link">Read the full story</Link>
-      </div>
 
       {/* ═══════ FINAL CTA ═══════ */}
       <section className="v5-final-cta">
