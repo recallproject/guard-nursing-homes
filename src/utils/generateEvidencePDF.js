@@ -54,6 +54,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     stars: 3.2,
     total_deficiencies: 8.5,
     contractor_pct: 12.0,
+    total_turnover: 46.4,
+    rn_turnover: 43.6,
+    admin_turnover: 0.5,
+    complaint_investigations: 7,
+    fire_deficiency_count: 14.3,
   };
 
   // ======================== FORMATTERS ========================
@@ -226,6 +231,34 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.text(explLines, margin + 7, currentY + 12);
 
     currentY += boxH + 4;
+  }
+
+  /** Subtle "Verify" line with a clickable hyperlink. */
+  function addVerifyLink(label, url) {
+    checkPageBreak(14);
+    currentY += 3;
+    doc.setDrawColor(...DIVIDER);
+    doc.setLineWidth(0.2);
+    // dashed line
+    const segLen = 1.5;
+    const gapLen = 1.5;
+    let x = margin;
+    while (x < margin + contentWidth) {
+      doc.line(x, currentY, Math.min(x + segLen, margin + contentWidth), currentY);
+      x += segLen + gapLen;
+    }
+    currentY += 4;
+    // Label line (not a link)
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(100, 116, 139);
+    doc.text('Verify: ' + label, margin, currentY);
+    currentY += 4;
+    // Clickable URL line
+    doc.setFontSize(7);
+    doc.setTextColor(20, 184, 166); // teal
+    doc.textWithLink(url, margin, currentY, { url });
+    currentY += 5;
   }
 
   // ======================== DATA GENERATORS ========================
@@ -544,14 +577,15 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const tocEntries = [
     ['1.', 'Executive Summary', '3'],
     ['2.', 'Ownership Portfolio', '3'],
-    ['3.', 'Staffing Analysis', '4'],
-    ['4.', 'Inspection History', '5'],
-    ['5.', 'Financial Penalties', '7'],
-    ['6.', 'Red Flags & Accountability Indicators', '8'],
-    ['7.', 'Comparison Context', '8'],
-    ['8.', 'Nearby Alternatives', '9'],
-    ['9.', 'Data Sources & Methodology', '10'],
-    ['10.', 'Disclaimer', '11'],
+    ['3.', 'Staffing Analysis', '5'],
+    ['4.', 'Inspection History', '7'],
+    ['5.', 'Financial Penalties', '9'],
+    ['6.', 'Clinical Outcomes (Quality Measures)', '10'],
+    ['7.', 'Red Flags & Accountability Indicators', '11'],
+    ['8.', 'Comparison Context', '12'],
+    ['9.', 'Nearby Alternatives', '12'],
+    ['10.', 'Data Sources & Methodology', '13'],
+    ['11.', 'Disclaimer', '14'],
   ];
 
   tocEntries.forEach(([num, title, page]) => {
@@ -667,11 +701,90 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   if (facility.chain_name) addDataRow('Chain Name:', facility.chain_name);
   addDataRow('Ownership Type:', facility.ownership_type || 'N/A');
 
-  if (facility.pe_owned && facility.pe_owner_name) addDataRow('Private Equity Owner:', facility.pe_owner_name);
-  if (facility.reit_owned && facility.reit_owner_name) addDataRow('REIT Owner:', facility.reit_owner_name);
+  if (facility.pe_owned && facility.pe_owner_name) {
+    addDataRow('Private Equity Owner:', facility.pe_owner_name);
+    if (facility.pe_detection_method) {
+      const peDetectionLabel = facility.pe_detection_method === 'cms_flag'
+        ? 'CMS self-reported flag'
+        : facility.pe_detection_method === 'name_match'
+        ? 'Matched to known PE firm database'
+        : facility.pe_detection_method === 'investment_firm'
+        ? 'Investment firm entity identified'
+        : facility.pe_detection_method;
+      addDataRow('PE Detection Method:', peDetectionLabel);
+    }
+  }
+  if (facility.reit_owned && facility.reit_owner_name) {
+    addDataRow('REIT Owner:', facility.reit_owner_name);
+    if (facility.reit_detection_method) {
+      const reitDetectionLabel = facility.reit_detection_method === 'cms_flag'
+        ? 'CMS self-reported flag'
+        : facility.reit_detection_method === 'name_match'
+        ? 'Matched to known REIT database'
+        : facility.reit_detection_method === 'investment_firm'
+        ? 'Investment firm entity identified'
+        : facility.reit_detection_method;
+      addDataRow('REIT Detection Method:', reitDetectionLabel);
+    }
+  }
+  if (facility.investment_firm_involved) {
+    addDataRow('Investment Firm Involved:', 'Yes');
+  }
+
+  // Ownership Churn
   if (facility.ownership_changed_recently && facility.ownership_change_date) {
     addDataRow('Ownership Change:', facility.ownership_change_date);
     if (facility.new_owner_name) addDataRow('New Owner:', facility.new_owner_name);
+    addAlertBox(
+      'Recent Ownership Change: This facility changed ownership on ' + facility.ownership_change_date + '. ' +
+      'Research shows care quality often dips during ownership transitions — new operators may reduce staffing or ' +
+      'defer maintenance while assuming operational control.',
+      'warning'
+    );
+  }
+  if (facility.num_owners !== null && facility.num_owners !== undefined && facility.num_owners > 3) {
+    addAlertBox(
+      'Frequent Ownership Changes: This facility has had ' + facility.num_owners + ' different owners in CMS records. ' +
+      'Frequent ownership changes can indicate financial instability, operational dysfunction, or a pattern of ' +
+      'distressed-asset transactions that disrupt continuity of care.',
+      'warning'
+    );
+  } else if (facility.num_owners !== null && facility.num_owners !== undefined) {
+    addDataRow('Total Owners on Record:', String(facility.num_owners));
+  }
+
+  // Chain-Wide Performance
+  if (facility.chain_name && (facility.chain_avg_stars !== null || facility.chain_avg_hprd !== null || facility.chain_abuse_pct !== null)) {
+    checkPageBreak(45);
+    addSubHeading('Chain-Wide Performance');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const chainCount = facility.owner_portfolio_count || 'multiple';
+    const chainIntro = 'This facility is part of ' + facility.chain_name +
+      ', which operates ' + chainCount + ' facilit' + (chainCount === 1 ? 'y' : 'ies') +
+      ' in CMS data. Chain-wide averages are shown below for context.';
+    const chainLines = doc.splitTextToSize(chainIntro, contentWidth);
+    doc.text(chainLines, margin, currentY);
+    currentY += chainLines.length * 4.5 + 4;
+
+    if (facility.chain_avg_stars !== null && facility.chain_avg_stars !== undefined)
+      addDataRow('Chain Average Star Rating:', facility.chain_avg_stars.toFixed(1) + ' / 5');
+    if (facility.chain_avg_hprd !== null && facility.chain_avg_hprd !== undefined)
+      addDataRow('Chain Average Total HPRD:', facility.chain_avg_hprd.toFixed(2) + ' hrs');
+    if (facility.chain_abuse_pct !== null && facility.chain_abuse_pct !== undefined) {
+      addDataRow('Chain Facilities with Abuse Citations:', pct(facility.chain_abuse_pct));
+      if (facility.chain_abuse_pct > 20) {
+        addAlertBox(
+          'Chain-Wide Abuse Pattern: ' + pct(facility.chain_abuse_pct) + ' of facilities in the ' +
+          facility.chain_name + ' chain have abuse-related citations. ' +
+          'A high chain-wide rate suggests a systemic pattern rather than isolated incidents.',
+          'warning'
+        );
+      }
+    }
+    currentY += 4;
   }
 
   currentY += 4;
@@ -764,6 +877,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     currentY += 8;
   }
 
+  addVerifyLink(
+    'Medicare Care Compare — Ownership & Facility Info',
+    'https://www.medicare.gov/care-compare/details/nursing-home/' + facility.ccn
+  );
+
   // ================================================================
   //   SECTION 3 — STAFFING ANALYSIS
   // ================================================================
@@ -826,10 +944,75 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   });
   currentY = doc.lastAutoTable.finalY + 6;
 
-  addDataRow('Weekend Total HPRD:', num(facility.weekend_total_hprd) + ' hrs');
-  addDataRow('Weekend RN HPRD:', num(facility.weekend_rn_hprd) + ' hrs');
   addDataRow('Average Census:', facility.avg_census ? facility.avg_census.toFixed(1) : 'N/A');
   currentY += 4;
+
+  // ---- Weekend Staffing Drop ----
+  if (facility.weekend_total_hprd !== null && facility.weekend_total_hprd !== undefined) {
+    checkPageBreak(50);
+    addSubHeading('Weekend vs. Weekday Staffing');
+
+    addDataRow('Weekday Total HPRD:', num(facility.total_hprd) + ' hrs');
+    addDataRow('Weekend Total HPRD:', num(facility.weekend_total_hprd) + ' hrs');
+    if (facility.rn_hprd !== null && facility.rn_hprd !== undefined) {
+      addDataRow('Weekday RN HPRD:', num(facility.rn_hprd) + ' hrs');
+      addDataRow('Weekend RN HPRD:', num(facility.weekend_rn_hprd) + ' hrs');
+    }
+
+    if (facility.total_hprd > 0) {
+      const totalDrop = ((facility.total_hprd - facility.weekend_total_hprd) / facility.total_hprd * 100);
+      addDataRow('Weekend Total Drop:', totalDrop.toFixed(1) + '%');
+      if (totalDrop > 20) {
+        addAlertBox(
+          'Weekend Staffing Gap: Weekend staffing drops ' + totalDrop.toFixed(1) + '% below weekday levels. ' +
+          'Research indicates residents receive substantially fewer hours of nursing care on weekends, ' +
+          'increasing risk of undetected deterioration and delayed response to medical events.',
+          'warning'
+        );
+      }
+    }
+    if (facility.rn_hprd > 0 && facility.weekend_rn_hprd !== null && facility.weekend_rn_hprd !== undefined) {
+      const rnDrop = ((facility.rn_hprd - facility.weekend_rn_hprd) / facility.rn_hprd * 100);
+      if (rnDrop > 20) {
+        addAlertBox(
+          'Weekend RN Coverage Gap: Registered nurse hours drop ' + rnDrop.toFixed(1) + '% on weekends ' +
+          '(' + num(facility.rn_hprd) + ' hrs weekday vs. ' + num(facility.weekend_rn_hprd) + ' hrs weekend). ' +
+          'Reduced RN presence on weekends limits clinical assessment and medication management oversight.',
+          'warning'
+        );
+      }
+    }
+    currentY += 4;
+  }
+
+  // ---- Contract Staffing Reliance ----
+  if (facility.contractor_pct !== null && facility.contractor_pct !== undefined) {
+    checkPageBreak(40);
+    addSubHeading('Contract Staffing Reliance');
+
+    addDataRow('Contract/Agency RN Hours (%):', pct(facility.contractor_pct));
+    addDataRow('National Average:', NATIONAL_AVG.contractor_pct + '%');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const contractNote = 'Contract or agency staff are temporary workers hired through staffing agencies. ' +
+      'High reliance on contract staff reduces continuity of care — temporary nurses are unfamiliar with ' +
+      'residents\' individual needs, care plans, and histories.';
+    const cnLines = doc.splitTextToSize(contractNote, contentWidth);
+    doc.text(cnLines, margin, currentY);
+    currentY += cnLines.length * 4.5 + 4;
+
+    if (facility.contractor_pct > 20) {
+      addAlertBox(
+        'High Contract Staffing: ' + pct(facility.contractor_pct) + ' of RN hours are provided by temporary contract staff — ' +
+        'above the 20% threshold associated with continuity-of-care concerns in Health Affairs research. ' +
+        'National average is ' + NATIONAL_AVG.contractor_pct + '%. Contract staff lack familiarity with individual residents\' care plans.',
+        'warning'
+      );
+    }
+    currentY += 4;
+  }
 
   // Verification
   addSubHeading('Staffing Verification');
@@ -871,6 +1054,169 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     );
   }
 
+  // ---- Workforce Stability (Turnover) ----
+  if (
+    facility.total_turnover !== null && facility.total_turnover !== undefined ||
+    facility.rn_turnover !== null && facility.rn_turnover !== undefined ||
+    facility.admin_turnover !== null && facility.admin_turnover !== undefined
+  ) {
+    checkPageBreak(60);
+    addSubHeading('Workforce Stability (Turnover)');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const turnoverIntro =
+      'CMS collects turnover data from Payroll-Based Journal (PBJ) submissions. ' +
+      'High turnover is an evidence marker of institutional instability — ' +
+      'research consistently links elevated nurse turnover to lower care quality and increased adverse events.';
+    const tiLines = doc.splitTextToSize(turnoverIntro, contentWidth);
+    doc.text(tiLines, margin, currentY);
+    currentY += tiLines.length * 4.5 + 5;
+
+    const turnoverRows = [];
+    if (facility.total_turnover !== null && facility.total_turnover !== undefined)
+      turnoverRows.push([
+        'Total Staff Turnover Rate',
+        pct(facility.total_turnover),
+        NATIONAL_AVG.total_turnover + '%',
+        facility.total_turnover > NATIONAL_AVG.total_turnover
+          ? '+' + (facility.total_turnover - NATIONAL_AVG.total_turnover).toFixed(1) + '%'
+          : (facility.total_turnover - NATIONAL_AVG.total_turnover).toFixed(1) + '%',
+      ]);
+    if (facility.rn_turnover !== null && facility.rn_turnover !== undefined)
+      turnoverRows.push([
+        'Registered Nurse (RN) Turnover Rate',
+        pct(facility.rn_turnover),
+        NATIONAL_AVG.rn_turnover + '%',
+        facility.rn_turnover > NATIONAL_AVG.rn_turnover
+          ? '+' + (facility.rn_turnover - NATIONAL_AVG.rn_turnover).toFixed(1) + '%'
+          : (facility.rn_turnover - NATIONAL_AVG.rn_turnover).toFixed(1) + '%',
+      ]);
+    if (facility.admin_turnover !== null && facility.admin_turnover !== undefined)
+      turnoverRows.push([
+        'Administrator Turnover (count)',
+        String(facility.admin_turnover),
+        String(NATIONAL_AVG.admin_turnover),
+        facility.admin_turnover > NATIONAL_AVG.admin_turnover
+          ? '+' + (facility.admin_turnover - NATIONAL_AVG.admin_turnover).toFixed(1)
+          : (facility.admin_turnover - NATIONAL_AVG.admin_turnover).toFixed(1),
+      ]);
+
+    if (turnoverRows.length > 0) {
+      autoTable(doc, {
+        startY: currentY,
+        head: [['Metric', 'This Facility', 'National Avg', 'Difference']],
+        body: turnoverRows,
+        theme: 'grid',
+        styles: { fontSize: 8.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+        headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 9 },
+        alternateRowStyles: { fillColor: TABLE_ALT },
+        columnStyles: {
+          0: { cellWidth: 70, fontStyle: 'bold' },
+          1: { cellWidth: 30, halign: 'right' },
+          2: { cellWidth: 30, halign: 'right' },
+          3: { cellWidth: 25, halign: 'right', fontStyle: 'bold' },
+        },
+        didParseCell(data) {
+          if (data.column.index === 3 && data.row.section === 'body') {
+            const raw = data.row.raw[3];
+            if (typeof raw === 'string') {
+              const v = parseFloat(raw);
+              if (!isNaN(v)) {
+                if (v > 0) data.cell.styles.textColor = RED;
+                else if (v < 0) data.cell.styles.textColor = GREEN;
+              }
+            }
+          }
+        },
+        margin: { left: margin, right: margin },
+      });
+      currentY = doc.lastAutoTable.finalY + 5;
+    }
+
+    if (facility.rn_turnover !== null && facility.rn_turnover !== undefined && facility.rn_turnover > 60) {
+      addAlertBox(
+        'High RN Turnover: At ' + pct(facility.rn_turnover) + ', this facility\'s RN turnover exceeds 60% — ' +
+        'a threshold associated with significantly higher rates of adverse events in peer-reviewed literature. ' +
+        'High RN turnover disrupts care continuity and institutional knowledge, directly affecting resident safety.',
+        'warning'
+      );
+    }
+    if (facility.admin_turnover !== null && facility.admin_turnover !== undefined && facility.admin_turnover > 1) {
+      addAlertBox(
+        'Administrator Turnover: ' + facility.admin_turnover + ' administrator' +
+        (facility.admin_turnover > 1 ? 's have' : ' has') +
+        ' left this facility — above the national average of ' + NATIONAL_AVG.admin_turnover +
+        '. Frequent leadership changes signal management dysfunction and can impair regulatory compliance.',
+        'warning'
+      );
+    }
+  }
+
+  // ---- Staffing Trend Over Time ----
+  if (facility.staffing_trend && facility.staffing_trend.quarters?.length > 0) {
+    const trend = facility.staffing_trend;
+    checkPageBreak(60);
+    addSubHeading('Staffing Trend Over Time');
+
+    const qCount = trend.quarters.length;
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const trendDir = trend.direction || 'stable';
+    const trendIntro =
+      'Staffing has been ' + trendDir + ' over the past ' + qCount + ' quarter' + (qCount > 1 ? 's' : '') + '. ' +
+      'The table below shows quarterly staffing levels from CMS Payroll-Based Journal data.';
+    const tiLines = doc.splitTextToSize(trendIntro, contentWidth);
+    doc.text(tiLines, margin, currentY);
+    currentY += tiLines.length * 4.5 + 5;
+
+    const trendRows = trend.quarters.map((q, i) => [
+      q,
+      trend.total_hprd && trend.total_hprd[i] !== undefined ? trend.total_hprd[i].toFixed(2) : 'N/A',
+      trend.rn_hprd && trend.rn_hprd[i] !== undefined ? trend.rn_hprd[i].toFixed(2) : 'N/A',
+      trend.zero_rn_pct && trend.zero_rn_pct[i] !== undefined ? trend.zero_rn_pct[i].toFixed(1) + '%' : 'N/A',
+      trend.contractor_pct && trend.contractor_pct[i] !== undefined ? trend.contractor_pct[i].toFixed(1) + '%' : 'N/A',
+    ]);
+
+    autoTable(doc, {
+      startY: currentY,
+      head: [['Quarter', 'Total HPRD', 'RN HPRD', 'Zero-RN Days', 'Contract %']],
+      body: trendRows,
+      theme: 'grid',
+      styles: { fontSize: 8, cellPadding: 3.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+      headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 8.5 },
+      alternateRowStyles: { fillColor: TABLE_ALT },
+      columnStyles: {
+        0: { cellWidth: 30, fontStyle: 'bold' },
+        1: { cellWidth: 28, halign: 'right' },
+        2: { cellWidth: 28, halign: 'right' },
+        3: { cellWidth: 30, halign: 'right' },
+        4: { cellWidth: 28, halign: 'right' },
+      },
+      margin: { left: margin, right: margin },
+    });
+    currentY = doc.lastAutoTable.finalY + 5;
+
+    if (trendDir === 'declining' && trend.total_hprd && trend.total_hprd.length >= 2) {
+      const firstVal = trend.total_hprd[0];
+      const lastVal = trend.total_hprd[trend.total_hprd.length - 1];
+      addAlertBox(
+        'Declining Staffing Trend: Staffing levels are declining — total HPRD dropped from ' +
+        firstVal.toFixed(2) + ' (' + trend.quarters[0] + ') to ' +
+        lastVal.toFixed(2) + ' (' + trend.quarters[trend.quarters.length - 1] + '). ' +
+        'A declining trend suggests the facility is reducing staffing investment over time.',
+        'warning'
+      );
+    }
+  }
+
+  addVerifyLink(
+    'Medicare Care Compare — Staffing & Stars',
+    'https://www.medicare.gov/care-compare/details/nursing-home/' + facility.ccn
+  );
+
   // ================================================================
   //   SECTION 4 — INSPECTION HISTORY
   // ================================================================
@@ -887,8 +1233,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // Top categories
   if (facility.top_categories && facility.top_categories.length > 0) {
     addSubHeading('Top Deficiency Categories');
-    facility.top_categories.slice(0, 5).forEach(([cat, count]) => {
-      addDataRow(cat + ':', String(count));
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const catFrame = 'The most frequently cited problem areas indicate where this facility consistently fails to meet federal standards. Categories reflect the type of care or operational area cited in health deficiency inspections.';
+    const catLines = doc.splitTextToSize(catFrame, contentWidth);
+    doc.text(catLines, margin, currentY);
+    currentY += catLines.length * 4.5 + 4;
+
+    facility.top_categories.slice(0, 3).forEach(([cat, count]) => {
+      addDataRow('Most common: ' + cat, count + ' citation' + (count !== 1 ? 's' : ''));
     });
     currentY += 4;
   }
@@ -897,22 +1252,22 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   if (facility.deficiency_details && facility.deficiency_details.length > 0) {
     addSubHeading('Individual Deficiency Details');
 
+    const totalDefCount = facility.deficiency_details.length;
+    const defLimit = Math.min(50, totalDefCount);
+
     doc.setFontSize(8.5);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...BODY);
-    doc.text('Top 15 most serious deficiencies (sorted by severity — immediate jeopardy first):', margin, currentY);
-    currentY += 6;
+    const defCountText =
+      'Showing ' + defLimit + ' of ' + totalDefCount + ' total citation' + (totalDefCount !== 1 ? 's' : '') +
+      ' (sorted by date — most recent first). Red = Immediate Jeopardy, Amber = Actual Harm.';
+    const defCountLines = doc.splitTextToSize(defCountText, contentWidth);
+    doc.text(defCountLines, margin, currentY);
+    currentY += defCountLines.length * 4.5 + 3;
 
-    const sevOrder = { L: 0, K: 1, J: 2, I: 3, H: 4, G: 5, F: 6, E: 7, D: 8, C: 9, B: 10, A: 11 };
     const sorted = [...facility.deficiency_details]
-      .sort((a, b) => {
-        const aS = a.scope_severity ? a.scope_severity.charAt(0) : 'Z';
-        const bS = b.scope_severity ? b.scope_severity.charAt(0) : 'Z';
-        const d = (sevOrder[aS] ?? 99) - (sevOrder[bS] ?? 99);
-        if (d !== 0) return d;
-        return new Date(b.survey_date || 0) - new Date(a.survey_date || 0);
-      })
-      .slice(0, 15);
+      .sort((a, b) => new Date(b.survey_date || 0) - new Date(a.survey_date || 0))
+      .slice(0, defLimit);
 
     const defRows = sorted.map((def) => {
       const date = def.survey_date
@@ -920,23 +1275,24 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         : 'N/A';
       const sev = def.scope_severity || 'N/A';
       const sevLabel = def.severity_label ? ' (' + def.severity_label + ')' : '';
-      const desc = (def.description || 'No description').substring(0, 250) + ((def.description || '').length > 250 ? '...' : '');
-      return [date, def.ftag || 'N/A', sev + sevLabel, desc];
+      const desc = (def.description || 'No description').substring(0, 60) + ((def.description || '').length > 60 ? '...' : '');
+      return [date, def.ftag || 'N/A', sev + sevLabel, def.category || 'N/A', desc];
     });
 
     autoTable(doc, {
       startY: currentY,
-      head: [['Date', 'Tag Code', 'Scope / Severity', 'Description']],
+      head: [['Date', 'F-Tag', 'Severity', 'Category', 'Description']],
       body: defRows,
       theme: 'grid',
-      styles: { fontSize: 7.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
-      headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 8 },
+      styles: { fontSize: 7, cellPadding: 3, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
+      headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 7.5 },
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: {
-        0: { cellWidth: 22 },
-        1: { cellWidth: 18 },
-        2: { cellWidth: 32, fontStyle: 'bold' },
-        3: { cellWidth: 98 },
+        0: { cellWidth: 20 },
+        1: { cellWidth: 14 },
+        2: { cellWidth: 30, fontStyle: 'bold' },
+        3: { cellWidth: 30 },
+        4: { cellWidth: 76 },
       },
       didParseCell(data) {
         if (data.row.section === 'body') {
@@ -970,6 +1326,92 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       'critical'
     );
   }
+
+  // ---- Complaint Investigations ----
+  {
+    const complaintDates = new Set();
+    if (facility.deficiency_details && facility.deficiency_details.length > 0) {
+      facility.deficiency_details.forEach((d) => {
+        if (d.is_complaint === true && d.survey_date) {
+          complaintDates.add(d.survey_date);
+        }
+      });
+    }
+    const complaintCount = complaintDates.size;
+
+    checkPageBreak(30);
+    addSubHeading('Complaint-Driven Investigations');
+
+    addDataRow('Complaint Investigations (3-year window):', String(complaintCount));
+    addDataRow('National Average:', String(NATIONAL_AVG.complaint_investigations));
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const complaintNote =
+      complaintCount > 0
+        ? complaintCount + ' complaint-driven investigation' + (complaintCount > 1 ? 's' : '') +
+          ' indicate a pattern of reported concerns from residents, families, or staff. ' +
+          'Each complaint investigation was triggered by a formal complaint filed with the state survey agency.'
+        : 'No complaint-driven investigations identified in the available deficiency records.';
+    const cnLines = doc.splitTextToSize(complaintNote, contentWidth);
+    doc.text(cnLines, margin, currentY);
+    currentY += cnLines.length * 4.5 + 3;
+
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    const cmsCaveat =
+      'Note: CMS removed complaint investigation data from Care Compare on 2/25/2026. ' +
+      'This count is reconstructed from CMS Health Deficiency inspection records (2017-Dec 2025).';
+    const cavLines = doc.splitTextToSize(cmsCaveat, contentWidth);
+    doc.text(cavLines, margin, currentY);
+    currentY += cavLines.length * 4.5 + 4;
+
+    if (complaintCount > NATIONAL_AVG.complaint_investigations) {
+      addAlertBox(
+        'Above-Average Complaint Activity: ' + complaintCount + ' complaint investigations exceed the national average of ' +
+        NATIONAL_AVG.complaint_investigations + ' over a 3-year period. ' +
+        'Elevated complaint activity can indicate systemic care deficiencies not captured by routine inspections alone.',
+        'warning'
+      );
+    }
+  }
+
+  // ---- Fire Safety Violations ----
+  if (facility.fire_deficiency_count !== null && facility.fire_deficiency_count !== undefined) {
+    checkPageBreak(30);
+    addSubHeading('Fire Safety Violations');
+
+    addDataRow('Life Safety Code Violations:', String(facility.fire_deficiency_count));
+    addDataRow('National Average:', String(NATIONAL_AVG.fire_deficiency_count));
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const fireNote =
+      'Life Safety Code violations are cited during separate fire safety inspections conducted under NFPA 101. ' +
+      'K-level violations — the most serious — indicate conditions that could impair evacuation or emergency response for a largely non-ambulatory resident population.';
+    const fnLines = doc.splitTextToSize(fireNote, contentWidth);
+    doc.text(fnLines, margin, currentY);
+    currentY += fnLines.length * 4.5 + 4;
+
+    if (facility.fire_deficiency_count > NATIONAL_AVG.fire_deficiency_count * 1.5) {
+      addAlertBox(
+        'Elevated Fire Safety Violations: ' + facility.fire_deficiency_count +
+        ' Life Safety Code violations are ' +
+        ((facility.fire_deficiency_count / NATIONAL_AVG.fire_deficiency_count - 1) * 100).toFixed(0) +
+        '% above the national average of ' + NATIONAL_AVG.fire_deficiency_count +
+        '. Serious K-level violations may indicate structural or procedural deficiencies that place residents at increased risk during emergencies.',
+        'warning'
+      );
+    }
+  }
+
+  addVerifyLink(
+    'ProPublica Nursing Home Inspect — Deficiencies & Inspections',
+    'https://projects.propublica.org/nursing-homes/homes/h-' + facility.ccn
+  );
 
   // ================================================================
   //   SECTION 5 — FINANCIAL PENALTIES
@@ -1063,11 +1505,210 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     );
   }
 
+  // ---- Payment Denial Details ----
+  if (facility.denial_days > 0 || facility.denial_start_date) {
+    checkPageBreak(40);
+    addSubHeading('Payment Denial Details');
+
+    if (facility.denial_days !== null && facility.denial_days !== undefined)
+      addDataRow('Total Days Under Payment Denial:', String(facility.denial_days) + ' days');
+    if (facility.denial_start_date)
+      addDataRow('Most Recent Denial Start:', facility.denial_start_date);
+    if (facility.denial_length_days !== null && facility.denial_length_days !== undefined)
+      addDataRow('Most Recent Denial Duration:', String(facility.denial_length_days) + ' days');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const denialNote =
+      'A CMS payment denial means the facility\'s problems were so severe that Medicare stopped paying for new admissions. ' +
+      'During a denial period, the facility cannot bill Medicare or Medicaid for any newly admitted patient. ' +
+      'Denial of payment is one of the most serious enforcement actions available to CMS short of facility closure.';
+    const dnLines = doc.splitTextToSize(denialNote, contentWidth);
+    doc.text(dnLines, margin, currentY);
+    currentY += dnLines.length * 4.5 + 4;
+
+    if (facility.denial_days > 0) {
+      addAlertBox(
+        'Severe Enforcement Action: CMS denied payment for new admissions for ' + facility.denial_days +
+        ' total day' + (facility.denial_days > 1 ? 's' : '') + '. This is a significant regulatory action reserved for ' +
+        'facilities with serious, ongoing compliance failures that pose risk to resident health and safety.',
+        'critical'
+      );
+    }
+    currentY += 4;
+  }
+
+  addVerifyLink(
+    'ProPublica Nursing Home Inspect — Penalties',
+    'https://projects.propublica.org/nursing-homes/homes/h-' + facility.ccn
+  );
+
   // ================================================================
-  //   SECTION 6 — RED FLAGS
+  //   SECTION 6 — CLINICAL OUTCOMES (Quality Measures)
   // ================================================================
 
-  addSectionHeader(6, 'Red Flags & Accountability Indicators');
+  addSectionHeader(6, 'Clinical Outcomes (Quality Measures)');
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...BODY);
+  const qmIntro = 'Quality measures use actual Medicare billing data and clinical outcomes to assess facility performance — ' +
+    'readmissions, infections, and successful discharges. These outcomes measure what actually happens to patients, ' +
+    'not just what facilities report about their processes.';
+  const qmLines = doc.splitTextToSize(qmIntro, contentWidth);
+  doc.text(qmLines, margin, currentY);
+  currentY += qmLines.length * 4.5 + 6;
+
+  // ---- QRP Outcomes ----
+  if (facility.quality_measures?.qrp) {
+    checkPageBreak(50);
+    addSubHeading('SNF Quality Reporting Program (QRP) Outcomes');
+
+    const qrp = facility.quality_measures.qrp;
+    const qrpColorMap = { better: GREEN, same: AMBER, worse: RED };
+
+    const qrpRows = [];
+    if (qrp.ppr !== undefined && qrp.ppr !== null)
+      qrpRows.push(['Potentially Preventable Readmissions (PPR)', qrp.ppr]);
+    if (qrp.dtc !== undefined && qrp.dtc !== null)
+      qrpRows.push(['Discharge to Community (DTC)', qrp.dtc]);
+    if (qrp.hai !== undefined && qrp.hai !== null)
+      qrpRows.push(['Healthcare-Associated Infections (HAI)', qrp.hai]);
+
+    const qrpDisplayMap = { better: 'Better Than Average', same: 'At National Average', worse: 'Worse Than Average' };
+    qrpRows.forEach(([label, value]) => {
+      checkPageBreak(7);
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...STEEL);
+      doc.text(label, margin + 2, currentY);
+      doc.setFont('helvetica', 'bold');
+      const col = qrpColorMap[value] || BODY;
+      doc.setTextColor(...col);
+      const display = qrpDisplayMap[value] || value || 'N/A';
+      doc.text(display, pageWidth - margin - 2, currentY, { align: 'right' });
+      doc.setTextColor(...BODY);
+      currentY += 6;
+    });
+
+    if (qrp.covid_res !== null && qrp.covid_res !== undefined)
+      addDataRow('Resident COVID Vaccination Rate:', pct(qrp.covid_res));
+    if (qrp.covid_staff !== null && qrp.covid_staff !== undefined)
+      addDataRow('Staff COVID Vaccination Rate:', pct(qrp.covid_staff));
+
+    currentY += 4;
+  }
+
+  // ---- VBP Performance ----
+  if (facility.quality_measures?.vbp) {
+    checkPageBreak(50);
+    addSubHeading('SNF Value-Based Purchasing (VBP) Performance');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const vbpNote = 'The SNF Value-Based Purchasing program adjusts Medicare payment rates based on readmission performance. ' +
+      'Lower rankings receive payment reductions; higher-performing facilities receive bonuses.';
+    const vbpLines = doc.splitTextToSize(vbpNote, contentWidth);
+    doc.text(vbpLines, margin, currentY);
+    currentY += vbpLines.length * 4.5 + 4;
+
+    const vbp = facility.quality_measures.vbp;
+    if (vbp.r !== null && vbp.r !== undefined)
+      addDataRow('VBP Ranking (percentile):', String(vbp.r));
+    if (vbp.rr !== null && vbp.rr !== undefined)
+      addDataRow('Readmission Rate:', (vbp.rr * 100).toFixed(2) + '%');
+    if (vbp.ach !== null && vbp.ach !== undefined)
+      addDataRow('Achievement Score:', String(vbp.ach));
+    if (vbp.imp !== null && vbp.imp !== undefined)
+      addDataRow('Improvement Score:', String(vbp.imp));
+
+    if (vbp.r !== null && vbp.r !== undefined && vbp.r <= 25) {
+      addAlertBox(
+        'Bottom-Quartile VBP Ranking: This facility ranks in the bottom 25% of SNFs on Value-Based Purchasing ' +
+        'performance (rank: ' + vbp.r + '). Facilities in the bottom quartile receive Medicare payment reductions. ' +
+        'Poor VBP performance indicates elevated readmission rates relative to peers.',
+        'warning'
+      );
+    }
+    currentY += 4;
+  }
+
+  // ---- Claims-Based Measures ----
+  if (facility.quality_measures?.claims) {
+    checkPageBreak(50);
+    addSubHeading('Claims-Based Quality Measures');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const claimsNote = 'Claims-based measures use actual Medicare billing data — not facility self-reports — ' +
+      'to calculate adjusted rates for rehospitalization and emergency department visits.';
+    const claimsLines = doc.splitTextToSize(claimsNote, contentWidth);
+    doc.text(claimsLines, margin, currentY);
+    currentY += claimsLines.length * 4.5 + 4;
+
+    const claimsMap = { '521': 'Rehospitalized within 30 days', '522': 'Emergency Room visits' };
+    const claims = facility.quality_measures.claims;
+    const claimsRows = [];
+    Object.entries(claims).forEach(([code, vals]) => {
+      if (vals && (vals.adj !== undefined || vals.obs !== undefined)) {
+        const label = claimsMap[code] || ('Measure ' + code);
+        claimsRows.push([
+          label,
+          vals.adj !== undefined ? (vals.adj * 100).toFixed(2) + '%' : 'N/A',
+          vals.obs !== undefined ? (vals.obs * 100).toFixed(2) + '%' : 'N/A',
+          vals.exp !== undefined ? (vals.exp * 100).toFixed(2) + '%' : 'N/A',
+        ]);
+      }
+    });
+
+    if (claimsRows.length > 0) {
+      autoTable(doc, {
+        startY: currentY,
+        head: [['Measure', 'Adjusted Rate', 'Observed Rate', 'Expected Rate']],
+        body: claimsRows,
+        theme: 'grid',
+        styles: { fontSize: 8.5, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+        headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 9 },
+        alternateRowStyles: { fillColor: TABLE_ALT },
+        columnStyles: {
+          0: { cellWidth: 70, fontStyle: 'bold' },
+          1: { cellWidth: 32, halign: 'right' },
+          2: { cellWidth: 28, halign: 'right' },
+          3: { cellWidth: 28, halign: 'right' },
+        },
+        margin: { left: margin, right: margin },
+      });
+      currentY = doc.lastAutoTable.finalY + 5;
+    } else {
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'italic');
+      doc.setTextColor(...STEEL);
+      doc.text('Claims-based measure data not available for this facility.', margin, currentY);
+      currentY += 8;
+    }
+  }
+
+  if (!facility.quality_measures?.qrp && !facility.quality_measures?.vbp && !facility.quality_measures?.claims) {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    doc.text('Quality measure data not available for this facility.', margin, currentY);
+    currentY += 8;
+  }
+
+  addVerifyLink(
+    'Medicare Care Compare — Quality Measures',
+    'https://www.medicare.gov/care-compare/details/nursing-home/' + facility.ccn + '?id=' + facility.ccn + '&measures=quality'
+  );
+
+  // ================================================================
+  //   SECTION 7 — RED FLAGS
+  // ================================================================
+
+  addSectionHeader(7, 'Red Flags & Accountability Indicators');
 
   const redFlags = [];
 
@@ -1096,11 +1737,73 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     currentY += 8;
   }
 
+  // ---- Component Scores Breakdown ----
+  {
+    const scoreComponents = [];
+    if (facility.staffing_score !== null && facility.staffing_score !== undefined)
+      scoreComponents.push(['Staffing', facility.staffing_score.toFixed(1)]);
+    if (facility.quality_score !== null && facility.quality_score !== undefined)
+      scoreComponents.push(['Quality Measures', facility.quality_score.toFixed(1)]);
+    if (facility.ownership_score !== null && facility.ownership_score !== undefined)
+      scoreComponents.push(['Ownership', facility.ownership_score.toFixed(1)]);
+    if (facility.penalty_score !== null && facility.penalty_score !== undefined)
+      scoreComponents.push(['Financial Penalties', facility.penalty_score.toFixed(1)]);
+    if (facility.fire_safety_score !== null && facility.fire_safety_score !== undefined)
+      scoreComponents.push(['Fire Safety', facility.fire_safety_score.toFixed(1)]);
+
+    if (scoreComponents.length > 0) {
+      checkPageBreak(45);
+      addSubHeading('Risk Score Component Breakdown');
+
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...BODY);
+      const compNote = 'The composite risk score is built from component sub-scores. ' +
+        'This breakdown shows which areas drive the overall score, useful for identifying the primary basis for legal or regulatory action.';
+      const compLines = doc.splitTextToSize(compNote, contentWidth);
+      doc.text(compLines, margin, currentY);
+      currentY += compLines.length * 4.5 + 4;
+
+      scoreComponents.push(['COMPOSITE SCORE', (facility.composite || 0).toFixed(1)]);
+
+      autoTable(doc, {
+        startY: currentY,
+        head: [['Risk Component', 'Score (0–100)']],
+        body: scoreComponents,
+        theme: 'grid',
+        styles: { fontSize: 9, cellPadding: 4, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+        headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 9.5 },
+        alternateRowStyles: { fillColor: TABLE_ALT },
+        columnStyles: {
+          0: { cellWidth: 100, fontStyle: 'bold' },
+          1: { cellWidth: 58, halign: 'right', fontStyle: 'bold' },
+        },
+        didParseCell(data) {
+          if (data.row.section === 'body') {
+            if (data.row.index === scoreComponents.length - 1) {
+              data.cell.styles.fillColor = LIGHT_BG;
+              data.cell.styles.fontStyle = 'bold';
+            } else if (data.column.index === 1) {
+              const v = parseFloat(data.row.raw[1]);
+              if (!isNaN(v)) {
+                if (v >= 60) data.cell.styles.textColor = RED;
+                else if (v >= 40) data.cell.styles.textColor = AMBER;
+                else data.cell.styles.textColor = GREEN;
+              }
+            }
+          }
+        },
+        margin: { left: margin, right: margin },
+      });
+      currentY = doc.lastAutoTable.finalY + 6;
+    }
+  }
+
   // ================================================================
-  //   SECTION 7 — COMPARISON CONTEXT
+  //   SECTION 8 — COMPARISON CONTEXT
   // ================================================================
 
-  addSectionHeader(7, 'Comparison Context');
+  addSectionHeader(8, 'Comparison Context');
 
   addSubHeading('How This Facility Compares');
 
@@ -1163,10 +1866,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY = doc.lastAutoTable.finalY + 8;
 
   // ================================================================
-  //   SECTION 8 — NEARBY ALTERNATIVES
+  //   SECTION 9 — NEARBY ALTERNATIVES
   // ================================================================
 
-  addSectionHeader(8, 'Nearby Alternatives');
+  addSectionHeader(9, 'Nearby Alternatives');
 
   if (nearbyAlternatives && nearbyAlternatives.length > 0) {
     doc.setFontSize(9);
@@ -1259,11 +1962,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   // ================================================================
-  //   SECTION 9 — METHODOLOGY (always starts on a new page)
+  //   SECTION 10 — METHODOLOGY (always starts on a new page)
   // ================================================================
 
   addNewPage();
-  addSectionHeader(9, 'Data Sources & Methodology');
+  addSectionHeader(10, 'Data Sources & Methodology');
 
   addSubHeading('Data Sources');
   doc.setFontSize(9);
@@ -1348,11 +2051,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY += 6;
 
   // ================================================================
-  //   SECTION 10 — DISCLAIMER (always starts on a new page)
+  //   SECTION 11 — DISCLAIMER (always starts on a new page)
   // ================================================================
 
   addNewPage();
-  addSectionHeader(10, 'Disclaimer');
+  addSectionHeader(11, 'Disclaimer');
 
   const disclaimers = [
     'This report is generated from publicly available federal data and is provided for informational purposes only.',

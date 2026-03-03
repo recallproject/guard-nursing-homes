@@ -53,6 +53,20 @@ export function generatePDF(facility, options = {}) {
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const hasPercentiles = allFacilities.length >= 100 || samplePercentiles != null;
 
+  // ── Complaint Investigation Count ──
+  // Count unique survey dates where is_complaint === true
+  const complaintInvestigations = (() => {
+    const details = facility.deficiency_details;
+    if (!Array.isArray(details) || details.length === 0) return null;
+    const dates = new Set(
+      details
+        .filter(d => d.is_complaint === true)
+        .map(d => d.survey_date)
+        .filter(Boolean)
+    );
+    return dates.size;
+  })();
+
   // ── Percentile Computation ──
   // For "higher is worse" metrics: % of facilities with LOWER values = how bad this one is
   // For "higher is better" metrics: % of facilities with HIGHER values = how lacking this one is
@@ -370,6 +384,16 @@ export function generatePDF(facility, options = {}) {
   statPill(M + pillW + 3, row2Y, 'RESIDENTS HURT', facility.harm_count || 0, (facility.harm_count || 0) > 0 ? [...C.warningBar] : C.good);
   statPill(M + (pillW + 3) * 2, row2Y, 'DAYS W/O RN', pct(facility.zero_rn_pct || 0), (facility.zero_rn_pct || 0) > 20 ? C.danger : C.good);
   y = row2Y + 22;
+
+  const row3Y = y;
+  const complaintColor = complaintInvestigations == null ? C.muted : complaintInvestigations > 7 ? C.danger : complaintInvestigations >= 3 ? C.warning : C.good;
+  const complaintVal = complaintInvestigations != null ? complaintInvestigations : 'N/A';
+  statPill(M, row3Y, 'COMPLAINT INVEST. (3yr)', complaintVal, complaintColor);
+  const fireCount = facility.fire_deficiency_count;
+  const fireColor = fireCount == null ? C.muted : fireCount > 14.3 ? C.danger : fireCount >= 5 ? C.warning : C.good;
+  const fireVal = fireCount != null ? fireCount : 'N/A';
+  statPill(M + pillW + 3, row3Y, 'FIRE SAFETY VIOLATIONS', fireVal, fireColor);
+  y = row3Y + 22;
 
   // Verify links
   y += 2;
@@ -764,6 +788,80 @@ export function generatePDF(facility, options = {}) {
   }
 
   sourceText('Source: CMS Payroll-Based Journal data, Q3 2025  |  PBJ is mandatory -- facilities submit actual payroll hours quarterly');
+
+  // ── Workforce Stability (Turnover) ──
+  const hasTurnoverData = facility.total_turnover != null || facility.rn_turnover != null || facility.admin_turnover != null;
+  if (hasTurnoverData) {
+    y += 4;
+    needsPage(60) || (y += 0);
+
+    sectionHeader('WORKFORCE STABILITY', C.dark);
+
+    doc.setFontSize(8.5);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...C.muted);
+    doc.text('Staff turnover affects care continuity -- residents fare better when they have consistent caregivers.', M, y);
+    y += 6;
+
+    // Turnover stat pills
+    const tPillW = (W - 6) / 3;
+    const tRow1Y = y;
+
+    if (facility.total_turnover != null) {
+      const tCol = facility.total_turnover > 55 ? C.danger : facility.total_turnover > 46.4 ? C.warning : C.good;
+      statPill(M, tRow1Y, 'TOTAL TURNOVER (nat. avg 46.4%)', `${Number(facility.total_turnover).toFixed(0)}%`, tCol);
+    }
+    if (facility.rn_turnover != null) {
+      const rnTCol = facility.rn_turnover > 60 ? C.danger : facility.rn_turnover > 43.6 ? C.warning : C.good;
+      statPill(M + tPillW + 3, tRow1Y, 'RN TURNOVER (nat. avg 43.6%)', `${Number(facility.rn_turnover).toFixed(0)}%`, rnTCol);
+    }
+    if (facility.admin_turnover != null) {
+      const adminTCol = facility.admin_turnover > 1 ? C.danger : facility.admin_turnover >= 1 ? C.warning : C.good;
+      statPill(M + (tPillW + 3) * 2, tRow1Y, 'ADMIN DEPARTURES (nat. avg 0.5)', facility.admin_turnover, adminTCol);
+    }
+    y = tRow1Y + 26;
+
+    // High total turnover callout
+    if (facility.total_turnover != null && facility.total_turnover > 55) {
+      calloutBox(
+        `HIGH TURNOVER: This facility's total staff turnover is ${Number(facility.total_turnover).toFixed(0)}% -- well above the national average of 46.4%. ` +
+        'High turnover means residents frequently face unfamiliar caregivers, disrupting the continuity of care. ' +
+        'Research links high turnover to lower quality outcomes, more medication errors, and higher rates of preventable hospitalizations (Hyer et al., Health Services Research, 2011).',
+        'danger'
+      );
+    } else if (facility.total_turnover != null && facility.total_turnover > 46.4) {
+      calloutBox(
+        `ELEVATED TURNOVER: Staff turnover of ${Number(facility.total_turnover).toFixed(0)}% is above the national average of 46.4%. ` +
+        'Ask staff how long they have worked at this facility -- experienced, long-tenured staff are a positive sign.',
+        'warning'
+      );
+    }
+
+    // High RN turnover callout (separate from total)
+    if (facility.rn_turnover != null && facility.rn_turnover > 60) {
+      calloutBox(
+        `HIGH RN TURNOVER: ${Number(facility.rn_turnover).toFixed(0)}% of registered nurses left this facility over the measurement period (national average: 43.6%). ` +
+        'RN continuity is critical -- the same RN who notices a subtle change in a resident\'s condition may prevent a hospitalization. Rapid RN turnover undermines this clinical continuity.',
+        'danger'
+      );
+    } else if (facility.rn_turnover != null && facility.rn_turnover > 43.6) {
+      calloutBox(
+        `ELEVATED RN TURNOVER: ${Number(facility.rn_turnover).toFixed(0)}% of RNs left this facility -- above the national average of 43.6%. Ask about nursing staff longevity and retention programs.`,
+        'warning'
+      );
+    }
+
+    // Admin turnover callout
+    if (facility.admin_turnover != null && facility.admin_turnover > 1) {
+      calloutBox(
+        `ADMINISTRATOR INSTABILITY: ${facility.admin_turnover} administrator${facility.admin_turnover !== 1 ? 's' : ''} left this facility in the measurement period (national average: 0.5). ` +
+        'Frequent leadership changes are a leading indicator of organizational instability. When administrators turn over rapidly, care protocols, staff culture, and vendor relationships are all disrupted.',
+        'danger'
+      );
+    }
+
+    sourceText('Source: CMS Provider Information  |  Turnover measured over a 12-month period  |  National averages: CMS national benchmarks');
+  }
 
   // ═══════════════════════════════════════════════════
   //  PAGE 5: THE OWNER PICTURE

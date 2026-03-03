@@ -34,7 +34,7 @@
   margin: 0 auto;
 }
 
-/* Download Card — light, professional */
+/* Download Card */
 .ev-sample-download-section {
   margin-bottom: 56px;
 }
@@ -42,29 +42,39 @@
   background: var(--bg-card, #ffffff);
   border: 1px solid var(--border-primary, #e2e8f0);
   border-radius: 12px;
-  padding: 40px 32px 36px;
-  text-align: center;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  position: relative;
 }
 .ev-sample-download-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: var(--accent-primary, #2B6CB0);
+  background: linear-gradient(90deg, var(--accent-primary, #14b8a6), #0d9488);
 }
-.ev-sample-download-header {
-  margin-bottom: 24px;
+
+/* Cover header */
+.ev-sample-cover {
+  padding: 36px 32px 28px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-primary, #e2e8f0);
+}
+.ev-sample-cover-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #14b8a6);
+  margin-bottom: 14px;
 }
 .ev-sample-badge {
   display: inline-block;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background: var(--accent-primary, #2B6CB0);
+  background: var(--accent-primary, #14b8a6);
   color: #fff;
   padding: 3px 12px;
   border-radius: 4px;
@@ -80,38 +90,95 @@
 }
 .ev-sample-facility-meta {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted, #718096);
   letter-spacing: 0.03em;
+  line-height: 1.6;
 }
-.ev-sample-metrics {
+
+/* Key Findings */
+.ev-sample-findings {
+  padding: 24px 32px;
+}
+.ev-sample-findings-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-primary, #14b8a6);
+  margin-bottom: 16px;
+}
+.ev-sample-findings-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
-  margin-bottom: 28px;
-  padding: 20px 0;
-  border-top: 1px solid var(--border-primary, #e2e8f0);
-  border-bottom: 1px solid var(--border-primary, #e2e8f0);
+  margin-bottom: 20px;
 }
-.ev-sample-metric {
+.ev-sample-finding {
   text-align: center;
+  padding: 16px 8px;
+  background: var(--bg-surface, #f7fafc);
+  border: 1px solid var(--border-primary, #e2e8f0);
+  border-radius: 8px;
 }
-.ev-sample-metric-value {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--text-primary, #1a202c);
-}
-.ev-sample-metric-value.ev-sample-red {
-  color: #DC2626;
-}
-.ev-sample-metric-label {
+.ev-sample-finding-value {
   font-family: 'JetBrains Mono', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #DC2626;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.ev-sample-finding-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary, #4a5568);
+  line-height: 1.4;
+}
+.ev-sample-finding-label span {
+  display: block;
+  font-weight: 400;
   font-size: 0.6rem;
   color: var(--text-muted, #718096);
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+/* Red Flags */
+.ev-sample-flags {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ev-sample-flag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  padding: 10px 14px;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+.ev-sample-flag-critical {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+}
+.ev-sample-flag-critical::before {
+  content: '⚠ ';
+}
+.ev-sample-flag-warning {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+}
+.ev-sample-flag-warning::before {
+  content: '▸ ';
+}
+
+/* Download CTA */
+.ev-sample-download-cta {
+  padding: 28px 32px;
+  text-align: center;
+  border-top: 1px solid var(--border-primary, #e2e8f0);
 }
 .ev-sample-download-btn {
   display: inline-block;
@@ -119,31 +186,33 @@
   font-weight: 600;
   font-size: 1rem;
   color: #fff;
-  background: var(--accent-primary, #2B6CB0);
+  background: var(--accent-primary, #14b8a6);
   padding: 14px 40px;
   border-radius: 8px;
   text-decoration: none;
-  transition: all 0.15s;
-  box-shadow: 0 2px 8px rgba(43,108,176,0.2);
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(20,184,166,0.2);
 }
 .ev-sample-download-btn:hover {
-  background: #245a9e;
+  background: #0d9488;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(43,108,176,0.3);
+  box-shadow: 0 4px 16px rgba(20,184,166,0.3);
 }
 .ev-sample-download-note {
-  font-size: 0.72rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
   color: var(--text-muted, #718096);
   margin-top: 12px;
+  letter-spacing: 0.03em;
 }
 .ev-sample-confidential {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted, #718096);
-  margin-top: 20px;
-  padding-top: 16px;
+  padding: 14px 32px;
+  text-align: center;
   border-top: 1px solid var(--border-primary, #e2e8f0);
 }
 
@@ -294,9 +363,13 @@
 @media (max-width: 640px) {
   .ev-sample-hero { padding: 80px 0 36px; }
   .ev-sample-title { font-size: 1.6rem; }
-  .ev-sample-metrics { grid-template-columns: repeat(2, 1fr); }
+  .ev-sample-findings-grid { grid-template-columns: repeat(2, 1fr); }
   .ev-sample-grid { grid-template-columns: 1fr; }
   .ev-sample-audience-grid { grid-template-columns: 1fr 1fr; }
   .ev-sample-cta-buttons { flex-direction: column; align-items: center; }
-  .ev-sample-download-card { padding: 32px 20px 28px; }
+  .ev-sample-cover { padding: 28px 20px 20px; }
+  .ev-sample-findings { padding: 20px 16px; }
+  .ev-sample-download-cta { padding: 20px 16px; }
+  .ev-sample-facility-name { font-size: 1.15rem; }
+  .ev-sample-finding-value { font-size: 1.1rem; }
 }
