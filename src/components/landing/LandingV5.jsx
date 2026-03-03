@@ -495,21 +495,30 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <div className="v5-how-label">How It Works</div>
           <h3 className="v5-how-title">18 federal databases. <em>One report card.</em></h3>
           <p className="v5-how-desc">You search a facility. Our system cross-references inspections, staffing, fines, ownership, quality measures, and more — then generates a single, clinician-reviewed report card.</p>
-          <div className="v5-how-steps">
-            <div className="v5-how-step">
-              <div className="v5-how-step-num">1</div>
-              <div className="v5-how-step-text">Data Ingest</div>
-              <div className="v5-how-step-sub">CMS, CASPER, PBJ, OSCAR, Cost Reports</div>
+          <div className="v5-how-agents">
+            <div className="v5-how-agent">
+              <div className="v5-how-agent-icon a1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div className="v5-how-agent-name">Inspections</div>
             </div>
-            <div className="v5-how-step">
-              <div className="v5-how-step-num">2</div>
-              <div className="v5-how-step-text">Cross-Reference</div>
-              <div className="v5-how-step-sub">Match, validate, flag discrepancies</div>
+            <div className="v5-how-agent">
+              <div className="v5-how-agent-icon a2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div className="v5-how-agent-name">Staffing</div>
             </div>
-            <div className="v5-how-step">
-              <div className="v5-how-step-num">3</div>
-              <div className="v5-how-step-text">Report Card</div>
-              <div className="v5-how-step-sub">One page. Every data point. Clinician-reviewed.</div>
+            <div className="v5-how-agent">
+              <div className="v5-how-agent-icon a3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div className="v5-how-agent-name">Fines</div>
+            </div>
+            <div className="v5-how-agent">
+              <div className="v5-how-agent-icon a4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div className="v5-how-agent-name">Risk Score</div>
             </div>
           </div>
         </div>

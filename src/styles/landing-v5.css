@@ -36,7 +36,7 @@
 /* ═══ CMS ALERT CARD ═══ */
 .v5-cms-alert-card {
   max-width: 680px;
-  margin: -12px auto 32px;
+  margin: 16px auto 40px;
   background: #FFFBEB;
   border-radius: var(--radius-lg);
   padding: 14px 20px;
@@ -410,16 +410,21 @@
 }
 .v5-how-title em { font-style: normal; color: var(--blue); }
 .v5-how-desc { font-size: 15px; color: var(--text); max-width: 640px; margin: 0 auto 32px; line-height: 1.6; }
-.v5-how-steps { display: flex; gap: 24px; justify-content: center; }
-.v5-how-step { text-align: center; flex: 1; max-width: 200px; }
-.v5-how-step-num {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--navy), var(--blue));
-  color: white; font-weight: 800; font-size: 14px;
-  display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+.v5-how-agents { display: flex; justify-content: center; gap: 32px; margin-top: 20px; }
+.v5-how-agent { text-align: center; }
+.v5-how-agent-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 6px;
 }
-.v5-how-step-text { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-.v5-how-step-sub { font-size: 11px; color: var(--muted); line-height: 1.4; }
+.v5-how-agent-icon.a1 { background: linear-gradient(135deg, #dc2626, #991b1b); }
+.v5-how-agent-icon.a2 { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+.v5-how-agent-icon.a3 { background: linear-gradient(135deg, #d97706, #b45309); }
+.v5-how-agent-icon.a4 { background: linear-gradient(135deg, #7c3aed, #6d28d9); }
+.v5-how-agent-name {
+  font-size: 10px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
 
 /* ═══ METHODOLOGY BAR ═══ */
 .v5-method-bar {
@@ -492,7 +497,7 @@
   .v5-features-grid .v5-feature-tile:nth-child(5) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
   .v5-state-grid { grid-template-columns: repeat(3, 1fr); }
   .v5-personas-grid { grid-template-columns: 1fr; }
-  .v5-how-steps { flex-direction: column; gap: 16px; align-items: center; }
+  .v5-how-agents { gap: 16px; flex-wrap: wrap; }
   .v5-sticky-cta { flex-direction: column; gap: 8px; padding: 10px 16px; }
   .v5-method-links { flex-direction: column; gap: 12px; }
   .v5-trust-quote-inner { flex-direction: column; gap: 24px; text-align: center; }
