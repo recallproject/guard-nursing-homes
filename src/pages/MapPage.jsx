@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
-import LandingV4 from '../components/landing/LandingV4';
+import LandingV5 from '../components/landing/LandingV5';
 import USAMap from '../components/USAMap';
 import StateDetail from '../components/StateDetail';
 import SearchOverlay from '../components/SearchOverlay';
@@ -184,7 +184,7 @@ export function MapPage() {
       </Helmet>
       {/* V4 Landing Page */}
       {(view === 'hero' || view === 'states') && (
-        <LandingV4
+        <LandingV5
           onSearch={handleSearchOpen}
           onExplore={handleExploreClick}
           searchFacilities={searchFacilities}
