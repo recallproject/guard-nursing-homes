@@ -306,10 +306,16 @@
 /* ═══ PERSONAS ═══ */
 .v5-personas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .v5-persona-card {
-  background: var(--card-bg); border-radius: var(--radius-lg); padding: 24px;
-  box-shadow: var(--shadow-sm); transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+  background: var(--card-bg); border-radius: var(--radius-lg); padding: 0;
+  box-shadow: var(--shadow-md); overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
 }
-.v5-persona-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.v5-persona-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
+.v5-persona-accent { height: 4px; }
+.v5-persona-accent.families { background: linear-gradient(90deg, var(--blue), #38BDF8); }
+.v5-persona-accent.attorneys { background: linear-gradient(90deg, var(--orange), #F59E0B); }
+.v5-persona-accent.hospitals { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+.v5-persona-body { padding: 24px; }
 .v5-persona-badge {
   font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
   color: var(--blue); margin-bottom: 12px;

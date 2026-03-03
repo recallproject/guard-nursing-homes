@@ -242,6 +242,22 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
   return (
     <div className="v5-landing">
 
+      {/* ═══════ HERO ═══════ */}
+      <section className="v5-hero">
+        <div className="v5-hero-tagline">Nursing Home Safety Data, Independently Reviewed</div>
+        <h1 className="v5-hero-title">Every nursing home has a record. Here's how to read it.</h1>
+        <p className="v5-hero-sub">
+          Inspections, staffing, fines, and ownership data for all 14,713 Medicare-certified facilities — cross-referenced from 18 federal databases into one report.
+        </p>
+        <InlineSearch searchFacilities={searchFacilities} onFallbackSearch={onSearch} />
+        <div className="v5-or-browse">
+          or <a href="#v5-state-grid" onClick={(e) => { e.preventDefault(); onExplore && onExplore(); }}>Browse by State</a>
+        </div>
+        <div className="v5-trust-line">
+          Based on CMS data through Q3 2025 &middot; <Link to="/methodology">How we calculate these numbers</Link>
+        </div>
+      </section>
+
       {/* ═══════ CMS ALERT CARD ═══════ */}
       {!cmsAlertDismissed && (
         <div className="v5-cms-alert-card">
@@ -256,22 +272,6 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <button className="v5-cms-alert-dismiss" onClick={() => setCmsAlertDismissed(true)} aria-label="Dismiss">&times;</button>
         </div>
       )}
-
-      {/* ═══════ HERO ═══════ */}
-      <section className="v5-hero">
-        <div className="v5-hero-tagline">Nursing Home Safety Data, Independently Reviewed</div>
-        <h1 className="v5-hero-title">Every nursing home has a record.<br />Here's how to read it.</h1>
-        <p className="v5-hero-sub">
-          Inspections, staffing, fines, and ownership data for all 14,713 Medicare-certified facilities — cross-referenced from 18 federal databases into one report.
-        </p>
-        <InlineSearch searchFacilities={searchFacilities} onFallbackSearch={onSearch} />
-        <div className="v5-or-browse">
-          or <a href="#v5-state-grid" onClick={(e) => { e.preventDefault(); onExplore && onExplore(); }}>Browse by State</a>
-        </div>
-        <div className="v5-trust-line">
-          Based on CMS data through Q3 2025 &middot; <Link to="/methodology">How we calculate these numbers</Link>
-        </div>
-      </section>
 
       {/* ═══════ STATS STRIP ═══════ */}
       <div className="v5-stats-strip" ref={statsRef}>
@@ -330,7 +330,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
                 On the CMS Special Focus Facility list since 2023. Persistent staffing shortfalls and repeat deficiencies on immediate jeopardy citations.
               </div>
             </div>
-            <a href="#" className="v5-flagged-cta" onClick={(e) => { e.preventDefault(); onSearch && onSearch(); }}>See full report for Sunrise Senior Living &rarr;</a>
+            <Link to="/?state=IL" className="v5-flagged-cta">See full report for Sunrise Senior Living &rarr;</Link>
           </div>
 
           {/* Card 2: Warning + Chain */}
@@ -358,8 +358,8 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
               </div>
             </div>
             <div className="v5-flagged-cta-split">
-              <a href="#" className="v5-flagged-cta v5-flagged-cta--half" onClick={(e) => { e.preventDefault(); onSearch && onSearch(); }}>Full report &rarr;</a>
-              <a href="#" className="v5-flagged-cta v5-flagged-cta--half v5-flagged-cta--chain" onClick={(e) => { e.preventDefault(); navigate('/chains'); }}>View all 11 chain facilities &rarr;</a>
+              <Link to="/?state=TX" className="v5-flagged-cta v5-flagged-cta--half">Full report &rarr;</Link>
+              <Link to="/chains" className="v5-flagged-cta v5-flagged-cta--half v5-flagged-cta--chain">View all 11 chain facilities &rarr;</Link>
             </div>
           </div>
 
@@ -387,54 +387,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
                 Consistently high staffing, zero fines, minimal deficiencies. This is what a well-run facility looks like in the data.
               </div>
             </div>
-            <a href="#" className="v5-flagged-cta v5-flagged-cta--good" onClick={(e) => { e.preventDefault(); onSearch && onSearch(); }}>See full report for Maplewood Care &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      {/* ═══════ WHAT YOU'LL SEE INSIDE ═══════ */}
-      <div className="v5-section">
-        <div className="v5-section-header">
-          <h2 className="v5-section-title">What You'll See Inside</h2>
-        </div>
-        <div className="v5-features-grid">
-          <div className="v5-feature-tile v5-fade-in">
-            <div className="v5-feature-icon red">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </div>
-            <div className="v5-feature-name">Complaint History</div>
-            <div className="v5-feature-desc">Investigation counts, outcomes, and patterns over time</div>
-            <span className="v5-feature-tag rebuilt">REBUILT — CMS REMOVED THIS</span>
-          </div>
-          <div className="v5-feature-tile v5-fade-in">
-            <div className="v5-feature-icon purple">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            </div>
-            <div className="v5-feature-name">Quality Measures</div>
-            <div className="v5-feature-desc">Antipsychotic use, falls, readmissions, UTIs, pressure ulcers</div>
-            <span className="v5-feature-tag new">NEW DATA</span>
-          </div>
-          <div className="v5-feature-tile v5-fade-in">
-            <div className="v5-feature-icon green">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div className="v5-feature-name">Staffing Breakdown</div>
-            <div className="v5-feature-desc">RN, LPN, CNA hours per resident — weekday vs. weekend, plus RN turnover rates</div>
-          </div>
-          <div className="v5-feature-tile v5-fade-in">
-            <div className="v5-feature-icon blue">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            </div>
-            <div className="v5-feature-name">Fines &amp; Penalties</div>
-            <div className="v5-feature-desc">Federal fines, payment denials, and enforcement timeline</div>
-          </div>
-          <div className="v5-feature-tile v5-fade-in">
-            <div className="v5-feature-icon orange">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            </div>
-            <div className="v5-feature-name">Ownership Networks</div>
-            <div className="v5-feature-desc">Follow chains across facilities — see if problems are isolated or systemic</div>
-            <span className="v5-feature-tag chain">INVESTIGATE CHAINS</span>
+            <Link to="/?state=OR" className="v5-flagged-cta v5-flagged-cta--good">See full report for Maplewood Care &rarr;</Link>
           </div>
         </div>
       </div>
@@ -487,30 +440,53 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
       </div>
 
-      {/* ═══════ WHO USES THIS ═══════ */}
+      {/* ═══════ WHAT YOU'LL SEE INSIDE ═══════ */}
       <div className="v5-section">
         <div className="v5-section-header">
-          <h2 className="v5-section-title">Who Uses This</h2>
+          <h2 className="v5-section-title">What You'll See Inside</h2>
+          <p className="v5-section-sub">Every facility report includes data most sites don't show you</p>
         </div>
-        <div className="v5-personas-grid">
-          <div className="v5-persona-card v5-fade-in">
-            <div className="v5-persona-badge">Families</div>
-            <div className="v5-persona-quote">"My mom needs skilled nursing after her hip replacement. I need to know which facilities are actually safe — not just which ones have the nicest lobby."</div>
-            <div className="v5-persona-action" onClick={() => onSearch && onSearch()}>Search any facility &rarr; Free safety report</div>
+        <div className="v5-features-grid">
+          <div className="v5-feature-tile v5-fade-in">
+            <div className="v5-feature-icon red">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div className="v5-feature-name">Complaint History</div>
+            <div className="v5-feature-desc">Investigation counts, outcomes, and patterns over time</div>
+            <span className="v5-feature-tag rebuilt">REBUILT — CMS REMOVED THIS</span>
           </div>
-          <div className="v5-persona-card v5-fade-in">
-            <div className="v5-persona-badge">Attorneys</div>
-            <div className="v5-persona-quote">"I need documented evidence of a pattern — deficiencies, fines, staffing failures — in a format I can attach to a filing."</div>
-            <div className="v5-persona-action" onClick={() => navigate('/pricing')}>Evidence Report &rarr; $29 per facility</div>
+          <div className="v5-feature-tile v5-fade-in">
+            <div className="v5-feature-icon purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div className="v5-feature-name">Quality Measures</div>
+            <div className="v5-feature-desc">Antipsychotic use, falls, readmissions, UTIs, pressure ulcers</div>
+            <span className="v5-feature-tag new">NEW DATA</span>
           </div>
-          <div className="v5-persona-card v5-fade-in">
-            <div className="v5-persona-badge">Hospitals</div>
-            <div className="v5-persona-quote">"We discharge 200+ patients per month to post-acute care. We need a fast, data-driven way to compare facilities for each patient."</div>
-            <div className="v5-persona-action" onClick={() => navigate('/referral-scorecard')}>Referral Scorecard &rarr; Coming soon</div>
+          <div className="v5-feature-tile v5-fade-in">
+            <div className="v5-feature-icon green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div className="v5-feature-name">Staffing Breakdown</div>
+            <div className="v5-feature-desc">RN, LPN, CNA hours per resident — weekday vs. weekend, plus RN turnover rates</div>
+          </div>
+          <div className="v5-feature-tile v5-fade-in">
+            <div className="v5-feature-icon blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div className="v5-feature-name">Fines &amp; Penalties</div>
+            <div className="v5-feature-desc">Federal fines, payment denials, and enforcement timeline</div>
+          </div>
+          <div className="v5-feature-tile v5-fade-in">
+            <div className="v5-feature-icon orange">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div className="v5-feature-name">Ownership Networks</div>
+            <div className="v5-feature-desc">Follow chains across facilities — see if problems are isolated or systemic</div>
+            <span className="v5-feature-tag chain">INVESTIGATE CHAINS</span>
           </div>
         </div>
       </div>
-
 
       {/* ═══════ HOW IT WORKS ═══════ */}
       <div className="v5-section">
@@ -539,6 +515,39 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
       </div>
 
+      {/* ═══════ WHO USES THIS ═══════ */}
+      <div className="v5-section">
+        <div className="v5-section-header">
+          <h2 className="v5-section-title">Who Uses This</h2>
+        </div>
+        <div className="v5-personas-grid">
+          <div className="v5-persona-card v5-fade-in">
+            <div className="v5-persona-accent families"></div>
+            <div className="v5-persona-body">
+              <div className="v5-persona-badge">Families</div>
+              <div className="v5-persona-quote">"My mom needs skilled nursing after her hip replacement. I need to know which facilities are actually safe — not just which ones have the nicest lobby."</div>
+              <div className="v5-persona-action" onClick={() => onSearch && onSearch()}>Search any facility &rarr; Free safety report</div>
+            </div>
+          </div>
+          <div className="v5-persona-card v5-fade-in">
+            <div className="v5-persona-accent attorneys"></div>
+            <div className="v5-persona-body">
+              <div className="v5-persona-badge">Attorneys</div>
+              <div className="v5-persona-quote">"I need documented evidence of a pattern — deficiencies, fines, staffing failures — in a format I can attach to a filing."</div>
+              <div className="v5-persona-action" onClick={() => navigate('/pricing')}>Evidence Report &rarr; $29 per facility</div>
+            </div>
+          </div>
+          <div className="v5-persona-card v5-fade-in">
+            <div className="v5-persona-accent hospitals"></div>
+            <div className="v5-persona-body">
+              <div className="v5-persona-badge">Hospitals</div>
+              <div className="v5-persona-quote">"We discharge 200+ patients per month to post-acute care. We need a fast, data-driven way to compare facilities for each patient."</div>
+              <div className="v5-persona-action" onClick={() => navigate('/referral-scorecard')}>Referral Scorecard &rarr; Coming soon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ═══════ METHODOLOGY BAR ═══════ */}
       <div className="v5-method-bar">
         <div className="v5-method-inner">
@@ -551,7 +560,6 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           </div>
         </div>
       </div>
-
 
       {/* ═══════ FINAL CTA ═══════ */}
       <section className="v5-final-cta">
