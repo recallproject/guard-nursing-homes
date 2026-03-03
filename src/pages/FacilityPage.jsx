@@ -1857,7 +1857,7 @@ export function FacilityPage() {
             <span className="paid-price">$29</span>
           </div>
           <div className="paid-upsell-desc">
-            A 10-section professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 6 CMS databases into a single documented report.
+            A professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 16 federal databases into a single documented report.
           </div>
           <div className="paid-features">
             <span className="paid-feature">Numbered source citations</span>
@@ -2002,7 +2002,7 @@ export function FacilityPage() {
                 </div>
               </div>
 
-              <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
+              <p className="ev-value-line">We analyze publicly available federal data from 16 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, ownership, quality measures, and cost reports into a single professional analysis.</p>
               <div className="ev-preview-actions">
                 <button className="ev-buy-btn" onClick={() => { setShowEvidencePreview(false); checkoutSingleReport(ccn); }}>
                   Download Evidence Report — $29

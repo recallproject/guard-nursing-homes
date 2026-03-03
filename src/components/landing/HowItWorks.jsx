@@ -159,7 +159,7 @@ export default function HowItWorks({ onSearchFacility }) {
     <div className="hiw-wrapper">
       <div className="v4-section-header">
         <div className="v4-section-label">How It Works</div>
-        <div className="v4-section-title">Six Federal Databases. One Report Card.</div>
+        <div className="v4-section-title">16 Federal Databases. One Report Card.</div>
         <div className="v4-section-sub">We cross-reference millions of CMS records so you don't have to.</div>
       </div>
 

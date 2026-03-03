@@ -632,7 +632,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...BODY);
-  const aboutText = 'This report compiles data from 6 federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support families evaluating care options, attorneys conducting discovery, journalists investigating patterns, and regulators monitoring compliance. All data is publicly available and independently verifiable against original sources.';
+  const aboutText = 'This report compiles data from 16 federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support families evaluating care options, attorneys conducting discovery, journalists investigating patterns, and regulators monitoring compliance. All data is publicly available and independently verifiable against original sources.';
   const aboutLines = doc.splitTextToSize(aboutText, contentWidth);
   doc.text(aboutLines, margin, currentY);
   currentY += aboutLines.length * 4.5 + 8;

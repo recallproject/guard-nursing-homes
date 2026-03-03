@@ -281,7 +281,7 @@ export function EvidencePage() {
         <div className="ev-purchase-gate">
           <h2>Evidence Package — {facility.name}</h2>
           <p>10-section professionally documented report with staffing data, inspection history, penalties, ownership profile, and nearby alternatives.</p>
-          <p className="ev-value-line">We analyze publicly available federal data from 6 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, and ownership data into a single professional analysis.</p>
+          <p className="ev-value-line">We analyze publicly available federal data from 16 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, ownership, quality measures, and cost reports into a single professional analysis.</p>
           <div className="ev-purchase-options">
             <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn)}>
               Download Evidence Report — $29
