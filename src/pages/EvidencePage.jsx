@@ -265,7 +265,7 @@ export function EvidencePage() {
   const claimsLabels = { '521': 'Rehospitalized within 30 days', '522': 'Emergency Room visits' };
 
   // Gate check - if not professional tier, show purchase options
-  if (false && !canAccess(tier, 'professional')) { // TEMP: bypass for review
+  if (!canAccess(tier, 'professional')) {
     return (
       <div className="ev">
         <div className="ev-header no-print">
