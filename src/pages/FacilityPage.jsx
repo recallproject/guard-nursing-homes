@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useFacilityData } from '../hooks/useFacilityData';
+import { useFacilityData, useSingleFacility } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
 import { haversineDistance } from '../utils/haversine';
 import { checkoutSingleReport } from '../utils/stripe';
@@ -144,7 +144,10 @@ function getCategoryFlag(qm, measures, avgs) {
 export function FacilityPage() {
   const { ccn } = useParams();
   const location = useLocation();
-  const { data, loading, error } = useFacilityData();
+  // Fast load: only fetches CCN index (201KB) + one state file (1-5MB)
+  const { facility, allStateFacilities, loading: fastLoading, error: fastError } = useSingleFacility(ccn);
+  // Background load: full dataset for benchmarks and ownership clusters
+  const { data, loading: fullLoading, error: fullError } = useFacilityData();
   const { watchlist, addFacility, removeFacility, isWatched } = useWatchlist();
   const pageRef = useRef(null);
   const fromState = location.state?.fromState || null;
@@ -155,17 +158,17 @@ export function FacilityPage() {
   const [qmTab, setQmTab] = useState('memory');
   const [expandedQm, setExpandedQm] = useState(null);
 
-  const facility = data?.states
-    ? Object.values(data.states).flatMap(state => state.facilities || []).find(f => f.ccn === ccn)
-    : null;
+  // Use fast-loaded facility, show page as soon as it's ready
+  const loading = fastLoading;
+  const error = fastError;
 
-  // All facilities (for ownership cluster computation)
+  // All facilities: use full data if loaded, otherwise fall back to same-state facilities
   const allFacilities = useMemo(() => {
-    if (!data?.states) return [];
-    return Object.values(data.states).flatMap(state => state.facilities || []);
-  }, [data]);
+    if (data?.states) return Object.values(data.states).flatMap(state => state.facilities || []);
+    return allStateFacilities;
+  }, [data, allStateFacilities]);
 
-  // Compute benchmarks
+  // Compute benchmarks (available once full data loads in background)
   const benchmarks = useMemo(() => {
     if (!data) return { state: {}, national: {} };
     return computeBenchmarks(data);
