@@ -41,6 +41,7 @@ export default function FacilityRow({ facility }) {
   };
 
   const handleClick = () => {
+    window.plausible && window.plausible('Facility-Row-Click', { props: { facility: facility.name, ccn: facility.ccn, state: facility.state, riskScore: String(score), isSFF: String(isSFF) } });
     navigate(`/facility/${facility.ccn}`, { state: { fromState: facility.state } });
   };
 

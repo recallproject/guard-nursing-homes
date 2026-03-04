@@ -14,10 +14,12 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
   const headerRef = useRef(null);
   const gridRef = useRef(null);
+  const searchTimerRef = useRef(null);
 
   const handleViewChange = (mode) => {
     setViewMode(mode);
     localStorage.setItem('facilityViewMode', mode);
+    window.plausible && window.plausible('View-Toggle', { props: { state: stateCode, view: mode } });
   };
 
   useEffect(() => {
@@ -25,6 +27,9 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
     window.scrollTo(0, 0);
     setVisibleCount(25);
     setSearchQuery('');
+
+    // Plausible: track state detail page view
+    window.plausible && window.plausible('State-Detail-View', { props: { state: stateCode } });
 
     // Animate header entrance
     if (headerRef.current) {
@@ -52,6 +57,16 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
       );
     }
   }, [stateCode]);
+
+  // Plausible: debounced search tracking
+  useEffect(() => {
+    if (!searchQuery.trim()) return;
+    clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => {
+      window.plausible && window.plausible('State-Search-Used', { props: { state: stateCode, query: searchQuery.trim().slice(0, 100) } });
+    }, 300);
+    return () => clearTimeout(searchTimerRef.current);
+  }, [searchQuery, stateCode]);
 
   // Re-animate cards when filters change
   useEffect(() => {
@@ -192,9 +207,9 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
     <div className="state-detail">
       <div className="state-detail-header" ref={headerRef}>
         <nav className="state-detail-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/" className="state-detail-breadcrumb-link">Home</Link>
+          <Link to="/" className="state-detail-breadcrumb-link" onClick={() => window.plausible && window.plausible('Breadcrumb-Click', { props: { state: stateCode, target: 'home' } })}>Home</Link>
           <span className="state-detail-breadcrumb-sep">›</span>
-          <button className="state-detail-breadcrumb-link" onClick={onBack}>All States</button>
+          <button className="state-detail-breadcrumb-link" onClick={() => { window.plausible && window.plausible('Breadcrumb-Click', { props: { state: stateCode, target: 'all-states' } }); onBack(); }}>All States</button>
           <span className="state-detail-breadcrumb-sep">›</span>
           <span className="state-detail-breadcrumb-current">{stateName}</span>
         </nav>
@@ -233,7 +248,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
                 <span className="state-detail-stat-label">CMS Watch List</span>
                 <button
                   className="state-detail-stat-cta state-detail-stat-cta--link"
-                  onClick={() => setFilterBy('sff')}
+                  onClick={() => { setFilterBy('sff'); window.plausible && window.plausible('SFF-Stat-Click', { props: { state: stateCode } }); }}
                 >
                   View SFF facilities →
                 </button>
@@ -279,7 +294,12 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
             <select
               className="state-detail-select"
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setSortBy(val);
+                const sortLabels = { risk: 'most-concerning', name: 'alphabetical', stars: 'lowest-rated' };
+                window.plausible && window.plausible('Sort-Changed', { props: { state: stateCode, sort: sortLabels[val] || val } });
+              }}
             >
               <option value="risk">Most Concerning First</option>
               <option value="name">Alphabetical (A–Z)</option>
@@ -292,7 +312,15 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
             <select
               className="state-detail-select"
               value={filterBy}
-              onChange={(e) => setFilterBy(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setFilterBy(val);
+                window.plausible && window.plausible('Filter-Changed', { props: { state: stateCode, filter: val } });
+                if (val === 'sff') {
+                  const sffN = stateData.facilities.filter((f) => f.flags?.some(flag => flag.includes('SPECIAL FOCUS'))).length;
+                  window.plausible && window.plausible('SFF-Filter-Applied', { props: { state: stateCode, sffCount: String(sffN) } });
+                }
+              }}
             >
               <option value="all">All Facilities</option>
               <option value="high-risk">High Risk (40+)</option>
@@ -351,7 +379,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
         <div className="state-detail-load-more">
           <button
             className="btn btn-secondary"
-            onClick={() => setVisibleCount((prev) => prev + 25)}
+            onClick={() => { setVisibleCount((prev) => { const next = prev + 25; window.plausible && window.plausible('Load-More-Facilities', { props: { state: stateCode, page: String(Math.ceil(next / 25)) } }); return next; }); }}
           >
             Load More ({facilities.length - visibleCount} remaining)
           </button>
