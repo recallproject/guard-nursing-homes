@@ -62,7 +62,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
       {showStaffingFlag && (
         <div className="accountability-flag flag-warning">
           <div className="flag-header">
-            <span className="flag-icon">⚠️</span>
+            <span className="flag-icon" aria-hidden="true">&#9888;</span>
             <h4>STAFFING DISCREPANCY</h4>
           </div>
           <div className="flag-body">
@@ -89,7 +89,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
         showOwnershipWarning ? (
           <div className="accountability-flag flag-warning">
             <div className="flag-header">
-              <span className="flag-icon">🏢</span>
+              <span className="flag-icon" aria-hidden="true">&#9670;</span>
               <h4>OWNERSHIP INFORMATION</h4>
             </div>
             <div className="flag-body">
@@ -115,7 +115,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
               <p>Average rating: <strong>{avgStars}</strong> out of 5 stars (national average: 3.2)</p>
 
               {belowAvgPct > 40 && (
-                <p className="flag-alert">⚠️ {belowAvgPct}% of facilities under this operator are rated below average.</p>
+                <p className="flag-alert">⚠ {belowAvgPct}% of facilities under this operator are rated below average.</p>
               )}
 
               <p className="flag-source">Source: CMS Care Compare, ownership records</p>
@@ -124,7 +124,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
         ) : (
           <div className="accountability-flag flag-neutral">
             <div className="flag-header">
-              <span className="flag-icon">🏢</span>
+              <span className="flag-icon" aria-hidden="true">&#9670;</span>
               <h4>OWNERSHIP INFORMATION</h4>
             </div>
             <div className="flag-body">
@@ -142,7 +142,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
       {showFineFlag && (
         <div className={`accountability-flag ${facility.total_fines > 100000 ? 'flag-danger' : 'flag-neutral'}`}>
           <div className="flag-header">
-            <span className="flag-icon">💰</span>
+            <span className="flag-icon" aria-hidden="true">$</span>
             <h4>FINE HISTORY</h4>
           </div>
           <div className="flag-body">
@@ -152,7 +152,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
               <p>Payment denials: {facility.denial_count} (CMS temporarily stopped paying for new admissions)</p>
             )}
             {facility.total_fines > 100000 && (
-              <p className="flag-alert">⚠️ Fines exceeding $100,000 suggest serious or repeated violations.</p>
+              <p className="flag-alert">⚠ Fines exceeding $100,000 suggest serious or repeated violations.</p>
             )}
             <p className="flag-source">Source: CMS Penalty data</p>
           </div>
@@ -163,7 +163,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
       {showInspectionFlag && (
         <div className={`accountability-flag ${facility.jeopardy_count > 0 ? 'flag-danger' : 'flag-warning'}`}>
           <div className="flag-header">
-            <span className="flag-icon">{facility.jeopardy_count > 0 ? '🔴' : '🟡'}</span>
+            <span className={`flag-dot ${facility.jeopardy_count > 0 ? 'dot-red' : 'dot-yellow'}`} aria-hidden="true" />
             <h4>WHAT INSPECTORS FOUND</h4>
           </div>
           <div className="flag-body">

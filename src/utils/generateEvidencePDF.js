@@ -1376,6 +1376,41 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         'warning'
       );
     }
+
+    // ---- Complaint Investigation Yield (citations per investigation) ----
+    if (complaintCount > 0) {
+      const complaintCitations = (facility.deficiency_details || []).filter(d => d.is_complaint === true).length;
+      const yieldRate = (complaintCitations / complaintCount).toFixed(1);
+
+      checkPageBreak(25);
+      addSubHeading('Complaint Investigation Yield');
+
+      addDataRow('Citations from Complaint Investigations:', String(complaintCitations));
+      addDataRow('Complaint Investigations:', String(complaintCount));
+      addDataRow('Citations per Investigation:', yieldRate);
+
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...BODY);
+      const yieldNote =
+        'When complaint investigations produce ' + yieldRate + ' citation' + (parseFloat(yieldRate) !== 1 ? 's' : '') +
+        ' per investigation on average, it indicates that formal complaints filed against this facility are ' +
+        (parseFloat(yieldRate) >= 2.0 ? 'highly substantiated — inspectors consistently find multiple violations per visit.' :
+         parseFloat(yieldRate) >= 1.0 ? 'substantiated — inspectors typically confirm at least one violation per investigation.' :
+         'partially substantiated — some investigations do not result in citations.');
+      const ylLines = doc.splitTextToSize(yieldNote, contentWidth);
+      doc.text(ylLines, margin, currentY);
+      currentY += ylLines.length * 4.5 + 3;
+
+      if (parseFloat(yieldRate) >= 2.0) {
+        addAlertBox(
+          'High Complaint Investigation Yield: ' + yieldRate + ' citations per complaint investigation. ' +
+          'When inspectors consistently find multiple violations per complaint visit, it suggests the concerns ' +
+          'driving complaints reflect real, systemic care deficiencies — not isolated incidents.',
+          'warning'
+        );
+      }
+    }
   }
 
   // ---- Fire Safety Violations ----

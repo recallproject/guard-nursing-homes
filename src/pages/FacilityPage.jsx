@@ -157,6 +157,11 @@ export function FacilityPage() {
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
   const [qmTab, setQmTab] = useState('memory');
   const [expandedQm, setExpandedQm] = useState(null);
+  // Change #3: Deficiency filter state
+  const [defSeverityFilter, setDefSeverityFilter] = useState('all');
+  const [defYearFilter, setDefYearFilter] = useState('all');
+  const [defPage, setDefPage] = useState(0);
+  const DEF_PAGE_SIZE = 5;
 
   // Use fast-loaded facility, show page as soon as it's ready
   const loading = fastLoading;
@@ -411,8 +416,30 @@ export function FacilityPage() {
         </div>
         </div>{/* end fp-intro-card */}
 
+        {/* Change #1: Sticky Section Nav */}
+        <nav className="section-nav-sticky">
+          <div className="section-nav-inner">
+            {[
+              { id: 's-safety', label: 'Safety' },
+              { id: 's-inspections', label: 'Inspections' },
+              { id: 's-complaints', label: 'Complaints' },
+              { id: 's-staffing', label: 'Staffing' },
+              { id: 's-quality', label: 'Quality' },
+              { id: 's-fines', label: 'Fines' },
+              { id: 's-fire', label: 'Fire Safety' },
+              { id: 's-ownership', label: 'Ownership' },
+              { id: 's-questions', label: 'Questions' },
+            ].map(sec => (
+              <a key={sec.id} href={`#${sec.id}`} className="section-nav-link" onClick={e => {
+                e.preventDefault();
+                document.getElementById(sec.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}>{sec.label}</a>
+            ))}
+          </div>
+        </nav>
+
         {/* Section 01 — Safety Score */}
-        <div className="section">
+        <div className="section" id="s-safety">
           <div className="section-header-row">
             <div className="section-number">01</div>
             <div className="section-title">Safety Score</div>
@@ -562,7 +589,7 @@ export function FacilityPage() {
         </div>
 
         {/* Section 02 — What Did Inspectors Find? */}
-        <div className="section">
+        <div className="section" id="s-inspections">
           <div className="section-header-row">
             <div className="section-number">02</div>
             <div className="section-title">What Did Inspectors Find?</div>
@@ -632,19 +659,59 @@ export function FacilityPage() {
             {facility.total_deficiencies || 0} total deficiency citations.
             {facility.jeopardy_count > 0 && <> <strong style={{ color: 'var(--accent-red, #f85149)' }}>{facility.jeopardy_count}</strong> were classified as <strong style={{ color: 'var(--accent-red, #f85149)' }}>serious danger</strong> — the most severe level.</>}
           </p>
-          {/* Deficiency cards — collapsible: show 3, expand for rest */}
+          {/* Change #3: Deficiency cards with filter chips + pagination */}
           {deficiencyDetails && deficiencyDetails.length > 0 ? (() => {
-            const sorted = [...deficiencyDetails].sort((a, b) => {
+            // Get unique years for year filter chips
+            const defYears = [...new Set(deficiencyDetails.map(d => d.survey_date ? new Date(d.survey_date).getFullYear() : null).filter(Boolean))].sort((a, b) => b - a);
+
+            // Apply severity + year filters
+            const filtered = deficiencyDetails.filter(d => {
+              if (defSeverityFilter !== 'all') {
+                if (defSeverityFilter === 'danger' && d.severity_label !== 'Immediate Jeopardy') return false;
+                if (defSeverityFilter === 'harm' && d.severity_label !== 'Actual Harm') return false;
+                if (defSeverityFilter === 'minor' && (d.severity_label === 'Immediate Jeopardy' || d.severity_label === 'Actual Harm')) return false;
+              }
+              if (defYearFilter !== 'all') {
+                const yr = d.survey_date ? new Date(d.survey_date).getFullYear() : null;
+                if (String(yr) !== defYearFilter) return false;
+              }
+              return true;
+            }).sort((a, b) => {
               const severityOrder = { 'Immediate Jeopardy': 0, 'Actual Harm': 1 };
               return (severityOrder[a.severity_label] ?? 2) - (severityOrder[b.severity_label] ?? 2);
             });
-            const INITIAL_SHOW = 3;
-            const showAll = openAccordion === 'deficiency-list';
-            const visible = showAll ? sorted : sorted.slice(0, INITIAL_SHOW);
-            const remaining = sorted.length - INITIAL_SHOW;
+
+            const totalPages = Math.ceil(filtered.length / DEF_PAGE_SIZE);
+            const currentPage = Math.min(defPage, totalPages - 1);
+            const visible = filtered.slice(currentPage * DEF_PAGE_SIZE, (currentPage + 1) * DEF_PAGE_SIZE);
+
+            // Severity counts for chips
+            const dangerCount = deficiencyDetails.filter(d => d.severity_label === 'Immediate Jeopardy').length;
+            const harmCount = deficiencyDetails.filter(d => d.severity_label === 'Actual Harm').length;
+            const minorDefCount = deficiencyDetails.length - dangerCount - harmCount;
 
             return (
               <>
+                {/* Filter chips */}
+                <div className="def-filter-row">
+                  <div className="def-filter-group">
+                    <span className="def-filter-label">Severity:</span>
+                    <button className={`def-chip ${defSeverityFilter === 'all' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('all'); setDefPage(0); }}>All ({deficiencyDetails.length})</button>
+                    {dangerCount > 0 && <button className={`def-chip chip-danger ${defSeverityFilter === 'danger' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('danger'); setDefPage(0); }}>Serious Danger ({dangerCount})</button>}
+                    {harmCount > 0 && <button className={`def-chip chip-harm ${defSeverityFilter === 'harm' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('harm'); setDefPage(0); }}>Residents Hurt ({harmCount})</button>}
+                    {minorDefCount > 0 && <button className={`def-chip chip-minor ${defSeverityFilter === 'minor' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('minor'); setDefPage(0); }}>Minor ({minorDefCount})</button>}
+                  </div>
+                  {defYears.length > 1 && (
+                    <div className="def-filter-group">
+                      <span className="def-filter-label">Year:</span>
+                      <button className={`def-chip ${defYearFilter === 'all' ? 'active' : ''}`} onClick={() => { setDefYearFilter('all'); setDefPage(0); }}>All Years</button>
+                      {defYears.slice(0, 4).map(yr => (
+                        <button key={yr} className={`def-chip ${defYearFilter === String(yr) ? 'active' : ''}`} onClick={() => { setDefYearFilter(String(yr)); setDefPage(0); }}>{yr}</button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
                 <div className="deficiency-cards">
                   {visible.map((def, idx) => {
                     const severityClass = def.severity_label === 'Immediate Jeopardy' ? 'severity-danger'
@@ -665,13 +732,18 @@ export function FacilityPage() {
                     );
                   })}
                 </div>
-                {remaining > 0 && (
-                  <button
-                    className="deficiency-expand-btn"
-                    onClick={() => setOpenAccordion(showAll ? null : 'deficiency-list')}
-                  >
-                    {showAll ? '▲ Show fewer' : `▼ Show ${remaining} more citation${remaining !== 1 ? 's' : ''}`}
-                  </button>
+
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <div className="def-pagination">
+                    <button className="def-page-btn" disabled={currentPage === 0} onClick={() => setDefPage(p => p - 1)}>← Previous</button>
+                    <span className="def-page-info">Page {currentPage + 1} of {totalPages} · Showing {filtered.length} citation{filtered.length !== 1 ? 's' : ''}</span>
+                    <button className="def-page-btn" disabled={currentPage >= totalPages - 1} onClick={() => setDefPage(p => p + 1)}>Next →</button>
+                  </div>
+                )}
+
+                {filtered.length === 0 && (
+                  <p style={{ fontSize: '14px', color: '#94a3b8', textAlign: 'center', padding: '20px' }}>No citations match the selected filters.</p>
                 )}
               </>
             );
@@ -725,7 +797,7 @@ export function FacilityPage() {
         </div>
 
         {/* Section 03 — Complaints & Abuse History */}
-        <div className="section">
+        <div className="section" id="s-complaints">
           <div className="section-header-row">
             <div className="section-number">03</div>
             <div className="section-title">Complaints &amp; Abuse History</div>
@@ -850,26 +922,64 @@ export function FacilityPage() {
                   </>
                 )}
 
-                {/* Abuse & Neglect Citations sub-section */}
+                {/* Change #4: Abuse & Neglect Citations — Grouped by F-Tag */}
                 {abuseDefs.length > 0 && (
                   <>
                     <div className="complaints-sub-label">Abuse &amp; Neglect Citations</div>
-                    {abuseDefs.map((def, idx) => {
-                      const ftagNum = def.ftag ? def.ftag.replace('F-0', 'F').replace('F-', 'F') : '';
-                      const isActualHarm = def.severity_label === 'Immediate Jeopardy' || def.severity_label === 'Actual Harm';
-                      const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
-                      const harmLabel = def.severity_label === 'Immediate Jeopardy' ? 'Actual Harm' : def.severity_label === 'Actual Harm' ? 'Actual Harm' : 'No Actual Harm';
-                      const surveyType = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
-                      return (
-                        <div key={idx} className={`abuse-item${isActualHarm ? ' severe' : ''}`}>
-                          <span className={`f-tag ${isActualHarm ? 'red' : 'orange'}`}>{ftagNum}</span>
-                          <div>
-                            <div className="abuse-text">{def.description}</div>
-                            <div className="abuse-detail">{harmLabel} · {surveyType} · {year}</div>
+                    {(() => {
+                      // Group by F-tag
+                      const grouped = {};
+                      abuseDefs.forEach(def => {
+                        const ftagNum = def.ftag ? def.ftag.replace('F-0', 'F').replace('F-', 'F') : 'Unknown';
+                        if (!grouped[ftagNum]) grouped[ftagNum] = [];
+                        grouped[ftagNum].push(def);
+                      });
+
+                      // F-tag descriptions
+                      const ftagDescriptions = {
+                        'F600': 'Free from Abuse and Neglect',
+                        'F601': 'Abuse Investigation & Reporting',
+                        'F602': 'Neglect Investigation & Reporting',
+                        'F603': 'Free from Exploitation',
+                        'F604': 'Right to be Free from Restraints',
+                        'F605': 'Proper Use of Bed Rails',
+                        'F606': 'Not Employ/Engage Abusive Staff',
+                        'F607': 'Develop & Implement Abuse Policies',
+                        'F608': 'Reporting of Crimes',
+                        'F609': 'Timely Reporting of Allegations',
+                      };
+
+                      return Object.entries(grouped).map(([ftag, defs]) => {
+                        const harmCount = defs.filter(d => d.severity_label === 'Immediate Jeopardy' || d.severity_label === 'Actual Harm').length;
+                        const hasActualHarm = harmCount > 0;
+                        const desc = ftagDescriptions[ftag] || 'Abuse/Neglect Regulation';
+                        return (
+                          <div key={ftag} className={`abuse-group${hasActualHarm ? ' severe' : ''}`}>
+                            <div className="abuse-group-header">
+                              <span className={`f-tag ${hasActualHarm ? 'red' : 'orange'}`}>{ftag}</span>
+                              <div className="abuse-group-info">
+                                <div className="abuse-group-title">{desc}</div>
+                                <div className="abuse-group-stats">
+                                  {defs.length} citation{defs.length > 1 ? 's' : ''}
+                                  {harmCount > 0 && <> · <strong style={{ color: 'var(--accent-red, #f85149)' }}>{harmCount} with actual harm</strong></>}
+                                </div>
+                              </div>
+                            </div>
+                            {defs.map((def, idx) => {
+                              const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
+                              const harmLabel = def.severity_label === 'Immediate Jeopardy' ? 'Actual Harm' : def.severity_label === 'Actual Harm' ? 'Actual Harm' : 'No Actual Harm';
+                              const surveyType = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
+                              return (
+                                <div key={idx} className="abuse-group-item">
+                                  <div className="abuse-text">{def.description}</div>
+                                  <div className="abuse-detail">{harmLabel} · {surveyType} · {year}</div>
+                                </div>
+                              );
+                            })}
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      });
+                    })()}
                   </>
                 )}
               </>
@@ -897,7 +1007,7 @@ export function FacilityPage() {
         <ExplainerBanners facility={facility} />
 
         {/* Section 04 — How Much Care Do Residents Get? */}
-        <div className="section">
+        <div className="section" id="s-staffing">
           <div className="section-header-row">
             <div className="section-number">04</div>
             <div className="section-title">How Much Care Do Residents Get?</div>
@@ -1012,7 +1122,7 @@ export function FacilityPage() {
         </div>
 
         {/* Section 05 — How Are Residents Doing? (Quality Measures) */}
-        <div className="section">
+        <div className="section" id="s-quality">
           <div className="section-header-row">
             <div className="section-number">05</div>
             <div className="section-title">How Are Residents Doing?</div>
@@ -1449,7 +1559,7 @@ export function FacilityPage() {
         </div>
 
         {/* Section 06 — Fines & Penalties */}
-        <div className="section">
+        <div className="section" id="s-fines">
           <div className="section-number">06</div>
           <div className="section-title">Fines &amp; Penalties</div>
           {facility.total_fines > 0 ? (
@@ -1550,7 +1660,7 @@ export function FacilityPage() {
         )}
 
         {/* Section 08 — Fire Safety */}
-        <div className="section">
+        <div className="section" id="s-fire">
           <div className="section-header-row">
             <div className="section-number">08</div>
             <div className="section-title">Fire Safety</div>
@@ -1603,6 +1713,7 @@ export function FacilityPage() {
                   })()}
                 </div>
               </div>
+              {/* Fire Safety Verdict Banner */}
               {(facility.fire_deficiency_count || 0) > 14.3 && (
                 <div className="verdict-banner caution">
                   <div className="verdict-icon caution">
@@ -1614,6 +1725,26 @@ export function FacilityPage() {
                   </div>
                 </div>
               )}
+              {/* Change #7: Uncorrected Fire Safety Callout */}
+              {(() => {
+                const uncorrectedCount = (facility.fire_deficiencies || []).filter(d => !d.corrected).length;
+                const totalFire = facility.fire_deficiency_count || 0;
+                const uncorrectedPct = totalFire > 0 ? Math.round((uncorrectedCount / totalFire) * 100) : 0;
+                if (uncorrectedPct >= 50 && uncorrectedCount > 2) {
+                  return (
+                    <div className="verdict-banner concern">
+                      <div className="verdict-icon concern">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                      </div>
+                      <div className="verdict-text">
+                        <h3 className="concern">{uncorrectedPct}% of Fire Safety Violations Still Uncorrected</h3>
+                        <p><strong>{uncorrectedCount} of {totalFire} fire code violations</strong> remain uncorrected as of the last inspection. Uncorrected fire safety issues — blocked exits, malfunctioning sprinklers, missing alarms — represent an ongoing, daily risk. <strong>Most nursing home residents cannot evacuate independently.</strong></p>
+                      </div>
+                    </div>
+                  );
+                }
+                return null;
+              })()}
               {facility.fire_deficiencies && facility.fire_deficiencies.length > 0 && (
                 <ul className="deficiency-list" style={{ marginTop: '16px' }}>
                   {facility.fire_deficiencies.slice(0, 5).map((def, idx) => {
@@ -1655,7 +1786,7 @@ export function FacilityPage() {
         </div>
 
         {/* Section 09 — Who Runs This Place? */}
-        <div className="section">
+        <div className="section" id="s-ownership">
           <div className="section-header-row">
             <div className="section-number">09</div>
             <div className="section-title">Who Runs This Place?</div>
@@ -1714,6 +1845,51 @@ export function FacilityPage() {
               </div>
             </div>
           </div>
+
+          {/* Change #9: Operator Portfolio Performance Stats */}
+          {facility.worst_owner && (facility.owner_portfolio_count || 0) > 1 && (
+            <>
+              <div className="complaints-sub-label" style={{ marginTop: '24px' }}>Operator Portfolio Performance</div>
+              <div className="data-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', marginBottom: '12px' }}>
+                <div className="data-cell">
+                  <div className="data-cell-value" style={{ color: '#c0392b' }}>{facility.owner_portfolio_count || 1}</div>
+                  <div className="data-cell-label">Facilities</div>
+                </div>
+                <div className="data-cell">
+                  <div className={`data-cell-value ${(facility.owner_avg_stars || 0) < 3 ? 'val-red' : 'val-green'}`}>{facility.owner_avg_stars ? facility.owner_avg_stars.toFixed(1) : '—'}★</div>
+                  <div className="data-cell-label">Avg Rating</div>
+                </div>
+                {facility.owner_avg_fines != null && (
+                  <div className="data-cell">
+                    <div className="data-cell-value val-red">${facility.owner_avg_fines >= 1000 ? `${Math.round(facility.owner_avg_fines / 1000)}K` : facility.owner_avg_fines}</div>
+                    <div className="data-cell-label">Avg Fines (Penalized)</div>
+                  </div>
+                )}
+                {facility.owner_pct_below_avg != null && (
+                  <div className="data-cell">
+                    <div className={`data-cell-value ${facility.owner_pct_below_avg > 50 ? 'val-red' : 'val-orange'}`}>{facility.owner_pct_below_avg.toFixed(0)}%</div>
+                    <div className="data-cell-label">Below Average</div>
+                  </div>
+                )}
+              </div>
+
+              {facility.owner_pct_below_avg > 50 && (
+                <div className="verdict-banner concern">
+                  <div className="verdict-icon concern">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  </div>
+                  <div className="verdict-text">
+                    <h3 className="concern">Pattern of Poor Performance Across Portfolio</h3>
+                    <p><strong>{facility.owner_pct_below_avg.toFixed(0)}% of this operator's {facility.owner_portfolio_count} facilities are rated below average.</strong> This isn't one bad facility — it's a systemic pattern across the operator's entire portfolio.{facility.pe_owned ? ' This operator is private equity-backed.' : ''}</p>
+                  </div>
+                </div>
+              )}
+
+              <Link to={`/?owner=${encodeURIComponent(facility.worst_owner)}`} className="owner-portfolio-link">
+                → View all {facility.owner_portfolio_count} facilities by this operator
+              </Link>
+            </>
+          )}
 
           {/* Ownership Change Timeline */}
           {(facility.ownership_changed_recently || (facility.num_owners && facility.num_owners > 1)) && (
@@ -1779,56 +1955,56 @@ export function FacilityPage() {
         </div>
 
         {/* Section 10 — Questions to Ask */}
-        <div className="section">
-          <div className="section-number">10</div>
-          <div className="section-title">Questions to Ask When You Visit</div>
-          <p style={{ fontSize: '14px', color: 'var(--text-secondary, #9d97b8)', marginBottom: '16px' }}>Tailored to this facility's specific record:</p>
-
-          {facility.zero_rn_pct > 0 && (
-            <div className="question-item">
-              <div className="question-text">How many registered nurses are on duty right now? What about weekends?</div>
-              <div className="question-context">This facility reported zero RN hours on {pct(facility.zero_rn_pct)} of days.</div>
-            </div>
-          )}
-
-          {facility.jeopardy_count > 0 && (
-            <div className="question-item">
-              <div className="question-text">What corrective actions were taken after the serious danger citations?</div>
-              <div className="question-context">Inspectors found serious danger to residents {facility.jeopardy_count} time{facility.jeopardy_count > 1 ? 's' : ''}.</div>
-            </div>
-          )}
-
-          {facility.rn_gap_pct > 30 && (
-            <div className="question-item">
-              <div className="question-text">Can I see your actual staffing schedules for the past month?</div>
-              <div className="question-context">Payroll records account for only {(100 - facility.rn_gap_pct).toFixed(0)}% of self-reported RN hours.</div>
-            </div>
-          )}
-
-          {facility.total_fines > 50000 && (
-            <div className="question-item">
-              <div className="question-text">What changes have you made since being fined {fmt(facility.total_fines)}?</div>
-              <div className="question-context">This is {((facility.total_fines / (stateBenchmarks.total_fines || 1)).toFixed(0))}× the state average fine amount.</div>
-            </div>
-          )}
-
-          {facility.chain_facility_count > 10 && (
-            <div className="question-item">
-              <div className="question-text">How does staffing here compare to the operator's other {facility.chain_facility_count} facilities?</div>
-              <div className="question-context">Multi-facility operators can have widely varying quality across their portfolio.</div>
-            </div>
-          )}
-
-          <div className="question-item">
-            <div className="question-text">Can I visit at different times — evenings, weekends, mealtimes?</div>
-            <div className="question-context">Staffing and care quality can vary dramatically by time of day.</div>
+        <div className="section" id="s-questions">
+          <div className="section-header-row">
+            <div className="section-number">10</div>
+            <div className="section-title">Questions to Ask When You Visit</div>
           </div>
+          <p style={{ fontSize: '14px', color: 'var(--text-secondary, #9d97b8)', marginBottom: '16px' }}>Tailored to this facility's specific record — prioritized by severity:</p>
+
+          {(() => {
+            const questions = [];
+            if (facility.jeopardy_count > 0) {
+              questions.push({ priority: 'critical', text: 'What corrective actions were taken after the serious danger citations?', context: `Inspectors found serious danger to residents ${facility.jeopardy_count} time${facility.jeopardy_count > 1 ? 's' : ''}.` });
+            }
+            if (facility.zero_rn_pct > 0) {
+              questions.push({ priority: 'critical', text: 'How many registered nurses are on duty right now? What about weekends?', context: `This facility reported zero RN hours on ${pct(facility.zero_rn_pct)} of days.` });
+            }
+            if (facility.rn_gap_pct > 30) {
+              questions.push({ priority: 'critical', text: 'Can I see your actual staffing schedules for the past month?', context: `Payroll records account for only ${(100 - facility.rn_gap_pct).toFixed(0)}% of self-reported RN hours.` });
+            }
+            if (facility.total_fines > 50000) {
+              questions.push({ priority: 'important', text: `What changes have you made since being fined ${fmt(facility.total_fines)}?`, context: `This is ${((facility.total_fines / (stateBenchmarks.total_fines || 1)).toFixed(0))}× the state average fine amount.` });
+            }
+            if (facility.chain_facility_count > 10) {
+              questions.push({ priority: 'important', text: `How does staffing here compare to the operator's other ${facility.chain_facility_count} facilities?`, context: 'Multi-facility operators can have widely varying quality across their portfolio.' });
+            }
+            questions.push({ priority: 'important', text: 'Can I visit at different times — evenings, weekends, mealtimes?', context: 'Staffing and care quality can vary dramatically by time of day.' });
+
+            return questions.map((q, idx) => (
+              <div key={idx} className={`question-item ${q.priority === 'critical' ? 'question-critical' : 'question-important'}`}>
+                <div className="question-rank">{idx + 1}</div>
+                <div className="question-body">
+                  <div className="question-text">
+                    {q.text}
+                    <span className={`question-priority-tag ${q.priority}`}>{q.priority === 'critical' ? 'Critical' : 'Important'}</span>
+                  </div>
+                  <div className="question-context">{q.context}</div>
+                </div>
+              </div>
+            ));
+          })()}
         </div>
+
+        {/* Change #11: Ask a Clinician CTA — highest-intent moment */}
+        <ClinicianCTA facility={facility} placement="after-questions" />
 
         {/* Section 11 — What You Can Do */}
         <div className="section">
-          <div className="section-number">11</div>
-          <div className="section-title">What You Can Do</div>
+          <div className="section-header-row">
+            <div className="section-number">11</div>
+            <div className="section-title">What You Can Do</div>
+          </div>
           <ActionPaths facility={facility} />
         </div>
 
@@ -1907,23 +2083,77 @@ export function FacilityPage() {
           </div>
         </div>
 
-        {/* Glossary */}
+        {/* Glossary — Change #13: Expanded + Searchable */}
         <div className="section">
           <div className="section-title">Glossary</div>
-          <table className="fp-glossary">
-            <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
-            <tbody>
-              <tr><td><strong>RN</strong></td><td>Registered Nurse — highest-level bedside nurse</td></tr>
-              <tr><td><strong>LPN</strong></td><td>Licensed Practical Nurse</td></tr>
-              <tr><td><strong>CNA</strong></td><td>Certified Nursing Assistant</td></tr>
-              <tr><td><strong>Hrs/resident/day</strong></td><td>Total nursing hours divided by number of residents, per day — the standard staffing adequacy measure</td></tr>
-              <tr><td><strong>PBJ</strong></td><td>Payroll-Based Journal — mandatory payroll records that nursing homes submit to CMS quarterly</td></tr>
-              <tr><td><strong>"Serious danger"</strong></td><td>Most severe deficiency level — inspectors found conditions so serious that residents faced risk of serious injury or death</td></tr>
-              <tr><td><strong>"Residents hurt"</strong></td><td>Second-most severe level — inspectors found conditions that caused real harm to residents</td></tr>
-              <tr><td><strong>CCN</strong></td><td>CMS Certification Number — unique ID for each Medicare/Medicaid-certified facility</td></tr>
-              <tr><td><strong>SFF</strong></td><td>Special Focus Facility — nursing homes CMS has flagged for a history of serious quality issues</td></tr>
-            </tbody>
-          </table>
+          <p className="section-subtitle">Terms used throughout this report</p>
+          {(() => {
+            const glossaryTerms = [
+              { term: 'RN', meaning: 'Registered Nurse — highest-level bedside nurse, responsible for assessments and care decisions' },
+              { term: 'LPN', meaning: 'Licensed Practical Nurse — administers medications, wound care, vital signs' },
+              { term: 'CNA', meaning: 'Certified Nursing Assistant — provides daily personal care (bathing, feeding, dressing)' },
+              { term: 'Hrs/res/day', meaning: 'Total nursing hours divided by number of residents, per day — the key staffing density metric' },
+              { term: 'PBJ', meaning: 'Payroll-Based Journal — mandatory payroll records submitted to CMS (not self-reported)' },
+              { term: 'SFF', meaning: 'Special Focus Facility — CMS designation for the worst-performing ~1% of nursing homes' },
+              { term: 'CCN', meaning: 'CMS Certification Number — unique federal ID for each Medicare-certified facility' },
+              { term: 'F-tag', meaning: 'Federal regulation code (e.g., F689 = accident hazards). Each deficiency cites a specific F-tag.' },
+              { term: 'K-tag', meaning: 'Fire safety regulation code — K-level citations are the most serious fire code violations' },
+              { term: 'REIT', meaning: 'Real Estate Investment Trust — a corporate structure where the building is owned separately from operations' },
+              { term: 'Scope & Severity', meaning: 'CMS grid classifying each deficiency by how many residents affected and how serious the harm' },
+            ];
+            return (
+              <table className="fp-glossary">
+                <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+                <tbody>
+                  {glossaryTerms.map((g, i) => (
+                    <tr key={i}><td><strong>{g.term}</strong></td><td>{g.meaning}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            );
+          })()}
+
+          {/* Change #13: $29 Evidence PDF Upsell — contextual comparison */}
+          <div className="pdf-upsell-section">
+            <h3 className="pdf-upsell-title">Want the complete picture? Download the Evidence Report.</h3>
+            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>Everything on this page — plus the deep-dive analysis that doesn't fit on a free report card.</p>
+
+            <div className="pdf-compare-grid">
+              <div className="pdf-compare-col free">
+                <div className="pdf-compare-col-title">Free Report Card (This Page)</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Safety score &amp; 6 key metrics</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Deficiency list with severity</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Staffing hours vs benchmarks</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Quality measures by category</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Fines &amp; penalty timeline</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Questions to ask</div>
+              </div>
+              <div className="pdf-compare-col paid">
+                <div className="pdf-compare-col-title paid">Evidence Report PDF — $29</div>
+                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Everything in the free report, plus:</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Full deficiency narratives (inspector's own words)</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Penalty timeline with fine amounts per incident</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Ownership chain analysis (PE, REIT, operator history)</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing trend analysis (improving or declining?)</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Complaint investigation yield — citations per investigation</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing vs. the 3.48 HPRD threshold cited by 18 state AGs</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Risk score methodology with 42 CFR regulatory references</div>
+                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Print-ready format for attorneys, ombudsmen, and family meetings</div>
+              </div>
+            </div>
+
+            <button className="pdf-upsell-btn" onClick={() => setShowEvidencePreview(true)}>Download Evidence Report — $29</button>
+            <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '6px', textAlign: 'center' }}>Instant PDF download · Source data from CMS · 100% money-back guarantee</div>
+          </div>
+        </div>
+
+        {/* Change #14: Bottom Download CTA */}
+        <div className="bottom-download-cta">
+          <div className="bottom-cta-content">
+            <h3>Save this report for later</h3>
+            <p>Download the full evidence report with complete deficiency narratives, penalty timeline, and ownership history.</p>
+          </div>
+          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="↓ Download PDF Report" />
         </div>
 
         {/* Disclaimer */}

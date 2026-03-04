@@ -10,7 +10,10 @@
 
 .flag-header { display: flex; align-items: center; gap: 0.75rem; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.06); }
 .flag-header h4 { margin: 0; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #0F172A; }
-.flag-icon { font-size: 1.1rem; }
+.flag-icon { font-size: 1.1rem; font-family: inherit; }
+.flag-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.flag-dot.dot-red { background: #c0392b; }
+.flag-dot.dot-yellow { background: #d97706; }
 
 .flag-body { padding: 16px; }
 .flag-body p { margin: 0 0 0.75rem; font-size: 0.9rem; line-height: 1.6; color: #475569; }
