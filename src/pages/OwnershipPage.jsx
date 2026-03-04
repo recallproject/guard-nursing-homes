@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useSearchParams } from 'react-router-dom';
 import { useFacilityData } from '../hooks/useFacilityData';
 import RiskBadge from '../components/RiskBadge';
 import ComingSoonPage from '../components/ComingSoonPage';
@@ -9,6 +10,7 @@ import gsap from 'gsap';
 export default function OwnershipPage() {
   const COMING_SOON = false;
   const { getAllFacilities, loading, error } = useFacilityData();
+  const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [selectedOwner, setSelectedOwner] = useState(null);
@@ -84,6 +86,17 @@ export default function OwnershipPage() {
 
     return stats.sort((a, b) => b.count - a.count);
   }, [getAllFacilities]);
+
+  // Deep-link: auto-select owner from URL param (e.g. /ownership?owner=HERZKA,%20YISROEL)
+  useEffect(() => {
+    const ownerParam = searchParams.get('owner');
+    if (ownerParam && ownerStats.length > 0 && !selectedOwner) {
+      const match = ownerStats.find(o => o.name.toUpperCase() === ownerParam.toUpperCase());
+      if (match) {
+        setSelectedOwner(match);
+      }
+    }
+  }, [searchParams, ownerStats, selectedOwner]);
 
   // Debounced search
   useEffect(() => {

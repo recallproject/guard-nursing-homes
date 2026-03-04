@@ -1889,7 +1889,7 @@ export function FacilityPage() {
                 </div>
               )}
 
-              <Link to={`/?owner=${encodeURIComponent(facility.worst_owner)}`} className="owner-portfolio-link">
+              <Link to={`/ownership?owner=${encodeURIComponent(facility.worst_owner)}`} className="owner-portfolio-link">
                 → View all {facility.owner_portfolio_count} facilities by this operator
               </Link>
             </>
