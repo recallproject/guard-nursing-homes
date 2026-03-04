@@ -589,6 +589,24 @@
   padding: 2.5rem 2.5rem 2rem;
 }
 
+/* Ownership alerts section — tighter padding, no double-boxing */
+.fp-ownership-alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Bottom line wrapper — let the inner card breathe without double background */
+.fp-bottom-line {
+  padding: 0 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.fp-bottom-line .bottom-line-card {
+  border-radius: 16px;
+}
+
 .fp-body h1 {
   font-family: 'DM Serif Display', serif;
   font-size: 36px;
@@ -1304,6 +1322,9 @@
   .fp-body > .section {
     padding: 1.5rem 1rem 1.25rem;
     border-radius: 12px;
+  }
+  .fp-bottom-line {
+    padding: 0 !important;
   }
 
   .fp-name {

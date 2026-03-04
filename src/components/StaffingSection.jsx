@@ -25,8 +25,50 @@ export default function StaffingSection({ facility, benchmarks }) {
   const rnClass = rnMinutes < SAFETY_BENCHMARK_RN ? 'val-red' : rnMinutes < (stateAvgRnMinutes || 999) ? 'val-orange' : 'val-green';
   const totalClass = totalMinutes < SAFETY_BENCHMARK_TOTAL ? 'val-red' : '';
 
+  // Staffing verdict logic
+  const rnBelowFederal = rnMinutes < SAFETY_BENCHMARK_RN;
+  const totalBelowBenchmark = totalMinutes < SAFETY_BENCHMARK_TOTAL;
+  const rnBelowState = stateAvgRnMinutes != null && rnMinutes < stateAvgRnMinutes;
+  const totalBelowState = stateAvgTotalMinutes != null && totalMinutes < stateAvgTotalMinutes;
+  const rnPctOfBenchmark = Math.round((rnMinutes / SAFETY_BENCHMARK_RN) * 100);
+  const totalPctOfBenchmark = Math.round((totalMinutes / SAFETY_BENCHMARK_TOTAL) * 100);
+
+  let verdictLevel, verdictTitle, verdictText;
+  if (rnBelowFederal && totalBelowBenchmark) {
+    verdictLevel = 'concern';
+    verdictTitle = 'Staffing Levels Are a Serious Concern';
+    verdictText = `This facility provides only <strong>${rnMinutes} minutes</strong> of RN care per resident per day — <strong>${100 - rnPctOfBenchmark}% below</strong> the federal standard of ${SAFETY_BENCHMARK_RN} minutes. Total nursing care is ${totalMinutes} minutes (${totalHours} hrs), which is <strong>${100 - totalPctOfBenchmark}% below</strong> the 4.1-hour safety benchmark.${rnBelowState ? ` RN hours also fall below the state average of ${stateAvgRnMinutes} minutes.` : ''} Low staffing is the single strongest predictor of poor outcomes in nursing homes.`;
+  } else if (rnBelowFederal || totalBelowBenchmark) {
+    verdictLevel = 'caution';
+    verdictTitle = 'Staffing Levels Raise Questions';
+    if (rnBelowFederal) {
+      verdictText = `RN staffing is <strong>${100 - rnPctOfBenchmark}% below</strong> the federal standard at ${rnMinutes} minutes per resident per day (benchmark: ${SAFETY_BENCHMARK_RN} min).${totalBelowState ? ` Total nursing hours are also below the state average.` : ` Total nursing care (${totalHours} hrs) meets the safety benchmark.`} RNs catch deteriorating conditions early — fewer RN minutes means higher risk of missed warning signs.`;
+    } else {
+      verdictText = `Total nursing care is <strong>${100 - totalPctOfBenchmark}% below</strong> the 4.1-hour safety benchmark at ${totalMinutes} minutes (${totalHours} hrs) per resident per day. While RN hours meet the federal standard, the overall staffing level means fewer hands for daily care tasks like repositioning, feeding, and hygiene.`;
+    }
+  } else {
+    verdictLevel = 'ok';
+    verdictTitle = 'Staffing Levels Meet Safety Benchmarks';
+    verdictText = `This facility provides <strong>${rnMinutes} minutes</strong> of RN care and <strong>${totalMinutes} minutes</strong> (${totalHours} hrs) of total nursing care per resident per day — both meeting or exceeding safety benchmarks.${rnBelowState ? ' Note: RN hours are still below the state average, so there may be room for improvement.' : ''} Meeting staffing benchmarks is a positive sign, though it doesn't guarantee quality of care.`;
+  }
+
   return (
     <>
+    {/* Staffing Verdict */}
+    <div className={`verdict-banner ${verdictLevel}`}>
+      <div className={`verdict-icon ${verdictLevel}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          {verdictLevel === 'concern' && <><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></>}
+          {verdictLevel === 'caution' && <><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></>}
+          {verdictLevel === 'ok' && <><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></>}
+        </svg>
+      </div>
+      <div className="verdict-text">
+        <h3 className={verdictLevel}>{verdictTitle}</h3>
+        <p dangerouslySetInnerHTML={{ __html: verdictText }} />
+      </div>
+    </div>
+
     <table className="staffing-table">
       <thead>
         <tr>

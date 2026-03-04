@@ -344,77 +344,81 @@ export function FacilityPage() {
       </div>
 
       <div className="fp-body">
-        <div className="fp-intro-card" style={{ borderTop: `4px solid ${safetyColor}` }}>
-        {/* Facility Name + Star Badge */}
-        <div className="fp-name-row">
-          <h1 className="fp-name">{facility.name}</h1>
-          <div className="fp-star-badge" style={{ '--safety-color': safetyColor }}>
-            <div className="fp-star-badge-number">{starCount}</div>
-            <div className="fp-star-badge-label">out of 5</div>
+        {/* Section 1: Facility Identity — name, stars, location */}
+        <div className="section fp-identity-card" style={{ borderTop: `4px solid ${safetyColor}` }}>
+          <div className="fp-name-row">
+            <h1 className="fp-name">{facility.name}</h1>
+            <div className="fp-star-badge" style={{ '--safety-color': safetyColor }}>
+              <div className="fp-star-badge-number">{starCount}</div>
+              <div className="fp-star-badge-label">out of 5</div>
+            </div>
           </div>
-        </div>
-        <div className="fp-star-row">
-          <span className="fp-stars-visual" style={{ '--safety-color': safetyColor }}>
-            <span className="fp-stars-filled">{starsFilled}</span><span className="fp-stars-empty">{starsEmpty}</span>
-          </span>
-          <span className="fp-star-caption">CMS Overall Rating <MetricTooltip title="CMS Five-Star Rating">CMS rates every nursing home 1–5 stars based on inspections, staffing, and quality measures. But this rating has serious limitations — it combines very different data types into a single score, and the staffing component relies partly on self-reported data that facilities can inflate. Use it as a starting point, not the final word.</MetricTooltip></span>
-        </div>
-        <p className="fp-meta">
-          {facility.city}, {facility.state} | {facility.beds || '—'} beds
-          {' · '}
-          <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Report</a>
-          {' · '}
-          <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Compare</a>
-        </p>
-        <p className="fp-ccn">CMS CCN: {ccn}</p>
-
-        {/* PE/REIT Ownership Badges */}
-        {(facility.pe_owned || facility.reit_owned) && (
-          <div className="ownership-badges">
-            {facility.pe_owned && (
-              <span className="ownership-badge ownership-badge--pe" title={facility.pe_owner_name || 'Private Equity Owned'}>
-                Private Equity Owned
-                {facility.pe_owner_name && <span className="ownership-badge-detail"> · {facility.pe_owner_name}</span>}
-              </span>
-            )}
-            {facility.reit_owned && (
-              <span className="ownership-badge ownership-badge--reit" title={facility.reit_owner_name || 'REIT Owned'}>
-                REIT Owned
-                {facility.reit_owner_name && <span className="ownership-badge-detail"> · {facility.reit_owner_name}</span>}
-              </span>
-            )}
-          </div>
-        )}
-
-        {/* Ownership Change Alert */}
-        {facility.ownership_changed_recently && (
-          <div className="ownership-change-alert">
-            <strong>Ownership Change:</strong> This facility was sold on {facility.ownership_change_date || 'recently'}.
-            {facility.new_owner_name && <> New owner: {facility.new_owner_name}</>}
-          </div>
-        )}
-
-        {/* AHCA Board Context */}
-        {facility.chain_name && ahcaData?.[facility.chain_name.toUpperCase()] && (
-          <div className="ahca-context-line">
-            <span className="ahca-context-icon">🏛</span>
-            This facility's parent chain ({facility.chain_name}) is led by an AHCA Board of Governors member. AHCA spent $17M+ since 2020 lobbying on nursing home policy, including against federal staffing requirements.
-            {' '}
-            <span className="ahca-context-source">
-              Source: AHCA Board announcement (ahcancal.org) · OpenSecrets.org
+          <div className="fp-star-row">
+            <span className="fp-stars-visual" style={{ '--safety-color': safetyColor }}>
+              <span className="fp-stars-filled">{starsFilled}</span><span className="fp-stars-empty">{starsEmpty}</span>
             </span>
+            <span className="fp-star-caption">CMS Overall Rating <MetricTooltip title="CMS Five-Star Rating">CMS rates every nursing home 1–5 stars based on inspections, staffing, and quality measures. But this rating has serious limitations — it combines very different data types into a single score, and the staffing component relies partly on self-reported data that facilities can inflate. Use it as a starting point, not the final word.</MetricTooltip></span>
+          </div>
+          <p className="fp-meta">
+            {facility.city}, {facility.state} | {facility.beds || '—'} beds
+            {' · '}
+            <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Report</a>
+            {' · '}
+            <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Compare</a>
+          </p>
+          <p className="fp-ccn">CMS CCN: {ccn}</p>
+        </div>
+
+        {/* Section 2: Ownership Alerts — PE/REIT badges, ownership changes, AHCA lobbying */}
+        {((facility.pe_owned || facility.reit_owned) || facility.ownership_changed_recently || (facility.chain_name && ahcaData?.[facility.chain_name.toUpperCase()])) && (
+          <div className="section fp-ownership-alerts">
+            {(facility.pe_owned || facility.reit_owned) && (
+              <div className="ownership-badges">
+                {facility.pe_owned && (
+                  <span className="ownership-badge ownership-badge--pe" title={facility.pe_owner_name || 'Private Equity Owned'}>
+                    Private Equity Owned
+                    {facility.pe_owner_name && <span className="ownership-badge-detail"> · {facility.pe_owner_name}</span>}
+                  </span>
+                )}
+                {facility.reit_owned && (
+                  <span className="ownership-badge ownership-badge--reit" title={facility.reit_owner_name || 'REIT Owned'}>
+                    REIT Owned
+                    {facility.reit_owner_name && <span className="ownership-badge-detail"> · {facility.reit_owner_name}</span>}
+                  </span>
+                )}
+              </div>
+            )}
+
+            {facility.ownership_changed_recently && (
+              <div className="ownership-change-alert">
+                <strong>Ownership Change:</strong> This facility was sold on {facility.ownership_change_date || 'recently'}.
+                {facility.new_owner_name && <> New owner: {facility.new_owner_name}</>}
+              </div>
+            )}
+
+            {facility.chain_name && ahcaData?.[facility.chain_name.toUpperCase()] && (
+              <div className="ahca-context-line">
+                <span className="ahca-context-icon">🏛</span>
+                This facility's parent chain ({facility.chain_name}) is led by an AHCA Board of Governors member. AHCA spent $17M+ since 2020 lobbying on nursing home policy, including against federal staffing requirements.
+                {' '}
+                <span className="ahca-context-source">
+                  Source: AHCA Board announcement (ahcancal.org) · OpenSecrets.org
+                </span>
+              </div>
+            )}
           </div>
         )}
 
-        {/* Bottom Line Card */}
-        <div className="bottom-line-card">
-          <div className="bottom-line-label">⚠ Bottom Line</div>
-          <div className="bottom-line-text" dangerouslySetInnerHTML={{ __html: getBottomLine() }} />
-          <div className="bottom-line-source">
-            Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
+        {/* Section 3: Bottom Line — the verdict */}
+        <div className="section fp-bottom-line">
+          <div className="bottom-line-card">
+            <div className="bottom-line-label">⚠ Bottom Line</div>
+            <div className="bottom-line-text" dangerouslySetInnerHTML={{ __html: getBottomLine() }} />
+            <div className="bottom-line-source">
+              Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
+            </div>
           </div>
         </div>
-        </div>{/* end fp-intro-card */}
 
         {/* Change #1: Sticky Section Nav */}
         <nav className="section-nav-sticky">

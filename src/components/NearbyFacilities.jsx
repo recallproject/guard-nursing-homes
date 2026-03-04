@@ -10,7 +10,7 @@ import { haversineDistance } from '../utils/haversine';
 export function NearbyFacilities({ facility }) {
   const { data } = useFacilityData();
   const [radius, setRadius] = useState(15);
-  const [sortBy, setSortBy] = useState('distance'); // 'distance', 'score', 'stars'
+  const [sortBy, setSortBy] = useState('distance'); // 'distance', 'score', 'stars' — default to closest
 
   const nearbyFacilities = useMemo(() => {
     if (!facility || !data || !data.states) {
