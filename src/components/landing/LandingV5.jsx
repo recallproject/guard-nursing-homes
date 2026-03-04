@@ -301,7 +301,6 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ KNOW BEFORE YOU CHOOSE ═══════ */}
       <div className="v5-section">
         <div className="v5-section-header">
-          <div className="v5-section-label">Sample Reports</div>
           <h2 className="v5-section-title">Know Before You Choose</h2>
           <p className="v5-section-sub">These are real facilities. This is what your report looks like.</p>
         </div>
