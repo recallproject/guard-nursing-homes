@@ -75,6 +75,10 @@
   color: var(--risk-critical);
 }
 
+.state-detail-stat-sff {
+  color: #d946ef;
+}
+
 .state-detail-stat-label {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.85rem;
@@ -398,6 +402,17 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+.facility-row-sff-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #d946ef;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .facility-row-stars {

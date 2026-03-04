@@ -6,7 +6,7 @@ import '../styles/state-detail.css';
 
 export default function StateDetail({ stateCode, stateData, stateSummary, onBack }) {
   const [sortBy, setSortBy] = useState('risk'); // risk, name, stars
-  const [filterBy, setFilterBy] = useState('all'); // all, high-risk, critical
+  const [filterBy, setFilterBy] = useState('all'); // all, high-risk, critical, sff
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState(() => localStorage.getItem('facilityViewMode') || 'list');
   const [visibleCount, setVisibleCount] = useState(25);
@@ -81,6 +81,8 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
     facilities = facilities.filter((f) => (f.composite || 0) >= 40);
   } else if (filterBy === 'critical') {
     facilities = facilities.filter((f) => (f.composite || 0) >= 60);
+  } else if (filterBy === 'sff') {
+    facilities = facilities.filter((f) => f.flags?.some(flag => flag.includes('SPECIAL FOCUS')));
   }
 
   if (searchQuery.trim()) {
@@ -176,8 +178,9 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
   const stateName = stateNames[stateCode] || stateCode;
 
-  // Compute high-risk count from facilities
+  // Compute high-risk and SFF counts from facilities
   const highRiskCount = stateData.facilities.filter((f) => (f.composite || 0) >= 40).length;
+  const sffCount = stateData.facilities.filter((f) => f.flags?.some(flag => flag.includes('SPECIAL FOCUS'))).length;
 
   // Compute avg per facility fine
   const avgFinePerFacility = stateSummary.count > 0
@@ -217,6 +220,20 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
                 View highest-risk facilities →
               </button>
             </div>
+            {sffCount > 0 && (
+              <div className="state-detail-stat">
+                <span className="state-detail-stat-value state-detail-stat-sff">
+                  {sffCount}
+                </span>
+                <span className="state-detail-stat-label">CMS Watch List</span>
+                <button
+                  className="state-detail-stat-cta state-detail-stat-cta--link"
+                  onClick={() => setFilterBy('sff')}
+                >
+                  View SFF facilities →
+                </button>
+              </div>
+            )}
             <div className="state-detail-stat">
               <span className="state-detail-stat-value">
                 {stateSummary.avg_composite?.toFixed(1) || '0.0'}
@@ -258,6 +275,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
               <option value="all">All Facilities</option>
               <option value="high-risk">High Risk (40+)</option>
               <option value="critical">Critical (60+)</option>
+              {sffCount > 0 && <option value="sff">CMS Watch List (SFF)</option>}
             </select>
           </div>
 

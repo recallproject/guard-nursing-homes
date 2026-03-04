@@ -15,6 +15,7 @@ export default function FacilityRow({ facility }) {
 
   const score = facility.composite || 0;
   const riskInfo = getRiskInfo(score);
+  const isSFF = facility.flags?.some(f => f.includes('SPECIAL FOCUS'));
 
   const renderStars = (stars) => {
     const starCount = Math.max(0, Math.min(5, stars || 0));
@@ -56,8 +57,11 @@ export default function FacilityRow({ facility }) {
     return null;
   };
 
-  // 2C: Get hook line (first match wins)
+  // 2C: Get hook line (first match wins — SFF is highest priority)
   const getHookLine = () => {
+    if (isSFF) {
+      return `⚠ CMS Special Focus Facility — federal watch list for persistent quality failures`;
+    }
     if (facility.zero_rn_pct > 0) {
       return `⚠ ${facility.zero_rn_pct.toFixed(1)}% of days had zero registered nurses on site`;
     }
@@ -106,6 +110,7 @@ export default function FacilityRow({ facility }) {
         </div>
         <div className="facility-row-bottom">
           <span className="facility-row-risk-label" style={{ color: riskInfo.color }}>{riskInfo.label}</span>
+          {isSFF && <span className="facility-row-sff-badge">SFF</span>}
           <span className="facility-row-stars">{renderStars(facility.stars)}</span>
           {facility.harm_count > 0 && (
             <span className="facility-card-stat stat-danger">{facility.harm_count} residents hurt</span>

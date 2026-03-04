@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useWatchlist } from '../hooks/useWatchlist';
 import '../styles/header.css';
 
@@ -13,6 +13,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
   const navRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
   const { watchlist } = useWatchlist();
@@ -110,8 +111,14 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
     <>
       <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''}`} ref={navRef}>
         <div className="site-header__inner">
-          {/* Brand */}
-          <Link to="/" className="site-header__brand">
+          {/* Brand — onClick forces MapPage view reset when already on / */}
+          <Link to="/" className="site-header__brand" onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault();
+              navigate('/', { state: { resetView: Date.now() }, replace: true });
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}>
             <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
           </Link>
 
@@ -225,7 +232,14 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
         <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
           <nav className="mobile-menu" onClick={(e) => e.stopPropagation()} aria-label="Mobile navigation">
             <div className="mobile-menu__header">
-              <Link to="/" className="site-header__brand" onClick={() => setMobileOpen(false)}>
+              <Link to="/" className="site-header__brand" onClick={(e) => {
+                setMobileOpen(false);
+                if (location.pathname === '/') {
+                  e.preventDefault();
+                  navigate('/', { state: { resetView: Date.now() }, replace: true });
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}>
                 <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
               </Link>
               <button

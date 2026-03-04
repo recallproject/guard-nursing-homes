@@ -34,6 +34,15 @@ export function MapPage() {
     const viewParam = searchParams.get('view');
     const jump = location.state?.jumpToMap;
 
+    // Logo click reset — force back to hero from any internal view
+    const resetView = location.state?.resetView;
+    if (resetView) {
+      setSelectedState(null);
+      setView('hero');
+      window.history.replaceState({}, '');
+      return;
+    }
+
     if (stateParam && data?.states?.[stateParam]) {
       setSelectedState(stateParam);
       setView('detail');
