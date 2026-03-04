@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import FacilityCard from './FacilityCard';
 import FacilityRow from './FacilityRow';
@@ -190,9 +191,13 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
   return (
     <div className="state-detail">
       <div className="state-detail-header" ref={headerRef}>
-        <button className="btn-ghost state-detail-back" onClick={onBack}>
-          ← Back to Map
-        </button>
+        <nav className="state-detail-breadcrumb" aria-label="Breadcrumb">
+          <Link to="/" className="state-detail-breadcrumb-link">Home</Link>
+          <span className="state-detail-breadcrumb-sep">›</span>
+          <button className="state-detail-breadcrumb-link" onClick={onBack}>All States</button>
+          <span className="state-detail-breadcrumb-sep">›</span>
+          <span className="state-detail-breadcrumb-current">{stateName}</span>
+        </nav>
 
         <div className="state-detail-title-section">
           <h2 className="state-detail-title">{stateName}</h2>
@@ -238,8 +243,25 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
               <span className="state-detail-stat-value">
                 {stateSummary.avg_composite?.toFixed(1) || '0.0'}
               </span>
-              <span className="state-detail-stat-label">Avg Score</span>
-              <span className="state-detail-stat-cta">National avg: 28.4</span>
+              <span className="state-detail-stat-label">Avg Risk Score</span>
+              <div className="state-detail-gradient-bar">
+                <div className="state-detail-gradient-track">
+                  <div
+                    className="state-detail-gradient-marker"
+                    style={{ left: `${Math.min(100, (stateSummary.avg_composite || 0))}%` }}
+                    title={`State avg: ${stateSummary.avg_composite?.toFixed(1)}`}
+                  />
+                  <div
+                    className="state-detail-gradient-national"
+                    style={{ left: '28.4%' }}
+                    title="National avg: 28.4"
+                  />
+                </div>
+                <div className="state-detail-gradient-labels">
+                  <span>0 Low</span>
+                  <span>100 Critical</span>
+                </div>
+              </div>
             </div>
             <div className="state-detail-stat">
               <span className="state-detail-stat-value">
@@ -259,9 +281,9 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
-              <option value="risk">Risk Score (High to Low)</option>
-              <option value="name">Name (A-Z)</option>
-              <option value="stars">Stars (Low to High)</option>
+              <option value="risk">Most Concerning First</option>
+              <option value="name">Alphabetical (A–Z)</option>
+              <option value="stars">Lowest Rated First</option>
             </select>
           </div>
 

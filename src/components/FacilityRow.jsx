@@ -22,14 +22,14 @@ export default function FacilityRow({ facility }) {
     const filled = Math.floor(starCount);
     const empty = 5 - filled;
     return (
-      <>
+      <span role="img" aria-label={`${filled} out of 5 stars`}>
         {[...Array(filled)].map((_, i) => (
-          <span key={`filled-${i}`} className="star-filled">★</span>
+          <span key={`filled-${i}`} className="star-filled" aria-hidden="true">★</span>
         ))}
         {[...Array(empty)].map((_, i) => (
-          <span key={`empty-${i}`} className="star-empty">☆</span>
+          <span key={`empty-${i}`} className="star-empty" aria-hidden="true">☆</span>
         ))}
-      </>
+      </span>
     );
   };
 
@@ -108,6 +108,9 @@ export default function FacilityRow({ facility }) {
           </span>
           <span className="facility-row-city">{facility.city}, {facility.state}</span>
         </div>
+        {hookLine && (
+          <div className="facility-row-hook">{hookLine}</div>
+        )}
         <div className="facility-row-bottom">
           <span className="facility-row-risk-label" style={{ color: riskInfo.color }}>{riskInfo.label}</span>
           {isSFF && <span className="facility-row-sff-badge">SFF</span>}
@@ -122,12 +125,9 @@ export default function FacilityRow({ facility }) {
             <span className="facility-card-stat stat-fines">{formatFines(facility.total_fines)} fines</span>
           )}
           {facility.total_deficiencies > 0 && (
-            <span className="facility-card-stat stat-neutral">{facility.total_deficiencies} deficiencies</span>
+            <span className="facility-card-stat stat-neutral">{facility.total_deficiencies} violations</span>
           )}
         </div>
-        {hookLine && (
-          <div className="facility-row-hook">{hookLine}</div>
-        )}
       </div>
     </div>
   );

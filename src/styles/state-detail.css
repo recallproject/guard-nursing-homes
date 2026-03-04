@@ -18,14 +18,40 @@
   margin-bottom: 2rem;
 }
 
-.state-detail-back {
+/* Breadcrumb */
+.state-detail-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  padding: 0.75rem 1.5rem;
-  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+}
+
+.state-detail-breadcrumb-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  position: relative;
-  z-index: 1;
+  font-family: inherit;
+  font-size: inherit;
+  transition: color 0.15s;
+}
+
+.state-detail-breadcrumb-link:hover {
+  color: var(--primary-light);
+}
+
+.state-detail-breadcrumb-sep {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.state-detail-breadcrumb-current {
+  color: var(--text-white);
+  font-weight: 600;
 }
 
 .state-detail-title-section {
@@ -108,6 +134,52 @@
 
 .state-detail-stat-cta--link:hover {
   color: var(--primary-light);
+}
+
+/* Gradient context bar for Avg Risk Score */
+.state-detail-gradient-bar {
+  margin-top: 4px;
+  width: 100%;
+  max-width: 160px;
+}
+
+.state-detail-gradient-track {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #10B981, #F59E0B, #DC2626);
+}
+
+.state-detail-gradient-marker {
+  position: absolute;
+  top: -3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--text-white);
+  transform: translateX(-50%);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  z-index: 2;
+}
+
+.state-detail-gradient-national {
+  position: absolute;
+  top: -2px;
+  width: 2px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.state-detail-gradient-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-size: 9px;
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 
 /* ========================================
@@ -483,8 +555,9 @@
     margin-bottom: 1.5rem;
   }
 
-  .state-detail-back {
-    margin-bottom: 1.5rem;
+  .state-detail-breadcrumb {
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
   }
 
   .state-detail-title {
