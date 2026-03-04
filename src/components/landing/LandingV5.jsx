@@ -306,89 +306,93 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <p className="v5-section-sub">These are real facilities. This is what your report looks like.</p>
         </div>
         <div className="v5-flagged-grid">
-          {/* Card 1: Critical */}
+          {/* Card 1: Critical — Real SFF facility */}
           <div className="v5-flagged-card v5-fade-in">
             <div className="v5-flagged-accent critical"></div>
             <div className="v5-flagged-body">
               <div className="v5-flagged-header">
                 <div>
-                  <div className="v5-flagged-name">Sunrise Senior Living</div>
+                  <div className="v5-flagged-name">Chicago Ridge SNF</div>
                   <div className="v5-flagged-location">Chicago, IL</div>
                 </div>
-                <span className="v5-risk-pill critical">SFF — FEDERAL WATCH</span>
+                <span className="v5-risk-pill critical">SFF — FEDERAL WATCH*</span>
               </div>
               <div className="v5-flagged-stats">
-                <div className="v5-flagged-stat"><strong>47</strong> citations</div>
-                <div className="v5-flagged-stat"><strong>$1.2M</strong> fines</div>
-                <div className="v5-flagged-stat"><strong>0.8</strong> RN hrs/day</div>
+                <div className="v5-flagged-stat"><strong>125</strong> citations</div>
+                <div className="v5-flagged-stat"><strong>$588K</strong> fines</div>
+                <div className="v5-flagged-stat"><strong>0.2</strong> RN hrs/day</div>
               </div>
               <div className="v5-qm-pills">
-                <span className="v5-qm-pill alert">Antipsychotics: 24% (vs 14% avg)</span>
-                <span className="v5-qm-pill">Falls: above avg</span>
+                <span className="v5-qm-pill alert">10 immediate jeopardy deficiencies</span>
+                <span className="v5-qm-pill alert">18 actual-harm deficiencies</span>
               </div>
               <div className="v5-flagged-bottom">
-                On the CMS Special Focus Facility list since 2023. Persistent staffing shortfalls and repeat deficiencies on immediate jeopardy citations.
+                CMS Special Focus Facility. 5 payment denials (233 days). Part of a chain whose owner controls 16 facilities averaging $279K in fines each.
               </div>
             </div>
-            <Link to="/?state=IL" className="v5-flagged-cta">See full report for Sunrise Senior Living &rarr;</Link>
+            <Link to="/facility/145639" className="v5-flagged-cta">See full report for Chicago Ridge SNF &rarr;</Link>
           </div>
 
-          {/* Card 2: Warning + Chain */}
+          {/* Card 2: Warning — Real high-risk chain facility */}
           <div className="v5-flagged-card v5-fade-in">
             <div className="v5-flagged-accent warn"></div>
             <div className="v5-flagged-body">
               <div className="v5-flagged-header">
                 <div>
-                  <div className="v5-flagged-name">Golden Acres Care Center</div>
+                  <div className="v5-flagged-name">West Houston Rehabilitation</div>
                   <div className="v5-flagged-location">Houston, TX</div>
                 </div>
-                <span className="v5-risk-pill high">REVIEW CLOSELY</span>
+                <span className="v5-risk-pill high">ELEVATED CITATIONS</span>
               </div>
               <div className="v5-flagged-stats">
-                <div className="v5-flagged-stat"><strong>22</strong> citations</div>
-                <div className="v5-flagged-stat"><strong>$312K</strong> fines</div>
-                <div className="v5-flagged-stat"><strong>11</strong> sister facilities</div>
+                <div className="v5-flagged-stat"><strong>32</strong> citations</div>
+                <div className="v5-flagged-stat"><strong>$205K</strong> fines</div>
+                <div className="v5-flagged-stat"><strong>6</strong> sister facilities</div>
               </div>
               <div className="v5-qm-pills">
-                <span className="v5-qm-pill alert">Readmissions: above avg</span>
-                <span className="v5-qm-pill">Antipsychotic use: 12%</span>
+                <span className="v5-qm-pill alert">7 immediate jeopardy deficiencies</span>
+                <span className="v5-qm-pill">RN turnover: 70%</span>
               </div>
               <div className="v5-flagged-bottom">
-                Part of a chain operating 11 other facilities — 4 have above-average citation rates. Weekend RN staffing patterns differ from weekday levels.
+                Part of Momentum Skilled Services chain (6 facilities, avg 1.8 stars). Owner entity controls 96 facilities averaging $107K in fines.
               </div>
             </div>
             <div className="v5-flagged-cta-split">
-              <Link to="/?state=TX" className="v5-flagged-cta v5-flagged-cta--half">Full report &rarr;</Link>
-              <Link to="/chains" className="v5-flagged-cta v5-flagged-cta--half v5-flagged-cta--chain">View all 11 chain facilities &rarr;</Link>
+              <Link to="/facility/676381" className="v5-flagged-cta v5-flagged-cta--half">Full report &rarr;</Link>
+              <Link to="/chains" className="v5-flagged-cta v5-flagged-cta--half v5-flagged-cta--chain">View all 6 chain facilities &rarr;</Link>
             </div>
           </div>
 
-          {/* Card 3: Top Performer */}
+          {/* Card 3: Top Performer — Real high-performing facility */}
           <div className="v5-flagged-card v5-fade-in">
             <div className="v5-flagged-accent good"></div>
             <div className="v5-flagged-body">
               <div className="v5-flagged-header">
                 <div>
-                  <div className="v5-flagged-name">Maplewood Care Center</div>
+                  <div className="v5-flagged-name">Mirabella Portland</div>
                   <div className="v5-flagged-location">Portland, OR</div>
                 </div>
                 <span className="v5-risk-pill good">TOP PERFORMER</span>
               </div>
               <div className="v5-flagged-stats">
-                <div className="v5-flagged-stat"><strong>2</strong> citations</div>
+                <div className="v5-flagged-stat"><strong>14</strong> citations</div>
                 <div className="v5-flagged-stat"><strong>$0</strong> fines</div>
-                <div className="v5-flagged-stat"><strong>4.2</strong> RN hrs/day</div>
+                <div className="v5-flagged-stat"><strong>1.2</strong> RN hrs/day</div>
               </div>
               <div className="v5-qm-pills">
-                <span className="v5-qm-pill good">Falls: below avg</span>
-                <span className="v5-qm-pill good">UTIs: below avg</span>
+                <span className="v5-qm-pill good">0 harm deficiencies</span>
+                <span className="v5-qm-pill good">0 jeopardy deficiencies</span>
               </div>
               <div className="v5-flagged-bottom">
-                Consistently high staffing, zero fines, minimal deficiencies. This is what a well-run facility looks like in the data.
+                Nonprofit, 5-star rated. Part of Pacific Retirement Services (10 facilities, avg 4.5 stars, 0% abuse rate). Zero fines, zero payment denials.
               </div>
             </div>
-            <Link to="/?state=OR" className="v5-flagged-cta v5-flagged-cta--good">See full report for Maplewood Care &rarr;</Link>
+            <Link to="/facility/385274" className="v5-flagged-cta v5-flagged-cta--good">See full report for Mirabella Portland &rarr;</Link>
           </div>
+        </div>
+        <div className="v5-section-footnote" style={{textAlign: 'center', marginTop: '16px', fontSize: '13px', color: '#7a8399', lineHeight: '1.6'}}>
+          <div>*SFF = Special Focus Facility — a CMS designation for nursing homes with a pattern of serious quality issues. These facilities receive twice the normal inspection frequency.</div>
+          <div style={{marginTop: '6px'}}>All data sourced from CMS Medicare.gov federal records. Updated March 2026.</div>
         </div>
       </div>
 
@@ -428,9 +432,9 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-trust-quote-inner">
           <div className="v5-trust-quote">
             <blockquote>
-              "I built this because I watched the system fail patients — and the data to prove it was public but buried. No one should have to be a data scientist to know if a nursing home is safe."
+              "Families shouldn't need a research team to figure out if a nursing home is safe. The data is public. It should act like it."
             </blockquote>
-            <cite>Rob Benard, NP <span>— Board-Certified Nurse Practitioner</span></cite>
+            <cite>Robert Benard, NP <span>— Board-Certified Nurse Practitioner</span></cite>
           </div>
           <div className="v5-trust-badges">
             <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--navy)'}}>&#9670;</span> Cited: Harvard Data Science Review</div>
