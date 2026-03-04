@@ -827,7 +827,7 @@ export function FacilityPage() {
                   <div className="cms-callout-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                   </div>
-                  <p><strong>Note:</strong> CMS removed complaint counts from Care Compare on Feb 25, 2026. We rebuilt this number from publicly available federal inspection records. <Link to="/methodology#transparency-changes">How we calculate this →</Link></p>
+                  <p><strong>Note:</strong> CMS removed complaint counts from Care Compare on Feb 25, 2026. We rebuilt this number from publicly available federal inspection records. <Link to="/data-transparency">How we calculate this →</Link></p>
                 </div>
 
                 {/* Complaint Investigations by Year */}

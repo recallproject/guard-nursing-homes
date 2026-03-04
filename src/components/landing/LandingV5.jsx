@@ -267,7 +267,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <div className="v5-cms-alert-text">
             <div className="v5-cms-alert-headline">CMS removed complaint investigation data from Care Compare on 2/25/26.</div>
             <div className="v5-cms-alert-body">Families can no longer see how many complaints were filed against a facility. <strong>We rebuilt it from inspection records.</strong> Every facility on this site still shows complaint counts, investigation outcomes, and patterns over time.</div>
-            <Link to="/methodology" className="v5-cms-alert-link">See what CMS removed and what we kept &rarr;</Link>
+            <Link to="/data-transparency" className="v5-cms-alert-link">See what CMS removed and what we kept &rarr;</Link>
           </div>
           <button className="v5-cms-alert-dismiss" onClick={() => setCmsAlertDismissed(true)} aria-label="Dismiss">&times;</button>
         </div>
@@ -487,7 +487,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
             </div>
             <div className="v5-feature-name">Ownership Networks</div>
             <div className="v5-feature-desc">Follow chains across facilities — see if problems are isolated or systemic</div>
-            <span className="v5-feature-tag chain">INVESTIGATE CHAINS</span>
+            <span className="v5-feature-tag chain">EXPLORE CHAINS</span>
           </div>
         </div>
       </div>
