@@ -431,7 +431,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-trust-quote-inner">
           <div className="v5-trust-quote">
             <blockquote>
-              "Families shouldn't need a research team to figure out if a nursing home is safe. The data is public. It should act like it."
+              "Families used to ask me, 'Is this place any good?' — and I didn't have a good answer. The data existed, but it was buried in government files no one could read. So I built something that finally makes it accessible."
             </blockquote>
             <cite>Robert Benard, NP <span>— Board-Certified Nurse Practitioner</span></cite>
           </div>
