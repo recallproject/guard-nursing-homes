@@ -69,7 +69,7 @@ export default function FacilityTypeahead({ searchFacilities, value, onChange, o
         <svg className="ac-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input
           type="text"
-          placeholder="Search by facility name, city, or CCN..."
+          placeholder="Search by name, city, state, ZIP, or CCN"
           value={query}
           onChange={e => { setQuery(e.target.value); onChange(e.target.value); }}
           onFocus={() => results.length > 0 && setOpen(true)}

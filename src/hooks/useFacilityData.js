@@ -124,28 +124,66 @@ export function useFacilityData() {
     };
   }, [data]);
 
-  // Search facilities by name, city, or CCN
+  // Search facilities by name, city, state, ZIP, or CCN
+  // Supports multi-token queries like "oakland, ca" or "sunrise FL"
   const searchFacilities = useMemo(() => {
+    const stateNames = {
+      'AL': 'alabama', 'AK': 'alaska', 'AZ': 'arizona', 'AR': 'arkansas',
+      'CA': 'california', 'CO': 'colorado', 'CT': 'connecticut', 'DE': 'delaware',
+      'FL': 'florida', 'GA': 'georgia', 'HI': 'hawaii', 'ID': 'idaho',
+      'IL': 'illinois', 'IN': 'indiana', 'IA': 'iowa', 'KS': 'kansas',
+      'KY': 'kentucky', 'LA': 'louisiana', 'ME': 'maine', 'MD': 'maryland',
+      'MA': 'massachusetts', 'MI': 'michigan', 'MN': 'minnesota', 'MS': 'mississippi',
+      'MO': 'missouri', 'MT': 'montana', 'NE': 'nebraska', 'NV': 'nevada',
+      'NH': 'new hampshire', 'NJ': 'new jersey', 'NM': 'new mexico', 'NY': 'new york',
+      'NC': 'north carolina', 'ND': 'north dakota', 'OH': 'ohio', 'OK': 'oklahoma',
+      'OR': 'oregon', 'PA': 'pennsylvania', 'RI': 'rhode island', 'SC': 'south carolina',
+      'SD': 'south dakota', 'TN': 'tennessee', 'TX': 'texas', 'UT': 'utah',
+      'VT': 'vermont', 'VA': 'virginia', 'WA': 'washington', 'WV': 'west virginia',
+      'WI': 'wisconsin', 'WY': 'wyoming', 'DC': 'district of columbia',
+      'GU': 'guam', 'PR': 'puerto rico', 'VI': 'virgin islands',
+    };
+
     return (query) => {
-      if (!data || !data.states || !query || query.trim().length < 2) {
-        return [];
-      }
-      const searchTerm = query.toLowerCase().trim();
+      if (!data || !data.states || !query || query.trim().length < 2) return [];
+
+      // Split on commas first, then whitespace within each part
+      const tokens = query.toLowerCase().split(',')
+        .flatMap(part => part.trim().split(/\s+/))
+        .filter(t => t.length >= 2);
+
+      if (tokens.length === 0) return [];
+
       const results = [];
+
       for (const [stateCode, stateData] of Object.entries(data.states)) {
         if (!stateData.facilities) continue;
+        const stateNameLower = stateNames[stateCode] || '';
+        const stateCodeLower = stateCode.toLowerCase();
+
         for (const facility of stateData.facilities) {
-          const matchesName = facility.name?.toLowerCase().includes(searchTerm);
-          const matchesCity = facility.city?.toLowerCase().includes(searchTerm);
-          const matchesCCN = facility.ccn?.includes(searchTerm);
-          const matchesZip = facility.zip?.startsWith(searchTerm);
-          const matchesState = stateCode.toLowerCase() === searchTerm || facility.state?.toLowerCase() === searchTerm;
-          if (matchesName || matchesCity || matchesCCN || matchesZip || matchesState) {
+          const nameLower = facility.name?.toLowerCase() || '';
+          const cityLower = facility.city?.toLowerCase() || '';
+          const ccn = facility.ccn || '';
+          const zip = facility.zip || '';
+
+          // Every token must match at least one field (AND logic)
+          const allMatch = tokens.every(token => {
+            return nameLower.includes(token) ||
+                   cityLower.includes(token) ||
+                   stateCodeLower === token ||
+                   stateNameLower.includes(token) ||
+                   ccn.includes(token) ||
+                   zip.startsWith(token);
+          });
+
+          if (allMatch) {
             results.push(facility);
           }
           if (results.length >= 50) return results;
         }
       }
+
       return results.sort((a, b) => (b.composite || 0) - (a.composite || 0));
     };
   }, [data]);

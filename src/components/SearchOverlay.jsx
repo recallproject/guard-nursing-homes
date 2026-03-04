@@ -71,7 +71,7 @@ export default function SearchOverlay({ onClose, searchFacilities }) {
             ref={inputRef}
             type="text"
             className="search-input"
-            placeholder="Search by facility name, city, or CCN..."
+            placeholder="Search by name, city, state, ZIP, or CCN"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
