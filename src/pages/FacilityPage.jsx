@@ -2033,6 +2033,36 @@ export function FacilityPage() {
           <div className="free-report-note">Free forever. No login. No email required.</div>
         </div>
 
+        {/* Free vs Evidence comparison grid */}
+        <div className="pdf-upsell-section">
+          <h3 className="pdf-upsell-title">Want the complete picture?</h3>
+          <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>Everything on this page — plus the deep-dive analysis that doesn't fit on a free report card.</p>
+
+          <div className="pdf-compare-grid">
+            <div className="pdf-compare-col free">
+              <div className="pdf-compare-col-title">Free Report Card (This Page)</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Safety score &amp; 6 key metrics</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Deficiency list with severity</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Staffing hours vs benchmarks</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Quality measures by category</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Fines &amp; penalty timeline</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Questions to ask</div>
+            </div>
+            <div className="pdf-compare-col paid">
+              <div className="pdf-compare-col-title paid">Evidence Report PDF — $29</div>
+              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Everything in the free report, plus:</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Full deficiency narratives (inspector's own words)</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Penalty timeline with fine amounts per incident</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Ownership chain analysis (PE, REIT, operator history)</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing trend analysis (improving or declining?)</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Complaint investigation yield — citations per investigation</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing vs. the 3.48 HPRD threshold cited by 18 state AGs</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Risk score methodology with 42 CFR regulatory references</div>
+              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Print-ready format for attorneys, ombudsmen, and family meetings</div>
+            </div>
+          </div>
+        </div>
+
         {/* Evidence Package CTA */}
         <div className="paid-upsell">
           <div className="paid-upsell-header">
@@ -2055,24 +2085,6 @@ export function FacilityPage() {
           <a href="/evidence-sample" className="paid-upsell-sample-link">↓ See a full sample report</a>
         </div>
 
-        {/* Professional Plans — Coming Soon */}
-        <div className="pro-plans">
-          <h3>Professional Plans — Coming Soon</h3>
-          <div className="pro-plans-grid">
-            <div className="pro-plan-card">
-              <div className="pro-plan-name">Pro</div>
-              <div className="pro-plan-price">$14/mo</div>
-              <div className="pro-plan-features">Watchlist alerts · Unlimited PDF exports · Bulk facility comparison · API access</div>
-              <button className="btn-waitlist" onClick={() => window.open('mailto:contact@oversightreports.com?subject=Pro Waitlist', '_blank')}>Join Waitlist</button>
-            </div>
-            <div className="pro-plan-card">
-              <div className="pro-plan-name">Enterprise</div>
-              <div className="pro-plan-price">$59/mo</div>
-              <div className="pro-plan-features">Cost report deep dives · Multi-facility dashboards · Custom data exports · Priority support</div>
-              <button className="btn-waitlist" onClick={() => window.open('mailto:contact@oversightreports.com?subject=Enterprise Waitlist', '_blank')}>Join Waitlist</button>
-            </div>
-          </div>
-        </div>
 
         {/* Data Sources */}
         <div className="section">
@@ -2117,48 +2129,8 @@ export function FacilityPage() {
             );
           })()}
 
-          {/* Change #13: $29 Evidence PDF Upsell — contextual comparison */}
-          <div className="pdf-upsell-section">
-            <h3 className="pdf-upsell-title">Want the complete picture? Download the Evidence Report.</h3>
-            <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>Everything on this page — plus the deep-dive analysis that doesn't fit on a free report card.</p>
-
-            <div className="pdf-compare-grid">
-              <div className="pdf-compare-col free">
-                <div className="pdf-compare-col-title">Free Report Card (This Page)</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Safety score &amp; 6 key metrics</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Deficiency list with severity</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Staffing hours vs benchmarks</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Quality measures by category</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Fines &amp; penalty timeline</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Questions to ask</div>
-              </div>
-              <div className="pdf-compare-col paid">
-                <div className="pdf-compare-col-title paid">Evidence Report PDF — $29</div>
-                <div className="pdf-compare-item"><span className="pdf-check">✓</span> Everything in the free report, plus:</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Full deficiency narratives (inspector's own words)</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Penalty timeline with fine amounts per incident</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Ownership chain analysis (PE, REIT, operator history)</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing trend analysis (improving or declining?)</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Complaint investigation yield — citations per investigation</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing vs. the 3.48 HPRD threshold cited by 18 state AGs</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Risk score methodology with 42 CFR regulatory references</div>
-                <div className="pdf-compare-item"><span className="pdf-extra">+</span> Print-ready format for attorneys, ombudsmen, and family meetings</div>
-              </div>
-            </div>
-
-            <button className="pdf-upsell-btn" onClick={() => setShowEvidencePreview(true)}>Download Evidence Report — $29</button>
-            <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '6px', textAlign: 'center' }}>Instant PDF download · Source data from CMS · 100% money-back guarantee</div>
-          </div>
         </div>
 
-        {/* Change #14: Bottom Download CTA */}
-        <div className="bottom-download-cta">
-          <div className="bottom-cta-content">
-            <h3>Save this report for later</h3>
-            <p>Download the full evidence report with complete deficiency narratives, penalty timeline, and ownership history.</p>
-          </div>
-          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="↓ Download PDF Report" />
-        </div>
 
         {/* Disclaimer */}
         <div className="disclaimer-box">
