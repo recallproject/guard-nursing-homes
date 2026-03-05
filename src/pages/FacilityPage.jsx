@@ -308,16 +308,6 @@ export function FacilityPage() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
-            // Auto-scroll the nav to keep active link visible
-            const nav = document.querySelector('.section-nav-inner');
-            const activeLink = nav?.querySelector(`a[href="#${entry.target.id}"]`);
-            if (nav && activeLink) {
-              const navRect = nav.getBoundingClientRect();
-              const linkRect = activeLink.getBoundingClientRect();
-              if (linkRect.left < navRect.left || linkRect.right > navRect.right) {
-                activeLink.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-              }
-            }
           }
         });
       },
@@ -496,32 +486,39 @@ export function FacilityPage() {
           </div>
         </div>
 
-        {/* Change #1: Sticky Section Nav */}
-        <nav className="section-nav-sticky">
-          <div className="section-nav-inner">
-            {[
-              { id: 's-safety', label: 'Safety' },
-              { id: 's-inspections', label: 'Inspections' },
-              { id: 's-complaints', label: 'Complaints' },
-              { id: 's-staffing', label: 'Staffing' },
-              { id: 's-quality', label: 'Quality' },
-              { id: 's-fines', label: 'Fines' },
-              { id: 's-fire', label: 'Fire Safety' },
-              { id: 's-ownership', label: 'Ownership' },
-              { id: 's-questions', label: 'Questions' },
-            ].map(sec => (
-              <a key={sec.id} href={`#${sec.id}`} className={`section-nav-link${activeSection === sec.id ? ' active' : ''}`} onClick={e => {
-                e.preventDefault();
-                const el = document.getElementById(sec.id);
-                if (el) {
-                  const navHeight = document.querySelector('.section-nav-sticky')?.offsetHeight || 50;
-                  const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 16;
-                  window.scrollTo({ top, behavior: 'smooth' });
-                }
-              }}>{sec.label}</a>
-            ))}
-          </div>
+        {/* Facility layout: sidebar nav + content sections */}
+        <div className="fp-sections-layout">
+
+        {/* Sticky sidebar nav — methodology-style */}
+        <nav className="fp-sidebar-nav">
+          <div className="fp-sidebar-label">On this page</div>
+          {[
+            { id: 's-safety', num: '01', label: 'Safety' },
+            { id: 's-inspections', num: '02', label: 'Inspections' },
+            { id: 's-complaints', num: '03', label: 'Complaints' },
+            { id: 's-staffing', num: '04', label: 'Staffing' },
+            { id: 's-quality', num: '05', label: 'Quality' },
+            { id: 's-fines', num: '06', label: 'Fines' },
+            { id: 's-fire', num: '07', label: 'Fire Safety' },
+            { id: 's-ownership', num: '08', label: 'Ownership' },
+            { id: 's-questions', num: '09', label: 'Questions' },
+          ].map(sec => (
+            <a key={sec.id} href={`#${sec.id}`} className={`fp-sidebar-link${activeSection === sec.id ? ' active' : ''}`} onClick={e => {
+              e.preventDefault();
+              const el = document.getElementById(sec.id);
+              if (el) {
+                const top = el.getBoundingClientRect().top + window.scrollY - 24;
+                window.scrollTo({ top, behavior: 'smooth' });
+              }
+            }}>
+              <span className="fp-sidebar-num">{sec.num}</span>
+              {sec.label}
+            </a>
+          ))}
         </nav>
+
+        {/* Main sections content */}
+        <div className="fp-sections-main">
 
         {/* Section 01 — Safety Score */}
         <div className="section" id="s-safety">
@@ -2317,6 +2314,9 @@ export function FacilityPage() {
         )}
 
         <ClinicianCTA />
+
+        </div>{/* end fp-sections-main */}
+        </div>{/* end fp-sections-layout */}
 
         <div className="fp-footer-text">
           <p style={{ fontSize: '0.72rem', color: 'var(--text-muted, #94A3B8)', lineHeight: '1.6', maxWidth: '680px', margin: '0 auto 10px', opacity: 0.85 }}>

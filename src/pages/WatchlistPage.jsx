@@ -121,7 +121,8 @@ export function WatchlistPage() {
     avgRisk: facilities.length > 0
       ? (facilities.reduce((sum, f) => sum + (f.composite || 0), 0) / facilities.length).toFixed(1)
       : '0.0',
-    jeopardyCitations: facilities.filter(f => (f.jeopardy_count || 0) > 0).length,
+    jeopardyCitations: facilities.reduce((sum, f) => sum + (f.jeopardy_count || 0), 0),
+    jeopardyFacilities: facilities.filter(f => (f.jeopardy_count || 0) > 0).length,
     staffingIssues: facilities.filter(f => (f.rn_gap_pct || 0) > 25).length
   };
 
@@ -260,15 +261,20 @@ export function WatchlistPage() {
             </div>
             <div className="watchlist-stat-card">
               <div className="watchlist-stat-value">{stats.avgRisk}</div>
-              <div className="watchlist-stat-label">Average Risk Score</div>
+              <div className="watchlist-stat-label">Avg Risk Score</div>
+              <div className="watchlist-stat-context">out of 100 · higher = worse</div>
             </div>
             <div className="watchlist-stat-card">
               <div className="watchlist-stat-value watchlist-stat-danger">{stats.jeopardyCitations}</div>
               <div className="watchlist-stat-label">Jeopardy Citations</div>
+              {stats.jeopardyFacilities > 0 && (
+                <div className="watchlist-stat-context">across {stats.jeopardyFacilities} {stats.jeopardyFacilities === 1 ? 'facility' : 'facilities'}</div>
+              )}
             </div>
             <div className="watchlist-stat-card">
               <div className="watchlist-stat-value watchlist-stat-warning">{stats.staffingIssues}</div>
-              <div className="watchlist-stat-label">Staffing Issues</div>
+              <div className="watchlist-stat-label">Staffing Flags</div>
+              <div className="watchlist-stat-context">gap &gt; 25% between reported &amp; payroll</div>
             </div>
           </div>
 
@@ -385,8 +391,9 @@ export function WatchlistPage() {
                     </div>
                   )}
                   {(facility.rn_gap_pct || 0) > 25 && (
-                    <div className="watchlist-stat-item stat-warning">
-                      <span className="watchlist-stat-text">staffing discrepancy</span>
+                    <div className="watchlist-stat-item stat-flag">
+                      <span className="watchlist-stat-num">⚠</span>
+                      <span className="watchlist-stat-text">staffing discrepancy flagged</span>
                     </div>
                   )}
                 </div>
