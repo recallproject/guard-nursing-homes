@@ -23,9 +23,9 @@ const US_STATES = {
 };
 
 const TABS = [
-  { id: 'staffing', label: 'Staffing Failures' },
-  { id: 'zero-rn', label: 'Zero-RN Violators' },
-  { id: 'ownership', label: 'Ownership Red Flags' },
+  { id: 'staffing', label: 'Below-Threshold Staffing' },
+  { id: 'zero-rn', label: 'Zero-RN Days' },
+  { id: 'ownership', label: 'Ownership Review' },
 ];
 
 const AG_THRESHOLDS = {
@@ -544,7 +544,7 @@ export function AGToolkitPage() {
       <div className="ag-toolkit-header" ref={headerRef}>
         <h1>Attorney General Screening Toolkit</h1>
         <p className="ag-toolkit-subtitle">
-          Enforcement-ready analysis of nursing home staffing violations
+          Enforcement-ready analysis of nursing home staffing and compliance data
         </p>
         <div className="ag-toolkit-context">
           On February 2, 2026, <strong>18 state Attorneys General</strong> — led by California, Massachusetts, and
@@ -599,7 +599,7 @@ export function AGToolkitPage() {
             </div>
             <div className="ag-toolkit-stat-card">
               <div className="ag-toolkit-stat-value stat-danger">{stats.zeroRn}</div>
-              <div className="ag-toolkit-stat-label">Zero-RN Violators</div>
+              <div className="ag-toolkit-stat-label">Zero-RN Day Facilities</div>
             </div>
             <div className="ag-toolkit-stat-card">
               <div className="ag-toolkit-stat-value stat-warning">{stats.forProfitJeopardy}</div>
@@ -702,7 +702,7 @@ export function AGToolkitPage() {
               <>Staffing data from CMS Payroll-Based Journal, Q3 2025. Federal law requires a registered nurse (RN) on site at least 8 hours every day. "Zero-RN Days" shows the percentage of days where the facility reported <strong>no RN hours at all</strong> — based on payroll data submitted to CMS. Note: "Total Staff Hrs/Day" includes <strong>all staff combined</strong> (CNA + LPN + RN) — a high number does not mean RNs were present.</>
             )}
             {activeTab === 'ownership' && (
-              <>Staffing data Q3 2025 · Deficiencies 2017–2025 · Penalties 2023–2025. For-profit operators with 5+ facilities where patterns of low staffing, jeopardy citations, or significant fines suggest systemic issues across the portfolio.</>
+              <>Staffing data Q3 2025 · Deficiencies 2017–2025 · Penalties 2023–2025. For-profit operators with 5+ facilities where patterns of low staffing, jeopardy citations, or significant fines may warrant further review across the portfolio.</>
             )}
           </div>
 

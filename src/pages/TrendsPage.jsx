@@ -196,8 +196,8 @@ export function TrendsPage() {
     return sortOrder === 'asc' ? aVal - bVal : bVal - aVal;
   });
 
-  // Identify top 5 worst states by risk
-  const top5Worst = [...stateArray]
+  // Identify top 5 highest risk states
+  const top5HighestRisk = [...stateArray]
     .sort((a, b) => parseFloat(b.avgRisk) - parseFloat(a.avgRisk))
     .slice(0, 5)
     .map(s => s.code);
@@ -212,7 +212,7 @@ export function TrendsPage() {
   };
 
   // Calculate national quarterly trends from facility staffing_trend data
-  const quarterLabels = ['Q2 2024', 'Q3 2024', 'Q4 2024', 'Q3 2025'];
+  const quarterLabels = ['Q2 2024', 'Q3 2024', 'Q4 2024', 'Q1 2025'];
   const quarterlyNational = quarterLabels.map(q => {
     const vals = { rn_hprd: [], total_hprd: [], zero_rn_pct: [], contractor_pct: [] };
     facilities.forEach(fac => {
@@ -467,9 +467,9 @@ export function TrendsPage() {
         <div className="trends-table-wrapper" ref={stateTableRef}>
           {isCompactView ? (
             <>
-              {/* Worst 5 */}
+              {/* Highest Risk 5 */}
               <div className="trends-compact-group">
-                <h3 className="trends-compact-label trends-label-worst">Highest Risk States</h3>
+                <h3 className="trends-compact-label trends-label-highest-risk">Highest Risk States</h3>
                 <table className="trends-table trends-table-compact">
                   <thead>
                     <tr>
@@ -569,7 +569,7 @@ export function TrendsPage() {
                   {(Array.isArray(displayStates) ? displayStates : sortedStates).map(state => (
                     <tr
                       key={state.code}
-                      className={top5Worst.includes(state.code) ? 'trends-row-highlight' : ''}
+                      className={top5HighestRisk.includes(state.code) ? 'trends-row-highlight' : ''}
                     >
                       <td className="trends-state-name">{state.name}</td>
                       <td className="mono">{state.facilities.toLocaleString()}</td>

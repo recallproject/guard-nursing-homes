@@ -246,12 +246,12 @@ export default function HighRiskPage() {
           <div className="stat-card">
             <div className="stat-value">{summaryStats.avgStaffing.toFixed(2)}</div>
             <div className="stat-label">Average Total HPRD</div>
-            <div className="stat-subtext">Critically understaffed</div>
+            <div className="stat-subtext">Below 3.5 HPRD</div>
           </div>
           <div className="stat-card">
             <div className="stat-value">{summaryStats.statesRepresented}</div>
             <div className="stat-label">States Represented</div>
-            <div className="stat-subtext">Nationwide issue</div>
+            <div className="stat-subtext">Across all states</div>
           </div>
         </div>
 
@@ -387,7 +387,7 @@ export default function HighRiskPage() {
         </div>
 
         {/* Explainer */}
-        <CollapsibleSection title="What makes a facility 'high risk'?" defaultOpen={false}>
+        <CollapsibleSection title="What makes a facility 'high risk'?" defaultOpen={true}>
           <div className="explainer-content">
             <p>
               A facility is classified as <strong>high-risk</strong> when it meets <strong>all five</strong> of the following criteria:
@@ -395,13 +395,12 @@ export default function HighRiskPage() {
             <ul>
               <li><strong>1-star overall quality rating</strong> — The lowest rating CMS assigns</li>
               <li><strong>Total fines exceeding $100,000</strong> — Indicates serious violations with financial penalties</li>
-              <li><strong>Total staffing below 3.5 hours per resident per day (HPRD)</strong> — Critically understaffed</li>
+              <li><strong>Total staffing below 3.5 hours per resident per day (HPRD)</strong> — Below CMS staffing thresholds</li>
               <li><strong>Days with zero registered nurses on site</strong> — Federal law requires an RN 8 hours daily, 7 days a week</li>
-              <li><strong>15 or more total deficiencies</strong> — A pattern of regulatory violations</li>
+              <li><strong>15 or more total deficiencies</strong> — Multiple regulatory citations</li>
             </ul>
             <p>
-              These facilities represent a convergence of quality failures, safety violations, staffing shortages, and
-              accountability issues. These facilities are not singled out arbitrarily — they are identified because they meet
+              These facilities represent a convergence of low quality ratings, regulatory citations, staffing levels below thresholds, and ownership patterns. These facilities are not singled out arbitrarily — they are identified because they meet
               every threshold simultaneously across multiple independent data sources.
             </p>
             <h3>Data Sources</h3>

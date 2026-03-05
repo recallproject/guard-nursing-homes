@@ -490,6 +490,12 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .high-risk-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .high-risk-page {
     padding: 60px 0 40px;
@@ -506,6 +512,14 @@
   .high-risk-stats-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 2rem;
   }
 
   .section-title {
@@ -533,6 +547,47 @@
 
   .pagination-btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .high-risk-title {
+    font-size: 1.75rem;
+  }
+
+  .high-risk-count-badge {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.25rem;
+  }
+
+  .stat-card {
+    padding: 1.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .high-risk-table {
+    min-width: 550px;
+    font-size: 0.75rem;
+  }
+
+  .high-risk-table th,
+  .high-risk-table td {
+    padding: 0.4rem;
+  }
+
+  .high-risk-table th {
+    font-size: 0.65rem;
+  }
+
+  .facility-link {
+    font-size: 0.75rem;
   }
 }
 

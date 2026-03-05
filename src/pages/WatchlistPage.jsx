@@ -121,7 +121,7 @@ export function WatchlistPage() {
     avgRisk: facilities.length > 0
       ? (facilities.reduce((sum, f) => sum + (f.composite || 0), 0) / facilities.length).toFixed(1)
       : '0.0',
-    seriousConcerns: facilities.filter(f => (f.jeopardy_count || 0) > 0).length,
+    jeopardyCitations: facilities.filter(f => (f.jeopardy_count || 0) > 0).length,
     staffingIssues: facilities.filter(f => (f.rn_gap_pct || 0) > 25).length
   };
 
@@ -157,7 +157,7 @@ export function WatchlistPage() {
   const downloadCSV = () => {
     if (!filteredFacilities.length) return;
 
-    const headers = ['Facility', 'CCN', 'City', 'State', 'Risk Score', 'Stars', 'Total Fines', 'Serious Harm', 'Total Deficiencies', 'Staffing Discrepancy', 'Date Added'];
+    const headers = ['Facility', 'CCN', 'City', 'State', 'Risk Score', 'Stars', 'Total Fines', 'Jeopardy Citations', 'Total Deficiencies', 'Staffing Discrepancy', 'Date Added'];
     const rows = filteredFacilities.map(f => [
       f.name,
       f.ccn,
@@ -241,10 +241,10 @@ export function WatchlistPage() {
       {/* Empty State */}
       {facilities.length === 0 ? (
         <div className="watchlist-empty">
-          <div className="watchlist-empty-icon">★</div>
+          <div className="watchlist-empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <h2>No favorites yet</h2>
           <p>
-            Click the ☆ on any facility to add it here. Compare them side by side, then export a spreadsheet of your picks.
+            Click the star icon on any facility to add it here. Compare them side by side, then export a spreadsheet of your picks.
           </p>
           <Link to="/" state={{ jumpToMap: true }} className="btn btn-primary">
             Explore the Map
@@ -263,8 +263,8 @@ export function WatchlistPage() {
               <div className="watchlist-stat-label">Average Risk Score</div>
             </div>
             <div className="watchlist-stat-card">
-              <div className="watchlist-stat-value watchlist-stat-danger">{stats.seriousConcerns}</div>
-              <div className="watchlist-stat-label">Serious Concerns</div>
+              <div className="watchlist-stat-value watchlist-stat-danger">{stats.jeopardyCitations}</div>
+              <div className="watchlist-stat-label">Jeopardy Citations</div>
             </div>
             <div className="watchlist-stat-card">
               <div className="watchlist-stat-value watchlist-stat-warning">{stats.staffingIssues}</div>
@@ -369,7 +369,7 @@ export function WatchlistPage() {
                   {(facility.jeopardy_count || 0) > 0 && (
                     <div className="watchlist-stat-item stat-danger">
                       <span className="watchlist-stat-num">{facility.jeopardy_count}</span>
-                      <span className="watchlist-stat-text">serious harm</span>
+                      <span className="watchlist-stat-text">jeopardy citations</span>
                     </div>
                   )}
                   {(facility.total_deficiencies || 0) > 0 && (

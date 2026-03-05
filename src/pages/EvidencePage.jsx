@@ -440,7 +440,7 @@ export function EvidencePage() {
               )}
               <div className="ev-text-block">
                 <p>
-                  Peer-reviewed research has linked private equity ownership of nursing homes to increased mortality rates, decreased staffing, and higher Medicare spending. PE-backed facilities face unique financial pressures from leveraged debt structures.
+                  Some peer-reviewed studies have examined the relationship between private equity ownership of nursing homes and outcomes including mortality rates, staffing levels, and Medicare spending. PE-backed facilities may face different financial pressures from leveraged debt structures.
                 </p>
               </div>
             </>
@@ -463,7 +463,7 @@ export function EvidencePage() {
                 </div>
               )}
               <div className="ev-alert">
-                <strong>Ownership Transition:</strong> This facility changed ownership recently. Research shows facilities in ownership transition often experience temporary quality disruptions as new management adjusts care processes and staffing.
+                <strong>Ownership Transition:</strong> This facility changed ownership recently. Some research has examined quality metrics during ownership transitions, noting potential changes as new management adjusts care processes and staffing.
               </div>
             </>
           )}
@@ -474,7 +474,7 @@ export function EvidencePage() {
               <h3 className="ev-subsection">Owner Portfolio Analysis</h3>
               <div className="ev-text-block">
                 <p>
-                  This facility is operated by <strong>{facility.worst_owner}</strong>, who controls{' '}
+                  This facility is operated by (Parent Organization): <strong>{facility.worst_owner}</strong>, who controls{' '}
                   <strong>{ownershipPortfolio.count} facilities</strong> across{' '}
                   <strong>{ownershipPortfolio.states} states</strong>.{' '}
                   Average star rating: <strong>{ownershipPortfolio.avgStars}</strong>.{' '}
@@ -589,7 +589,7 @@ export function EvidencePage() {
                 const totalDrop = ((facility.total_hprd - facility.weekend_total_hprd) / facility.total_hprd * 100);
                 return totalDrop > 20 ? (
                   <div className="ev-alert">
-                    <strong>Weekend Staffing Gap:</strong> Weekend staffing drops {totalDrop.toFixed(1)}% below weekday levels. Research indicates residents receive substantially fewer hours of nursing care on weekends, increasing risk of undetected deterioration and delayed response to medical events.
+                    <strong>Weekend Staffing Gap:</strong> Weekend staffing drops {totalDrop.toFixed(1)}% below weekday levels. CMS Payroll-Based Journal data shows staffing levels typically differ between weekdays and weekends. Weekend staffing patterns may be relevant when evaluating overall care capacity.
                   </div>
                 ) : null;
               })()}

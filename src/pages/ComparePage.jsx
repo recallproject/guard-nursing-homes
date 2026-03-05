@@ -2,7 +2,7 @@
  * ComparePage.jsx — "Know Your Options"
  *
  * MOCKUP — Not yet wired into live routing (existing route was a placeholder).
- * Honest breakdown of every nursing home search tool available.
+ * Comparison of nursing home search tools.
  * Every claim about competitors is sourced to public records.
  */
 
@@ -23,7 +23,7 @@ export default function ComparePage() {
     <div className="compare-page" ref={pageRef}>
       <Helmet>
         <title>Know Your Options | Nursing Home Search Tools Compared | The Oversight Report</title>
-        <meta name="description" content="An honest comparison of every nursing home search tool — Medicare Care Compare, ProPublica, A Place for Mom, and more. Learn how they work, who pays them, and what they don't tell you." />
+        <meta name="description" content="A comparison of nursing home search tools — Medicare Care Compare, ProPublica, A Place for Mom, and more. Learn how they work, who pays them, and what they don't tell you." />
       </Helmet>
 
       {/* ============ HERO ============ */}
@@ -31,8 +31,7 @@ export default function ComparePage() {
         <div className="container-narrow">
           <h1>Know Your Options</h1>
           <p className="compare-subtitle">
-            An honest guide to every nursing home search tool available — what they do,
-            how they make money, and what they don't show you.
+            A side-by-side comparison of nursing home search tools — features, revenue models, and data transparency.
           </p>
           <div className="compare-hero-callout">
             Choosing a nursing home is one of the most important decisions a family will make.
@@ -158,7 +157,7 @@ export default function ComparePage() {
 
             <div className="compare-verdict">
               <strong>Start here.</strong> This is the most comprehensive data source available.
-              But the ratings can be misleading and the interface makes it hard to understand what you're looking at.
+              But the ratings may not tell the complete story and the interface can be difficult to navigate.
               Use it for raw data, not as your only source.
             </div>
           </div>
@@ -341,7 +340,7 @@ export default function ComparePage() {
           <div className="compare-tool-card compare-tool-card--referral">
             <div className="compare-tool-header">
               <h3 className="compare-tool-name">A Place for Mom</h3>
-              <span className="compare-tool-badge compare-tool-badge--conflict">Conflict of Interest</span>
+              <span className="compare-tool-badge compare-tool-badge--conflict">Referral-Based Revenue</span>
             </div>
             <p className="compare-tool-tagline">
               The largest for-profit senior care referral service in the U.S. Network of approximately
@@ -387,7 +386,7 @@ export default function ComparePage() {
                   formal probe into A Place for Mom's business practices. The investigation found
                   that <strong>38% of families</strong> ended up paying above their stated budget,
                   rising to <strong>55% for memory care placements</strong>. Casey's letter accused
-                  the company of "potentially deceptive marketing practices" by presenting itself as
+                  the company of marketing practices that may not fully disclose its commission-based model while presenting itself as
                   "unbiased and no-cost" while exclusively recommending commission-paying facilities.
                   <br/><br/>
                   <a className="compare-source-link" href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer">
@@ -489,7 +488,7 @@ export default function ComparePage() {
               <strong>Understand the incentive.</strong> A Place for Mom is not a neutral guide —
               it is a lead generation service paid by facilities. That doesn't mean every recommendation
               is bad. But the Senate, the Washington Post, and multiple state legislatures have
-              documented a pattern of misleading families about the nature of the service.
+              documented concerns about transparency regarding the commission-based nature of the service.
             </div>
           </div>
 
@@ -497,7 +496,7 @@ export default function ComparePage() {
           <div className="compare-tool-card compare-tool-card--referral">
             <div className="compare-tool-header">
               <h3 className="compare-tool-name">Caring.com</h3>
-              <span className="compare-tool-badge compare-tool-badge--conflict">Conflict of Interest</span>
+              <span className="compare-tool-badge compare-tool-badge--conflict">Referral-Based Revenue</span>
             </div>
             <p className="compare-tool-tagline">
               The second-largest senior living referral site. Same commission-based model as A Place
@@ -528,10 +527,10 @@ export default function ComparePage() {
                 <h5>Review Removal Practices</h5>
                 <div className="record-date">Ongoing</div>
                 <p>
-                  Consumer complaints document that facilities can contest any negative review
-                  on Caring.com regardless of its truthfulness. Caring.com will remove the review
-                  if the facility objects — with no mechanism requiring the facility to substantiate
-                  its complaint. This effectively allows facilities to scrub critical reviews.
+                  Consumer complaints reported on review sites document that facilities can contest negative reviews
+                  on Caring.com. According to consumer reports, Caring.com will remove a review
+                  if the facility objects — with limited verification mechanisms. This policy is documented in consumer forums
+                  and feedback sites.
                   <br/><br/>
                   <a className="compare-source-link" href="https://www.reviewopedia.com/caring-com-reviews" target="_blank" rel="noopener noreferrer">
                     Reviewopedia — Consumer Analysis

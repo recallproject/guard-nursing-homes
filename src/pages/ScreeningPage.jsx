@@ -35,7 +35,7 @@ export function ScreeningPage() {
   const [filterRisk, setFilterRisk] = useState('all'); // all, high, critical
   const [filterOwnership, setFilterOwnership] = useState('all');
   const [filterStaffingGap, setFilterStaffingGap] = useState(false);
-  const [filterDanger, setFilterDanger] = useState(false);
+  const [filterJeopardy, setFilterJeopardy] = useState(false);
   const [filterZeroRN, setFilterZeroRN] = useState(false);
 
   const headerRef = useRef(null);
@@ -135,7 +135,7 @@ export function ScreeningPage() {
     facilities = facilities.filter(f => (f.rn_gap_pct || 0) > 25);
   }
 
-  if (filterDanger) {
+  if (filterJeopardy) {
     facilities = facilities.filter(f => (f.jeopardy_count || 0) > 0);
   }
 
@@ -193,7 +193,7 @@ export function ScreeningPage() {
     totalFacilities: stateSummary.count,
     highRiskCount: facilities.filter(f => (f.composite || 0) >= 60).length,
     highRiskPct: stateSummary.count > 0 ? ((facilities.filter(f => (f.composite || 0) >= 60).length / stateSummary.count) * 100).toFixed(1) : '0',
-    dangerCount: facilities.filter(f => (f.jeopardy_count || 0) > 0).length,
+    jeopardyCount: facilities.filter(f => (f.jeopardy_count || 0) > 0).length,
     zeroRnCount: facilities.filter(f => (f.zero_rn_pct || 0) > 0).length,
     totalFines: stateSummary.total_fines,
     staffingGapCount: facilities.filter(f => (f.rn_gap_pct || 0) > 25).length
@@ -228,7 +228,7 @@ export function ScreeningPage() {
   const downloadCSV = () => {
     if (!facilities.length) return;
 
-    const headers = ['Rank', 'Facility', 'CCN', 'City', 'State', 'Owner', 'Risk Score', 'Stars', 'Staffing (min/day)', 'RN Gap %', 'Total Fines', 'Fine Count', 'Jeopardy Count', 'Harm Count', 'Total Deficiencies', 'Ownership Type'];
+    const headers = ['Rank', 'Facility', 'CCN', 'City', 'State', 'Owner', 'Risk Score', 'Stars', 'Total HPRD', 'RN Gap %', 'Total Fines', 'Fine Count', 'Jeopardy Count', 'Harm Count', 'Total Deficiencies', 'Ownership Type'];
     const rows = facilities.map((f, i) => [
       i + 1,
       f.name,
@@ -238,7 +238,7 @@ export function ScreeningPage() {
       f.worst_owner || '',
       f.composite?.toFixed(1) || '0',
       f.stars || 0,
-      Math.round((f.total_hprd || 0) * 60),
+      (f.total_hprd || 0).toFixed(1),
       f.rn_gap_pct?.toFixed(1) || '0',
       f.total_fines || 0,
       f.fine_count || 0,
@@ -301,7 +301,7 @@ export function ScreeningPage() {
     doc.setFont('helvetica', 'normal');
     doc.text(`• ${stats.totalFacilities} facilities, ${stats.highRiskCount} high-risk (${stats.highRiskPct}%)`, margin + 3, currentY);
     currentY += 5;
-    doc.text(`• ${formatCurrency(stats.totalFines)} total fines | ${stats.dangerCount} serious harm citations`, margin + 3, currentY);
+    doc.text(`• ${formatCurrency(stats.totalFines)} total fines | ${stats.jeopardyCount} serious harm citations`, margin + 3, currentY);
     currentY += 5;
     doc.text(`• ${stats.staffingGapCount} facilities with staffing discrepancies`, margin + 3, currentY);
     currentY += 12;
@@ -432,7 +432,7 @@ export function ScreeningPage() {
               <div className="screening-stat-label">High Risk ({stats.highRiskPct}%)</div>
             </div>
             <div className="screening-stat-card">
-              <div className="screening-stat-value screening-stat-danger">{stats.dangerCount}</div>
+              <div className="screening-stat-value screening-stat-danger">{stats.jeopardyCount}</div>
               <div className="screening-stat-label">Serious Harm Citations</div>
             </div>
             <div className="screening-stat-card">
@@ -485,8 +485,8 @@ export function ScreeningPage() {
               <label>
                 <input
                   type="checkbox"
-                  checked={filterDanger}
-                  onChange={(e) => setFilterDanger(e.target.checked)}
+                  checked={filterJeopardy}
+                  onChange={(e) => setFilterJeopardy(e.target.checked)}
                 />
                 <span>Serious harm citations</span>
               </label>
@@ -549,9 +549,9 @@ export function ScreeningPage() {
                       Stars {sortBy === 'stars' && (sortOrder === 'asc' ? '↑' : '↓')}
                     </th>
                     <th onClick={() => handleSort('staffing')} className="sortable">
-                      Staffing (min/day) {sortBy === 'staffing' && (sortOrder === 'asc' ? '↑' : '↓')}
+                      Total HPRD {sortBy === 'staffing' && (sortOrder === 'asc' ? '↑' : '↓')}
                     </th>
-                    <th>Discrepancy</th>
+                    <th>RN Staffing Gap</th>
                     <th onClick={() => handleSort('fines')} className="sortable">
                       Fines (3yr) {sortBy === 'fines' && (sortOrder === 'asc' ? '↑' : '↓')}
                     </th>
@@ -581,7 +581,7 @@ export function ScreeningPage() {
                       </td>
                       <td className="screening-stars">{renderStars(facility.stars || 0)}</td>
                       <td className="screening-staffing mono">
-                        {Math.round((facility.total_hprd || 0) * 60)}
+                        {(facility.total_hprd || 0).toFixed(1)}
                       </td>
                       <td>
                         {(facility.rn_gap_pct || 0) > 25 ? (

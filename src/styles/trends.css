@@ -224,6 +224,10 @@
   font-size: 1rem;
 }
 
+.mono {
+  text-align: right;
+}
+
 /* ========================================
    COMING SOON SECTION
    ======================================== */
@@ -770,7 +774,7 @@
   margin-bottom: 0.5rem;
 }
 
-.trends-label-worst {
+.trends-label-highest-risk {
   color: #DC2626;
 }
 

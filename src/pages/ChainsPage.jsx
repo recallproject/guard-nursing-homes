@@ -156,7 +156,7 @@ export function ChainsPage() {
   // Stats for header
   const totalChains = chains.length;
   const totalFacilities = chains.reduce((sum, c) => sum + (c.numberOfFacilities || 0), 0);
-  const worstAvgStars = chains.length > 0
+  const lowestAvgStars = chains.length > 0
     ? Math.min(...chains.map(c => c.averageOverall5StarRating || 5))
     : 0;
   const highestTotalFines = chains.length > 0
@@ -251,7 +251,7 @@ export function ChainsPage() {
           <div className="stat-label">Facilities Covered</div>
         </div>
         <div className="stat-card">
-          <div className="stat-value">{worstAvgStars.toFixed(1)} ★</div>
+          <div className="stat-value">{lowestAvgStars.toFixed(1)} ★</div>
           <div className="stat-label">Lowest Avg Stars</div>
         </div>
         <div className="stat-card">
@@ -298,7 +298,7 @@ export function ChainsPage() {
             <label>Sort By:</label>
             <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
               <option value="totalFines">Total Fines</option>
-              <option value="avgStars">Avg Stars (worst first)</option>
+              <option value="avgStars">Avg Stars (lowest first)</option>
               <option value="facilities">Number of Facilities</option>
               <option value="abusePct">Abuse Citations %</option>
               <option value="staffingHPRD">Avg Staffing HPRD (lowest first)</option>

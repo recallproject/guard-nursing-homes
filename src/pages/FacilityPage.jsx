@@ -19,6 +19,48 @@ import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisM
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
+// Accordion component for abuse/neglect citation groups
+function AbuseGroupAccordion({ ftag, desc, defs, harmCount, hasActualHarm }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`abuse-group${hasActualHarm ? ' severe' : ''}`}>
+      <button
+        className="abuse-group-header abuse-accordion-toggle"
+        onClick={() => setOpen(o => !o)}
+        aria-expanded={open}
+        type="button"
+      >
+        <span className={`f-tag ${hasActualHarm ? 'red' : 'orange'}`}>{ftag}</span>
+        <div className="abuse-group-info">
+          <div className="abuse-group-title">{desc}</div>
+          <div className="abuse-group-stats">
+            {defs.length} citation{defs.length > 1 ? 's' : ''}
+            {harmCount > 0 && <> · <strong style={{ color: 'var(--accent-red, #f85149)' }}>{harmCount} with actual harm</strong></>}
+          </div>
+        </div>
+        <svg className={`abuse-chevron${open ? ' open' : ''}`} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      {open && (
+        <div className="abuse-group-items">
+          {defs.map((def, idx) => {
+            const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
+            const harmLabel = def.severity_label === 'Immediate Jeopardy' ? 'Actual Harm' : def.severity_label === 'Actual Harm' ? 'Actual Harm' : 'No Actual Harm';
+            const surveyType = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
+            return (
+              <div key={idx} className="abuse-group-item">
+                <div className="abuse-text">{def.description}</div>
+                <div className="abuse-detail">{harmLabel} · {surveyType} · {year}</div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // Quality measure categories — organized by clinical theme, matching mockup v2
 const QM_CATEGORIES = [
   {
@@ -987,29 +1029,7 @@ export function FacilityPage() {
                         const hasActualHarm = harmCount > 0;
                         const desc = ftagDescriptions[ftag] || 'Abuse/Neglect Regulation';
                         return (
-                          <div key={ftag} className={`abuse-group${hasActualHarm ? ' severe' : ''}`}>
-                            <div className="abuse-group-header">
-                              <span className={`f-tag ${hasActualHarm ? 'red' : 'orange'}`}>{ftag}</span>
-                              <div className="abuse-group-info">
-                                <div className="abuse-group-title">{desc}</div>
-                                <div className="abuse-group-stats">
-                                  {defs.length} citation{defs.length > 1 ? 's' : ''}
-                                  {harmCount > 0 && <> · <strong style={{ color: 'var(--accent-red, #f85149)' }}>{harmCount} with actual harm</strong></>}
-                                </div>
-                              </div>
-                            </div>
-                            {defs.map((def, idx) => {
-                              const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
-                              const harmLabel = def.severity_label === 'Immediate Jeopardy' ? 'Actual Harm' : def.severity_label === 'Actual Harm' ? 'Actual Harm' : 'No Actual Harm';
-                              const surveyType = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
-                              return (
-                                <div key={idx} className="abuse-group-item">
-                                  <div className="abuse-text">{def.description}</div>
-                                  <div className="abuse-detail">{harmLabel} · {surveyType} · {year}</div>
-                                </div>
-                              );
-                            })}
-                          </div>
+                          <AbuseGroupAccordion key={ftag} ftag={ftag} desc={desc} defs={defs} harmCount={harmCount} hasActualHarm={hasActualHarm} />
                         );
                       });
                     })()}
