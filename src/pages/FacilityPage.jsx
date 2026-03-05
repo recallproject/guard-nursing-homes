@@ -1189,13 +1189,13 @@ export function FacilityPage() {
                 const utiBad = uti != null && utiAvg != null && uti > utiAvg * 1.3;
                 if (puBad && utiBad) {
                   return { level: 'concern', title: 'Elevated Bedsore & Infection Rates',
-                    text: <>Above-average pressure ulcers and urinary tract infections &mdash; the two clearest indicators of understaffing. Bedsores happen when residents aren&rsquo;t being repositioned. UTIs happen when residents aren&rsquo;t getting basic hygiene care.</> };
+                    text: <>Pressure ulcer rate of <strong>{pu.toFixed(1)}%</strong> and UTI rate of <strong>{uti.toFixed(1)}%</strong> both exceed national averages ({puAvg.toFixed(1)}% and {utiAvg.toFixed(1)}%, respectively). These metrics are commonly used indicators of care quality in nursing homes.</> };
                 }
                 if (puBad || utiBad) {
                   return { level: 'caution', title: puBad ? 'Above-Average Bedsore Rate' : 'Above-Average UTI Rate',
                     text: puBad
-                      ? <><strong>{pu.toFixed(1)}%</strong> of residents developed bedsores vs <strong>{puAvg.toFixed(1)}%</strong> national average. Bedsores are almost entirely preventable with proper repositioning.</>
-                      : <><strong>{uti.toFixed(1)}%</strong> of residents have UTIs vs <strong>{utiAvg.toFixed(1)}%</strong> national average. UTIs in nursing homes often indicate delayed incontinence care.</> };
+                      ? <><strong>{pu.toFixed(1)}%</strong> of residents developed pressure ulcers vs <strong>{puAvg.toFixed(1)}%</strong> national average. Pressure ulcer rates are a standard quality metric tracked by CMS.</>
+                      : <><strong>{uti.toFixed(1)}%</strong> of residents have UTIs vs <strong>{utiAvg.toFixed(1)}%</strong> national average. UTI rates are a standard quality metric tracked by CMS.</> };
                 }
                 return null;
               }
@@ -1942,8 +1942,8 @@ export function FacilityPage() {
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                   </div>
                   <div className="verdict-text">
-                    <h3 className="concern">Pattern of Poor Performance Across Portfolio</h3>
-                    <p><strong>{facility.owner_pct_below_avg.toFixed(0)}% of this operator's {facility.owner_portfolio_count} facilities are rated below average.</strong> This isn't one bad facility — it's a systemic pattern across the operator's entire portfolio.{facility.pe_owned ? ' This operator is private equity-backed.' : ''}</p>
+                    <h3 className="concern">Below-Average Ratings Across Portfolio</h3>
+                    <p><strong>{facility.owner_pct_below_avg.toFixed(0)}% of this operator's {facility.owner_portfolio_count} facilities are rated below average</strong> based on CMS star ratings. This metric reflects the operator's overall portfolio performance as reported by CMS.{facility.pe_owned ? ' This operator is private equity-backed.' : ''}</p>
                   </div>
                 </div>
               )}
@@ -1994,7 +1994,7 @@ export function FacilityPage() {
               </div>
               <div className="verdict-text">
                 <h3 className="caution">Frequent Ownership Changes</h3>
-                <p><strong>{facility.num_owners} owners on CMS records.</strong> Frequent ownership changes are associated with care disruptions. New owners may cut staff, change vendors, or restructure operations. Research shows quality typically dips in the 1-2 years following an acquisition.{facility.pe_owned ? ' The current operator is private equity-backed.' : ''}</p>
+                <p><strong>{facility.num_owners} owners on CMS records.</strong> Research has found that ownership transitions are associated with temporary changes in care quality metrics. CMS tracks ownership history as part of its facility oversight.{facility.pe_owned ? ' The current operator is private equity-backed.' : ''}</p>
               </div>
             </div>
           )}
@@ -2124,24 +2124,27 @@ export function FacilityPage() {
 
         {/* Evidence Package CTA */}
         <div className="paid-upsell">
-          <div className="paid-upsell-header">
-            <h3>Need This for a Case?</h3>
-            <span className="paid-price">$29</span>
+          <div className="paid-upsell-accent" />
+          <div className="paid-upsell-body">
+            <div className="paid-upsell-header">
+              <h3>Need This for a Case?</h3>
+              <span className="paid-price">$29</span>
+            </div>
+            <div className="paid-upsell-desc">
+              A professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 16 federal databases into a single documented report.
+            </div>
+            <div className="paid-features">
+              <span className="paid-feature">Numbered source citations</span>
+              <span className="paid-feature">Multi-year trend analysis</span>
+              <span className="paid-feature">Side-by-side state/national comparisons</span>
+              <span className="paid-feature">Full ownership network map</span>
+              <span className="paid-feature">Staffing discrepancy documentation</span>
+              <span className="paid-feature">Related-party transaction detail</span>
+            </div>
+            <button className="btn-evidence" onClick={() => setShowEvidencePreview(true)}>Preview Evidence Package</button>
+            <div className="paid-upsell-note">One-time purchase. Instant download. Used by attorneys, journalists, and regulators.</div>
+            <a href="/evidence-sample" className="paid-upsell-sample-link">↓ See a full sample report</a>
           </div>
-          <div className="paid-upsell-desc">
-            A professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 16 federal databases into a single documented report.
-          </div>
-          <div className="paid-features">
-            <span className="paid-feature">Numbered source citations</span>
-            <span className="paid-feature">Multi-year trend analysis</span>
-            <span className="paid-feature">Side-by-side state/national comparisons</span>
-            <span className="paid-feature">Full ownership network map</span>
-            <span className="paid-feature">Staffing discrepancy documentation</span>
-            <span className="paid-feature">Related-party transaction detail</span>
-          </div>
-          <button className="btn-evidence" onClick={() => setShowEvidencePreview(true)}>Preview Evidence Package</button>
-          <div className="paid-upsell-note">One-time purchase. Instant download. Used by attorneys, journalists, and regulators.</div>
-          <a href="/evidence-sample" className="paid-upsell-sample-link">↓ See a full sample report</a>
         </div>
 
 
