@@ -587,7 +587,20 @@
   border: 1px solid #D7E0EA;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
   padding: 2.5rem 2.5rem 2rem;
+  border-top: 3.5px solid transparent;
+  overflow: hidden;
 }
+
+/* Colored top borders per section — methodology-style treatment */
+#s-safety        { border-top-color: #0D9488; } /* teal — primary brand */
+#s-inspections   { border-top-color: #3B82F6; } /* blue */
+#s-complaints    { border-top-color: #6366F1; } /* indigo */
+#s-staffing      { border-top-color: #F59E0B; } /* amber */
+#s-quality       { border-top-color: #059669; } /* emerald */
+#s-fines         { border-top-color: #8B5CF6; } /* violet */
+#s-fire          { border-top-color: #EA580C; } /* orange (not red) */
+#s-ownership     { border-top-color: #0891B2; } /* cyan */
+#s-questions     { border-top-color: #64748B; } /* slate */
 
 /* Ownership alerts section — tighter padding, no double-boxing */
 .fp-ownership-alerts {

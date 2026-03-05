@@ -200,7 +200,7 @@ export function FacilityPage() {
   const [qmTab, setQmTab] = useState('memory');
   const [expandedQm, setExpandedQm] = useState(null);
   // Change #1: Active section tracking for nav
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('s-safety');
   // Change #3: Deficiency filter state
   const [defSeverityFilter, setDefSeverityFilter] = useState('all');
   const [defYearFilter, setDefYearFilter] = useState('all');
@@ -300,27 +300,34 @@ export function FacilityPage() {
       .catch(() => {});
   }, [facility?.state, ccn]);
 
-  // Change #1: Intersection Observer for active section nav tracking
+  // Intersection Observer for active section nav tracking (same pattern as methodology page)
   useEffect(() => {
     const sectionIds = ['s-safety', 's-inspections', 's-complaints', 's-staffing', 's-quality', 's-fines', 's-fire', 's-ownership', 's-questions'];
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
+            // Auto-scroll the nav to keep active link visible
+            const nav = document.querySelector('.section-nav-inner');
+            const activeLink = nav?.querySelector(`a[href="#${entry.target.id}"]`);
+            if (nav && activeLink) {
+              const navRect = nav.getBoundingClientRect();
+              const linkRect = activeLink.getBoundingClientRect();
+              if (linkRect.left < navRect.left || linkRect.right > navRect.right) {
+                activeLink.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+              }
+            }
           }
-        }
+        });
       },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
     );
-    const timer = setTimeout(() => {
-      sectionIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) observer.observe(el);
-      });
-    }, 500);
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
     return () => {
-      clearTimeout(timer);
       observer.disconnect();
     };
   }, []);
@@ -505,7 +512,12 @@ export function FacilityPage() {
             ].map(sec => (
               <a key={sec.id} href={`#${sec.id}`} className={`section-nav-link${activeSection === sec.id ? ' active' : ''}`} onClick={e => {
                 e.preventDefault();
-                document.getElementById(sec.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const el = document.getElementById(sec.id);
+                if (el) {
+                  const navHeight = document.querySelector('.section-nav-sticky')?.offsetHeight || 50;
+                  const top = el.getBoundingClientRect().top + window.scrollY - navHeight - 16;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                }
               }}>{sec.label}</a>
             ))}
           </div>
