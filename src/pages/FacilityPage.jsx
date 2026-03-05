@@ -320,7 +320,7 @@ export function FacilityPage() {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [loading]);
 
   if (loading) {
     return (

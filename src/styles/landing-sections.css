@@ -1469,14 +1469,27 @@
   text-align: center;
   position: relative;
   transition: all 0.3s ease;
+  border-top: 3.5px solid transparent;
 }
+
+/* Colored top borders per tool card */
+.coming-soon-card:nth-child(1) { border-top-color: #0D9488; } /* State Screening — teal */
+.coming-soon-card:nth-child(2) { border-top-color: #3B82F6; } /* Staffing Discrepancy — blue */
+.coming-soon-card:nth-child(3) { border-top-color: #6366F1; } /* Ownership Network — indigo */
+.coming-soon-card:nth-child(4) { border-top-color: #8B5CF6; } /* Download Reports — violet */
+.coming-soon-card:nth-child(5) { border-top-color: #F59E0B; } /* Favorites — amber */
+.coming-soon-card:nth-child(6) { border-top-color: #059669; } /* Historical Trends — emerald */
+.coming-soon-card:nth-child(7) { border-top-color: #0891B2; } /* Chain Rankings — cyan */
+.coming-soon-card:nth-child(8) { border-top-color: #EA580C; } /* High-Risk — orange */
 
 .coming-soon-card:not(.coming-soon-card--live) {
   opacity: 0.5;
 }
 
 .coming-soon-card--live:hover {
-  border-color: var(--primary);
+  border-left-color: var(--primary);
+  border-right-color: var(--primary);
+  border-bottom-color: var(--primary);
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(43, 108, 176, 0.08);
 }
