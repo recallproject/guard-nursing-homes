@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works — Updated Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1D3557;
+    --blue: #2B6CB0;
+    --teal: #14b8a6;
+    --border: #D7E0EA;
+    --border-subtle: #E8EDF2;
+    --text-dim: #64748B;
+    --text-muted: #94A3B8;
+    --bg: #F2F5F8;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Spacer ── */
+  .spacer { height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .spacer p { font-size: 14px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* ── Wrapper ── */
+  .hiw-wrapper { max-width: 100%; }
+  .section-header {
+    margin: 24px auto 16px;
+    max-width: 720px;
+    padding: 32px 40px 28px;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(29,53,87,0.06);
+    text-align: center;
+  }
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(22px, 2.8vw, 30px); font-weight: 700;
+    color: var(--navy); margin-bottom: 6px;
+  }
+  .section-sub { font-size: 14px; color: var(--text-dim); }
+
+  /* ── Scroll container ── */
+  .hiw-scroll { height: 700vh; position: relative; }
+  .hiw-sticky {
+    position: sticky; top: 0; height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 16px 24px;
+  }
+
+  /* Step label */
+  .step-label { text-align: center; margin-bottom: 12px; min-height: 48px; }
+  .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 3px;
+  }
+  .step-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(15px, 1.8vw, 19px); font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* Browser frame */
+  .browser-wrap { width: 100%; max-width: 900px; }
+  .browser {
+    background: #FFFFFF; border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(29,53,87,0.15), 0 8px 24px rgba(29,53,87,0.08), 0 2px 6px rgba(0,0,0,0.04);
+    border: 1px solid #C8D3E0; overflow: hidden;
+  }
+  .browser-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 16px; background: #F8FAFC;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .dots { display: flex; gap: 6px; }
+  .dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .dots span:nth-child(1) { background: #EF4444; }
+  .dots span:nth-child(2) { background: #F59E0B; }
+  .dots span:nth-child(3) { background: #22C55E; }
+  .url-bar {
+    flex: 1; background: #FFFFFF; border: 1px solid var(--border);
+    border-radius: 6px; padding: 5px 14px;
+    font-size: 13px; color: var(--text-dim); text-align: center;
+  }
+  .url-bar strong { color: var(--navy); font-weight: 600; }
+
+  /* Viewport */
+  .viewport { position: relative; height: clamp(420px, 62vh, 540px); overflow: hidden; }
+  .scene {
+    position: absolute; inset: 0; opacity: 0;
+    pointer-events: none;
+    overflow-y: auto;
+  }
+  .scene.active {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s ease;
+  }
+  .scene.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .scene::-webkit-scrollbar { display: none; }
+
+  /* Progress */
+  .progress-track {
+    margin-top: 12px; width: 100%; max-width: 900px;
+    height: 3px; background: var(--border); border-radius: 2px;
+  }
+  .progress-fill {
+    height: 100%; background: var(--navy); border-radius: 2px;
+    transition: width 0.1s linear;
+  }
+
+  /* ═══════════════════════════════════════════
+     SCENE 1: SEARCH
+     ═══════════════════════════════════════════ */
+  .s1-page {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 50px 40px 40px; background: #FFFFFF; height: 100%;
+  }
+  .s1-eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 18px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease 0.05s, transform 0.5s ease 0.05s;
+  }
+  .s1-heading {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(24px, 3.2vw, 34px); font-weight: 700;
+    color: var(--navy); margin-bottom: 12px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
+  }
+  .s1-sub {
+    font-size: 15px; color: var(--text-dim);
+    max-width: 440px; line-height: 1.55; margin-bottom: 28px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease 0.25s, transform 0.5s ease 0.25s;
+  }
+  .s1-pill {
+    display: flex; align-items: center; width: 100%; max-width: 460px;
+    border: 1.5px solid var(--navy); border-radius: 28px;
+    background: #FFFFFF; padding: 0 6px 0 18px; height: 52px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease 0.35s, transform 0.5s ease 0.35s;
+  }
+  .s1-pill svg { margin-right: 10px; flex-shrink: 0; }
+  .s1-pill-text { flex: 1; font-size: 15px; color: var(--navy); }
+  .s1-cursor {
+    display: inline-block; width: 1.5px; height: 18px;
+    background: var(--navy); vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .s1-browse {
+    margin-top: 14px; font-size: 13px; color: var(--text-dim);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s;
+  }
+  .s1-browse a { color: var(--blue); text-decoration: none; font-weight: 500; }
+  .s1-source {
+    margin-top: 28px; font-size: 12px; font-style: italic; color: var(--text-muted);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.5s ease 0.55s, transform 0.5s ease 0.55s;
+  }
+
+  /* Scene 1 revealed state */
+  #scene0.active .s1-eyebrow,
+  #scene0.active .s1-heading,
+  #scene0.active .s1-sub,
+  #scene0.active .s1-pill,
+  #scene0.active .s1-browse,
+  #scene0.active .s1-source { opacity: 1; transform: translateY(0); }
+
+  /* ═══════════════════════════════════════════
+     SCENE 2: CROSS-REFERENCE
+     ═══════════════════════════════════════════ */
+  .s2-page { padding: 24px 32px; background: #FFFFFF; position: relative; }
+
+  /* Records counter — top right */
+  .s2-records-counter {
+    position: absolute; top: 20px; right: 28px;
+    text-align: right;
+  }
+  .s2-records-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 8px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 2px;
+    display: block;
+  }
+  .s2-records-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(20px, 2.8vw, 28px); font-weight: 700;
+    color: var(--teal); line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .s2-records-sublabel {
+    font-family: 'JetBrains Mono', monospace; font-size: 8px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted); display: block; margin-top: 2px;
+  }
+
+  .s2-header {
+    font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 8px;
+  }
+  .s2-count-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: rgba(20,184,166,0.1); color: var(--teal);
+    padding: 3px 10px; border-radius: 4px; margin-bottom: 16px;
+  }
+
+  /* Each row starts hidden and slides in */
+  .s2-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid var(--border-subtle);
+    opacity: 0; transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .s2-row.revealed { opacity: 1; transform: translateX(0); }
+
+  /* Checkmark icon — animates from gray circle to green check */
+  .s2-icon {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: #E2E8F0; color: transparent;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    transition: background 0.35s ease 0.2s, color 0.35s ease 0.2s;
+  }
+  .s2-row.revealed .s2-icon {
+    background: rgba(22,163,74,0.12);
+    color: #16a34a;
+  }
+  .s2-icon svg { width: 11px; height: 11px; }
+
+  .s2-info { flex: 1; min-width: 0; }
+  .s2-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .s2-desc { font-size: 10.5px; color: var(--text-muted); margin-top: 1px; }
+  .s2-count {
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
+    color: var(--text-dim); flex-shrink: 0;
+  }
+  .s2-more {
+    padding: 10px 0; font-size: 12px; color: var(--text-muted);
+    font-style: italic; text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+    opacity: 0; transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .s2-more.revealed { opacity: 1; transform: translateX(0); }
+  .s2-more strong { color: var(--blue); font-style: normal; }
+
+  .s2-findings { margin-top: 12px; }
+  .s2-finding {
+    padding: 12px 14px; border-radius: 8px;
+    font-size: 12.5px; line-height: 1.55; margin-bottom: 6px;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .s2-finding.revealed { opacity: 1; transform: translateY(0); }
+  .s2-finding-red { background: rgba(220,38,38,0.06); border-left: 3px solid #DC2626; color: #991B1B; }
+  .s2-finding-amber { background: rgba(217,119,6,0.06); border-left: 3px solid #D97706; color: #92400E; }
+  .s2-finding strong { font-weight: 700; }
+
+  /* ═══════════════════════════════════════════
+     SCENE 2→3 TRANSITION: Processing overlay
+     ═══════════════════════════════════════════ */
+  #sceneTransition {
+    position: absolute; inset: 0;
+    background: #FFFFFF;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  #sceneTransition.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .st-icon {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(20,184,166,0.1);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    animation: pulse-ring 2s ease-in-out infinite;
+  }
+  @keyframes pulse-ring {
+    0%,100% { box-shadow: 0 0 0 0 rgba(20,184,166,0.3); }
+    50% { box-shadow: 0 0 0 10px rgba(20,184,166,0.0); }
+  }
+  .st-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 6px;
+  }
+  .st-sub { font-size: 12px; color: var(--text-muted); }
+  .st-dots { display: inline-flex; gap: 5px; margin-left: 4px; }
+  .st-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--teal); display: inline-block;
+    animation: dot-bounce 1.2s ease-in-out infinite;
+  }
+  .st-dot:nth-child(2) { animation-delay: 0.2s; }
+  .st-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dot-bounce {
+    0%,80%,100% { transform: scale(1); opacity: 0.4; }
+    40% { transform: scale(1.4); opacity: 1; }
+  }
+
+  /* ═══════════════════════════════════════════
+     SCENE 3: REPORT CARD
+     ═══════════════════════════════════════════ */
+  .s3-page { padding: 0 28px 40px; background: #FFFFFF; }
+
+  /* Topbar */
+  .s3-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+    opacity: 0; transform: translateY(-8px);
+    transition: opacity 0.4s ease 0.05s, transform 0.4s ease 0.05s;
+  }
+  #scene2.active .s3-topbar { opacity: 1; transform: translateY(0); }
+
+  .s3-topbar-left { display: flex; align-items: center; gap: 14px; }
+  .s3-back { font-size: 12px; color: var(--text-muted); }
+  .s3-tab-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); }
+  .s3-topbar-right { display: flex; align-items: center; gap: 8px; }
+  .s3-btn-outline {
+    font-size: 10px; color: var(--text-dim);
+    border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px;
+  }
+  .s3-btn-solid {
+    font-size: 10px; font-weight: 600; color: #FFF;
+    background: var(--navy); border-radius: 6px; padding: 5px 12px;
+  }
+
+  /* Name + star badge */
+  .s3-name-row {
+    display: flex; align-items: flex-start; gap: 14px; margin-bottom: 4px;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+  }
+  #scene2.active .s3-name-row { opacity: 1; transform: translateY(0); }
+
+  .s3-star-badge {
+    display: flex; align-items: center; gap: 3px;
+    background: #B42318; color: #fff; font-size: 13px; font-weight: 700;
+    padding: 4px 10px; border-radius: 6px; flex-shrink: 0; margin-top: 4px;
+  }
+  .s3-star-badge svg { width: 12px; height: 12px; fill: #fff; }
+  .s3-name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(18px, 2.4vw, 24px); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.01em;
+    color: var(--navy);
+  }
+
+  .s3-meta {
+    font-size: 12px; color: var(--text-dim); margin-bottom: 4px;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s ease 0.22s, transform 0.4s ease 0.22s;
+  }
+  #scene2.active .s3-meta { opacity: 1; transform: translateY(0); }
+  .s3-meta a { color: var(--blue); text-decoration: none; }
+
+  .s3-ccn {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--text-muted); margin-bottom: 16px;
+    opacity: 0;
+    transition: opacity 0.4s ease 0.28s;
+  }
+  #scene2.active .s3-ccn { opacity: 1; }
+
+  /* Safety level banner */
+  .s3-safety-banner {
+    display: flex; align-items: center; gap: 12px;
+    background: #FEF2F2; border: 1px solid #FECACA;
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.5s ease 0.35s, transform 0.5s ease 0.35s;
+  }
+  #scene2.active .s3-safety-banner { opacity: 1; transform: translateY(0); }
+
+  .s3-safety-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #B42318; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 700; flex-shrink: 0;
+  }
+  .s3-safety-text { flex: 1; }
+  .s3-safety-level {
+    font-size: 13px; font-weight: 700; color: #B42318;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px;
+  }
+  .s3-safety-desc { font-size: 12px; color: #991B1B; line-height: 1.4; }
+  .s3-safety-desc strong { font-weight: 700; }
+
+  /* Severity cards grid */
+  .s3-sec-header {
+    display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 0.4s ease 0.45s, transform 0.4s ease 0.45s;
+  }
+  #scene2.active .s3-sec-header:first-of-type { opacity: 1; transform: translateY(0); }
+  .s3-sec-header.s3-sec-staffing {
+    transition: opacity 0.4s ease 0.85s, transform 0.4s ease 0.85s;
+  }
+  #scene2.active .s3-sec-header.s3-sec-staffing { opacity: 1; transform: translateY(0); }
+
+  .s3-sec-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--blue);
+  }
+  .s3-sec-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px; font-weight: 700; color: var(--navy);
+  }
+  .s3-severity-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+    margin-bottom: 20px;
+  }
+  .s3-sev-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 14px 10px; position: relative; overflow: hidden;
+    opacity: 0; transform: translateY(12px);
+  }
+  /* Staggered card reveals */
+  #scene2.active .s3-sev-card:nth-child(1) { animation: cardReveal 0.5s ease 0.52s forwards; }
+  #scene2.active .s3-sev-card:nth-child(2) { animation: cardReveal 0.5s ease 0.64s forwards; }
+  #scene2.active .s3-sev-card:nth-child(3) { animation: cardReveal 0.5s ease 0.76s forwards; }
+  #scene2.active .s3-sev-card:nth-child(4) { animation: cardReveal 0.5s ease 0.88s forwards; }
+  @keyframes cardReveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .s3-sev-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  }
+  .s3-sev-card.sev-red::before { background: #B42318; }
+  .s3-sev-card.sev-amber::before { background: #D97706; }
+  .s3-sev-card.sev-green::before { background: #16a34a; }
+  .s3-sev-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; margin-bottom: 4px;
+  }
+  .s3-sev-val.val-red { color: #B42318; }
+  .s3-sev-val.val-amber { color: #D97706; }
+  .s3-sev-val.val-green { color: #16a34a; }
+  .s3-sev-label {
+    font-size: 9px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 6px;
+  }
+
+  /* Position indicator — fills left to right on reveal */
+  .s3-position { display: flex; align-items: center; gap: 4px; }
+  .s3-position-bar {
+    flex: 1; height: 4px; background: #F1F5F9; border-radius: 2px;
+    position: relative; overflow: hidden;
+  }
+  .s3-position-fill {
+    position: absolute; left: 0; top: 0; height: 100%; border-radius: 2px;
+    width: 0; /* starts at 0, animated to target */
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .s3-position-marker {
+    position: absolute; top: -3px; width: 2px; height: 10px;
+    background: var(--navy); border-radius: 1px;
+    opacity: 0; transition: opacity 0.3s ease 0.8s;
+  }
+  /* Trigger bar fill when scene is active */
+  #scene2.active .s3-sev-card:nth-child(1) .s3-position-fill { width: 88%; transition-delay: 0.9s; }
+  #scene2.active .s3-sev-card:nth-child(2) .s3-position-fill { width: 72%; transition-delay: 1.0s; }
+  #scene2.active .s3-sev-card:nth-child(3) .s3-position-fill { width: 65%; transition-delay: 1.1s; }
+  #scene2.active .s3-sev-card:nth-child(4) .s3-position-fill { width: 10%; transition-delay: 1.2s; }
+  #scene2.active .s3-position-marker { opacity: 1; transition-delay: 1.7s; }
+
+  .s3-position-pct {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    color: var(--text-dim); flex-shrink: 0; width: 30px; text-align: right;
+  }
+
+  /* Staffing row — staggered reveal */
+  .s3-staffing-sec { margin-bottom: 16px; }
+  .s3-staff-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 0; border-bottom: 1px solid var(--border-subtle);
+    font-size: 12px;
+    opacity: 0; transform: translateX(-8px);
+  }
+  #scene2.active .s3-staff-row:nth-child(1) { animation: rowReveal 0.4s ease 0.95s forwards; }
+  #scene2.active .s3-staff-row:nth-child(2) { animation: rowReveal 0.4s ease 1.08s forwards; }
+  #scene2.active .s3-staff-row:nth-child(3) { animation: rowReveal 0.4s ease 1.21s forwards; }
+  #scene2.active .s3-staff-row:nth-child(4) { animation: rowReveal 0.4s ease 1.34s forwards; }
+  @keyframes rowReveal {
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .s3-staff-label { flex: 1; color: var(--navy); font-weight: 500; }
+  .s3-staff-val {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    font-weight: 600; width: 60px; text-align: right;
+  }
+  .s3-staff-bench {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--text-muted); width: 60px; text-align: right;
+  }
+  .s3-staff-bar-wrap { width: 80px; height: 4px; background: #F1F5F9; border-radius: 2px; overflow: hidden; }
+  .s3-staff-bar {
+    height: 100%; border-radius: 2px;
+    width: 0; transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  #scene2.active .s3-staff-row:nth-child(1) .s3-staff-bar { width: 82%; transition-delay: 1.25s; }
+  #scene2.active .s3-staff-row:nth-child(2) .s3-staff-bar { width: 22%; transition-delay: 1.38s; }
+  #scene2.active .s3-staff-row:nth-child(3) .s3-staff-bar { width: 62%; transition-delay: 1.51s; }
+  #scene2.active .s3-staff-row:nth-child(4) .s3-staff-bar { width: 90%; transition-delay: 1.64s; }
+
+  /* ═══════════════════════════════════════════
+     SCENE 4: CTA
+     ═══════════════════════════════════════════ */
+  .s4-page {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
+    padding: 40px; background: #FFFFFF; height: 100%;
+  }
+  .s4-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(38px, 5vw, 56px); font-weight: 700;
+    color: var(--navy); margin-bottom: 4px;
+    opacity: 0; transform: translateY(16px);
+    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+  }
+  #scene3.active .s4-num { opacity: 1; transform: translateY(0); }
+
+  .s4-sub {
+    font-size: 13px; color: var(--text-muted); margin-bottom: 18px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+  }
+  #scene3.active .s4-sub { opacity: 1; transform: translateY(0); }
+
+  .s4-head {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(20px, 2.8vw, 28px); font-weight: 700;
+    color: var(--navy); margin-bottom: 22px;
+    opacity: 0; transform: translateY(12px);
+    transition: opacity 0.5s ease 0.32s, transform 0.5s ease 0.32s;
+  }
+  #scene3.active .s4-head { opacity: 1; transform: translateY(0); }
+
+  .s4-btn {
+    display: inline-block; padding: 13px 34px; font-size: 15px; font-weight: 600;
+    color: #FFF; background: var(--navy); border: none; border-radius: 8px;
+    cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    opacity: 0;
+    animation: none;
+  }
+  #scene3.active .s4-btn {
+    animation: btnReveal 0.5s ease 0.46s forwards;
+  }
+  @keyframes btnReveal {
+    to { opacity: 1; }
+  }
+  .s4-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29,53,87,0.28);
+    background: #26456e;
+  }
+  .s4-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .s4-link {
+    margin-top: 10px;
+    opacity: 0; transition: opacity 0.5s ease 0.56s;
+  }
+  #scene3.active .s4-link { opacity: 1; }
+  .s4-link a { font-size: 12px; color: var(--text-muted); text-decoration: underline dashed; }
+  .s4-link a:hover { color: var(--blue); }
+
+  /* Scroll hint */
+  .scroll-hint {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    margin-bottom: 8px; pointer-events: none;
+    transition: opacity 0.4s;
+  }
+  .scroll-hint.hidden { opacity: 0; }
+  .scroll-hint-text {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .scroll-hint svg { animation: bounce 2s ease-in-out infinite; color: var(--text-dim); }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+  @media (max-width: 640px) {
+    .s3-severity-grid { grid-template-columns: repeat(2, 1fr); }
+    .viewport { height: 380px; }
+    .s3-page { padding: 0 16px 32px; }
+    .s3-topbar-right { display: none; }
+    .s2-records-counter { top: 14px; right: 16px; }
+    .s2-records-num { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="spacer"><p>&#8595; Scroll down to see the How It Works section</p></div>
+
+<div class="hiw-wrapper">
+  <div class="section-header">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">16 Federal Databases. One Report Card.</div>
+    <div class="section-sub">We cross-reference millions of CMS records so you don't have to.</div>
+  </div>
+
+  <div class="hiw-scroll" id="hiwScroll">
+    <div class="hiw-sticky">
+
+      <div class="scroll-hint" id="scrollHint">
+        <div class="scroll-hint-text">Scroll to explore</div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      </div>
+
+      <div class="step-label" id="stepLabel">
+        <div class="step-num" id="stepNum">Step 1</div>
+        <div class="step-title" id="stepTitle">Start with any facility</div>
+      </div>
+
+      <div class="browser-wrap">
+        <div class="browser">
+          <div class="browser-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="url-bar">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#A0AEC0" style="vertical-align:-1px;margin-right:4px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              <strong>oversightreports.com</strong><span id="urlPath"></span>
+            </div>
+          </div>
+          <div class="viewport">
+
+            <!-- SCENE 1: SEARCH -->
+            <div class="scene active" id="scene0">
+              <div class="s1-page">
+                <div class="s1-eyebrow">Nursing home safety data, independently reviewed</div>
+                <div class="s1-heading">Search any nursing home in America.</div>
+                <div class="s1-sub">Inspections, staffing, fines, and ownership for all 14,713 Medicare-certified facilities.</div>
+                <div class="s1-pill">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <div class="s1-pill-text"><span id="typedText"></span><span class="s1-cursor"></span></div>
+                </div>
+                <div class="s1-browse">or <a href="#">Browse by State</a></div>
+                <div class="s1-source">Based on CMS data through Q3 2025 &middot; How we calculate these numbers</div>
+              </div>
+            </div>
+
+            <!-- SCENE 2: CROSS-REFERENCE -->
+            <div class="scene" id="scene1">
+              <div class="s2-page">
+
+                <!-- Records counter — top right -->
+                <div class="s2-records-counter">
+                  <span class="s2-records-label">Records analyzed</span>
+                  <div class="s2-records-num" id="recordsCounter">0</div>
+                  <span class="s2-records-sublabel">and counting</span>
+                </div>
+
+                <div class="s2-header">Cross-referencing federal records for CCN 355065</div>
+                <div class="s2-count-badge">16 databases queried</div>
+
+                <div class="s2-row" data-count="417391" id="s2r0">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Health inspection records</div>
+                    <div class="s2-desc">Deficiency citations from federal and state surveys</div>
+                  </div>
+                  <div class="s2-count">417,391</div>
+                </div>
+
+                <div class="s2-row" data-count="1260847" id="s2r1">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Payroll-verified staffing</div>
+                    <div class="s2-desc">Daily nurse hours from CMS Payroll-Based Journal</div>
+                  </div>
+                  <div class="s2-count">1,260,847</div>
+                </div>
+
+                <div class="s2-row" data-count="18234" id="s2r2">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Federal penalties &amp; fines</div>
+                    <div class="s2-desc">Civil monetary penalties, payment denials</div>
+                  </div>
+                  <div class="s2-count">18,234</div>
+                </div>
+
+                <div class="s2-row" data-count="151342" id="s2r3">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Ownership &amp; chain networks</div>
+                    <div class="s2-desc">Corporate affiliations, PE/REIT flags, ownership changes</div>
+                  </div>
+                  <div class="s2-count">151,342</div>
+                </div>
+
+                <div class="s2-row" data-count="58852" id="s2r4">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Quality measures</div>
+                    <div class="s2-desc">QRP outcomes, VBP performance, claims-based measures, MDS indicators</div>
+                  </div>
+                  <div class="s2-count">58,852</div>
+                </div>
+
+                <div class="s2-row" data-count="13324" id="s2r5">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Cost report financials</div>
+                    <div class="s2-desc">Revenue, expenses, related-party transactions (HCRIS)</div>
+                  </div>
+                  <div class="s2-count">13,324</div>
+                </div>
+
+                <div class="s2-row" data-count="89416" id="s2r6">
+                  <div class="s2-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+                  <div class="s2-info">
+                    <div class="s2-name">Fire safety &amp; complaints</div>
+                    <div class="s2-desc">Fire code violations, complaint survey investigations</div>
+                  </div>
+                  <div class="s2-count">89,416</div>
+                </div>
+
+                <div class="s2-more" id="s2more">+ <strong>9 more databases</strong> including survey summaries, COVID vaccinations, and staffing trends</div>
+
+                <div class="s2-findings">
+                  <div class="s2-finding s2-finding-red" id="s2f0">
+                    <strong>Staffing discrepancy:</strong> This facility reports adequate staffing but payroll records show <strong>8 min/resident/day</strong> of RN time — 80% below the national average.
+                  </div>
+                  <div class="s2-finding s2-finding-amber" id="s2f1">
+                    <strong>Ownership flag:</strong> Operated by a 94-facility chain with average fines of <strong>$62,530 per facility</strong> — 5x the national average.
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- SCENE 2→3 TRANSITION: Processing overlay -->
+            <div id="sceneTransition">
+              <div class="st-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </div>
+              <div class="st-text">Analysis complete<span class="st-dots"><span class="st-dot"></span><span class="st-dot"></span><span class="st-dot"></span></span></div>
+              <div class="st-sub">Generating report card&hellip;</div>
+            </div>
+
+            <!-- SCENE 3: REPORT CARD -->
+            <div class="scene" id="scene2">
+              <div class="s3-page">
+                <div class="s3-topbar">
+                  <div class="s3-topbar-left">
+                    <span class="s3-back">&#8592; Back to Map</span>
+                    <span class="s3-tab-label">Facility Report Card</span>
+                  </div>
+                  <div class="s3-topbar-right">
+                    <span class="s3-btn-outline">&#9734; Favorite</span>
+                    <span class="s3-btn-solid">&#8595; Download PDF Report</span>
+                  </div>
+                </div>
+
+                <!-- Name + star badge -->
+                <div class="s3-name-row">
+                  <div class="s3-star-badge">
+                    1 <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </div>
+                  <div class="s3-name">Sunset Drive – A Prospera Community</div>
+                </div>
+                <div class="s3-meta">
+                  MANDAN, ND | 128 beds &middot; <a href="#">ProPublica Report</a> &middot; <a href="#">Medicare Compare</a>
+                </div>
+                <div class="s3-ccn">CMS CCN: 355065</div>
+
+                <!-- Safety level banner -->
+                <div class="s3-safety-banner">
+                  <div class="s3-safety-icon">!</div>
+                  <div class="s3-safety-text">
+                    <div class="s3-safety-level">Serious Danger Found</div>
+                    <div class="s3-safety-desc">Inspectors found conditions posing <strong>immediate risk of serious injury or death</strong>. This facility has been fined <strong>$63,925</strong>.</div>
+                  </div>
+                </div>
+
+                <!-- Section: Safety Score -->
+                <div class="s3-sec-header">
+                  <span class="s3-sec-num">01</span>
+                  <span class="s3-sec-title">Safety Score</span>
+                </div>
+
+                <div class="s3-severity-grid">
+                  <div class="s3-sev-card sev-red">
+                    <div class="s3-sev-val val-red">64</div>
+                    <div class="s3-sev-label">Total Deficiencies</div>
+                    <div class="s3-position">
+                      <div class="s3-position-bar">
+                        <div class="s3-position-fill" style="background: linear-gradient(90deg, #22C55E 0%, #F59E0B 50%, #B42318 100%);"></div>
+                        <div class="s3-position-marker" style="left:88%"></div>
+                      </div>
+                      <div class="s3-position-pct">88th</div>
+                    </div>
+                  </div>
+                  <div class="s3-sev-card sev-red">
+                    <div class="s3-sev-val val-red">1</div>
+                    <div class="s3-sev-label">Serious Danger</div>
+                    <div class="s3-position">
+                      <div class="s3-position-bar">
+                        <div class="s3-position-fill" style="background: linear-gradient(90deg, #22C55E 0%, #F59E0B 50%, #B42318 100%);"></div>
+                        <div class="s3-position-marker" style="left:72%"></div>
+                      </div>
+                      <div class="s3-position-pct">72nd</div>
+                    </div>
+                  </div>
+                  <div class="s3-sev-card sev-amber">
+                    <div class="s3-sev-val val-amber">$63,925</div>
+                    <div class="s3-sev-label">Total Fines</div>
+                    <div class="s3-position">
+                      <div class="s3-position-bar">
+                        <div class="s3-position-fill" style="background: linear-gradient(90deg, #22C55E 0%, #F59E0B 50%, #B42318 100%);"></div>
+                        <div class="s3-position-marker" style="left:65%"></div>
+                      </div>
+                      <div class="s3-position-pct">65th</div>
+                    </div>
+                  </div>
+                  <div class="s3-sev-card sev-green">
+                    <div class="s3-sev-val val-green">0%</div>
+                    <div class="s3-sev-label">Zero-RN Days</div>
+                    <div class="s3-position">
+                      <div class="s3-position-bar">
+                        <div class="s3-position-fill" style="background: linear-gradient(90deg, #22C55E 0%, #F59E0B 50%, #B42318 100%);"></div>
+                        <div class="s3-position-marker" style="left:10%"></div>
+                      </div>
+                      <div class="s3-position-pct">10th</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Section: Staffing -->
+                <div class="s3-sec-header s3-sec-staffing">
+                  <span class="s3-sec-num">02</span>
+                  <span class="s3-sec-title">Staffing</span>
+                </div>
+                <div class="s3-staffing-sec">
+                  <div class="s3-staff-row">
+                    <div class="s3-staff-label">Total HPRD</div>
+                    <div class="s3-staff-val" style="color:#16a34a">4.21</div>
+                    <div class="s3-staff-bench">avg 3.82</div>
+                    <div class="s3-staff-bar-wrap"><div class="s3-staff-bar" style="background:#16a34a;"></div></div>
+                  </div>
+                  <div class="s3-staff-row">
+                    <div class="s3-staff-label">RN Hours</div>
+                    <div class="s3-staff-val" style="color:#B42318">0.12</div>
+                    <div class="s3-staff-bench">avg 0.54</div>
+                    <div class="s3-staff-bar-wrap"><div class="s3-staff-bar" style="background:#B42318;"></div></div>
+                  </div>
+                  <div class="s3-staff-row">
+                    <div class="s3-staff-label">Weekend Staffing</div>
+                    <div class="s3-staff-val" style="color:#D97706">3.18</div>
+                    <div class="s3-staff-bench">avg 3.51</div>
+                    <div class="s3-staff-bar-wrap"><div class="s3-staff-bar" style="background:#D97706;"></div></div>
+                  </div>
+                  <div class="s3-staff-row">
+                    <div class="s3-staff-label">Contract Staff</div>
+                    <div class="s3-staff-val" style="color:#B42318">38.2%</div>
+                    <div class="s3-staff-bench">avg 12%</div>
+                    <div class="s3-staff-bar-wrap"><div class="s3-staff-bar" style="background:#B42318;"></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCENE 4: CTA -->
+            <div class="scene" id="scene3">
+              <div class="s4-page">
+                <div class="s4-num">14,713</div>
+                <div class="s4-sub">Every Medicare nursing home in America</div>
+                <div class="s4-head">We ran this analysis for every facility in the country.</div>
+                <button class="s4-btn">Search a facility &#8594;</button>
+                <div class="s4-link"><a href="#">Read our methodology</a></div>
+              </div>
+            </div>
+
+          </div><!-- .viewport -->
+        </div><!-- .browser -->
+      </div><!-- .browser-wrap -->
+
+      <!-- Progress -->
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+    </div><!-- .hiw-sticky -->
+  </div><!-- .hiw-scroll -->
+</div><!-- .hiw-wrapper -->
+
+<div class="spacer"><p>&#8593; End of How It Works section</p></div>
+
+<script>
+/* ─────────────────────────────────────────────
+   CONFIG
+───────────────────────────────────────────── */
+const STEPS = [
+  { num: 'Step 1', title: 'Start with any facility', url: '' },
+  { num: 'Step 2', title: 'We cross-reference 16 federal databases', url: '/facility/355065' },
+  { num: '', title: '', url: '/facility/355065' },            // transition slot
+  { num: 'Step 3', title: 'See what matters — verified to the source', url: '/facility/355065' },
+  { num: '', title: '', url: '' },                            // CTA
+];
+
+// Row reveal timing (seconds from scene2 becoming active)
+const ROW_DELAYS = [0.08, 0.55, 1.0, 1.45, 1.9, 2.35, 2.8];
+
+// Counter targets for each row (must match HTML data-count)
+const ROW_COUNTS = [417391, 1260847, 18234, 151342, 58852, 13324, 89416];
+
+/* ─────────────────────────────────────────────
+   DOM REFS
+───────────────────────────────────────────── */
+const scroll        = document.getElementById('hiwScroll');
+const scenes        = [0,1,2,3].map(i => document.getElementById('scene' + i));
+const sceneTransition = document.getElementById('sceneTransition');
+const stepNum       = document.getElementById('stepNum');
+const stepTitle     = document.getElementById('stepTitle');
+const urlPath       = document.getElementById('urlPath');
+const scrollHint    = document.getElementById('scrollHint');
+const progressFill  = document.getElementById('progressFill');
+const typedEl       = document.getElementById('typedText');
+const recordsCounter = document.getElementById('recordsCounter');
+
+const s2Rows   = Array.from({length: 7}, (_, i) => document.getElementById('s2r' + i));
+const s2More   = document.getElementById('s2more');
+const s2Finds  = [document.getElementById('s2f0'), document.getElementById('s2f1')];
+
+/* ─────────────────────────────────────────────
+   STATE
+───────────────────────────────────────────── */
+// Logical scenes: 0=search, 1=cross-ref, 2=transition, 3=report, 4=cta
+// We map scroll position to 5 logical phases
+let currentLogical = -1;
+let typed          = false;
+let scene2AnimDone = false;
+let counterVal     = 0;
+let counterRAF     = null;
+let rowTimers      = [];
+
+/* ─────────────────────────────────────────────
+   HELPERS
+───────────────────────────────────────────── */
+function formatCounter(n) {
+  return Math.round(n).toLocaleString('en-US');
+}
+
+function easeOutExpo(t) {
+  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+}
+
+/* Animate the records counter from currentVal to targetVal over durationMs */
+function animateCounter(fromVal, toVal, durationMs, onUpdate) {
+  cancelAnimationFrame(counterRAF);
+  const start = performance.now();
+  const delta = toVal - fromVal;
+  let last = fromVal;
+  function step(now) {
+    const elapsed = now - start;
+    const t = Math.min(1, elapsed / durationMs);
+    const easedT = easeOutExpo(t);
+    const current = fromVal + delta * easedT;
+    if (Math.round(current) !== Math.round(last)) {
+      recordsCounter.textContent = formatCounter(current);
+      if (onUpdate) onUpdate(current);
+    }
+    last = current;
+    if (t < 1) {
+      counterRAF = requestAnimationFrame(step);
+    } else {
+      recordsCounter.textContent = formatCounter(toVal);
+    }
+  }
+  counterRAF = requestAnimationFrame(step);
+}
+
+/* Reveal a single scene2 row and add its count to the counter */
+function revealRow(rowIndex) {
+  const row = s2Rows[rowIndex];
+  if (!row || row.classList.contains('revealed')) return;
+  row.classList.add('revealed');
+
+  // Animate counter up by this row's count
+  const addCount = ROW_COUNTS[rowIndex];
+  const fromVal  = counterVal;
+  const toVal    = counterVal + addCount;
+  counterVal     = toVal;
+  animateCounter(fromVal, toVal, 600);
+}
+
+/* Reveal the "+9 more" line and findings */
+function revealExtras() {
+  s2More.classList.add('revealed');
+  setTimeout(() => s2Finds[0].classList.add('revealed'), 200);
+  setTimeout(() => s2Finds[1].classList.add('revealed'), 600);
+}
+
+/* Schedule all row reveals for scene2 */
+function startScene2Animation() {
+  // Clear any previous timers
+  rowTimers.forEach(t => clearTimeout(t));
+  rowTimers = [];
+  counterVal = 0;
+  recordsCounter.textContent = '0';
+
+  // Un-reveal rows (for re-entry)
+  s2Rows.forEach(r => { if(r) r.classList.remove('revealed'); });
+  s2More.classList.remove('revealed');
+  s2Finds.forEach(f => f.classList.remove('revealed'));
+
+  ROW_DELAYS.forEach((delay, i) => {
+    const t = setTimeout(() => revealRow(i), delay * 1000);
+    rowTimers.push(t);
+  });
+
+  // Extras after last row
+  const extrasDelay = (ROW_DELAYS[ROW_DELAYS.length - 1] + 0.5) * 1000;
+  rowTimers.push(setTimeout(revealExtras, extrasDelay));
+}
+
+/* Reset scene2 state when leaving */
+function resetScene2() {
+  rowTimers.forEach(t => clearTimeout(t));
+  rowTimers = [];
+  cancelAnimationFrame(counterRAF);
+}
+
+/* ─────────────────────────────────────────────
+   SCENE VISIBILITY
+───────────────────────────────────────────── */
+// logical: 0=search, 1=cross-ref, 2=transition, 3=report, 4=cta
+function showLogical(logical) {
+  if (logical === currentLogical) return;
+  const prev = currentLogical;
+  currentLogical = logical;
+
+  // Map logical to visual scene index
+  // scene0=search(0), scene1=cross-ref(1), sceneTransition=overlay(2), scene2=report(3), scene3=cta(4)
+
+  // Hide all scenes
+  scenes.forEach(s => s.classList.remove('active'));
+  sceneTransition.classList.remove('active');
+
+  if (logical === 0) {
+    scenes[0].classList.add('active');
+    resetScene2();
+    // Typing animation
+    if (!typed) {
+      typed = true;
+      const text = 'Sunset Drive Care';
+      let i = 0;
+      const iv = setInterval(() => {
+        if (i < text.length) { typedEl.textContent = text.substring(0, ++i); }
+        else clearInterval(iv);
+      }, 55);
+    }
+    updateStepLabel(0);
+  } else if (logical === 1) {
+    scenes[1].classList.add('active');
+    startScene2Animation();
+    updateStepLabel(1);
+  } else if (logical === 2) {
+    // Transition overlay: show on top of scene1
+    scenes[1].classList.add('active');
+    sceneTransition.classList.add('active');
+    updateStepLabel(1);
+  } else if (logical === 3) {
+    scenes[2].classList.add('active');
+    updateStepLabel(3);
+  } else if (logical === 4) {
+    scenes[3].classList.add('active');
+    updateStepLabel(4);
+  }
+}
+
+function updateStepLabel(logical) {
+  const labels = [
+    { num: 'Step 1', title: 'Start with any facility', url: '' },
+    { num: 'Step 2', title: 'We cross-reference 16 federal databases', url: '/facility/355065' },
+    { num: 'Step 2', title: 'We cross-reference 16 federal databases', url: '/facility/355065' },
+    { num: 'Step 3', title: 'See what matters — verified to the source', url: '/facility/355065' },
+    { num: '',        title: '',                                          url: '' },
+  ];
+  const l = labels[logical] || labels[0];
+  stepNum.textContent   = l.num;
+  stepTitle.textContent = l.title;
+  urlPath.textContent   = l.url;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL HANDLER
+───────────────────────────────────────────── */
+function onScroll() {
+  const rect  = scroll.getBoundingClientRect();
+  if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+  const scrolled = -rect.top;
+  const total    = scroll.offsetHeight - window.innerHeight;
+  if (total <= 0) return;
+  const p = Math.max(0, Math.min(1, scrolled / total));
+
+  progressFill.style.width = (p * 100) + '%';
+
+  if (p > 0.05) scrollHint.classList.add('hidden');
+  else scrollHint.classList.remove('hidden');
+
+  // 5 logical phases across the scroll:
+  //  0.00–0.15  → scene 0 (search)
+  //  0.15–0.45  → scene 1 (cross-ref, rows animate in)
+  //  0.45–0.55  → scene 2 (transition overlay)
+  //  0.55–0.80  → scene 3 (report card)
+  //  0.80–1.00  → scene 4 (CTA)
+  let logical;
+  if      (p < 0.15) logical = 0;
+  else if (p < 0.45) logical = 1;
+  else if (p < 0.55) logical = 2;
+  else if (p < 0.80) logical = 3;
+  else               logical = 4;
+
+  showLogical(logical);
+}
+
+/* ─────────────────────────────────────────────
+   INIT
+───────────────────────────────────────────── */
+window.addEventListener('scroll', onScroll, { passive: true });
+
+const obs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) onScroll();
+}, { threshold: 0.05 });
+obs.observe(scroll);
+
+// Kick off scene 0 reveals immediately on load
+setTimeout(() => {
+  if (currentLogical === -1 || currentLogical === 0) {
+    scenes[0].classList.add('active');
+    currentLogical = 0;
+    updateStepLabel(0);
+  }
+}, 100);
+</script>
+</body>
+</html>

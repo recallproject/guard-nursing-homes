@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quality Measures v3 — All 18 Datasets | The Oversight Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #EDF1F7;
+      --bg-card: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --bg-card-hover: #F0F4F8;
+      --border: #D7E0EA;
+      --border-subtle: #E8EDF2;
+      --primary: #2B6CB0;
+      --primary-light: #4A90D9;
+      --primary-dark: #1D4E7E;
+      --accent-red: #DC2626;
+      --accent-red-soft: rgba(220, 38, 38, 0.08);
+      --accent-orange: #D97706;
+      --accent-orange-soft: rgba(217, 119, 6, 0.08);
+      --accent-green: #059669;
+      --accent-green-soft: rgba(5, 150, 105, 0.08);
+      --accent-teal: #0D9488;
+      --accent-purple: #7C3AED;
+      --accent-purple-soft: rgba(124, 58, 237, 0.06);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-deep); color: var(--text-primary);
+      line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 40px 24px;
+    }
+    .page-wrap { max-width: 920px; margin: 0 auto; }
+    .mockup-note { text-align: center; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .mockup-desc { text-align: center; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    .section {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 16px; padding: 36px 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px;
+    }
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .section-number {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+      color: var(--primary); background: rgba(43,108,176,0.08); padding: 2px 8px; border-radius: 4px;
+    }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-primary); }
+    .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px; margin-left: 48px; }
+    .section-source {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+      color: var(--text-muted); background: var(--bg-light); border: 1px solid var(--border-subtle);
+      padding: 3px 8px; border-radius: 4px; margin-left: auto; white-space: nowrap;
+    }
+    .new-badge {
+      font-size: 0.6rem; font-weight: 800; color: #FFF; background: var(--accent-teal);
+      padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-left: 12px; vertical-align: middle;
+    }
+
+    /* TABS */
+    .qm-tabs {
+      display: flex; gap: 0; margin-bottom: 24px;
+      border-bottom: 2px solid var(--border-subtle); overflow-x: auto;
+    }
+    .qm-tab {
+      padding: 10px 16px; font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .qm-tab:hover { color: var(--text-primary); }
+    .qm-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .tab-count {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700;
+      background: var(--bg-light); border: 1px solid var(--border-subtle); padding: 1px 5px; border-radius: 4px;
+    }
+    .qm-tab.active .tab-count { background: rgba(43,108,176,0.08); border-color: rgba(43,108,176,0.2); color: var(--primary); }
+    .tab-flag { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tab-flag.red { background: var(--accent-red); }
+    .tab-flag.orange { background: var(--accent-orange); }
+    .tab-flag.green { background: var(--accent-green); }
+
+    .qm-panel { display: none; }
+    .qm-panel.active { display: block; }
+
+    /* VERDICT */
+    .verdict-banner { border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px; }
+    .verdict-banner.concern { background: linear-gradient(135deg, rgba(220,38,38,0.05), rgba(220,38,38,0.02)); border: 1px solid rgba(220,38,38,0.12); }
+    .verdict-banner.caution { background: linear-gradient(135deg, rgba(217,119,6,0.05), rgba(217,119,6,0.02)); border: 1px solid rgba(217,119,6,0.12); }
+    .verdict-banner.ok { background: linear-gradient(135deg, rgba(5,150,105,0.05), rgba(5,150,105,0.02)); border: 1px solid rgba(5,150,105,0.12); }
+    .verdict-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .verdict-icon.concern { background: var(--accent-red-soft); color: var(--accent-red); }
+    .verdict-icon.caution { background: var(--accent-orange-soft); color: var(--accent-orange); }
+    .verdict-icon.ok { background: var(--accent-green-soft); color: var(--accent-green); }
+    .verdict-icon svg { width: 20px; height: 20px; }
+    .verdict-text h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .verdict-text h3.concern { color: var(--accent-red); }
+    .verdict-text h3.caution { color: var(--accent-orange); }
+    .verdict-text h3.ok { color: var(--accent-green); }
+    .verdict-text p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+    .verdict-text strong { color: var(--text-primary); }
+
+    /* INDICATORS */
+    .indicators { display: flex; flex-direction: column; gap: 18px; }
+    .indicator { display: flex; flex-direction: column; gap: 6px; }
+    .indicator-header { display: flex; align-items: center; justify-content: space-between; }
+    .indicator-name { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+    .info-btn {
+      width: 16px; height: 16px; border-radius: 50%; background: var(--bg-light);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-muted); font-size: 0.6rem; font-weight: 700; transition: all 0.2s;
+    }
+    .info-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+    .indicator-values { display: flex; align-items: baseline; gap: 6px; }
+    .fval { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; }
+    .fval.red { color: var(--accent-red); } .fval.orange { color: var(--accent-orange); }
+    .fval.green { color: var(--accent-green); } .fval.neutral { color: var(--text-secondary); }
+    .vs { font-size: 0.7rem; color: var(--text-muted); }
+    .natl { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+    .indicator-bar-wrap { position: relative; height: 8px; background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: 6px; overflow: visible; }
+    .indicator-bar { height: 100%; border-radius: 6px 0 0 6px; }
+    .indicator-bar.red { background: linear-gradient(90deg, rgba(220,38,38,0.15), rgba(220,38,38,0.5)); }
+    .indicator-bar.orange { background: linear-gradient(90deg, rgba(217,119,6,0.15), rgba(217,119,6,0.45)); }
+    .indicator-bar.green { background: linear-gradient(90deg, rgba(5,150,105,0.15), rgba(5,150,105,0.45)); }
+    .natl-marker { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--text-muted); border-radius: 1px; z-index: 2; }
+    .natl-marker::after { content: 'avg'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    .indicator-explainer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .indicator.expanded .indicator-explainer { max-height: 300px; }
+    .indicator-explainer-inner { background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px 14px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; }
+    .indicator-explainer-inner strong { color: var(--text-primary); }
+
+    .direction-note { font-size: 0.7rem; color: var(--text-muted); font-style: italic; margin-top: 14px; }
+
+    /* SFF BADGE */
+    .sff-banner {
+      background: linear-gradient(135deg, rgba(220,38,38,0.06), rgba(220,38,38,0.02));
+      border: 2px solid rgba(220,38,38,0.2);
+      border-radius: 12px; padding: 20px 24px; margin-bottom: 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+    }
+    .sff-badge-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent-red); color: #FFF;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;
+      text-align: center; line-height: 1.1;
+    }
+    .sff-text h3 { font-size: 1rem; font-weight: 700; color: var(--accent-red); margin-bottom: 4px; }
+    .sff-text p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+    .sff-text a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+    /* COMPLAINT / ABUSE STATS */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px; margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--bg-light); border: 1px solid var(--border-subtle);
+      border-radius: 10px; padding: 16px; text-align: center;
+    }
+    .stat-card .stat-value {
+      font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700;
+    }
+    .stat-card .stat-value.red { color: var(--accent-red); }
+    .stat-card .stat-value.orange { color: var(--accent-orange); }
+    .stat-card .stat-value.green { color: var(--accent-green); }
+    .stat-card .stat-value.blue { color: var(--primary); }
+    .stat-card .stat-label {
+      font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-top: 4px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    /* CMS REMOVED CALLOUT */
+    .cms-removed-callout {
+      background: linear-gradient(135deg, rgba(217,119,6,0.06), rgba(217,119,6,0.02));
+      border: 1px solid rgba(217,119,6,0.18);
+      border-radius: 8px; padding: 10px 14px; margin-top: 12px;
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 0.78rem; line-height: 1.55; color: var(--text-secondary);
+    }
+    .cms-removed-callout svg {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--accent-orange);
+    }
+    .cms-removed-callout strong { color: var(--accent-orange); font-weight: 700; }
+    .cms-removed-callout a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+    /* DISCLAIMER */
+    .qm-disclaimer {
+      background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: 10px;
+      padding: 14px 18px; font-size: 0.75rem; color: var(--text-muted); line-height: 1.7;
+      display: flex; gap: 10px; align-items: flex-start; margin-top: 24px;
+    }
+    .qm-disclaimer svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .qm-disclaimer a { color: var(--primary); text-decoration: none; }
+
+    .existing-section {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px;
+      padding: 28px 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px; opacity: 0.4;
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 24px 18px; }
+      .section-subtitle { margin-left: 0; }
+      .qm-tab { padding: 8px 10px; font-size: 0.75rem; }
+      .verdict-banner { flex-direction: column; gap: 10px; }
+      .indicator-header { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="mockup-note">Facility Page v3 — All 18 CMS Datasets Integrated</div>
+  <div class="mockup-desc">Real national averages from downloaded data. Fake facility "Sunny Acres" used for demonstration. Includes: MDS quality measures, claims-based QM, SNF VBP (staff turnover), fire safety, complaint investigations, abuse citations, and Special Focus Facility status.</div>
+
+  <!-- Existing context -->
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <span class="section-title">Safety Overview &amp; Star Rating</span>
+    </div>
+  </div>
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-title">Ownership &amp; PE/REIT Status</span>
+    </div>
+  </div>
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-title">How Much Care Do Residents Get? (Staffing)</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 04: HOW ARE RESIDENTS DOING?
+  ═══════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-title">How Are Residents Doing?<span class="new-badge">New</span></span>
+      <span class="section-source">CMS MDS + Claims QM · Feb 2026</span>
+    </div>
+    <div class="section-subtitle">Federal quality measures for all long-stay and short-stay residents — reported quarterly by every Medicare-certified nursing home.</div>
+
+    <!-- SFF BANNER (only shown for SFF facilities) -->
+    <div class="sff-banner">
+      <div class="sff-badge-icon">SFF</div>
+      <div class="sff-text">
+        <h3>Special Focus Facility</h3>
+        <p>CMS has designated this facility for heightened scrutiny due to a <strong>pattern of serious quality issues</strong>. Only ~88 of 14,713 nursing homes in the country are on this list. SFF facilities are inspected twice as often as normal. <a href="/methodology#sff">What does this mean? →</a></p>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="qm-tabs">
+      <button class="qm-tab active" onclick="switchTab('memory')">
+        Memory Care <span class="tab-count">5</span> <span class="tab-flag red"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('body')">
+        Body &amp; Basic Care <span class="tab-count">7</span> <span class="tab-flag orange"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('rehab')">
+        Rehab &amp; Short-Stay <span class="tab-count">9</span> <span class="tab-flag red"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('safety')">
+        Safety Record <span class="tab-count">8</span> <span class="tab-flag red"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('workforce')">
+        Workforce <span class="tab-count">2</span> <span class="tab-flag orange"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('vaccines')">
+        Vaccines <span class="tab-count">6</span> <span class="tab-flag red"></span>
+      </button>
+    </div>
+
+    <!-- ══════ TAB 1: MEMORY CARE ══════ -->
+    <div class="qm-panel active" id="panel-memory">
+      <div class="verdict-banner concern">
+        <div class="verdict-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="concern">High Antipsychotic Use</h3>
+          <p>This facility medicates <strong>28.3%</strong> of long-stay residents with antipsychotic drugs — nearly <strong>double the national average</strong> of 16.7%. Combined with above-average sedative use, this suggests a pattern of chemical restraint rather than person-centered dementia care.</p>
+        </div>
+      </div>
+      <div class="indicators">
+        <div class="indicator" id="m1">
+          <div class="indicator-header">
+            <div class="indicator-name">Antipsychotic medication <button class="info-btn" onclick="toggleExp('m1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">28.3%</span><span class="vs">vs</span><span class="natl">16.7% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 56.6%;"></div>
+            <div class="natl-marker" style="left: 33.4%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 28.3% of long-stay residents receive antipsychotic medication without a qualifying diagnosis. CMS excludes residents with schizophrenia, Huntington's disease, and Tourette syndrome. The national median is 14.6%. The best 10% of facilities are at 5.1% or below. A rate this high places this facility among the worst in the country for potential chemical restraint.</div></div>
+        </div>
+        <div class="indicator" id="m2">
+          <div class="indicator-header">
+            <div class="indicator-name">Anti-anxiety &amp; sedative medication <button class="info-btn" onclick="toggleExp('m2')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">26.1%</span><span class="vs">vs</span><span class="natl">19.6% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 52.2%;"></div>
+            <div class="natl-marker" style="left: 39.2%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 26.1% of long-stay residents receive anti-anxiety or hypnotic (sleeping) medication. These drugs increase fall risk significantly. When both antipsychotic AND sedative rates are elevated, it's a facility-wide pattern of using drugs instead of care.</div></div>
+        </div>
+        <div class="indicator" id="m3">
+          <div class="indicator-header">
+            <div class="indicator-name">Physical restraints <button class="info-btn" onclick="toggleExp('m3')">?</button></div>
+            <div class="indicator-values"><span class="fval green">0.0%</span><span class="vs">vs</span><span class="natl">0.1% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 0%;"></div>
+            <div class="natl-marker" style="left: 2%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> No residents are physically restrained. CMS has driven restraint use to near-zero nationally (0.1% average). But a facility can have zero physical restraints while chemically restraining residents with drugs — look at the antipsychotic and sedative rates above.</div></div>
+        </div>
+        <div class="indicator" id="m4">
+          <div class="indicator-header">
+            <div class="indicator-name">Depressive symptoms <button class="info-btn" onclick="toggleExp('m4')">?</button></div>
+            <div class="indicator-values"><span class="fval green">8.2%</span><span class="vs">vs</span><span class="natl">11.4% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 16.4%;"></div>
+            <div class="natl-marker" style="left: 22.8%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 8.2% show moderate to severe depression — below the 11.4% national average. However, a lower rate at a facility with high sedation may mean residents are too medicated to express distress, not that they aren't experiencing it.</div></div>
+        </div>
+        <div class="indicator" id="m5">
+          <div class="indicator-header">
+            <div class="indicator-name">Falls with major injury <button class="info-btn" onclick="toggleExp('m5')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">4.8%</span><span class="vs">vs</span><span class="natl">3.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 32%;"></div>
+            <div class="natl-marker" style="left: 22%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 4.8% of long-stay residents fell and suffered fractures, head injuries, or other major harm. Antipsychotics and sedatives both increase fall risk — a facility with high medication rates AND high falls is a compounding red flag.</div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower is better for all indicators in this tab</div>
+    </div>
+
+    <!-- ══════ TAB 2: BODY & BASIC CARE ══════ -->
+    <div class="qm-panel" id="panel-body">
+      <div class="verdict-banner caution">
+        <div class="verdict-icon caution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="caution">Elevated Bedsore &amp; Infection Rates</h3>
+          <p>Above-average pressure ulcers and UTIs — two of the clearest indicators of understaffing. Bedsores happen when residents aren't being repositioned. UTIs happen when residents aren't getting basic hygiene care.</p>
+        </div>
+      </div>
+      <div class="indicators">
+        <div class="indicator" id="b1">
+          <div class="indicator-header">
+            <div class="indicator-name">Pressure ulcers (bedsores) <button class="info-btn" onclick="toggleExp('b1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">8.7%</span><span class="vs">vs</span><span class="natl">5.1% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 43.5%;"></div>
+            <div class="natl-marker" style="left: 25.5%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 8.7% of high-risk long-stay residents have stage 2+ pressure ulcers. Bedsores are largely preventable with repositioning every 2 hours, adequate nutrition, and skin checks. A rate this high usually means residents aren't being turned often enough — a direct consequence of understaffing.</div></div>
+        </div>
+        <div class="indicator" id="b2">
+          <div class="indicator-header">
+            <div class="indicator-name">Urinary tract infections <button class="info-btn" onclick="toggleExp('b2')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">3.4%</span><span class="vs">vs</span><span class="natl">1.7% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 34%;"></div>
+            <div class="natl-marker" style="left: 17%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Double the national average for UTIs. UTIs in nursing homes are largely preventable with adequate hydration and timely hygiene care. In elderly patients, UTIs also cause acute confusion (delirium) that can be mistaken for worsening dementia.</div></div>
+        </div>
+        <div class="indicator" id="b3">
+          <div class="indicator-header">
+            <div class="indicator-name">Catheter left in <button class="info-btn" onclick="toggleExp('b3')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">2.1%</span><span class="vs">vs</span><span class="natl">1.0% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 42%;"></div>
+            <div class="natl-marker" style="left: 20%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Double the national average. Catheters dramatically increase infection risk and should only be used when medically necessary. Some facilities leave them in because it's easier than helping residents to the bathroom.</div></div>
+        </div>
+        <div class="indicator" id="b4">
+          <div class="indicator-header">
+            <div class="indicator-name">Significant weight loss <button class="info-btn" onclick="toggleExp('b4')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">8.1%</span><span class="vs">vs</span><span class="natl">5.4% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 40.5%;"></div>
+            <div class="natl-marker" style="left: 27%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 8.1% of residents have significant unplanned weight loss. Dementia patients often forget to eat or need hands-on feeding help. Above-average rates usually mean not enough staff to assist at mealtimes.</div></div>
+        </div>
+        <div class="indicator" id="b5">
+          <div class="indicator-header">
+            <div class="indicator-name">Ability to do daily tasks declined <button class="info-btn" onclick="toggleExp('b5')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">19.2%</span><span class="vs">vs</span><span class="natl">14.9% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 38.4%;"></div>
+            <div class="natl-marker" style="left: 29.8%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 19.2% of residents lost the ability to perform daily activities they could previously manage. Above-average rates suggest the facility isn't providing enough rehab or encouraging independence.</div></div>
+        </div>
+        <div class="indicator" id="b6">
+          <div class="indicator-header">
+            <div class="indicator-name">Walking ability worsened <button class="info-btn" onclick="toggleExp('b6')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">21.4%</span><span class="vs">vs</span><span class="natl">16.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 42.8%;"></div>
+            <div class="natl-marker" style="left: 32.6%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 21.4% of residents who could walk lost that ability or needed significantly more help. Once mobility is lost, it rarely comes back. A facility that lets residents sit in wheelchairs all day will see high rates here.</div></div>
+        </div>
+        <div class="indicator" id="b7">
+          <div class="indicator-header">
+            <div class="indicator-name">New/worsened incontinence <button class="info-btn" onclick="toggleExp('b7')">?</button></div>
+            <div class="indicator-values"><span class="fval green">17.8%</span><span class="vs">vs</span><span class="natl">19.8% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 35.6%;"></div>
+            <div class="natl-marker" style="left: 39.6%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 17.8% of residents developed new or worsened bowel/bladder incontinence — slightly below the national average. Regular toileting schedules and pelvic floor exercises can prevent or slow this decline.</div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower is better for all indicators in this tab</div>
+    </div>
+
+    <!-- ══════ TAB 3: REHAB & SHORT-STAY ══════ -->
+    <div class="qm-panel" id="panel-rehab">
+      <div class="verdict-banner concern">
+        <div class="verdict-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="concern">High Re-hospitalization Rate</h3>
+          <p>This facility sends <strong>29.1%</strong> of short-stay patients back to the hospital within 30 days — well above the <strong>23.9% national average</strong>. If you're choosing a facility for post-surgical rehab, this is the most important number on the page.</p>
+        </div>
+      </div>
+      <div class="indicators">
+        <div class="indicator" id="r1">
+          <div class="indicator-header">
+            <div class="indicator-name">Re-hospitalized within 30 days <button class="info-btn" onclick="toggleExp('r1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">29.1%</span><span class="vs">vs</span><span class="natl">23.9% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 58.2%;"></div>
+            <div class="natl-marker" style="left: 47.8%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Nearly 1 in 3 short-stay patients end up back in the hospital within 30 days. The national average is already high at 23.9%. This is the single most important metric for anyone choosing a rehab facility after surgery. High rates indicate poor post-operative care, medication errors, or inadequate clinical monitoring. <em>Source: CMS Claims-Based Quality Measures</em></div></div>
+        </div>
+        <div class="indicator" id="r2">
+          <div class="indicator-header">
+            <div class="indicator-name">Emergency room visits <button class="info-btn" onclick="toggleExp('r2')">?</button></div>
+            <div class="indicator-values"><span class="fval red">16.8%</span><span class="vs">vs</span><span class="natl">12.0% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 56%;"></div>
+            <div class="natl-marker" style="left: 40%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 16.8% of short-stay patients required an ER visit. Strong facilities with adequate clinical staff handle more issues in-house without sending patients to the emergency room. Combined with high re-hospitalization, this facility struggles with post-acute complications. <em>Source: CMS Claims-Based Quality Measures</em></div></div>
+        </div>
+        <div class="indicator" id="r3">
+          <div class="indicator-header">
+            <div class="indicator-name">Discharged to community <button class="info-btn" onclick="toggleExp('r3')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">42.1%</span><span class="vs">vs</span><span class="natl">51.4% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 42.1%;"></div>
+            <div class="natl-marker" style="left: 51.4%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Only 42.1% of short-stay patients successfully go home, compared to the national average of 51.4%. This is the outcome metric — it tells you whether people actually get better and leave, or whether they stay, get transferred, or decline. Higher is better here. <em>Source: SNF QRP</em></div></div>
+        </div>
+        <div class="indicator" id="r4">
+          <div class="indicator-header">
+            <div class="indicator-name">Newly started on antipsychotics <button class="info-btn" onclick="toggleExp('r4')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">3.2%</span><span class="vs">vs</span><span class="natl">1.6% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 32%;"></div>
+            <div class="natl-marker" style="left: 16%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 3.2% of short-stay patients were newly started on antipsychotic medication during their rehab stay. If your family member went in for a hip replacement and came out on an antipsychotic, that's a serious red flag. These drugs carry an FDA black-box warning for increased mortality in elderly patients.</div></div>
+        </div>
+        <div class="indicator" id="r5">
+          <div class="indicator-header">
+            <div class="indicator-name">Healthcare-associated infections <button class="info-btn" onclick="toggleExp('r5')">?</button></div>
+            <div class="indicator-values"><span class="fval red">9.8%</span><span class="vs">vs</span><span class="natl">7.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 49%;"></div>
+            <div class="natl-marker" style="left: 36.5%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 9.8% of residents acquired infections requiring hospitalization during their stay at this facility. These are infections the patient didn't have when they arrived. Above-average rates signal infection control problems. <em>Source: SNF VBP</em></div></div>
+        </div>
+        <div class="indicator" id="r6">
+          <div class="indicator-header">
+            <div class="indicator-name">Medicare spending per beneficiary <button class="info-btn" onclick="toggleExp('r6')">?</button></div>
+            <div class="indicator-values"><span class="fval red">1.14</span><span class="vs">vs</span><span class="natl">1.0 avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 57%;"></div>
+            <div class="natl-marker" style="left: 50%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> This facility costs Medicare 14% more per patient than the national average (1.0 = average). A score of 1.14 means Medicare spends $1.14 for every $1.00 spent at the typical facility. 51.9% of facilities nationwide are above average. Higher spending doesn't mean better care — it often means longer stays, more readmissions, or unnecessary services. <em>Source: SNF QRP (Measure S_006)</em></div></div>
+        </div>
+        <div class="indicator" id="r7">
+          <div class="indicator-header">
+            <div class="indicator-name">Functional improvement at discharge <button class="info-btn" onclick="toggleExp('r7')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">88.7%</span><span class="vs">vs</span><span class="natl">94.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 88.7%;"></div>
+            <div class="natl-marker" style="left: 94.3%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 88.7% of patients showed functional improvement (ability to eat, dress, walk, etc.) by the time they were discharged. The national average is 94.3%. This is a core measure of whether the rehab is actually working — if patients aren't improving, what's the point of the stay? <em>Source: SNF QRP (Measure S_007)</em></div></div>
+        </div>
+        <div class="indicator" id="r8">
+          <div class="indicator-header">
+            <div class="indicator-name">Falls with major injury <button class="info-btn" onclick="toggleExp('r8')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">3.8%</span><span class="vs">vs</span><span class="natl">2.6% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 38%;"></div>
+            <div class="natl-marker" style="left: 26%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 3.8% of residents had falls resulting in major injury (fractures, head trauma, etc.). The national average is 2.6%. Falls are the leading cause of injury death in people over 65. High fall rates may indicate inadequate supervision, poor medication management, or unsafe environments. <em>Source: SNF QRP (Measure S_038)</em></div></div>
+        </div>
+        <div class="indicator" id="r9">
+          <div class="indicator-header">
+            <div class="indicator-name">CMS payment adjustment <button class="info-btn" onclick="toggleExp('r9')">?</button></div>
+            <div class="indicator-values"><span class="fval red">-1.2%</span><span class="vs">penalty</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> CMS reduced this facility's Medicare payments by 1.2% through the Value-Based Purchasing program. This penalty is based on rehospitalization rates — if too many patients bounce back to the hospital, the facility loses money. Nationally, 78.6% of facilities are penalized (multiplier below 1.0) and only 21.4% earn bonuses. A penalty means this facility performs worse than most on keeping patients out of the hospital. <em>Source: SNF VBP (Incentive Payment Multiplier: 0.988)</em></div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower is better for all except "Discharged to community" and "Functional improvement" (↑ higher is better)</div>
+    </div>
+
+    <!-- ══════ TAB 4: SAFETY RECORD ══════ -->
+    <div class="qm-panel" id="panel-safety">
+      <div class="verdict-banner concern">
+        <div class="verdict-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="concern">Pattern of Abuse Citations &amp; Complaints</h3>
+          <p>This facility has been <strong>cited for abuse or neglect 4 times in the last 3 years</strong> and had <strong>12 complaint investigations</strong>. The national average is 3.6 complaint investigations per facility.</p>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-value red">4</div>
+          <div class="stat-label">Abuse/Neglect Citations</div>
+        </div>
+        <div class="stat-card" style="position:relative; border-color: rgba(217,119,6,0.3);">
+          <div class="stat-value red">12</div>
+          <div class="stat-label">Complaint Investigations</div>
+          <div style="margin-top:8px; font-size:0.68rem; color:var(--accent-orange); line-height:1.5; font-weight:600;">
+            <svg style="width:11px;height:11px;vertical-align:-1px;margin-right:2px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            CMS removed this number from Care Compare on 2/25/26. We rebuilt it from federal inspection records.
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value orange">23</div>
+          <div class="stat-label">Fire Safety Violations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value blue">68</div>
+          <div class="stat-label">Total Deficiencies (3yr)</div>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="indicator" id="s1">
+          <div class="indicator-header">
+            <div class="indicator-name">Abuse/neglect citations (F600-F609) <button class="info-btn" onclick="toggleExp('s1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">4 citations</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> This facility was cited 4 times for abuse, neglect, or exploitation under federal F-tags F600-F609 in the last 3 years. F600 = free from abuse, F602 = free from misappropriation of property, F603 = free from neglect, F607 = develop/implement abuse prevention policies. Each citation means a federal inspector found evidence of harm or risk of harm. <em>Source: CMS Health Deficiencies (already in our data)</em></div></div>
+        </div>
+        <div class="indicator" id="s2">
+          <div class="indicator-header">
+            <div class="indicator-name">Complaint investigations <button class="info-btn" onclick="toggleExp('s2')">?</button></div>
+            <div class="indicator-values"><span class="fval red">12 investigations</span><span class="vs">vs</span><span class="natl">~4 avg</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Someone — a family member, staff member, or visitor — filed 12 complaints that triggered state investigations in the last 3 years. The average facility has about 4 complaint investigations. A high count means multiple people raised concerns serious enough for the state to send inspectors. <strong style="color:var(--accent-orange);">Note:</strong> CMS removed complaint counts from their public Care Compare website on Feb 25, 2026. We rebuilt this number from federal inspection records so families can still see it. <em>Source: CMS Inspection Dates + Health Deficiencies</em></div></div>
+        </div>
+        <div class="indicator" id="s3">
+          <div class="indicator-header">
+            <div class="indicator-name">Fire safety violations <button class="info-btn" onclick="toggleExp('s3')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">23 violations</span><span class="vs">vs</span><span class="natl">14 avg</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 23 fire safety code violations in the last 3 years. The national average is 14.3 per facility. Fire safety violations include issues with sprinkler systems, emergency exits, smoke detectors, electrical systems, and evacuation plans. Residents in nursing homes often can't evacuate on their own. <em>Source: CMS Fire Safety Deficiencies</em></div></div>
+        </div>
+        <div class="indicator" id="s4">
+          <div class="indicator-header">
+            <div class="indicator-name">Immediate jeopardy citations <button class="info-btn" onclick="toggleExp('s4')">?</button></div>
+            <div class="indicator-values"><span class="fval red">2 citations</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Immediate jeopardy is the most serious deficiency level — it means inspectors found conditions that caused or were likely to cause serious injury or death. Only about 3% of facilities receive immediate jeopardy citations in any given year. Two in three years is a serious pattern. <em>Source: CMS Health Deficiencies (scope/severity J, K, or L)</em></div></div>
+        </div>
+        <div class="indicator" id="s5">
+          <div class="indicator-header">
+            <div class="indicator-name">Total fines (last 3 years) <button class="info-btn" onclick="toggleExp('s5')">?</button></div>
+            <div class="indicator-values"><span class="fval red">$187,450</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> CMS fined this facility $187,450 over the last 3 years. Fines are imposed for serious violations — not every deficiency results in a fine. The presence of fines means CMS determined the violations warranted financial penalties beyond just requiring corrections.</div></div>
+        </div>
+        <div class="indicator" id="s6">
+          <div class="indicator-header">
+            <div class="indicator-name">Infection control inspections <button class="info-btn" onclick="toggleExp('s6')">?</button></div>
+            <div class="indicator-values"><span class="fval neutral">2 inspections</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> This facility received 2 dedicated infection control inspections. These are separate from standard health surveys and focus specifically on infection prevention practices, hand hygiene, PPE use, and outbreak response protocols. <em>Source: CMS Inspection Dates</em></div></div>
+        </div>
+        <div class="indicator" id="s7">
+          <div class="indicator-header">
+            <div class="indicator-name">Avg days to correct deficiencies <button class="info-btn" onclick="toggleExp('s7')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">48 days</span><span class="vs">vs</span><span class="natl">32 avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 48%;"></div>
+            <div class="natl-marker" style="left: 32%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> After inspectors cite a deficiency, the facility has to fix it. This facility takes an average of 48 days to correct problems — the national average is 32 days. Facilities that drag their feet on corrections may not be taking enforcement seriously. Only 1.7% of facilities average more than 60 days. <em>Source: CMS Health Deficiencies (Survey Date vs Correction Date)</em></div></div>
+        </div>
+        <div class="indicator" id="s8">
+          <div class="indicator-header">
+            <div class="indicator-name">Repeat offender citations <button class="info-btn" onclick="toggleExp('s8')">?</button></div>
+            <div class="indicator-values"><span class="fval red">7 repeated F-tags</span></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> This facility was cited for the same violation (same F-tag) across multiple inspections 7 times — meaning they were told to fix something and inspectors found the same problem again on a later visit. Nationally, 88.2% of facilities have at least one repeat citation, but a high count signals systemic issues the facility isn't addressing. <em>Source: CMS Health Deficiencies (F-tag × survey date cross-reference)</em></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ TAB 5: WORKFORCE ══════ -->
+    <div class="qm-panel" id="panel-workforce">
+      <div class="verdict-banner caution">
+        <div class="verdict-icon caution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="caution">High Staff Turnover</h3>
+          <p>This facility has a <strong>62.3% annual nursing staff turnover rate</strong> — meaning most of the nursing staff leaves within a year. Continuity of care suffers when the people caring for your loved one are constantly changing.</p>
+        </div>
+      </div>
+      <div class="indicators">
+        <div class="indicator" id="w1">
+          <div class="indicator-header">
+            <div class="indicator-name">Nursing staff turnover rate <button class="info-btn" onclick="toggleExp('w1')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">62.3%</span><span class="vs">vs</span><span class="natl">47.7% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 62.3%;"></div>
+            <div class="natl-marker" style="left: 47.7%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 62.3% of nursing staff left this facility within a year. The national average is already a staggering 47.7%. The best 10% of facilities have turnover below 29.4%. High turnover means new, unfamiliar staff who don't know the residents — and it's a leading indicator of poor management and working conditions. CMS now tracks this as part of the Value-Based Purchasing program and adjusts Medicare payments accordingly. <em>Source: SNF VBP</em></div></div>
+        </div>
+        <div class="indicator" id="w2">
+          <div class="indicator-header">
+            <div class="indicator-name">Weekend staffing drop <button class="info-btn" onclick="toggleExp('w2')">?</button></div>
+            <div class="indicator-values"><span class="fval red">-38%</span><span class="vs">weekday → weekend</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 38%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Staffing drops 38% on weekends compared to weekdays — from 3.4 total nursing hours per resident per day to 2.1. Some facilities staff up on weekdays when inspectors might visit and run skeleton crews on weekends. CMS started publishing weekend staffing separately because of this pattern. If your loved one is there 7 days a week, weekend staffing matters. <em>Source: PBJ Staffing + State Averages</em></div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower turnover is better · Weekend staffing should match weekday staffing</div>
+    </div>
+
+    <!-- ══════ TAB 6: VACCINES & IMMUNIZATION ══════ -->
+    <div class="qm-panel" id="panel-vaccines">
+      <div class="verdict-banner concern">
+        <div class="verdict-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="concern">Critically Low COVID Vaccination</h3>
+          <p>Only <strong>12.4% of residents</strong> at this facility are up to date on COVID-19 vaccination — less than half the already-low national average of 25.3%. Nursing home residents are among the most vulnerable populations. Flu and pneumococcal coverage is adequate but below benchmarks for long-stay residents.</p>
+        </div>
+      </div>
+
+      <h4 style="font-family:'DM Serif Display',serif; font-size:1rem; color:var(--text-primary); margin-bottom:16px; padding-bottom:8px; border-bottom:1px solid var(--border-subtle);">COVID-19</h4>
+
+      <div class="indicators">
+        <div class="indicator" id="v1">
+          <div class="indicator-header">
+            <div class="indicator-name">Residents up to date on COVID-19 vaccine <button class="info-btn" onclick="toggleExp('v1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">12.4%</span><span class="vs">vs</span><span class="natl">25.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 12.4%;"></div>
+            <div class="natl-marker" style="left: 25.3%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Only 12.4% of residents at this facility are up to date on their COVID-19 vaccination. The national average is just 25.3% — meaning most nursing homes are failing on this measure. Nearly a quarter of all facilities (2,305) have less than 10% of residents vaccinated. COVID-19 remains dangerous for elderly nursing home residents with compromised immune systems. CMS began collecting this data in October 2024. <em>Source: SNF QRP (Measure S_045)</em></div></div>
+        </div>
+        <div class="indicator" id="v2">
+          <div class="indicator-header">
+            <div class="indicator-name">Staff up to date on COVID-19 vaccine <button class="info-btn" onclick="toggleExp('v2')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">28.9%</span><span class="vs">vs</span><span class="natl">41.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 28.9%;"></div>
+            <div class="natl-marker" style="left: 41.3%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 28.9% of healthcare staff at this facility are up to date on COVID-19 vaccination, compared to the national average of 41.3%. Staff interact with dozens of residents daily and can carry infections between rooms. Low staff vaccination rates put residents — who may be too frail to mount a strong immune response even if vaccinated — at additional risk. <em>Source: SNF QRP (Measure S_041)</em></div></div>
+        </div>
+      </div>
+
+      <h4 style="font-family:'DM Serif Display',serif; font-size:1rem; color:var(--text-primary); margin:28px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--border-subtle);">Flu &amp; Pneumococcal — Long-Stay Residents</h4>
+
+      <div class="indicators">
+        <div class="indicator" id="v3">
+          <div class="indicator-header">
+            <div class="indicator-name">Seasonal influenza vaccine (long-stay) <button class="info-btn" onclick="toggleExp('v3')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">88.2%</span><span class="vs">vs</span><span class="natl">95.5% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 88.2%;"></div>
+            <div class="natl-marker" style="left: 95.5%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 88.2% of long-stay residents were assessed and given the seasonal flu vaccine. The national average is 95.5%. Influenza can be deadly for elderly nursing home residents. Only 89 facilities nationwide have rates below 50% — making this one of the best-performing vaccination metrics. <em>Source: MDS Quality Measures (Code 454)</em></div></div>
+        </div>
+        <div class="indicator" id="v4">
+          <div class="indicator-header">
+            <div class="indicator-name">Pneumococcal vaccine (long-stay) <button class="info-btn" onclick="toggleExp('v4')">?</button></div>
+            <div class="indicator-values"><span class="fval green">96.1%</span><span class="vs">vs</span><span class="natl">93.4% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 96.1%;"></div>
+            <div class="natl-marker" style="left: 93.4%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 96.1% of long-stay residents were assessed and given the pneumococcal vaccine, which protects against pneumonia — a leading cause of death in nursing homes. This facility is above the 93.4% national average. Pneumococcal vaccination is one of the highest-compliance measures across nursing homes. <em>Source: MDS Quality Measures (Code 415)</em></div></div>
+        </div>
+      </div>
+
+      <h4 style="font-family:'DM Serif Display',serif; font-size:1rem; color:var(--text-primary); margin:28px 0 16px; padding-bottom:8px; border-bottom:1px solid var(--border-subtle);">Flu &amp; Pneumococcal — Short-Stay Residents</h4>
+
+      <div class="indicators">
+        <div class="indicator" id="v5">
+          <div class="indicator-header">
+            <div class="indicator-name">Seasonal influenza vaccine (short-stay) <button class="info-btn" onclick="toggleExp('v5')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">71.3%</span><span class="vs">vs</span><span class="natl">79.7% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 71.3%;"></div>
+            <div class="natl-marker" style="left: 79.7%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 71.3% of short-stay residents (rehab patients) were assessed and given the seasonal flu vaccine, below the 79.7% national average. Short-stay residents are often recovering from surgery or illness, making them particularly vulnerable. Over 1,500 facilities have rates below 50% — short-stay flu vaccination is significantly weaker than long-stay. <em>Source: MDS Quality Measures (Code 472)</em></div></div>
+        </div>
+        <div class="indicator" id="v6">
+          <div class="indicator-header">
+            <div class="indicator-name">Pneumococcal vaccine (short-stay) <button class="info-btn" onclick="toggleExp('v6')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">74.5%</span><span class="vs">vs</span><span class="natl">81.7% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 74.5%;"></div>
+            <div class="natl-marker" style="left: 81.7%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 74.5% of short-stay residents received the pneumococcal vaccine, below the 81.7% national average. Short-stay residents often aren't at the facility long enough for the vaccination protocol to kick in, but pneumonia is one of the top reasons people end up back in the hospital after a nursing home stay. <em>Source: MDS Quality Measures (Code 430)</em></div></div>
+        </div>
+      </div>
+      <div class="direction-note">↑ Higher vaccination rates are better · COVID-19 data collected since Oct 2024</div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="qm-disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div>
+        Data from 7 CMS sources: MDS Quality Measures, Claims-Based Quality Measures, SNF Value-Based Purchasing, SNF Quality Reporting Program (including COVID-19 vaccination, functional outcomes, Medicare spending), Health Deficiencies (including days to correct and repeat citations), Fire Safety Deficiencies, and Inspection Dates. National averages calculated from actual downloaded datasets (Feb 2026 release). Antipsychotic rates exclude residents with schizophrenia, Huntington's, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation — no single metric above average automatically indicates poor care. <a href="/methodology#quality-measures">Methodology</a> · <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener">Verify on CMS.gov →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Existing sections -->
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-title">Fines &amp; Penalties</span>
+    </div>
+  </div>
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <span class="section-title">Financial Transparency</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.qm-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.qm-panel').forEach(p => p.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  }
+  function toggleExp(id) { document.getElementById(id).classList.toggle('expanded'); }
+</script>
+</body>
+</html>

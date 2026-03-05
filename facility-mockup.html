@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facility Report Card — Proposed Changes Mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f0f2f5; color: #1a1a2e; line-height: 1.5; }
+
+  /* ── CHANGE ANNOTATION SYSTEM ── */
+  .change-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #ff6b35; color: white; font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 10px; letter-spacing: 0.5px;
+    text-transform: uppercase; position: relative; z-index: 10;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .change-badge::before { content: '✦ '; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+  .change-outline {
+    outline: 2px dashed #ff6b35; outline-offset: 4px;
+    border-radius: 12px; position: relative;
+  }
+  .change-note {
+    background: #fff3ed; border-left: 3px solid #ff6b35; padding: 8px 12px;
+    font-size: 12px; color: #c04600; margin-top: 8px; border-radius: 0 6px 6px 0;
+  }
+
+  /* ── LEGEND BAR ── */
+  .legend-bar {
+    position: sticky; top: 0; z-index: 1000; background: #1a1a2e; color: white;
+    padding: 10px 24px; display: flex; align-items: center; gap: 16px;
+    font-size: 13px; border-bottom: 2px solid #ff6b35;
+  }
+  .legend-bar strong { color: #ff6b35; }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: white; border-bottom: 1px solid #e2e8f0; padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .site-header .logo { font-family: 'Playfair Display', serif; font-size: 18px; color: #1a1a2e; }
+  .site-header .logo span { color: #c0392b; }
+  .site-header nav { display: flex; gap: 24px; font-size: 14px; color: #64748b; }
+  .site-header nav a { color: inherit; text-decoration: none; }
+
+  /* ── SUB-HEADER ── */
+  .sub-header {
+    background: white; padding: 8px 24px; display: flex;
+    align-items: center; justify-content: space-between;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .sub-header .left { display: flex; align-items: center; gap: 16px; font-size: 13px; }
+  .sub-header .left a { color: #3b82f6; text-decoration: none; }
+  .sub-header .right { display: flex; align-items: center; gap: 10px; }
+  .btn-fav { border: 1px solid #d1d5db; background: white; padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+  .btn-download { background: #0f766e; color: white; border: none; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+  /* ── PAGE WRAPPER ── */
+  .page-wrap { max-width: 1100px; margin: 0 auto; padding: 20px 24px 60px; }
+
+  /* ── SECTION NAV (NEW) ── */
+  .section-nav-wrap { position: relative; }
+  .section-nav {
+    position: sticky; top: 42px; z-index: 100; background: white;
+    border-radius: 10px; padding: 10px 16px; margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); display: flex;
+    align-items: center; gap: 4px; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .section-nav::-webkit-scrollbar { display: none; }
+  .section-nav a {
+    white-space: nowrap; padding: 6px 12px; border-radius: 6px;
+    font-size: 12px; font-weight: 500; color: #64748b;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .section-nav a:hover { background: #f1f5f9; color: #1a1a2e; }
+  .section-nav a.active { background: #1a1a2e; color: white; }
+  .section-nav .nav-num { font-weight: 700; margin-right: 2px; font-size: 10px; opacity: 0.6; }
+
+  /* ── CARD SECTIONS ── */
+  .section-card {
+    background: white; border-radius: 12px; padding: 28px;
+    margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 26px; color: #1a1a2e;
+    margin-bottom: 4px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-num { font-size: 14px; color: #94a3b8; font-family: 'Inter', sans-serif; font-weight: 600; }
+  .section-tag {
+    font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tag-updated { background: #dcfce7; color: #166534; }
+  .tag-new { background: #dbeafe; color: #1d4ed8; }
+  .section-subtitle { font-size: 13px; color: #94a3b8; margin-bottom: 16px; }
+  .section-source { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+  .source-link { color: #3b82f6; text-decoration: none; }
+
+  /* ── INTRO CARD — SPLIT (NEW) ── */
+  .intro-identity {
+    border: 2px solid #c0392b; border-radius: 12px; padding: 24px 28px;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .facility-name { font-family: 'Playfair Display', serif; font-size: 30px; color: #1a1a2e; margin-bottom: 6px; }
+  .star-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .stars { color: #f59e0b; font-size: 18px; }
+  .star-label { font-size: 13px; color: #64748b; }
+  .meta-line { font-size: 13px; color: #64748b; margin-bottom: 4px; }
+  .meta-line a { color: #3b82f6; text-decoration: none; }
+  .ccn-line { font-size: 12px; color: #94a3b8; font-family: monospace; margin-bottom: 8px; }
+  .score-badge {
+    background: #c0392b; color: white; width: 64px; height: 64px;
+    border-radius: 12px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .score-badge .num { font-size: 28px; font-weight: 800; line-height: 1; }
+  .score-badge .label { font-size: 8px; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.8; }
+
+  /* ── RISK SUMMARY (NEW — split from intro) ── */
+  .risk-summary {
+    margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;
+    align-items: stretch;
+  }
+  .risk-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+  }
+  .risk-badge.reit { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+  .risk-badge.sff { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+  .risk-badge.ownership { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+
+  .bottom-line {
+    margin-top: 12px; border: 2px solid #fca5a5; border-radius: 10px;
+    padding: 16px 20px; background: #fef2f2;
+  }
+  .bottom-line-label {
+    font-size: 11px; font-weight: 700; color: #c0392b;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .bottom-line p { font-size: 14px; color: #1a1a2e; line-height: 1.6; }
+  .bottom-line strong { font-weight: 700; }
+
+  /* ── SAFETY SCORE GRID ── */
+  .metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+  .metric-card {
+    border: 2px solid #fca5a5; border-radius: 10px; padding: 16px;
+    min-height: 140px; display: flex; flex-direction: column;
+  }
+  .metric-card.green { border-color: #86efac; }
+  .metric-card.orange { border-color: #fdba74; }
+  .metric-val { font-size: 32px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .metric-val.red { color: #c0392b; }
+  .metric-val.green { color: #16a34a; }
+  .metric-val.orange { color: #ea580c; }
+  .metric-label { font-size: 11px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+  .metric-context { font-size: 11px; color: #94a3b8; margin-top: 6px; }
+  .metric-track {
+    margin-top: auto; padding-top: 8px; height: 24px;
+    background: linear-gradient(90deg, #86efac 0%, #fef08a 50%, #fca5a5 100%);
+    border-radius: 12px; position: relative;
+  }
+  .metric-dot {
+    width: 10px; height: 10px; background: #c0392b; border-radius: 50%;
+    position: absolute; top: 7px; border: 2px solid white;
+  }
+  .metric-avg-marker { position: absolute; top: -2px; width: 2px; height: 28px; background: #64748b; }
+
+  /* ── DEFICIENCY SECTION (NEW: FILTER TABS) ── */
+  .filter-row { display: flex; gap: 8px; margin: 16px 0; flex-wrap: wrap; }
+  .filter-chip {
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+    border: 1px solid #d1d5db; background: white; cursor: pointer; transition: all 0.2s;
+  }
+  .filter-chip:hover { border-color: #1a1a2e; }
+  .filter-chip.active { background: #1a1a2e; color: white; border-color: #1a1a2e; }
+  .filter-chip .count { opacity: 0.6; margin-left: 3px; }
+
+  .deficiency-card {
+    border-left: 4px solid #c0392b; background: #fef2f2; border-radius: 0 8px 8px 0;
+    padding: 12px 16px; margin-bottom: 8px;
+  }
+  .deficiency-card.minor { border-color: #f59e0b; background: #fffbeb; }
+  .def-severity {
+    display: inline-block; font-size: 10px; font-weight: 700; color: white;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 6px;
+  }
+  .def-severity.serious { background: #c0392b; }
+  .def-severity.harm { background: #ea580c; }
+  .def-severity.minor-sev { background: #f59e0b; }
+  .def-text { font-size: 13px; color: #1a1a2e; }
+  .def-meta { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+
+  .pagination-bar {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px; margin-top: 8px;
+  }
+  .page-btn {
+    padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    border: 1px solid #d1d5db; background: white; cursor: pointer;
+  }
+  .page-btn.active { background: #1a1a2e; color: white; border-color: #1a1a2e; }
+  .page-info { font-size: 12px; color: #94a3b8; }
+
+  /* ── VERDICT BANNER ── */
+  .verdict-banner {
+    display: flex; align-items: flex-start; gap: 10px; padding: 12px 16px;
+    border-radius: 8px; margin: 12px 0; font-size: 13px;
+  }
+  .verdict-banner.danger { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+  .verdict-banner.warning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+  .verdict-banner.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+  .verdict-icon { font-size: 18px; flex-shrink: 0; }
+  .verdict-title { font-weight: 700; }
+
+  /* ── QM TABS ── */
+  .qm-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .qm-dot.teal { background: #0d9488; }
+  .qm-dot.blue { background: #3b82f6; }
+  .qm-dot.indigo { background: #6366f1; }
+  .qm-dot.amber { background: #f59e0b; }
+  .qm-dot.rose { background: #f43f5e; }
+
+  .qm-tabs { display: flex; gap: 4px; margin-bottom: 16px; border-bottom: 2px solid #e2e8f0; }
+  .qm-tab {
+    padding: 8px 14px; font-size: 13px; font-weight: 500; color: #64748b;
+    border-bottom: 2px solid transparent; cursor: pointer; margin-bottom: -2px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .qm-tab.active { color: #1a1a2e; border-bottom-color: #1a1a2e; }
+  .qm-tab .tab-count { font-size: 11px; background: #f1f5f9; padding: 1px 6px; border-radius: 10px; }
+
+  /* ── STAFFING TABLE ── */
+  .staffing-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+  .staffing-table th { text-align: left; font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px; border-bottom: 1px solid #e2e8f0; }
+  .staffing-table td { padding: 10px 8px; font-size: 13px; border-bottom: 1px solid #f1f5f9; }
+  .staffing-table .role-desc { font-size: 11px; color: #94a3b8; }
+  .staffing-fail { color: #c0392b; font-weight: 700; }
+  .staffing-fail-cell { background: #fef2f2; border-radius: 4px; }
+
+  /* ── ABUSE GROUP CARD (NEW — replaces individual repeat cards) ── */
+  .abuse-group {
+    border: 1px solid #fca5a5; border-radius: 8px; padding: 14px 16px;
+    margin-bottom: 8px; background: #fff;
+  }
+  .abuse-group-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px;
+  }
+  .abuse-ftag {
+    font-size: 12px; font-weight: 700; color: white; background: #c0392b;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .abuse-count { font-size: 12px; color: #94a3b8; }
+  .abuse-text { font-size: 13px; color: #1a1a2e; margin-bottom: 6px; }
+  .abuse-breakdown { display: flex; gap: 12px; font-size: 11px; color: #64748b; }
+  .abuse-breakdown span { display: flex; align-items: center; gap: 4px; }
+
+  /* ── FIRE SAFETY ── */
+  .fire-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+  .fire-stat { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; text-align: center; }
+  .fire-stat .val { font-size: 28px; font-weight: 800; }
+  .fire-stat .val.red { color: #c0392b; }
+  .fire-stat .val.green { color: #16a34a; }
+  .fire-stat .val.orange { color: #ea580c; }
+  .fire-stat .lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+
+  /* ── QUESTIONS TO ASK ── */
+  .question-card {
+    border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;
+    margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .question-card.priority-high { border-left: 4px solid #c0392b; }
+  .question-card.priority-med { border-left: 4px solid #f59e0b; }
+  .q-number {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: white;
+  }
+  .q-number.high { background: #c0392b; }
+  .q-number.med { background: #f59e0b; }
+  .q-text { font-size: 14px; color: #1a1a2e; font-weight: 500; }
+  .q-context { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+  .q-tag { font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 4px; }
+  .q-tag.high { background: #fef2f2; color: #c0392b; }
+  .q-tag.med { background: #fffbeb; color: #92400e; }
+
+  /* ── NEARBY ALTERNATIVES ── */
+  .nearby-controls { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; flex-wrap: wrap; }
+  .nearby-control { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #64748b; }
+  .nearby-control select, .nearby-control input[type=range] { border: 1px solid #d1d5db; border-radius: 6px; padding: 4px 8px; font-size: 13px; }
+
+  .alt-card {
+    border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;
+    margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .alt-card:hover { border-color: #3b82f6; }
+  .alt-name { font-size: 14px; font-weight: 600; color: #1a1a2e; }
+  .alt-meta { font-size: 12px; color: #64748b; margin-top: 2px; }
+  .alt-stars { color: #f59e0b; font-size: 14px; }
+  .alt-score {
+    width: 48px; height: 48px; border-radius: 10px; display: flex;
+    flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .alt-score.good { background: #dcfce7; color: #166534; }
+  .alt-score.mid { background: #fef9c3; color: #854d0e; }
+  .alt-score.bad { background: #fee2e2; color: #991b1b; }
+  .alt-score .snum { font-size: 20px; font-weight: 800; line-height: 1; }
+  .alt-score .slbl { font-size: 7px; text-transform: uppercase; font-weight: 600; }
+  .alt-compare-col { display: flex; gap: 16px; align-items: center; }
+
+  /* ── OWNERSHIP SECTION ── */
+  .owner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  .owner-card { border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px; }
+  .owner-card-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 8px; }
+  .owner-name { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
+  .owner-stat { font-size: 13px; color: #64748b; margin-bottom: 3px; }
+  .owner-stat strong { color: #1a1a2e; }
+  .owner-warning { font-size: 13px; color: #c0392b; font-weight: 600; margin-top: 4px; }
+  .rating-bar-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font-size: 12px; }
+  .rating-bar-row .star { color: #f59e0b; }
+  .rating-bar { height: 14px; border-radius: 7px; background: #f59e0b; }
+  .rating-bar-bg { flex: 1; height: 14px; background: #f1f5f9; border-radius: 7px; overflow: hidden; }
+  .rating-count { font-size: 11px; color: #64748b; white-space: nowrap; min-width: 55px; text-align: right; }
+
+  .corp-structure {
+    display: flex; align-items: center; gap: 0; margin: 16px 0; flex-wrap: wrap;
+  }
+  .corp-layer {
+    border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px;
+    font-size: 12px; background: white; text-align: center;
+  }
+  .corp-layer.highlight { border-color: #c0392b; background: #fef2f2; }
+  .corp-layer .layer-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; }
+  .corp-layer .layer-name { font-weight: 700; color: #1a1a2e; margin-top: 2px; }
+  .corp-arrow { font-size: 16px; color: #94a3b8; padding: 0 6px; }
+
+  .owner-timeline { position: relative; padding-left: 24px; margin: 16px 0; }
+  .owner-timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: #e2e8f0; }
+  .timeline-item { position: relative; padding-bottom: 16px; }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    width: 14px; height: 14px; border-radius: 50%; position: absolute; left: -24px; top: 3px;
+    border: 2px solid white;
+  }
+  .timeline-dot.red { background: #c0392b; }
+  .timeline-dot.gray { background: #94a3b8; }
+  .timeline-event { font-size: 13px; color: #1a1a2e; font-weight: 500; }
+  .timeline-detail { font-size: 11px; color: #94a3b8; }
+
+  .owner-portfolio-link {
+    display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px;
+    border: 1px solid #3b82f6; border-radius: 6px; color: #3b82f6;
+    font-size: 13px; font-weight: 600; text-decoration: none; margin-top: 12px;
+    transition: all 0.2s;
+  }
+  .owner-portfolio-link:hover { background: #eff6ff; }
+
+  /* ── CLINICIAN CTA ── */
+  .clinician-cta {
+    background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+    border-radius: 12px; padding: 24px 28px; color: white;
+    display: flex; align-items: center; justify-content: space-between;
+    margin: 20px 0; gap: 20px;
+  }
+  .clinician-cta h3 { font-family: 'Playfair Display', serif; font-size: 18px; margin-bottom: 4px; }
+  .clinician-cta p { font-size: 13px; opacity: 0.85; line-height: 1.5; }
+  .clinician-cta .cta-badge {
+    font-size: 10px; background: rgba(255,255,255,0.15); padding: 2px 8px;
+    border-radius: 10px; display: inline-block; margin-top: 6px;
+  }
+  .clinician-cta .btn-clin {
+    background: white; color: #0f766e; border: none; padding: 12px 24px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer;
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* ── EVIDENCE PDF UPSELL ── */
+  .pdf-upsell {
+    background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px;
+    padding: 20px 24px; margin: 20px 0;
+  }
+  .pdf-upsell h3 { font-size: 16px; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
+  .pdf-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 12px 0; }
+  .pdf-col { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .pdf-col.paid { border-color: #0f766e; background: white; }
+  .pdf-col-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .pdf-col-title.free { color: #64748b; }
+  .pdf-col-title.paid { color: #0f766e; }
+  .pdf-item { font-size: 12px; color: #1a1a2e; padding: 3px 0; display: flex; align-items: center; gap: 6px; }
+  .pdf-item .check { color: #16a34a; font-weight: 700; }
+  .pdf-item .extra { color: #0f766e; font-weight: 700; }
+  .pdf-btn {
+    display: inline-block; background: #0f766e; color: white; border: none;
+    padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 700;
+    cursor: pointer; margin-top: 10px;
+  }
+
+  /* ── GLOSSARY (UPDATED) ── */
+  .glossary-table { width: 100%; border-collapse: collapse; }
+  .glossary-table th { text-align: left; font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; padding: 8px; border-bottom: 2px solid #e2e8f0; }
+  .glossary-table td { padding: 8px; font-size: 13px; border-bottom: 1px solid #f1f5f9; }
+  .glossary-table td:first-child { font-weight: 700; white-space: nowrap; color: #1a1a2e; font-family: monospace; }
+  .glossary-search { width: 100%; border: 1px solid #d1d5db; border-radius: 6px; padding: 8px 12px; font-size: 13px; margin-bottom: 12px; }
+
+  /* ── BOTTOM CTA (NEW) ── */
+  .bottom-cta {
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d2d52 100%);
+    border-radius: 12px; padding: 24px 28px; color: white;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 20px;
+  }
+  .bottom-cta h3 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 4px; }
+  .bottom-cta p { font-size: 13px; opacity: 0.7; }
+  .bottom-cta .btn-dl {
+    background: #0f766e; color: white; border: none; padding: 12px 24px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; cursor: pointer;
+    white-space: nowrap;
+  }
+
+  /* ── RESPONSIVE HINT ── */
+  @media (max-width: 768px) {
+    .metric-grid { grid-template-columns: 1fr 1fr; }
+    .section-nav { gap: 2px; }
+    .section-nav a { font-size: 11px; padding: 5px 8px; }
+  }
+
+  /* ── SEPARATOR ── */
+  .divider { height: 1px; background: #e2e8f0; margin: 16px 0; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+  .stat-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .stat-val { font-size: 28px; font-weight: 800; color: #c0392b; }
+  .stat-label { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+  .stat-context { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+
+  .comparison-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+  .comparison-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; }
+  .comp-val { font-size: 24px; font-weight: 800; }
+  .comp-val.red { color: #c0392b; }
+  .comp-label { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 600; }
+
+  /* Toggle annotation visibility */
+  .toggle-annotations {
+    position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+    background: #ff6b35; color: white; border: none; padding: 10px 18px;
+    border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+  }
+  body.hide-changes .change-badge,
+  body.hide-changes .change-note,
+  body.hide-changes .change-outline { display: none; outline: none; }
+</style>
+</head>
+<body>
+
+<button class="toggle-annotations" onclick="document.body.classList.toggle('hide-changes')">
+  Toggle Change Markers
+</button>
+
+<!-- LEGEND -->
+<div class="legend-bar">
+  <strong>MOCKUP — Proposed Changes</strong>
+  <span>14 proposed changes marked with <span class="change-badge" style="animation:none">NEW</span> or <span style="outline: 2px dashed #ff6b35; padding: 2px 6px; border-radius: 4px;">orange outlines</span></span>
+</div>
+
+<!-- HEADER -->
+<div class="site-header">
+  <div class="logo">The <span>Oversight</span> Report</div>
+  <nav>
+    <a href="#">Compare</a>
+    <a href="#" style="font-weight:600;color:#1a1a2e">Families ▾</a>
+    <a href="#">Professionals ▾</a>
+    <a href="#">Hospitals ▾</a>
+    <a href="#">About ▾</a>
+    <a href="#">☆ Favorites</a>
+  </nav>
+</div>
+
+<!-- SUB-HEADER -->
+<div class="sub-header">
+  <div class="left">
+    <a href="#">← Back to Map</a>
+    <span style="font-size:12px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:1px">Facility Report Card</span>
+  </div>
+  <div class="right">
+    <button class="btn-fav">☆ Favorite</button>
+    <span style="font-size:11px;color:#94a3b8">Star facilities to compare them in My Favorites</span>
+    <button class="btn-download">↓ Download PDF Report</button>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- ════════ CHANGE #1: STICKY SECTION NAV ════════ -->
+  <div class="section-nav-wrap change-outline">
+    <span class="change-badge" style="position:absolute;top:-12px;left:12px">NEW — Sticky Section Nav</span>
+    <div class="section-nav">
+      <a href="#" class="active"><span class="nav-num">01</span> Safety</a>
+      <a href="#"><span class="nav-num">02</span> Inspections</a>
+      <a href="#"><span class="nav-num">03</span> Complaints</a>
+      <a href="#"><span class="nav-num">04</span> Staffing</a>
+      <a href="#"><span class="nav-num">05</span> Quality</a>
+      <a href="#"><span class="nav-num">06</span> Fines</a>
+      <a href="#"><span class="nav-num">07</span> Financial</a>
+      <a href="#"><span class="nav-num">08</span> Fire Safety</a>
+      <a href="#"><span class="nav-num">09</span> Ownership</a>
+      <a href="#"><span class="nav-num">10</span> Questions</a>
+      <a href="#"><span class="nav-num">11</span> Take Action</a>
+    </div>
+    <div class="change-note">Sticky pill nav — scrolls horizontally on mobile. Active state tracks scroll position. Lets users jump between all 11 sections without scrolling through 129 deficiency cards.</div>
+  </div>
+
+  <!-- ════════ CHANGE #2: SPLIT INTRO CARD ════════ -->
+  <div class="section-card change-outline" style="position:relative">
+    <span class="change-badge" style="position:absolute;top:-12px;left:12px">CHANGED — Split Identity vs Risk</span>
+
+    <!-- IDENTITY ZONE -->
+    <div class="intro-identity">
+      <div>
+        <h1 class="facility-name">BAY CREST CARE CENTER</h1>
+        <div class="star-row">
+          <span class="stars">★☆☆☆☆</span>
+          <span class="star-label">CMS Overall Rating <span style="cursor:pointer;color:#3b82f6">?</span></span>
+        </div>
+        <div class="meta-line">TORRANCE, CA | 80 beds · <a href="#">ProPublica Report</a> · <a href="#">Medicare Compare</a></div>
+        <div class="ccn-line">CMS CCN: 055559</div>
+      </div>
+      <div class="score-badge">
+        <span class="num">1</span>
+        <span class="label">out of 5</span>
+      </div>
+    </div>
+
+    <!-- RISK BADGES — now a separate row -->
+    <div class="risk-summary">
+      <span class="risk-badge reit">🏢 REIT Owned · Welltower Inc (WELLTOWER OP LLC)</span>
+      <span class="risk-badge sff">⚠ CMS Special Focus Facility</span>
+    </div>
+
+    <!-- BOTTOM LINE — now clearly separate card -->
+    <div class="bottom-line">
+      <div class="bottom-line-label">⚠ Bottom Line</div>
+      <p>Inspectors found <strong>serious danger to residents 4 times</strong> — risk of serious injury or death. This facility has been fined <strong>$103,659</strong>. The same company runs <strong>187 other facilities</strong> with average fines of $82,371 among those penalized.</p>
+      <div class="section-source">Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href="#" class="source-link">ProPublica</a> · <a href="#" class="source-link">Medicare Care Compare</a></div>
+    </div>
+
+    <div class="change-note">Identity (name/stars/location) now separated from risk signals (badges + bottom line). Reduces visual density when multiple badges stack (PE, REIT, ownership change, AHCA board member).</div>
+  </div>
+
+  <!-- ════════ SECTION 01: SAFETY SCORE (mostly same, minor alignment fix) ════════ -->
+  <div class="section-card" id="s01">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title"><span class="section-num">01</span> Safety Score <span class="section-tag tag-updated">Updated</span></div>
+      <span style="font-size:11px;color:#94a3b8;border:1px solid #e2e8f0;padding:3px 8px;border-radius:4px">6 METRICS</span>
+    </div>
+    <div class="section-subtitle">6 key safety metrics — all drawn from federal CMS data, not the facility's self-reported numbers</div>
+
+    <div class="metric-grid change-outline" style="position:relative">
+      <span class="change-badge" style="position:absolute;top:-12px;left:12px">CHANGED — Uniform Card Height</span>
+      <div class="metric-card">
+        <div class="metric-val red">129</div>
+        <div class="metric-label">Total Deficiencies <span style="color:#3b82f6;cursor:pointer">?</span></div>
+        <div class="metric-context">State avg: 50.0 · National: 28.4</div>
+        <div class="metric-track"><div class="metric-dot" style="right:4%"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val red">4</div>
+        <div class="metric-label">Serious Danger <span style="color:#3b82f6;cursor:pointer">?</span></div>
+        <div class="metric-context">State avg: 0.4 · National: 0.7</div>
+        <div class="metric-track"><div class="metric-dot" style="right:10%"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val red">$103,659</div>
+        <div class="metric-label">Total Fines <span style="color:#3b82f6;cursor:pointer">?</span></div>
+        <div class="metric-context">State avg: $26,795</div>
+        <div class="metric-track"><div class="metric-dot" style="right:5%"></div></div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-val green">0%</div>
+        <div class="metric-label">Zero-RN Days <span style="color:#3b82f6;cursor:pointer">?</span></div>
+        <div class="metric-context">Days with no registered nurse on site</div>
+        <div class="metric-track"><div class="metric-dot" style="left:5%"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val red">41</div>
+        <div class="metric-label">Complaint Investigations <span style="color:#3b82f6;cursor:pointer">?</span></div>
+        <div class="metric-context">Last 3 years · avg: 7</div>
+        <div class="metric-track"><div class="metric-dot" style="right:8%"></div></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val red">16</div>
+        <div class="metric-label">Fire Safety Violations <span style="color:#3b82f6;cursor:pointer">?</span></div>
+        <div class="metric-context">Nat'l avg: 14.3</div>
+        <div class="metric-track"><div class="metric-dot" style="right:40%"></div></div>
+      </div>
+    </div>
+    <div class="change-note">All 6 cards now uniform height via min-height. CMS removal callout moved below the grid instead of inside a single card (was causing uneven heights).</div>
+  </div>
+
+  <!-- ════════ CHANGE #3: DEFICIENCY FILTERING ════════ -->
+  <div class="section-card" id="s02">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title"><span class="section-num">02</span> What Did Inspectors Find? <span class="section-tag tag-updated">Updated</span></div>
+      <span style="font-size:11px;color:#94a3b8;border:1px solid #e2e8f0;padding:3px 8px;border-radius:4px">CMS Deficiencies</span>
+    </div>
+    <div class="section-subtitle">Health inspection results — severity-graded citations from unannounced federal surveys</div>
+
+    <div class="comparison-row">
+      <div class="comparison-card">
+        <div class="comp-val red">19 days</div>
+        <div class="comp-label">Avg Days to Correct</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:2px">Nat'l avg: 32 days</div>
+      </div>
+      <div class="comparison-card">
+        <div class="comp-val red">25</div>
+        <div class="comp-label">Repeat Offender Citations</div>
+        <div style="font-size:11px;color:#94a3b8;margin-top:2px">Same F-tag cited again</div>
+      </div>
+    </div>
+
+    <div class="verdict-banner danger">
+      <span class="verdict-icon">⚠</span>
+      <div><span class="verdict-title">Slow to Fix Problems & Repeat Offender</span><br>25 violations cited in multiple inspection cycles.</div>
+    </div>
+
+    <!-- NEW: Filter chips -->
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Severity & Year Filters</span>
+
+      <div class="filter-row">
+        <span class="filter-chip active">All <span class="count">129</span></span>
+        <span class="filter-chip" style="border-color:#c0392b;color:#c0392b">Serious Danger <span class="count">4</span></span>
+        <span class="filter-chip" style="border-color:#ea580c;color:#ea580c">Residents Hurt <span class="count">12</span></span>
+        <span class="filter-chip" style="border-color:#f59e0b;color:#f59e0b">Minor <span class="count">113</span></span>
+      </div>
+      <div class="filter-row">
+        <span class="filter-chip active">All Years</span>
+        <span class="filter-chip">2025 <span class="count">34</span></span>
+        <span class="filter-chip">2024 <span class="count">42</span></span>
+        <span class="filter-chip">2023 <span class="count">53</span></span>
+      </div>
+    </div>
+
+    <div style="font-size:13px;color:#64748b;margin:12px 0">129 total deficiency citations. <strong style="color:#c0392b">4</strong> were classified as <strong style="color:#c0392b">serious danger</strong> — the most severe level.</div>
+
+    <div class="deficiency-card">
+      <span class="def-severity serious">SERIOUS DANGER</span>
+      <div class="def-text">Ensure that a nursing home area is free from accident hazards and provides adequate supervision to prevent accidents. (F689)</div>
+      <div class="def-meta">Complaint Investigation · 2025 · Category: Quality of Life and Care Deficiencies</div>
+    </div>
+    <div class="deficiency-card">
+      <span class="def-severity serious">SERIOUS DANGER</span>
+      <div class="def-text">Provide basic life support, including CPR, prior to the arrival of emergency medical personnel, subject to physician orders and the resident's advance directives. (F678)</div>
+      <div class="def-meta">Complaint Investigation · 2025 · Category: Quality of Life and Care Deficiencies</div>
+    </div>
+    <div class="deficiency-card">
+      <span class="def-severity serious">SERIOUS DANGER</span>
+      <div class="def-text">Ensure each resident's drug regimen must be free from unnecessary drugs. (F757)</div>
+      <div class="def-meta">Complaint Investigation · 2023 · Category: Pharmacy Service Deficiencies</div>
+    </div>
+
+    <!-- NEW: Pagination instead of "Show 126 more" -->
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Pagination</span>
+      <div class="pagination-bar">
+        <span class="page-btn active">1</span>
+        <span class="page-btn">2</span>
+        <span class="page-btn">3</span>
+        <span class="page-btn">...</span>
+        <span class="page-btn">13</span>
+        <span class="page-info">Showing 1-10 of 129 citations</span>
+      </div>
+      <div class="change-note">Replaces "Show 126 more citations" button. Paginated at 10 per page. Combined with severity + year filters, families can quickly find what matters.</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #4: ABUSE CITATION GROUPING ════════ -->
+  <div class="section-card" id="s03">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title"><span class="section-num">03</span> Complaints & Abuse History <span class="section-tag tag-new">New</span></div>
+      <span style="font-size:11px;color:#94a3b8;border:1px solid #e2e8f0;padding:3px 8px;border-radius:4px">CMS Inspections</span>
+    </div>
+    <div class="section-subtitle">Complaint investigations, abuse and neglect citations, and Special Focus Facility status</div>
+
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val">41</div><div class="stat-label">Complaint Investigations</div><div class="stat-context">Last 3 years · avg: 7</div></div>
+      <div class="stat-card"><div class="stat-val">9</div><div class="stat-label">Abuse/Neglect Citations</div><div class="stat-context">F600-F609 range</div></div>
+      <div class="stat-card"><div class="stat-val">4</div><div class="stat-label">Led to Penalties</div><div class="stat-context">Fines or sanctions</div></div>
+    </div>
+
+    <div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin:20px 0 10px">Abuse & Neglect Citations</div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Grouped by F-Tag</span>
+
+      <div class="abuse-group">
+        <div class="abuse-group-header">
+          <span class="abuse-ftag">F600</span>
+          <span class="abuse-count">Cited 4 times</span>
+        </div>
+        <div class="abuse-text">Protect each resident from all types of abuse such as physical, mental, sexual abuse, physical punishment, and neglect by anybody.</div>
+        <div class="abuse-breakdown">
+          <span>🔴 Actual Harm × 1</span>
+          <span>⚪ No Actual Harm × 3</span>
+          <span>📅 2023, 2025</span>
+        </div>
+      </div>
+
+      <div class="abuse-group">
+        <div class="abuse-group-header">
+          <span class="abuse-ftag">F609</span>
+          <span class="abuse-count">Cited 4 times</span>
+        </div>
+        <div class="abuse-text">Timely report suspected abuse, neglect, or theft and report the results of the investigation to proper authorities.</div>
+        <div class="abuse-breakdown">
+          <span>⚪ No Actual Harm × 4</span>
+          <span>📅 2023, 2025</span>
+        </div>
+      </div>
+
+      <div class="abuse-group">
+        <div class="abuse-group-header">
+          <span class="abuse-ftag">F604</span>
+          <span class="abuse-count">Cited 1 time</span>
+        </div>
+        <div class="abuse-text">Ensure that each resident is free from the use of physical restraints, unless needed for medical treatment.</div>
+        <div class="abuse-breakdown">
+          <span>⚪ No Actual Harm × 1</span>
+          <span>📅 2025</span>
+        </div>
+      </div>
+
+      <div class="change-note">Groups identical F-tag citations into single cards with counts and harm breakdowns. Bay Crest had 9 individual cards that were mostly duplicate text — now 3 grouped cards that are much easier to scan.</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #5: STAFFING VERDICT BANNER ════════ -->
+  <div class="section-card" id="s04">
+    <div class="section-title"><span class="section-num">04</span> How Much Care Do Residents Get? <span class="section-tag tag-updated">Updated</span></div>
+    <div class="section-subtitle">Staffing hours per resident per day — from CMS Payroll-Based Journal (mandatory) and Provider Information (self-reported)</div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Staffing Verdict Banner</span>
+      <div class="verdict-banner danger">
+        <span class="verdict-icon">⚠</span>
+        <div><span class="verdict-title">Staffing Below Federal Safety Standards</span><br>Total nursing care is <strong>3.5 hrs/resident/day</strong> — 15% below the 4.1 hr safety benchmark. RN care is only <strong>14 min/day</strong>, 58% below the 33 min benchmark.</div>
+      </div>
+      <div class="change-note">Adds a verdict banner (like Sections 02 & 03 already have) when staffing falls below safety benchmarks. Currently this section has no "so what" interpretation.</div>
+    </div>
+
+    <table class="staffing-table">
+      <thead>
+        <tr><th>Role</th><th>Minutes/Day</th><th>State Avg</th><th>Safety Benchmark</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Registered Nurses (RNs) <span style="color:#3b82f6;cursor:pointer">?</span><br><span class="role-desc">Assessments, medications, complex care decisions</span></td>
+          <td class="staffing-fail-cell"><span class="staffing-fail">14 min</span></td>
+          <td>30 min</td>
+          <td>33 min</td>
+        </tr>
+        <tr>
+          <td>Licensed Practical Nurses (LPNs) <span style="color:#3b82f6;cursor:pointer">?</span><br><span class="role-desc">Medications, wound care, vital signs</span></td>
+          <td>60 min</td>
+          <td>72 min</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Certified Nursing Assistants (CNAs) <span style="color:#3b82f6;cursor:pointer">?</span><br><span class="role-desc">Bathing, feeding, dressing, daily personal care</span></td>
+          <td>147 min</td>
+          <td>156 min</td>
+          <td>—</td>
+        </tr>
+        <tr style="font-weight:600">
+          <td>Total Nursing Care <span style="color:#3b82f6;cursor:pointer">?</span></td>
+          <td class="staffing-fail-cell"><span class="staffing-fail">210 min (3.5 hrs)</span></td>
+          <td>246 min</td>
+          <td>246 min (4.1 hrs)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ════════ SECTION 05: QUALITY MEASURES (no change — dots are decorative) ════════ -->
+  <div class="section-card" id="s05">
+    <div class="section-title"><span class="section-num">05</span> How Are Residents Doing?</div>
+    <div class="section-subtitle">Federal quality measures for all long-stay and short-stay residents — reported quarterly by every Medicare-certified nursing home.</div>
+
+    <div class="qm-tabs">
+      <div class="qm-tab active">Memory Care <span class="tab-count">5</span> <span class="qm-dot teal"></span></div>
+      <div class="qm-tab">Body & Basic Care <span class="tab-count">7</span> <span class="qm-dot blue"></span></div>
+      <div class="qm-tab">Rehab & Short-Stay <span class="tab-count">3</span> <span class="qm-dot indigo"></span></div>
+      <div class="qm-tab">Vaccines <span class="tab-count">6</span> <span class="qm-dot amber"></span></div>
+      <div class="qm-tab">Workforce <span class="tab-count">3</span> <span class="qm-dot rose"></span></div>
+    </div>
+
+    <div class="verdict-banner warning" style="margin-top:12px">
+      <span class="verdict-icon">⚠</span>
+      <div><span class="verdict-title">Antipsychotic Rate Above Average</span><br>Antipsychotic medication rate of <strong>18.5%</strong> vs the <strong>16.7% national average</strong>. CMS excludes residents with schizophrenia, Huntington's, and Tourette syndrome from this measure.</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #7: FIRE SAFETY — UNCORRECTED CALLOUT ════════ -->
+  <div class="section-card" id="s08">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title"><span class="section-num">08</span> Fire Safety <span class="section-tag tag-updated">Updated</span></div>
+      <span style="font-size:11px;color:#94a3b8;border:1px solid #e2e8f0;padding:3px 8px;border-radius:4px">CMS Fire Inspections</span>
+    </div>
+    <div class="section-subtitle">Fire code inspection results from the Life Safety Code (LSC) and Emergency Preparedness surveys</div>
+
+    <div class="fire-stat-row">
+      <div class="fire-stat"><div class="val orange">16</div><div class="lbl">Fire Code Violations</div></div>
+      <div class="fire-stat"><div class="val green">0</div><div class="lbl">Serious (K-Level)</div></div>
+      <div class="fire-stat"><div class="val red">11</div><div class="lbl">Still Uncorrected</div></div>
+    </div>
+
+    <div class="verdict-banner warning">
+      <span class="verdict-icon">⚠</span>
+      <div><span class="verdict-title">Above-Average Fire Code Violations</span><br>16 violations vs the national average of 14.3. While none are at the most serious K-level, the majority remain uncorrected.</div>
+    </div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Uncorrected Callout</span>
+      <div class="verdict-banner danger">
+        <span class="verdict-icon">🔥</span>
+        <div>
+          <span class="verdict-title">11 of 16 Violations Still Uncorrected</span><br>
+          <strong>69% of fire code violations remain open.</strong> While these are classified as minor, uncorrected violations compound — a smoke door that doesn't close properly today becomes a flashover corridor in a real fire. Ask the facility: <em>"What is your timeline for correcting the remaining fire code violations?"</em>
+        </div>
+      </div>
+      <div class="change-note">Adds clinical interpretation of uncorrected fire violations. The current section shows the numbers but doesn't flag that 69% remain open — that's the real signal families need.</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #8: QUESTIONS TO ASK — PRIORITY HIERARCHY ════════ -->
+  <div class="section-card" id="s10">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title"><span class="section-num">10</span> Questions to Ask This Facility <span class="section-tag tag-updated">Updated</span></div>
+    </div>
+    <div class="section-subtitle">Data-driven questions tailored to this facility's specific safety record</div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Priority Tags & Ranking</span>
+
+      <div class="question-card priority-high">
+        <div class="q-number high">1</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span class="q-tag high">Critical</span>
+          </div>
+          <div class="q-text">"What specific corrective actions have you taken since inspectors found serious danger to residents 4 times?"</div>
+          <div class="q-context">This facility has 4 serious-danger citations — the most severe level CMS assigns. Ask for specific changes, not vague assurances.</div>
+        </div>
+      </div>
+
+      <div class="question-card priority-high">
+        <div class="q-number high">2</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span class="q-tag high">Critical</span>
+          </div>
+          <div class="q-text">"What has changed since CMS imposed $103,659 in fines? Can I see the plan of correction?"</div>
+          <div class="q-context">Plans of correction are public record. If the facility can't produce one, that's a red flag.</div>
+        </div>
+      </div>
+
+      <div class="question-card priority-med">
+        <div class="q-number med">3</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span class="q-tag med">Important</span>
+          </div>
+          <div class="q-text">"How does your staffing compare to the other 219 facilities your operator runs?"</div>
+          <div class="q-context">Large operators often have wide variation between their best and worst facilities.</div>
+        </div>
+      </div>
+
+      <div class="question-card priority-med">
+        <div class="q-number med">4</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+            <span class="q-tag med">Important</span>
+          </div>
+          <div class="q-text">"Can I visit at different times of day — including evenings and weekends?"</div>
+          <div class="q-context">Facilities that restrict visit times may be hiding staffing gaps during off-hours.</div>
+        </div>
+      </div>
+
+      <div class="change-note">Adds priority ranking (Critical / Important) so families know which questions to lead with. Critical questions relate to the most alarming findings — serious danger citations and six-figure fines. The current version lists them equally.</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #9: OWNERSHIP — CORPORATE STRUCTURE + PORTFOLIO LINK ════════ -->
+  <div class="section-card" id="s09">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title"><span class="section-num">09</span> Who Runs This Place? <span class="section-tag tag-updated">Updated</span></div>
+      <span style="font-size:11px;color:#94a3b8;border:1px solid #e2e8f0;padding:3px 8px;border-radius:4px">CMS Ownership</span>
+    </div>
+    <div class="section-subtitle">Operator details, PE/REIT ownership badges, chain stats — plus ownership change tracking</div>
+
+    <div class="owner-grid">
+      <div class="owner-card">
+        <div class="owner-card-label">Operator</div>
+        <div class="owner-name">HCCF MANAGEMENT GROUP XI LLC</div>
+        <div class="owner-stat">Operates <strong>187 facilities</strong></div>
+        <div class="owner-stat">Average rating: <strong style="color:#c0392b">2.3</strong> out of 5 stars</div>
+        <div class="owner-warning">⚠ 59% rated below average</div>
+      </div>
+      <div class="owner-card">
+        <div class="owner-card-label">Rating Distribution</div>
+        <div class="rating-bar-row"><span class="star">5★</span> <div class="rating-bar-bg"><div class="rating-bar" style="width:7%"></div></div> <span class="rating-count">2 (7%)</span></div>
+        <div class="rating-bar-row"><span class="star">4★</span> <div class="rating-bar-bg"><div class="rating-bar" style="width:11%"></div></div> <span class="rating-count">3 (11%)</span></div>
+        <div class="rating-bar-row"><span class="star">3★</span> <div class="rating-bar-bg"><div class="rating-bar" style="width:22%"></div></div> <span class="rating-count">6 (22%)</span></div>
+        <div class="rating-bar-row"><span class="star">2★</span> <div class="rating-bar-bg"><div class="rating-bar" style="width:22%"></div></div> <span class="rating-count">6 (22%)</span></div>
+        <div class="rating-bar-row"><span class="star">1★</span> <div class="rating-bar-bg"><div class="rating-bar" style="width:37%"></div></div> <span class="rating-count">10 (37%)</span></div>
+      </div>
+    </div>
+
+    <!-- NEW: Corporate Structure Diagram -->
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Corporate Structure Diagram</span>
+
+      <div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">Corporate Structure</div>
+
+      <div class="corp-structure">
+        <div class="corp-layer highlight">
+          <div class="layer-label">This Facility</div>
+          <div class="layer-name">Bay Crest Care Center</div>
+        </div>
+        <span class="corp-arrow">→</span>
+        <div class="corp-layer">
+          <div class="layer-label">Operator</div>
+          <div class="layer-name">HCCF Mgmt Group XI</div>
+        </div>
+        <span class="corp-arrow">→</span>
+        <div class="corp-layer" style="border-color:#6366f1;background:#eef2ff">
+          <div class="layer-label">REIT Owner</div>
+          <div class="layer-name">Welltower Inc</div>
+        </div>
+      </div>
+
+      <div class="change-note">Visual showing the corporate ownership layers. Families see "HCCF Management Group XI" and have no idea what that means. This diagram makes the relationship visible: who operates it, who owns the building, and whether PE/REIT capital is involved. For PE-backed facilities, a fourth layer (PE firm) would appear.</div>
+    </div>
+
+    <!-- NEW: Operator Portfolio Performance Stats -->
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Operator Portfolio Stats</span>
+
+      <div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">Operator Portfolio Performance</div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px">
+        <div class="stat-card" style="padding:12px;text-align:center">
+          <div style="font-size:24px;font-weight:800;color:#c0392b">187</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:600">Facilities</div>
+        </div>
+        <div class="stat-card" style="padding:12px;text-align:center">
+          <div style="font-size:24px;font-weight:800;color:#c0392b">2.3★</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:600">Avg Rating</div>
+        </div>
+        <div class="stat-card" style="padding:12px;text-align:center">
+          <div style="font-size:24px;font-weight:800;color:#c0392b">$82K</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:600">Avg Fines (Penalized)</div>
+        </div>
+        <div class="stat-card" style="padding:12px;text-align:center">
+          <div style="font-size:24px;font-weight:800;color:#c0392b">59%</div>
+          <div style="font-size:10px;color:#64748b;text-transform:uppercase;font-weight:600">Below Average</div>
+        </div>
+      </div>
+
+      <div class="verdict-banner danger">
+        <span class="verdict-icon">⚠</span>
+        <div><span class="verdict-title">Pattern of Poor Performance Across Portfolio</span><br>59% of this operator's 187 facilities are rated below average. The average fine among penalized facilities is $82,371. This isn't one bad facility — it's a systemic pattern across the operator's entire portfolio.</div>
+      </div>
+
+      <a href="#" class="owner-portfolio-link">→ View all 187 facilities by this operator</a>
+
+      <div class="change-note">
+        <strong>Three additions:</strong><br>
+        1. <strong>Portfolio performance stats</strong> — Avg fines across operator's penalized facilities. Currently only avg stars and % below avg are shown. Adding avg fines makes the financial pattern visible.<br>
+        2. <strong>Portfolio verdict banner</strong> — Interprets the pattern: "59% below avg isn't one bad facility — it's systemic." Currently there's no verdict banner for the operator stats.<br>
+        3. <strong>"View all 187 facilities"</strong> — Direct link to filtered search. Families can see every facility this operator runs. Huge transparency feature that's currently buried.
+      </div>
+    </div>
+
+    <!-- Existing elements (unchanged) -->
+    <div class="divider"></div>
+
+    <div style="font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px">Ownership History</div>
+
+    <div class="owner-timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot gray"></div>
+        <div class="timeline-event">CMS Records</div>
+        <div class="timeline-detail">25 total owners on file · Per CMS ownership disclosure filings</div>
+      </div>
+    </div>
+
+    <div class="verdict-banner warning">
+      <span class="verdict-icon">⚠</span>
+      <div><span class="verdict-title">Frequent Ownership Changes</span><br><strong>25 owners on CMS records.</strong> Frequent ownership changes are associated with care disruptions. New owners may cut staff, change vendors, or restructure operations. Research shows quality typically dips in the 1–2 years following an acquisition.</div>
+    </div>
+
+    <div class="section-source">Source: CMS Care Compare, ownership records</div>
+  </div>
+
+  <!-- ════════ CHANGE #11: ASK A CLINICIAN CTA — PLACED AFTER OWNERSHIP ════════ -->
+  <div class="change-outline" style="position:relative; padding-top: 18px;">
+    <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Ask a Clinician CTA Placement</span>
+    <div class="clinician-cta">
+      <div>
+        <h3>Not sure what this data means for your family?</h3>
+        <p>A nurse practitioner reviews this facility's safety record and writes a plain-language report answering the questions families actually ask — staffing analysis, inspection patterns, nearby alternatives ranked by safety, and questions to bring to the administrator.</p>
+        <span class="cta-badge">✦ Written by Robert Benard, NP · AGACNP-BC · PMHNP-BC</span>
+      </div>
+      <button class="btn-clin">Ask a Clinician — $49</button>
+    </div>
+    <div class="change-note">Places the Ask a Clinician CTA right after Questions to Ask — this is the highest-intent moment. The family just finished reading alarming data and is now seeing the questions they should ask. Perfect moment to offer: "Want a clinician to interpret all of this for you?" Currently the CTA only appears once, further down.</div>
+  </div>
+
+  <!-- ════════ CHANGE #12: NEARBY ALTERNATIVES — DEFAULT SORT BY SAFETY ════════ -->
+  <div class="section-card" id="s-nearby">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="section-title">Nearby Alternatives <span class="section-tag tag-updated">Updated</span></div>
+    </div>
+    <div class="section-subtitle">Other Medicare-certified nursing facilities within driving distance</div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">CHANGED — Default Sort: Safety Score</span>
+
+      <div class="nearby-controls">
+        <div class="nearby-control">
+          <span>Radius:</span>
+          <input type="range" min="5" max="25" value="15" style="width:100px">
+          <span>15 mi</span>
+        </div>
+        <div class="nearby-control">
+          <span>Sort by:</span>
+          <select>
+            <option selected>⭐ Safety Score (Best First)</option>
+            <option>Distance (Nearest)</option>
+            <option>CMS Star Rating</option>
+            <option>Fewest Deficiencies</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="alt-card">
+        <div>
+          <div class="alt-name">TORRANCE MEMORIAL HEALTH CARE CENTER</div>
+          <div class="alt-meta">Torrance, CA · 1.2 mi · 99 beds · <span class="alt-stars">★★★★★</span></div>
+          <div style="font-size:11px;color:#16a34a;margin-top:2px">✓ 8 deficiencies · $0 fines · No serious danger citations</div>
+        </div>
+        <div class="alt-compare-col">
+          <div class="alt-score good">
+            <span class="snum">5</span>
+            <span class="slbl">Score</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alt-card">
+        <div>
+          <div class="alt-name">PROVIDENCE LITTLE COMPANY OF MARY</div>
+          <div class="alt-meta">Torrance, CA · 2.8 mi · 217 beds · <span class="alt-stars">★★★★☆</span></div>
+          <div style="font-size:11px;color:#16a34a;margin-top:2px">✓ 22 deficiencies · $0 fines · No serious danger citations</div>
+        </div>
+        <div class="alt-compare-col">
+          <div class="alt-score good">
+            <span class="snum">4</span>
+            <span class="slbl">Score</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="alt-card">
+        <div>
+          <div class="alt-name">SOUTH BAY POST ACUTE</div>
+          <div class="alt-meta">Gardena, CA · 4.1 mi · 59 beds · <span class="alt-stars">★★★☆☆</span></div>
+          <div style="font-size:11px;color:#ea580c;margin-top:2px">⚠ 45 deficiencies · $22,781 fines · 1 serious danger</div>
+        </div>
+        <div class="alt-compare-col">
+          <div class="alt-score mid">
+            <span class="snum">3</span>
+            <span class="slbl">Score</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="change-note">
+        <strong>Two changes:</strong><br>
+        1. Default sort changed from Distance → Safety Score (Best First). Families are here because of safety concerns — show them the safest options first.<br>
+        2. Each card now shows a one-line safety summary (deficiencies, fines, serious danger) so families can compare without clicking into each one.
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #13: $29 EVIDENCE PDF UPSELL + EXPANDED GLOSSARY ════════ -->
+  <div class="section-card" id="s-glossary">
+    <div class="section-title">Glossary <span class="section-tag tag-updated">Updated</span></div>
+    <div class="section-subtitle">Terms used throughout this report</div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Searchable + Expanded</span>
+
+      <input class="glossary-search" type="text" placeholder="Search terms... (e.g., RN, SFF, deficiency)" disabled>
+
+      <table class="glossary-table">
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>RN</td><td>Registered Nurse — highest-level bedside nurse, responsible for assessments and care decisions</td></tr>
+          <tr><td>LPN</td><td>Licensed Practical Nurse — administers medications, wound care, vital signs</td></tr>
+          <tr><td>CNA</td><td>Certified Nursing Assistant — provides daily personal care (bathing, feeding, dressing)</td></tr>
+          <tr><td>Hrs/res/day</td><td>Total nursing hours divided by number of residents, per day — the key staffing density metric</td></tr>
+          <tr><td>PBJ</td><td>Payroll-Based Journal — mandatory payroll records submitted to CMS (not self-reported)</td></tr>
+          <tr><td>SFF</td><td>Special Focus Facility — CMS designation for the worst-performing ~1% of nursing homes</td></tr>
+          <tr><td>CCN</td><td>CMS Certification Number — unique federal ID for each Medicare-certified facility</td></tr>
+          <tr><td>F-tag</td><td>Federal regulation code (e.g., F689 = accident hazards). Each deficiency cites a specific F-tag.</td></tr>
+          <tr><td>K-tag</td><td>Fire safety regulation code — K-level citations are the most serious fire code violations</td></tr>
+          <tr><td>REIT</td><td>Real Estate Investment Trust — a corporate structure where the building is owned separately from operations</td></tr>
+          <tr><td>Scope & Severity</td><td>CMS grid classifying each deficiency by how many residents affected and how serious the harm</td></tr>
+        </tbody>
+      </table>
+
+      <div class="change-note">Adds search/filter functionality and 3 new terms (F-tag, K-tag, REIT, Scope & Severity) that appear elsewhere on the page. Current glossary has 9 terms — expanded to 11.</div>
+    </div>
+
+    <!-- $29 Evidence PDF Upsell -->
+    <div class="divider" style="margin: 24px 0"></div>
+
+    <div class="change-outline" style="position:relative; padding-top: 18px;">
+      <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — $29 Evidence PDF Upsell</span>
+
+      <div class="pdf-upsell">
+        <h3>📄 Want the complete picture? Download the Evidence Report.</h3>
+        <p style="font-size:13px;color:#64748b;margin-bottom:12px">Everything on this page — plus the deep-dive analysis that doesn't fit on a free report card.</p>
+
+        <div class="pdf-compare">
+          <div class="pdf-col">
+            <div class="pdf-col-title free">Free Report Card (This Page)</div>
+            <div class="pdf-item"><span class="check">✓</span> Safety score & 6 key metrics</div>
+            <div class="pdf-item"><span class="check">✓</span> Deficiency list with severity</div>
+            <div class="pdf-item"><span class="check">✓</span> Staffing hours vs benchmarks</div>
+            <div class="pdf-item"><span class="check">✓</span> Quality measures by category</div>
+            <div class="pdf-item"><span class="check">✓</span> Fines & penalty timeline</div>
+            <div class="pdf-item"><span class="check">✓</span> Questions to ask</div>
+          </div>
+          <div class="pdf-col paid">
+            <div class="pdf-col-title paid">Evidence Report PDF — $29</div>
+            <div class="pdf-item"><span class="check">✓</span> Everything in the free report, plus:</div>
+            <div class="pdf-item"><span class="extra">+</span> Full deficiency narratives (inspector's own words)</div>
+            <div class="pdf-item"><span class="extra">+</span> Penalty timeline with fine amounts per incident</div>
+            <div class="pdf-item"><span class="extra">+</span> Ownership chain analysis (PE, REIT, operator history)</div>
+            <div class="pdf-item"><span class="extra">+</span> Staffing trend analysis (improving or declining?)</div>
+            <div class="pdf-item"><span class="extra">+</span> Complaint investigation yield — citations per investigation</div>
+            <div class="pdf-item"><span class="extra">+</span> Staffing vs. the 3.48 HPRD threshold cited by 18 state AGs</div>
+            <div class="pdf-item"><span class="extra">+</span> Risk score methodology with 42 CFR regulatory references</div>
+            <div class="pdf-item"><span class="extra">+</span> Print-ready format for attorneys, ombudsmen, and family meetings</div>
+          </div>
+        </div>
+
+        <button class="pdf-btn">Download Evidence Report — $29</button>
+        <div style="font-size:11px;color:#94a3b8;margin-top:6px">Instant PDF download · Source data from CMS · 100% money-back guarantee</div>
+      </div>
+
+      <div class="change-note">Contextual upsell showing exactly what the $29 PDF adds beyond the free report card. Placed after the Glossary — the user has now consumed the entire free report and this is a natural "want more?" moment. The current Evidence PDF modal is behind a tiny preview button that's easy to miss.</div>
+    </div>
+  </div>
+
+  <!-- ════════ CHANGE #14: BOTTOM DOWNLOAD CTA ════════ -->
+  <div class="change-outline" style="position:relative; padding-top: 18px;">
+    <span class="change-badge" style="position:absolute;top:-2px;left:12px">NEW — Bottom Download CTA</span>
+    <div class="bottom-cta">
+      <div>
+        <h3>Save this report for later</h3>
+        <p>Download the full evidence report with complete deficiency narratives, penalty timeline, and ownership history.</p>
+      </div>
+      <button class="btn-dl">↓ Download PDF Report</button>
+    </div>
+    <div class="change-note">Second download CTA after users have scrolled through the full report — this is when motivation to save/share/print is highest. The only current CTA is at the very top before they've seen anything.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

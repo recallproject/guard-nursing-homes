@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reddit Avatar — Shield Only</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background: #1a1a1a;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      justify-content: center;
+      align-items: flex-start;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .label {
+      color: #999;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .avatar {
+      width: 256px;
+      height: 256px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #333;
+    }
+
+    /* ===== A: Solid shield, blue gradient bg ===== */
+    .av-a {
+      background: linear-gradient(135deg, #1D4E7E 0%, #2B6CB0 100%);
+    }
+    .av-a svg {
+      width: 130px;
+      height: 130px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .mini-a {
+      background: linear-gradient(135deg, #1D4E7E 0%, #2B6CB0 100%);
+    }
+    .mini-a svg { width: 26px; height: 26px; }
+
+    /* ===== B: Outlined shield, dark bg, teal accent ===== */
+    .av-b {
+      background: linear-gradient(135deg, #0F2A4A 0%, #162D4A 100%);
+    }
+    .av-b svg {
+      width: 130px;
+      height: 130px;
+      filter: drop-shadow(0 0 20px rgba(20, 184, 166, 0.3));
+    }
+    .mini-b {
+      background: linear-gradient(135deg, #0F2A4A 0%, #162D4A 100%);
+    }
+    .mini-b svg { width: 26px; height: 26px; }
+
+    /* ===== C: Shield with eye/crosshair, watchdog vibe ===== */
+    .av-c {
+      background: linear-gradient(135deg, #1D4E7E 0%, #2B6CB0 100%);
+    }
+    .av-c .shield-group {
+      position: relative;
+      width: 130px;
+      height: 150px;
+    }
+    .av-c .shield-group svg.shield-bg {
+      width: 130px;
+      height: 150px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    }
+    .av-c .shield-group svg.eye-icon {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+    }
+    .mini-c {
+      background: linear-gradient(135deg, #1D4E7E 0%, #2B6CB0 100%);
+    }
+    .mini-c svg { width: 26px; height: 26px; }
+
+    /* ===== D: Bold shield, white on navy, clean ===== */
+    .av-d {
+      background: #142844;
+    }
+    .av-d svg {
+      width: 140px;
+      height: 140px;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+    }
+    .mini-d {
+      background: #142844;
+    }
+    .mini-d svg { width: 28px; height: 28px; }
+
+    .instructions {
+      width: 100%;
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      margin-top: 24px;
+      line-height: 1.8;
+    }
+    .instructions strong { color: #ccc; }
+  </style>
+</head>
+<body>
+
+  <!-- A: White filled shield on blue -->
+  <div class="option">
+    <span class="label">A — White Shield</span>
+    <div class="avatar av-a">
+      <svg viewBox="0 0 24 24" fill="white" stroke="none">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <div class="mini mini-a">
+      <svg viewBox="0 0 24 24" fill="white" stroke="none">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <span class="label" style="font-size:10px; color:#555;">48px preview</span>
+  </div>
+
+  <!-- B: Teal outlined shield on dark -->
+  <div class="option">
+    <span class="label">B — Teal Outline</span>
+    <div class="avatar av-b">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <div class="mini mini-b">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <span class="label" style="font-size:10px; color:#555;">48px preview</span>
+  </div>
+
+  <!-- C: Shield with eye inside -->
+  <div class="option">
+    <span class="label">C — Oversight Eye</span>
+    <div class="avatar av-c">
+      <div class="shield-group">
+        <svg class="shield-bg" viewBox="0 0 24 26" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="0.8">
+          <path d="M12 24s8-4 8-10V5l-8-3-8 3v9c0 6 8 10 8 10z"/>
+        </svg>
+        <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3" fill="white"/>
+        </svg>
+      </div>
+    </div>
+    <div class="mini mini-c">
+      <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <span class="label" style="font-size:10px; color:#555;">48px preview</span>
+  </div>
+
+  <!-- D: Bold white shield on flat navy -->
+  <div class="option">
+    <span class="label">D — Bold Navy</span>
+    <div class="avatar av-d">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255,255,255,0.08)"/>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <!-- Inner shield -->
+        <path d="M12 19s5.5-2.8 5.5-7V6.5L12 4.5 6.5 6.5V12c0 4.2 5.5 7 5.5 7z" fill="rgba(91,168,232,0.15)" stroke="#5BA8E8" stroke-width="0.8"/>
+        <!-- Checkmark -->
+        <polyline points="9 12 11 14 15 10" stroke="#5BA8E8" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="mini mini-d">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(255,255,255,0.08)"/>
+        <path d="M12 19s5.5-2.8 5.5-7V6.5L12 4.5 6.5 6.5V12c0 4.2 5.5 7 5.5 7z" fill="rgba(91,168,232,0.2)" stroke="#5BA8E8" stroke-width="1"/>
+        <polyline points="9 12 11 14 15 10" stroke="#5BA8E8" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+    <span class="label" style="font-size:10px; color:#555;">48px preview</span>
+  </div>
+
+  <div class="instructions">
+    <strong>Cmd+Shift+4</strong> → drag over the circle you want → upload to Reddit profile avatar
+  </div>
+
+</body>
+</html>

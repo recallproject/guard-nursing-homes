@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Know Your Rights — Nursing Home Discharge & Safety | The Oversight Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #EDF1F7;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F0F4F8;
+      --bg-light: #F8FAFC;
+      --bg-footer: #1D3557;
+      --border: #D7E0EA;
+      --border-subtle: #E8EDF2;
+      --primary: #2B6CB0;
+      --primary-light: #4A90D9;
+      --primary-dark: #1D4E7E;
+      --accent-red: #DC2626;
+      --accent-red-soft: rgba(220, 38, 38, 0.08);
+      --accent-orange: #D97706;
+      --accent-orange-soft: rgba(217, 119, 6, 0.08);
+      --accent-green: #059669;
+      --accent-green-soft: rgba(5, 150, 105, 0.08);
+      --accent-teal: #0D9488;
+      --accent-teal-soft: rgba(13, 148, 136, 0.06);
+      --accent-amber: #D97706;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========================================
+       HEADER (simplified from site)
+       ======================================== */
+    .site-header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .site-logo span { color: var(--primary); }
+    .header-nav { display: flex; gap: 24px; align-items: center; }
+    .header-nav a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .header-nav a:hover { color: var(--primary); }
+
+    /* ========================================
+       HERO — URGENT BUT WARM
+       ======================================== */
+    .hero {
+      background: linear-gradient(135deg, #F2F5F9 0%, #FFFFFF 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 100px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(43, 108, 176, 0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(43, 108, 176, 0.08);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .hero-badge svg { width: 14px; height: 14px; }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+    .hero-trust {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .hero-trust svg { width: 16px; height: 16px; color: var(--accent-green); }
+
+    /* ========================================
+       SECTIONS
+       ======================================== */
+    .page-body {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-icon svg { width: 24px; height: 24px; }
+    .section-icon.red { background: var(--accent-red-soft); color: var(--accent-red); }
+    .section-icon.blue { background: rgba(43, 108, 176, 0.08); color: var(--primary); }
+    .section-icon.green { background: var(--accent-green-soft); color: var(--accent-green); }
+    .section-icon.teal { background: var(--accent-teal-soft); color: var(--accent-teal); }
+    .section-icon.orange { background: var(--accent-orange-soft); color: var(--accent-orange); }
+
+    .section-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+    .section-header p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .section-card p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .section-card p:last-child { margin-bottom: 0; }
+
+    /* ========================================
+       URGENT CALLOUT (NOMNC)
+       ======================================== */
+    .urgent-callout {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.04) 0%, rgba(220, 38, 38, 0.02) 100%);
+      border: 1px solid rgba(220, 38, 38, 0.15);
+      border-left: 4px solid var(--accent-red);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+    .urgent-callout .urgent-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-red);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .urgent-callout p {
+      color: var(--text-primary) !important;
+      font-weight: 500;
+    }
+
+    /* ========================================
+       STEP-BY-STEP PROCESS
+       ======================================== */
+    .steps {
+      margin: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      gap: 20px;
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step:last-child .step-line { display: none; }
+    .step-marker {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #FFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .step-line {
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+      z-index: 1;
+    }
+    .step-content {
+      flex: 1;
+      padding-top: 8px;
+    }
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+    .step-deadline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-orange-soft);
+      color: var(--accent-orange);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ========================================
+       DEFINITION BOX
+       ======================================== */
+    .definition-box {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 20px 0;
+    }
+    .definition-box .term {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .definition-box .term svg { width: 16px; height: 16px; }
+    .definition-box p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+    }
+
+    /* ========================================
+       RIGHTS GRID
+       ======================================== */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .right-item {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .right-item:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-md);
+    }
+    .right-check {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(43, 108, 176, 0.08);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .right-check svg { width: 18px; height: 18px; }
+    .right-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .right-text p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0;
+    }
+
+    /* ========================================
+       RESOURCES GRID
+       ======================================== */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .resource-card {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    }
+    .resource-card:hover {
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 0 1px rgba(13, 148, 136, 0.1), var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .resource-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .resource-card h4 svg { width: 18px; height: 18px; color: var(--accent-teal); }
+    .resource-card p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    .resource-contact {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      background: rgba(43, 108, 176, 0.06);
+      padding: 6px 12px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    /* ========================================
+       FACILITY LOOKUP CTA
+       ======================================== */
+    .facility-cta {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      border-radius: 16px;
+      padding: 48px 40px;
+      text-align: center;
+      color: #FFF;
+      position: relative;
+      overflow: hidden;
+    }
+    .facility-cta::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+    .facility-cta h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .facility-cta p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      margin-bottom: 28px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      color: rgba(255,255,255,0.9) !important;
+    }
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: var(--primary-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    .cta-button svg { width: 18px; height: 18px; }
+    .cta-subtext {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 16px;
+      color: rgba(255,255,255,0.7) !important;
+    }
+
+    /* ========================================
+       ACCORDION — COMMON SITUATIONS
+       ======================================== */
+    .accordion {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .accordion-item {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .accordion-item.active {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-sm);
+    }
+    .accordion-trigger {
+      width: 100%;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .accordion-trigger:hover { background: var(--bg-card-hover); }
+    .accordion-trigger .scenario-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: var(--accent-orange-soft);
+      color: var(--accent-orange);
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .accordion-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .accordion-item.active .accordion-chevron { transform: rotate(180deg); }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .accordion-body-inner {
+      padding: 0 24px 24px;
+    }
+    .accordion-body-inner p {
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      line-height: 1.8;
+    }
+    .accordion-body-inner p:last-child { margin-bottom: 0; }
+    .accordion-body-inner strong { color: var(--text-primary); }
+
+    /* ========================================
+       ASK A CLINICIAN CTA
+       ======================================== */
+    .clinician-cta {
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    .clinician-cta .cta-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(43, 108, 176, 0.08);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .clinician-cta .cta-icon svg { width: 28px; height: 28px; }
+    .clinician-cta h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .clinician-cta p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+    .clinician-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #FFF;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .clinician-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+    .clinician-button svg { width: 18px; height: 18px; }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .site-footer {
+      background: var(--bg-footer);
+      color: rgba(255,255,255,0.6);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 48px;
+    }
+    .site-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    .site-footer a:hover { color: #FFF; }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 640px) {
+      .section-card { padding: 28px 20px; }
+      .facility-cta { padding: 36px 24px; }
+      .clinician-cta { padding: 32px 20px; }
+      .resources-grid { grid-template-columns: 1fr; }
+      .hero { padding: 80px 20px 60px; }
+      .step { gap: 14px; }
+      .step-marker { width: 34px; height: 34px; font-size: 0.8rem; }
+      .step-line { left: 16px; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="/" class="site-logo">The <span>Oversight</span> Report</a>
+      <nav class="header-nav">
+        <a href="/">Search Facilities</a>
+        <a href="/high-risk">High Risk</a>
+        <a href="/chains">Chains</a>
+        <a href="/methodology">Methodology</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Know Your Rights
+      </div>
+      <h1>Nursing Home Discharge &amp; Safety</h1>
+      <p class="hero-subtitle">
+        If your loved one is being discharged from a nursing home before they're ready, you have legal rights. Here's how to use them.
+      </p>
+      <div class="hero-trust">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Written by a nurse practitioner &bull; Based on federal law &bull; Updated March 2026
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE BODY -->
+  <div class="page-body">
+
+    <!-- ===== SECTION 1: BEING DISCHARGED TOO EARLY ===== -->
+    <section class="section">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon red">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div>
+            <h2>Being Discharged Too Early?</h2>
+            <p>What to do if a nursing home is pushing your loved one out before they're safe</p>
+          </div>
+        </div>
+
+        <p>If your family member is in a nursing home or skilled nursing facility and you've been told they're being discharged — but they can't safely care for themselves at home — you are not powerless. Federal law gives residents specific rights, and facilities have legal obligations they can't ignore.</p>
+
+        <div class="definition-box">
+          <div class="term">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            NOMNC — Notice of Medicare Non-Coverage
+          </div>
+          <p>This is the official notice your facility is <strong>required</strong> to give you when Medicare will stop paying for the stay. It is <em>not</em> a discharge order. It's a billing notice. You have the right to appeal it — and you should, especially if the resident isn't safe to go home.</p>
+        </div>
+
+        <div class="urgent-callout">
+          <div class="urgent-label">Time-Sensitive</div>
+          <p>You must file your appeal <strong>before noon the day before the last covered day</strong> listed on the NOMNC. If you miss this deadline, you may still be able to appeal — but acting fast protects your rights.</p>
+        </div>
+
+        <h3 style="font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin: 28px 0 8px;">How to Appeal: Step by Step</h3>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-marker">1</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Get the NOMNC in writing</h4>
+              <p>The facility must give you a paper copy. If they haven't, ask for it. The appeal phone number is printed on the form.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-marker">2</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Call the Quality Improvement Organization (QIO)</h4>
+              <p>The phone number is on the NOMNC. Tell them you want to appeal the discharge. They'll review whether it's medically appropriate. This is a free, independent review.</p>
+              <div class="step-deadline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Deadline: Noon the day before last covered day
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-marker">3</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Coverage continues during the appeal</h4>
+              <p>If you file on time, Medicare must continue covering the stay while the appeal is being reviewed. The facility cannot charge you for these days.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-marker">4</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Get the decision</h4>
+              <p>The QIO will issue a decision, usually within 1-2 days. If they rule in your favor, coverage continues. If not, you can still file a second-level appeal.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-marker">5</div>
+            <div class="step-content">
+              <h4>Contact the Ombudsman for backup</h4>
+              <p>Whether you win or lose the appeal, your state's Long-Term Care Ombudsman can advocate for the resident's safety and help ensure any discharge is safe and legal.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="definition-box" style="border-left: 4px solid var(--accent-orange); margin-top: 28px;">
+          <div class="term" style="color: var(--accent-orange);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            What is an "unsafe discharge"?
+          </div>
+          <p>Under federal law (42 CFR §483.15), a nursing home must provide a <strong>safe and orderly discharge plan</strong>. This means the facility must ensure the resident has somewhere safe to go and the support they need. Discharging a non-weight-bearing patient who lives alone with no home care arranged is a textbook unsafe discharge — and it's illegal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2: YOUR RIGHTS ===== -->
+    <section class="section">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h2>Your Rights as a Resident or Family Member</h2>
+            <p>These are federal rights — they apply in every state</p>
+          </div>
+        </div>
+
+        <div class="rights-grid">
+          <div class="right-item">
+            <div class="right-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="right-text">
+              <h4>Right to appeal a discharge</h4>
+              <p>You can challenge any discharge decision through the QIO appeal process. The facility must give you written notice (NOMNC) and cannot force you out while an appeal is pending.</p>
+            </div>
+          </div>
+          <div class="right-item">
+            <div class="right-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="right-text">
+              <h4>Right to a safe discharge plan</h4>
+              <p>The facility must arrange safe transportation, ensure medications are transferred, coordinate with receiving providers, and confirm the destination is appropriate. "Figure it out yourself" is not a discharge plan.</p>
+            </div>
+          </div>
+          <div class="right-item">
+            <div class="right-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="right-text">
+              <h4>Right to choose your facility</h4>
+              <p>If a transfer is necessary, you have the right to choose where you go (subject to bed availability and ability to meet your needs). The facility cannot dictate your next placement.</p>
+            </div>
+          </div>
+          <div class="right-item">
+            <div class="right-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="right-text">
+              <h4>Right to access inspection records</h4>
+              <p>Every nursing home's federal inspection results, deficiency citations, fines, and staffing data are public record. You can use this data to evaluate any facility — current or prospective.</p>
+            </div>
+          </div>
+          <div class="right-item">
+            <div class="right-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="right-text">
+              <h4>Right to be free from retaliation</h4>
+              <p>A facility cannot retaliate against you for filing a complaint, requesting an appeal, or contacting the ombudsman. If they do, report it to your state survey agency immediately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3: FREE RESOURCES ===== -->
+    <section class="section">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h2>Who Can Help — Free Resources</h2>
+            <p>You don't have to navigate this alone. These are all free.</p>
+          </div>
+        </div>
+
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Long-Term Care Ombudsman
+            </h4>
+            <p>Free advocates who investigate complaints, mediate disputes, and protect residents' rights. They can attend care conferences and push back on unsafe discharges.</p>
+            <span class="resource-contact">Google "LTC Ombudsman" + your county</span>
+          </div>
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Medicare Hotline
+            </h4>
+            <p>Can answer questions about Medicare coverage, help you understand your benefits, and direct you to your QIO for appeal.</p>
+            <span class="resource-contact">1-800-MEDICARE (1-800-633-4227)</span>
+          </div>
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              State Survey Agency
+            </h4>
+            <p>The state agency that inspects nursing homes and enforces federal standards. File a complaint if you believe a discharge is unsafe or your rights are being violated.</p>
+            <span class="resource-contact">Find yours at Medicare.gov/care-compare</span>
+          </div>
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Area Agency on Aging
+            </h4>
+            <p>Local agencies that connect seniors with services: home care, meals, transportation, and help navigating benefits. They can help with post-discharge planning.</p>
+            <span class="resource-contact">eldercare.acl.gov or 1-800-677-1116</span>
+          </div>
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Legal Aid
+            </h4>
+            <p>Free legal services for low-income individuals. Many have elder law divisions that specifically handle nursing home discharge disputes and Medicaid issues.</p>
+            <span class="resource-contact">lawhelp.org — find free legal aid by state</span>
+          </div>
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              ACENTRA Health (QIO)
+            </h4>
+            <p>The Quality Improvement Organization that handles Medicare appeals. If you can't find the appeal number on your NOMNC, you can look up your state's QIO directly.</p>
+            <span class="resource-contact">qioprogram.org</span>
+          </div>
+          <div class="resource-card">
+            <h4>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              HHS Office of Inspector General
+            </h4>
+            <p>Report fraud, abuse, neglect, or unsafe conditions at any facility receiving Medicare or Medicaid funding. Tips can be submitted anonymously.</p>
+            <span class="resource-contact">tips.hhs.gov</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4: CHECK YOUR FACILITY ===== -->
+    <section class="section">
+      <div class="facility-cta">
+        <h2>Check Your Facility's Track Record</h2>
+        <p>Look up your facility's federal inspection history. If they've been cited for discharge violations, staffing problems, or safety issues before — that's ammunition for your appeal and any complaint you file.</p>
+        <a href="/" class="cta-button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Search 14,713 Nursing Homes
+        </a>
+        <p class="cta-subtext">Free. No login required. Data sourced from CMS federal records.</p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5: COMMON SITUATIONS ===== -->
+    <section class="section">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <h2>Common Situations</h2>
+            <p>Practical advice for scenarios we hear about every week</p>
+          </div>
+        </div>
+
+        <div class="accordion">
+          <!-- Item 1 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <span>"My loved one is being discharged but can't care for themselves"</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <p>This is the most common situation we hear about. A resident is non-weight-bearing, needs wound care, can't manage medications, or can't safely perform daily activities — and the facility is saying they have to leave.</p>
+                <p><strong>Your immediate steps:</strong> Request the NOMNC in writing. Call the QIO appeal number on the form before the deadline. Contact the Long-Term Care Ombudsman in your county. If the social worker is unhelpful, go to the administrator or director of nursing.</p>
+                <p>The facility has a legal obligation to ensure a <strong>safe discharge plan</strong> — which means confirming the person has appropriate care at their destination. "They can't stay here anymore" is not a plan. Make them put their discharge plan in writing.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <span>"The social worker says there's nothing they can do"</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <p>Unfortunately, this is something we hear a lot. Some social workers genuinely don't know the appeal process. Others are under pressure from administration to move patients out quickly.</p>
+                <p><strong>Go above their head.</strong> Ask to speak with the administrator or the director of nursing. Ask for the NOMNC form directly. You don't need the social worker's permission to appeal — you just need the phone number on that form.</p>
+                <p>If the facility is stonewalling you, call your <strong>Long-Term Care Ombudsman</strong>. They have legal authority to enter the facility and advocate for the resident. They deal with situations like this every day.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <span>"Insurance says they won't cover more days"</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <p>Insurance denial is not the same as discharge. These are two separate decisions. The insurance company decides what they'll pay for. The facility decides whether to discharge you. Even if Medicare stops paying, the facility still has to ensure a safe discharge.</p>
+                <p><strong>If you have Medicare Advantage (like Kaiser):</strong> You can appeal through the QIO just like traditional Medicare. But you can also appeal directly through your Medicare Advantage plan. You may even be able to switch to traditional Medicare during Open Enrollment for more flexibility.</p>
+                <p><strong>If you have Medicaid:</strong> Medicaid may cover a continued stay if the resident is willing to pay their income toward the cost. Ask the business office about Medicaid-pending status. Many families don't realize this is an option.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="accordion-item">
+            <button class="accordion-trigger" onclick="toggleAccordion(this)">
+              <span>"The facility is threatening to charge us for extra days"</span>
+              <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion-body">
+              <div class="accordion-body-inner">
+                <p><strong>If you filed a timely appeal:</strong> The facility cannot charge you for the days while the appeal is under review. This is federal law. If they try to bill you, that's a violation — report it to the ombudsman and the state survey agency.</p>
+                <p><strong>If you didn't appeal (or missed the deadline):</strong> The facility may be able to bill you for days after the Medicare coverage ended. However, they still cannot discharge you to an unsafe situation. The obligation to provide a safe discharge plan exists regardless of payment status.</p>
+                <p>Document everything in writing. If anyone tells you something verbally, follow up with an email: "Per our conversation, you stated that..." This protects you if you need to file a complaint later.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ASK A CLINICIAN CTA ===== -->
+    <div class="clinician-cta">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Need Personalized Help?</h3>
+      <p>Every situation is different. If you're not sure how this applies to your family's case, a clinician can walk you through your facility's data and help you understand your options.</p>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">One-time $49 fee · Data interpretation using public CMS records · Not legal or clinical advice</p>
+      <a href="/ask-a-clinician" class="clinician-button">
+        Ask a Clinician
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>&copy; 2026 The Oversight Report &bull; <a href="/terms">Terms</a> &bull; <a href="/privacy">Privacy</a> &bull; <a href="/methodology">Methodology</a></p>
+    <p style="margin-top: 12px; font-size: 0.8rem;">Data sourced from CMS federal records. This page provides general information about federal regulations — it is not legal advice. Consult with an attorney or ombudsman for guidance specific to your situation.</p>
+  </footer>
+
+  <script>
+    function toggleAccordion(trigger) {
+      const item = trigger.parentElement;
+      const body = item.querySelector('.accordion-body');
+      const inner = body.querySelector('.accordion-body-inner');
+
+      if (item.classList.contains('active')) {
+        body.style.maxHeight = '0';
+        item.classList.remove('active');
+      } else {
+        // Close all others
+        document.querySelectorAll('.accordion-item.active').forEach(other => {
+          other.querySelector('.accordion-body').style.maxHeight = '0';
+          other.classList.remove('active');
+        });
+        // Open this one
+        item.classList.add('active');
+        body.style.maxHeight = inner.scrollHeight + 'px';
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Care Safety Section — Facility Page Mockup</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #EDF1F7;
+      --bg-card: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --border: #D7E0EA;
+      --border-subtle: #E8EDF2;
+      --primary: #2B6CB0;
+      --primary-light: #4A90D9;
+      --primary-dark: #1D4E7E;
+      --accent-red: #DC2626;
+      --accent-red-soft: rgba(220, 38, 38, 0.08);
+      --accent-orange: #D97706;
+      --accent-orange-soft: rgba(217, 119, 6, 0.08);
+      --accent-green: #059669;
+      --accent-green-soft: rgba(5, 150, 105, 0.08);
+      --accent-teal: #0D9488;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 24px;
+    }
+
+    .mockup-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+    .mockup-sublabel {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    /* ========================================
+       FACILITY PAGE CONTEXT
+       ======================================== */
+    .facility-context {
+      max-width: 900px;
+      margin: 0 auto 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .facility-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .facility-location {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .facility-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge.stars {
+      background: rgba(43, 108, 176, 0.08);
+      color: var(--primary);
+    }
+    .badge.pe {
+      background: var(--accent-orange-soft);
+      color: var(--accent-orange);
+    }
+    .badge.memory-concern {
+      background: var(--accent-red-soft);
+      color: var(--accent-red);
+    }
+    .badge svg { width: 14px; height: 14px; }
+
+    /* ========================================
+       MEMORY CARE SECTION
+       ======================================== */
+    .memory-care-section {
+      max-width: 900px;
+      margin: 0 auto 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title-icon.concern { background: var(--accent-red-soft); color: var(--accent-red); }
+    .section-title-icon.ok { background: var(--accent-green-soft); color: var(--accent-green); }
+    .section-title-icon svg { width: 22px; height: 22px; }
+
+    .section-title h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      padding-left: 52px;
+    }
+
+    .data-source-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* ===== VERDICT BANNER ===== */
+    .verdict-banner {
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .verdict-banner.concern {
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.05) 0%, rgba(220, 38, 38, 0.02) 100%);
+      border: 1px solid rgba(220, 38, 38, 0.12);
+    }
+    .verdict-banner.ok {
+      background: linear-gradient(135deg, rgba(5, 150, 105, 0.05) 0%, rgba(5, 150, 105, 0.02) 100%);
+      border: 1px solid rgba(5, 150, 105, 0.12);
+    }
+    .verdict-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .verdict-icon.concern { background: var(--accent-red-soft); color: var(--accent-red); }
+    .verdict-icon.ok { background: var(--accent-green-soft); color: var(--accent-green); }
+    .verdict-icon svg { width: 22px; height: 22px; }
+    .verdict-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .verdict-text h3.concern { color: var(--accent-red); }
+    .verdict-text h3.ok { color: var(--accent-green); }
+    .verdict-text p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .verdict-text strong { color: var(--text-primary); }
+
+    /* ===== INDICATOR ROWS ===== */
+    .indicators {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .indicator {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .indicator-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .indicator-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .indicator-label .name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .indicator-label .info-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.65rem;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+    .indicator-label .info-btn:hover {
+      background: var(--primary);
+      color: #FFF;
+      border-color: var(--primary);
+    }
+
+    .indicator-values {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .indicator-values .facility-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .indicator-values .facility-val.red { color: var(--accent-red); }
+    .indicator-values .facility-val.orange { color: var(--accent-orange); }
+    .indicator-values .facility-val.green { color: var(--accent-green); }
+    .indicator-values .vs {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .indicator-values .national-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Bar */
+    .indicator-bar-wrap {
+      position: relative;
+      height: 10px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      overflow: visible;
+    }
+
+    .indicator-bar {
+      height: 100%;
+      border-radius: 6px 0 0 6px;
+      transition: width 1s ease;
+    }
+    .indicator-bar.red { background: linear-gradient(90deg, rgba(220,38,38,0.2), rgba(220,38,38,0.6)); }
+    .indicator-bar.orange { background: linear-gradient(90deg, rgba(217,119,6,0.2), rgba(217,119,6,0.5)); }
+    .indicator-bar.green { background: linear-gradient(90deg, rgba(5,150,105,0.2), rgba(5,150,105,0.5)); }
+
+    .national-marker {
+      position: absolute;
+      top: -4px;
+      bottom: -4px;
+      width: 2px;
+      background: var(--text-muted);
+      border-radius: 1px;
+      z-index: 2;
+    }
+    .national-marker::after {
+      content: 'Nat. avg';
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Explainer (expandable) */
+    .indicator-explainer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .indicator.expanded .indicator-explainer {
+      max-height: 200px;
+    }
+    .indicator-explainer-inner {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .indicator-explainer-inner strong { color: var(--text-primary); }
+
+    /* ===== DISCLAIMER ===== */
+    .qm-disclaimer {
+      background: var(--bg-light);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .qm-disclaimer svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .qm-disclaimer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .qm-disclaimer a:hover { text-decoration: underline; }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      max-width: 900px;
+      margin: 0 auto 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ========================================
+       SECOND EXAMPLE: CLEAN FACILITY
+       ======================================== */
+    .example-spacer {
+      max-width: 900px;
+      margin: 60px auto 24px;
+      padding-top: 40px;
+      border-top: 2px dashed var(--border);
+    }
+
+    /* ========================================
+       RESPONSIVE
+       ======================================== */
+    @media (max-width: 640px) {
+      .memory-care-section { padding: 28px 20px; }
+      .section-subtitle { padding-left: 0; }
+      .verdict-banner { flex-direction: column; gap: 12px; }
+      .indicator-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .section-title-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mockup-label">Facility Page Mockup — Memory Care Section</div>
+  <div class="mockup-sublabel">Example 1: Facility with high antipsychotic use (concern)</div>
+
+  <!-- FACILITY CONTEXT -->
+  <div class="facility-context">
+    <div class="facility-name">Sunny Acres Nursing &amp; Rehabilitation Center</div>
+    <div class="facility-location">1234 Main Street, Dallas, TX 75201</div>
+    <div class="facility-badges">
+      <span class="badge stars">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        2 out of 5 stars
+      </span>
+      <span class="badge pe">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        PE-Owned
+      </span>
+      <span class="badge memory-concern">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Memory Care Concern
+      </span>
+    </div>
+  </div>
+
+  <!-- MEMORY CARE SECTION — CONCERN -->
+  <div class="memory-care-section">
+    <div class="section-title-row">
+      <div class="section-title">
+        <div class="section-title-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h2>Memory Care Safety</h2>
+      </div>
+      <span class="data-source-tag">CMS MDS Quality Measures · Q3 2025</span>
+    </div>
+    <div class="section-subtitle">How this facility treats residents with dementia and cognitive impairment</div>
+
+    <!-- VERDICT -->
+    <div class="verdict-banner concern">
+      <div class="verdict-icon concern">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="verdict-text">
+        <h3 class="concern">Elevated Antipsychotic Use</h3>
+        <p>This facility medicates <strong>28.3%</strong> of long-stay residents with antipsychotic drugs — nearly <strong>double the national average</strong> of 14.9%. Antipsychotics are sometimes used to sedate residents with dementia rather than provide appropriate care. CMS has flagged this practice as a quality concern.</p>
+      </div>
+    </div>
+
+    <!-- INDICATORS -->
+    <div class="indicators">
+
+      <!-- Antipsychotic Use — BAD -->
+      <div class="indicator" id="ind-antipsych">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Antipsychotic medication</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-antipsych')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val red">28.3%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">14.9% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar red" style="width: 56.6%;"></div>
+          <div class="national-marker" style="left: 29.8%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> 28.3% of long-stay residents at this facility are receiving antipsychotic medication. CMS already excludes residents diagnosed with schizophrenia, Huntington's disease, and Tourette syndrome — so this number represents residents without those conditions. High rates may indicate the facility is using medication to manage behavior rather than providing person-centered dementia care.
+          </div>
+        </div>
+      </div>
+
+      <!-- Physical Restraints — GOOD -->
+      <div class="indicator" id="ind-restraints">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Physical restraints</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-restraints')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">0.0%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">0.4% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 0%;"></div>
+          <div class="national-marker" style="left: 4%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> No long-stay residents are physically restrained (vests, mitts, belts, or side rails used as restraints). CMS has driven restraint use to near-zero nationally. Any facility above 1% should raise serious questions.
+          </div>
+        </div>
+      </div>
+
+      <!-- Falls — SLIGHTLY WORSE -->
+      <div class="indicator" id="ind-falls">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Falls with major injury</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-falls')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val orange">4.1%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">3.4% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar orange" style="width: 27.3%;"></div>
+          <div class="national-marker" style="left: 22.7%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> 4.1% of long-stay residents experienced a fall that caused a fracture, head injury, or other major harm. Residents with dementia are at higher risk for falls. Rates above the national average may indicate inadequate supervision, staffing, or fall prevention measures.
+          </div>
+        </div>
+      </div>
+
+      <!-- Depression — BETTER -->
+      <div class="indicator" id="ind-depression">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Depressive symptoms</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-depression')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">18.2%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">22.0% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 36.4%;"></div>
+          <div class="national-marker" style="left: 44%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> 18.2% of long-stay residents show moderate to severe depressive symptoms. Depression is common in dementia patients but often goes undiagnosed. A lower-than-average rate can mean better screening and treatment — or under-reporting. Consider this alongside other indicators.
+          </div>
+        </div>
+      </div>
+
+      <!-- Weight Loss — WORSE -->
+      <div class="indicator" id="ind-weight">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Significant weight loss</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-weight')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val orange">9.8%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">7.1% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar orange" style="width: 49%;"></div>
+          <div class="national-marker" style="left: 35.5%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> 9.8% of long-stay residents have experienced significant unplanned weight loss. Residents with dementia often have difficulty eating or forget meals. Elevated rates can indicate inadequate feeding assistance, meal supervision, or nutritional monitoring.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="qm-disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div>
+        Quality measure data is from CMS's Minimum Data Set (MDS), reported quarterly. Antipsychotic rates exclude residents with schizophrenia, Huntington's disease, and Tourette syndrome per CMS methodology. A high rate does not automatically indicate improper care but warrants further investigation. <a href="/methodology#quality-measures">Learn more about our methodology</a>. <a href="https://data.cms.gov/provider-data/dataset/djen-97ju" target="_blank" rel="noopener">Verify on CMS.gov →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================
+       EXAMPLE 2: CLEAN FACILITY
+       ================================================ -->
+  <div class="example-spacer">
+    <div class="mockup-label">Example 2: Facility with good memory care indicators</div>
+  </div>
+
+  <div class="facility-context">
+    <div class="facility-name">Meadowbrook Senior Living Center</div>
+    <div class="facility-location">567 Oak Avenue, Portland, OR 97205</div>
+    <div class="facility-badges">
+      <span class="badge stars">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        4 out of 5 stars
+      </span>
+    </div>
+  </div>
+
+  <div class="memory-care-section">
+    <div class="section-title-row">
+      <div class="section-title">
+        <div class="section-title-icon ok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h2>Memory Care Safety</h2>
+      </div>
+      <span class="data-source-tag">CMS MDS Quality Measures · Q3 2025</span>
+    </div>
+    <div class="section-subtitle">How this facility treats residents with dementia and cognitive impairment</div>
+
+    <!-- VERDICT — OK -->
+    <div class="verdict-banner ok">
+      <div class="verdict-icon ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="verdict-text">
+        <h3 class="ok">Below-Average Antipsychotic Use</h3>
+        <p>This facility medicates <strong>8.1%</strong> of long-stay residents with antipsychotic drugs — <strong>well below the national average</strong> of 14.9%. Lower rates typically indicate the facility uses person-centered approaches to dementia care rather than relying on medication.</p>
+      </div>
+    </div>
+
+    <!-- INDICATORS — ALL GREEN -->
+    <div class="indicators">
+
+      <div class="indicator" id="ind-antipsych-2">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Antipsychotic medication</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-antipsych-2')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">8.1%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">14.9% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 16.2%;"></div>
+          <div class="national-marker" style="left: 29.8%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> Only 8.1% of long-stay residents receive antipsychotic medication — significantly below the national average. This suggests the facility prioritizes non-pharmaceutical approaches to dementia care.
+          </div>
+        </div>
+      </div>
+
+      <div class="indicator" id="ind-restraints-2">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Physical restraints</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-restraints-2')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">0.0%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">0.4% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 0%;"></div>
+          <div class="national-marker" style="left: 4%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> No residents are physically restrained. This is the standard you should expect.
+          </div>
+        </div>
+      </div>
+
+      <div class="indicator" id="ind-falls-2">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Falls with major injury</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-falls-2')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">2.1%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">3.4% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 14%;"></div>
+          <div class="national-marker" style="left: 22.7%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> Below-average rate of falls with major injury. This suggests adequate supervision and fall prevention programs.
+          </div>
+        </div>
+      </div>
+
+      <div class="indicator" id="ind-depression-2">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Depressive symptoms</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-depression-2')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">15.4%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">22.0% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 30.8%;"></div>
+          <div class="national-marker" style="left: 44%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> Below-average rate of depressive symptoms among long-stay residents.
+          </div>
+        </div>
+      </div>
+
+      <div class="indicator" id="ind-weight-2">
+        <div class="indicator-header">
+          <div class="indicator-label">
+            <span class="name">Significant weight loss</span>
+            <button class="info-btn" onclick="toggleExplainer('ind-weight-2')" title="Learn more">?</button>
+          </div>
+          <div class="indicator-values">
+            <span class="facility-val green">4.3%</span>
+            <span class="vs">vs</span>
+            <span class="national-val">7.1% avg</span>
+          </div>
+        </div>
+        <div class="indicator-bar-wrap">
+          <div class="indicator-bar green" style="width: 21.5%;"></div>
+          <div class="national-marker" style="left: 35.5%;"></div>
+        </div>
+        <div class="indicator-explainer">
+          <div class="indicator-explainer-inner">
+            <strong>What this means:</strong> Below-average rate of significant unplanned weight loss. This suggests adequate nutritional monitoring and feeding assistance.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="qm-disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div>
+        Quality measure data is from CMS's Minimum Data Set (MDS), reported quarterly. Antipsychotic rates exclude residents with schizophrenia, Huntington's disease, and Tourette syndrome per CMS methodology. <a href="/methodology#quality-measures">Learn more about our methodology</a>. <a href="https://data.cms.gov/provider-data/dataset/djen-97ju" target="_blank" rel="noopener">Verify on CMS.gov →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleExplainer(id) {
+      const indicator = document.getElementById(id);
+      indicator.classList.toggle('expanded');
+    }
+  </script>
+
+</body>
+</html>

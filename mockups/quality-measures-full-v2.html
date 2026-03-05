@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quality Measures v2 — Facility Page Integration</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #EDF1F7;
+      --bg-card: #FFFFFF;
+      --bg-light: #F8FAFC;
+      --bg-card-hover: #F0F4F8;
+      --border: #D7E0EA;
+      --border-subtle: #E8EDF2;
+      --primary: #2B6CB0;
+      --primary-light: #4A90D9;
+      --primary-dark: #1D4E7E;
+      --accent-red: #DC2626;
+      --accent-red-soft: rgba(220, 38, 38, 0.08);
+      --accent-orange: #D97706;
+      --accent-orange-soft: rgba(217, 119, 6, 0.08);
+      --accent-green: #059669;
+      --accent-green-soft: rgba(5, 150, 105, 0.08);
+      --accent-teal: #0D9488;
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-muted: #64748B;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg-deep); color: var(--text-primary);
+      line-height: 1.6; -webkit-font-smoothing: antialiased; padding: 40px 24px;
+    }
+    .page-wrap { max-width: 900px; margin: 0 auto; }
+    .mockup-note { text-align: center; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .mockup-desc { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    /* SECTION — matches existing facility page pattern */
+    .section {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 16px; padding: 36px 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px;
+    }
+    .section-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .section-number {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700;
+      color: var(--primary); background: rgba(43, 108, 176, 0.08); padding: 2px 8px; border-radius: 4px;
+    }
+    .section-title { font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--text-primary); }
+    .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px; margin-left: 48px; }
+    .section-source {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 600;
+      color: var(--text-muted); background: var(--bg-light); border: 1px solid var(--border-subtle);
+      padding: 3px 8px; border-radius: 4px; margin-left: auto; white-space: nowrap;
+    }
+    .new-badge {
+      font-size: 0.6rem; font-weight: 800; color: #FFF; background: var(--accent-teal);
+      padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.08em;
+      margin-left: 12px; vertical-align: middle;
+    }
+
+    /* TABS */
+    .qm-tabs {
+      display: flex; gap: 0; margin-bottom: 24px;
+      border-bottom: 2px solid var(--border-subtle);
+    }
+    .qm-tab {
+      padding: 10px 20px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted);
+      background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -2px; transition: all 0.2s; font-family: 'Plus Jakarta Sans', sans-serif;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .qm-tab:hover { color: var(--text-primary); }
+    .qm-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .tab-count {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 700;
+      background: var(--bg-light); border: 1px solid var(--border-subtle); padding: 1px 6px; border-radius: 4px;
+    }
+    .qm-tab.active .tab-count { background: rgba(43, 108, 176, 0.08); border-color: rgba(43, 108, 176, 0.2); color: var(--primary); }
+    .tab-flag { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tab-flag.red { background: var(--accent-red); }
+    .tab-flag.orange { background: var(--accent-orange); }
+    .tab-flag.green { background: var(--accent-green); }
+
+    /* PANELS */
+    .qm-panel { display: none; }
+    .qm-panel.active { display: block; }
+
+    /* VERDICT */
+    .verdict-banner { border-radius: 12px; padding: 18px 22px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 14px; }
+    .verdict-banner.concern { background: linear-gradient(135deg, rgba(220, 38, 38, 0.05), rgba(220, 38, 38, 0.02)); border: 1px solid rgba(220, 38, 38, 0.12); }
+    .verdict-banner.caution { background: linear-gradient(135deg, rgba(217, 119, 6, 0.05), rgba(217, 119, 6, 0.02)); border: 1px solid rgba(217, 119, 6, 0.12); }
+    .verdict-banner.ok { background: linear-gradient(135deg, rgba(5, 150, 105, 0.05), rgba(5, 150, 105, 0.02)); border: 1px solid rgba(5, 150, 105, 0.12); }
+    .verdict-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .verdict-icon.concern { background: var(--accent-red-soft); color: var(--accent-red); }
+    .verdict-icon.caution { background: var(--accent-orange-soft); color: var(--accent-orange); }
+    .verdict-icon.ok { background: var(--accent-green-soft); color: var(--accent-green); }
+    .verdict-icon svg { width: 20px; height: 20px; }
+    .verdict-text h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+    .verdict-text h3.concern { color: var(--accent-red); }
+    .verdict-text h3.caution { color: var(--accent-orange); }
+    .verdict-text h3.ok { color: var(--accent-green); }
+    .verdict-text p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+    .verdict-text strong { color: var(--text-primary); }
+
+    /* INDICATORS */
+    .indicators { display: flex; flex-direction: column; gap: 18px; }
+    .indicator { display: flex; flex-direction: column; gap: 6px; }
+    .indicator-header { display: flex; align-items: center; justify-content: space-between; }
+    .indicator-name { font-size: 0.875rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 8px; }
+    .info-btn {
+      width: 16px; height: 16px; border-radius: 50%; background: var(--bg-light);
+      border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--text-muted); font-size: 0.6rem; font-weight: 700; transition: all 0.2s;
+    }
+    .info-btn:hover { background: var(--primary); color: #FFF; border-color: var(--primary); }
+    .indicator-values { display: flex; align-items: baseline; gap: 6px; }
+    .fval { font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; }
+    .fval.red { color: var(--accent-red); } .fval.orange { color: var(--accent-orange); }
+    .fval.green { color: var(--accent-green); } .fval.neutral { color: var(--text-secondary); }
+    .vs { font-size: 0.7rem; color: var(--text-muted); }
+    .natl { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
+    .indicator-bar-wrap { position: relative; height: 8px; background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: 6px; overflow: visible; }
+    .indicator-bar { height: 100%; border-radius: 6px 0 0 6px; }
+    .indicator-bar.red { background: linear-gradient(90deg, rgba(220,38,38,0.15), rgba(220,38,38,0.5)); }
+    .indicator-bar.orange { background: linear-gradient(90deg, rgba(217,119,6,0.15), rgba(217,119,6,0.45)); }
+    .indicator-bar.green { background: linear-gradient(90deg, rgba(5,150,105,0.15), rgba(5,150,105,0.45)); }
+    .natl-marker { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--text-muted); border-radius: 1px; z-index: 2; }
+    .natl-marker::after { content: 'avg'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font-size: 0.55rem; font-weight: 600; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+
+    /* Explainer */
+    .indicator-explainer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .indicator.expanded .indicator-explainer { max-height: 250px; }
+    .indicator-explainer-inner { background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 12px 14px; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7; }
+    .indicator-explainer-inner strong { color: var(--text-primary); }
+
+    .direction-note { font-size: 0.7rem; color: var(--text-muted); font-style: italic; margin-top: 14px; }
+
+    /* DISCLAIMER */
+    .qm-disclaimer {
+      background: var(--bg-light); border: 1px solid var(--border-subtle); border-radius: 10px;
+      padding: 14px 18px; font-size: 0.75rem; color: var(--text-muted); line-height: 1.7;
+      display: flex; gap: 10px; align-items: flex-start; margin-top: 24px;
+    }
+    .qm-disclaimer svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .qm-disclaimer a { color: var(--primary); text-decoration: none; }
+
+    /* Grayed existing sections */
+    .existing-section {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px;
+      padding: 28px 32px; box-shadow: var(--shadow-sm); margin-bottom: 24px; opacity: 0.45;
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 24px 18px; }
+      .section-subtitle { margin-left: 0; }
+      .qm-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .qm-tab { padding: 8px 12px; font-size: 0.78rem; white-space: nowrap; }
+      .verdict-banner { flex-direction: column; gap: 10px; }
+      .indicator-header { flex-direction: column; align-items: flex-start; gap: 3px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="mockup-note">Facility Page — Section 04: Quality Measures (v2 — corrected data)</div>
+  <div class="mockup-desc">All national averages from actual downloaded CMS MDS Quality Measures dataset. 17 measures across 3 tabs. Every facility gets this section populated automatically. Grayed sections show existing page context.</div>
+
+  <!-- Existing 03 -->
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-title">How Much Care Do Residents Get?</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 04: HOW ARE RESIDENTS DOING?
+  ═══════════════════════════════════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-title">How Are Residents Doing?<span class="new-badge">New</span></span>
+      <span class="section-source">CMS MDS Quality Measures</span>
+    </div>
+    <div class="section-subtitle">CMS quality measures for all long-stay and short-stay residents — includes indicators specifically designed to flag dementia care concerns.</div>
+
+    <!-- TABS -->
+    <div class="qm-tabs">
+      <button class="qm-tab active" onclick="switchTab('memory')">
+        Memory Care <span class="tab-count">5</span> <span class="tab-flag red"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('body')">
+        Body &amp; Basic Care <span class="tab-count">7</span> <span class="tab-flag orange"></span>
+      </button>
+      <button class="qm-tab" onclick="switchTab('rehab')">
+        Rehab &amp; Short-Stay <span class="tab-count">3</span> <span class="tab-flag red"></span>
+      </button>
+    </div>
+
+    <!-- ══════ TAB 1: MEMORY CARE (5) ══════ -->
+    <div class="qm-panel active" id="panel-memory">
+      <div class="verdict-banner concern">
+        <div class="verdict-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="concern">High Antipsychotic Use</h3>
+          <p>This facility medicates <strong>28.3%</strong> of long-stay residents with antipsychotic drugs — nearly <strong>double the national average</strong> of 16.7% and in the <strong>worst 10% nationally</strong> (facilities above 29.6%). When combined with elevated anti-anxiety medication use, this suggests a pattern of chemical sedation rather than person-centered dementia care.</p>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="indicator" id="m1">
+          <div class="indicator-header">
+            <div class="indicator-name">Antipsychotic medication <button class="info-btn" onclick="toggleExp('m1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">28.3%</span><span class="vs">vs</span><span class="natl">16.7% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 56.6%;"></div>
+            <div class="natl-marker" style="left: 33.4%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 28.3% of long-stay residents receive antipsychotic medication without a qualifying diagnosis. CMS excludes residents with schizophrenia, Huntington's disease, and Tourette syndrome from this number. The national average is 16.7% (median 14.6%), and the worst 10% of facilities are above 29.6%. This facility is approaching that threshold. High rates are a strong signal of chemical restraint — using drugs to manage dementia behavior instead of providing appropriate care. Some antipsychotic use is clinically appropriate for severe agitation that poses safety risks, but rates this high warrant serious scrutiny.</div></div>
+        </div>
+
+        <div class="indicator" id="m2">
+          <div class="indicator-header">
+            <div class="indicator-name">Anti-anxiety &amp; sedative medication <button class="info-btn" onclick="toggleExp('m2')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">19.4%</span><span class="vs">vs</span><span class="natl">15.1% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 38.8%;"></div>
+            <div class="natl-marker" style="left: 30.2%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 19.4% of long-stay residents receive anti-anxiety or hypnotic (sleeping) medication. Like antipsychotics, these drugs are sometimes used to sedate residents rather than address the underlying cause of their distress. Benzodiazepines significantly increase fall risk in elderly patients. When both antipsychotic AND anti-anxiety rates are elevated, it suggests a facility-wide pattern of relying on medication over care.</div></div>
+        </div>
+
+        <div class="indicator" id="m3">
+          <div class="indicator-header">
+            <div class="indicator-name">Physical restraints <button class="info-btn" onclick="toggleExp('m3')">?</button></div>
+            <div class="indicator-values"><span class="fval green">0.0%</span><span class="vs">vs</span><span class="natl">0.4% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 0%;"></div>
+            <div class="natl-marker" style="left: 4%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> No residents are physically restrained (vests, mitts, belts, or side rails used as restraints). CMS has driven physical restraint use to near-zero nationally. Any facility above 1% should raise serious questions. Note: a facility can have zero physical restraints while still chemically restraining residents with antipsychotics and sedatives — look at both.</div></div>
+        </div>
+
+        <div class="indicator" id="m4">
+          <div class="indicator-header">
+            <div class="indicator-name">Depressive symptoms <button class="info-btn" onclick="toggleExp('m4')">?</button></div>
+            <div class="indicator-values"><span class="fval green">3.8%</span><span class="vs">vs</span><span class="natl">4.1% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 19%;"></div>
+            <div class="natl-marker" style="left: 20.5%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 3.8% of long-stay residents show moderate to severe depressive symptoms — near the national average. Depression is common in nursing home residents, especially those with dementia. A lower-than-average rate can indicate better screening and treatment — but very low rates at a facility with high sedation may indicate residents are too medicated to express distress, not that they aren't experiencing it.</div></div>
+        </div>
+
+        <div class="indicator" id="m5">
+          <div class="indicator-header">
+            <div class="indicator-name">Falls with major injury <button class="info-btn" onclick="toggleExp('m5')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">4.2%</span><span class="vs">vs</span><span class="natl">3.2% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 28%;"></div>
+            <div class="natl-marker" style="left: 21.3%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 4.2% of long-stay residents experienced a fall resulting in fracture, head injury, or other major harm. Residents with dementia are at higher fall risk — and ironically, so are residents on antipsychotic and anti-anxiety medications, which cause dizziness and impaired balance. A facility with high sedation rates AND high fall rates is a compounding red flag.</div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower is better for all indicators in this tab</div>
+    </div>
+
+    <!-- ══════ TAB 2: BODY & BASIC CARE (7) ══════ -->
+    <div class="qm-panel" id="panel-body">
+      <div class="verdict-banner caution">
+        <div class="verdict-icon caution">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="caution">Elevated Bedsore &amp; Infection Rates</h3>
+          <p>This facility has <strong>above-average pressure ulcers and UTIs</strong> — two of the clearest indicators of understaffing. Bedsores happen when residents aren't being repositioned. UTIs happen when residents aren't getting basic hygiene care.</p>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="indicator" id="b1">
+          <div class="indicator-header">
+            <div class="indicator-name">Pressure ulcers (bedsores) <button class="info-btn" onclick="toggleExp('b1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">8.7%</span><span class="vs">vs</span><span class="natl">5.2% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 43.5%;"></div>
+            <div class="natl-marker" style="left: 26%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 8.7% of high-risk long-stay residents have stage 2 or worse pressure ulcers. Bedsores are largely preventable with proper repositioning, nutrition, and skin checks every 2 hours. A rate this high almost always means residents aren't being turned frequently enough — a direct consequence of not having enough nursing staff on the floor.</div></div>
+        </div>
+
+        <div class="indicator" id="b2">
+          <div class="indicator-header">
+            <div class="indicator-name">Urinary tract infections <button class="info-btn" onclick="toggleExp('b2')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">4.8%</span><span class="vs">vs</span><span class="natl">3.1% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 32%;"></div>
+            <div class="natl-marker" style="left: 20.7%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 4.8% of long-stay residents have a UTI. UTIs in nursing homes are largely preventable with adequate hydration and timely hygiene care. Elevated rates often mean residents aren't being changed frequently enough or aren't getting enough fluids — both require staff time that understaffed facilities don't have.</div></div>
+        </div>
+
+        <div class="indicator" id="b3">
+          <div class="indicator-header">
+            <div class="indicator-name">Catheter left in <button class="info-btn" onclick="toggleExp('b3')">?</button></div>
+            <div class="indicator-values"><span class="fval green">1.2%</span><span class="vs">vs</span><span class="natl">1.8% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 12%;"></div>
+            <div class="natl-marker" style="left: 18%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 1.2% of long-stay residents have an indwelling urinary catheter. Catheters dramatically increase infection risk and should only be used when medically necessary. Some facilities leave catheters in because it requires less staff time than assisting residents to the bathroom — convenience over safety.</div></div>
+        </div>
+
+        <div class="indicator" id="b4">
+          <div class="indicator-header">
+            <div class="indicator-name">Significant weight loss <button class="info-btn" onclick="toggleExp('b4')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">9.1%</span><span class="vs">vs</span><span class="natl">7.1% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 45.5%;"></div>
+            <div class="natl-marker" style="left: 35.5%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 9.1% of long-stay residents experienced significant unplanned weight loss. Dementia patients often forget to eat or have difficulty feeding themselves and need hands-on assistance. Elevated rates can indicate inadequate feeding help or nutritional monitoring. Very low rates could also mean the facility isn't weighing residents regularly enough to detect the problem.</div></div>
+        </div>
+
+        <div class="indicator" id="b5">
+          <div class="indicator-header">
+            <div class="indicator-name">Moderate or severe pain <button class="info-btn" onclick="toggleExp('b5')">?</button></div>
+            <div class="indicator-values"><span class="fval green">6.4%</span><span class="vs">vs</span><span class="natl">8.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar green" style="width: 21.3%;"></div>
+            <div class="natl-marker" style="left: 27.7%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 6.4% of long-stay residents report moderate to severe pain. Good pain management is a basic quality indicator. However, very low rates in facilities with many dementia patients may indicate under-detection — residents with cognitive impairment often can't articulate that they're in pain.</div></div>
+        </div>
+
+        <div class="indicator" id="b6">
+          <div class="indicator-header">
+            <div class="indicator-name">Ability to do daily tasks declined <button class="info-btn" onclick="toggleExp('b6')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">18.9%</span><span class="vs">vs</span><span class="natl">15.2% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 37.8%;"></div>
+            <div class="natl-marker" style="left: 30.4%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 18.9% of long-stay residents lost the ability to perform daily activities (eating, bathing, dressing) they could previously manage. Some decline is expected with aging, but above-average rates suggest the facility isn't providing enough physical therapy or encouraging independence — which accelerates decline rather than slowing it.</div></div>
+        </div>
+
+        <div class="indicator" id="b7">
+          <div class="indicator-header">
+            <div class="indicator-name">Walking ability worsened <button class="info-btn" onclick="toggleExp('b7')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">16.3%</span><span class="vs">vs</span><span class="natl">13.8% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 32.6%;"></div>
+            <div class="natl-marker" style="left: 27.6%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 16.3% of long-stay residents who could previously walk lost that ability or needed significantly more help. Mobility loss in nursing homes is often preventable with regular physical therapy and walking programs. A facility that lets residents sit in wheelchairs all day will see high rates here — and once mobility is lost, it rarely comes back.</div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower is better for all indicators in this tab</div>
+    </div>
+
+    <!-- ══════ TAB 3: REHAB & SHORT-STAY (3) ══════ -->
+    <div class="qm-panel" id="panel-rehab">
+      <div class="verdict-banner concern">
+        <div class="verdict-icon concern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="verdict-text">
+          <h3 class="concern">High Re-hospitalization Rate</h3>
+          <p>This facility sends <strong>24.1%</strong> of short-stay patients back to the hospital within 30 days — significantly above the national average. If you're choosing a facility for post-surgical rehab, this is the single most important number on the page.</p>
+        </div>
+      </div>
+
+      <div class="indicators">
+        <div class="indicator" id="r1">
+          <div class="indicator-header">
+            <div class="indicator-name">Re-hospitalized within 30 days <button class="info-btn" onclick="toggleExp('r1')">?</button></div>
+            <div class="indicator-values"><span class="fval red">24.1%</span><span class="vs">vs</span><span class="natl">17.3% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 48.2%;"></div>
+            <div class="natl-marker" style="left: 34.6%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> Nearly 1 in 4 short-stay patients end up back in the hospital within 30 days. This is the single most important metric for anyone choosing a rehab facility after surgery or a hospital stay. High rates indicate poor post-operative care, medication management failures, or inadequate clinical monitoring. Hospital discharge planners track this metric closely — and so should you.</div></div>
+        </div>
+
+        <div class="indicator" id="r2">
+          <div class="indicator-header">
+            <div class="indicator-name">Emergency room visits <button class="info-btn" onclick="toggleExp('r2')">?</button></div>
+            <div class="indicator-values"><span class="fval red">14.2%</span><span class="vs">vs</span><span class="natl">10.8% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar red" style="width: 47.3%;"></div>
+            <div class="natl-marker" style="left: 36%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 14.2% of short-stay patients required an ER visit. Combined with high re-hospitalization, this means the facility struggles to manage post-acute complications on site. Strong facilities with adequate clinical staff can handle more issues in-house without sending patients back to the emergency room.</div></div>
+        </div>
+
+        <div class="indicator" id="r3">
+          <div class="indicator-header">
+            <div class="indicator-name">Newly started on antipsychotics <button class="info-btn" onclick="toggleExp('r3')">?</button></div>
+            <div class="indicator-values"><span class="fval orange">3.1%</span><span class="vs">vs</span><span class="natl">1.8% avg</span></div>
+          </div>
+          <div class="indicator-bar-wrap">
+            <div class="indicator-bar orange" style="width: 31%;"></div>
+            <div class="natl-marker" style="left: 18%;"></div>
+          </div>
+          <div class="indicator-explainer"><div class="indicator-explainer-inner"><strong>What this means:</strong> 3.1% of short-stay patients were newly started on antipsychotic medication during their rehab stay. If your family member went in for a hip replacement and came out on an antipsychotic, that's a serious red flag. These drugs carry an FDA black-box warning for increased mortality in elderly patients and significantly increase fall risk — the opposite of what a rehab facility should be doing.</div></div>
+        </div>
+      </div>
+      <div class="direction-note">↓ Lower is better for all indicators in this tab</div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="qm-disclaimer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <div>
+        Quality measures are from the CMS Minimum Data Set (MDS), reported quarterly for all 14,713 Medicare-certified nursing facilities. Antipsychotic rates exclude residents diagnosed with schizophrenia, Huntington's disease, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation — a single measure above average does not automatically indicate poor care. National averages calculated from actual CMS dataset. <a href="/methodology#quality-measures">Methodology</a> · <a href="https://data.cms.gov/provider-data/dataset/djen-97ju" target="_blank" rel="noopener">Verify on CMS.gov →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Existing sections below -->
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-title">Fines &amp; Penalties</span>
+    </div>
+  </div>
+  <div class="existing-section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <span class="section-title">Financial Transparency</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.qm-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.qm-panel').forEach(p => p.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('panel-' + tab).classList.add('active');
+  }
+  function toggleExp(id) { document.getElementById(id).classList.toggle('expanded'); }
+</script>
+</body>
+</html>

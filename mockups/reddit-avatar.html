@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Reddit Avatar — The Oversight Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background: #1a1a1a;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .label {
+      color: #999;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .preview-row {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    /* ===== AVATAR 1: OR Monogram ===== */
+    .avatar {
+      width: 256px;
+      height: 256px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .av1 {
+      background: linear-gradient(135deg, #1D4E7E 0%, #2B6CB0 100%);
+    }
+    .av1::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20, 184, 166, 0.15) 0%, transparent 70%);
+    }
+    .av1 .monogram {
+      font-family: 'DM Serif Display', serif;
+      font-size: 120px;
+      color: #FFFFFF;
+      letter-spacing: -4px;
+      position: relative;
+      z-index: 2;
+      line-height: 1;
+    }
+    .av1 .monogram .accent {
+      color: #5BA8E8;
+    }
+
+    /* ===== AVATAR 2: Shield + OR ===== */
+    .av2 {
+      background: linear-gradient(135deg, #0F2A4A 0%, #1D4E7E 100%);
+    }
+    .av2 .shield-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .av2 .shield-icon {
+      width: 80px;
+      height: 80px;
+      color: #14b8a6;
+      margin-bottom: -8px;
+    }
+    .av2 .shield-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 56px;
+      color: #FFFFFF;
+      letter-spacing: -2px;
+      line-height: 1;
+    }
+    .av2 .shield-text .accent { color: #5BA8E8; }
+
+    /* ===== AVATAR 3: Bold O with crosshair ===== */
+    .av3 {
+      background: linear-gradient(135deg, #1D4E7E 0%, #2B6CB0 100%);
+    }
+    .av3 .o-wrap {
+      position: relative;
+      z-index: 2;
+    }
+    .av3 .big-o {
+      font-family: 'DM Serif Display', serif;
+      font-size: 180px;
+      color: #FFFFFF;
+      line-height: 1;
+      position: relative;
+    }
+    .av3 .big-o::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #14b8a6;
+    }
+    /* Crosshair lines */
+    .av3 .crosshair {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+    .av3 .crosshair .h-line {
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      right: -20px;
+      height: 2px;
+      background: rgba(20, 184, 166, 0.4);
+      transform: translateY(-50%);
+    }
+    .av3 .crosshair .v-line {
+      position: absolute;
+      left: 50%;
+      top: -20px;
+      bottom: -20px;
+      width: 2px;
+      background: rgba(20, 184, 166, 0.4);
+      transform: translateX(-50%);
+    }
+
+    /* ===== AVATAR 4: Stacked T/OR ===== */
+    .av4 {
+      background: linear-gradient(135deg, #2B6CB0 0%, #1D4E7E 100%);
+    }
+    .av4 .stack {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+    .av4 .stack .the-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+    .av4 .stack .or-text {
+      font-family: 'DM Serif Display', serif;
+      font-size: 110px;
+      color: #FFFFFF;
+      letter-spacing: -3px;
+      margin-top: -8px;
+    }
+    .av4 .stack .or-text .accent { color: #5BA8E8; }
+    .av4 .teal-line {
+      position: absolute;
+      bottom: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: #14b8a6;
+      border-radius: 2px;
+      z-index: 2;
+    }
+
+    /* ===== Small preview ===== */
+    .small-preview {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #333;
+    }
+    .small-preview img,
+    .small-preview canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .mini-av {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #333;
+    }
+    .mini-av.m1 { background: linear-gradient(135deg, #1D4E7E, #2B6CB0); }
+    .mini-av.m2 { background: linear-gradient(135deg, #0F2A4A, #1D4E7E); }
+    .mini-av.m3 { background: linear-gradient(135deg, #1D4E7E, #2B6CB0); }
+    .mini-av.m4 { background: linear-gradient(135deg, #2B6CB0, #1D4E7E); }
+    .mini-av span {
+      font-family: 'DM Serif Display', serif;
+      color: #fff;
+      font-size: 20px;
+      letter-spacing: -1px;
+    }
+
+    .instructions {
+      width: 100%;
+      text-align: center;
+      color: #999;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px;
+      margin-top: 20px;
+      line-height: 1.8;
+    }
+    .instructions strong { color: #fff; }
+    .instructions code {
+      background: #333;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Option 1 -->
+  <div class="option">
+    <span class="label">Option A — OR Monogram</span>
+    <div class="avatar av1">
+      <span class="monogram"><span class="accent">O</span>R</span>
+    </div>
+    <div class="mini-av m1"><span>OR</span></div>
+    <span class="label" style="font-size:10px; color:#666;">At 48px (comment size)</span>
+  </div>
+
+  <!-- Option 2 -->
+  <div class="option">
+    <span class="label">Option B — Shield + OR</span>
+    <div class="avatar av2">
+      <div class="shield-wrap">
+        <svg class="shield-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span class="shield-text"><span class="accent">O</span>R</span>
+      </div>
+    </div>
+    <div class="mini-av m2"><span>OR</span></div>
+    <span class="label" style="font-size:10px; color:#666;">At 48px (comment size)</span>
+  </div>
+
+  <!-- Option 3 -->
+  <div class="option">
+    <span class="label">Option C — Oversight "O"</span>
+    <div class="avatar av3">
+      <div class="o-wrap">
+        <span class="big-o">O</span>
+      </div>
+    </div>
+    <div class="mini-av m3"><span>O</span></div>
+    <span class="label" style="font-size:10px; color:#666;">At 48px (comment size)</span>
+  </div>
+
+  <!-- Option 4 -->
+  <div class="option">
+    <span class="label">Option D — Stacked</span>
+    <div class="avatar av4">
+      <div class="stack">
+        <span class="the-text">THE</span>
+        <span class="or-text"><span class="accent">O</span>R</span>
+      </div>
+      <div class="teal-line"></div>
+    </div>
+    <div class="mini-av m4"><span>OR</span></div>
+    <span class="label" style="font-size:10px; color:#666;">At 48px (comment size)</span>
+  </div>
+
+  <div class="instructions">
+    <strong>Pick one, then screenshot it:</strong> Cmd+Shift+4 → drag over the large circle.<br>
+    Reddit avatar is 256x256px. Upload at: Profile → Edit → Avatar → Upload image.<br>
+    The small circle below each option shows how it'll look at comment size.
+  </div>
+
+</body>
+</html>

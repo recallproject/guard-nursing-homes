@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>State Page — Improved Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #2B6CB0;
+    --primary-light: #3B82C4;
+    --text-primary: #1A202C;
+    --text-secondary: #4A5568;
+    --text-muted: #718096;
+    --bg-deep: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --border: #E2E8F0;
+    --border-subtle: #EDF2F7;
+    --risk-critical: #DC2626;
+    --risk-high: #EA580C;
+    --risk-elevated: #D97706;
+    --risk-low: #059669;
+    --accent-amber: #F59E0B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ========== HEADER BAR ========== */
+  .header-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 64px;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 32px;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .header-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.2rem;
+    color: var(--primary);
+  }
+  .header-logo span { color: var(--text-primary); }
+  .header-nav {
+    display: flex; gap: 28px; margin-left: 48px;
+    font-size: 0.9rem; font-weight: 600; color: var(--text-secondary);
+  }
+  .header-nav a { text-decoration: none; color: inherit; }
+  .header-nav a.active { color: var(--primary); }
+
+  /* ========== BREADCRUMB ========== */
+  .breadcrumb {
+    max-width: 1400px; margin: 0 auto;
+    padding: 88px 24px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .breadcrumb a {
+    color: var(--primary); text-decoration: none; font-weight: 500;
+  }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { color: #CBD5E0; }
+
+  /* ========== STATE HEADER ========== */
+  .state-header {
+    max-width: 1400px; margin: 0 auto;
+    padding: 20px 24px 0;
+  }
+  .state-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .state-context {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 800px;
+  }
+
+  /* ========== STATS ROW ========== */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 28px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .stat-cell {
+    padding: 24px 28px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-value.danger { color: var(--risk-critical); }
+  .stat-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .stat-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .stat-sub a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .stat-sub a:hover { text-decoration: underline; }
+
+  /* NEW: Score explainer */
+  .stat-explain {
+    font-size: 0.7rem;
+    color: #94A3B8;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* NEW: Visual bar on avg score */
+  .score-bar-wrapper {
+    margin-top: 8px;
+    position: relative;
+    height: 6px;
+    background: #E2E8F0;
+    border-radius: 3px;
+    width: 100%;
+    max-width: 160px;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #059669 0%, #D97706 50%, #DC2626 100%);
+    position: absolute; left: 0; top: 0;
+  }
+  .score-bar-marker {
+    position: absolute;
+    top: -3px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--text-primary);
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transform: translateX(-50%);
+  }
+  .score-bar-nat {
+    position: absolute;
+    top: -3px;
+    width: 2px; height: 12px;
+    background: #94A3B8;
+    transform: translateX(-50%);
+    opacity: 0.7;
+  }
+  .score-legend {
+    display: flex; justify-content: space-between;
+    font-size: 0.65rem; color: #94A3B8; margin-top: 4px;
+    max-width: 160px;
+  }
+
+  /* ========== CONTROLS ========== */
+  .controls {
+    display: flex; flex-wrap: wrap; align-items: flex-end;
+    gap: 1.25rem;
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .control-group {
+    display: flex; flex-direction: column; gap: 4px;
+    min-width: 180px;
+  }
+  .control-label {
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .control-select {
+    padding: 10px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--text-primary);
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .search-input {
+    flex: 1; min-width: 240px;
+    padding: 10px 14px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-primary);
+  }
+  .search-input::placeholder { color: #A0AEC0; }
+  .view-toggle {
+    display: flex; border: 2px solid var(--border); border-radius: 8px; overflow: hidden;
+    align-self: flex-end;
+  }
+  .view-btn {
+    padding: 8px 14px; border: none; background: transparent;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.82rem; font-weight: 600; color: var(--text-muted);
+    cursor: pointer;
+  }
+  .view-btn.active { background: var(--primary); color: #fff; }
+
+  /* ========== RESULT COUNT ========== */
+  .result-count {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.9rem; color: var(--text-muted); font-weight: 500;
+  }
+  .result-hint {
+    color: var(--accent-amber); font-weight: 600;
+  }
+
+  /* ========== FACILITY LIST ========== */
+  .facility-list {
+    max-width: 1400px; margin: 16px auto 0;
+    padding: 0 24px;
+  }
+  .facility-list-inner {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #D7E0EA;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+
+  .facility-row {
+    display: flex; align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #EDF1F7;
+  }
+  .facility-row:last-child { border-bottom: none; }
+  .facility-row:nth-child(even) { background: #FAFCFE; }
+  .facility-row:hover { background: #F0F7FF; }
+
+  .score-badge {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .score-badge-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem; font-weight: 700; color: #fff;
+  }
+  /* NEW: score label under badge */
+  .score-badge-label {
+    position: absolute;
+    bottom: -14px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--text-muted);
+  }
+
+  .watch-btn {
+    background: none; border: none;
+    font-size: 1.3rem; cursor: pointer;
+    color: #475569; padding: 4px; line-height: 1; flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .watch-btn:hover { color: var(--accent-amber); transform: scale(1.1); }
+
+  .row-info { flex: 1; min-width: 0; }
+  .row-top {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 2px;
+  }
+  .row-name {
+    font-weight: 700; color: var(--text-primary); font-size: 0.95rem;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .row-city { color: var(--text-muted); font-size: 0.82rem; }
+  .trend-up {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
+    background: rgba(16,185,129,0.15); color: #10B981; border: 1px solid rgba(16,185,129,0.3);
+  }
+  .trend-down {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;
+    background: rgba(220,38,38,0.15); color: #DC2626; border: 1px solid rgba(220,38,38,0.3);
+  }
+
+  /* NEW: Hook line ABOVE tags for emphasis */
+  .row-hook {
+    font-size: 0.8rem;
+    color: #B45309;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 4px;
+    line-height: 1.3;
+  }
+  .row-hook svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .row-tags {
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .risk-label {
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .stars { font-size: 0.82rem; }
+  .star-filled { color: var(--accent-amber); }
+  .star-empty { color: #CBD5E0; }
+
+  /* Stat pills — with visual hierarchy */
+  .tag {
+    font-size: 0.75rem; font-weight: 600;
+    padding: 2px 10px; border-radius: 100px;
+    white-space: nowrap;
+  }
+  .tag-harm {
+    background: rgba(220,38,38,0.08); color: #DC2626;
+    border: 1px solid rgba(220,38,38,0.15);
+    font-weight: 700;
+  }
+  .tag-danger {
+    background: rgba(234,88,12,0.08); color: #EA580C;
+    border: 1px solid rgba(234,88,12,0.15);
+    font-weight: 700;
+  }
+  .tag-fines {
+    background: rgba(217,119,6,0.06); color: #92400E;
+    border: 1px solid rgba(217,119,6,0.12);
+  }
+  .tag-neutral {
+    background: #F1F5F9; color: #475569;
+    border: 1px solid #E2E8F0;
+  }
+
+  /* ========== CHANGE ANNOTATIONS ========== */
+  .change-note {
+    background: #FFFBF0;
+    border: 1px dashed #D97706;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    color: #92400E;
+    line-height: 1.5;
+    margin: 20px 24px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .change-note strong { color: #78350F; }
+
+  /* ========== MOCKUP LABEL ========== */
+  .mockup-banner {
+    position: fixed; top: 64px; left: 0; right: 0;
+    background: linear-gradient(90deg, #7C3AED, #2563EB);
+    color: #fff; text-align: center;
+    padding: 6px 16px; font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.05em; z-index: 99;
+  }
+
+  @media (max-width: 768px) {
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat-cell { border-right: none; border-bottom: 1px solid var(--border); }
+    .controls { flex-direction: column; }
+    .control-group { width: 100%; min-width: unset; }
+    .search-input { min-width: unset; width: 100%; }
+    .breadcrumb { padding-top: 108px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+  <div class="header-logo"><span>The </span>Oversight<span> Report</span></div>
+  <nav class="header-nav">
+    <a href="#">Compare</a>
+    <a href="#" class="active">Families ▾</a>
+    <a href="#">Professionals ▾</a>
+    <a href="#">Hospitals ▾</a>
+    <a href="#">About ▾</a>
+  </nav>
+</div>
+
+<div class="mockup-banner">MOCKUP — Proposed State Page Improvements</div>
+
+<!-- BREADCRUMB (NEW) -->
+<div class="breadcrumb">
+  <a href="#">Home</a>
+  <span class="sep">›</span>
+  <a href="#">Map</a>
+  <span class="sep">›</span>
+  <span style="color: var(--text-secondary); font-weight: 600;">South Dakota</span>
+</div>
+
+<!-- STATE HEADER -->
+<div class="state-header">
+  <h1 class="state-title">South Dakota</h1>
+  <p class="state-context">
+    96 Medicare-certified nursing facilities. 6 flagged high-risk based on inspections, staffing, and fines. Updated March 2026.
+  </p>
+
+  <!-- STATS ROW (IMPROVED) -->
+  <div class="stats-row">
+    <div class="stat-cell">
+      <div class="stat-value">96</div>
+      <div class="stat-label">Facilities</div>
+      <div class="stat-sub">Search by name or city below</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value danger">6</div>
+      <div class="stat-label">High Risk</div>
+      <div class="stat-sub"><a>View highest-risk facilities →</a></div>
+      <div class="stat-explain">Score 40+ out of 100</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">30.0</div>
+      <div class="stat-label">Avg Risk Score</div>
+      <div class="stat-sub">National avg: 28.4</div>
+      <!-- NEW: Visual bar showing where SD falls -->
+      <div class="score-bar-wrapper">
+        <div class="score-bar-fill" style="width: 100%;"></div>
+        <!-- National avg marker at 28.4% -->
+        <div class="score-bar-nat" style="left: 28.4%;" title="National average: 28.4"></div>
+        <!-- SD marker at 30% -->
+        <div class="score-bar-marker" style="left: 30%;" title="South Dakota: 30.0"></div>
+      </div>
+      <div class="score-legend"><span>0 Low</span><span>100 Critical</span></div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">$2.7M</div>
+      <div class="stat-label">Total Fines</div>
+      <div class="stat-sub">$28K per facility</div>
+      <div class="stat-explain">National avg: $22K/facility</div>
+    </div>
+  </div>
+</div>
+
+<div class="change-note">
+  <strong>Changes from current:</strong>
+  Breadcrumb navigation added (Home › Map › State). "Avg Score" → "Avg Risk Score" with gradient bar showing where this state falls vs national average. "Higher = more risk" now visible. High Risk stat explains "Score 40+ out of 100". National avg comparison added to fines.
+</div>
+
+<!-- CONTROLS -->
+<div style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
+  <div class="controls">
+    <div class="control-group">
+      <label class="control-label">Sort by:</label>
+      <select class="control-select">
+        <option>Most Concerning First</option>
+        <option>Name (A–Z)</option>
+        <option>Lowest Rated First</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Filter:</label>
+      <select class="control-select">
+        <option>All Facilities</option>
+        <option>High Risk (40+)</option>
+        <option>Critical (60+)</option>
+      </select>
+    </div>
+    <input class="search-input" placeholder="Search by name or city..." />
+    <div class="view-toggle">
+      <button class="view-btn active">☰ List</button>
+      <button class="view-btn">⊞ Grid</button>
+    </div>
+  </div>
+</div>
+
+<div class="change-note">
+  <strong>Changes from current:</strong>
+  "Risk Score (High to Low)" → "Most Concerning First" — plain language. "Stars (Low to High)" → "Lowest Rated First".
+</div>
+
+<!-- RESULT COUNT -->
+<div class="result-count">
+  Showing 25 of 96 facilities · <span class="result-hint">☆ Save facilities to compare later</span>
+</div>
+
+<!-- FACILITY LIST (IMPROVED) -->
+<div class="facility-list">
+  <div class="facility-list-inner">
+
+    <!-- ROW 1: FIRESTEEL (critical) -->
+    <div class="facility-row">
+      <div class="score-badge" style="background: #DC2626;">
+        <span class="score-badge-num">72</span>
+      </div>
+      <button class="watch-btn">☆</button>
+      <div class="row-info">
+        <div class="row-top">
+          <span class="row-name">
+            FIRESTEEL HEALTHCARE CENTER
+            <span class="trend-up" title="Staffing trend: Improving">↑</span>
+          </span>
+          <span class="row-city">MITCHELL, SD</span>
+        </div>
+        <!-- HOOK LINE — now ABOVE tags for emphasis -->
+        <div class="row-hook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          9.8% of days had zero registered nurses on site
+        </div>
+        <div class="row-tags">
+          <span class="risk-label" style="color: #DC2626;">CRITICAL</span>
+          <span class="stars"><span class="star-filled">★</span><span class="star-empty">☆☆☆☆</span></span>
+          <span class="tag tag-harm">6 residents hurt</span>
+          <span class="tag tag-fines">$152K fines</span>
+          <span class="tag tag-neutral">27 violations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 2: RIVERVIEW (critical) -->
+    <div class="facility-row">
+      <div class="score-badge" style="background: #DC2626;">
+        <span class="score-badge-num">71</span>
+      </div>
+      <button class="watch-btn">☆</button>
+      <div class="row-info">
+        <div class="row-top">
+          <span class="row-name">
+            RIVERVIEW HEALTHCARE CENTER
+            <span class="trend-down" title="Staffing trend: Declining">↓</span>
+          </span>
+          <span class="row-city">FLANDREAU, SD</span>
+        </div>
+        <div class="row-hook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Inspectors found actual harm to 9 residents
+        </div>
+        <div class="row-tags">
+          <span class="risk-label" style="color: #DC2626;">CRITICAL</span>
+          <span class="stars"><span class="star-filled">★</span><span class="star-empty">☆☆☆☆</span></span>
+          <span class="tag tag-harm">9 residents hurt</span>
+          <span class="tag tag-danger">3 serious danger</span>
+          <span class="tag tag-fines">$132K fines</span>
+          <span class="tag tag-neutral">30 violations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: A good facility for contrast -->
+    <div class="facility-row">
+      <div class="score-badge" style="background: #059669;">
+        <span class="score-badge-num">8</span>
+      </div>
+      <button class="watch-btn">☆</button>
+      <div class="row-info">
+        <div class="row-top">
+          <span class="row-name">AVERA PRINCE OF PEACE</span>
+          <span class="row-city">SIOUX FALLS, SD</span>
+        </div>
+        <div class="row-tags">
+          <span class="risk-label" style="color: #059669;">LOW RISK</span>
+          <span class="stars"><span class="star-filled">★★★★★</span></span>
+          <span class="tag tag-neutral">3 violations</span>
+          <span class="tag tag-neutral">$0 fines</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 4 -->
+    <div class="facility-row">
+      <div class="score-badge" style="background: #D97706;">
+        <span class="score-badge-num">38</span>
+      </div>
+      <button class="watch-btn">☆</button>
+      <div class="row-info">
+        <div class="row-top">
+          <span class="row-name">PRAIRIE ESTATES CARE CENTER</span>
+          <span class="row-city">ELK POINT, SD</span>
+        </div>
+        <div class="row-hook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 9v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Operator runs 14 facilities — avg 2.1 stars
+        </div>
+        <div class="row-tags">
+          <span class="risk-label" style="color: #D97706;">ELEVATED</span>
+          <span class="stars"><span class="star-filled">★★</span><span class="star-empty">☆☆☆</span></span>
+          <span class="tag tag-danger">2 serious danger</span>
+          <span class="tag tag-fines">$67K fines</span>
+          <span class="tag tag-neutral">18 violations</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="change-note" style="margin-top: 24px;">
+  <strong>Changes from current (facility rows):</strong><br>
+  ① <strong>Hook lines moved ABOVE tags</strong> — the most compelling data point is now the first thing you read after the name, not buried below<br>
+  ② <strong>"deficiencies" → "violations"</strong> — plain English, no healthcare jargon<br>
+  ③ <strong>Tag visual hierarchy</strong> — harm tags (red border) are visually louder than neutral violation counts. "Residents hurt" and "serious danger" jump out; "violations" recedes<br>
+  ④ <strong>Hook line icon</strong> — SVG warning icon instead of Unicode ⚠ for consistent rendering + proper accessibility (aria-hidden possible)<br>
+  ⑤ <strong>"Click ☆ to add to favorites"</strong> → <strong>"☆ Save facilities to compare later"</strong> — explains what saving does, not just how to do it
+</div>
+
+<!-- SUMMARY OF ALL CHANGES -->
+<div style="max-width: 1400px; margin: 40px auto 80px; padding: 0 24px;">
+  <div style="background: #fff; border: 2px solid var(--primary); border-radius: 16px; padding: 32px; box-shadow: 0 2px 12px rgba(43,108,176,0.08);">
+    <h2 style="font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 20px; color: var(--primary);">Summary of All Recommended Changes</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; font-size: 0.9rem;">
+
+      <div>
+        <h3 style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--risk-critical); margin-bottom: 12px;">P1 — Do First</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="padding: 12px; background: #FEF2F2; border-radius: 8px; border-left: 3px solid #DC2626;">
+            <strong>"Avg Score" → "Avg Risk Score"</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">Add gradient bar + "higher = more risk" context. Families currently have zero context for what 30.0 means.</span>
+          </div>
+          <div style="padding: 12px; background: #FEF2F2; border-radius: 8px; border-left: 3px solid #DC2626;">
+            <strong>"deficiencies" → "violations" site-wide</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">Healthcare jargon that means nothing to families. "Violations" is universally understood.</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--risk-elevated); margin-bottom: 12px;">P2 — High Impact</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="padding: 12px; background: #FFFBEB; border-radius: 8px; border-left: 3px solid #D97706;">
+            <strong>Hook lines above tags, not below</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">The most compelling data ("9.8% of days had zero RNs") should be the first thing you read. Currently it's last.</span>
+          </div>
+          <div style="padding: 12px; background: #FFFBEB; border-radius: 8px; border-left: 3px solid #D97706;">
+            <strong>Add breadcrumb navigation</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">Home › Map › South Dakota. Orients the user and gives escape paths.</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--primary); margin-bottom: 12px;">P3 — Polish</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="padding: 12px; background: #EFF6FF; border-radius: 8px; border-left: 3px solid var(--primary);">
+            <strong>Plain-language sort labels</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">"Risk Score (High to Low)" → "Most Concerning First"</span>
+          </div>
+          <div style="padding: 12px; background: #EFF6FF; border-radius: 8px; border-left: 3px solid var(--primary);">
+            <strong>Tag visual hierarchy</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">Harm/danger tags get colored borders so they pop. Neutral counts recede.</span>
+          </div>
+          <div style="padding: 12px; background: #EFF6FF; border-radius: 8px; border-left: 3px solid var(--primary);">
+            <strong>Star rating aria-labels</strong><br>
+            <span style="color: var(--text-secondary); font-size: 0.85rem;">Screen reader support: "1 out of 5 stars" instead of meaningless symbols.</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #059669; margin-bottom: 12px;">✓ What's Already Working</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="padding: 12px; background: #F0FDF4; border-radius: 8px; border-left: 3px solid #059669;">
+            <strong>Red score badges</strong> — instantly scannable risk at a glance
+          </div>
+          <div style="padding: 12px; background: #F0FDF4; border-radius: 8px; border-left: 3px solid #059669;">
+            <strong>Hook lines</strong> — the most powerful feature on this page. "9.8% of days with zero RNs" changes decisions.
+          </div>
+          <div style="padding: 12px; background: #F0FDF4; border-radius: 8px; border-left: 3px solid #059669;">
+            <strong>List/Grid toggle</strong> — power users love options
+          </div>
+          <div style="padding: 12px; background: #F0FDF4; border-radius: 8px; border-left: 3px solid #059669;">
+            <strong>Trend arrows</strong> — subtle but meaningful for repeat visitors
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

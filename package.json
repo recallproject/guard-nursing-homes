@@ -11,6 +11,7 @@
     "deploy": "node scripts/generate-sitemap.js && vite build && node scripts/generate-seo-pages.js && gh-pages -d dist"
   },
   "dependencies": {
+    "@rollup/rollup-linux-arm64-gnu": "^4.59.0",
     "@stripe/stripe-js": "^8.8.0",
     "canvas": "^3.2.1",
     "d3": "^7.9.0",
