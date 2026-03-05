@@ -283,6 +283,18 @@
   line-height: 1;
 }
 
+@media (max-width: 768px) {
+  .ev-summary-value {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ev-summary-value {
+    font-size: 1.6rem;
+  }
+}
+
 /* === Text Blocks === */
 .ev-text-block {
   background: #F8FAFC;
@@ -490,6 +502,12 @@
   padding: 3rem 2rem;
   z-index: 10;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+@media (max-width: 768px) {
+  .ev-purchase-gate {
+    margin: -120px auto 2rem;
+  }
 }
 
 .ev-purchase-gate h2 {

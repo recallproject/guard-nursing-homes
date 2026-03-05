@@ -227,7 +227,7 @@ export function EvidencePage() {
     }
 
     if (facility.jeopardy_count > 0 || facility.harm_count > 0) {
-      parts.push(`Inspectors documented serious safety issues including ${facility.jeopardy_count > 0 ? 'conditions posing serious danger to residents' : 'actual harm to residents'}.`);
+      parts.push(`Inspectors documented serious safety issues including ${facility.jeopardy_count > 0 ? 'conditions posing serious harm to residents' : 'actual harm to residents'}.`);
     }
 
     if (facility.total_fines > 50000) {
@@ -726,7 +726,7 @@ export function EvidencePage() {
             <span className="ev-data-value">{facility.total_deficiencies || 0} <span style={{ color: '#64748B', fontWeight: 400, fontSize: '0.8rem' }}>(avg: {NATIONAL_AVG.total_deficiencies})</span></span>
           </div>
           <div className="ev-data-row">
-            <span className="ev-data-label">Serious Danger Citations:</span>
+            <span className="ev-data-label">Serious Harm Citations:</span>
             <span className="ev-data-value">{facility.jeopardy_count || 0}</span>
           </div>
           <div className="ev-data-row">
@@ -742,7 +742,7 @@ export function EvidencePage() {
 
           {facility.jeopardy_count > 0 && (
             <div className="ev-alert">
-              <strong>Immediate Jeopardy Findings:</strong> Immediate jeopardy citations indicate conditions posing serious danger to residents (42 CFR §488.301). This facility has received {facility.jeopardy_count} such citations.
+              <strong>Immediate Jeopardy Findings:</strong> Immediate jeopardy citations indicate conditions posing serious harm to residents (42 CFR §488.301). This facility has received {facility.jeopardy_count} such citations.
             </div>
           )}
 
@@ -1320,7 +1320,7 @@ export function EvidencePage() {
           <p>The risk score is a weighted composite of multiple factors:</p>
           <ul className="ev-list">
             <li>Staffing Levels: 30% (verified payroll data vs. self-reported)</li>
-            <li>Inspection Results: 25% (deficiencies, serious danger, harm)</li>
+            <li>Inspection Results: 25% (deficiencies, serious harm, harm)</li>
             <li>Financial Penalties: 20% (fines, payment denials)</li>
             <li>Ownership History: 15% (portfolio performance, patterns)</li>
             <li>Quality Measures: 10% (CMS star rating components)</li>

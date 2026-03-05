@@ -693,3 +693,13 @@
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .watchlist-stat-value {
+    font-size: 2rem;
+  }
+
+  .watchlist-grid {
+    gap: 0.75rem;
+  }
+}

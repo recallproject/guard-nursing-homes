@@ -79,7 +79,7 @@ export default function FacilityCard({ facility }) {
           )}
           {facility.jeopardy_count > 0 && (
             <span className="facility-card-stat stat-critical">
-              {facility.jeopardy_count} serious danger
+              {facility.jeopardy_count} serious harm
             </span>
           )}
           {facility.total_fines > 0 && (

@@ -163,7 +163,7 @@
   color: #B91C1C;
 }
 .ev-sample-flag-critical::before {
-  content: '⚠ ';
+  content: '! ';
 }
 .ev-sample-flag-warning {
   background: #FFFBEB;

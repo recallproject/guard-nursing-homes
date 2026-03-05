@@ -2,63 +2,64 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
+import { SearchIcon, BarChartIcon, UsersIcon, DownloadIcon, StarIcon, TrendingUpIcon, BuildingIcon, AlertTriangleIcon } from './Icons';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const features = [
   {
-    icon: '\uD83D\uDD0D',
+    Icon: SearchIcon,
     title: 'State Screening Reports',
     description: 'Filter and export facility data by state for oversight, compliance, or investigation.',
     live: true,
     to: '/screening',
   },
   {
-    icon: '\uD83D\uDCCA',
+    Icon: BarChartIcon,
     title: 'Staffing Discrepancy Index',
     description: 'Find facilities reporting more staff than payroll records show. Ranked by gap percentage.',
     live: true,
     to: '/discrepancies',
   },
   {
-    icon: '\uD83D\uDD17',
+    Icon: UsersIcon,
     title: 'Ownership Network Explorer',
     description: 'See which companies own multiple facilities and how their portfolios perform across states.',
     live: true,
     to: '/ownership',
   },
   {
-    icon: '\uD83D\uDCC4',
+    Icon: DownloadIcon,
     title: 'Download Reports',
     description: 'Download a detailed PDF safety report for any facility — clinical context, percentile rankings, and a visit checklist.',
     live: true,
     action: 'search',
   },
   {
-    icon: '\u2B50',
+    Icon: StarIcon,
     title: 'Favorites & Compare',
     description: 'Save facilities, compare them side-by-side, and export a spreadsheet of your picks.',
     live: true,
     to: '/watchlist',
   },
   {
-    icon: '\uD83D\uDCC8',
+    Icon: TrendingUpIcon,
     title: 'Historical Trends',
     description: 'Track how facility safety records change over time with national snapshot data.',
     live: true,
     to: '/trends',
   },
   {
-    icon: '\uD83C\uDFE2',
+    Icon: BuildingIcon,
     title: 'Chain Rankings',
     description: 'Compare the largest nursing home chains by fines, staffing, deficiencies, and abuse citations.',
     live: true,
     to: '/chains',
   },
   {
-    icon: '\uD83D\uDEA8',
+    Icon: AlertTriangleIcon,
     title: 'High-Risk Facilities',
-    description: 'The worst-performing nursing homes nationally — ranked by composite risk score.',
+    description: 'Facilities meeting all five high-risk criteria — ranked by composite risk score.',
     live: true,
     to: '/high-risk',
   },
@@ -110,7 +111,7 @@ export default function ComingSoon({ onSearch }) {
             >
               {feature.coming && <div className="coming-soon-badge">Coming Soon</div>}
               {feature.live && <div className="coming-soon-badge coming-soon-badge--live">Live</div>}
-              <div className="coming-soon-icon">{feature.icon}</div>
+              <div className="coming-soon-icon"><feature.Icon size={28} /></div>
               <h3>{feature.title}</h3>
               <p>{feature.description}</p>
               {feature.live && (

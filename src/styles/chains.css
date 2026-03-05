@@ -539,4 +539,20 @@
   .chains-pagination {
     flex-direction: column;
   }
+
+  .chains-table {
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chains-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .chains-table th,
+  .chains-table td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
+  }
 }

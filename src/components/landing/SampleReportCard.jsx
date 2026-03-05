@@ -179,7 +179,7 @@ export default function SampleReportCard({ onSearch }) {
               <div className="report-section">
                 <h4 className="report-section-title">Bottom Line</h4>
                 <div className="report-callout report-callout--red">
-                  Inspectors found serious danger to residents 2 times — risk of serious injury or death.
+                  Inspectors found serious harm to residents 2 times — risk of serious injury or death.
                   This facility has been fined $284,500. On 31% of days, there was no registered nurse in the building.
                   The same company runs 30 other facilities with average fines of $156,000 each.
                 </div>
@@ -194,7 +194,7 @@ export default function SampleReportCard({ onSearch }) {
                 <div className="report-stats-row">
                   <div className="report-stat">
                     <span className="report-stat-value report-stat--danger">2</span>
-                    <span className="report-stat-label">Serious Danger</span>
+                    <span className="report-stat-label">Serious Harm</span>
                   </div>
                   <div className="report-stat">
                     <span className="report-stat-value report-stat--warning">5</span>
@@ -288,8 +288,8 @@ export default function SampleReportCard({ onSearch }) {
                   <span className="report-question-context">This facility had zero RN days 31% of the time.</span>
                 </div>
                 <div className="report-question">
-                  <strong>Q: What corrective actions were taken after the serious danger citation?</strong>
-                  <span className="report-question-context">Inspectors found serious danger to residents 2 times.</span>
+                  <strong>Q: What corrective actions were taken after the serious harm citation?</strong>
+                  <span className="report-question-context">Inspectors found serious harm to residents 2 times.</span>
                 </div>
               </div>
 

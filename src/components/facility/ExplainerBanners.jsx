@@ -14,7 +14,7 @@ export default function ExplainerBanners({ facility }) {
   const zeroRnDays = facility.zero_rn_days ?? 0;
   if (zeroRnDays > 5) {
     banners.push(
-      <ExplainerBanner key="zero-rn" variant="danger" icon="⚠"
+      <ExplainerBanner key="zero-rn" variant="danger" icon="!"
         title={`This facility reported ${zeroRnDays} days with no RN on duty last quarter`}>
         A Registered Nurse is the most qualified clinical professional on a nursing home floor. When there's no RN, there's no one trained to assess a sudden change in condition, catch a medication error, or make a clinical judgment in an emergency. The federal government proposed requiring 24/7 RN coverage — that rule was repealed in December 2025.
       </ExplainerBanner>

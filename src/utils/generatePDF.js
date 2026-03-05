@@ -355,7 +355,7 @@ export function generatePDF(facility, options = {}) {
 
   const bottomParts = [];
   if (facility.jeopardy_count > 0)
-    bottomParts.push(`Government inspectors found SERIOUS DANGER to residents ${facility.jeopardy_count} time${facility.jeopardy_count !== 1 ? 's' : ''} -- conditions so severe that residents faced risk of serious injury or death.`);
+    bottomParts.push(`Government inspectors found SERIOUS HARM to residents ${facility.jeopardy_count} time${facility.jeopardy_count !== 1 ? 's' : ''} -- conditions so severe that residents faced risk of serious injury or death.`);
   else if (facility.harm_count > 0)
     bottomParts.push(`Residents were HURT ${facility.harm_count} time${facility.harm_count !== 1 ? 's' : ''} according to official inspection reports.`);
   if (facility.total_fines > 0)
@@ -380,7 +380,7 @@ export function generatePDF(facility, options = {}) {
   y = row1Y + 22;
 
   const row2Y = y;
-  statPill(M, row2Y, 'SERIOUS DANGER', facility.jeopardy_count || 0, (facility.jeopardy_count || 0) > 0 ? C.danger : C.good);
+  statPill(M, row2Y, 'SERIOUS HARM', facility.jeopardy_count || 0, (facility.jeopardy_count || 0) > 0 ? C.danger : C.good);
   statPill(M + pillW + 3, row2Y, 'RESIDENTS HURT', facility.harm_count || 0, (facility.harm_count || 0) > 0 ? [...C.warningBar] : C.good);
   statPill(M + (pillW + 3) * 2, row2Y, 'DAYS W/O RN', pct(facility.zero_rn_pct || 0), (facility.zero_rn_pct || 0) > 20 ? C.danger : C.good);
   y = row2Y + 22;
@@ -629,7 +629,7 @@ export function generatePDF(facility, options = {}) {
     if (percentiles.jeopardy_count != null && (facility.jeopardy_count || 0) > 0) {
       needsPage(barSpacing);
       percentileBar(M + 5, y, barWidth, percentiles.jeopardy_count, C.dangerBar,
-        `Serious Danger: ${facility.jeopardy_count}`,
+        `Serious Harm: ${facility.jeopardy_count}`,
         `Worse than ${percentiles.jeopardy_count}% of facilities`
       );
       y += barSpacing;
@@ -1039,8 +1039,8 @@ export function generatePDF(facility, options = {}) {
   }
   if (facility.jeopardy_count > 0) {
     questions.push({
-      q: 'What corrective actions were taken after the serious danger citation?',
-      why: `Inspectors found serious danger to residents ${facility.jeopardy_count} time(s).`
+      q: 'What corrective actions were taken after the serious harm citation?',
+      why: `Inspectors found serious harm to residents ${facility.jeopardy_count} time(s).`
     });
   }
   if (facility.rn_gap_pct > 30) {
@@ -1132,7 +1132,7 @@ export function generatePDF(facility, options = {}) {
     checklistItems.push('(!!) Ask the administrator: "What corrective actions were taken after your recent fines?"');
   }
   if (facility.jeopardy_count > 0) {
-    checklistItems.push('(!!) Ask to see the corrective action plan filed after the serious danger citation');
+    checklistItems.push('(!!) Ask to see the corrective action plan filed after the serious harm citation');
   }
 
   checklistItems.forEach(item => {
@@ -1275,7 +1275,7 @@ export function generatePDF(facility, options = {}) {
     ['CNA', 'Certified Nursing Assistant'],
     ['Hrs/resident/day', 'Total nursing hours divided by residents per day'],
     ['PBJ', 'Payroll-Based Journal -- mandatory payroll records submitted to CMS'],
-    ['Serious Danger', 'Most severe citation -- risk of serious injury or death'],
+    ['Serious Harm', 'Most severe citation -- risk of serious injury or death'],
     ['Residents Hurt', 'Second-most severe -- actual harm documented'],
     ['CCN', 'CMS Certification Number -- unique facility ID'],
     ['SFF', 'Special Focus Facility -- flagged by CMS for serious quality history'],

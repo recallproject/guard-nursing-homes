@@ -61,25 +61,25 @@ export default function FacilityRow({ facility }) {
   // 2C: Get hook line (first match wins — SFF is highest priority)
   const getHookLine = () => {
     if (isSFF) {
-      return `⚠ CMS Special Focus Facility — federal watch list for persistent quality failures`;
+      return `-- CMS Special Focus Facility — federal watch list for persistent quality failures`;
     }
     if (facility.zero_rn_pct > 0) {
-      return `⚠ ${facility.zero_rn_pct.toFixed(1)}% of days had zero registered nurses on site`;
+      return `-- ${facility.zero_rn_pct.toFixed(1)}% of days had zero registered nurses on site`;
     }
     if (facility.rn_gap_pct > 30) {
-      return `⚠ Reports ${facility.rn_gap_pct.toFixed(1)}% more RN hours than payroll shows`;
+      return `-- Reports ${facility.rn_gap_pct.toFixed(1)}% more RN hours than payroll shows`;
     }
     if (facility.harm_count > 0) {
-      return `⚠ Inspectors found actual harm to ${facility.harm_count} resident${facility.harm_count > 1 ? 's' : ''}`;
+      return `-- Inspectors found actual harm to ${facility.harm_count} resident${facility.harm_count > 1 ? 's' : ''}`;
     }
     if (facility.jeopardy_count > 0) {
-      return `⚠ ${facility.jeopardy_count} serious danger citation${facility.jeopardy_count > 1 ? 's' : ''}`;
+      return `-- ${facility.jeopardy_count} serious harm citation${facility.jeopardy_count > 1 ? 's' : ''}`;
     }
     if (facility.chain_facility_count > 10 && facility.chain_avg_stars < 2.5) {
-      return `⚠ Operator runs ${facility.chain_facility_count} facilities — avg ${facility.chain_avg_stars?.toFixed(1)} stars`;
+      return `-- Operator runs ${facility.chain_facility_count} facilities — avg ${facility.chain_avg_stars?.toFixed(1)} stars`;
     }
     if (facility.ownership_changed_recently) {
-      return `⚠ New ownership since ${facility.ownership_change_date}`;
+      return `-- New ownership since ${facility.ownership_change_date}`;
     }
     return null;
   };
@@ -120,7 +120,7 @@ export default function FacilityRow({ facility }) {
             <span className="facility-card-stat stat-danger">{facility.harm_count} residents hurt</span>
           )}
           {facility.jeopardy_count > 0 && (
-            <span className="facility-card-stat stat-critical">{facility.jeopardy_count} serious danger</span>
+            <span className="facility-card-stat stat-critical">{facility.jeopardy_count} serious harm</span>
           )}
           {facility.total_fines > 0 && (
             <span className="facility-card-stat stat-fines">{formatFines(facility.total_fines)} fines</span>

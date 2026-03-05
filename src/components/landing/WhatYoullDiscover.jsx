@@ -19,7 +19,7 @@ const features = [
   {
     icon: AlertTriangleIcon,
     title: 'Inspection Deficiencies',
-    description: 'Drill into specific inspection findings — from minor paperwork issues to serious danger findings.',
+    description: 'Drill into specific inspection findings — from minor paperwork issues to serious harm findings.',
   },
   {
     icon: UsersIcon,

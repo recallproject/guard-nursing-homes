@@ -226,7 +226,7 @@ States: ${selectedOwner.states.join(', ')}
 Average risk score: ${selectedOwner.avgComposite}
 Average star rating: ${selectedOwner.avgStars} / 5
 Total fines (3yr): $${Math.round(selectedOwner.totalFines).toLocaleString()}
-Serious danger citations: ${selectedOwner.jeopardyCount} facilities
+Serious harm citations: ${selectedOwner.jeopardyCount} facilities
 Staffing discrepancies: ${selectedOwner.staffingDiscrepancies} facilities
 
 STAR DISTRIBUTION
@@ -410,7 +410,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
               <div className="owner-stat-value">${(selectedOwner.totalFines / 1000000).toFixed(2)}M</div>
             </div>
             <div className="owner-stat-card">
-              <div className="owner-stat-label">Serious Danger Citations</div>
+              <div className="owner-stat-label">Serious Harm Citations</div>
               <div className="owner-stat-value">
                 {selectedOwner.jeopardyCount} ({Math.round((selectedOwner.jeopardyCount / selectedOwner.count) * 100)}%)
               </div>
@@ -432,7 +432,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
                 const pct = Math.round((count / selectedOwner.count) * 100);
                 return (
                   <div className="owner-star-row" key={star}>
-                    <span className="owner-star-label">{'⭐'.repeat(star)}</span>
+                    <span className="owner-star-label">{'★'.repeat(star)}</span>
                     <div className="owner-star-bar-track">
                       <div
                         className={`owner-star-bar-fill star-${star}`}
@@ -521,7 +521,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
                         <RiskBadge score={f.composite} />
                       </td>
                       <td className="stars-cell">
-                        {f.stars ? `${f.stars} ⭐` : 'N/A'}
+                        {f.stars ? `${f.stars} ★` : 'N/A'}
                       </td>
                       <td className="mono">
                         {f.total_hprd ? (f.total_hprd * 60).toFixed(0) : 'N/A'}
@@ -573,7 +573,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
               className={`leaderboard-tab ${leaderboardTab === 'danger' ? 'active' : ''}`}
               onClick={() => setLeaderboardTab('danger')}
             >
-              Most Serious Danger Citations
+              Most Serious Harm Citations
             </button>
           </div>
 
@@ -592,12 +592,12 @@ The Oversight Report identifies patterns and discrepancies in publicly available
                     {owner.count} facilities across {owner.states.length} state{owner.states.length !== 1 ? 's' : ''}
                   </p>
                   <div className="leaderboard-card-stats">
-                    <span>Avg rating: {owner.avgStars} ⭐</span>
+                    <span>Avg rating: {owner.avgStars} ★</span>
                     <span>Avg risk: {owner.avgComposite}</span>
                   </div>
                   <div className="leaderboard-card-stats">
                     <span>Total fines: ${(owner.totalFines / 1000000).toFixed(2)}M</span>
-                    <span>Serious danger: {owner.jeopardyCount} facilities</span>
+                    <span>Serious harm: {owner.jeopardyCount} facilities</span>
                   </div>
                 </div>
                 <div className="leaderboard-card-arrow">→</div>

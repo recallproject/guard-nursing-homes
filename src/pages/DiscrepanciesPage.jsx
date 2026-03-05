@@ -19,7 +19,7 @@ export default function DiscrepanciesPage() {
   const [selectedState, setSelectedState] = useState('ALL');
   const [ownershipFilter, setOwnershipFilter] = useState('ALL');
   const [minGap, setMinGap] = useState(25);
-  const [hasSeriousDanger, setHasSeriousDanger] = useState(false);
+  const [hasSeriousHarm, setHasSeriousHarm] = useState(false);
   const [hasZeroRN, setHasZeroRN] = useState(false);
   const [sortColumn, setSortColumn] = useState('rn_gap_pct');
   const [sortDirection, setSortDirection] = useState('desc');
@@ -69,10 +69,10 @@ export default function DiscrepanciesPage() {
       else if (ownershipFilter === 'GOVERNMENT') filtered = filtered.filter(f => f.ownership_type?.toLowerCase().includes('government'));
     }
     filtered = filtered.filter(f => (f.rn_gap_pct || 0) >= minGap);
-    if (hasSeriousDanger) filtered = filtered.filter(f => (f.jeopardy_count || 0) > 0);
+    if (hasSeriousHarm) filtered = filtered.filter(f => (f.jeopardy_count || 0) > 0);
     if (hasZeroRN) filtered = filtered.filter(f => (f.zero_rn_pct || 0) > 0);
     return filtered;
-  }, [discrepancyFacilities, selectedState, ownershipFilter, minGap, hasSeriousDanger, hasZeroRN]);
+  }, [discrepancyFacilities, selectedState, ownershipFilter, minGap, hasSeriousHarm, hasZeroRN]);
 
   // Sort
   const sortedFacilities = useMemo(() => {
@@ -255,7 +255,7 @@ export default function DiscrepanciesPage() {
                       )}
                       {jeopardy > 0 && (
                         <div className="disc-flag disc-flag-danger">
-                          <strong>{jeopardy} serious danger citation{jeopardy > 1 ? 's' : ''}</strong> — conditions posing immediate risk to residents
+                          <strong>{jeopardy} serious harm citation{jeopardy > 1 ? 's' : ''}</strong> — conditions posing immediate risk to residents
                         </div>
                       )}
                     </div>
@@ -327,7 +327,7 @@ export default function DiscrepanciesPage() {
             </div>
             <div className="disc-stat-card">
               <div className="disc-stat-value">{summaryStats.withJeopardy.toLocaleString()}</div>
-              <div className="disc-stat-label">With Serious Danger</div>
+              <div className="disc-stat-label">With Serious Harm</div>
             </div>
             <div className="disc-stat-card">
               <div className="disc-stat-value">{formatCurrency(summaryStats.totalFines)}</div>
@@ -376,7 +376,7 @@ export default function DiscrepanciesPage() {
                   <input type="number" min="0" max="100" value={minGap} onChange={(e) => setMinGap(Number(e.target.value))} />
                 </div>
                 <div className="disc-filter-group disc-checkbox">
-                  <label><input type="checkbox" checked={hasSeriousDanger} onChange={(e) => setHasSeriousDanger(e.target.checked)} /> Serious Danger</label>
+                  <label><input type="checkbox" checked={hasSeriousHarm} onChange={(e) => setHasSeriousHarm(e.target.checked)} /> Serious Harm</label>
                 </div>
                 <div className="disc-filter-group disc-checkbox">
                   <label><input type="checkbox" checked={hasZeroRN} onChange={(e) => setHasZeroRN(e.target.checked)} /> Zero-RN Days</label>

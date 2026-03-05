@@ -831,7 +831,7 @@ export function ReferralScorecardPage() {
                 className={`referral-filter-tab referral-filter-high-risk ${activeFilter === 'high_risk' ? 'active' : ''}`}
                 onClick={() => setActiveFilter('high_risk')}
               >
-                High Risk ⚠ {typeCounts.high_risk}
+                High Risk -- {typeCounts.high_risk}
               </button>
             )}
           </div>

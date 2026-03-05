@@ -122,7 +122,7 @@ export default function TwoReportsSection({ onSearch }) {
                   <div className="report-section">
                     <h4 className="report-section-title">Bottom Line</h4>
                     <div className="report-callout report-callout--red">
-                      Inspectors found serious danger to residents 2 times. This facility has been fined $284,500. On 31% of days, there was no registered nurse in the building.
+                      Inspectors found serious harm to residents 2 times. This facility has been fined $284,500. On 31% of days, there was no registered nurse in the building.
                     </div>
                   </div>
                   <div className="report-section">

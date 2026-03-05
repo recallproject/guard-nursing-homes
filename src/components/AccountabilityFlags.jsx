@@ -98,7 +98,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
               <div className="ownership-stars-grid">
                 {[5, 4, 3, 2, 1].map(star => (
                   <div className="ownership-star-row" key={star}>
-                    <span className="ownership-star-label">{'⭐'.repeat(star)}</span>
+                    <span className="ownership-star-label">{'★'.repeat(star)}</span>
                     <div className="ownership-star-bar-track">
                       <div
                         className="ownership-star-bar-fill"
@@ -115,7 +115,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
               <p>Average rating: <strong>{avgStars}</strong> out of 5 stars (national average: 3.2)</p>
 
               {belowAvgPct > 40 && (
-                <p className="flag-alert">⚠ {belowAvgPct}% of facilities under this operator are rated below average.</p>
+                <p className="flag-alert">-- {belowAvgPct}% of facilities under this operator are rated below average.</p>
               )}
 
               <p className="flag-source">Source: CMS Care Compare, ownership records</p>
@@ -152,7 +152,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
               <p>Payment denials: {facility.denial_count} (CMS temporarily stopped paying for new admissions)</p>
             )}
             {facility.total_fines > 100000 && (
-              <p className="flag-alert">⚠ Fines exceeding $100,000 suggest serious or repeated violations.</p>
+              <p className="flag-alert">-- Fines exceeding $100,000 suggest serious or repeated violations.</p>
             )}
             <p className="flag-source">Source: CMS Penalty data</p>
           </div>
@@ -169,7 +169,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
           <div className="flag-body">
             {facility.jeopardy_count > 0 && (
               <>
-                <p className="flag-severity-label severity-jeopardy">SERIOUS DANGER TO RESIDENTS</p>
+                <p className="flag-severity-label severity-jeopardy">SERIOUS HARM TO RESIDENTS</p>
                 <p>Government inspectors found conditions so severe that residents faced risk of serious injury or death. This is the most serious finding an inspection can produce.</p>
               </>
             )}

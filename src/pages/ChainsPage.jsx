@@ -228,8 +228,8 @@ export function ChainsPage() {
   return (
     <div className="chains-page">
       <Helmet>
-        <title>Worst Nursing Home Chains — Chain Rankings | The Oversight Report</title>
-        <meta name="description" content="Rankings of nursing home chains by safety performance. See which corporate operators have the worst inspection records, lowest staffing, and highest fines." />
+        <title>Nursing Home Chain Rankings | The Oversight Report</title>
+        <meta name="description" content="Rankings of nursing home chains by safety performance. See how corporate operators compare on inspection records, staffing levels, and fines." />
         <link rel="canonical" href="https://oversightreports.com/chains" />
       </Helmet>
       {/* Header */}
@@ -252,7 +252,7 @@ export function ChainsPage() {
         </div>
         <div className="stat-card">
           <div className="stat-value">{worstAvgStars.toFixed(1)} ★</div>
-          <div className="stat-label">Worst Avg Stars</div>
+          <div className="stat-label">Lowest Avg Stars</div>
         </div>
         <div className="stat-card">
           <div className="stat-value">{formatCurrency(highestTotalFines)}</div>
@@ -397,7 +397,7 @@ export function ChainsPage() {
                             className="ahca-badge"
                             title="This chain's leadership serves on the Board of the nursing home industry's largest lobbying organization"
                           >
-                            🏛 AHCA Board
+                            AHCA Board
                           </span>
                         )}
                       </div>

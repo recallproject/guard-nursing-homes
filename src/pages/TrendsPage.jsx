@@ -106,7 +106,7 @@ export function TrendsPage() {
   const avgStars = totalFacilities > 0
     ? (facilities.reduce((sum, f) => sum + (f.stars || 0), 0) / totalFacilities).toFixed(1)
     : '0.0';
-  const seriousDangerPct = totalFacilities > 0
+  const seriousHarmPct = totalFacilities > 0
     ? ((facilities.filter(f => (f.jeopardy_count || 0) > 0).length / totalFacilities) * 100).toFixed(1)
     : '0.0';
   const staffingDiscrepancyPct = totalFacilities > 0
@@ -129,7 +129,7 @@ export function TrendsPage() {
         count: 0,
         totalRisk: 0,
         totalStars: 0,
-        seriousDanger: 0,
+        seriousHarm: 0,
         totalFines: 0
       };
     }
@@ -137,7 +137,7 @@ export function TrendsPage() {
     stateStats[state].totalRisk += (facility.composite || 0);
     stateStats[state].totalStars += (facility.stars || 0);
     if ((facility.jeopardy_count || 0) > 0) {
-      stateStats[state].seriousDanger++;
+      stateStats[state].seriousHarm++;
     }
     stateStats[state].totalFines += (facility.total_fines || 0);
   });
@@ -149,7 +149,7 @@ export function TrendsPage() {
     facilities: stats.count,
     avgRisk: (stats.totalRisk / stats.count).toFixed(1),
     avgStars: (stats.totalStars / stats.count).toFixed(1),
-    seriousDangerPct: ((stats.seriousDanger / stats.count) * 100).toFixed(1),
+    seriousHarmPct: ((stats.seriousHarm / stats.count) * 100).toFixed(1),
     avgFines: stats.totalFines > 0 ? (stats.totalFines / stats.count) : 0
   }));
 
@@ -183,8 +183,8 @@ export function TrendsPage() {
         bVal = parseFloat(b.avgStars);
         break;
       case 'danger':
-        aVal = parseFloat(a.seriousDangerPct);
-        bVal = parseFloat(b.seriousDangerPct);
+        aVal = parseFloat(a.seriousHarmPct);
+        bVal = parseFloat(b.seriousHarmPct);
         break;
       case 'fines':
         aVal = a.avgFines;
@@ -314,8 +314,8 @@ export function TrendsPage() {
             <div className="trends-snapshot-label">Average Star Rating</div>
           </div>
           <div className="trends-snapshot-card">
-            <div className="trends-snapshot-value trends-stat-danger">{seriousDangerPct}%</div>
-            <div className="trends-snapshot-label">Serious Danger Citations</div>
+            <div className="trends-snapshot-value trends-stat-danger">{seriousHarmPct}%</div>
+            <div className="trends-snapshot-label">Serious Harm Citations</div>
           </div>
           <div className="trends-snapshot-card">
             <div className="trends-snapshot-value trends-stat-warning">{staffingDiscrepancyPct}%</div>
@@ -323,7 +323,7 @@ export function TrendsPage() {
           </div>
           <div className="trends-snapshot-card">
             <div className="trends-snapshot-value trends-stat-warning">{zeroRnPct}%</div>
-            <div className="trends-snapshot-label">Zero-RN Days (&gt;20%)</div>
+            <div className="trends-snapshot-label">Zero-RN Days ({'>'}20%)</div>
           </div>
           <div className="trends-snapshot-card">
             <div className="trends-snapshot-value">{formatCurrency(totalFines)}</div>
@@ -477,7 +477,7 @@ export function TrendsPage() {
                       <th>Facilities</th>
                       <th>Avg Risk</th>
                       <th>Avg Stars</th>
-                      <th>% Serious Danger</th>
+                      <th>% Serious Harm</th>
                       <th>Avg Fines</th>
                     </tr>
                   </thead>
@@ -492,7 +492,7 @@ export function TrendsPage() {
                           </span>
                         </td>
                         <td className="trends-stars">{state.avgStars}</td>
-                        <td className="mono">{state.seriousDangerPct}%</td>
+                        <td className="mono">{state.seriousHarmPct}%</td>
                         <td className="mono">{formatCurrency(state.avgFines)}</td>
                       </tr>
                     ))}
@@ -510,7 +510,7 @@ export function TrendsPage() {
                       <th>Facilities</th>
                       <th>Avg Risk</th>
                       <th>Avg Stars</th>
-                      <th>% Serious Danger</th>
+                      <th>% Serious Harm</th>
                       <th>Avg Fines</th>
                     </tr>
                   </thead>
@@ -525,7 +525,7 @@ export function TrendsPage() {
                           </span>
                         </td>
                         <td className="trends-stars">{state.avgStars}</td>
-                        <td className="mono">{state.seriousDangerPct}%</td>
+                        <td className="mono">{state.seriousHarmPct}%</td>
                         <td className="mono">{formatCurrency(state.avgFines)}</td>
                       </tr>
                     ))}
@@ -558,7 +558,7 @@ export function TrendsPage() {
                       Avg Stars {sortBy === 'stars' && (sortOrder === 'asc' ? '↑' : '↓')}
                     </th>
                     <th onClick={() => handleSort('danger')} className="sortable">
-                      % Serious Danger {sortBy === 'danger' && (sortOrder === 'asc' ? '↑' : '↓')}
+                      % Serious Harm {sortBy === 'danger' && (sortOrder === 'asc' ? '↑' : '↓')}
                     </th>
                     <th onClick={() => handleSort('fines')} className="sortable">
                       Avg Fines {sortBy === 'fines' && (sortOrder === 'asc' ? '↑' : '↓')}
@@ -579,7 +579,7 @@ export function TrendsPage() {
                         </span>
                       </td>
                       <td className="trends-stars">{state.avgStars}</td>
-                      <td className="mono">{state.seriousDangerPct}%</td>
+                      <td className="mono">{state.seriousHarmPct}%</td>
                       <td className="mono">{formatCurrency(state.avgFines)}</td>
                     </tr>
                   ))}

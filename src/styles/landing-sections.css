@@ -1519,6 +1519,10 @@
 .coming-soon-icon {
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .coming-soon-card h3 {

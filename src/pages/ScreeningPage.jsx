@@ -301,7 +301,7 @@ export function ScreeningPage() {
     doc.setFont('helvetica', 'normal');
     doc.text(`• ${stats.totalFacilities} facilities, ${stats.highRiskCount} high-risk (${stats.highRiskPct}%)`, margin + 3, currentY);
     currentY += 5;
-    doc.text(`• ${formatCurrency(stats.totalFines)} total fines | ${stats.dangerCount} serious danger citations`, margin + 3, currentY);
+    doc.text(`• ${formatCurrency(stats.totalFines)} total fines | ${stats.dangerCount} serious harm citations`, margin + 3, currentY);
     currentY += 5;
     doc.text(`• ${stats.staffingGapCount} facilities with staffing discrepancies`, margin + 3, currentY);
     currentY += 12;
@@ -325,7 +325,7 @@ export function ScreeningPage() {
 
     doc.autoTable({
       startY: currentY,
-      head: [['Rank', 'Facility', 'City', 'Owner', 'Risk', 'Staffing Gap', 'Danger']],
+      head: [['Rank', 'Facility', 'City', 'Owner', 'Risk', 'Staffing Gap', 'Serious Harm']],
       body: tableData,
       theme: 'grid',
       styles: { fontSize: 8, cellPadding: 2 },
@@ -433,7 +433,7 @@ export function ScreeningPage() {
             </div>
             <div className="screening-stat-card">
               <div className="screening-stat-value screening-stat-danger">{stats.dangerCount}</div>
-              <div className="screening-stat-label">Serious Danger Citations</div>
+              <div className="screening-stat-label">Serious Harm Citations</div>
             </div>
             <div className="screening-stat-card">
               <div className="screening-stat-value">{stats.zeroRnCount}</div>
@@ -488,7 +488,7 @@ export function ScreeningPage() {
                   checked={filterDanger}
                   onChange={(e) => setFilterDanger(e.target.checked)}
                 />
-                <span>Serious danger citations</span>
+                <span>Serious harm citations</span>
               </label>
             </div>
 
@@ -555,7 +555,7 @@ export function ScreeningPage() {
                     <th onClick={() => handleSort('fines')} className="sortable">
                       Fines (3yr) {sortBy === 'fines' && (sortOrder === 'asc' ? '↑' : '↓')}
                     </th>
-                    <th>Serious Danger</th>
+                    <th>Serious Harm</th>
                   </tr>
                 </thead>
                 <tbody>

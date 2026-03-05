@@ -157,7 +157,7 @@ export function WatchlistPage() {
   const downloadCSV = () => {
     if (!filteredFacilities.length) return;
 
-    const headers = ['Facility', 'CCN', 'City', 'State', 'Risk Score', 'Stars', 'Total Fines', 'Serious Danger', 'Total Deficiencies', 'Staffing Discrepancy', 'Date Added'];
+    const headers = ['Facility', 'CCN', 'City', 'State', 'Risk Score', 'Stars', 'Total Fines', 'Serious Harm', 'Total Deficiencies', 'Staffing Discrepancy', 'Date Added'];
     const rows = filteredFacilities.map(f => [
       f.name,
       f.ccn,
@@ -369,7 +369,7 @@ export function WatchlistPage() {
                   {(facility.jeopardy_count || 0) > 0 && (
                     <div className="watchlist-stat-item stat-danger">
                       <span className="watchlist-stat-num">{facility.jeopardy_count}</span>
-                      <span className="watchlist-stat-text">serious danger</span>
+                      <span className="watchlist-stat-text">serious harm</span>
                     </div>
                   )}
                   {(facility.total_deficiencies || 0) > 0 && (
@@ -461,7 +461,7 @@ export function WatchlistPage() {
                   })}
                 </tr>
                 <tr>
-                  <td className="wct-label">Serious Danger</td>
+                  <td className="wct-label">Serious Harm</td>
                   {[...selectedForCompare].map(ccn => {
                     const f = facilities.find(fac => fac.ccn === ccn);
                     const count = f?.jeopardy_count || 0;

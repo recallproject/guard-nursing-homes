@@ -19,7 +19,7 @@ export default function ScoreBreakdown({ staffing, deficiency, penalty, ownershi
       score: deficiency,
       weight: '25%',
       color: 'var(--amber)',
-      description: 'Deficiencies, harm, serious danger'
+      description: 'Deficiencies, harm, serious harm'
     },
     {
       label: 'Penalties',

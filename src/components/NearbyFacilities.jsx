@@ -164,7 +164,7 @@ export function NearbyFacilities({ facility }) {
                 <div className="nearby-metric">
                   <span className="nearby-metric-label">Stars:</span>
                   <span className="nearby-metric-value">
-                    {f.stars || 0} ⭐
+                    {f.stars || 0} ★
                   </span>
                 </div>
 

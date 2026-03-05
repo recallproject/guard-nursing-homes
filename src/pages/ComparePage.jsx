@@ -52,7 +52,7 @@ export default function ComparePage() {
             </p>
             <div className="compare-guide-grid">
               <a href="#government" className="compare-guide-card">
-                <div className="compare-guide-icon compare-guide-icon--gov">🏛</div>
+                <div className="compare-guide-icon compare-guide-icon--gov">GOV</div>
                 <div className="compare-guide-text">
                   <div className="compare-guide-title">
                     Government Tools
@@ -62,7 +62,7 @@ export default function ComparePage() {
                 </div>
               </a>
               <a href="#journalism" className="compare-guide-card">
-                <div className="compare-guide-icon compare-guide-icon--journalism">📰</div>
+                <div className="compare-guide-icon compare-guide-icon--journalism">J</div>
                 <div className="compare-guide-text">
                   <div className="compare-guide-title">
                     Journalism &amp; Advocacy
@@ -72,7 +72,7 @@ export default function ComparePage() {
                 </div>
               </a>
               <a href="#referral" className="compare-guide-card">
-                <div className="compare-guide-icon compare-guide-icon--referral">⚠</div>
+                <div className="compare-guide-icon compare-guide-icon--referral">!</div>
                 <div className="compare-guide-text">
                   <div className="compare-guide-title">
                     Referral Sites
@@ -82,7 +82,7 @@ export default function ComparePage() {
                 </div>
               </a>
               <a href="#rankings" className="compare-guide-card">
-                <div className="compare-guide-icon compare-guide-icon--rankings">📊</div>
+                <div className="compare-guide-icon compare-guide-icon--rankings">III</div>
                 <div className="compare-guide-text">
                   <div className="compare-guide-title">
                     Rankings &amp; Reviews
@@ -99,7 +99,7 @@ export default function ComparePage() {
                 </div>
               </a>
               <a href="#our-approach" className="compare-guide-card">
-                <div className="compare-guide-icon compare-guide-icon--ours">🔍</div>
+                <div className="compare-guide-icon compare-guide-icon--ours">TOR</div>
                 <div className="compare-guide-text">
                   <div className="compare-guide-title">Our Approach</div>
                   <div className="compare-guide-desc">What The Oversight Report does, what it doesn't, and how we make money. We built this page to be honest — including about ourselves.</div>

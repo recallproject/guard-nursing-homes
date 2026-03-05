@@ -537,7 +537,7 @@ export function AGToolkitPage() {
     <div className="ag-toolkit-page">
       <Helmet>
         <title>Attorney General Toolkit — Nursing Home Enforcement Data | The Oversight Report</title>
-        <meta name="description" content="State-level nursing home enforcement data for Attorneys General. Staffing analysis, worst facilities, chain operators, and accountability metrics by state." />
+        <meta name="description" content="State-level nursing home enforcement data for Attorneys General. Staffing analysis, high-risk facilities, chain operators, and accountability metrics by state." />
         <link rel="canonical" href="https://oversightreports.com/ag-toolkit" />
       </Helmet>
       {/* Header */}

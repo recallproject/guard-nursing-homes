@@ -18,7 +18,7 @@ const CHECK_ITEMS = [
 
 const METRICS = [
   { target: 64, prefix: '', suffix: '', label: 'Total Deficiencies', ctx: 'State avg: 16.6 · National: 28.4', cls: 'val-red' },
-  { target: 1, prefix: '', suffix: '', label: 'Serious Danger', ctx: 'State avg: 0.5 · National: 0.7', cls: 'val-red' },
+  { target: 1, prefix: '', suffix: '', label: 'Serious Harm', ctx: 'State avg: 0.5 · National: 0.7', cls: 'val-red' },
   { target: 63925, prefix: '$', suffix: '', label: 'Total Fines', ctx: 'State avg: $28,541', cls: 'val-red' },
   { target: 0, prefix: '', suffix: '%', label: 'Zero-RN Days', ctx: 'Days with no registered nurse on site', cls: 'val-green' },
 ];
@@ -267,7 +267,7 @@ export default function HowItWorks({ onSearchFacility }) {
 
                     <div className={`hiw-rpt-bl ${rptIn.bl ? 'in' : ''}`}>
                       <div className="hiw-rpt-bl-label">&#9650; BOTTOM LINE</div>
-                      <p>Inspectors found <strong>serious danger to residents 1 time</strong> — risk of serious injury or death. This facility has been fined <strong>$63,925</strong>. The same company runs <strong>93 other facilities</strong> with average fines of $42,796 among those penalized.</p>
+                      <p>Inspectors found <strong>serious harm to residents 1 time</strong> — risk of serious injury or death. This facility has been fined <strong>$63,925</strong>. The same company runs <strong>93 other facilities</strong> with average fines of $42,796 among those penalized.</p>
                       <div className="hiw-bl-source">Source: CMS Provider Data · Verify: <a href="#">ProPublica</a> · <a href="#">Medicare Care Compare</a></div>
                     </div>
 

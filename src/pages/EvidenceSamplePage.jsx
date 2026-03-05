@@ -51,7 +51,7 @@ export default function EvidenceSamplePage() {
                 </div>
                 <div className="ev-sample-finding">
                   <div className="ev-sample-finding-value">8</div>
-                  <div className="ev-sample-finding-label">Jeopardy<br /><span>Serious danger</span></div>
+                  <div className="ev-sample-finding-label">Jeopardy<br /><span>Serious harm</span></div>
                 </div>
                 <div className="ev-sample-finding">
                   <div className="ev-sample-finding-value">53</div>
@@ -167,22 +167,22 @@ export default function EvidenceSamplePage() {
           <h2 className="ev-sample-section-title">Who Uses Evidence Reports</h2>
           <div className="ev-sample-audience-grid">
             <div className="ev-sample-audience-card">
-              <div className="ev-sample-audience-icon">👨‍👩‍👧</div>
+              <div className="ev-sample-audience-icon" style={{fontFamily: 'serif'}}>F</div>
               <h3>Families</h3>
               <p>Evaluating a nursing home for a parent or loved one. Get the full picture before you visit — or share it with siblings who need to see the data.</p>
             </div>
             <div className="ev-sample-audience-card">
-              <div className="ev-sample-audience-icon">⚖️</div>
+              <div className="ev-sample-audience-icon" style={{fontFamily: 'serif'}}>A</div>
               <h3>Attorneys</h3>
               <p>Building a case or conducting discovery. Every data point is sourced and verifiable against original CMS records.</p>
             </div>
             <div className="ev-sample-audience-card">
-              <div className="ev-sample-audience-icon">📰</div>
+              <div className="ev-sample-audience-icon" style={{fontFamily: 'serif'}}>J</div>
               <h3>Journalists</h3>
               <p>Investigating patterns of neglect or ownership networks. Evidence Reports connect the dots across federal databases.</p>
             </div>
             <div className="ev-sample-audience-card">
-              <div className="ev-sample-audience-icon">🏥</div>
+              <div className="ev-sample-audience-icon" style={{fontFamily: 'serif'}}>CM</div>
               <h3>Case Managers</h3>
               <p>Making placement decisions under pressure. Compare facilities quickly with standardized metrics and risk scores.</p>
             </div>

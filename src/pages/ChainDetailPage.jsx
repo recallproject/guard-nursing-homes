@@ -353,7 +353,7 @@ export function ChainDetailPage() {
       {ahcaInfo && (
         <div className="ahca-callout">
           <div className="ahca-callout-header">
-            <span className="ahca-icon">🏛</span>
+            <span className="ahca-icon">AHCA</span>
             <strong>Industry Lobbying Connection</strong>
           </div>
           <p className="ahca-callout-body">

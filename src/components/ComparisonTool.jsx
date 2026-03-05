@@ -201,7 +201,7 @@ const ComparisonTool = forwardRef(function ComparisonTool({ searchFacilities }, 
       bestHigher: false,
     },
     {
-      label: 'Serious Danger Citations',
+      label: 'Serious Harm Citations',
       getValue: (f) => f.jeopardy_count || 0,
       render: (f) => <span style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: 600 }}>{f.jeopardy_count || 0}</span>,
       getColor: (f) => (f.jeopardy_count || 0) > 0 ? '#B91C1C' : '#15803D',

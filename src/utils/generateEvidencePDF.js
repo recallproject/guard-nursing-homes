@@ -287,7 +287,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         bits.push(facility.jeopardy_count + ' instance' + (facility.jeopardy_count > 1 ? 's' : '') + ' of immediate jeopardy');
       if (facility.harm_count > 0)
         bits.push(facility.harm_count + ' instance' + (facility.harm_count > 1 ? 's' : '') + ' of actual harm');
-      parts.push('State inspectors documented ' + bits.join(' and ') + ' — conditions posing serious danger to residents.');
+      parts.push('State inspectors documented ' + bits.join(' and ') + ' — conditions posing serious harm to residents.');
     }
     if (facility.worst_owner && facility.owner_portfolio_count > 1) {
       // Use computed portfolio data for consistency (matches Section 2)
@@ -2040,7 +2040,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   const weights = [
     'Staffing Levels: 30% (verified payroll vs. self-reported, zero-RN days)',
-    'Inspection Results: 25% (deficiencies, serious danger, harm citations)',
+    'Inspection Results: 25% (deficiencies, serious harm, harm citations)',
     'Financial Penalties: 20% (civil monetary penalties, payment denials)',
     'Ownership History: 15% (portfolio performance, ownership changes)',
     'Quality Measures: 10% (CMS star rating components)',

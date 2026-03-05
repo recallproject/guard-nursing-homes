@@ -15,7 +15,7 @@ export default function HighRiskPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const pageRef = useRef(null);
-  const ROWS_PER_PAGE = 50;
+  const ROWS_PER_PAGE = 25;
 
   // Plausible: track high-risk page view
   useEffect(() => {
@@ -224,7 +224,7 @@ export default function HighRiskPage() {
         <div className="high-risk-header">
           <h1 className="high-risk-title">High-Risk Facilities</h1>
           <p className="high-risk-subtitle">
-            Nursing homes that simultaneously fail on quality, staffing, safety, and accountability
+            Nursing homes meeting all five high-risk criteria across quality, staffing, safety, and accountability
           </p>
           <div className="high-risk-count-badge">
             {summaryStats.total} facilities identified
@@ -401,8 +401,8 @@ export default function HighRiskPage() {
             </ul>
             <p>
               These facilities represent a convergence of quality failures, safety violations, staffing shortages, and
-              accountability issues. They are not necessarily the worst facilities in isolation — but they fail across
-              multiple dimensions simultaneously.
+              accountability issues. These facilities are not singled out arbitrarily — they are identified because they meet
+              every threshold simultaneously across multiple independent data sources.
             </p>
             <h3>Data Sources</h3>
             <ul>

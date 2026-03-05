@@ -6,7 +6,7 @@ import '../styles/facility.css';
  * severity: "danger" (red) or "warning" (amber)
  */
 export default function WarningCallout({ severity, message, detail }) {
-  const icon = '⚠';
+  const icon = '--';
   const className = `warning-callout warning-${severity}`;
 
   return (

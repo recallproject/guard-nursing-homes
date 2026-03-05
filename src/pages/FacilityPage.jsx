@@ -157,6 +157,8 @@ export function FacilityPage() {
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
   const [qmTab, setQmTab] = useState('memory');
   const [expandedQm, setExpandedQm] = useState(null);
+  // Change #1: Active section tracking for nav
+  const [activeSection, setActiveSection] = useState('');
   // Change #3: Deficiency filter state
   const [defSeverityFilter, setDefSeverityFilter] = useState('all');
   const [defYearFilter, setDefYearFilter] = useState('all');
@@ -256,6 +258,31 @@ export function FacilityPage() {
       .catch(() => {});
   }, [facility?.state, ccn]);
 
+  // Change #1: Intersection Observer for active section nav tracking
+  useEffect(() => {
+    const sectionIds = ['s-safety', 's-inspections', 's-complaints', 's-staffing', 's-quality', 's-fines', 's-fire', 's-ownership', 's-questions'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        }
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    );
+    const timer = setTimeout(() => {
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, []);
+
   if (loading) {
     return (
       <div className="fp">
@@ -291,7 +318,7 @@ export function FacilityPage() {
   const getBottomLine = () => {
     const parts = [];
     if (facility.jeopardy_count > 0)
-      parts.push(`Inspectors found <strong>serious danger to residents ${facility.jeopardy_count} time${facility.jeopardy_count !== 1 ? 's' : ''}</strong> — risk of serious injury or death.`);
+      parts.push(`Inspectors found <strong>serious harm to residents ${facility.jeopardy_count} time${facility.jeopardy_count !== 1 ? 's' : ''}</strong> — risk of serious injury or death.`);
     else if (facility.harm_count > 0)
       parts.push(`Residents were hurt <strong>${facility.harm_count} time${facility.harm_count !== 1 ? 's' : ''}</strong> according to inspection reports.`);
     if (facility.total_fines > 0)
@@ -398,7 +425,7 @@ export function FacilityPage() {
 
             {facility.chain_name && ahcaData?.[facility.chain_name.toUpperCase()] && (
               <div className="ahca-context-line">
-                <span className="ahca-context-icon">🏛</span>
+                <span className="ahca-context-icon">AHCA</span>
                 This facility's parent chain ({facility.chain_name}) is led by an AHCA Board of Governors member. AHCA spent $17M+ since 2020 lobbying on nursing home policy, including against federal staffing requirements.
                 {' '}
                 <span className="ahca-context-source">
@@ -412,7 +439,7 @@ export function FacilityPage() {
         {/* Section 3: Bottom Line — the verdict */}
         <div className="section fp-bottom-line">
           <div className="bottom-line-card">
-            <div className="bottom-line-label">⚠ Bottom Line</div>
+            <div className="bottom-line-label">Bottom Line</div>
             <div className="bottom-line-text" dangerouslySetInnerHTML={{ __html: getBottomLine() }} />
             <div className="bottom-line-source">
               Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
@@ -434,7 +461,7 @@ export function FacilityPage() {
               { id: 's-ownership', label: 'Ownership' },
               { id: 's-questions', label: 'Questions' },
             ].map(sec => (
-              <a key={sec.id} href={`#${sec.id}`} className="section-nav-link" onClick={e => {
+              <a key={sec.id} href={`#${sec.id}`} className={`section-nav-link${activeSection === sec.id ? ' active' : ''}`} onClick={e => {
                 e.preventDefault();
                 document.getElementById(sec.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }}>{sec.label}</a>
@@ -451,7 +478,7 @@ export function FacilityPage() {
             <span className="badge-source">6 METRICS</span>
           </div>
           <p className="section-subtitle">6 key safety metrics — all drawn from federal CMS data, not the facility's self-reported numbers</p>
-          <div className="data-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+          <div className="data-grid data-grid-3col">
           {/* Row 1 */}
           {(() => {
             const val = facility.total_deficiencies || 0;
@@ -463,7 +490,7 @@ export function FacilityPage() {
             return (
               <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
                 <div className={`data-cell-value ${val > 20 ? 'val-red' : 'val-green'}`}>{val}</div>
-                <div className="data-cell-label">Total Deficiencies <MetricTooltip title="What are deficiencies?" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>Every nursing home is inspected at least once a year by state surveyors. A "deficiency" is a specific problem they found — anything from a minor paperwork issue to a condition that put residents in serious danger. More deficiencies generally means more problems found during inspections.</MetricTooltip></div>
+                <div className="data-cell-label">Total Deficiencies <MetricTooltip title="What are deficiencies?" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>Every nursing home is inspected at least once a year by state surveyors. A "deficiency" is a specific problem they found — anything from a minor paperwork issue to a condition that put residents in serious harm. More deficiencies generally means more problems found during inspections.</MetricTooltip></div>
                 <div className="data-cell-context">State avg: {stateAvg?.toFixed(1) || 'N/A'} · National: {natlAvg.toFixed(1)}</div>
                 <div className="data-cell-position">
                   <div className="position-track">
@@ -486,7 +513,7 @@ export function FacilityPage() {
             return (
               <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
                 <div className={`data-cell-value ${val > 0 ? 'val-red' : 'val-green'}`}>{val}</div>
-                <div className="data-cell-label">Serious Danger <MetricTooltip title="'Immediate Jeopardy' — the worst finding" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>This is the most severe deficiency level. Inspectors concluded that conditions were so dangerous that residents faced risk of serious injury or death. Any number above zero is a red flag. Many facilities in the country have never received this citation.</MetricTooltip></div>
+                <div className="data-cell-label">Serious Harm <MetricTooltip title="'Immediate Jeopardy' — the worst finding" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>This is the most severe deficiency level. Inspectors concluded that conditions were so dangerous that residents faced risk of serious injury or death. Any number above zero is a red flag. Many facilities in the country have never received this citation.</MetricTooltip></div>
                 <div className="data-cell-context">State avg: {stateAvg?.toFixed(1) || 'N/A'} · National: {natlAvg.toFixed(1)}</div>
                 <div className="data-cell-position">
                   <div className="position-track">
@@ -561,9 +588,6 @@ export function FacilityPage() {
                   </div>
                   <div className="position-labels"><span>Better</span><span>Worse</span></div>
                 </div>
-                <div className="stat-card-callout">
-                  <strong>CMS removed</strong> this from Care Compare on 2/25/26. We rebuilt it from inspection records.
-                </div>
               </div>
             );
           })()}
@@ -589,6 +613,11 @@ export function FacilityPage() {
               </div>
             );
           })()}
+          </div>
+          {/* Change #6: CMS callout moved below Safety Score grid */}
+          <div className="safety-grid-callout">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span><strong>Note:</strong> CMS removed Complaint Investigations from Care Compare on 2/25/26. We rebuilt this metric from inspection records so families still have access to it.</span>
           </div>
         </div>
 
@@ -623,7 +652,7 @@ export function FacilityPage() {
             return (
               <>
                 {deficiencyDetails && deficiencyDetails.length > 0 && (
-                  <div className="data-grid" style={{ gridTemplateColumns: '1fr 1fr', marginBottom: '20px' }}>
+                  <div className="data-grid" style={{ marginBottom: '20px' }}>
                     {avgDaysToCorrect != null && (
                       <div className="data-cell">
                         <div className={`data-cell-value ${avgDaysToCorrect > 40 ? 'val-red' : avgDaysToCorrect > 32 ? 'val-orange' : 'val-green'}`}>{avgDaysToCorrect} days</div>
@@ -661,7 +690,7 @@ export function FacilityPage() {
 
           <p style={{ fontSize: '14px', color: 'var(--text-muted)', marginBottom: '16px' }}>
             {facility.total_deficiencies || 0} total deficiency citations.
-            {facility.jeopardy_count > 0 && <> <strong style={{ color: 'var(--accent-red, #f85149)' }}>{facility.jeopardy_count}</strong> were classified as <strong style={{ color: 'var(--accent-red, #f85149)' }}>serious danger</strong> — the most severe level.</>}
+            {facility.jeopardy_count > 0 && <> <strong style={{ color: 'var(--accent-red, #f85149)' }}>{facility.jeopardy_count}</strong> were classified as <strong style={{ color: 'var(--accent-red, #f85149)' }}>serious harm</strong> — the most severe level.</>}
           </p>
           {/* Change #3: Deficiency cards with filter chips + pagination */}
           {deficiencyDetails && deficiencyDetails.length > 0 ? (() => {
@@ -701,7 +730,7 @@ export function FacilityPage() {
                   <div className="def-filter-group">
                     <span className="def-filter-label">Severity:</span>
                     <button className={`def-chip ${defSeverityFilter === 'all' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('all'); setDefPage(0); }}>All ({deficiencyDetails.length})</button>
-                    {dangerCount > 0 && <button className={`def-chip chip-danger ${defSeverityFilter === 'danger' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('danger'); setDefPage(0); }}>Serious Danger ({dangerCount})</button>}
+                    {dangerCount > 0 && <button className={`def-chip chip-danger ${defSeverityFilter === 'danger' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('danger'); setDefPage(0); }}>Serious Harm ({dangerCount})</button>}
                     {harmCount > 0 && <button className={`def-chip chip-harm ${defSeverityFilter === 'harm' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('harm'); setDefPage(0); }}>Residents Hurt ({harmCount})</button>}
                     {minorDefCount > 0 && <button className={`def-chip chip-minor ${defSeverityFilter === 'minor' ? 'active' : ''}`} onClick={() => { setDefSeverityFilter('minor'); setDefPage(0); }}>Minor ({minorDefCount})</button>}
                   </div>
@@ -720,7 +749,7 @@ export function FacilityPage() {
                   {visible.map((def, idx) => {
                     const severityClass = def.severity_label === 'Immediate Jeopardy' ? 'severity-danger'
                       : def.severity_label === 'Actual Harm' ? 'severity-harm' : 'severity-minor';
-                    const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Danger'
+                    const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Harm'
                       : def.severity_label === 'Actual Harm' ? 'Residents Hurt' : 'Minor';
                     const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
                     const surveyLabel = def.is_complaint ? 'Complaint Investigation' : 'Standard Health Survey';
@@ -755,7 +784,7 @@ export function FacilityPage() {
             <div className="deficiency-cards">
               {facility.jeopardy_count > 0 && (
                 <div className="deficiency-card">
-                  <span className="deficiency-severity severity-danger">Serious Danger</span>
+                  <span className="deficiency-severity severity-danger">Serious Harm</span>
                   <div className="deficiency-card-body">
                     <div className="deficiency-text">{facility.jeopardy_count} citation(s) — conditions so serious that residents faced risk of serious injury or death</div>
                   </div>
@@ -786,7 +815,7 @@ export function FacilityPage() {
               Every nursing home that accepts Medicare or Medicaid money must be inspected at least once every 12–15 months by state surveyors working for CMS. Surveyors arrive unannounced and spend several days observing care, reviewing records, and interviewing residents and staff.
             </p>
             <KeyPoint>
-              <strong>"Serious Danger" (Immediate Jeopardy)</strong> means inspectors found conditions so dangerous that residents faced imminent risk of serious injury or death. This is the most severe finding possible.
+              <strong>"Serious Harm" (Immediate Jeopardy)</strong> means inspectors found conditions so dangerous that residents faced imminent risk of serious injury or death. This is the most severe finding possible.
             </KeyPoint>
             <KeyPoint color="#D97706">
               <strong>"Residents Hurt" (Actual Harm)</strong> means inspectors documented that facility practices caused real, measurable harm to one or more residents.
@@ -856,7 +885,7 @@ export function FacilityPage() {
             return (
               <>
                 {/* Summary stat cards */}
-                <div className="data-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', marginBottom: '20px' }}>
+                <div className="data-grid data-grid-3col" style={{ marginBottom: '20px' }}>
                   <div className="data-cell">
                     <div className={`data-cell-value ${complaintInvestigations > 7 ? 'val-red' : complaintInvestigations > 3 ? 'val-orange' : 'val-green'}`}>{complaintInvestigations}</div>
                     <div className="data-cell-label">Complaint Investigations</div>
@@ -1024,13 +1053,13 @@ export function FacilityPage() {
 
           {facility.zero_rn_pct > 0 && (
             <div className="alert-box" style={{ marginTop: '16px' }}>
-              <strong>⚠ Zero-RN Days:</strong> This facility reported zero registered nurse hours on <strong>{pct(facility.zero_rn_pct)} of days</strong> (Q3 2025). Federal law requires RN coverage for at least 8 consecutive hours per day.
+              <strong>Zero-RN Days:</strong> This facility reported zero registered nurse hours on <strong>{pct(facility.zero_rn_pct)} of days</strong> (Q3 2025). Federal law requires RN coverage for at least 8 consecutive hours per day.
             </div>
           )}
 
           {facility.rn_gap_pct > 30 && (
             <div className="alert-box-yellow" style={{ marginTop: '12px' }}>
-              <strong>⚠ Staffing Discrepancy:</strong> <strong>{facility.rn_gap_pct.toFixed(0)}%</strong> of this facility's self-reported RN hours are not verified by payroll records. It claims {(facility.self_report_rn * 60).toFixed(0)} min/resident/day but payroll shows {(facility.rn_hprd * 60).toFixed(0)} min. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
+              <strong>Staffing Discrepancy:</strong> <strong>{facility.rn_gap_pct.toFixed(0)}%</strong> of this facility's self-reported RN hours are not verified by payroll records. It claims {(facility.self_report_rn * 60).toFixed(0)} min/resident/day but payroll shows {(facility.rn_hprd * 60).toFixed(0)} min. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
             </div>
           )}
 
@@ -1568,7 +1597,7 @@ export function FacilityPage() {
           <div className="section-title">Fines &amp; Penalties</div>
           {facility.total_fines > 0 ? (
             <>
-              <div className="data-grid" style={{ gridTemplateColumns: '1fr 1fr' }}>
+              <div className="data-grid">
                 <div className="data-cell">
                   <div className={`data-cell-value ${facility.total_fines > 100000 ? 'val-red' : 'val-orange'}`}>{fmt(facility.total_fines)}</div>
                   <div className="data-cell-label">Total Fines</div>
@@ -1680,7 +1709,7 @@ export function FacilityPage() {
             </div>
           ) : (
             <>
-              <div className="data-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+              <div className="data-grid data-grid-3col">
                 <div className="data-cell">
                   <div className={`data-cell-value ${(facility.fire_deficiency_count || 0) > 14.3 ? 'val-red' : (facility.fire_deficiency_count || 0) > 5 ? 'val-orange' : 'val-green'}`}>
                     {facility.fire_deficiency_count || 0}
@@ -1754,7 +1783,7 @@ export function FacilityPage() {
                   {facility.fire_deficiencies.slice(0, 5).map((def, idx) => {
                     const severityClass = def.severity_label === 'Immediate Jeopardy' ? 'severity-danger'
                       : def.severity_label === 'Actual Harm' ? 'severity-harm' : 'severity-minor';
-                    const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Danger'
+                    const severityText = def.severity_label === 'Immediate Jeopardy' ? 'Serious Harm'
                       : def.severity_label === 'Actual Harm' ? 'Residents Hurt' : 'Minor';
                     const year = def.survey_date ? new Date(def.survey_date).getFullYear() : '';
                     return (
@@ -1796,9 +1825,39 @@ export function FacilityPage() {
             <div className="section-title">Who Runs This Place?</div>
             <span className="badge-updated">Updated</span>
           </div>
-          <p style={{ fontSize: '13px', color: 'var(--text-secondary, #9d97b8)', marginBottom: '16px', marginTop: '8px' }}>
+          <p className="section-subtitle">
             Operator details, PE/REIT ownership badges, chain stats — plus ownership change tracking
           </p>
+
+          {/* Change #9: Corporate Structure Diagram */}
+          <div className="corp-structure">
+            <div className="corp-layer">
+              <div className="corp-layer-role">Operator</div>
+              <div className="corp-layer-name">{facility.worst_owner || 'Unknown'}</div>
+              <div className="corp-layer-detail">{facility.owner_portfolio_count || 1} facilities</div>
+            </div>
+            <div className="corp-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <div className="corp-layer">
+              <div className="corp-layer-role">Building Owner</div>
+              <div className="corp-layer-name">{facility.building_owner || facility.worst_owner || 'Same as Operator'}</div>
+              <div className="corp-layer-detail">{facility.building_owner && facility.building_owner !== facility.worst_owner ? 'Separate entity' : 'May be same entity'}</div>
+            </div>
+            {(facility.pe_owned || facility.reit_owned) && (
+              <>
+                <div className="corp-arrow">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+                <div className="corp-layer highlight">
+                  <div className="corp-layer-role">{facility.pe_owned ? 'Private Equity' : 'REIT'}</div>
+                  <div className="corp-layer-name">{facility.pe_firm || facility.reit_name || (facility.pe_owned ? 'PE-Backed' : 'REIT-Owned')}</div>
+                  <div className="corp-layer-detail">{facility.pe_owned ? 'Financial sponsor' : 'Real estate investment trust'}</div>
+                </div>
+              </>
+            )}
+          </div>
+
           <div className="ownership-grid">
             <div className="ownership-card">
               <div className="ownership-card-label">Operator</div>
@@ -1815,7 +1874,7 @@ export function FacilityPage() {
               )}
               {facility.owner_pct_below_avg > 50 && (
                 <div style={{ fontSize: '13px', color: 'var(--accent-red, #f85149)', marginTop: '8px', fontWeight: 600 }}>
-                  ⚠ {facility.owner_pct_below_avg.toFixed(0)}% rated below average
+                  {facility.owner_pct_below_avg.toFixed(0)}% rated below average
                 </div>
               )}
             </div>
@@ -1837,7 +1896,7 @@ export function FacilityPage() {
                     const pctVal = Math.round((count / total) * 100);
                     return (
                       <div className="star-dist" key={star}>
-                        <span className="star-dist-label">{star} ⭐</span>
+                        <span className="star-dist-label">{star} ★</span>
                         <div style={{ flex: 1, height: '6px', background: '#E2E8F0', borderRadius: '3px' }}>
                           <div className="star-dist-bar" style={{ width: `${pctVal}%`, height: '6px' }} />
                         </div>
@@ -1854,7 +1913,7 @@ export function FacilityPage() {
           {facility.worst_owner && (facility.owner_portfolio_count || 0) > 1 && (
             <>
               <div className="complaints-sub-label" style={{ marginTop: '24px' }}>Operator Portfolio Performance</div>
-              <div className="data-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', marginBottom: '12px' }}>
+              <div className="data-grid data-grid-4col" style={{ marginBottom: '12px' }}>
                 <div className="data-cell">
                   <div className="data-cell-value" style={{ color: '#c0392b' }}>{facility.owner_portfolio_count || 1}</div>
                   <div className="data-cell-label">Facilities</div>
@@ -1969,7 +2028,7 @@ export function FacilityPage() {
           {(() => {
             const questions = [];
             if (facility.jeopardy_count > 0) {
-              questions.push({ priority: 'critical', text: 'What corrective actions were taken after the serious danger citations?', context: `Inspectors found serious danger to residents ${facility.jeopardy_count} time${facility.jeopardy_count > 1 ? 's' : ''}.` });
+              questions.push({ priority: 'critical', text: 'What corrective actions were taken after the serious harm citations?', context: `Inspectors found serious harm to residents ${facility.jeopardy_count} time${facility.jeopardy_count > 1 ? 's' : ''}.` });
             }
             if (facility.zero_rn_pct > 0) {
               questions.push({ priority: 'critical', text: 'How many registered nurses are on duty right now? What about weekends?', context: `This facility reported zero RN hours on ${pct(facility.zero_rn_pct)} of days.` });
@@ -2171,7 +2230,7 @@ export function FacilityPage() {
                   <span className="ev-preview-num">4</span>
                   <div>
                     <strong>Inspection History</strong>
-                    <p>{facility.total_deficiencies || 0} deficiencies · {facility.jeopardy_count || 0} serious danger · {facility.harm_count || 0} residents hurt</p>
+                    <p>{facility.total_deficiencies || 0} deficiencies · {facility.jeopardy_count || 0} serious harm · {facility.harm_count || 0} residents hurt</p>
                   </div>
                 </div>
                 <div className="ev-preview-section">
