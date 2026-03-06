@@ -456,7 +456,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
             </div>
             <div className="v5-feature-name">Complaint History</div>
             <div className="v5-feature-desc">Investigation counts, outcomes, and patterns over time</div>
-            <span className="v5-feature-tag rebuilt">REBUILT — CMS REMOVED THIS</span>
+            <span className="v5-feature-tag rebuilt">PRESERVED — NO LONGER ON CARE COMPARE</span>
           </div>
           <div className="v5-feature-tile v5-fade-in">
             <div className="v5-feature-icon purple">

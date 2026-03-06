@@ -1362,7 +1362,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFont('helvetica', 'italic');
     doc.setTextColor(...STEEL);
     const cmsCaveat =
-      'Note: CMS removed complaint investigation data from Care Compare on 2/25/2026. ' +
+      'Note: Complaint investigation data is no longer available on Care Compare as of 2/25/2026. ' +
       'This count is reconstructed from CMS Health Deficiency inspection records (2017-Dec 2025).';
     const cavLines = doc.splitTextToSize(cmsCaveat, contentWidth);
     doc.text(cavLines, margin, currentY);

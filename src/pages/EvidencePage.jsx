@@ -849,7 +849,7 @@ export function EvidencePage() {
                     Each complaint investigation represents a separate instance where CMS sent surveyors for an unannounced inspection in response to a reported concern — filed by residents, families, staff, or other parties.
                   </p>
                   <p style={{ fontStyle: 'italic', fontSize: '0.85rem', color: '#94A3B8' }}>
-                    Note: CMS removed complaint investigation data from Care Compare on 2/25/2026. This count was rebuilt from inspection records.
+                    Note: Complaint investigation data is no longer available on Care Compare as of 2/25/2026. This count is reconstructed from federal inspection records.
                   </p>
                 </div>
                 {complaintCount > NATIONAL_AVG.complaint_investigations && (

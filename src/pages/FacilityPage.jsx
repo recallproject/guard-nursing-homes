@@ -668,7 +668,7 @@ export function FacilityPage() {
           {/* Change #6: CMS callout moved below Safety Score grid */}
           <div className="safety-grid-callout">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <span><strong>Note:</strong> CMS removed Complaint Investigations from Care Compare on 2/25/26. We rebuilt this metric from inspection records so families still have access to it.</span>
+            <span><strong>Note:</strong> Complaint investigation data is no longer available on Care Compare as of 2/25/26. This metric is reconstructed from federal inspection records to ensure continued access.</span>
           </div>
         </div>
 
@@ -983,7 +983,7 @@ export function FacilityPage() {
                   <div className="cms-callout-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                   </div>
-                  <p><strong>Note:</strong> CMS removed complaint counts from Care Compare on Feb 25, 2026. We rebuilt this number from publicly available federal inspection records. <Link to="/data-transparency">How we calculate this →</Link></p>
+                  <p><strong>Note:</strong> Complaint counts are no longer available on Care Compare as of Feb 25, 2026. This number is reconstructed from publicly available federal inspection records. <Link to="/data-transparency">How we calculate this →</Link></p>
                 </div>
 
                 {/* Complaint Investigations by Year */}
@@ -1057,7 +1057,7 @@ export function FacilityPage() {
               <strong>If inspectors find a problem</strong> during a complaint investigation, they issue a deficiency citation — just like in a standard inspection. Those citations appear in this section.
             </KeyPoint>
             <KeyPoint color="#D97706">
-              <strong>CMS removed complaint counts from Care Compare in February 2026.</strong> We reconstructed complaint-triggered citations from detailed inspection records so you can still see this important context.
+              <strong>Complaint counts are no longer available on Care Compare as of February 2026.</strong> The Oversight Report reconstructs complaint-triggered citations from detailed inspection records to preserve this important context.
             </KeyPoint>
             <p>
               <strong>How to file a complaint:</strong> Contact your state&rsquo;s Long-Term Care Ombudsman or file directly with your state survey agency. Complaints can be made anonymously.

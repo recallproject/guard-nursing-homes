@@ -13,9 +13,9 @@ export default function DataTransparencyPage() {
     <div className="dt-page">
       <Helmet>
         <title>CMS Data Transparency Changes — What Was Removed and What We Kept | The Oversight Report</title>
-        <meta name="description" content="In February 2026, CMS removed complaint investigation data from Care Compare. We rebuilt it from public inspection records. Here's exactly what changed." />
+        <meta name="description" content="As of February 2026, complaint investigation data is no longer available on Care Compare. The Oversight Report preserves this data from federal inspection records. Here's what changed." />
         <meta property="og:title" content="CMS Data Transparency Changes — The Oversight Report" />
-        <meta property="og:description" content="CMS removed complaint data from Care Compare. We rebuilt it from federal inspection records so families can still see it." />
+        <meta property="og:description" content="Complaint investigation data is no longer available on Care Compare. The Oversight Report preserves it from federal inspection records so families retain access." />
         <meta property="og:url" content="https://oversightreports.com/data-transparency" />
         <link rel="canonical" href="https://oversightreports.com/data-transparency" />
       </Helmet>
