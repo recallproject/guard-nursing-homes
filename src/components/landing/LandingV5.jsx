@@ -265,9 +265,9 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
           <div className="v5-cms-alert-text">
-            <div className="v5-cms-alert-headline">CMS removed complaint investigation data from Care Compare on 2/25/26.</div>
-            <div className="v5-cms-alert-body">Families can no longer see how many complaints were filed against a facility. <strong>We rebuilt it from inspection records.</strong> Every facility on this site still shows complaint counts, investigation outcomes, and patterns over time.</div>
-            <Link to="/data-transparency" className="v5-cms-alert-link">See what CMS removed and what we kept &rarr;</Link>
+            <div className="v5-cms-alert-headline">Complaint investigation data is no longer available on Care Compare as of 2/25/26.</div>
+            <div className="v5-cms-alert-body">The Oversight Report preserves this information by reconstructing complaint counts, investigation outcomes, and patterns over time from federal inspection records.</div>
+            <Link to="/data-transparency" className="v5-cms-alert-link">Learn how we maintain data continuity &rarr;</Link>
           </div>
           <button className="v5-cms-alert-dismiss" onClick={() => setCmsAlertDismissed(true)} aria-label="Dismiss">&times;</button>
         </div>
