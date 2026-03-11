@@ -11,6 +11,14 @@ export default function SuccessPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    // If this is a single report purchase, redirect to evidence success page
+    const pendingSingleReport = localStorage.getItem('pending_single_report');
+    if (pendingSingleReport) {
+      localStorage.removeItem('pending_single_report');
+      navigate(`/evidence-success?ccn=${pendingSingleReport}`, { replace: true });
+      return;
+    }
+
     // Activate the subscription tier from the pending purchase
     const pending = localStorage.getItem('pending_tier');
     if (pending) {
@@ -26,7 +34,7 @@ export default function SuccessPage() {
         setTierName('Pro');
       }
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <>

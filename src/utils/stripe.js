@@ -40,15 +40,17 @@ const SINGLE_REPORT_LINK = 'https://buy.stripe.com/00wfZh5Z63m53DubNR0x204';
 const CLINICIAN_REPORT_LINK = 'https://buy.stripe.com/28EaEX1IQ4q92zqbNR0x205';
 
 /**
- * Redirect to Stripe for a single evidence report purchase
- * @param {string} ccn - Facility CCN to store for post-payment PDF delivery
+ * Redirect to Stripe for a single evidence report purchase.
+ * After payment, Stripe redirects to /evidence-success?ccn={ccn}
+ * where user enters email to receive a signed download link.
+ * @param {string} ccn - Facility CCN for post-payment PDF delivery
  */
 export function checkoutSingleReport(ccn) {
   if (!SINGLE_REPORT_LINK) {
     alert('Single report purchase is coming soon. Subscribe to Professional for immediate access.');
     return;
   }
-  localStorage.setItem('pending_tier', 'professional');
+  // Store CCN for the success page redirect (read-only, not used for access control)
   localStorage.setItem('pending_single_report', ccn);
   window.location.href = SINGLE_REPORT_LINK;
 }

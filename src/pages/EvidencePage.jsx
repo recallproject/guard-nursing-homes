@@ -11,9 +11,10 @@ import { UpgradePrompt } from '../components/UpgradePrompt';
 import ComingSoonPage from '../components/ComingSoonPage';
 import '../styles/evidence.css';
 
-export function EvidencePage() {
+export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   const COMING_SOON = false;
-  const { ccn } = useParams();
+  const params = useParams();
+  const ccn = ccnOverride || params.ccn;
   const { data, loading, error } = useFacilityData();
   const { tier } = useSubscription();
 
@@ -264,8 +265,8 @@ export function EvidencePage() {
   // Claims labels
   const claimsLabels = { '521': 'Rehospitalized within 30 days', '522': 'Emergency Room visits' };
 
-  // Gate check - if not professional tier, show purchase options
-  if (!canAccess(tier, 'professional')) {
+  // Gate check - if not professional tier AND no valid token, show purchase options
+  if (!tokenVerified && !canAccess(tier, 'professional')) {
     return (
       <div className="ev">
         <div className="ev-header no-print">
