@@ -139,10 +139,6 @@ export function MapPage() {
     setSearchOpen(false);
   }
 
-  function handleScrollToCompare() {
-    // Compare now lives in My Favorites (/watchlist)
-  }
-
   if (loading) {
     return (
       <div className="map-page">

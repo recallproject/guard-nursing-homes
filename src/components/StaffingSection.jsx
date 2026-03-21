@@ -37,19 +37,19 @@ export default function StaffingSection({ facility, benchmarks }) {
   if (rnBelowFederal && totalBelowBenchmark) {
     verdictLevel = 'concern';
     verdictTitle = 'Staffing Levels Are a Serious Concern';
-    verdictText = `This facility provides only <strong>${rnMinutes} minutes</strong> of RN care per resident per day — <strong>${100 - rnPctOfBenchmark}% below</strong> the federal standard of ${SAFETY_BENCHMARK_RN} minutes. Total nursing care is ${totalMinutes} minutes (${totalHours} hrs), which is <strong>${100 - totalPctOfBenchmark}% below</strong> the 4.1-hour safety benchmark.${rnBelowState ? ` RN hours also fall below the state average of ${stateAvgRnMinutes} minutes.` : ''} Low staffing is the single strongest predictor of poor outcomes in nursing homes.`;
+    verdictText = <>This facility provides only <strong>{rnMinutes} minutes</strong> of RN care per resident per day — <strong>{100 - rnPctOfBenchmark}% below</strong> the federal standard of {SAFETY_BENCHMARK_RN} minutes. Total nursing care is {totalMinutes} minutes ({totalHours} hrs), which is <strong>{100 - totalPctOfBenchmark}% below</strong> the 4.1-hour safety benchmark.{rnBelowState ? ` RN hours also fall below the state average of ${stateAvgRnMinutes} minutes.` : ''} Low staffing is the single strongest predictor of poor outcomes in nursing homes.</>;
   } else if (rnBelowFederal || totalBelowBenchmark) {
     verdictLevel = 'caution';
     verdictTitle = 'Staffing Levels Raise Questions';
     if (rnBelowFederal) {
-      verdictText = `RN staffing is <strong>${100 - rnPctOfBenchmark}% below</strong> the federal standard at ${rnMinutes} minutes per resident per day (benchmark: ${SAFETY_BENCHMARK_RN} min).${totalBelowState ? ` Total nursing hours are also below the state average.` : ` Total nursing care (${totalHours} hrs) meets the safety benchmark.`} RNs catch deteriorating conditions early — fewer RN minutes means higher risk of missed warning signs.`;
+      verdictText = <>RN staffing is <strong>{100 - rnPctOfBenchmark}% below</strong> the federal standard at {rnMinutes} minutes per resident per day (benchmark: {SAFETY_BENCHMARK_RN} min).{totalBelowState ? ` Total nursing hours are also below the state average.` : ` Total nursing care (${totalHours} hrs) meets the safety benchmark.`} RNs catch deteriorating conditions early — fewer RN minutes means higher risk of missed warning signs.</>;
     } else {
-      verdictText = `Total nursing care is <strong>${100 - totalPctOfBenchmark}% below</strong> the 4.1-hour safety benchmark at ${totalMinutes} minutes (${totalHours} hrs) per resident per day. While RN hours meet the federal standard, the overall staffing level means fewer hands for daily care tasks like repositioning, feeding, and hygiene.`;
+      verdictText = <>Total nursing care is <strong>{100 - totalPctOfBenchmark}% below</strong> the 4.1-hour safety benchmark at {totalMinutes} minutes ({totalHours} hrs) per resident per day. While RN hours meet the federal standard, the overall staffing level means fewer hands for daily care tasks like repositioning, feeding, and hygiene.</>;
     }
   } else {
     verdictLevel = 'ok';
     verdictTitle = 'Staffing Levels Meet Safety Benchmarks';
-    verdictText = `This facility provides <strong>${rnMinutes} minutes</strong> of RN care and <strong>${totalMinutes} minutes</strong> (${totalHours} hrs) of total nursing care per resident per day — both meeting or exceeding safety benchmarks.${rnBelowState ? ' Note: RN hours are still below the state average, so there may be room for improvement.' : ''} Meeting staffing benchmarks is a positive sign, though it doesn't guarantee quality of care.`;
+    verdictText = <>This facility provides <strong>{rnMinutes} minutes</strong> of RN care and <strong>{totalMinutes} minutes</strong> ({totalHours} hrs) of total nursing care per resident per day — both meeting or exceeding safety benchmarks.{rnBelowState ? ' Note: RN hours are still below the state average, so there may be room for improvement.' : ''} Meeting staffing benchmarks is a positive sign, though it doesn't guarantee quality of care.</>;
   }
 
   return (
@@ -65,7 +65,7 @@ export default function StaffingSection({ facility, benchmarks }) {
       </div>
       <div className="verdict-text">
         <h3 className={verdictLevel}>{verdictTitle}</h3>
-        <p dangerouslySetInnerHTML={{ __html: verdictText }} />
+        <p>{verdictText}</p>
       </div>
     </div>
 

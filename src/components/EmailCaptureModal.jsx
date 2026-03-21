@@ -15,7 +15,7 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
     state: state || '',
   });
 
-  const isValid = form.name.trim() && form.email.trim() && form.email.includes('@');
+  const isValid = form.name.trim() && form.email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

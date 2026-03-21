@@ -640,6 +640,208 @@
 }
 
 /* ========================================
+   VALIDATION SECTION — stat pills, tables, criteria
+   ======================================== */
+#validation::before { background: linear-gradient(180deg, #0891B2, #22D3EE); }
+#study-limitations::before { background: linear-gradient(180deg, #64748B, #94A3B8); }
+#verify-work::before { background: linear-gradient(180deg, #DC2626, #EF4444); }
+
+.methodology-validation-summary {
+  padding: 24px 28px;
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.05) 0%, rgba(34, 211, 238, 0.03) 100%);
+  border-left: 4px solid #0891B2;
+  border-radius: 0 12px 12px 0;
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #1E293B;
+}
+
+.methodology-validation-summary strong {
+  color: #0891B2;
+}
+
+.methodology-stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 0 0 24px;
+}
+
+.methodology-stat-pill {
+  padding: 18px 20px;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.methodology-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0891B2;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.methodology-stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.methodology-results-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 18px 0 24px;
+  font-size: 0.875rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+}
+
+.methodology-results-table thead th {
+  background: linear-gradient(135deg, #1a2e4a, #1e3a5f);
+  color: #E2E8F0;
+  font-weight: 600;
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.methodology-results-table tbody td {
+  padding: 13px 18px;
+  border-bottom: 1px solid #F1F5F9;
+  color: #334155;
+}
+
+.methodology-results-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.methodology-results-table tbody tr:hover {
+  background: #F8FAFC;
+}
+
+.val-highlight {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: #0F172A;
+}
+
+.val-ratio {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: #0891B2;
+}
+
+.val-muted {
+  font-family: 'JetBrains Mono', monospace;
+  color: #64748B;
+}
+
+.methodology-criteria-list {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 20px;
+}
+
+.methodology-criteria-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #F1F5F9;
+  font-size: 0.9rem;
+  color: #334155;
+}
+
+.methodology-criteria-list li:last-child {
+  border-bottom: none;
+}
+
+.methodology-criteria-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #0891B2, #22D3EE);
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.methodology-sig-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  background: rgba(8, 145, 178, 0.1);
+  color: #0891B2;
+}
+
+.methodology-limitations-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.methodology-limitations-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #E2E8F0;
+  font-size: 0.875rem;
+  color: #475569;
+  line-height: 1.65;
+}
+
+.methodology-limitations-list li:last-child {
+  border-bottom: none;
+}
+
+.methodology-limit-icon {
+  font-size: 8px;
+  color: #94A3B8;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.methodology-limitations-list li strong {
+  color: #334155;
+}
+
+@media (max-width: 640px) {
+  .methodology-stat-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .methodology-results-table {
+    font-size: 0.78rem;
+  }
+
+  .methodology-results-table thead th,
+  .methodology-results-table tbody td {
+    padding: 10px 12px;
+  }
+}
+
+/* ========================================
    WHAT WE DON'T DO — card grid
    ======================================== */
 .methodology-dont-grid {

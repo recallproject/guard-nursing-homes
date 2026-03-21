@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, createContext, useCallback } from 'react';
+import { useState, useEffect, useContext, createContext, useCallback, useMemo } from 'react';
 
 const WATCHLIST_KEY = 'oversight_report_watchlist';
 
@@ -50,9 +50,11 @@ export function WatchlistProvider({ children }) {
     setWatchlist(prev => prev.filter(item => item.ccn !== ccn));
   }, []);
 
+  const watchedSet = useMemo(() => new Set(watchlist.map(item => item.ccn)), [watchlist]);
+
   const isWatched = useCallback((ccn) => {
-    return watchlist.some(item => item.ccn === ccn);
-  }, [watchlist]);
+    return watchedSet.has(ccn);
+  }, [watchedSet]);
 
   const clearWatchlist = useCallback(() => {
     setWatchlist([]);

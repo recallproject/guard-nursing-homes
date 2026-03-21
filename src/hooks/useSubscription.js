@@ -1,8 +1,13 @@
 /**
  * useSubscription hook
  *
- * Returns the current user's subscription tier from localStorage.
- * Set by the success page after Stripe payment.
+ * Returns the current user's subscription tier.
+ *
+ * SECURITY NOTE: This is localStorage-based and NOT secure against tampering.
+ * Before accepting real payments, implement server-side verification:
+ * 1. Stripe webhook confirms payment -> backend issues signed JWT
+ * 2. This hook validates the JWT instead of trusting localStorage
+ * 3. Feature gates check the JWT server-side for sensitive operations
  *
  * Tier hierarchy: free < pro < professional < institutional
  */
@@ -16,20 +21,23 @@ const TIER_HIERARCHY = {
   institutional: 3,
 };
 
+const VALID_TIERS = new Set(Object.keys(TIER_HIERARCHY));
+
 /**
- * Main hook - returns subscription status from localStorage
+ * Main hook - returns subscription status
  */
 export function useSubscription() {
   const [tier, setTier] = useState(() => {
-    return localStorage.getItem('subscription_tier') || 'free';
+    const stored = localStorage.getItem('subscription_tier');
+    return (stored && VALID_TIERS.has(stored)) ? stored : 'free';
   });
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Listen for storage changes (e.g. if user subscribes in another tab)
     const handleStorage = (e) => {
       if (e.key === 'subscription_tier') {
-        setTier(e.newValue || 'free');
+        const val = e.newValue;
+        setTier((val && VALID_TIERS.has(val)) ? val : 'free');
       }
     };
     window.addEventListener('storage', handleStorage);

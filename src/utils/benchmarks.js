@@ -4,6 +4,7 @@
  */
 
 let cachedBenchmarks = null;
+let cachedDataRef = null;
 
 /**
  * Compute state and national averages for all metrics
@@ -11,8 +12,8 @@ let cachedBenchmarks = null;
  * @returns {Object} - { state: { STATE_CODE: { metric: avg } }, national: { metric: avg } }
  */
 export function computeBenchmarks(data) {
-  // Return cached result if available
-  if (cachedBenchmarks) {
+  // Return cached result if data hasn't changed
+  if (cachedBenchmarks && cachedDataRef === data) {
     return cachedBenchmarks;
   }
 
@@ -105,6 +106,7 @@ export function computeBenchmarks(data) {
     state: stateAverages,
     national: nationalAverages,
   };
+  cachedDataRef = data;
 
   return cachedBenchmarks;
 }
@@ -114,4 +116,5 @@ export function computeBenchmarks(data) {
  */
 export function clearBenchmarksCache() {
   cachedBenchmarks = null;
+  cachedDataRef = null;
 }

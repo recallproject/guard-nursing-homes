@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Favorites Page — Redesign Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1E3A5F;
+    --primary-light: #2B6CB0;
+    --teal: #0D9488;
+    --bg-deep: #EEF2F7;
+    --bg-card: #FFFFFF;
+    --text-dark: #1A202C;
+    --text-muted: #64748B;
+    --risk-critical: #DC2626;
+    --risk-high: #EA580C;
+    --risk-elevated: #F59E0B;
+    --accent-green: #059669;
+    --accent-gold: #F59E0B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  .page { max-width: 1400px; margin: 0 auto; padding: 40px 24px 60px; }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 36px; }
+  .header-top { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  .header h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.02em;
+  }
+  .count-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 44px; height: 44px; padding: 0 14px;
+    background: var(--primary); color: #fff;
+    font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700;
+    border-radius: 22px;
+  }
+  .subtitle { font-size: 1.1rem; color: var(--text-muted); }
+
+  /* ── STAT CARDS — fixed 4-column grid ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    border-top: 3.5px solid transparent;
+    transition: all 0.2s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  /* Colored top borders per stat */
+  .stat-card:nth-child(1) { border-top-color: var(--teal); }
+  .stat-card:nth-child(2) { border-top-color: #3B82F6; }
+  .stat-card:nth-child(3) { border-top-color: var(--risk-critical); }
+  .stat-card:nth-child(4) { border-top-color: var(--risk-high); }
+
+  .stat-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .stat-value.danger { color: var(--risk-critical); }
+  .stat-value.warning { color: var(--risk-high); }
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .stat-context {
+    font-size: 0.72rem;
+    color: #94A3B8;
+    margin-top: 4px;
+  }
+
+  /* ── COMPARE BAR ── */
+  .compare-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 20px;
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.12);
+    border-radius: 10px;
+    margin-bottom: 24px;
+  }
+  .compare-info { font-size: 0.88rem; color: var(--text-muted); }
+  .compare-btn {
+    padding: 8px 20px; font-size: 0.85rem; font-weight: 600;
+    background: var(--primary); color: #fff; border: none; border-radius: 8px;
+    cursor: pointer; opacity: 0.4;
+  }
+
+  /* ── CONTROLS ── */
+  .controls {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 20px; margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .filters { display: flex; gap: 20px; align-items: center; }
+  .filter-group { display: flex; align-items: center; gap: 10px; }
+  .filter-group label {
+    font-size: 0.78rem; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .filter-group select {
+    padding: 9px 14px; font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem; color: var(--text-dark);
+    background: #fff; border: 1.5px solid #E2E8F0; border-radius: 8px;
+  }
+  .actions { display: flex; gap: 12px; align-items: flex-start; }
+  .btn-export {
+    padding: 10px 20px; font-size: 0.85rem; font-weight: 600;
+    background: #fff; color: var(--primary); border: 1.5px solid var(--primary);
+    border-radius: 8px; cursor: pointer;
+  }
+  .export-hint { font-size: 0.7rem; color: var(--text-muted); margin-top: 3px; text-align: right; }
+  .btn-clear {
+    padding: 10px 16px; font-size: 0.85rem; font-weight: 600;
+    background: transparent; color: #DC2626; border: 1.5px solid rgba(220,38,38,0.3);
+    border-radius: 8px; cursor: pointer;
+  }
+
+  /* ── FACILITY CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 22px;
+    border-top: 3.5px solid var(--teal);
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .card:nth-child(2) { border-top-color: #3B82F6; }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-header {
+    display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px;
+  }
+  .card-checkbox {
+    flex-shrink: 0; width: 18px; height: 18px; margin-top: 3px;
+    accent-color: var(--primary);
+  }
+  .card-name {
+    font-size: 1.1rem; font-weight: 700; color: var(--text-dark);
+    line-height: 1.3; flex: 1;
+  }
+  .card-remove {
+    flex-shrink: 0; width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(220,38,38,0.08); color: #DC2626;
+    border: 1px solid rgba(220,38,38,0.15); border-radius: 6px;
+    font-size: 1.2rem; font-weight: 700; cursor: pointer; line-height: 1;
+  }
+  .card-location {
+    font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;
+  }
+
+  /* Risk row */
+  .card-risk {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 14px; padding-bottom: 14px;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .risk-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 6px 14px; border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 700;
+    color: #fff;
+  }
+  .risk-critical { background: var(--risk-critical); }
+  .risk-high { background: var(--risk-high); }
+  .risk-low { background: var(--accent-green); }
+  .stars { font-size: 1.15rem; color: var(--accent-gold); letter-spacing: 2px; }
+
+  /* Stats list — better visual hierarchy */
+  .card-stats { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .card-stat-row {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.85rem;
+  }
+  .card-stat-row .num {
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    min-width: 40px;
+  }
+  .card-stat-row .label { color: var(--text-muted); }
+  .card-stat-row.danger .num,
+  .card-stat-row.danger .label { color: var(--risk-critical); }
+  .card-stat-row.danger {
+    background: rgba(220,38,38,0.04);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border-left: 3px solid var(--risk-critical);
+  }
+  .card-stat-row.warning .num { color: var(--risk-high); }
+  .card-stat-row.flag {
+    padding: 4px 8px;
+    background: rgba(234,88,12,0.04);
+    border-radius: 6px;
+    border-left: 3px solid var(--risk-high);
+  }
+  .card-stat-row.flag .label { color: var(--risk-high); font-weight: 500; }
+
+  /* Footer */
+  .card-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 14px; border-top: 1px solid #F1F5F9;
+  }
+  .view-btn {
+    padding: 8px 18px; font-size: 0.82rem; font-weight: 700;
+    color: var(--primary); background: transparent;
+    border: 1.5px solid var(--primary); border-radius: 8px; cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .view-btn:hover { background: var(--primary); color: #fff; }
+  .added-date { font-size: 0.72rem; color: #94A3B8; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .stat-value { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top">
+      <h1>My Favorites</h1>
+      <span class="count-badge">2</span>
+    </div>
+    <p class="subtitle">Track facilities you care about</p>
+  </div>
+
+  <!-- Summary Stats — fixed 4-col, colored tops, clearer labels -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-value">2</div>
+      <div class="stat-label">Facilities Tracked</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">84.0</div>
+      <div class="stat-label">Avg Risk Score</div>
+      <div class="stat-context">out of 100 · higher = worse</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value danger">11</div>
+      <div class="stat-label">Jeopardy Citations</div>
+      <div class="stat-context">across 2 facilities</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value warning">2</div>
+      <div class="stat-label">Staffing Flags</div>
+      <div class="stat-context">gap &gt; 25% between reported &amp; payroll</div>
+    </div>
+  </div>
+
+  <!-- Compare Bar -->
+  <div class="compare-bar">
+    <span class="compare-info">Select 2–3 facilities to compare</span>
+    <button class="compare-btn" disabled>Compare Selected</button>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="filters">
+      <div class="filter-group">
+        <label>Sort by:</label>
+        <select><option>Date Added</option><option>Risk Score</option><option>Name</option></select>
+      </div>
+      <div class="filter-group">
+        <label>State:</label>
+        <select><option>All States</option><option>Kansas</option></select>
+      </div>
+    </div>
+    <div class="actions">
+      <div>
+        <button class="btn-export">Export Spreadsheet</button>
+        <div class="export-hint">Opens in Excel, Google Sheets, or Numbers</div>
+      </div>
+      <button class="btn-clear">Clear All</button>
+    </div>
+  </div>
+
+  <!-- Facility Cards — colored top borders, better stat hierarchy -->
+  <div class="card-grid">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-header">
+        <input type="checkbox" class="card-checkbox">
+        <h3 class="card-name">Clearwater Nursing &amp; Rehabilitation Center</h3>
+        <button class="card-remove">×</button>
+      </div>
+      <p class="card-location">Clearwater, KS</p>
+
+      <div class="card-risk">
+        <span class="risk-badge risk-critical">84.0</span>
+        <span class="stars">★☆☆☆☆</span>
+      </div>
+
+      <div class="card-stats">
+        <div class="card-stat-row danger">
+          <span class="num">7</span>
+          <span class="label">jeopardy citations</span>
+        </div>
+        <div class="card-stat-row">
+          <span class="num">74</span>
+          <span class="label">deficiencies</span>
+        </div>
+        <div class="card-stat-row warning">
+          <span class="num">$189K</span>
+          <span class="label">fines</span>
+        </div>
+        <div class="card-stat-row flag">
+          <span class="num">⚠</span>
+          <span class="label">staffing discrepancy flagged</span>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="view-btn">View Report →</button>
+        <span class="added-date">Added 3/4/2026</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-header">
+        <input type="checkbox" class="card-checkbox">
+        <h3 class="card-name">Holton Health Care Center</h3>
+        <button class="card-remove">×</button>
+      </div>
+      <p class="card-location">Holton, KS</p>
+
+      <div class="card-risk">
+        <span class="risk-badge risk-critical">84.0</span>
+        <span class="stars">★☆☆☆☆</span>
+      </div>
+
+      <div class="card-stats">
+        <div class="card-stat-row danger">
+          <span class="num">4</span>
+          <span class="label">jeopardy citations</span>
+        </div>
+        <div class="card-stat-row">
+          <span class="num">60</span>
+          <span class="label">deficiencies</span>
+        </div>
+        <div class="card-stat-row warning">
+          <span class="num">$199K</span>
+          <span class="label">fines</span>
+        </div>
+        <div class="card-stat-row flag">
+          <span class="num">⚠</span>
+          <span class="label">staffing discrepancy flagged</span>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <button class="view-btn">View Report →</button>
+        <span class="added-date">Added 3/4/2026</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

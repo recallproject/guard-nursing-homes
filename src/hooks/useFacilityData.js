@@ -112,17 +112,24 @@ export function useFacilityData() {
     };
   }, [data]);
 
-  // Get facility by CCN
-  const getFacility = useMemo(() => {
-    return (ccn) => {
-      if (!data || !data.states) return null;
-      for (const stateData of Object.values(data.states)) {
-        const facility = stateData.facilities?.find(f => f.ccn === ccn);
-        if (facility) return facility;
+  // Build a CCN-to-facility Map for O(1) lookups
+  const ccnMap = useMemo(() => {
+    if (!data || !data.states) return new Map();
+    const map = new Map();
+    for (const stateData of Object.values(data.states)) {
+      if (stateData.facilities) {
+        for (const f of stateData.facilities) {
+          if (f.ccn) map.set(f.ccn, f);
+        }
       }
-      return null;
-    };
+    }
+    return map;
   }, [data]);
+
+  // Get facility by CCN — O(1) lookup
+  const getFacility = useMemo(() => {
+    return (ccn) => ccnMap.get(ccn) || null;
+  }, [ccnMap]);
 
   // Search facilities by name, city, state, ZIP, or CCN
   // Supports multi-token queries like "oakland, ca" or "sunrise FL"

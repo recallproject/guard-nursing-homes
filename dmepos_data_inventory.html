@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMEPOS Data Inventory — March 6, 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f1117; color: #e0e0e0; padding: 32px; }
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 4px; color: #fff; }
+  .subtitle { font-size: 14px; color: #888; margin-bottom: 28px; }
+  .section-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.2px; color: #6b7aff; margin: 28px 0 12px 0; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px; color: #666; padding: 8px 12px; border-bottom: 1px solid #2a2d35; }
+  td { padding: 10px 12px; border-bottom: 1px solid #1e2028; font-size: 14px; vertical-align: top; }
+  tr:hover { background: #1a1d25; }
+  .file { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; color: #7dd3fc; }
+  .size { color: #f0abfc; font-weight: 500; white-space: nowrap; }
+  .rows { color: #86efac; font-weight: 500; white-space: nowrap; }
+  .status-good { color: #22c55e; }
+  .status-bad { color: #ef4444; }
+  .status-pending { color: #f59e0b; }
+  .desc { color: #aaa; font-size: 13px; line-height: 1.4; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 4px; }
+  .tag-source { background: #1e3a5f; color: #7dd3fc; }
+  .tag-output { background: #1a3d2e; color: #86efac; }
+  .tag-broken { background: #3d1a1a; color: #ef4444; }
+  .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+  .summary-card { background: #1a1d25; border-radius: 8px; padding: 16px; text-align: center; }
+  .summary-card .num { font-size: 28px; font-weight: 700; color: #fff; }
+  .summary-card .label { font-size: 12px; color: #888; margin-top: 4px; }
+  .footnote { font-size: 12px; color: #555; margin-top: 20px; border-top: 1px solid #1e2028; padding-top: 12px; }
+</style>
+</head>
+<body>
+
+<h1>DMEPOS Data Inventory</h1>
+<p class="subtitle">Downloaded March 6, 2026 — Mac Mini ~/Desktop/RB7-Project/healthcare_fraud/dmepos/</p>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="num">11.4 GB</div>
+    <div class="label">Total Data</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">10.8M</div>
+    <div class="label">Total Rows</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">55,093</div>
+    <div class="label">Fraud Clusters Found</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">7</div>
+    <div class="label">Files Good / 2 Bad</div>
+  </div>
+</div>
+
+<div class="section-label">Source Data (CMS Downloads)</div>
+<table>
+  <thead>
+    <tr><th>File</th><th>Size</th><th>Rows</th><th>Status</th><th>What It Is</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="file">npidata_pfile_20050523-20260208.csv</span></td>
+      <td class="size">11 GB</td>
+      <td class="rows">9,368,083</td>
+      <td class="status-good">✓ Good</td>
+      <td class="desc">Every NPI in America — addresses, phone numbers, taxonomy codes. The backbone for fraud ring detection via address clustering.</td>
+    </tr>
+    <tr>
+      <td><span class="file">pbj_staffing_2023q1.csv</span></td>
+      <td class="size">227 MB</td>
+      <td class="rows">1,322,911</td>
+      <td class="status-good">✓ Good</td>
+      <td class="desc">Daily nurse staffing hours (RN/LPN/CNA) per facility. Shows zero-RN days, contractor ratios, staffing fraud signals.</td>
+    </tr>
+    <tr>
+      <td><span class="file">pbj_staffing_2023q3.csv</span></td>
+      <td class="size">~229 MB</td>
+      <td class="rows">~1.3M</td>
+      <td class="status-pending">⏳ Downloading</td>
+      <td class="desc">Same as Q1 but for July–September 2023. Enables quarter-over-quarter staffing trend analysis.</td>
+    </tr>
+    <tr>
+      <td><span class="file">leie_exclusions.csv</span></td>
+      <td class="size">15 MB</td>
+      <td class="rows">82,715</td>
+      <td class="status-good">✓ Good</td>
+      <td class="desc">OIG List of Excluded Individuals/Entities. Anyone on this list is banned from Medicare. Cross-check against active NPIs = instant fraud flag.</td>
+    </tr>
+    <tr>
+      <td><span class="file">dmepos_geo_aggregate.csv</span></td>
+      <td class="size">9.9 MB</td>
+      <td class="rows">42,934</td>
+      <td class="status-good">✓ Good</td>
+      <td class="desc">DMEPOS billing aggregated by geography and HCPCS code. Shows submitted charges vs. Medicare allowed amounts — the markup ratio source.</td>
+    </tr>
+    <tr>
+      <td><span class="file">nppes_full_v2.zip</span></td>
+      <td class="size">1.1 GB</td>
+      <td class="rows">—</td>
+      <td class="status-good">✓ Extracted</td>
+      <td class="desc">Compressed archive of NPPES data. Already extracted to nppes_extracted/ folder.</td>
+    </tr>
+    <tr>
+      <td><span class="file">nppes_full.zip</span></td>
+      <td class="size">10 bytes</td>
+      <td class="rows">—</td>
+      <td class="status-bad">✗ Bad download</td>
+      <td class="desc">Failed download — redirect page only. Replaced by nppes_full_v2.zip.</td>
+    </tr>
+    <tr>
+      <td><span class="file">pbj_staffing_2023q3.csv</span> <span class="tag tag-broken">old</span></td>
+      <td class="size">782 bytes</td>
+      <td class="rows">—</td>
+      <td class="status-bad">✗ Bad download</td>
+      <td class="desc">HTML redirect page, not actual data. Being re-downloaded now.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">Analysis Outputs (Your Pipeline Results)</div>
+<table>
+  <thead>
+    <tr><th>File</th><th>Size</th><th>Rows</th><th>What It Shows</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="file">output_fraud_rings.csv</span></td>
+      <td class="size">1.8 MB</td>
+      <td class="rows">55,093</td>
+      <td class="desc"><strong>Address clusters where multiple NPIs share one location.</strong> Top hit: 205 NPIs at one DC address. Needs enrichment with billing data to show dollar amounts.</td>
+    </tr>
+    <tr>
+      <td><span class="file">output_state_outliers.csv</span></td>
+      <td class="size">61 KB</td>
+      <td class="rows">255</td>
+      <td class="desc"><strong>Markup ratios by state and HCPCS code.</strong> Washington State: 25.9x on power wheelchair accessories. Missouri: 22.3x. Shows where geographic enforcement should focus.</td>
+    </tr>
+    <tr>
+      <td><span class="file">output_hotspots_national.csv</span></td>
+      <td class="size">2.3 KB</td>
+      <td class="rows">8</td>
+      <td class="desc"><strong>National markup ratios by HCPCS code.</strong> Power wheelchair accessories (E2377) at 7.25x markup. Confirms CMS's own moratorium targets.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">Also in nppes_extracted/ (Supporting Files)</div>
+<table>
+  <thead>
+    <tr><th>File</th><th>Size</th><th>What It Is</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="file">endpoint_pfile_*.csv</span></td>
+      <td class="size">117 MB</td>
+      <td class="desc">Provider endpoint data (electronic addresses, health information exchange endpoints)</td>
+    </tr>
+    <tr>
+      <td><span class="file">pl_pfile_*.csv</span></td>
+      <td class="size">105 MB</td>
+      <td class="desc">Practice location data — secondary business addresses for NPIs</td>
+    </tr>
+    <tr>
+      <td><span class="file">othername_pfile_*.csv</span></td>
+      <td class="size">31 MB</td>
+      <td class="desc">Other organization names / DBAs — useful for linking shell companies</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="footnote">
+  <strong>Next steps:</strong> (1) Verify Q3 staffing download, (2) Enrich top fraud ring clusters with billing data from dmepos_geo_aggregate, (3) Cross-check clustered NPIs against LEIE exclusion list, (4) Build 10 detailed case studies for RFI attachment.<br>
+  <strong>RFI Deadline:</strong> March 30, 2026 — CMS-6098-NC at regulations.gov
+</p>
+
+</body>
+</html>

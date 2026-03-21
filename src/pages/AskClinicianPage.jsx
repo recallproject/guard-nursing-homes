@@ -61,15 +61,14 @@ export default function AskClinicianPage() {
   const handleSubmit = async () => {
     if (!facility.trim()) { setError('Please enter a facility name or CCN.'); return; }
     if (!email.trim()) { setError('Please enter your email address.'); return; }
-    if (!/\S+@\S+\.\S+/.test(email)) { setError('Please enter a valid email address.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { setError('Please enter a valid email address.'); return; }
     setError('');
     setSubmitting(true);
 
     // Track event
     window.plausible && window.plausible('Ask-Clinician-Submit', { props: { facility, state } });
 
-    // Email form data to Rob via Formspree
-    const FORMSPREE_ID = 'xbdaeebv';
+    const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID || '';
     if (FORMSPREE_ID) {
       try {
         await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {

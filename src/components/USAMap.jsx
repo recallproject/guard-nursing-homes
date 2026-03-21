@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import * as d3 from 'd3';
+import { select } from 'd3-selection';
+import { geoPath, geoAlbersUsa } from 'd3-geo';
 import { feature } from 'topojson-client';
 
 const FIPS_TO_STATE = {
@@ -106,19 +107,18 @@ export default function USAMap({ data, onStateSelect }) {
   useEffect(() => {
     if (!svgRef.current || !topoData || !data) return;
 
-    const svg = d3.select(svgRef.current);
+    const svg = select(svgRef.current);
     const { width, height } = dimensions;
 
     // Clear previous content
     svg.selectAll('*').remove();
 
     // Create projection
-    const projection = d3
-      .geoAlbersUsa()
+    const projection = geoAlbersUsa()
       .translate([width / 2, height / 2])
       .scale(width * 1.2);
 
-    const path = d3.geoPath().projection(projection);
+    const path = geoPath().projection(projection);
 
     // Convert TopoJSON to GeoJSON
     const states = feature(topoData, topoData.objects.states);
@@ -162,7 +162,7 @@ export default function USAMap({ data, onStateSelect }) {
 
         if (stateSummary) {
           // LIFT effect
-          d3.select(this)
+          select(this)
             .attr('stroke-width', 3)
             .style('filter', 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5))')
             .style('transform', 'scale(1.03)')
@@ -189,7 +189,7 @@ export default function USAMap({ data, onStateSelect }) {
         }));
       })
       .on('mouseleave', function () {
-        d3.select(this)
+        select(this)
           .attr('stroke-width', 2)
           .style('filter', 'none')
           .style('transform', 'scale(1)');

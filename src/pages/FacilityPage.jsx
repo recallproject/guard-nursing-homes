@@ -16,6 +16,8 @@ import ClinicianCTA from '../components/ClinicianCTA';
 import ExplainerBanners from '../components/facility/ExplainerBanners';
 import MetricTooltip from '../components/facility/MetricTooltip';
 import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisMean';
+import FlagExplainer from '../components/facility/FlagExplainer';
+import ReportErrorBar from '../components/facility/ReportErrorBar';
 import '../styles/facility.css';
 import '../styles/staffing.css';
 
@@ -357,18 +359,18 @@ export function FacilityPage() {
   const getBottomLine = () => {
     const parts = [];
     if (facility.jeopardy_count > 0)
-      parts.push(`Inspectors found <strong>serious harm to residents ${facility.jeopardy_count} time${facility.jeopardy_count !== 1 ? 's' : ''}</strong> — risk of serious injury or death.`);
+      parts.push(<span key="j">Inspectors found <strong>serious harm to residents {facility.jeopardy_count} time{facility.jeopardy_count !== 1 ? 's' : ''}</strong> — risk of serious injury or death. </span>);
     else if (facility.harm_count > 0)
-      parts.push(`Residents were hurt <strong>${facility.harm_count} time${facility.harm_count !== 1 ? 's' : ''}</strong> according to inspection reports.`);
+      parts.push(<span key="h">Residents were hurt <strong>{facility.harm_count} time{facility.harm_count !== 1 ? 's' : ''}</strong> according to inspection reports. </span>);
     if (facility.total_fines > 0)
-      parts.push(`This facility has been fined <strong>${fmt(facility.total_fines)}</strong>.`);
+      parts.push(<span key="f">This facility has been fined <strong>{fmt(facility.total_fines)}</strong>. </span>);
     if (facility.zero_rn_pct > 25)
-      parts.push(`On <strong>${pct(facility.zero_rn_pct)} of days</strong>, there was no registered nurse in the building.`);
+      parts.push(<span key="z">On <strong>{pct(facility.zero_rn_pct)} of days</strong>, there was no registered nurse in the building. </span>);
     if (facility.owner_portfolio_count > 1)
-      parts.push(`The same company runs <strong>${facility.owner_portfolio_count} other facilities</strong>${facility.owner_avg_fines ? ` with average fines of ${fmt(facility.owner_avg_fines)} among those penalized` : ''}.`);
+      parts.push(<span key="o">The same company runs <strong>{facility.owner_portfolio_count} other facilities</strong>{facility.owner_avg_fines ? ` with average fines of ${fmt(facility.owner_avg_fines)} among those penalized` : ''}. </span>);
     if (parts.length === 0)
-      parts.push('This facility has no major issues recorded in recent CMS data.');
-    return parts.join(' ');
+      parts.push(<span key="ok">This facility has no major issues recorded in recent CMS data.</span>);
+    return parts;
   };
 
   // Minor deficiency count
@@ -479,12 +481,14 @@ export function FacilityPage() {
         <div className="section fp-bottom-line">
           <div className="bottom-line-card">
             <div className="bottom-line-label">Bottom Line</div>
-            <div className="bottom-line-text" dangerouslySetInnerHTML={{ __html: getBottomLine() }} />
+            <div className="bottom-line-text">{getBottomLine()}</div>
             <div className="bottom-line-source">
               Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
             </div>
           </div>
         </div>
+
+        <FlagExplainer facility={facility} />
 
         {/* Facility layout: sidebar nav + content sections */}
         <div className="fp-sections-layout">
@@ -2317,6 +2321,8 @@ export function FacilityPage() {
 
         </div>{/* end fp-sections-main */}
         </div>{/* end fp-sections-layout */}
+
+        <ReportErrorBar facility={facility} />
 
         <div className="fp-footer-text">
           <p style={{ fontSize: '0.72rem', color: 'var(--text-muted, #94A3B8)', lineHeight: '1.6', maxWidth: '680px', margin: '0 auto 10px', opacity: 0.85 }}>

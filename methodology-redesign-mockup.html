@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology Page Redesign Mockup — The Oversight Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a3a5c;
+    --primary-light: #2B6CB0;
+    --primary-bright: #3182CE;
+    --bg-deep: #F8FAFC;
+    --bg-alt: #F0F4F8;
+    --text-dark: #0F172A;
+    --text-body: #334155;
+    --text-muted: #64748B;
+    --teal: #0F766E;
+    --teal-light: #14B8A6;
+    --border: #E2E8F0;
+    --risk-high: #EA580C;
+    --risk-critical: #DC2626;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+    --shadow-glow: 0 0 40px rgba(43,108,176,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg-deep); color: var(--text-body); line-height: 1.7; }
+  a { color: var(--primary-bright); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ═══════════════════════════════════════
+     HERO — gradient mesh background
+     ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    padding: 100px 24px 70px;
+    background: linear-gradient(135deg, #1a2e4a 0%, #1e3a5f 30%, #1a3a5c 60%, #14344e 100%);
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(49,130,206,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(15,118,110,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 28px;
+  }
+  .hero-trust {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-trust span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .hero-trust .dot {
+    width: 6px; height: 6px;
+    background: var(--teal-light);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  /* ═══════════════════════════════════════
+     LAYOUT — sticky sidebar + content
+     ═══════════════════════════════════════ */
+  .layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 32px;
+    padding: 48px 40px 80px;
+    align-items: start;
+  }
+  .sidebar {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(226,232,240,0.8);
+    border-radius: 14px;
+    padding: 18px 12px;
+    box-shadow: var(--shadow-sm);
+  }
+  .sidebar-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    padding-left: 10px;
+  }
+  .sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    margin-bottom: 1px;
+  }
+  .sidebar a:hover {
+    background: rgba(43, 108, 176, 0.06);
+    color: var(--primary-bright);
+    text-decoration: none;
+    transform: translateX(2px);
+  }
+  .sidebar a.active {
+    background: linear-gradient(135deg, rgba(43,108,176,0.1) 0%, rgba(15,118,110,0.08) 100%);
+    color: var(--primary-bright);
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 var(--primary-bright);
+    border-radius: 0 8px 8px 0;
+  }
+  .sidebar .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    min-width: 18px;
+    opacity: 0.6;
+  }
+  .sidebar a.active .num {
+    color: var(--primary-bright);
+    opacity: 1;
+  }
+
+  /* ═══════════════════════════════════════
+     PROGRESS BAR
+     ═══════════════════════════════════════ */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-bright), var(--teal-light));
+    z-index: 999;
+    transition: width 0.1s ease;
+    box-shadow: 0 0 8px rgba(49,130,206,0.4);
+  }
+
+  /* ═══════════════════════════════════════
+     SECTIONS — with colored accent bars
+     ═══════════════════════════════════════ */
+  .main-content { min-width: 0; }
+  .section {
+    padding: 40px 36px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    scroll-margin-top: 80px;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 16px 0 0 16px;
+  }
+  .section-white {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .section-white:hover { box-shadow: var(--shadow-md); }
+  .section-tinted {
+    background: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+    border: 1px solid #E0E7EF;
+  }
+  .section-tinted:hover { box-shadow: var(--shadow-md); }
+
+  /* Section accent colors */
+  #data-sources::before { background: linear-gradient(180deg, #2563EB, #3B82F6); }
+  #how-built::before { background: linear-gradient(180deg, #7C3AED, #8B5CF6); }
+  #who-reviews::before { background: linear-gradient(180deg, #059669, #10B981); }
+  #ai-governance::before { background: linear-gradient(180deg, #0891B2, #22D3EE); }
+  #scoring::before { background: linear-gradient(180deg, #DC2626, #EF4444); }
+  #key-metrics::before { background: linear-gradient(180deg, #D97706, #F59E0B); }
+  #limitations::before { background: linear-gradient(180deg, #64748B, #94A3B8); }
+  #regulatory::before { background: linear-gradient(180deg, #BE185D, #EC4899); }
+  #freshness::before { background: linear-gradient(180deg, #0F766E, #14B8A6); }
+  #transparency::before { background: linear-gradient(180deg, #9333EA, #A855F7); }
+  #contact::before { background: linear-gradient(180deg, #2563EB, #60A5FA); }
+
+  .section h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    padding-left: 8px;
+  }
+  .section-intro {
+    font-size: 1rem;
+    color: var(--text-body);
+    margin-bottom: 28px;
+    max-width: 640px;
+    padding-left: 8px;
+  }
+
+  /* ═══════════════════════════════════════
+     DATA SOURCE GROUPS — with icons
+     ═══════════════════════════════════════ */
+  .source-cluster { margin-bottom: 28px; }
+  .source-cluster:last-child { margin-bottom: 0; }
+  .cluster-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 12px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cluster-label::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: var(--teal);
+    border-radius: 1px;
+  }
+  .source-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .source-item {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 20px 18px;
+    transition: all 0.25s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .section-tinted .source-item { background: #FFFFFF; }
+  .source-item:hover {
+    border-color: rgba(43, 108, 176, 0.15);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+  }
+  /* Colored top borders per cluster */
+  .cluster-blue .source-item, .cluster-blue.source-list .source-item { border-top-color: #3B82F6; }
+  .cluster-green .source-item, .cluster-green.source-list .source-item { border-top-color: #10B981; }
+  .cluster-red .source-item, .cluster-red.source-list .source-item { border-top-color: #EF4444; }
+  .cluster-purple .source-item, .cluster-purple.source-list .source-item { border-top-color: #8B5CF6; }
+  .cluster-cyan .source-item, .cluster-cyan.source-list .source-item { border-top-color: #06B6D4; }
+  .cluster-amber .source-item, .cluster-amber.source-list .source-item { border-top-color: #F59E0B; }
+  .source-item .s-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+  }
+  .s-icon-blue { background: rgba(37,99,235,0.08); color: #2563EB; }
+  .s-icon-purple { background: rgba(124,58,237,0.08); color: #7C3AED; }
+  .s-icon-green { background: rgba(5,150,105,0.08); color: #059669; }
+  .s-icon-amber { background: rgba(217,119,6,0.08); color: #D97706; }
+  .s-icon-pink { background: rgba(219,39,119,0.08); color: #DB2777; }
+  .s-icon-cyan { background: rgba(8,145,178,0.08); color: #0891B2; }
+  .s-icon-red { background: rgba(220,38,38,0.08); color: #DC2626; }
+  .source-item h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .source-item p {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ═══════════════════════════════════════
+     COMPOSITE SCORE — enhanced
+     ═══════════════════════════════════════ */
+  .score-visual { margin: 24px 0; }
+  .score-bar-container {
+    display: flex;
+    height: 56px;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md), inset 0 1px 2px rgba(255,255,255,0.2);
+  }
+  .score-segment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+  }
+  .score-segment:hover { filter: brightness(1.15); flex-grow: 1.2; }
+  .score-segment .pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  .score-segment .lbl {
+    font-size: 0.58rem;
+    opacity: 0.85;
+    line-height: 1;
+    margin-top: 3px;
+  }
+  .seg-staffing { background: linear-gradient(135deg, #1D4ED8, #3B82F6); flex: 35; }
+  .seg-deficiency { background: linear-gradient(135deg, #6D28D9, #8B5CF6); flex: 25; }
+  .seg-penalty { background: linear-gradient(135deg, #BE185D, #EC4899); flex: 20; }
+  .seg-quality { background: linear-gradient(135deg, #047857, #10B981); flex: 10; }
+  .seg-ownership { background: linear-gradient(135deg, #B45309, #F59E0B); flex: 10; }
+
+  .score-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .legend-item {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    flex: 1;
+    min-width: 140px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+  }
+  .legend-item:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .legend-item h5 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 4px;
+    display: inline-block;
+    box-shadow: 0 0 6px currentColor;
+  }
+  .legend-item ul {
+    list-style: none;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════
+     ACCORDION SECTIONS
+     ═══════════════════════════════════════ */
+  .accordion-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    text-align: left;
+  }
+  .accordion-toggle:hover h3 { color: var(--primary-bright); }
+  .accordion-toggle h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    transition: color 0.15s ease;
+  }
+  .accordion-chevron {
+    color: var(--text-muted);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+  .accordion-chevron.open { transform: rotate(180deg); }
+  .accordion-body { padding-top: 16px; }
+  .metric-block {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .metric-block:last-child { border-bottom: none; }
+  .metric-block h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  .metric-block p {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    margin-bottom: 8px;
+  }
+  .formula-box {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--primary-bright);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 0.82rem;
+  }
+  .formula-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--primary-bright);
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .formula-value {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-dark);
+    font-size: 0.82rem;
+  }
+  .note-box {
+    background: linear-gradient(135deg, rgba(234,88,12,0.04) 0%, rgba(234,88,12,0.08) 100%);
+    border-left: 3px solid var(--risk-high);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  .note-box strong { color: var(--risk-high); }
+
+  /* ═══════════════════════════════════════
+     WHAT WE DON'T DO
+     ═══════════════════════════════════════ */
+  .dont-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .dont-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-top: 3px solid #94A3B8;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+  }
+  .dont-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+  .dont-icon {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(220,38,38,0.06) 0%, rgba(220,38,38,0.12) 100%);
+    color: var(--risk-critical);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .dont-card h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .dont-card p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════
+     TIMELINE — enhanced
+     ═══════════════════════════════════════ */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+    margin: 20px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-bright), var(--risk-critical), var(--primary-bright));
+    border-radius: 1px;
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 22px;
+    padding-left: 10px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary-bright);
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 0 0 2px var(--primary-bright), 0 0 8px rgba(49,130,206,0.3);
+  }
+  .tl-item.tl-red::before {
+    background: var(--risk-critical);
+    box-shadow: 0 0 0 2px var(--risk-critical), 0 0 8px rgba(220,38,38,0.3);
+  }
+  .tl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary-bright);
+    margin-bottom: 4px;
+  }
+  .tl-item.tl-red .tl-date { color: var(--risk-critical); }
+  .tl-text {
+    font-size: 0.85rem;
+    color: var(--text-body);
+    line-height: 1.6;
+  }
+
+  /* ═══════════════════════════════════════
+     BIO CARD — enhanced
+     ═══════════════════════════════════════ */
+  .bio-row {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+  .bio-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--primary-bright);
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1;
+    min-width: 280px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+  }
+  .bio-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .bio-avatar {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-bright));
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .bio-name {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  .bio-creds {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .bio-role {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+  .independence-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--teal);
+    border-radius: 10px;
+    padding: 28px;
+    flex: 1.5;
+    min-width: 280px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+  }
+  .independence-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .independence-card h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .independence-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(15,118,110,0.08);
+    color: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .independence-card p {
+    font-size: 0.85rem;
+    color: var(--text-body);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ═══════════════════════════════════════
+     FRESHNESS — stat cards
+     ═══════════════════════════════════════ */
+  .freshness-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .freshness-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--teal);
+    border-radius: 10px;
+    padding: 24px 28px;
+    text-align: center;
+    flex: 1;
+    min-width: 160px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.25s ease;
+  }
+  .freshness-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+  }
+  .freshness-card .big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-bright), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .freshness-card .sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+
+  /* ═══════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════ */
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 24px 16px 60px;
+    }
+    .sidebar {
+      position: relative;
+      top: 0;
+      display: flex;
+      overflow-x: auto;
+      gap: 4px;
+      padding: 12px 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+      scrollbar-width: none;
+      border-radius: 12px;
+    }
+    .sidebar::-webkit-scrollbar { display: none; }
+    .sidebar-label { display: none; }
+    .sidebar a {
+      white-space: nowrap;
+      font-size: 0.7rem;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: #FFF;
+    }
+    .sidebar a.active {
+      border-color: var(--primary-bright);
+      box-shadow: none;
+      border-radius: 20px;
+    }
+    .section { padding: 28px 20px; border-radius: 12px; }
+    .score-bar-container { height: 40px; }
+    .score-segment .lbl { display: none; }
+    .bio-row { flex-direction: column; }
+    .dont-grid { grid-template-columns: 1fr; }
+    .hero { padding: 80px 16px 50px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div class="progress-bar" id="progress" style="width: 0%"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Methodology</h1>
+    <p class="hero-sub">How we calculate every number on this site</p>
+    <div class="hero-trust">
+      <span><span class="dot"></span> CMS public data only</span>
+      <span><span class="dot"></span> No industry funding</span>
+      <span><span class="dot"></span> Every metric reproducible</span>
+    </div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <!-- Sticky sidebar TOC -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-label">On this page</div>
+    <a href="#data-sources" class="active"><span class="num">01</span> Data Sources</a>
+    <a href="#how-built"><span class="num">02</span> How Reports Are Built</a>
+    <a href="#who-reviews"><span class="num">03</span> Who Reviews</a>
+    <a href="#ai-governance"><span class="num">04</span> AI Governance</a>
+    <a href="#scoring"><span class="num">05</span> Risk Scoring</a>
+    <a href="#key-metrics"><span class="num">06</span> Key Metrics</a>
+    <a href="#limitations"><span class="num">07</span> What We Don't Do</a>
+    <a href="#regulatory"><span class="num">08</span> Federal Requirements</a>
+    <a href="#freshness"><span class="num">09</span> Data Freshness</a>
+    <a href="#transparency"><span class="num">10</span> Transparency Changes</a>
+    <a href="#contact"><span class="num">11</span> Contact</a>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main-content">
+
+    <!-- 01 DATA SOURCES -->
+    <div class="section section-white" id="data-sources">
+      <h2>Data Sources</h2>
+      <p class="section-intro">All data comes from publicly accessible CMS datasets. We download, process, and analyze — but never modify the source.</p>
+
+      <div class="source-cluster cluster-blue">
+        <div class="cluster-label">Core CMS Data</div>
+        <div class="source-list">
+          <div class="source-item">
+            <div class="s-icon s-icon-blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+            </div>
+            <h4>CMS Care Compare</h4>
+            <p>Provider info, inspections, penalties, star ratings. Updated quarterly.</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-blue">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h4>Payroll-Based Journal (PBJ)</h4>
+            <p>Actual staffing hours from payroll records — the ground truth for staffing.</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-pink">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h4>Penalty Data</h4>
+            <p>Civil monetary penalties and denial of payment records.</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-amber">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h4>Ownership Data</h4>
+            <p>Corporate chains, management companies, and parent organizations.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="source-cluster cluster-green">
+        <div class="cluster-label">Quality Measures</div>
+        <div class="source-list">
+          <div class="source-item">
+            <div class="s-icon s-icon-green">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h4>MDS Quality Measures</h4>
+            <p>Antipsychotics, pressure ulcers, falls, UTIs — from resident assessments.</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-green">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </div>
+            <h4>Claims-Based Measures</h4>
+            <p>Re-hospitalization, ER visits, discharge rates from Medicare claims.</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-green">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h4>SNF QRP / VBP</h4>
+            <p>IMPACT Act measures, performance scores, Medicare payment adjustments.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="source-cluster cluster-red">
+        <div class="cluster-label">Regulatory & Safety</div>
+        <div class="source-list">
+          <div class="source-item">
+            <div class="s-icon s-icon-red">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            </div>
+            <h4>State Survey Reports</h4>
+            <p>Inspection deficiency details with scope/severity ratings (A–L).</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-red">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <h4>Fire Safety Deficiencies</h4>
+            <p>Fire code violations, sprinkler issues, blocked exits.</p>
+          </div>
+          <div class="source-item">
+            <div class="s-icon s-icon-red">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h4>Special Focus Facility (SFF)</h4>
+            <p>CMS designation for ~88 facilities with persistent serious issues.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 HOW REPORTS ARE BUILT -->
+    <div class="section section-tinted" id="how-built">
+      <h2>How Reports Are Built</h2>
+      <p class="section-intro">Built by a nurse practitioner using automated tools. Full transparency about what's human and what's machine.</p>
+      <div class="source-list cluster-purple" style="grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));">
+        <div class="source-item">
+          <div class="s-icon s-icon-purple">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h4>Data Pipeline</h4>
+          <p>Automated scripts clean, merge, and structure CMS CSV files. No data is altered or fabricated.</p>
+        </div>
+        <div class="source-item">
+          <div class="s-icon s-icon-purple">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h4>Report Generation</h4>
+          <p>AI-assisted code assembles reports for all 14,713 facilities — impossible to do manually.</p>
+        </div>
+        <div class="source-item">
+          <div class="s-icon s-icon-purple">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h4>Clinical Interpretation</h4>
+          <p>Every piece of contextual language is written or reviewed by Robert Benard, NP (20+ years acute care).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 WHO REVIEWS -->
+    <div class="section section-white" id="who-reviews">
+      <h2>Who Reviews This Data</h2>
+      <div class="bio-row">
+        <div class="bio-card">
+          <div class="bio-avatar">RB</div>
+          <div>
+            <div class="bio-name">Robert Benard, NP</div>
+            <div class="bio-creds">AGACNP-BC · PMHNP-BC</div>
+            <div class="bio-role">Board-certified Nurse Practitioner with over two decades of acute care and psychiatric clinical experience. Every clinical interpretation on this site is written or reviewed by Rob.</div>
+          </div>
+        </div>
+        <div class="independence-card">
+          <h4><span class="independence-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> Independence</h4>
+          <p>Operated under DataLink Clinical LLC. No industry funding, no healthcare system ties, no government grants. Revenue comes from optional paid reports — no facility can pay to change their data.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 AI GOVERNANCE -->
+    <div class="section section-tinted" id="ai-governance">
+      <h2>AI Governance & Data Integrity</h2>
+      <p class="section-intro">AI tools can hallucinate. In healthcare, that's unacceptable. Our process is designed to eliminate this risk.</p>
+      <div class="source-list cluster-cyan">
+        <div class="source-item">
+          <div class="s-icon s-icon-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Ground Truth</h4>
+          <p>AI processes structured government CSV data — never generates medical facts or predictions.</p>
+        </div>
+        <div class="source-item">
+          <div class="s-icon s-icon-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h4>Clinician Oversight (HITL)</h4>
+          <p>AI processes data. A clinician decides what it means. Clinical judgment is never delegated to a machine.</p>
+        </div>
+        <div class="source-item">
+          <div class="s-icon s-icon-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h4>Full Traceability</h4>
+          <p>Every metric includes its CMS source file. Any researcher can download the same data and reproduce our results.</p>
+        </div>
+        <div class="source-item">
+          <div class="s-icon s-icon-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h4>Quality Checks</h4>
+          <p>Automated validation against known constraints before any data reaches the site.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 COMPOSITE RISK SCORE -->
+    <div class="section section-white" id="scoring">
+      <h2>Composite Risk Score (0–100)</h2>
+      <p class="section-intro">Our main risk metric combines five dimensions of facility performance. Higher scores = higher risk.</p>
+
+      <div class="score-visual">
+        <div class="score-bar-container">
+          <div class="score-segment seg-staffing"><span class="pct">35%</span><span class="lbl">Staffing</span></div>
+          <div class="score-segment seg-deficiency"><span class="pct">25%</span><span class="lbl">Deficiencies</span></div>
+          <div class="score-segment seg-penalty"><span class="pct">20%</span><span class="lbl">Penalties</span></div>
+          <div class="score-segment seg-quality"><span class="pct">10%</span><span class="lbl">Quality</span></div>
+          <div class="score-segment seg-ownership"><span class="pct">10%</span><span class="lbl">Ownership</span></div>
+        </div>
+
+        <div class="score-legend">
+          <div class="legend-item">
+            <h5><span class="legend-dot" style="background:#2563EB;box-shadow:0 0 6px rgba(37,99,235,0.4)"></span> Staffing (35%)</h5>
+            <ul><li>PBJ total nursing HPRD</li><li>RN HPRD specifically</li><li>Weekend staffing levels</li><li>Zero-RN day percentage</li><li>Self-report vs. payroll gap</li></ul>
+          </div>
+          <div class="legend-item">
+            <h5><span class="legend-dot" style="background:#7C3AED;box-shadow:0 0 6px rgba(124,58,237,0.4)"></span> Deficiencies (25%)</h5>
+            <ul><li>Total deficiencies</li><li>Harm-level (G+)</li><li>Jeopardy citations (J/K/L)</li><li>Scope/severity distribution</li></ul>
+          </div>
+          <div class="legend-item">
+            <h5><span class="legend-dot" style="background:#DB2777;box-shadow:0 0 6px rgba(219,39,119,0.4)"></span> Penalties (20%)</h5>
+            <ul><li>Total fines</li><li>Frequency</li><li>Denial of payment</li><li>Penalty-per-bed ratio</li></ul>
+          </div>
+          <div class="legend-item">
+            <h5><span class="legend-dot" style="background:#059669;box-shadow:0 0 6px rgba(5,150,105,0.4)"></span> Quality (10%)</h5>
+            <ul><li>CMS quality measures</li><li>Overall star rating</li><li>QM star rating</li></ul>
+          </div>
+          <div class="legend-item">
+            <h5><span class="legend-dot" style="background:#D97706;box-shadow:0 0 6px rgba(217,119,6,0.4)"></span> Ownership (10%)</h5>
+            <ul><li>Portfolio performance</li><li>Contractor staffing %</li><li>Chain risk patterns</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 KEY METRICS -->
+    <div class="section section-tinted" id="key-metrics">
+      <h2>Key Metrics Explained</h2>
+      <p class="section-intro">Every number on the site has a precise definition. Click to expand.</p>
+
+      <div class="metric-block">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <h3>Star Ratings (1–5)</h3>
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion-body" style="display:none">
+          <p>Directly from CMS. We display them but do not modify them. Calculated by CMS from health inspections, staffing, and quality measures.</p>
+          <div class="note-box"><strong>Note:</strong> CMS star ratings are widely criticized for being gameable. Our composite score exists because stars alone are insufficient.</div>
+        </div>
+      </div>
+
+      <div class="metric-block">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <h3>Staffing HPRD</h3>
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion-body" style="display:none">
+          <p>Total nursing hours / resident census. Reported via PBJ payroll data.</p>
+          <div class="formula-box">
+            <span class="formula-label">Formula</span>
+            <span class="formula-value">Total Nursing Hours / Total Resident Days</span>
+          </div>
+          <div class="note-box"><strong>Benchmarks:</strong> National median ~3.6 HPRD. Below 3.0 is concerning. Below 2.5 is critical.</div>
+        </div>
+      </div>
+
+      <div class="metric-block">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <h3>RN Gap Percentage</h3>
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion-body" style="display:none">
+          <p>Discrepancy between self-reported staffing and payroll records.</p>
+          <div class="formula-box">
+            <span class="formula-label">Formula</span>
+            <span class="formula-value">((Self-Reported RN HPRD - PBJ RN HPRD) / Self-Reported) x 100</span>
+          </div>
+          <div class="note-box"><strong>Thresholds:</strong> Gaps above 25% are significant. Above 50% warrant serious scrutiny.</div>
+        </div>
+      </div>
+
+      <div class="metric-block">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <h3>Zero RN Percentage</h3>
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion-body" style="display:none">
+          <p>Percentage of days with zero RN hours in PBJ data. LPNs/CNAs may still be present — this tracks RN absence specifically.</p>
+          <div class="formula-box">
+            <span class="formula-label">Formula</span>
+            <span class="formula-value">(Days with 0 RN Hours / Total Days in Quarter) x 100</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 WHAT WE DON'T DO -->
+    <div class="section section-white" id="limitations">
+      <h2>What We Don't Do</h2>
+      <div class="dont-grid">
+        <div class="dont-card">
+          <div class="dont-icon">✕</div>
+          <div><h4>Rank facilities "good" or "bad"</h4><p>We present risk factors. Families make their own decisions.</p></div>
+        </div>
+        <div class="dont-card">
+          <div class="dont-icon">✕</div>
+          <div><h4>Include subjective reviews</h4><p>Analysis is based entirely on objective government data.</p></div>
+        </div>
+        <div class="dont-card">
+          <div class="dont-icon">✕</div>
+          <div><h4>Accept advertising</h4><p>No facility can pay to improve their score.</p></div>
+        </div>
+        <div class="dont-card">
+          <div class="dont-icon">✕</div>
+          <div><h4>Modify CMS star ratings</h4><p>Displayed exactly as published by CMS.</p></div>
+        </div>
+        <div class="dont-card">
+          <div class="dont-icon">✕</div>
+          <div><h4>Make clinical recommendations</h4><p>Our score is a screening tool. Always visit in person.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 REGULATORY -->
+    <div class="section section-tinted" id="regulatory">
+      <h2>Federal Staffing Requirements</h2>
+      <p class="section-intro">Understanding the regulatory framework is critical for interpreting staffing data.</p>
+
+      <div class="metric-block">
+        <h4>Current Law (42 CFR §483.35)</h4>
+        <p>An RN on site 8+ consecutive hours/day, 7 days/week. A full-time RN as DON. "Sufficient" licensed nursing staff 24/7.</p>
+        <div class="note-box"><strong>Key gap:</strong> No federal minimum HPRD requirement exists. The "sufficient" standard is qualitative, not quantitative.</div>
+      </div>
+
+      <div class="metric-block">
+        <h4>Timeline: The 2024 Staffing Rule</h4>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">May 2024</div>
+            <div class="tl-text">CMS finalizes first-ever minimum staffing rule: 3.48 total HPRD + 24/7 RN coverage</div>
+          </div>
+          <div class="tl-item tl-red">
+            <div class="tl-date">April–June 2025</div>
+            <div class="tl-text">Federal courts in Texas and Iowa strike down the rule before it takes effect</div>
+          </div>
+          <div class="tl-item tl-red">
+            <div class="tl-date">July 4, 2025</div>
+            <div class="tl-text">One Big Beautiful Bill Act (§71111) blocks enforcement through September 2034</div>
+          </div>
+          <div class="tl-item tl-red">
+            <div class="tl-date">December 2, 2025</div>
+            <div class="tl-text">CMS formally repeals the 2024 standards (effective February 2, 2026)</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">February 2, 2026</div>
+            <div class="tl-text">18 state AGs (led by CA, MA, NY) request targeted 3.48 HPRD for high-risk operators</div>
+          </div>
+        </div>
+        <div class="note-box"><strong>Critical fact:</strong> The 24/7 RN requirement never took effect at any facility.</div>
+      </div>
+    </div>
+
+    <!-- 09 DATA FRESHNESS -->
+    <div class="section section-white" id="freshness">
+      <h2>Data Freshness</h2>
+      <div class="freshness-row">
+        <div class="freshness-card">
+          <div class="big">Feb 2026</div>
+          <div class="sub">Current data version</div>
+        </div>
+        <div class="freshness-card">
+          <div class="big">Mar 2</div>
+          <div class="sub">Last downloaded</div>
+        </div>
+        <div class="freshness-card">
+          <div class="big">18</div>
+          <div class="sub">CMS datasets integrated</div>
+        </div>
+        <div class="freshness-card">
+          <div class="big">~Apr 2026</div>
+          <div class="sub">Next CMS refresh</div>
+        </div>
+      </div>
+      <div class="note-box" style="margin-top:20px"><strong>Important:</strong> Between updates, new inspections or penalties may have occurred. Always verify current status with CMS Care Compare.</div>
+    </div>
+
+    <!-- 10 TRANSPARENCY CHANGES -->
+    <div class="section section-tinted" id="transparency">
+      <h2>Government Data Transparency Changes</h2>
+      <p class="section-intro">When CMS removes data from public view, we document it here.</p>
+
+      <div class="metric-block">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <h3>Complaint Counts Removed (Feb 25, 2026)</h3>
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion-body" style="display:none">
+          <p>CMS removed complaint counts from Care Compare. We reconstructed them from federal inspection records — each record flags whether it was complaint-triggered. This is a direct count from the same records CMS previously used.</p>
+        </div>
+      </div>
+
+      <div class="metric-block">
+        <button class="accordion-toggle" onclick="toggleAccordion(this)">
+          <h3>Ownership Disclosure Suspension</h3>
+          <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="accordion-body" style="display:none">
+          <p>CMS suspended enhanced ownership disclosure requirements from the 2024 package. We continue reporting from the currently available CMS Ownership file. Some proposed enhancements (PE/REIT identification) may not be reflected.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 CONTACT -->
+    <div class="section section-white" id="contact">
+      <h2>Contact & Corrections</h2>
+      <p class="section-intro">If you believe any information is incorrect, we want to know.</p>
+      <div class="source-item" style="max-width:480px">
+        <div class="s-icon s-icon-blue">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h4>Report a Data Issue</h4>
+        <p>Email <a href="mailto:contact@oversightreports.com">contact@oversightreports.com</a> with facility name/CCN, the specific metric, and source documentation if available.</p>
+        <div class="note-box" style="margin-top:12px"><strong>Our commitment:</strong> Verified errors corrected within 48 hours.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function toggleAccordion(btn) {
+  const body = btn.nextElementSibling;
+  const chevron = btn.querySelector('.accordion-chevron');
+  if (body.style.display === 'none') {
+    body.style.display = 'block';
+    chevron.classList.add('open');
+  } else {
+    body.style.display = 'none';
+    chevron.classList.remove('open');
+  }
+}
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+});
+
+// Active sidebar link highlighting
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.sidebar a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      const link = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

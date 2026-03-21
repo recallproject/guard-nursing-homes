@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUSH RFI Deliverable — The Oversight Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --bg: #0b0f19;
+    --surface: #131825;
+    --card: #1a2035;
+    --card-hover: #1f2745;
+    --border: #2a3555;
+    --text: #e2e8f0;
+    --text-dim: #8892a8;
+    --accent: #3b82f6;
+    --accent-glow: rgba(59,130,246,0.15);
+    --red: #ef4444;
+    --red-glow: rgba(239,68,68,0.12);
+    --orange: #f59e0b;
+    --orange-glow: rgba(245,158,11,0.12);
+    --green: #10b981;
+    --green-glow: rgba(16,185,129,0.12);
+    --purple: #8b5cf6;
+    --purple-glow: rgba(139,92,246,0.12);
+    --cyan: #06b6d4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0b0f19 0%, #1a1040 50%, #0b0f19 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(239,68,68,0.15);
+    border: 1px solid rgba(239,68,68,0.3);
+    color: var(--red);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-meta span {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .hero-meta strong {
+    color: var(--accent);
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 30px; }
+
+  /* ── SECTION HEADERS ── */
+  .section {
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(42,53,85,0.5);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .section h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .section-desc {
+    color: var(--text-dim);
+    font-size: 15px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    padding-left: 50px;
+  }
+
+  /* ── KPI ROW ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .kpi:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .kpi-value {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+  .kpi-label {
+    font-size: 13px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .kpi.red .kpi-value { color: var(--red); }
+  .kpi.orange .kpi-value { color: var(--orange); }
+  .kpi.green .kpi-value { color: var(--green); }
+  .kpi.blue .kpi-value { color: var(--accent); }
+  .kpi.purple .kpi-value { color: var(--purple); }
+
+  /* ── CARDS GRID ── */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot.red { background: var(--red); box-shadow: 0 0 8px var(--red); }
+  .dot.orange { background: var(--orange); box-shadow: 0 0 8px var(--orange); }
+  .dot.green { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .dot.blue { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+  /* ── TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 10px 12px;
+    background: rgba(59,130,246,0.08);
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-size: 11px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(42,53,85,0.4);
+    color: var(--text);
+  }
+  tr:hover td { background: rgba(59,130,246,0.04); }
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .tag-red { background: var(--red-glow); color: var(--red); border: 1px solid rgba(239,68,68,0.25); }
+  .tag-orange { background: var(--orange-glow); color: var(--orange); border: 1px solid rgba(245,158,11,0.25); }
+  .tag-green { background: var(--green-glow); color: var(--green); border: 1px solid rgba(16,185,129,0.25); }
+  .tag-purple { background: var(--purple-glow); color: var(--purple); border: 1px solid rgba(139,92,246,0.25); }
+
+  /* ── BAR CHART (CSS) ── */
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row { display: flex; align-items: center; gap: 12px; }
+  .bar-label { width: 60px; font-size: 13px; font-weight: 600; text-align: right; color: var(--text-dim); }
+  .bar-track { flex: 1; height: 28px; background: rgba(59,130,246,0.08); border-radius: 6px; overflow: hidden; position: relative; }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    transition: width 0.8s ease;
+  }
+  .bar-fill.red { background: linear-gradient(90deg, var(--red), #dc2626); }
+  .bar-fill.orange { background: linear-gradient(90deg, var(--orange), #d97706); }
+  .bar-fill.blue { background: linear-gradient(90deg, var(--accent), #2563eb); }
+  .bar-fill.purple { background: linear-gradient(90deg, var(--purple), #7c3aed); }
+
+  /* ── CASE STUDY ── */
+  .case-study {
+    background: linear-gradient(135deg, rgba(239,68,68,0.06) 0%, var(--card) 100%);
+    border: 1px solid rgba(239,68,68,0.2);
+    border-radius: 14px;
+    padding: 30px;
+    margin-top: 20px;
+  }
+  .case-study h3 {
+    color: var(--red);
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .evidence-list {
+    list-style: none;
+    padding: 0;
+  }
+  .evidence-list li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(42,53,85,0.3);
+  }
+  .evidence-list li:last-child { border-bottom: none; }
+  .evidence-list li::before {
+    content: '⚑';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+  }
+
+  /* ── METHODOLOGY ── */
+  .flow-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0;
+  }
+  .flow-node {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 22px;
+    text-align: center;
+    min-width: 160px;
+  }
+  .flow-node .flow-icon { font-size: 24px; margin-bottom: 6px; }
+  .flow-node .flow-title { font-size: 13px; font-weight: 700; }
+  .flow-node .flow-sub { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .flow-arrow {
+    font-size: 20px;
+    color: var(--accent);
+    padding: 0 8px;
+  }
+
+  /* ── ADVANTAGE BANNER ── */
+  .advantage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .advantage-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    border-top: 3px solid var(--accent);
+  }
+  .advantage-card.clinical { border-top-color: var(--red); }
+  .advantage-card.data { border-top-color: var(--orange); }
+  .advantage-card.real-time { border-top-color: var(--green); }
+  .advantage-card.explainable { border-top-color: var(--purple); }
+  .advantage-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .advantage-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 13px;
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* ── MOCKUP LABEL ── */
+  .mockup-banner {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: linear-gradient(90deg, var(--red), #b91c1c);
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 999;
+  }
+  .hero { margin-top: 36px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 28px; }
+    .cards { grid-template-columns: 1fr; }
+    .flow-diagram { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner">⚠ Internal Mockup — CMS CRUSH RFI Deliverable Preview — Not for Distribution</div>
+
+<!-- ═══════ HERO ═══════ -->
+<div class="hero">
+  <div class="hero-badge">CMS-6098-NC · CRUSH Initiative</div>
+  <h1>DMEPOS Fraud Intelligence Report</h1>
+  <p class="subtitle">A data-driven methodology for identifying fraud rings, excluded providers, and billing anomalies using publicly available CMS datasets — with clinical plausibility analysis.</p>
+  <div class="hero-meta">
+    <span>Prepared by <strong>The Oversight Report</strong></span>
+    <span>Author: <strong>Rob Benard, NP</strong></span>
+    <span>Submitted: <strong>March 2026</strong></span>
+    <span>Docket: <strong>CMS-6098-NC</strong></span>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ═══════ SECTION 1: EXECUTIVE SUMMARY KPIs ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">1</span>
+      <h2>Executive Summary — What We Found</h2>
+    </div>
+    <p class="section-desc">Using only publicly available datasets (NPPES, LEIE, DMEPOS PUFs, PBJ), our automated pipeline identified the following fraud indicators across all 50 states.</p>
+
+    <div class="kpi-row">
+      <div class="kpi red">
+        <div class="kpi-value">55,093</div>
+        <div class="kpi-label">Address Clusters<br>(4+ NPIs Sharing)</div>
+      </div>
+      <div class="kpi orange">
+        <div class="kpi-value">~2,800*</div>
+        <div class="kpi-label">LEIE Hits at<br>Fraud Ring Addresses</div>
+      </div>
+      <div class="kpi purple">
+        <div class="kpi-value">7.25×</div>
+        <div class="kpi-label">Highest National<br>Markup Ratio</div>
+      </div>
+      <div class="kpi blue">
+        <div class="kpi-value">9.3M</div>
+        <div class="kpi-label">NPIs Screened<br>(Full NPPES)</div>
+      </div>
+      <div class="kpi green">
+        <div class="kpi-value">42,933</div>
+        <div class="kpi-label">Geo-Level Billing<br>Records Analyzed</div>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--text-dim); text-align:right;">* Projected from 500K-row sample (283 hits × 18.7 scale factor). Full run pending.</p>
+  </div>
+
+  <!-- ═══════ SECTION 2: FRAUD RING CLUSTERS ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">2</span>
+      <h2>Fraud Ring Detection — Address Clustering</h2>
+    </div>
+    <p class="section-desc">Addresses where 4 or more distinct NPIs are co-registered. These clusters are the strongest signal for shell companies and nominee-owner fraud structures.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3><span class="dot red"></span> Top 10 Largest Clusters</h3>
+        <table>
+          <thead>
+            <tr><th>Address</th><th>City</th><th>State</th><th>NPIs</th><th>Risk</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1629 K ST NW STE 300</td><td>Washington</td><td>DC</td><td><strong>205</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>3411 SILVERSIDE RD</td><td>Wilmington</td><td>DE</td><td><strong>178</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>251 LITTLE FALLS DR</td><td>Wilmington</td><td>DE</td><td><strong>156</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>8 THE GREEN STE A</td><td>Dover</td><td>DE</td><td><strong>143</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>1209 ORANGE ST</td><td>Wilmington</td><td>DE</td><td><strong>137</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>16192 COASTAL HWY</td><td>Lewes</td><td>DE</td><td><strong>131</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>3500 S DUPONT HWY</td><td>Dover</td><td>DE</td><td><strong>128</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>850 NEW BURTON RD STE 201</td><td>Dover</td><td>DE</td><td><strong>119</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>8735 DUNWOODY PL STE O</td><td>Atlanta</td><td>GA</td><td><strong>112</strong></td><td><span class="tag tag-red">Critical</span></td></tr>
+            <tr><td>2140 S DUPONT HWY</td><td>Camden</td><td>DE</td><td><strong>108</strong></td><td><span class="tag tag-orange">High</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot orange"></span> Top States by Cluster Count</h3>
+        <div class="bar-chart">
+          <div class="bar-row">
+            <span class="bar-label">CA</span>
+            <div class="bar-track"><div class="bar-fill red" style="width:100%">5,190</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">FL</span>
+            <div class="bar-track"><div class="bar-fill red" style="width:95%">4,935</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">TX</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:82%">4,278</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">NY</span>
+            <div class="bar-track"><div class="bar-fill orange" style="width:68%">3,542</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">IL</span>
+            <div class="bar-track"><div class="bar-fill blue" style="width:42%">2,187</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">NJ</span>
+            <div class="bar-track"><div class="bar-fill blue" style="width:38%">1,976</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">GA</span>
+            <div class="bar-track"><div class="bar-fill purple" style="width:33%">1,715</div></div>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">PA</span>
+            <div class="bar-track"><div class="bar-fill purple" style="width:28%">1,458</div></div>
+          </div>
+        </div>
+        <p style="margin-top:14px; font-size:12px; color:var(--text-dim);">Note: Delaware overrepresented in top clusters due to registered agent addresses (corporate shells).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 3: LEIE CROSS-REFERENCE ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">3</span>
+      <h2>Excluded Provider Detection — LEIE Cross-Reference</h2>
+    </div>
+    <p class="section-desc">Banned providers (OIG List of Excluded Individuals/Entities) who still maintain active NPI registrations at fraud ring addresses. These represent the highest-value enforcement targets.</p>
+
+    <div class="kpi-row">
+      <div class="kpi red">
+        <div class="kpi-value">82,714</div>
+        <div class="kpi-label">Total LEIE<br>Exclusions</div>
+      </div>
+      <div class="kpi orange">
+        <div class="kpi-value">8,473</div>
+        <div class="kpi-label">With Active<br>NPI Numbers</div>
+      </div>
+      <div class="kpi red">
+        <div class="kpi-value">~2,800*</div>
+        <div class="kpi-label">At Fraud Ring<br>Addresses</div>
+      </div>
+      <div class="kpi purple">
+        <div class="kpi-value">Dual</div>
+        <div class="kpi-label">Matching Method<br>(NPI + Name)</div>
+      </div>
+    </div>
+
+    <div class="case-study">
+      <h3>🔍 Sample Case Study: Multi-Signal Fraud Ring</h3>
+      <p style="font-size:14px; color:var(--text-dim); margin-bottom:16px;">Illustrative example of the evidence package our pipeline generates for a single address cluster. Actual cases will be populated after full enrichment run.</p>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h4 style="font-size:14px; margin-bottom:10px; color:var(--text);">📍 Address: [1629 K ST NW STE 300, Washington, DC]</h4>
+          <ul class="evidence-list">
+            <li><strong>205 NPIs</strong> registered at this single suite</li>
+            <li><strong>3 LEIE-excluded</strong> providers still registered here</li>
+            <li><strong>12 NPIs</strong> sharing the same phone number</li>
+            <li><strong>47 NPIs</strong> registered as DMEPOS suppliers</li>
+            <li><strong>Taxonomy codes</strong> span 14 different specialties</li>
+            <li>Same <strong>authorized official</strong> on 38 NPIs</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-size:14px; margin-bottom:10px; color:var(--red);">🏥 Clinical Plausibility Assessment</h4>
+          <ul class="evidence-list">
+            <li><span style="color:var(--red); font-weight:600;">Impossible:</span> 205 independent medical practices cannot operate from a single office suite</li>
+            <li><span style="color:var(--red); font-weight:600;">Impossible:</span> 14 specialties at one address with no hospital affiliation</li>
+            <li><span style="color:var(--orange); font-weight:600;">Suspicious:</span> DMEPOS supplier count exceeds physical capacity</li>
+            <li><span style="color:var(--orange); font-weight:600;">Suspicious:</span> Excluded providers maintaining active registrations</li>
+          </ul>
+          <p style="font-size:11px; color:var(--text-dim); margin-top:10px; font-style:italic;">Clinical assessment by Rob Benard, NP (Acute Care + Psychiatry)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 4: MARKUP RATIO ANALYSIS ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">4</span>
+      <h2>Predatory Billing — Markup Ratio Analysis</h2>
+    </div>
+    <p class="section-desc">Gap between submitted charges and Medicare allowed amounts by HCPCS code. High markup ratios indicate predatory pricing targeting vulnerable beneficiaries — especially relevant for items under the 6-month DMEPOS moratorium.</p>
+
+    <div class="cards">
+      <div class="card">
+        <h3><span class="dot red"></span> National Markup Hotspots</h3>
+        <table>
+          <thead>
+            <tr><th>HCPCS</th><th>Description</th><th>Submitted</th><th>Allowed</th><th>Markup</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>E2377</strong></td><td>Power wheelchair accessory</td><td>$291</td><td>$40</td><td><span class="tag tag-red">7.25×</span></td></tr>
+            <tr><td><strong>K0108</strong></td><td>Wheelchair accessory NOS</td><td>$185</td><td>$32</td><td><span class="tag tag-red">5.78×</span></td></tr>
+            <tr><td><strong>A6545</strong></td><td>Gradient compression stocking</td><td>$89</td><td>$18</td><td><span class="tag tag-orange">4.94×</span></td></tr>
+            <tr><td><strong>E0486</strong></td><td>Oral device / respiratory</td><td>$412</td><td>$95</td><td><span class="tag tag-orange">4.34×</span></td></tr>
+            <tr><td><strong>A4253</strong></td><td>Blood glucose test strip</td><td>$78</td><td>$21</td><td><span class="tag tag-orange">3.71×</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot orange"></span> State-Level Outliers (E2377)</h3>
+        <table>
+          <thead>
+            <tr><th>State</th><th>Submitted</th><th>Allowed</th><th>Markup</th><th>Signal</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Washington</td><td>$1,036</td><td>$40</td><td><span class="tag tag-red">25.9×</span></td><td><span class="tag tag-red">Extreme</span></td></tr>
+            <tr><td>Missouri</td><td>$892</td><td>$40</td><td><span class="tag tag-red">22.3×</span></td><td><span class="tag tag-red">Extreme</span></td></tr>
+            <tr><td>Arkansas</td><td>$888</td><td>$40</td><td><span class="tag tag-red">22.2×</span></td><td><span class="tag tag-red">Extreme</span></td></tr>
+            <tr><td>Florida</td><td>$645</td><td>$40</td><td><span class="tag tag-red">16.1×</span></td><td><span class="tag tag-orange">High</span></td></tr>
+            <tr><td>California</td><td>$523</td><td>$40</td><td><span class="tag tag-orange">13.1×</span></td><td><span class="tag tag-orange">High</span></td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px; font-size:12px; color:var(--text-dim);">E2377 is a power wheelchair accessory currently under CMS DMEPOS moratorium review.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 5: PHONE CLUSTERING ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">5</span>
+      <h2>Phone Number Clustering — Shell Company Signals</h2>
+    </div>
+    <p class="section-desc">When 3+ NPIs at fraud ring addresses share a phone number, it strongly suggests coordinated operations under a single owner — a classic DMEPOS shell company pattern.</p>
+
+    <div class="card" style="max-width:800px;">
+      <h3><span class="dot blue"></span> How Phone Clustering Works</h3>
+      <table>
+        <thead>
+          <tr><th>Signal</th><th>What It Means</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag tag-green">3–5 NPIs</span></td>
+            <td>Possible group practice — needs review</td>
+            <td>Small clinic with multiple providers</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-orange">6–15 NPIs</span></td>
+            <td>Likely coordinated — flagged for investigation</td>
+            <td>Management company or nominee structure</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-red">16+ NPIs</span></td>
+            <td>Almost certainly a shell operation</td>
+            <td>Same phone on 20+ DMEPOS "companies"</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px; font-size:13px; color:var(--text-dim);">Full phone cluster results will be populated after enrichment pipeline completes against full NPPES.</p>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 6: METHODOLOGY ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">6</span>
+      <h2>Methodology — Data Pipeline</h2>
+    </div>
+    <p class="section-desc">All analysis uses publicly available CMS datasets. No proprietary claims data. Fully reproducible and auditable — exactly what CMS asked for as "Explainable AI."</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node">
+        <div class="flow-icon">📥</div>
+        <div class="flow-title">NPPES Registry</div>
+        <div class="flow-sub">9.3M providers</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="flow-icon">🏠</div>
+        <div class="flow-title">Address Clustering</div>
+        <div class="flow-sub">Normalize + group</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="flow-icon">🔗</div>
+        <div class="flow-title">LEIE Cross-Ref</div>
+        <div class="flow-sub">NPI + Name match</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="flow-icon">📞</div>
+        <div class="flow-title">Phone Clustering</div>
+        <div class="flow-sub">Shell company detect</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node">
+        <div class="flow-icon">💰</div>
+        <div class="flow-title">Markup Analysis</div>
+        <div class="flow-sub">DMEPOS PUF billing</div>
+      </div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-node" style="border-color:var(--red);">
+        <div class="flow-icon">🏥</div>
+        <div class="flow-title">Clinical Review</div>
+        <div class="flow-sub">Plausibility check</div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:20px;">
+      <div class="card">
+        <h3><span class="dot green"></span> Datasets Used</h3>
+        <table>
+          <thead><tr><th>Dataset</th><th>Source</th><th>Records</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>NPPES NPI Registry</td><td>CMS / NPPES</td><td>9.3M</td><td>Provider addresses, phones, taxonomy</td></tr>
+            <tr><td>LEIE Exclusions</td><td>OIG</td><td>82,714</td><td>Banned provider identification</td></tr>
+            <tr><td>DMEPOS Geo Aggregate</td><td>CMS PUF</td><td>42,933</td><td>Billing amounts by HCPCS + state</td></tr>
+            <tr><td>PBJ Staffing (Q1+Q3 2023)</td><td>CMS</td><td>~2.6M</td><td>Nursing facility staffing verification</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3><span class="dot blue"></span> Matching Logic</h3>
+        <table>
+          <thead><tr><th>Join</th><th>Key</th><th>Method</th></tr></thead>
+          <tbody>
+            <tr><td>Fraud Rings ↔ NPPES</td><td>Normalized Address</td><td>Street + City + State</td></tr>
+            <tr><td>NPPES ↔ LEIE</td><td>NPI (primary)</td><td>Direct match (8,473)</td></tr>
+            <tr><td>NPPES ↔ LEIE</td><td>Name (secondary)</td><td>Last + First + State</td></tr>
+            <tr><td>Phone Clusters</td><td>Phone Number</td><td>≥3 NPIs at fraud address</td></tr>
+            <tr><td>Markup Ratios</td><td>HCPCS + State</td><td>Submitted ÷ Allowed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 7: OUR ADVANTAGE ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">7</span>
+      <h2>Why This Matters — The Clinical Plausibility Gap</h2>
+    </div>
+    <p class="section-desc">What separates The Oversight Report from every other analytics vendor responding to this RFI: a licensed clinician building the fraud detection. CMS can get data anywhere. They can't get this.</p>
+
+    <div class="advantage-grid">
+      <div class="advantage-card clinical">
+        <h4>🏥 Clinical Authority</h4>
+        <p>Rob Benard is a licensed NP (Acute Care + Psychiatry) who has worked bedside in the facilities we're analyzing. When we say "205 providers can't practice from a single suite," that's a clinically defensible statement — not a statistical guess.</p>
+      </div>
+      <div class="advantage-card data">
+        <h4>📊 Public Data Only</h4>
+        <p>Every dataset used is publicly available from CMS and OIG. No proprietary claims data, no vendor lock-in, no black box. CMS can reproduce every finding independently. This is exactly the "Explainable AI" the RFI requested.</p>
+      </div>
+      <div class="advantage-card real-time">
+        <h4>⚡ Pre-Payment Capable</h4>
+        <p>Address clustering and LEIE cross-referencing can run against NPI applications in real-time. Instead of "pay and chase," CMS can flag suspicious registrations before a single claim is submitted.</p>
+      </div>
+      <div class="advantage-card explainable">
+        <h4>📋 Courtroom-Ready</h4>
+        <p>Every red flag produces a plain-English evidence trail: the address, the NPIs, the exclusion records, the clinical impossibility. No "the algorithm said so." Prosecutors can use this.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 8: WHAT CMS GETS ═══════ -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">8</span>
+      <h2>Deliverable Package — What CMS Receives</h2>
+    </div>
+    <p class="section-desc">Three-tier deliverable structure: the formal comment goes into the federal register, the appendix proves we can back it up, and the interactive demo lets their investigators explore the data themselves.</p>
+
+    <div class="cards" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="border-top:3px solid var(--accent);">
+        <h3>📄 Tier 1: RFI Comment</h3>
+        <p style="font-size:13px; color:var(--text-dim); margin-bottom:12px;">Formal public comment submitted to CMS-6098-NC by March 30, 2026</p>
+        <ul class="evidence-list">
+          <li>Executive summary of findings</li>
+          <li>Methodology overview</li>
+          <li>Policy recommendations</li>
+          <li>Pre-payment screening proposal</li>
+          <li>Offer to partner as technical resource</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--orange);">
+        <h3>📊 Tier 2: Technical Appendix</h3>
+        <p style="font-size:13px; color:var(--text-dim); margin-bottom:12px;">Methodology documentation with reproducible code and data dictionary</p>
+        <ul class="evidence-list">
+          <li>Full data pipeline documentation</li>
+          <li>Address normalization logic</li>
+          <li>Matching algorithms (NPI + name)</li>
+          <li>10 case studies with evidence packages</li>
+          <li>Statistical confidence analysis</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--green);">
+        <h3>🖥️ Tier 3: Interactive Demo</h3>
+        <p style="font-size:13px; color:var(--text-dim); margin-bottom:12px;">crush-demo.oversightreports.com — live explorable dashboard</p>
+        <ul class="evidence-list">
+          <li>Search by address, state, NPI</li>
+          <li>Fraud ring cluster explorer</li>
+          <li>LEIE cross-reference viewer</li>
+          <li>Markup ratio heatmap</li>
+          <li>Exportable evidence packages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div class="footer">
+  <p><strong>The Oversight Report</strong> · <a href="https://oversightreports.com">oversightreports.com</a></p>
+  <p style="margin-top:6px;">Built by Rob Benard, NP · DataLink Clinical LLC</p>
+  <p style="margin-top:6px; font-size:11px;">This is a mockup/preview document. Numbers marked with * are projected from sample data. Full results pending enrichment pipeline completion.</p>
+</div>
+
+</body>
+</html>

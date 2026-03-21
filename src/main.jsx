@@ -19,18 +19,27 @@ class ErrorBoundary extends React.Component {
   }
   render() {
     if (this.state.hasError) {
+      const isDev = import.meta.env.DEV;
       return (
         <div style={{ padding: '2rem', color: '#ef4444', background: '#0a1628', minHeight: '100vh', fontFamily: 'monospace' }}>
-          <h1>Runtime Error</h1>
-          <pre style={{ whiteSpace: 'pre-wrap', color: '#faf7f2', marginTop: '1rem' }}>
-            {this.state.error?.toString()}
-          </pre>
-          <pre style={{ whiteSpace: 'pre-wrap', color: '#94a3b8', marginTop: '1rem', fontSize: '0.8rem' }}>
-            {this.state.error?.stack}
-          </pre>
-          <pre style={{ whiteSpace: 'pre-wrap', color: '#64748b', marginTop: '1rem', fontSize: '0.75rem' }}>
-            {this.state.errorInfo?.componentStack}
-          </pre>
+          <h1>Something went wrong</h1>
+          {isDev ? (
+            <>
+              <pre style={{ whiteSpace: 'pre-wrap', color: '#faf7f2', marginTop: '1rem' }}>
+                {this.state.error?.toString()}
+              </pre>
+              <pre style={{ whiteSpace: 'pre-wrap', color: '#94a3b8', marginTop: '1rem', fontSize: '0.8rem' }}>
+                {this.state.error?.stack}
+              </pre>
+              <pre style={{ whiteSpace: 'pre-wrap', color: '#64748b', marginTop: '1rem', fontSize: '0.75rem' }}>
+                {this.state.errorInfo?.componentStack}
+              </pre>
+            </>
+          ) : (
+            <p style={{ color: '#faf7f2', marginTop: '1rem' }}>
+              Please try refreshing the page. If the problem persists, contact us at contact@oversightreports.com.
+            </p>
+          )}
         </div>
       );
     }
