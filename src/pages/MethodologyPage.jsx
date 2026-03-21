@@ -156,7 +156,7 @@ export function MethodologyPage() {
       <Helmet>
         <title>Methodology — How We Score Nursing Homes | The Oversight Report</title>
         <meta name="description" content="Our composite risk scoring methodology. How we combine CMS staffing data, inspection citations, penalties, and ownership patterns. Includes our AI governance framework and data integrity safeguards." />
-        <link rel="canonical" href="https://oversightreports.com/methodology" />
+        <link rel="canonical" href="https://www.oversightreports.com/methodology" />
       </Helmet>
 
       {/* Scroll progress bar */}

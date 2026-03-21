@@ -8,7 +8,7 @@ export default function EvidenceSamplePage() {
       <Helmet>
         <title>Evidence Report Sample — The Oversight Report</title>
         <meta name="description" content="Download a sample Evidence Report showing what families, attorneys, and journalists receive — 17 pages of federal safety data, inspection history, penalties, staffing analysis, and ownership networks." />
-        <link rel="canonical" href="https://oversightreports.com/evidence-sample" />
+        <link rel="canonical" href="https://www.oversightreports.com/evidence-sample" />
       </Helmet>
 
       <div className="ev-sample-page">

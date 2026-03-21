@@ -7,7 +7,7 @@ export default function AboutPage() {
       <Helmet>
         <title>About — The Oversight Report</title>
         <meta name="description" content="Built by Robert Benard, NP — a nurse practitioner with 20+ years at the bedside. The Oversight Report makes federal nursing home safety data readable." />
-        <link rel="canonical" href="https://oversightreports.com/about" />
+        <link rel="canonical" href="https://www.oversightreports.com/about" />
       </Helmet>
 
       <div className="about-page">

@@ -11,10 +11,8 @@
     "deploy": "node scripts/generate-sitemap.js && vite build && node scripts/generate-seo-pages.js && gh-pages -d dist"
   },
   "dependencies": {
-    "@stripe/stripe-js": "^8.8.0",
     "d3-geo": "^3.1.0",
     "d3-selection": "^3.0.0",
-    "d3-scale": "^4.0.2",
     "gsap": "^3.14.2",
     "jspdf": "^4.2.0",
     "jspdf-autotable": "^5.0.7",

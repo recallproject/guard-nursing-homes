@@ -288,7 +288,7 @@ export function TrendsPage() {
       <Helmet>
         <title>Industry Trends — National Nursing Home Snapshot | The Oversight Report</title>
         <meta name="description" content="National nursing home quality trends. Staffing levels, deficiency patterns, and penalty data across all 14,713 facilities." />
-        <link rel="canonical" href="https://oversightreports.com/trends" />
+        <link rel="canonical" href="https://www.oversightreports.com/trends" />
       </Helmet>
 
       {/* Header */}

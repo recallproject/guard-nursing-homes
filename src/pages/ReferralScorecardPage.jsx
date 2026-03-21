@@ -677,7 +677,7 @@ export function ReferralScorecardPage() {
       <Helmet>
         <title>Referral Scorecard — Post-Acute Care Comparison | The Oversight Report</title>
         <meta name="description" content="Compare post-acute care facilities side-by-side for discharge planning. Rank SNFs, home health, hospice, rehab, and LTACH facilities by safety score." />
-        <link rel="canonical" href="https://oversightreports.com/referral-scorecard" />
+        <link rel="canonical" href="https://www.oversightreports.com/referral-scorecard" />
       </Helmet>
       {/* Header */}
       <div className="referral-header" ref={headerRef}>

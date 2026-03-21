@@ -324,6 +324,21 @@ a:focus-visible {
   color: #94A3B8;
 }
 
+/* iOS zoom prevention — inputs below 16px trigger auto-zoom on focus */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="password"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
 .input:focus {
   outline: none;
   border-color: var(--primary);
@@ -807,5 +822,10 @@ a:focus-visible {
     right: 16px;
     padding: 8px 14px;
     font-size: 0.8rem;
+  }
+
+  /* Push feedback FAB above mobile sticky CTA bar */
+  .feedback-fab-wrapper {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }

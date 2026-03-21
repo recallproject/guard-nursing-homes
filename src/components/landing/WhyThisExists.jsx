@@ -98,7 +98,7 @@ export default function WhyThisExists() {
           >
             <div className="author-card-top">
               <div className="author-card-identity">
-                <img src="/rob-headshot.png" alt="Robert Benard, NP" className="author-avatar" />
+                <img src="/rob-headshot.png" alt="Robert Benard, NP" className="author-avatar" loading="lazy" decoding="async" />
                 <div className="author-info">
                   <div className="author-name">Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC</div>
                   <div className="author-title">Nurse Practitioner | Data Researcher</div>

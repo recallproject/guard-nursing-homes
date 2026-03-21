@@ -332,7 +332,7 @@ export function ChainDetailPage() {
       <Helmet>
         <title>{decodedChainName} — Chain Performance | The Oversight Report</title>
         <meta name="description" content={`${decodedChainName} nursing home chain performance data. ${chainData.numberOfFacilities} facilities across ${chainData.numberOfStatesAndTerritoriesWithOperations} states.`} />
-        <link rel="canonical" href={`https://oversightreports.com/chain/${chainName}`} />
+        <link rel="canonical" href={`https://www.oversightreports.com/chain/${chainName}`} />
       </Helmet>
       {/* Breadcrumb */}
       <div className="chain-breadcrumb">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { submitLead } from '../utils/submitLead';
+import { track } from '../utils/analytics';
 
 /**
  * Email capture modal for AG Toolkit CSV exports
@@ -23,6 +24,8 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
 
     // Save to localStorage + send to webhook (non-blocking)
     await submitLead(form);
+
+    track('email_signup_submitted', { source: 'ag_toolkit_csv', organization: form.organization || '' });
 
     // Trigger CSV download immediately
     onSubmit(form);
@@ -84,7 +87,7 @@ export function EmailCaptureModal({ state, onSubmit, onClose }) {
             <button type="button" className="email-modal-cancel" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="email-modal-submit" disabled={!isValid}>
+            <button type="submit" className="email-modal-submit" disabled={!isValid} onClick={() => track('email_signup_clicked', { source: 'ag_toolkit_csv' })}>
               Download CSV
             </button>
           </div>

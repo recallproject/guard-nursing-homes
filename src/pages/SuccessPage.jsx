@@ -41,7 +41,7 @@ export default function SuccessPage() {
     <Helmet>
       <title>Welcome — Subscription Activated | The Oversight Report</title>
       <meta name="description" content="Your subscription is now active. Access your nursing home safety tools." />
-      <link rel="canonical" href="https://oversightreports.com/success" />
+      <link rel="canonical" href="https://www.oversightreports.com/success" />
     </Helmet>
     <div style={{
       minHeight: '100vh',

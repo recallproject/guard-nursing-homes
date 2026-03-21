@@ -10,7 +10,7 @@ export function TermsPage() {
       <Helmet>
         <title>Terms of Use | The Oversight Report</title>
         <meta name="description" content="Terms of use for The Oversight Report nursing home safety data platform." />
-        <link rel="canonical" href="https://oversightreports.com/terms" />
+        <link rel="canonical" href="https://www.oversightreports.com/terms" />
       </Helmet>
       <div className="legal-container">
         <h1>Terms of Use</h1>

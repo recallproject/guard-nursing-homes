@@ -299,7 +299,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
       <Helmet>
         <title>{facility?.name || 'Facility'} — Evidence Package | The Oversight Report</title>
         <meta name="description" content={`Evidence package for ${facility?.name || 'facility'} in ${facility?.city || ''}, ${facility?.state || ''}. Comprehensive safety documentation for legal and advocacy use.`} />
-        <link rel="canonical" href={`https://oversightreports.com/evidence/${ccn}`} />
+        <link rel="canonical" href={`https://www.oversightreports.com/evidence/${ccn}`} />
       </Helmet>
       {/* Header */}
       <div className="ev-header no-print">

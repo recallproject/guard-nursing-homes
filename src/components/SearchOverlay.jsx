@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import RiskBadge from './RiskBadge';
+import { track } from '../utils/analytics';
 import '../styles/search.css';
 
 /**
@@ -59,6 +60,7 @@ export default function SearchOverlay({ onClose, searchFacilities }) {
   // Navigate to facility page
   const handleSelectFacility = (facility) => {
     window.plausible && window.plausible('Facility-Search', {props: {query: query.slice(0, 100), facility: facility.name, ccn: facility.ccn}});
+    track('facility_searched', { query: query.slice(0, 100), facility_name: facility.name, ccn: facility.ccn });
     navigate(`/facility/${facility.ccn}`);
     onClose();
   };

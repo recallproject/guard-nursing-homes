@@ -331,7 +331,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
       <Helmet>
         <title>Nursing Home Ownership Lookup | The Oversight Report</title>
         <meta name="description" content="Search nursing home owners and operators. See portfolio performance, average ratings, and patterns across all facilities." />
-        <link rel="canonical" href="https://oversightreports.com/ownership" />
+        <link rel="canonical" href="https://www.oversightreports.com/ownership" />
       </Helmet>
       {/* Header */}
       <div className="ownership-header" ref={headerRef}>

@@ -185,7 +185,7 @@ export function MapPage() {
       <Helmet>
         <title>The Oversight Report — Nursing Home Safety Data</title>
         <meta name="description" content="Search 14,713 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />
-        <link rel="canonical" href="https://oversightreports.com/" />
+        <link rel="canonical" href="https://www.oversightreports.com/" />
       </Helmet>
       {/* V4 Landing Page */}
       {(view === 'hero' || view === 'states') && (

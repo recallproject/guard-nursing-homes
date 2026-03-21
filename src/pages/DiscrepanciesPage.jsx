@@ -165,7 +165,7 @@ export default function DiscrepanciesPage() {
       <Helmet>
         <title>Staffing Discrepancy Index — Self-Reported vs. Reality | The Oversight Report</title>
         <meta name="description" content="Check if a nursing home's reported staffing matches payroll records. Compare claimed vs. actual nurse staffing for 14,713 facilities." />
-        <link rel="canonical" href="https://oversightreports.com/discrepancies" />
+        <link rel="canonical" href="https://www.oversightreports.com/discrepancies" />
       </Helmet>
       <div className="container-wide">
 

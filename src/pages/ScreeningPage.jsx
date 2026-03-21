@@ -393,7 +393,7 @@ export function ScreeningPage() {
       <Helmet>
         <title>State Screening Reports — Nursing Home Safety by State | The Oversight Report</title>
         <meta name="description" content="State-level nursing home screening reports. Identify high-risk facilities by state — designed for AG offices, Medicaid Control Units, and investigative journalists." />
-        <link rel="canonical" href="https://oversightreports.com/screening" />
+        <link rel="canonical" href="https://www.oversightreports.com/screening" />
       </Helmet>
       {/* Header */}
       <div className="screening-header" ref={headerRef}>

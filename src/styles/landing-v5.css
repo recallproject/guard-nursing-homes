@@ -487,18 +487,403 @@
 .v5-sticky-btn.secondary { background: transparent; color: var(--blue); border: 1px solid var(--blue); }
 .v5-sticky-btn.secondary:hover { background: rgba(43,108,176,0.06); }
 
+/* ═══ LARGE SEARCH (Hero variant) ═══ */
+.v5-search-container--large { max-width: 640px; }
+.v5-search-box--large {
+  padding: 16px 20px;
+  border-radius: 16px;
+  border-width: 2px;
+  box-shadow: var(--shadow-lg);
+  gap: 12px;
+}
+.v5-search-input--large {
+  font-size: 18px;
+}
+.v5-search-btn {
+  flex-shrink: 0;
+  padding: 10px 28px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.v5-search-btn:hover {
+  background: var(--blue-hover);
+}
+
+/* ═══ HERO SOCIAL PROOF BAR ═══ */
+.v5-hero-proof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.v5-hero-proof-item {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.v5-hero-proof-sep {
+  color: var(--light-muted);
+  font-size: 13px;
+}
+
+/* ═══ HOW IT WORKS — 3 Steps ═══ */
+.v5-steps-grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+.v5-step-card {
+  flex: 1;
+  max-width: 280px;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.v5-step-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.v5-step-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(43,108,176,0.3);
+}
+.v5-step-icon {
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+.v5-step-title {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.v5-step-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.v5-step-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: var(--light-muted);
+  margin-top: 60px;
+}
+
+/* ═══ EMAIL CAPTURE ═══ */
+.v5-email-capture {
+  background: linear-gradient(135deg, var(--navy) 0%, #264673 100%);
+  padding: 48px 24px;
+}
+.v5-email-capture-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.v5-email-capture-text {
+  flex: 1;
+  min-width: 260px;
+}
+.v5-email-capture-text h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 6px;
+}
+.v5-email-capture-text p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.v5-email-form {
+  flex: 1;
+  min-width: 280px;
+}
+.v5-email-input-row {
+  display: flex;
+  gap: 8px;
+}
+.v5-email-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.v5-email-input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+.v5-email-input:focus {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+}
+.v5-email-submit {
+  padding: 12px 24px;
+  background: #F59E0B;
+  color: var(--navy);
+  border: none;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.v5-email-submit:hover {
+  background: #FBBF24;
+  transform: translateY(-1px);
+}
+.v5-email-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+.v5-email-fine-print {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 8px;
+}
+.v5-email-error {
+  font-size: 12px;
+  color: #FCA5A5;
+  margin-top: 6px;
+}
+.v5-email-success {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+/* ═══ FEATURED FACILITIES GRID ═══ */
+.v5-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.v5-featured-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.v5-featured-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+.v5-featured-accent {
+  height: 4px;
+}
+.v5-featured-accent.critical { background: linear-gradient(90deg, var(--red), #EF4444); }
+.v5-featured-accent.high { background: linear-gradient(90deg, var(--orange), #F59E0B); }
+.v5-featured-accent.moderate { background: linear-gradient(90deg, #EAB308, #FDE047); }
+.v5-featured-accent.good { background: linear-gradient(90deg, #059669, #34D399); }
+.v5-featured-body {
+  padding: 16px;
+  flex: 1;
+}
+.v5-featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.v5-featured-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.v5-risk-pill.moderate { background: rgba(234,179,8,0.1); color: #A16207; }
+.v5-featured-location {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.v5-featured-stats {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.v5-featured-stats span {
+  background: #F8FAFC;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.v5-featured-cta-link {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  border-top: 1px solid var(--border);
+  transition: all 0.15s ease;
+}
+.v5-featured-card:hover .v5-featured-cta-link {
+  background: var(--blue);
+  color: white;
+}
+.v5-featured-browse-all {
+  text-align: center;
+  margin-top: 20px;
+}
+.v5-browse-all-btn {
+  padding: 12px 32px;
+  background: var(--card-bg);
+  color: var(--blue);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.v5-browse-all-btn:hover {
+  background: var(--blue);
+  color: white;
+}
+
+/* ═══ PRICING BANNER ═══ */
+.v5-pricing-banner {
+  background: linear-gradient(135deg, #FDF2F8 0%, #FEF3C7 100%);
+  border-top: 1px solid #FBCFE8;
+  border-bottom: 1px solid #FDE68A;
+  padding: 40px 24px;
+}
+.v5-pricing-banner-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.v5-pricing-banner-text {
+  flex: 1;
+  min-width: 260px;
+}
+.v5-pricing-banner-text h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.v5-pricing-banner-text p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.v5-pricing-banner-btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: var(--orange);
+  color: white;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: inherit;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.v5-pricing-banner-btn:hover {
+  background: #92400E;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(180,83,9,0.3);
+}
+
+/* ═══ STICKY CTA — tertiary button ═══ */
+.v5-sticky-btn.tertiary {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  padding: 8px 16px;
+}
+.v5-sticky-btn.tertiary:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+/* Secondary as link */
+a.v5-sticky-btn.secondary {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
 /* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
   .v5-hero { padding: 100px 20px 40px; }
   .v5-hero-title { font-size: 32px; }
+  .v5-hero-proof { flex-direction: column; gap: 4px; }
+  .v5-hero-proof-sep { display: none; }
+  .v5-search-box--large { padding: 12px 14px; }
+  .v5-search-input--large { font-size: 16px; }
+  .v5-search-btn { padding: 10px 20px; font-size: 14px; min-height: 44px; }
   .v5-stats-strip { grid-template-columns: 1fr; gap: 12px; padding: 0 20px; }
   .v5-flagged-grid { grid-template-columns: 1fr; }
   .v5-features-grid { grid-template-columns: repeat(2, 1fr); }
   .v5-features-grid .v5-feature-tile:nth-child(5) { grid-column: 1 / -1; max-width: 50%; margin: 0 auto; }
   .v5-state-grid { grid-template-columns: repeat(3, 1fr); }
   .v5-personas-grid { grid-template-columns: 1fr; }
+  .v5-steps-grid { flex-direction: column; align-items: center; gap: 16px; }
+  .v5-step-arrow { transform: rotate(90deg); margin: 0; padding: 0; }
+  .v5-step-card { max-width: 100%; width: 100%; }
   .v5-how-agents { gap: 16px; flex-wrap: wrap; }
-  .v5-sticky-cta { flex-direction: column; gap: 8px; padding: 10px 16px; }
+  .v5-sticky-cta { display: none !important; }
   .v5-method-links { flex-direction: column; gap: 12px; }
   .v5-trust-quote-inner { flex-direction: column; gap: 24px; text-align: center; }
   .v5-trust-quote { min-width: unset; }
@@ -507,4 +892,214 @@
   .v5-trust-badges { align-items: center; }
   .v5-cms-alert-card { margin: 0 16px 24px; }
   .v5-how-card { padding: 32px 20px; }
+  .v5-email-capture-inner { flex-direction: column; gap: 20px; text-align: center; }
+  .v5-email-input-row { flex-direction: column; }
+  .v5-featured-grid { grid-template-columns: 1fr; }
+  .v5-pricing-banner-inner { flex-direction: column; text-align: center; }
+  .v5-pricing-banner-btn { width: 100%; text-align: center; }
+
+  /* Add bottom padding for mobile sticky CTA bar */
+  .v5-footer { padding-bottom: 100px; }
+}
+
+/* ═══ MOBILE STICKY CTA BAR — visible only on mobile ═══ */
+.v5-mobile-cta-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .v5-mobile-cta-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--border);
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .v5-mobile-cta-bar.v5-sticky-visible {
+    transform: translateY(0);
+  }
+
+  .v5-mobile-cta-btn {
+    flex: 1;
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .v5-mobile-cta-btn.primary {
+    background: var(--blue);
+    color: white;
+  }
+  .v5-mobile-cta-btn.primary:hover,
+  .v5-mobile-cta-btn.primary:active {
+    background: var(--blue-hover);
+  }
+
+  .v5-mobile-cta-btn.secondary {
+    background: transparent;
+    color: var(--blue);
+    border: 1.5px solid var(--blue);
+  }
+  .v5-mobile-cta-btn.secondary:hover,
+  .v5-mobile-cta-btn.secondary:active {
+    background: rgba(43, 108, 176, 0.06);
+  }
+}
+
+/* ═══ TOUCH TARGET MINIMUMS (44x44px per WCAG / Apple HIG) ═══ */
+.v5-flagged-cta {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-featured-cta-link {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-cms-alert-dismiss {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-search-clear {
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v5-or-browse a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 8px;
+}
+
+.v5-method-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.v5-footer-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.v5-browse-all-btn {
+  min-height: 48px;
+}
+
+.v5-email-submit {
+  min-height: 48px;
+}
+
+.v5-state-card {
+  min-height: 48px;
+}
+
+.v5-sticky-btn {
+  min-height: 48px;
+}
+
+.v5-pricing-banner-btn {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ═══ iOS ZOOM PREVENTION — All inputs must be >= 16px ═══ */
+.v5-search-input {
+  font-size: 16px;
+}
+
+.v5-state-filter-input {
+  font-size: 16px;
+}
+
+.v5-email-input {
+  font-size: 16px;
+}
+
+/* ═══ RAGECLICK PREVENTION ═══ */
+
+/* Feature tiles have cursor: pointer but NO click handler -- remove misleading affordance */
+.v5-feature-tile {
+  cursor: default;
+}
+.v5-feature-tile:hover {
+  transform: none;
+}
+
+/* Stat cards hover-lift suggests clickability but they aren't clickable */
+.v5-stat-card {
+  cursor: default;
+}
+.v5-stat-card:hover {
+  transform: none;
+}
+
+/* Trust badges look like buttons but aren't */
+.v5-trust-badge {
+  cursor: default;
+}
+
+/* Step cards hover-lift with no click handler */
+.v5-step-card:hover {
+  transform: none;
+  cursor: default;
+}
+
+/* Persona action: style as a proper tappable element */
+.v5-persona-action {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+/* ═══ SAFE AREA INSET — iPhone home bar ═══ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .v5-sticky-cta {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
+  .v5-footer {
+    padding-bottom: calc(40px + env(safe-area-inset-bottom));
+  }
 }

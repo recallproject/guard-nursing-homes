@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 
 const EVIDENCE_SECRET = process.env.EVIDENCE_SECRET;
-const SITE_URL = process.env.SITE_URL || 'https://oversightreports.com';
+const SITE_URL = process.env.SITE_URL || 'https://www.oversightreports.com';
 const FORMSPREE_ID = process.env.FORMSPREE_ID || '';
 
 function generateToken(ccn) {

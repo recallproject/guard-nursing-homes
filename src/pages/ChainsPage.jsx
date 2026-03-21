@@ -230,7 +230,7 @@ export function ChainsPage() {
       <Helmet>
         <title>Nursing Home Chain Rankings | The Oversight Report</title>
         <meta name="description" content="Rankings of nursing home chains by safety performance. See how corporate operators compare on inspection records, staffing levels, and fines." />
-        <link rel="canonical" href="https://oversightreports.com/chains" />
+        <link rel="canonical" href="https://www.oversightreports.com/chains" />
       </Helmet>
       {/* Header */}
       <div className="chains-header" ref={headerRef}>

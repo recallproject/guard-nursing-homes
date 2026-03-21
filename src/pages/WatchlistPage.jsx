@@ -226,7 +226,7 @@ export function WatchlistPage() {
       <Helmet>
         <title>My Favorites — Facility Monitoring | The Oversight Report</title>
         <meta name="description" content="Track nursing homes you care about. Get a personalized dashboard of safety data for your favorite facilities." />
-        <link rel="canonical" href="https://oversightreports.com/watchlist" />
+        <link rel="canonical" href="https://www.oversightreports.com/watchlist" />
       </Helmet>
       {/* Header */}
       <div className="watchlist-header" ref={headerRef}>

@@ -22,8 +22,8 @@ export default function KnowYourRightsPage() {
         <meta name="description" content="Your legal rights when a nursing home tries to discharge your loved one before they're ready. Step-by-step appeal process, free resources, and how to fight an unsafe discharge." />
         <meta property="og:title" content="Know Your Rights — Nursing Home Discharge & Safety" />
         <meta property="og:description" content="If your loved one is being discharged from a nursing home before they're ready, you have legal rights. Here's how to use them." />
-        <meta property="og:url" content="https://oversightreports.com/know-your-rights" />
-        <link rel="canonical" href="https://oversightreports.com/know-your-rights" />
+        <meta property="og:url" content="https://www.oversightreports.com/know-your-rights" />
+        <link rel="canonical" href="https://www.oversightreports.com/know-your-rights" />
       </Helmet>
 
       {/* HERO */}

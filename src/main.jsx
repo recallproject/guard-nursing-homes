@@ -4,6 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx';
 import { WatchlistProvider } from './hooks/useWatchlist';
+import { trackOnce, getEntryContext } from './utils/analytics';
+
+// Fire session_started once per browser session with entry page, referrer, and UTMs
+trackOnce('session_started', getEntryContext());
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -45,6 +49,15 @@ class ErrorBoundary extends React.Component {
     }
     return this.props.children;
   }
+}
+
+// Register service worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch((err) => {
+      console.warn('SW registration failed:', err);
+    });
+  });
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(

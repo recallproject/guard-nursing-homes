@@ -7,7 +7,7 @@ const __dirname = dirname(__filename);
 const distDir = join(__dirname, '..', 'dist');
 const publicDir = join(__dirname, '..', 'public');
 
-const BASE_URL = 'https://oversightreports.com';
+const BASE_URL = 'https://www.oversightreports.com';
 
 // Read the built index.html as our template
 const template = readFileSync(join(distDir, 'index.html'), 'utf8');

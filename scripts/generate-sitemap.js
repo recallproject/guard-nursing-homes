@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const publicDir = join(__dirname, '..', 'public');
 
-const BASE_URL = 'https://oversightreports.com';
+const BASE_URL = 'https://www.oversightreports.com';
 const today = new Date().toISOString().split('T')[0];
 
 // Load facility data

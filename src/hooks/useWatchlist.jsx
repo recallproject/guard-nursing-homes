@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, createContext, useCallback, useMemo } from 'react';
+import { track } from '../utils/analytics';
 
 const WATCHLIST_KEY = 'oversight_report_watchlist';
 
@@ -40,6 +41,7 @@ export function WatchlistProvider({ children }) {
       return [...prev, { ccn, addedAt: new Date().toISOString() }];
     });
     setLastAdded({ ccn, name, timestamp: Date.now() });
+    track('watchlist_added', { ccn, facility_name: name });
   }, []);
 
   const clearLastAdded = useCallback(() => {

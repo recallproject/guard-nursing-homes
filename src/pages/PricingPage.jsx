@@ -6,6 +6,7 @@ import Footer from '../components/landing/Footer';
 import { useNavigate } from 'react-router-dom';
 import '../styles/design.css';
 import { checkoutSingleReport } from '../utils/stripe';
+import { track } from '../utils/analytics';
 import '../styles/pricing.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -77,6 +78,7 @@ export default function PricingPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
     window.plausible && window.plausible('Pricing-Page-View');
+    track('pricing_viewed');
   }, []);
 
   useEffect(() => {
@@ -150,7 +152,7 @@ export default function PricingPage() {
       <Helmet>
         <title>Pricing — Evidence Packages & Professional Plans | The Oversight Report</title>
         <meta name="description" content="Nursing home evidence packages for families and attorneys. Professional monitoring tools for journalists and care managers." />
-        <link rel="canonical" href="https://oversightreports.com/pricing" />
+        <link rel="canonical" href="https://www.oversightreports.com/pricing" />
       </Helmet>
       {/* Hero Section */}
       <section className="pricing-hero">
@@ -199,7 +201,7 @@ export default function PricingPage() {
                     className={`btn ${
                       tier.ctaType === 'primary' ? 'btn-primary' : 'btn-secondary'
                     } pricing-cta`}
-                    onClick={(e) => { e.stopPropagation(); handleCtaClick(tier); }}
+                    onClick={(e) => { e.stopPropagation(); track('pricing_cta_clicked', { tier: tier.name, price: tier.price }); handleCtaClick(tier); }}
                   >
                     {tier.cta}
                   </button>

@@ -217,7 +217,7 @@ export default function HighRiskPage() {
       <Helmet>
         <title>High Risk Nursing Homes — National Watch List | The Oversight Report</title>
         <meta name="description" content="Nursing homes that meet multiple high-risk criteria: jeopardy citations, understaffing, high fines, and low ratings." />
-        <link rel="canonical" href="https://oversightreports.com/high-risk" />
+        <link rel="canonical" href="https://www.oversightreports.com/high-risk" />
       </Helmet>
       <div className="container-wide">
         {/* Header */}

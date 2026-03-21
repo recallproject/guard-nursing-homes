@@ -1,38 +1,49 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
-import { FacilityPage } from './pages/FacilityPage';
-import { ProfessionalsPage } from './pages/ProfessionalsPage';
-import PricingPage from './pages/PricingPage';
-import { ScreeningPage } from './pages/ScreeningPage';
-import DiscrepanciesPage from './pages/DiscrepanciesPage';
-import OwnershipPage from './pages/OwnershipPage';
-import { ReferralScorecardPage } from './pages/ReferralScorecardPage';
-import { EvidencePage } from './pages/EvidencePage';
-import { WatchlistPage } from './pages/WatchlistPage';
-import { TrendsPage } from './pages/TrendsPage';
-import { MethodologyPage } from './pages/MethodologyPage';
-import { AGToolkitPage } from './pages/AGToolkitPage';
-import { TermsPage } from './pages/TermsPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { ChainsPage } from './pages/ChainsPage';
-import { ChainDetailPage } from './pages/ChainDetailPage';
-import HighRiskPage from './pages/HighRiskPage';
-import AboutPage from './pages/AboutPage';
-import SuccessPage from './pages/SuccessPage';
-import ComparePage from './pages/ComparePage';
-import AskClinicianPage from './pages/AskClinicianPage';
-import AskClinicianSubmittedPage from './pages/AskClinicianSubmittedPage';
-import EvidenceSamplePage from './pages/EvidenceSamplePage';
-import EvidenceSuccessPage from './pages/EvidenceSuccessPage';
-import EvidenceDownloadPage from './pages/EvidenceDownloadPage';
-import KnowYourRightsPage from './pages/KnowYourRightsPage';
-import DataTransparencyPage from './pages/DataTransparencyPage';
-import NotFoundPage from './pages/NotFoundPage';
 import FeedbackButton from './components/FeedbackButton';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
 import './styles/design.css';
+
+// Lazy-load all pages except the homepage (MapPage)
+const FacilityPage = lazy(() => import('./pages/FacilityPage').then(m => ({ default: m.FacilityPage })));
+const ProfessionalsPage = lazy(() => import('./pages/ProfessionalsPage').then(m => ({ default: m.ProfessionalsPage })));
+const PricingPage = lazy(() => import('./pages/PricingPage'));
+const ScreeningPage = lazy(() => import('./pages/ScreeningPage').then(m => ({ default: m.ScreeningPage })));
+const DiscrepanciesPage = lazy(() => import('./pages/DiscrepanciesPage'));
+const OwnershipPage = lazy(() => import('./pages/OwnershipPage'));
+const ReferralScorecardPage = lazy(() => import('./pages/ReferralScorecardPage').then(m => ({ default: m.ReferralScorecardPage })));
+const EvidencePage = lazy(() => import('./pages/EvidencePage').then(m => ({ default: m.EvidencePage })));
+const WatchlistPage = lazy(() => import('./pages/WatchlistPage').then(m => ({ default: m.WatchlistPage })));
+const TrendsPage = lazy(() => import('./pages/TrendsPage').then(m => ({ default: m.TrendsPage })));
+const MethodologyPage = lazy(() => import('./pages/MethodologyPage').then(m => ({ default: m.MethodologyPage })));
+const AGToolkitPage = lazy(() => import('./pages/AGToolkitPage').then(m => ({ default: m.AGToolkitPage })));
+const TermsPage = lazy(() => import('./pages/TermsPage').then(m => ({ default: m.TermsPage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
+const ChainsPage = lazy(() => import('./pages/ChainsPage').then(m => ({ default: m.ChainsPage })));
+const ChainDetailPage = lazy(() => import('./pages/ChainDetailPage').then(m => ({ default: m.ChainDetailPage })));
+const HighRiskPage = lazy(() => import('./pages/HighRiskPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const SuccessPage = lazy(() => import('./pages/SuccessPage'));
+const ComparePage = lazy(() => import('./pages/ComparePage'));
+const AskClinicianPage = lazy(() => import('./pages/AskClinicianPage'));
+const AskClinicianSubmittedPage = lazy(() => import('./pages/AskClinicianSubmittedPage'));
+const EvidenceSamplePage = lazy(() => import('./pages/EvidenceSamplePage'));
+const EvidenceSuccessPage = lazy(() => import('./pages/EvidenceSuccessPage'));
+const EvidenceDownloadPage = lazy(() => import('./pages/EvidenceDownloadPage'));
+const KnowYourRightsPage = lazy(() => import('./pages/KnowYourRightsPage'));
+const DataTransparencyPage = lazy(() => import('./pages/DataTransparencyPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+function LoadingFallback() {
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh', color: '#94a3b8' }}>
+      Loading...
+    </div>
+  );
+}
 
 function App() {
   const location = useLocation();
@@ -42,37 +53,39 @@ function App() {
   return (
     <>
       <Header transparent={isLandingPage} lightMode={isLandingPage} />
-      <Routes>
-        <Route path="/" element={<MapPage />} />
-        <Route path="/facility/:ccn" element={<FacilityPage />} />
-        <Route path="/professionals" element={<ProfessionalsPage />} />
-        <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/screening" element={<ScreeningPage />} />
-        <Route path="/discrepancies" element={<DiscrepanciesPage />} />
-        <Route path="/ownership" element={<OwnershipPage />} />
-        <Route path="/referral-scorecard" element={<ReferralScorecardPage />} />
-        <Route path="/evidence/:ccn" element={<EvidencePage />} />
-        <Route path="/watchlist" element={<WatchlistPage />} />
-        <Route path="/trends" element={<TrendsPage />} />
-        <Route path="/methodology" element={<MethodologyPage />} />
-        <Route path="/ag-toolkit" element={<AGToolkitPage />} />
-        <Route path="/chains" element={<ChainsPage />} />
-        <Route path="/chain/:chainName" element={<ChainDetailPage />} />
-        <Route path="/high-risk" element={<HighRiskPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/success" element={<SuccessPage />} />
-        <Route path="/terms" element={<TermsPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/compare" element={<ComparePage />} />
-        <Route path="/ask-a-clinician" element={<AskClinicianPage />} />
-        <Route path="/ask-a-clinician-submitted" element={<AskClinicianSubmittedPage />} />
-        <Route path="/evidence-success" element={<EvidenceSuccessPage />} />
-        <Route path="/evidence-download" element={<EvidenceDownloadPage />} />
-        <Route path="/evidence-sample" element={<EvidenceSamplePage />} />
-        <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
-        <Route path="/data-transparency" element={<DataTransparencyPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
+          <Route path="/" element={<MapPage />} />
+          <Route path="/facility/:ccn" element={<FacilityPage />} />
+          <Route path="/professionals" element={<ProfessionalsPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/screening" element={<ScreeningPage />} />
+          <Route path="/discrepancies" element={<DiscrepanciesPage />} />
+          <Route path="/ownership" element={<OwnershipPage />} />
+          <Route path="/referral-scorecard" element={<ReferralScorecardPage />} />
+          <Route path="/evidence/:ccn" element={<EvidencePage />} />
+          <Route path="/watchlist" element={<WatchlistPage />} />
+          <Route path="/trends" element={<TrendsPage />} />
+          <Route path="/methodology" element={<MethodologyPage />} />
+          <Route path="/ag-toolkit" element={<AGToolkitPage />} />
+          <Route path="/chains" element={<ChainsPage />} />
+          <Route path="/chain/:chainName" element={<ChainDetailPage />} />
+          <Route path="/high-risk" element={<HighRiskPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/compare" element={<ComparePage />} />
+          <Route path="/ask-a-clinician" element={<AskClinicianPage />} />
+          <Route path="/ask-a-clinician-submitted" element={<AskClinicianSubmittedPage />} />
+          <Route path="/evidence-success" element={<EvidenceSuccessPage />} />
+          <Route path="/evidence-download" element={<EvidenceDownloadPage />} />
+          <Route path="/evidence-sample" element={<EvidenceSamplePage />} />
+          <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
+          <Route path="/data-transparency" element={<DataTransparencyPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
       <FeedbackButton />
       <SaveToast
         visible={!!lastAdded}

@@ -16,8 +16,8 @@ export default function DataTransparencyPage() {
         <meta name="description" content="As of February 2026, complaint investigation data is no longer available on Care Compare. The Oversight Report preserves this data from federal inspection records. Here's what changed." />
         <meta property="og:title" content="CMS Data Transparency Changes — The Oversight Report" />
         <meta property="og:description" content="Complaint investigation data is no longer available on Care Compare. The Oversight Report preserves it from federal inspection records so families retain access." />
-        <meta property="og:url" content="https://oversightreports.com/data-transparency" />
-        <link rel="canonical" href="https://oversightreports.com/data-transparency" />
+        <meta property="og:url" content="https://www.oversightreports.com/data-transparency" />
+        <link rel="canonical" href="https://www.oversightreports.com/data-transparency" />
       </Helmet>
 
       {/* HERO */}

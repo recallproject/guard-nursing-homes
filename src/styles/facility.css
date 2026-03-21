@@ -1,5 +1,46 @@
 /* Facility Report Card — Streamlit Document Style */
 
+/* === Breadcrumb Navigation === */
+.fp-breadcrumbs {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.fp-breadcrumb-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.fp-breadcrumb-list li {
+  display: flex;
+  align-items: center;
+}
+
+.fp-breadcrumb-list li:not(:last-child)::after {
+  content: '/';
+  margin: 0 0.5rem;
+  color: #94a3b8;
+}
+
+.fp-breadcrumb-list li a {
+  color: var(--accent-blue, #2B6CB0);
+  text-decoration: none;
+}
+
+.fp-breadcrumb-list li a:hover {
+  text-decoration: underline;
+}
+
+.fp-breadcrumb-list li:last-child {
+  color: #334155;
+  font-weight: 500;
+}
+
 /* === PE/REIT Ownership Badges === */
 .ownership-badges {
   display: flex;

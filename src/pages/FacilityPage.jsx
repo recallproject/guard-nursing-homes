@@ -11,6 +11,7 @@ import { ActionPaths } from '../components/ActionPaths';
 import StaffingSection from '../components/StaffingSection';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { track } from '../utils/analytics';
 
 import ClinicianCTA from '../components/ClinicianCTA';
 import ExplainerBanners from '../components/facility/ExplainerBanners';
@@ -278,6 +279,7 @@ export function FacilityPage() {
   useEffect(() => {
     if (facility) {
       window.plausible && window.plausible('Facility-Page-View', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state, stars: String(facility.stars || '')}});
+      track('facility_viewed', { facility_name: facility.name, ccn: facility.ccn, state: facility.state, stars: String(facility.stars || '') });
     }
   }, [facility?.ccn]);
 
@@ -379,13 +381,55 @@ export function FacilityPage() {
   return (
     <div className="fp" ref={pageRef}>
       <Helmet>
-        <title>{facility.name} — Safety Report | The Oversight Report</title>
-        <meta name="description" content={`${facility.name} in ${facility.city}, ${facility.state}. ${facility.stars}/5 stars, risk score ${facility.composite?.toFixed(0)}/100. Staffing: ${facility.total_hprd?.toFixed(1)} HPRD. ${facility.total_deficiencies || 0} deficiencies. Independent safety data.`} />
-        <meta property="og:title" content={`${facility.name} — Safety Report`} />
-        <meta property="og:description" content={`${facility.stars}/5 stars · Risk: ${facility.composite?.toFixed(0)}/100 · ${facility.total_deficiencies || 0} deficiencies · ${facility.city}, ${facility.state}`} />
-        <meta property="og:url" content={`https://oversightreports.com/facility/${facility.ccn}`} />
-        <link rel="canonical" href={`https://oversightreports.com/facility/${facility.ccn}`} />
+        <title>{`${facility.name}, ${facility.city}, ${facility.state} - Oversight Report | OversightReports`}</title>
+        <meta name="description" content={`${facility.name} in ${facility.city}, ${facility.state}. ${facility.stars}/5 stars, ${facility.total_deficiencies || 0} deficiencies. Independent nursing home safety data.`} />
+        <meta property="og:title" content={`${facility.name}, ${facility.city}, ${facility.state} - Oversight Report`} />
+        <meta property="og:description" content={`${facility.stars}/5 stars · ${facility.total_deficiencies || 0} deficiencies · Independent safety data for ${facility.city}, ${facility.state}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://www.oversightreports.com/facility/${facility.ccn}`} />
+        <meta property="og:image" content="https://www.oversightreports.com/og-image.png" />
+        <link rel="canonical" href={`https://www.oversightreports.com/facility/${facility.ccn}`} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "MedicalOrganization",
+          "name": facility.name,
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": facility.address || undefined,
+            "addressLocality": facility.city,
+            "addressRegion": facility.state,
+            "postalCode": facility.zip || undefined,
+            "addressCountry": "US"
+          },
+          ...(facility.phone ? { "telephone": facility.phone } : {}),
+          "url": `https://www.oversightreports.com/facility/${facility.ccn}`,
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": facility.stars,
+            "bestRating": 5,
+            "worstRating": 1,
+            "ratingCount": 1
+          }
+        })}</script>
       </Helmet>
+      {/* Breadcrumb Navigation */}
+      <nav className="fp-breadcrumbs" aria-label="Breadcrumb">
+        <ol className="fp-breadcrumb-list" itemScope itemType="https://schema.org/BreadcrumbList">
+          <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <Link to="/" itemProp="item"><span itemProp="name">Home</span></Link>
+            <meta itemProp="position" content="1" />
+          </li>
+          <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <Link to={`/?state=${facility.state}`} itemProp="item"><span itemProp="name">{facility.state}</span></Link>
+            <meta itemProp="position" content="2" />
+          </li>
+          <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+            <span itemProp="name">{facility.name}</span>
+            <meta itemProp="position" content="3" />
+          </li>
+        </ol>
+      </nav>
+
       {/* Header */}
       <div className="fp-header">
         {fromState ? (

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oversightreports.com/sitemap.xml
+Sitemap: https://www.oversightreports.com/sitemap.xml
