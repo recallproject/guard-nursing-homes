@@ -19,6 +19,7 @@ import MetricTooltip from '../components/facility/MetricTooltip';
 import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisMean';
 import FlagExplainer from '../components/facility/FlagExplainer';
 import ReportErrorBar from '../components/facility/ReportErrorBar';
+import AntipsychoticAlert from '../components/facility/AntipsychoticAlert';
 import '../styles/facility.css';
 import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
@@ -473,6 +474,9 @@ export function FacilityPage() {
           </p>
           <p className="fp-ccn">CMS CCN: {ccn}</p>
         </div>
+
+        {/* Antipsychotic Alert Banner */}
+        <AntipsychoticAlert ccn={ccn} />
 
         {/* Section 2: Ownership Alerts — PE/REIT badges, ownership changes, AHCA lobbying */}
         {((facility.pe_owned || facility.reit_owned) || facility.ownership_changed_recently || (facility.chain_name && ahcaData?.[facility.chain_name.toUpperCase()])) && (

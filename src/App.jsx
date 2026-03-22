@@ -35,6 +35,7 @@ const EvidenceSuccessPage = lazy(() => import('./pages/EvidenceSuccessPage'));
 const EvidenceDownloadPage = lazy(() => import('./pages/EvidenceDownloadPage'));
 const KnowYourRightsPage = lazy(() => import('./pages/KnowYourRightsPage'));
 const DataTransparencyPage = lazy(() => import('./pages/DataTransparencyPage'));
+const AntipsychoticTrendsPage = lazy(() => import('./pages/AntipsychoticTrendsPage').then(m => ({ default: m.AntipsychoticTrendsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function LoadingFallback() {
@@ -83,6 +84,7 @@ function App() {
           <Route path="/evidence-sample" element={<EvidenceSamplePage />} />
           <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
           <Route path="/data-transparency" element={<DataTransparencyPage />} />
+          <Route path="/antipsychotic-trends" element={<AntipsychoticTrendsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

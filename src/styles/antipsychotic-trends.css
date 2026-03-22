@@ -1,0 +1,609 @@
+/* ========================================
+   ANTIPSYCHOTIC TRENDS PAGE STYLES
+   ======================================== */
+
+.ap-trends-page {
+  min-height: 100vh;
+  padding: 80px 0 60px;
+  background-color: var(--bg-deep);
+}
+
+/* ========================================
+   HERO
+   ======================================== */
+
+.ap-trends-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.ap-trends-hero__tag {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(124, 58, 237, 0.06));
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: var(--accent-purple);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
+}
+
+.ap-trends-hero__title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.ap-trends-hero__subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+}
+
+.ap-trends-hero__source {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.ap-trends-hero__source a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ap-trends-hero__source a:hover {
+  color: var(--primary-light);
+}
+
+/* ========================================
+   NATIONAL STATS
+   ======================================== */
+
+.ap-trends-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.ap-trends-stat-card {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.ap-trends-stat-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ap-trends-stat-card--highlight {
+  border-color: rgba(124, 58, 237, 0.3);
+  background: linear-gradient(135deg, var(--bg-card), rgba(124, 58, 237, 0.03));
+}
+
+.ap-trends-stat__value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  color: var(--text-white);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.ap-trends-stat__label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-cream);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.ap-trends-stat__subtext {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ========================================
+   RISK LEVEL BADGES
+   ======================================== */
+
+.ap-risk-badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ap-risk-badge--critical {
+  background-color: rgba(220, 38, 38, 0.12);
+  color: var(--accent-red);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+.ap-risk-badge--high {
+  background-color: rgba(234, 88, 12, 0.12);
+  color: var(--risk-high);
+  border: 1px solid rgba(234, 88, 12, 0.25);
+}
+
+.ap-risk-badge--elevated {
+  background-color: rgba(217, 119, 6, 0.12);
+  color: var(--accent-orange);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+
+.ap-risk-badge--moderate {
+  background-color: rgba(13, 148, 136, 0.12);
+  color: var(--accent-teal);
+  border: 1px solid rgba(13, 148, 136, 0.25);
+}
+
+.ap-risk-badge--low {
+  background-color: rgba(5, 150, 105, 0.12);
+  color: var(--accent-green);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+/* ========================================
+   SECTIONS
+   ======================================== */
+
+.ap-trends-section {
+  margin-bottom: 3rem;
+}
+
+.ap-trends-section__title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--text-white);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.ap-trends-section__desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+/* ========================================
+   FACILITIES TABLE
+   ======================================== */
+
+.ap-trends-result-count {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.ap-trends-table-container {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.ap-trends-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.ap-trends-table thead {
+  background-color: rgba(124, 58, 237, 0.06);
+  border-bottom: 2px solid rgba(124, 58, 237, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.ap-trends-table th {
+  padding: 0.75rem 0.75rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-cream);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.ap-trends-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-fast);
+}
+
+.ap-trends-table th.sortable:hover {
+  color: var(--accent-purple);
+}
+
+.ap-trends-table tbody tr {
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast);
+}
+
+.ap-trends-table tbody tr:hover {
+  background-color: rgba(124, 58, 237, 0.03);
+}
+
+.ap-trends-table td {
+  padding: 0.65rem 0.75rem;
+  color: var(--text-cream);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.ap-trends-table .ap-col-rank {
+  width: 50px;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  text-align: center;
+}
+
+.ap-trends-table .ap-col-name {
+  min-width: 200px;
+  font-weight: 600;
+  color: var(--text-white);
+}
+
+.ap-trends-table .ap-col-state {
+  width: 60px;
+}
+
+.ap-trends-table .ap-col-rate {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  text-align: right;
+  width: 100px;
+}
+
+.ap-trends-table .ap-col-score {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-align: right;
+  width: 90px;
+}
+
+.ap-trends-table .ap-col-risk {
+  width: 110px;
+  text-align: center;
+}
+
+.ap-rate-critical {
+  color: var(--accent-red);
+}
+
+.ap-rate-high {
+  color: var(--risk-high);
+}
+
+.ap-rate-elevated {
+  color: var(--accent-orange);
+}
+
+.ap-rate-moderate {
+  color: var(--accent-teal);
+}
+
+/* ========================================
+   STATE BREAKDOWN
+   ======================================== */
+
+.ap-state-breakdown {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid var(--border-subtle);
+}
+
+.ap-state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.ap-state-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-card-light);
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  transition: all var(--transition-fast);
+}
+
+.ap-state-card:hover {
+  border-color: rgba(124, 58, 237, 0.3);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.ap-state-card__name {
+  font-weight: 600;
+  color: var(--text-white);
+  font-size: 0.95rem;
+}
+
+.ap-state-card__count {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--accent-purple);
+  font-size: 1.1rem;
+}
+
+/* ========================================
+   ABOUT / METHODOLOGY
+   ======================================== */
+
+.ap-about-section {
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 2rem;
+}
+
+.ap-about-section h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: var(--text-white);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.ap-about-section h3:first-child {
+  margin-top: 0;
+}
+
+.ap-about-section p {
+  color: var(--text-cream);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.ap-about-section ul {
+  margin: 0.75rem 0 1.25rem 1.5rem;
+  list-style-type: disc;
+}
+
+.ap-about-section li {
+  color: var(--text-cream);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.ap-about-section strong {
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+.ap-about-section a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ap-about-section a:hover {
+  color: var(--primary-light);
+}
+
+/* ========================================
+   DISCLAIMER & FOOTER
+   ======================================== */
+
+.ap-trends-disclaimer {
+  background-color: rgba(124, 58, 237, 0.06);
+  border: 2px solid rgba(124, 58, 237, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.ap-trends-disclaimer p {
+  color: var(--text-cream);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ap-trends-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ap-trends-footer p {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ========================================
+   LOADING & ERROR
+   ======================================== */
+
+.ap-trends-loading,
+.ap-trends-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: var(--text-cream);
+}
+
+.ap-trends-loading .loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--border-subtle);
+  border-top-color: var(--accent-purple);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+
+.ap-trends-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.ap-trends-pagination__btn {
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-subtle);
+  color: var(--text-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ap-trends-pagination__btn:hover:not(:disabled) {
+  background-color: var(--accent-purple);
+  border-color: var(--accent-purple);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.ap-trends-pagination__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ap-trends-pagination__info {
+  color: var(--text-cream);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .ap-trends-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ap-state-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .ap-trends-page {
+    padding: 60px 0 40px;
+  }
+
+  .ap-trends-hero__title {
+    font-size: 2rem;
+  }
+
+  .ap-trends-hero__subtitle {
+    font-size: 1rem;
+  }
+
+  .ap-trends-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .ap-trends-stat-card {
+    padding: 1.5rem;
+  }
+
+  .ap-trends-stat__value {
+    font-size: 2rem;
+  }
+
+  .ap-trends-section__title {
+    font-size: 1.5rem;
+  }
+
+  .ap-trends-table {
+    min-width: 650px;
+    font-size: 0.8rem;
+  }
+
+  .ap-trends-table th,
+  .ap-trends-table td {
+    padding: 0.5rem;
+  }
+
+  .ap-about-section {
+    padding: 1.5rem;
+  }
+
+  .ap-state-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  .ap-trends-pagination {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ap-trends-pagination__btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .ap-trends-hero__title {
+    font-size: 1.75rem;
+  }
+
+  .ap-trends-stat__value {
+    font-size: 1.75rem;
+  }
+
+  .ap-trends-stat__label {
+    font-size: 0.8rem;
+  }
+
+  .ap-trends-table {
+    min-width: 550px;
+    font-size: 0.75rem;
+  }
+}
