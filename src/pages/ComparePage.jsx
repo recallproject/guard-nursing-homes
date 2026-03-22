@@ -24,6 +24,7 @@ export default function ComparePage() {
       <Helmet>
         <title>Know Your Options | Nursing Home Search Tools Compared | The Oversight Report</title>
         <meta name="description" content="A comparison of nursing home search tools — Medicare Care Compare, ProPublica, A Place for Mom, and more. Learn how they work, who pays them, and what they don't tell you." />
+        <link rel="canonical" href="https://www.oversightreports.com/compare" />
       </Helmet>
 
       {/* ============ HERO ============ */}

@@ -20,6 +20,7 @@ import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisM
 import FlagExplainer from '../components/facility/FlagExplainer';
 import ReportErrorBar from '../components/facility/ReportErrorBar';
 import '../styles/facility.css';
+import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
 
 // Accordion component for abuse/neglect citation groups
@@ -335,15 +336,7 @@ export function FacilityPage() {
   }
 
   if (error || !facility) {
-    return (
-      <div className="fp">
-        <div className="fp-error">
-          <h1>Facility Not Found</h1>
-          <p>We couldn't find a facility with CCN: {ccn}</p>
-          <Link to="/">← Return to Map</Link>
-        </div>
-      </div>
-    );
+    return <NotFoundPage />;
   }
 
   // Helpers

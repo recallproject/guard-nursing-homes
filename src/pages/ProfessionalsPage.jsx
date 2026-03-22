@@ -15,6 +15,7 @@ export function ProfessionalsPage() {
       <Helmet>
         <title>Professional Tools — The Oversight Report</title>
         <meta name="description" content="Advanced tools for attorneys, journalists, regulators, and healthcare professionals. State screening, staffing discrepancies, ownership networks, and more." />
+        <link rel="canonical" href="https://www.oversightreports.com/professionals" />
       </Helmet>
 
       {/* Professional Tools Grid — includes its own header */}

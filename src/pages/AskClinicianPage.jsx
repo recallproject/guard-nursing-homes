@@ -93,6 +93,7 @@ export default function AskClinicianPage() {
       <Helmet>
         <title>Ask a Clinician — The Oversight Report</title>
         <meta name="description" content="Get a clinician's interpretation of any nursing home's public safety data. Written by a licensed Nurse Practitioner with 20+ years of experience." />
+        <link rel="canonical" href="https://www.oversightreports.com/ask-a-clinician" />
       </Helmet>
 
       {/* HERO */}
