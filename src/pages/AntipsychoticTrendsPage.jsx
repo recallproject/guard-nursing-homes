@@ -30,8 +30,11 @@ export function AntipsychoticTrendsPage() {
   const [sortColumn, setSortColumn] = useState('risk_score');
   const [sortDirection, setSortDirection] = useState('desc');
   const [currentPage, setCurrentPage] = useState(1);
+  const [stateFilter, setStateFilter] = useState('');
+  const [showAll, setShowAll] = useState(false);
   const pageRef = useRef(null);
 
+  const INITIAL_ROWS = 10;
   const ROWS_PER_PAGE = 25;
 
   // Fetch data
@@ -114,15 +117,25 @@ export function AntipsychoticTrendsPage() {
     };
   }, [facilities, metadata]);
 
-  // Top 50 by risk score, with sorting
+  // Unique states for filter dropdown
+  const uniqueStates = useMemo(() => {
+    const states = new Set(facilities.map(f => f.state).filter(Boolean));
+    return [...states].sort();
+  }, [facilities]);
+
+  // Top 50 by risk score, with state filter
   const top50 = useMemo(() => {
-    const sorted = [...facilities].sort((a, b) => {
+    let filtered = [...facilities];
+    if (stateFilter) {
+      filtered = filtered.filter(f => f.state === stateFilter);
+    }
+    filtered.sort((a, b) => {
       const scoreA = a.risk_score ?? a.riskScore ?? 0;
       const scoreB = b.risk_score ?? b.riskScore ?? 0;
       return scoreB - scoreA;
     });
-    return sorted.slice(0, 50);
-  }, [facilities]);
+    return filtered.slice(0, 50);
+  }, [facilities, stateFilter]);
 
   // Sorted table data
   const sortedTop50 = useMemo(() => {
@@ -158,10 +171,9 @@ export function AntipsychoticTrendsPage() {
     return list;
   }, [top50, sortColumn, sortDirection]);
 
-  // Pagination
-  const totalPages = Math.ceil(sortedTop50.length / ROWS_PER_PAGE);
-  const startIdx = (currentPage - 1) * ROWS_PER_PAGE;
-  const paginatedFacilities = sortedTop50.slice(startIdx, startIdx + ROWS_PER_PAGE);
+  // Progressive disclosure — show INITIAL_ROWS first, expand on "Show More"
+  const visibleFacilities = showAll ? sortedTop50 : sortedTop50.slice(0, INITIAL_ROWS);
+  const hasMore = sortedTop50.length > INITIAL_ROWS;
 
   // State breakdown
   const stateBreakdown = useMemo(() => {
@@ -182,7 +194,11 @@ export function AntipsychoticTrendsPage() {
       setSortColumn(column);
       setSortDirection('desc');
     }
-    setCurrentPage(1);
+  };
+
+  const handleStateFilter = (state) => {
+    setStateFilter(prev => prev === state ? '' : state);
+    setShowAll(false);
   };
 
   const getSortIcon = (column) => {
@@ -304,10 +320,32 @@ export function AntipsychoticTrendsPage() {
             deviation from national average, and related quality indicators.
           </p>
 
+          {/* State filter */}
+          <div className="ap-trends-filter-bar">
+            <label className="ap-filter-label" htmlFor="state-filter">Filter by state:</label>
+            <select
+              id="state-filter"
+              className="ap-filter-select"
+              value={stateFilter}
+              onChange={(e) => { setStateFilter(e.target.value); setShowAll(false); }}
+            >
+              <option value="">All States</option>
+              {uniqueStates.map(st => (
+                <option key={st} value={st}>{st}</option>
+              ))}
+            </select>
+            {stateFilter && (
+              <button className="ap-filter-clear" onClick={() => { setStateFilter(''); setShowAll(false); }}>
+                Clear filter
+              </button>
+            )}
+          </div>
+
           {sortedTop50.length > 0 ? (
             <>
               <div className="ap-trends-result-count">
-                Showing {startIdx + 1}–{Math.min(startIdx + ROWS_PER_PAGE, sortedTop50.length)} of {sortedTop50.length} facilities
+                Showing {visibleFacilities.length} of {sortedTop50.length} facilities
+                {stateFilter && ` in ${stateFilter}`}
               </div>
 
               <div className="ap-trends-table-container">
@@ -333,18 +371,17 @@ export function AntipsychoticTrendsPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {paginatedFacilities.map((f, idx) => {
+                    {visibleFacilities.map((f, idx) => {
                       const rate = getRate(f);
                       const score = getScore(f);
                       const level = getLevel(f);
-                      const globalRank = startIdx + idx + 1;
 
                       return (
-                        <tr key={f.ccn || f.provider_id || idx}>
-                          <td className="ap-col-rank">{globalRank}</td>
+                        <tr key={f.ccn || f.provider_id || idx} className={idx % 2 === 0 ? 'ap-row-even' : 'ap-row-odd'}>
+                          <td className="ap-col-rank">{idx + 1}</td>
                           <td className="ap-col-name">
                             {f.ccn ? (
-                              <a href={`/facility/${f.ccn}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                              <a href={`/facility/${f.ccn}`}>
                                 {getFacilityName(f)}
                               </a>
                             ) : getFacilityName(f)}
@@ -370,24 +407,15 @@ export function AntipsychoticTrendsPage() {
                 </table>
               </div>
 
-              {totalPages > 1 && (
-                <div className="ap-trends-pagination">
+              {hasMore && (
+                <div className="ap-trends-show-more">
                   <button
-                    className="ap-trends-pagination__btn"
-                    onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                    disabled={currentPage === 1}
+                    className="ap-trends-show-more__btn"
+                    onClick={() => setShowAll(!showAll)}
                   >
-                    &larr; Previous
-                  </button>
-                  <span className="ap-trends-pagination__info">
-                    Page {currentPage} of {totalPages}
-                  </span>
-                  <button
-                    className="ap-trends-pagination__btn"
-                    onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                    disabled={currentPage === totalPages}
-                  >
-                    Next &rarr;
+                    {showAll
+                      ? `Show Top ${INITIAL_ROWS} Only`
+                      : `Show All ${sortedTop50.length} Facilities`}
                   </button>
                 </div>
               )}
@@ -409,10 +437,19 @@ export function AntipsychoticTrendsPage() {
             <div className="ap-state-breakdown">
               <div className="ap-state-grid">
                 {stateBreakdown.map(({ state, count }) => (
-                  <div key={state} className="ap-state-card">
+                  <button
+                    key={state}
+                    className={`ap-state-card ${stateFilter === state ? 'ap-state-card--active' : ''}`}
+                    onClick={() => {
+                      handleStateFilter(state);
+                      // Scroll to table
+                      document.querySelector('.ap-trends-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }}
+                    title={`Filter table to ${state}`}
+                  >
                     <span className="ap-state-card__name">{state}</span>
                     <span className="ap-state-card__count">{count}</span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>

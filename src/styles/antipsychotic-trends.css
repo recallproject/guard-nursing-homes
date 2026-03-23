@@ -189,6 +189,57 @@
 }
 
 /* ========================================
+   FILTER BAR
+   ======================================== */
+
+.ap-trends-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.ap-filter-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ap-filter-select {
+  background-color: var(--bg-card);
+  color: var(--text-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.ap-filter-select:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+}
+
+.ap-filter-clear {
+  background: none;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ap-filter-clear:hover {
+  color: var(--text-white);
+  border-color: var(--accent-purple);
+}
+
+/* ========================================
    FACILITIES TABLE
    ======================================== */
 
@@ -248,8 +299,12 @@
   transition: background-color var(--transition-fast);
 }
 
+.ap-trends-table tbody tr.ap-row-odd {
+  background-color: rgba(124, 58, 237, 0.02);
+}
+
 .ap-trends-table tbody tr:hover {
-  background-color: rgba(124, 58, 237, 0.03);
+  background-color: rgba(124, 58, 237, 0.06);
 }
 
 .ap-trends-table td {
@@ -271,6 +326,18 @@
   min-width: 200px;
   font-weight: 600;
   color: var(--text-white);
+}
+
+.ap-trends-table .ap-col-name a {
+  color: var(--text-white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.ap-trends-table .ap-col-name a:hover {
+  color: var(--accent-purple);
+  border-bottom-color: var(--accent-purple);
 }
 
 .ap-trends-table .ap-col-state {
@@ -344,6 +411,13 @@
   border-color: rgba(124, 58, 237, 0.3);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
+  cursor: pointer;
+}
+
+.ap-state-card--active {
+  border-color: var(--accent-purple) !important;
+  background-color: rgba(124, 58, 237, 0.1) !important;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
 }
 
 .ap-state-card__name {
@@ -515,6 +589,35 @@
   color: var(--text-cream);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
+}
+
+/* ========================================
+   SHOW MORE BUTTON
+   ======================================== */
+
+.ap-trends-show-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.ap-trends-show-more__btn {
+  background-color: transparent;
+  border: 2px solid var(--border-subtle);
+  color: var(--text-cream);
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ap-trends-show-more__btn:hover {
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+  transform: translateY(-1px);
 }
 
 /* ========================================
