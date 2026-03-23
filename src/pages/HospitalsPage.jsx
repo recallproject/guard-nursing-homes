@@ -6,13 +6,14 @@ import '../styles/hospitals.css';
 export default function HospitalsPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = 'For Hospitals & Discharge Planners | The Oversight Report';
     window.plausible && window.plausible('Hospitals-Page-View');
   }, []);
 
   return (
     <div className="hospitals-page">
       <Helmet>
-        <title>Nursing Home Data for Discharge Planners &amp; Case Managers | The Oversight Report</title>
+        <title>For Hospitals &amp; Discharge Planners | The Oversight Report</title>
         <meta name="description" content="Staffing discrepancy index, state screening reports, and chain rankings to support safe nursing home discharge planning. Federal CMS data on 14,713 facilities." />
         <meta property="og:title" content="Nursing Home Tools for Discharge Planners & Case Managers" />
         <meta property="og:description" content="State screening reports, staffing discrepancy data, and chain rankings to support safe discharge planning." />

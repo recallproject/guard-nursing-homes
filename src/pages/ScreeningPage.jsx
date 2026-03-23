@@ -354,6 +354,55 @@ export function ScreeningPage() {
         </div>
       </div>
 
+      {/* Intro content — shown before a state is selected */}
+      {!selectedState && (
+        <div className="screening-intro">
+          <div className="screening-intro-stats">
+            <div className="screening-intro-stat">
+              <div className="screening-intro-stat-value">50</div>
+              <div className="screening-intro-stat-label">States covered</div>
+            </div>
+            <div className="screening-intro-stat">
+              <div className="screening-intro-stat-value">14,713</div>
+              <div className="screening-intro-stat-label">Medicare-certified facilities</div>
+            </div>
+            <div className="screening-intro-stat">
+              <div className="screening-intro-stat-value">CMS</div>
+              <div className="screening-intro-stat-label">Federal data source</div>
+            </div>
+          </div>
+
+          <div className="screening-intro-features">
+            <div className="screening-intro-feature">
+              <div className="screening-intro-feature-icon">⚠</div>
+              <div>
+                <strong>Risk Score</strong>
+                <p>Composite score based on staffing, deficiencies, penalties, and zero-RN days</p>
+              </div>
+            </div>
+            <div className="screening-intro-feature">
+              <div className="screening-intro-feature-icon">⇅</div>
+              <div>
+                <strong>Sort &amp; Filter</strong>
+                <p>Filter by risk level, ownership type, star rating, or specific red flags</p>
+              </div>
+            </div>
+            <div className="screening-intro-feature">
+              <div className="screening-intro-feature-icon">↓</div>
+              <div>
+                <strong>Export</strong>
+                <p>Download the full state report as CSV or PDF for documentation</p>
+              </div>
+            </div>
+          </div>
+
+          <p className="screening-intro-note">
+            Select a state above to load facilities ranked by risk score. Built for investigators,
+            attorneys, discharge planners, and regulators.
+          </p>
+        </div>
+      )}
+
       {/* Loading */}
       {selectedState && loading && (
         <div className="screening-loading">

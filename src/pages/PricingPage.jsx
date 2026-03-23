@@ -99,36 +99,19 @@ export default function PricingPage() {
         { opacity: 1, y: 0, duration: 0.6, delay: 0.25, ease: 'power3.out' }
       );
 
-      // Pricing cards
-      gsap.fromTo('.pricing-card',
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, delay: 0.3, ease: 'power3.out', clearProps: 'opacity,transform' }
+      // Pricing cards — use from() so CSS default (opacity:1) is the fallback if animation fails
+      gsap.from('.pricing-card',
+        { opacity: 0, y: 40, duration: 0.7, stagger: 0.1, delay: 0.1, ease: 'power3.out', clearProps: 'all' }
       );
 
-      // Academic section
-      gsap.fromTo('.pricing-academic',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.pricing-academic',
-            start: 'top 80%',
-            once: true,
-          },
-        }
+      // Academic section — animate on mount instead of scroll to avoid staying invisible
+      gsap.from('.pricing-academic',
+        { opacity: 0, y: 30, duration: 0.6, delay: 0.5, ease: 'power3.out', clearProps: 'all' }
       );
 
       // Transparency section
-      gsap.fromTo('.pricing-transparency',
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.pricing-transparency',
-            start: 'top 80%',
-            once: true,
-          },
-        }
+      gsap.from('.pricing-transparency',
+        { opacity: 0, y: 30, duration: 0.6, delay: 0.6, ease: 'power3.out', clearProps: 'all' }
       );
     }, heroRef);
 

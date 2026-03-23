@@ -6,13 +6,14 @@ import '../styles/families.css';
 export default function FamiliesPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = 'For Families — Nursing Home Safety Data | The Oversight Report';
     window.plausible && window.plausible('Families-Page-View');
   }, []);
 
   return (
     <div className="families-page">
       <Helmet>
-        <title>Find a Safe Nursing Home for Your Family | The Oversight Report</title>
+        <title>For Families — Nursing Home Safety Data | The Oversight Report</title>
         <meta name="description" content="Free nursing home safety data for families and caregivers. Search 14,000+ facilities, check staffing levels, review citations, and download safety reports before you visit." />
         <meta property="og:title" content="Find a Safe Nursing Home for Your Family" />
         <meta property="og:description" content="Search 14,000+ nursing homes. Check staffing, citations, and penalties — free safety reports for families." />

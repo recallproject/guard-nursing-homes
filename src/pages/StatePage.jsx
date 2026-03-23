@@ -41,6 +41,9 @@ export default function StatePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = stateName
+      ? `${stateName} Nursing Homes | The Oversight Report`
+      : 'State Browser | The Oversight Report';
     if (!stateCode || !STATE_NAMES[stateCode]) {
       setError(`Unknown state code: ${stateCode}`);
       setLoading(false);
@@ -141,7 +144,7 @@ export default function StatePage() {
   return (
     <div className="sd-page">
       <Helmet>
-        <title>{stateName} Nursing Home Safety Data | The Oversight Report</title>
+        <title>{stateName} Nursing Homes | The Oversight Report</title>
         <meta name="description" content={`Safety data for ${stats?.count || ''} nursing homes in ${stateName}. Star ratings, staffing hours, and deficiency counts from CMS federal data.`} />
         <link rel="canonical" href={`https://www.oversightreports.com/state/${stateCode}`} />
       </Helmet>
