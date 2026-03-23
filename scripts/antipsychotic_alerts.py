@@ -14,6 +14,7 @@ import json
 import os
 import sys
 from collections import defaultdict
+from statistics import median
 
 import openpyxl
 
@@ -26,7 +27,7 @@ LTCFOCUS_2023 = os.path.expanduser("~/Desktop/ltcfocus_brown/facility_2023_A.xls
 LTCFOCUS_2022 = os.path.expanduser("~/Desktop/ltcfocus_brown/facility_2022.xlsx")
 OUTPUT = "/Users/rob/Projects/oversight-reports/public/data/antipsychotic_alerts.json"
 
-NATIONAL_AVG_AP = 9.3  # CMS national average antipsychotic rate (%)
+# NATIONAL_AVG_AP is computed dynamically below from Measure 481 median (see STEP 1)
 
 
 def safe_float(val, default=None):
@@ -66,8 +67,17 @@ with open(MDS_QM, "r", encoding="latin-1") as f:
                 }
 
 print(f"  Measure 481 loaded: {len(measure481):,} facilities with valid scores")
+
+# Compute national average dynamically as MEDIAN of all Measure 481 scores
+all_ap_rates = sorted(measure481.values())
+NATIONAL_AVG_AP = round(median(all_ap_rates), 2)
+national_mean_ap = round(sum(all_ap_rates) / len(all_ap_rates), 2)
+print(f"  National avg (MEDIAN, computed): {NATIONAL_AVG_AP}%")
+print(f"  National avg (MEAN,   computed): {national_mean_ap}%")
+print(f"  Facility count used:             {len(all_ap_rates):,}")
+
 above_nat = sum(1 for v in measure481.values() if v > NATIONAL_AVG_AP)
-print(f"  Above national avg ({NATIONAL_AVG_AP}%): {above_nat:,}")
+print(f"  Above national median ({NATIONAL_AVG_AP}%): {above_nat:,}")
 
 
 # ═══════════════════════════════════════════════════════════════════════

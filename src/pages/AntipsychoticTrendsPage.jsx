@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import '../styles/antipsychotic-trends.css';
 
 const OIG_REPORT_URL = 'https://oig.hhs.gov/reports-and-publications/workplan/summary/wp-summary-0000708.asp';
-const NATIONAL_AVG_RATE = 9.3;
+const NATIONAL_AVG_RATE = 14.6;
 
 function getRiskBadgeClass(level) {
   if (!level) return 'ap-risk-badge--moderate';

@@ -114,7 +114,7 @@ export default function AntipsychoticAlert({ ccn }) {
         {rate != null && (
           <p>
             This facility's antipsychotic medication rate is <strong>{rate}%</strong>,
-            compared to the national average of 9.3%.
+            compared to the national average of 14.6%.
             {' '}This may indicate a pattern that warrants further review.
           </p>
         )}
