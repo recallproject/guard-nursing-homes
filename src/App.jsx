@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
@@ -37,6 +37,9 @@ const KnowYourRightsPage = lazy(() => import('./pages/KnowYourRightsPage'));
 const DataTransparencyPage = lazy(() => import('./pages/DataTransparencyPage'));
 const AntipsychoticTrendsPage = lazy(() => import('./pages/AntipsychoticTrendsPage').then(m => ({ default: m.AntipsychoticTrendsPage })));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const FamiliesPage = lazy(() => import('./pages/FamiliesPage'));
+const HospitalsPage = lazy(() => import('./pages/HospitalsPage'));
+const StatePage = lazy(() => import('./pages/StatePage'));
 
 function LoadingFallback() {
   return (
@@ -85,6 +88,12 @@ function App() {
           <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
           <Route path="/data-transparency" element={<DataTransparencyPage />} />
           <Route path="/antipsychotic-trends" element={<AntipsychoticTrendsPage />} />
+          <Route path="/families" element={<FamiliesPage />} />
+          <Route path="/hospitals" element={<HospitalsPage />} />
+          <Route path="/state/:code" element={<StatePage />} />
+          <Route path="/favorites" element={<Navigate to="/watchlist" replace />} />
+          <Route path="/ask-clinician" element={<Navigate to="/ask-a-clinician" replace />} />
+          <Route path="/map" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
