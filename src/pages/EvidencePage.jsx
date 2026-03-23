@@ -96,6 +96,15 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   const [pdfLoading, setPdfLoading] = useState(false);
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
   const [defDetailsLoading, setDefDetailsLoading] = useState(false);
+  const [antipsychoticAlerts, setAntipsychoticAlerts] = useState(null);
+
+  // Fetch antipsychotic alerts on mount
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/antipsychotic_alerts.json`)
+      .then(resp => resp.ok ? resp.json() : null)
+      .then(data => setAntipsychoticAlerts(data))
+      .catch(() => setAntipsychoticAlerts(null));
+  }, []);
 
   // Fetch deficiency details on mount
   useEffect(() => {
@@ -133,12 +142,13 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           console.warn('Could not load deficiency details:', e);
         }
       }
-      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities);
+      const facilityAntipsychoticData = antipsychoticAlerts ? (antipsychoticAlerts[String(facility.ccn)] || null) : null;
+      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData);
       window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state}});
     } finally {
       setPdfLoading(false);
     }
-  }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails]);
+  }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails, antipsychoticAlerts]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

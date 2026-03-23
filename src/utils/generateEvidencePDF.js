@@ -10,7 +10,7 @@ const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
  * @param {Array} nearbyAlternatives - Array of nearby facilities with better scores
  * @param {Array} allFacilities - All facilities for ownership portfolio analysis
  */
-export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = []) {
+export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = [], antipsychoticData = null) {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -1740,10 +1740,143 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   );
 
   // ================================================================
-  //   SECTION 7 — RED FLAGS
+  //   SECTION 7 — ANTIPSYCHOTIC PRESCRIBING & CHEMICAL RESTRAINT
   // ================================================================
 
-  addSectionHeader(7, 'Red Flags & Accountability Indicators');
+  addSectionHeader(7, 'Antipsychotic Prescribing & Chemical Restraint Risk');
+
+  if (antipsychoticData) {
+    const ap = antipsychoticData;
+    const riskColor = ap.risk_level === 'critical' ? RED : ap.risk_level === 'high' ? AMBER : ap.risk_level === 'elevated' ? AMBER : STEEL;
+    const riskBg = ap.risk_level === 'critical' ? RED_BG : ap.risk_level === 'high' ? AMBER_BG : ap.risk_level === 'elevated' ? AMBER_BG : LIGHT_BG;
+
+    // Intro paragraph
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const apIntro = 'Antipsychotic medications (e.g., haloperidol, quetiapine, risperidone) are powerful sedating drugs that carry FDA black-box warnings ' +
+      'when used in elderly patients. Their use as "chemical restraints" — to sedate residents rather than treat a documented psychiatric condition — is a ' +
+      'federally recognized patient rights violation (42 CFR §483.12). The March 2026 OIG report "Nursing Home Use of Antipsychotic Drugs" identified ' +
+      'widespread overuse and flagged facilities with rates significantly exceeding national norms as priorities for federal investigation.';
+    const apLines = doc.splitTextToSize(apIntro, contentWidth);
+    doc.text(apLines, margin, currentY);
+    currentY += apLines.length * 4.5 + 6;
+
+    // Key metrics box
+    checkPageBreak(50);
+    addSubHeading('Prescribing Metrics');
+
+    // Rate comparison row
+    addDataRow('Antipsychotic Prescribing Rate:', ap.antipsychotic_rate.toFixed(1) + '%');
+    addDataRow('National Average:', ap.national_avg.toFixed(1) + '%');
+    const rateRatio = (ap.antipsychotic_rate / ap.national_avg).toFixed(1);
+    addDataRow('Relative to National Average:', rateRatio + 'x the national rate');
+
+    if (ap.yoy_trend) {
+      const trendText = ap.yoy_trend === 'increasing' ? 'Increasing year-over-year' :
+        ap.yoy_trend === 'decreasing' ? 'Decreasing year-over-year' : 'Stable year-over-year';
+      addDataRow('Year-Over-Year Trend:', trendText);
+    }
+
+    if (ap.prescriber_concentration != null && ap.prescriber_concentration >= 0.9) {
+      addDataRow('Prescriber Concentration:', Math.round(ap.prescriber_concentration * 100) + '% of claims from one prescriber');
+    }
+
+    currentY += 4;
+
+    // Risk level callout
+    checkPageBreak(20);
+    const riskText = ap.risk_level === 'critical'
+      ? 'CRITICAL RISK: This facility\'s antipsychotic prescribing rate is severely elevated and meets federal criteria for priority investigation.'
+      : ap.risk_level === 'high'
+      ? 'HIGH RISK: This facility\'s antipsychotic prescribing rate significantly exceeds national norms and warrants clinical scrutiny.'
+      : 'ELEVATED RISK: This facility\'s antipsychotic prescribing rate is above expected levels.';
+
+    const riskLines = doc.splitTextToSize('Risk Level: ' + ap.risk_level.toUpperCase() + ' — ' + riskText, contentWidth - 12);
+    const riskBoxH = riskLines.length * 4.5 + 6;
+    doc.setFillColor(...riskBg);
+    doc.rect(margin, currentY, contentWidth, riskBoxH, 'F');
+    doc.setFillColor(...riskColor);
+    doc.rect(margin, currentY, 3, riskBoxH, 'F');
+    doc.setTextColor(...riskColor);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.text(riskLines, margin + 6, currentY + 4.5);
+    currentY += riskBoxH + 4;
+
+    // Chemical restraint flag
+    if (ap.chemical_restraint_flag) {
+      checkPageBreak(20);
+      addAlertBox(
+        'CHEMICAL RESTRAINT FLAG: This facility meets criteria for potential chemical restraint use — ' +
+        'a combination of low RN staffing and high antipsychotic prescribing. Chemical restraint (sedating residents ' +
+        'for staff convenience rather than clinical need) is prohibited under 42 CFR §483.12(a)(2) and constitutes ' +
+        'a violation of residents\' right to be free from unnecessary restraint.',
+        'critical'
+      );
+    }
+
+    // Schizophrenia/Bipolar diagnosis rate
+    if (ap.schizophrenia_dx_rate != null && ap.schizophrenia_state_avg != null) {
+      checkPageBreak(30);
+      addSubHeading('Psychiatric Diagnosis Context');
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...BODY);
+      const dxNote = 'Antipsychotic use is clinically appropriate for residents with documented schizophrenia or bipolar disorder. ' +
+        'A high schizophrenia/bipolar diagnosis rate relative to state norms may indicate legitimate clinical need — or may indicate ' +
+        'that diagnoses are being used to justify antipsychotic prescribing that would otherwise require justification.';
+      const dxLines = doc.splitTextToSize(dxNote, contentWidth);
+      doc.text(dxLines, margin, currentY);
+      currentY += dxLines.length * 4.5 + 4;
+
+      addDataRow('Schizophrenia/Bipolar Dx Rate:', ap.schizophrenia_dx_rate.toFixed(1) + '%');
+      addDataRow('State Average Dx Rate:', ap.schizophrenia_state_avg.toFixed(1) + '%');
+      if (ap.schizophrenia_yoy_change != null) {
+        const changeStr = (ap.schizophrenia_yoy_change >= 0 ? '+' : '') + ap.schizophrenia_yoy_change.toFixed(1) + 'pp year-over-year';
+        addDataRow('Dx Rate Change (YOY):', changeStr);
+      }
+      currentY += 4;
+    }
+
+    // Documented risk factors
+    if (Array.isArray(ap.factors) && ap.factors.length > 0) {
+      checkPageBreak(30);
+      addSubHeading('Documented Risk Factors');
+      ap.factors.forEach((factor) => {
+        checkPageBreak(8);
+        doc.setFontSize(8.5);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(...BODY);
+        doc.text('\u2022  ' + factor, margin + 4, currentY);
+        currentY += 5.5;
+      });
+      currentY += 2;
+    }
+
+    addVerifyLink(
+      'CMS Medicare Part D Prescriber Data — antipsychotic claims by facility',
+      'https://data.cms.gov/provider-data/dataset/v6jf-q476'
+    );
+  } else {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    const apNote = 'Antipsychotic medications carry FDA black-box warnings in elderly patients and are a known tool of chemical restraint ' +
+      '(42 CFR §483.12). The March 2026 OIG report identified facilities with rates exceeding national norms as enforcement priorities. ' +
+      'This facility\'s antipsychotic prescribing rate did not reach the elevated threshold (risk score ≥3) that triggers inclusion ' +
+      'in our alert dataset, suggesting prescribing patterns are within expected ranges. This finding should be verified directly ' +
+      'with CMS Part D data for the most current information.';
+    const apLines = doc.splitTextToSize(apNote, contentWidth);
+    doc.text(apLines, margin, currentY);
+    currentY += apLines.length * 4.5 + 8;
+  }
+
+  // ================================================================
+  //   SECTION 8 — RED FLAGS
+  // ================================================================
+
+  addSectionHeader(8, 'Red Flags & Accountability Indicators');
 
   const redFlags = [];
 
@@ -1835,10 +1968,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   // ================================================================
-  //   SECTION 8 — COMPARISON CONTEXT
+  //   SECTION 9 — COMPARISON CONTEXT
   // ================================================================
 
-  addSectionHeader(8, 'Comparison Context');
+  addSectionHeader(9, 'Comparison Context');
 
   addSubHeading('How This Facility Compares');
 
@@ -1901,10 +2034,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY = doc.lastAutoTable.finalY + 8;
 
   // ================================================================
-  //   SECTION 9 — NEARBY ALTERNATIVES
+  //   SECTION 10 — NEARBY ALTERNATIVES
   // ================================================================
 
-  addSectionHeader(9, 'Nearby Alternatives');
+  addSectionHeader(10, 'Nearby Alternatives');
 
   if (nearbyAlternatives && nearbyAlternatives.length > 0) {
     doc.setFontSize(9);
@@ -1997,11 +2130,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   // ================================================================
-  //   SECTION 10 — METHODOLOGY (always starts on a new page)
+  //   SECTION 11 — METHODOLOGY (always starts on a new page)
   // ================================================================
 
   addNewPage();
-  addSectionHeader(10, 'Data Sources & Methodology');
+  addSectionHeader(11, 'Data Sources & Methodology');
 
   addSubHeading('Data Sources');
   doc.setFontSize(9);
@@ -2017,6 +2150,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     ['CMS Penalties (Civil Monetary Penalties, Payment Denials 2023-2025)', 'https://data.cms.gov/provider-data/dataset/g6vv-ecav'],
     ['CMS Ownership Database (Corporate Structure, January 2026)', 'https://data.cms.gov/provider-data/dataset/y2hd-n93e'],
     ['CMS HCRIS Cost Reports (FY2024 related-party transactions)', 'https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports'],
+    ['CMS Medicare Part D Prescriber Data (Antipsychotic Claims, 2023)', 'https://data.cms.gov/provider-data/dataset/v6jf-q476'],
+    ['OIG Report: Nursing Home Use of Antipsychotic Drugs (March 2026)', 'https://oig.hhs.gov/reports/'],
   ];
   sources.forEach(([label, url]) => {
     checkPageBreak(10);
@@ -2086,11 +2221,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY += 6;
 
   // ================================================================
-  //   SECTION 11 — DISCLAIMER (always starts on a new page)
+  //   SECTION 12 — DISCLAIMER (always starts on a new page)
   // ================================================================
 
   addNewPage();
-  addSectionHeader(11, 'Disclaimer');
+  addSectionHeader(12, 'Disclaimer');
 
   const disclaimers = [
     'This report is generated from publicly available federal data and is provided for informational purposes only.',

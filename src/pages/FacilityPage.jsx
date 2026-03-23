@@ -19,7 +19,7 @@ import MetricTooltip from '../components/facility/MetricTooltip';
 import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisMean';
 import FlagExplainer from '../components/facility/FlagExplainer';
 import ReportErrorBar from '../components/facility/ReportErrorBar';
-import AntipsychoticAlert from '../components/facility/AntipsychoticAlert';
+import AntipsychoticAlert, { fetchAlertData } from '../components/facility/AntipsychoticAlert';
 import '../styles/facility.css';
 import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
@@ -200,6 +200,7 @@ export function FacilityPage() {
   const fromState = location.state?.fromState || null;
   const [showEvidencePreview, setShowEvidencePreview] = useState(false);
   const [ahcaData, setAhcaData] = useState(null);
+  const [antipsychoticDataForPDF, setAntipsychoticDataForPDF] = useState(null);
   const [openAccordion, setOpenAccordion] = useState(null);
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
   const [qmTab, setQmTab] = useState('memory');
@@ -292,6 +293,14 @@ export function FacilityPage() {
       .then(d => setAhcaData(d))
       .catch(() => {});
   }, []);
+
+  // Load antipsychotic alert data for PDF download (reuses module cache from AntipsychoticAlert)
+  useEffect(() => {
+    if (!ccn) return;
+    fetchAlertData().then(data => {
+      if (data && data[ccn]) setAntipsychoticDataForPDF(data[ccn]);
+    });
+  }, [ccn]);
 
   // Load deficiency details for this facility's state
   useEffect(() => {
@@ -446,7 +455,7 @@ export function FacilityPage() {
               : 'Star facilities to compare them in My Favorites'}
           </span>
         </div>
-        <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} />
+        <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} antipsychoticData={antipsychoticDataForPDF} />
       </div>
 
       <div className="fp-body">

@@ -7,7 +7,7 @@ import '../../styles/antipsychotic-alert.css';
 let _cache = null;
 let _fetchPromise = null;
 
-function fetchAlertData() {
+export function fetchAlertData() {
   if (_cache) return Promise.resolve(_cache);
   if (_fetchPromise) return _fetchPromise;
   _fetchPromise = fetch('/data/antipsychotic_alerts.json')

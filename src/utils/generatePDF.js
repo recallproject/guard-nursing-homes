@@ -33,7 +33,7 @@ const C = {
  * @param {Object} options - { nearbyFacilities: [], allFacilities: [] }
  */
 export function generatePDF(facility, options = {}) {
-  const { nearbyFacilities = [], allFacilities = [], isSample = false, samplePercentiles = null } = options;
+  const { nearbyFacilities = [], allFacilities = [], isSample = false, samplePercentiles = null, antipsychoticData = null } = options;
 
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });
   const pw = doc.internal.pageSize.getWidth();
@@ -514,6 +514,51 @@ export function generatePDF(facility, options = {}) {
       'and whether the facility smells clean. These are basic indicators of infection control practices.',
       'warning'
     );
+  }
+
+  // Antipsychotic prescribing alert
+  if (antipsychoticData) {
+    clinicalSections++;
+    needsPage(35);
+    subHeader('Antipsychotic Prescribing Alert');
+
+    const ap = antipsychoticData;
+    const apType = ap.risk_level === 'critical' ? 'danger' : ap.risk_level === 'high' ? 'danger' : 'warning';
+    const rateRatio = (ap.antipsychotic_rate / ap.national_avg).toFixed(1);
+
+    let apText = `This facility prescribes antipsychotic medications to ${ap.antipsychotic_rate.toFixed(1)}% of residents — ` +
+      `${rateRatio}x the national average of ${ap.national_avg}%. ` +
+      'Antipsychotic drugs (such as haloperidol, quetiapine, and risperidone) carry FDA black-box warnings in elderly patients ' +
+      'and are associated with increased risk of stroke, falls, and death. ';
+
+    if (ap.chemical_restraint_flag) {
+      apText += 'This facility has been flagged for potential chemical restraint — using sedating medications to manage behavior ' +
+        'rather than to treat a diagnosed psychiatric condition. This practice violates residents\' rights under 42 CFR §483.12. ';
+    }
+
+    if (ap.yoy_trend === 'increasing') {
+      apText += 'Prescribing rates are increasing year-over-year, which regulators flag as a concern. ';
+    }
+
+    apText += 'The March 2026 OIG report on nursing home antipsychotic use identified this facility\'s prescribing patterns ' +
+      `as ${ap.risk_level} risk. Ask the facility what percentage of residents receive antipsychotics, what diagnoses justify ` +
+      'this use, and whether non-pharmacological behavioral approaches have been tried first.';
+
+    calloutBox(apText, apType);
+
+    if (ap.schizophrenia_dx_rate != null && ap.schizophrenia_state_avg != null) {
+      needsPage(20);
+      doc.setFontSize(8.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...C.muted);
+      const dxLine = `Note: ${ap.schizophrenia_dx_rate.toFixed(1)}% of residents have a schizophrenia/bipolar diagnosis ` +
+        `vs. ${ap.schizophrenia_state_avg.toFixed(1)}% state average. ` +
+        'Antipsychotics are appropriate for these diagnoses — however, a diagnosis rate significantly above state norms ' +
+        'may also reflect diagnostic patterns used to justify prescribing.';
+      const dxLines = doc.splitTextToSize(dxLine, W);
+      doc.text(dxLines, M, y);
+      y += dxLines.length * 3.8 + 3;
+    }
   }
 
   // If NONE apply — positive assessment

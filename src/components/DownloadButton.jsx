@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { generatePDF } from '../utils/generatePDF';
 
-export function DownloadButton({ facility, nearbyFacilities = [], allFacilities = [], label = "Download PDF Report", className = "", variant = "default" }) {
+export function DownloadButton({ facility, nearbyFacilities = [], allFacilities = [], antipsychoticData = null, label = "Download PDF Report", className = "", variant = "default" }) {
   const [isGenerating, setIsGenerating] = useState(false);
 
   const handleDownload = async () => {
@@ -12,7 +12,7 @@ export function DownloadButton({ facility, nearbyFacilities = [], allFacilities 
       setIsGenerating(true);
       setTimeout(() => {
         try {
-          generatePDF(facility, { nearbyFacilities, allFacilities });
+          generatePDF(facility, { nearbyFacilities, allFacilities, antipsychoticData });
         } catch (error) {
           console.error('PDF generation failed:', error);
           alert('Failed to generate PDF. Please try again.');
