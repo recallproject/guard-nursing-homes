@@ -97,6 +97,7 @@ function InlineSearch({ searchFacilities, placeholder, onFallbackSearch }) {
             <div
               key={facility.ccn}
               className={`v4-search-result ${i === activeIndex ? 'v4-search-result--active' : ''}`}
+              onMouseDown={(e) => e.preventDefault()}
               onClick={() => handleSelect(facility)}
               onMouseEnter={() => setActiveIndex(i)}
             >

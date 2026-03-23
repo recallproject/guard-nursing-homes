@@ -89,7 +89,7 @@ function InlineSearch({ searchFacilities, placeholder, onFallbackSearch, large }
       {isOpen && results.length > 0 && (
         <div className="v5-search-dropdown">
           {results.map((facility, i) => (
-            <div key={facility.ccn} className={`v5-search-result ${i === activeIndex ? 'v5-search-result--active' : ''}`} onClick={() => handleSelect(facility)} onMouseEnter={() => setActiveIndex(i)}>
+            <div key={facility.ccn} className={`v5-search-result ${i === activeIndex ? 'v5-search-result--active' : ''}`} onMouseDown={(e) => e.preventDefault()} onClick={() => handleSelect(facility)} onMouseEnter={() => setActiveIndex(i)}>
               <div className="v5-search-result-info">
                 <div className="v5-search-result-name">{facility.name}</div>
                 <div className="v5-search-result-location">{facility.city}, {facility.state}</div>
@@ -352,7 +352,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
 
         {/* Hero social proof bar */}
         <div className="v5-hero-proof">
-          <span className="v5-hero-proof-item">15,329 facilities analyzed</span>
+          <span className="v5-hero-proof-item">14,713 facilities analyzed</span>
           <span className="v5-hero-proof-sep">&middot;</span>
           <span className="v5-hero-proof-item">18 federal databases</span>
           <span className="v5-hero-proof-sep">&middot;</span>
@@ -422,7 +422,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-stat-card v5-fade-in">
           <div className="v5-stat-accent"></div>
           <div className="v5-stat-body">
-            <div className="v5-stat-value" data-target="15329">0</div>
+            <div className="v5-stat-value" data-target="14713">0</div>
             <div className="v5-stat-label">Facilities analyzed with full safety reports</div>
           </div>
         </div>
@@ -576,7 +576,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
         <div className="v5-featured-browse-all">
           <button className="v5-browse-all-btn" onClick={() => onSearch && onSearch()}>
-            Search all 15,329 facilities &rarr;
+            Search all 14,713 facilities &rarr;
           </button>
         </div>
       </div>
@@ -624,7 +624,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <div className="v5-trust-badges">
             <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--navy)'}}>&#9670;</span> Cited: Harvard Data Science Review</div>
             <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--orange)'}}>&#9650;</span> 418 upvotes on r/nursing</div>
-            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--blue)'}}>&#9632;</span> 15,329 facilities analyzed</div>
+            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--blue)'}}>&#9632;</span> 14,713 facilities analyzed</div>
           </div>
         </div>
       </div>
@@ -739,7 +739,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ FINAL CTA ═══════ */}
       <section className="v5-final-cta">
         <h2>Search any nursing facility</h2>
-        <p>15,329 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
+        <p>14,713 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
         <div className="v5-final-search">
           <InlineSearch searchFacilities={searchFacilities} placeholder="Facility name, city, or ZIP code" onFallbackSearch={onSearch} />
         </div>

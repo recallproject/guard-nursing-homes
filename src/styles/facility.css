@@ -2050,6 +2050,9 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 24px rgba(124, 58, 237, 0.35);
 }
+.paid-upsell-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.btn-evidence--secondary { background: transparent; color: #7C3AED; border: 1px solid #7C3AED; box-shadow: none; }
+.btn-evidence--secondary:hover { background: rgba(124,58,237,0.06); box-shadow: none; }
 .paid-upsell-note { margin-top: 14px; font-size: 12px; color: #94a3b8; letter-spacing: 0.01em; }
 .paid-upsell-sample-link { display: inline-block; margin-top: 8px; font-size: 12px; color: #7C3AED; text-decoration: none; font-weight: 500; }
 .paid-upsell-sample-link:hover { text-decoration: underline; }

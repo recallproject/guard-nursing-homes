@@ -2224,7 +2224,10 @@ export function FacilityPage() {
               <span className="paid-feature">Staffing discrepancy documentation</span>
               <span className="paid-feature">Related-party transaction detail</span>
             </div>
-            <button className="btn-evidence" onClick={() => setShowEvidencePreview(true)}>Preview Evidence Package</button>
+            <div className="paid-upsell-actions">
+              <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn)}>Buy Evidence Report — $29</button>
+              <button className="btn-evidence btn-evidence--secondary" onClick={() => setShowEvidencePreview(true)}>Preview First</button>
+            </div>
             <div className="paid-upsell-note">One-time purchase. Instant download. Used by attorneys, journalists, and regulators.</div>
             <a href="/evidence-sample" className="paid-upsell-sample-link">↓ See a full sample report</a>
           </div>
