@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Antipsychotic Gaming Detection Pipeline
-========================================
-Combines MDS Measure 481 (antipsychotic use rate), LTCFocus schizophrenia
+Antipsychotic Prescribing Pattern Analysis
+===========================================
+Combines MDS Measure 481 (antipsychotic use rate), LTCFocus schizophrenia/bipolar
 diagnosis rates, chemical restraint flags, prescriber concentration, and
-YOY trends to produce a risk score for each nursing facility.
+YOY trends to produce a review priority score for each nursing facility.
 
 Output: antipsychotic_alerts.json with facilities scoring >= 3.
 """
@@ -177,9 +177,9 @@ print(f"  YOY data: {len(yoy_data):,} facilities")
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# STEP 6: Compute gaming detection scores
+# STEP 6: Compute review priority scores
 # ═══════════════════════════════════════════════════════════════════════
-print("\nSTEP 6: Computing gaming detection scores...")
+print("\nSTEP 6: Computing review priority scores...")
 
 # Build universe of all CCNs across data sources
 all_ccns = set()
@@ -232,7 +232,7 @@ for ccn in all_ccns:
         else:
             yoy_trend = "stable"
 
-    # --- Schizophrenia gaming signal ---
+    # --- Schizophrenia/bipolar diagnosis pattern signal ---
     schiz_info = schiz_2023.get(ccn)
     schiz_dx_rate = None
     schiz_state_avg = None
@@ -248,7 +248,7 @@ for ccn in all_ccns:
         if schiz_2022_info:
             schiz_yoy_change = schiz_dx_rate - schiz_2022_info["rate"]
 
-        # Gaming signal: facility schiz rate significantly above state avg AND high AP use
+        # Diagnostic pattern signal: facility schiz rate significantly above state avg AND high AP use
         if schiz_state_avg and schiz_dx_rate > (schiz_state_avg * 1.5) and ap_rate > NATIONAL_AVG_AP:
             score += 4
             factors.append(
@@ -329,7 +329,7 @@ print(f"  File size: {file_size:,} bytes ({file_size / 1024 / 1024:.1f} MB)")
 # REPORT
 # ═══════════════════════════════════════════════════════════════════════
 print("\n" + "=" * 60)
-print("ANTIPSYCHOTIC GAMING DETECTION PIPELINE — REPORT")
+print("ANTIPSYCHOTIC PRESCRIBING PATTERN ANALYSIS — REPORT")
 print("=" * 60)
 
 print(f"\nData sources loaded:")

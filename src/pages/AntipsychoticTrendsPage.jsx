@@ -68,12 +68,20 @@ export function AntipsychoticTrendsPage() {
   }, []);
 
   // Extract facilities array — handle various data shapes
+  // The antipsychotic_alerts.json is keyed by CCN (e.g., {"345179": {...}, ...})
   const facilities = useMemo(() => {
     if (!data) return [];
     if (Array.isArray(data)) return data;
     if (data.facilities && Array.isArray(data.facilities)) return data.facilities;
     if (data.alerts && Array.isArray(data.alerts)) return data.alerts;
     if (data.data && Array.isArray(data.data)) return data.data;
+    // Handle object keyed by CCN — convert to array with ccn field injected
+    if (typeof data === 'object' && !Array.isArray(data)) {
+      const keys = Object.keys(data);
+      if (keys.length > 0 && typeof data[keys[0]] === 'object' && data[keys[0]] !== null) {
+        return keys.map(ccn => ({ ...data[ccn], ccn }));
+      }
+    }
     return [];
   }, [data]);
 
@@ -334,7 +342,13 @@ export function AntipsychoticTrendsPage() {
                       return (
                         <tr key={f.ccn || f.provider_id || idx}>
                           <td className="ap-col-rank">{globalRank}</td>
-                          <td className="ap-col-name">{getFacilityName(f)}</td>
+                          <td className="ap-col-name">
+                            {f.ccn ? (
+                              <a href={`/facility/${f.ccn}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                                {getFacilityName(f)}
+                              </a>
+                            ) : getFacilityName(f)}
+                          </td>
                           <td className="ap-col-state">{f.state || '—'}</td>
                           <td className={`ap-col-rate ${rate !== null ? getRateColorClass(rate) : ''}`}>
                             {rate !== null ? `${rate.toFixed(1)}%` : '—'}
