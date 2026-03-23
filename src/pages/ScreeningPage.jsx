@@ -23,7 +23,7 @@ const US_STATES = {
 };
 
 export function ScreeningPage() {
-  const COMING_SOON = true;
+  const COMING_SOON = false;
 
   const { data, loading, error } = useFacilityData();
   const { tier } = useSubscription();
