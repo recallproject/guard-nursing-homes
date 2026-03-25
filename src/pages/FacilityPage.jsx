@@ -23,6 +23,7 @@ import AntipsychoticAlert, { fetchAlertData } from '../components/facility/Antip
 import '../styles/facility.css';
 import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
+import ftagReference from '../../public/data/ftag-reference.json';
 
 // Accordion component for abuse/neglect citation groups
 function AbuseGroupAccordion({ ftag, desc, defs, harmCount, hasActualHarm }) {
@@ -735,6 +736,13 @@ export function FacilityPage() {
             <span className="badge-source">CMS Deficiencies</span>
           </div>
           <p className="section-subtitle">Health inspection results — severity-graded citations from unannounced federal surveys</p>
+          <details style={{ marginBottom: '12px', fontSize: '13px', color: '#64748b' }}>
+            <summary style={{ cursor: 'pointer', fontWeight: 600, color: '#475569' }}>About this data</summary>
+            <p style={{ marginTop: '6px', lineHeight: 1.6 }}>
+              Deficiencies are documented on CMS Form 2567 (Statement of Deficiencies and Plan of Correction), issued by state survey agencies. Each F-tag references a federal regulation under 42 CFR Part 483 — Requirements for States and Long Term Care Facilities.
+              {facility.state === 'CA' && ' California facilities are additionally subject to Title 22, Division 5 of the California Code of Regulations.'}
+            </p>
+          </details>
 
           {/* Computed stats from deficiency details */}
           {(() => {
@@ -750,6 +758,15 @@ export function FacilityPage() {
               if (d.ftag) {
                 if (!ftagSurveys[d.ftag]) ftagSurveys[d.ftag] = new Set();
                 ftagSurveys[d.ftag].add(d.survey_date);
+              }
+            });
+
+            // F-tag citation counts for display
+            const ftagCounts = {};
+            deficiencyDetails?.forEach(d => {
+              if (d.ftag) {
+                const clean = d.ftag.replace('F-0', 'F').replace('F-', 'F');
+                ftagCounts[clean] = (ftagCounts[clean] || 0) + 1;
               }
             });
             const repeatCount = Object.values(ftagSurveys).filter(s => s.size > 1).length;
@@ -863,8 +880,30 @@ export function FacilityPage() {
                       <div className="deficiency-card" key={idx}>
                         <span className={`deficiency-severity ${severityClass}`}>{severityText}</span>
                         <div className="deficiency-card-body">
-                          <div className="deficiency-text">{def.description}{ftagNum && <> ({ftagNum})</>}</div>
-                          <div className="deficiency-meta">{surveyLabel} · {year} · Category: {def.category}</div>
+                          <div className="deficiency-text">
+                            {ftagNum && (() => {
+                              const ref = ftagReference[ftagNum];
+                              return ref ? (
+                                <>
+                                  <strong>{ftagNum}</strong> <span style={{ color: '#2b6cb0', fontSize: '12px' }}>({ref.cfr})</span>
+                                  {' — '}{ref.title}
+                                </>
+                              ) : (
+                                <>{def.description}{ftagNum && <> ({ftagNum})</>}</>
+                              );
+                            })()}
+                            {!ftagNum && def.description}
+                          </div>
+                          <div className="deficiency-meta">
+                            {surveyLabel} · {year} · Category: {def.category}
+                            {ftagNum && ftagReference[ftagNum] && <> · Cited {ftagCounts[ftagNum] || 1}x</>}
+                          </div>
+                          {facility.state === 'CA' && ftagNum && ftagReference[ftagNum]?.ca_title22 && (
+                            <div style={{ fontSize: '12px', color: '#059669', fontStyle: 'italic', marginTop: '2px' }}>
+                              See also: California {ftagReference[ftagNum].ca_title22}
+                            </div>
+                          )}
+                          <div style={{ fontSize: '11px', color: '#94a3b8', marginTop: '2px' }}>Source: CMS Form 2567</div>
                         </div>
                       </div>
                     );

@@ -968,7 +968,51 @@ export function MethodologyPage() {
                 </div>
               </div>
             </div>
-          </section>
+  
+            <div className="methodology-metric-block">
+              <h4>Inspection Deficiency Framework (F-Tags)</h4>
+              <p>Every nursing home inspection results in a statement of deficiencies (CMS Form 2567). Each finding is tagged with an &ldquo;F-tag&rdquo; — a standardized reference that maps directly to a specific section of federal regulation.</p>
+              
+              <div className="methodology-note-box">
+                <strong>What F-tags are:</strong> Federal deficiency tag numbers (e.g., F686, F880) assigned during nursing home inspections by state survey agencies. Each F-tag corresponds to a specific section of 42 CFR Part 483 — Requirements for States and Long Term Care Facilities.
+              </div>
+
+              <p><strong>CMS Form 2567</strong> (Statement of Deficiencies and Plan of Correction) is the official document issued after every nursing home inspection. It details each deficiency found, the regulation violated, the scope and severity, and the facility&rsquo;s plan to correct the problem.</p>
+
+              <p><strong>Scope levels</strong> indicate how many residents were affected:</p>
+              <ul>
+                <li><strong>Isolated</strong> — affects one or a very limited number of residents</li>
+                <li><strong>Pattern</strong> — affects multiple residents</li>
+                <li><strong>Widespread</strong> — affects many residents or is systemic</li>
+              </ul>
+
+              <p><strong>Severity levels</strong> indicate the degree of harm:</p>
+              <ul>
+                <li><strong>No Actual Harm (potential for minimal harm)</strong> — Level 1</li>
+                <li><strong>No Actual Harm (potential for more than minimal harm)</strong> — Level 2</li>
+                <li><strong>Actual Harm</strong> — Level 3: a resident was harmed</li>
+                <li><strong>Immediate Jeopardy</strong> — Level 4: conditions pose serious risk of injury, harm, impairment, or death</li>
+              </ul>
+
+              <div className="methodology-note-box">
+                <strong>California Title 22:</strong> For California facilities, state regulations under Title 22, Division 5 of the California Code of Regulations provide additional requirements that mirror and supplement federal standards. Where applicable, The Oversight Report displays both the federal CFR citation and the corresponding California Title 22 reference.
+              </div>
+
+              <div className="methodology-formula-box">
+                <span className="methodology-formula-label">Sources</span>
+                <span className="methodology-formula-value">
+                  <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483" target="_blank" rel="noopener noreferrer">
+                    42 CFR Part 483 (Code of Federal Regulations)
+                  </a>
+                  {' · '}
+                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/nursing-home-quality/deficiency-tag-number-category-change-log" target="_blank" rel="noopener noreferrer">
+                    CMS F-Tag Reference
+                  </a>
+                </span>
+              </div>
+            </div>
+
+        </section>
 
         </div>
       </div>
