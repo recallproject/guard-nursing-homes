@@ -177,15 +177,18 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     const bgColor = type === 'critical' ? RED_BG : type === 'warning' ? AMBER_BG : BLUE_BG;
     const borderColor = type === 'critical' ? RED : type === 'warning' ? AMBER : NAVY;
 
-    // Draw white background first to clear any bleed
+    // Clear area first
     doc.setFillColor(255, 255, 255);
-    doc.rect(margin - 1, currentY - 1, contentWidth + 2, boxHeight + 2, 'F');
-    // Alert background
+    doc.rect(margin, currentY, contentWidth, boxHeight, 'F');
+    // Background — starts 4mm from left to leave room for border bar
     doc.setFillColor(...bgColor);
-    doc.rect(margin + 3, currentY, contentWidth - 3, boxHeight, 'F');
-    // Left border bar (contained, 2.5mm wide)
+    doc.rect(margin + 4, currentY, contentWidth - 4, boxHeight, 'F');
+    // Border bar — drawn last so it sits on top, clean edge
     doc.setFillColor(...borderColor);
-    doc.rect(margin, currentY, 2.5, boxHeight, 'F');
+    doc.rect(margin, currentY, 3, boxHeight, 'F');
+    // White gap between bar and background
+    doc.setFillColor(255, 255, 255);
+    doc.rect(margin + 3, currentY, 1, boxHeight, 'F');
     doc.setTextColor(...BODY);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
