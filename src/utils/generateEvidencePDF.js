@@ -169,33 +169,37 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   /** Alert box with coloured left border. Returns new Y. */
   function addAlertBox(text, type) {
     doc.setCharSpace(0);
-    const lines = doc.splitTextToSize(text, contentWidth - 14);
-    const boxHeight = lines.length * 4.5 + 8;
-    checkPageBreak(boxHeight + 8);
-    currentY += 3;
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    const textWidth = contentWidth - 16;
+    const lines = doc.splitTextToSize(text, textWidth);
+    const lineHeight = 4;
+    const paddingTop = 6;
+    const paddingBottom = 6;
+    const boxHeight = (lines.length * lineHeight) + paddingTop + paddingBottom;
+    checkPageBreak(boxHeight + 10);
+    currentY += 4;
 
     const bgColor = type === 'critical' ? RED_BG : type === 'warning' ? AMBER_BG : BLUE_BG;
     const borderColor = type === 'critical' ? RED : type === 'warning' ? AMBER : NAVY;
 
-    // Clear area first
+    // Clear area
     doc.setFillColor(255, 255, 255);
     doc.rect(margin, currentY, contentWidth, boxHeight, 'F');
-    // Background — starts 4mm from left to leave room for border bar
+    // Background offset from left border
     doc.setFillColor(...bgColor);
     doc.rect(margin + 4, currentY, contentWidth - 4, boxHeight, 'F');
-    // Border bar — drawn last so it sits on top, clean edge
+    // Left border bar
     doc.setFillColor(...borderColor);
     doc.rect(margin, currentY, 3, boxHeight, 'F');
     // White gap between bar and background
     doc.setFillColor(255, 255, 255);
     doc.rect(margin + 3, currentY, 1, boxHeight, 'F');
+    // Text
     doc.setTextColor(...BODY);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8.5);
     doc.setCharSpace(0);
-    doc.text(lines, margin + 8, currentY + 5);
+    doc.text(lines, margin + 8, currentY + paddingTop, { lineHeightFactor: 1.4 });
     currentY += boxHeight + 8;
-    // Reset fill color to prevent bleed into subsequent elements
     doc.setFillColor(255, 255, 255);
   }
 
