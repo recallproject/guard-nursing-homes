@@ -10,6 +10,7 @@ import { UpgradePrompt } from '../components/UpgradePrompt';
 
 import ComingSoonPage from '../components/ComingSoonPage';
 import ftagReference from '../../public/data/ftag-reference.json';
+import nationalAveragesData from '../../public/data/national_averages.json';
 import '../styles/evidence.css';
 
 // Normalize F-tag format: "F-0689" -> "F689", "F0689" -> "F689", "0689" -> "F689"
@@ -269,13 +270,8 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
 
   const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  // National benchmarks
-  const NATIONAL_AVG = {
-    total_hprd: 3.82, rn_hprd: 0.54, zero_rn_pct: 8.0, contractor_pct: 12.0,
-    total_turnover: 46.4, rn_turnover: 43.6, admin_turnover: 0.5,
-    complaint_investigations: 7, fire_deficiency_count: 14.3,
-    stars: 3.2, total_deficiencies: 8.5, total_fines: 28000, composite: 32.1,
-  };
+  // National benchmarks — computed from dataset, no more hardcoded values
+  const NATIONAL_AVG = nationalAveragesData.national;
 
   // QRP labels
   const qrpLabels = { ppr: 'Potentially Preventable Readmissions', dtc: 'Discharge to Community', hai: 'Healthcare-Associated Infections' };

@@ -1,6 +1,7 @@
 import jsPDFModule from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import ftagReference from '../data/ftag-reference.json';
+import nationalAveragesData from '../../public/data/national_averages.json';
 
 const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
 
@@ -46,24 +47,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const DIVIDER = [209, 213, 219];
 
   // ======================== NATIONAL AVERAGES ========================
+  // Computed from dataset by scripts/compute_national_averages.py — no more hardcoded values
+  const NATIONAL_AVG = nationalAveragesData.national;
 
-  const NATIONAL_AVG = {
-    total_hprd: 3.82,
-    rn_hprd: 0.54,
-    lpn_hprd: 0.79,
-    cna_hprd: 2.18,
-    zero_rn_pct: 8.0,
-    composite: 32.1,
-    total_fines: 28000,
-    stars: 3.2,
-    total_deficiencies: 8.5,
-    contractor_pct: 12.0,
-    total_turnover: 46.4,
-    rn_turnover: 43.6,
-    admin_turnover: 0.5,
-    complaint_investigations: 7,
-    fire_deficiency_count: 14.3,
-  };
+  // State-level averages for contextual comparison
+  const STATE_AVG = nationalAveragesData.by_state || {};
 
   // ======================== FORMATTERS ========================
 
