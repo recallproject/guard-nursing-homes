@@ -906,6 +906,12 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   addSectionHeader(3, 'Staffing Analysis');
 
+  // Source note
+  doc.setFontSize(7.5);
+  doc.setTextColor(...STEEL);
+  doc.text('Source: CMS NH Provider Info (Reported Staffing) — ' + (nationalAveragesData.national._computed_on || 'March 2026') + '  |  National averages computed from ' + (nationalAveragesData.national._computed_from || '14,713') + ' facilities', margin, currentY);
+  currentY += 6;
+
   // Metric row
   drawMetricCard('TOTAL HPRD', facility.total_hprd ? num(facility.total_hprd) : null, NATIONAL_AVG.total_hprd.toFixed(2), ' hrs', margin, currentY, mw);
   drawMetricCard('RN HPRD', facility.rn_hprd ? num(facility.rn_hprd) : null, NATIONAL_AVG.rn_hprd.toFixed(2), ' hrs', margin + mw + 5, currentY, mw);
@@ -2337,11 +2343,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY += 5;
 
   const sources = [
-    ['CMS Care Compare (Provider Information, Star Ratings)', 'https://data.cms.gov/provider-data/'],
-    ['CMS Payroll-Based Journal (Daily Nurse Staffing through Q3 2025)', 'https://data.cms.gov/quality-of-care/payroll-based-journal-daily-nurse-staffing/'],
-    ['CMS Health Deficiencies (State Survey Inspections 2017-December 2025)', 'https://data.cms.gov/provider-data/dataset/r5ix-sfxw'],
-    ['CMS Penalties (Civil Monetary Penalties, Payment Denials 2023-2025)', 'https://data.cms.gov/provider-data/dataset/g6vv-ecav'],
-    ['CMS Ownership Database (Corporate Structure, January 2026)', 'https://data.cms.gov/provider-data/dataset/y2hd-n93e'],
+    ['CMS Care Compare — Provider Information & Star Ratings (March 2026)', 'https://data.cms.gov/provider-data/'],
+    ['CMS NH Provider Info — Reported Staffing HPRD & Turnover (March 2026)', 'https://data.cms.gov/provider-data/dataset/4pq5-n9py'],
+    ['CMS Health Deficiencies — State Survey Inspections (2017–2025)', 'https://data.cms.gov/provider-data/dataset/r5ix-sfxw'],
+    ['CMS Penalties — Civil Monetary Penalties & Payment Denials (March 2026)', 'https://data.cms.gov/provider-data/dataset/g6vv-u9sr'],
+    ['CMS Ownership Database — Corporate Structure (January 2026)', 'https://data.cms.gov/provider-data/dataset/y2hd-n93e'],
     ['CMS HCRIS Cost Reports (FY2024 related-party transactions)', 'https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports'],
     ['CMS Medicare Part D Prescriber Data (Antipsychotic Claims, 2023)', 'https://data.cms.gov/provider-data/dataset/v6jf-q476'],
     ['OIG Report: Nursing Home Use of Antipsychotic Drugs (March 2026)', 'https://oig.hhs.gov/reports/'],
