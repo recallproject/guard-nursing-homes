@@ -138,6 +138,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   /** A thin rule under sub-headings. */
   function addSubHeading(text) {
     checkPageBreak(14);
+    doc.setCharSpace(0);
+    if (doc.internal) doc.internal.write('0 Tc');
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(...NAVY);
@@ -152,6 +154,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   /** Data row: label left, value right. */
   function addDataRow(label, value) {
     checkPageBreak(7);
+    doc.setCharSpace(0);
+    if (doc.internal) doc.internal.write('0 Tc');
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...STEEL);
@@ -164,6 +168,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   /** Alert box with coloured left border. Returns new Y. */
   function addAlertBox(text, type) {
+    doc.setCharSpace(0);
     const lines = doc.splitTextToSize(text, contentWidth - 14);
     const boxHeight = lines.length * 4.5 + 8;
     checkPageBreak(boxHeight + 8);
@@ -182,10 +187,13 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setCharSpace(0);
     doc.text(lines, margin + 7, currentY + 5);
     currentY += boxHeight + 6;
+    // Reset fill color to prevent bleed into subsequent elements
+    doc.setFillColor(255, 255, 255);
   }
 
   /** Metric card (label / big value / national average). */
   function drawMetricCard(label, value, natAvg, unit, x, y, w) {
+    doc.setCharSpace(0);
     const h = 28;
     doc.setFillColor(...LIGHT_BG);
     doc.setDrawColor(...DIVIDER);
@@ -215,6 +223,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   /** Red-flag card block with coloured left accent. */
   function addRedFlagCard(metric, explanation, type) {
     checkPageBreak(22);
+    doc.setCharSpace(0);
     const borderColor = type === 'critical' ? RED : type === 'warning' ? AMBER : STEEL;
     const bgColor = type === 'critical' ? RED_BG : type === 'warning' ? AMBER_BG : LIGHT_BG;
 
@@ -237,11 +246,14 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.text(explLines, margin + 7, currentY + 12);
 
     currentY += boxH + 4;
+    doc.setFillColor(255, 255, 255);
   }
 
   /** Subtle "Verify" line with a clickable hyperlink. */
   function addVerifyLink(label, url) {
     checkPageBreak(14);
+    doc.setCharSpace(0);
+    if (doc.internal) doc.internal.write('0 Tc');
     currentY += 3;
     doc.setDrawColor(...DIVIDER);
     doc.setLineWidth(0.2);
@@ -1859,9 +1871,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         const label = claimsMap[code] || ('Measure ' + code);
         claimsRows.push([
           label,
-          vals.adj !== undefined ? (vals.adj * 100).toFixed(2) + '%' : 'N/A',
-          vals.obs !== undefined ? (vals.obs * 100).toFixed(2) + '%' : 'N/A',
-          vals.exp !== undefined ? (vals.exp * 100).toFixed(2) + '%' : 'N/A',
+          vals.adj != null ? vals.adj.toFixed(2) + '%' : 'N/A',
+          vals.obs != null ? vals.obs.toFixed(2) + '%' : 'N/A',
+          vals.exp != null ? vals.exp.toFixed(2) + '%' : 'N/A',
         ]);
       }
     });
@@ -1884,7 +1896,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         margin: { left: margin, right: margin },
       });
       currentY = doc.lastAutoTable.finalY + 5;
+      doc.setCharSpace(0);
+      if (doc.internal) doc.internal.write('0 Tc');
     } else {
+      doc.setCharSpace(0);
       doc.setFontSize(9);
       doc.setFont('helvetica', 'italic');
       doc.setTextColor(...STEEL);
@@ -1894,6 +1909,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   if (!facility.quality_measures?.qrp && !facility.quality_measures?.vbp && !facility.quality_measures?.claims) {
+    doc.setCharSpace(0);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'italic');
     doc.setTextColor(...STEEL);
@@ -1960,6 +1976,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       ? 'HIGH RISK: This facility\'s antipsychotic prescribing rate significantly exceeds national norms and warrants clinical scrutiny.'
       : 'ELEVATED RISK: This facility\'s antipsychotic prescribing rate is above expected levels.';
 
+    doc.setCharSpace(0);
     const riskLines = doc.splitTextToSize('Risk Level: ' + ap.risk_level.toUpperCase() + ' — ' + riskText, contentWidth - 12);
     const riskBoxH = riskLines.length * 4.5 + 6;
     doc.setFillColor(...riskBg);
@@ -1971,6 +1988,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFontSize(8.5);
     doc.text(riskLines, margin + 6, currentY + 4.5);
     currentY += riskBoxH + 4;
+    doc.setFillColor(255, 255, 255);
 
     // Chemical restraint flag
     if (ap.chemical_restraint_flag) {
@@ -1988,6 +2006,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (ap.schizophrenia_dx_rate != null && ap.schizophrenia_state_avg != null) {
       checkPageBreak(30);
       addSubHeading('Psychiatric Diagnosis Context');
+      doc.setCharSpace(0);
       doc.setFontSize(9);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(...BODY);
@@ -2013,6 +2032,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       addSubHeading('Documented Risk Factors');
       ap.factors.forEach((factor) => {
         checkPageBreak(8);
+        doc.setCharSpace(0);
         doc.setFontSize(8.5);
         doc.setFont('helvetica', 'normal');
         doc.setTextColor(...BODY);
@@ -2027,16 +2047,20 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       'https://data.cms.gov/provider-data/dataset/v6jf-q476'
     );
   } else {
+    // Force-reset charSpace via both API and raw PDF operator
     doc.setCharSpace(0);
+    if (doc.internal) doc.internal.write('0 Tc');
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...STEEL);
     const apNote = 'Antipsychotic medications carry FDA black-box warnings in elderly patients and are a known tool of chemical restraint ' +
       '(42 CFR §483.12). The March 2026 OIG report identified facilities with rates exceeding national norms as enforcement priorities. ' +
-      'This facility\'s antipsychotic prescribing rate did not reach the elevated threshold (risk score ≥3) that triggers inclusion ' +
+      'This facility\'s antipsychotic prescribing rate did not reach the elevated threshold (risk score >= 3) that triggers inclusion ' +
       'in our alert dataset, suggesting prescribing patterns are within expected ranges. This finding should be verified directly ' +
       'with CMS Part D data for the most current information.';
     const apLines = doc.splitTextToSize(apNote, contentWidth);
+    doc.setCharSpace(0);
+    if (doc.internal) doc.internal.write('0 Tc');
     doc.text(apLines, margin, currentY);
     currentY += apLines.length * 4.5 + 8;
   }
