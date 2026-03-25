@@ -1,0 +1,49 @@
+EVIDENCE REPORT — BAY CREST CARE CENTER (CCN: 055559)
+Prepared by The Oversight Report | Data as of: March 2026
+Source: CMS Medicare Provider Data
+
+FACILITY OVERVIEW
+Bay Crest Care Center is a Medicare-certified skilled nursing facility located in California.
+CMS Certification Number: 055559
+Overall Star Rating: 1 out of 5
+Staffing Star Rating: 2 | Quality Star Rating: 2 | Inspection Star Rating: 1
+
+STAFFING ANALYSIS
+Total staffing: 3.764 hours per resident day (HPRD)
+RN staffing: 0.326 HPRD
+LPN staffing: 0.993 HPRD
+CNA staffing: 2.445 HPRD
+Total staff turnover: 59.3%
+RN turnover: 40.0%
+Source: CMS NH Provider Info — Reported Staffing (March 2026)
+
+PENALTY HISTORY
+Total fines assessed: $156,358
+Number of fines: 5
+Number of payment denials: 3
+
+Most recent fine: $68,085 on 2025-11-03
+Source: CMS Penalties dataset (g6vv-u9sr)
+
+INSPECTION & DEFICIENCY SUMMARY
+Total health deficiencies: 132
+Fire safety deficiencies: 16
+Complaint-related deficiencies: 100
+
+OWNERSHIP
+Chain affiliation: Genesis Healthcare
+Ownership type: Organization
+Number of owners/entities: 23
+
+DATA SOURCES
+- CMS Care Compare — Provider Information & Star Ratings (March 2026)
+- CMS NH Provider Info — Reported Staffing HPRD & Turnover (March 2026)
+- CMS Penalties — Civil Monetary Penalties & Payment Denials (March 2026)
+- CMS Health Citations (March 2026)
+- CMS Fire Safety Citations (March 2026)
+- CMS Ownership (March 2026)
+- CMS Quality Measures MDS (March 2026)
+
+DISCLAIMER
+This report presents publicly available CMS data organized for informational purposes.
+It does not constitute legal advice. All data should be independently verified.
