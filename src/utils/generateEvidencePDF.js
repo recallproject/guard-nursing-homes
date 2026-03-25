@@ -164,12 +164,13 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
 
   /** Alert box with coloured left border. Returns new Y. */
   function addAlertBox(text, type) {
-    checkPageBreak(20);
+    const lines = doc.splitTextToSize(text, contentWidth - 14);
+    const boxHeight = lines.length * 4.5 + 8;
+    checkPageBreak(boxHeight + 8);
+    currentY += 3;
+
     const bgColor = type === 'critical' ? RED_BG : type === 'warning' ? AMBER_BG : BLUE_BG;
     const borderColor = type === 'critical' ? RED : type === 'warning' ? AMBER : NAVY;
-
-    const lines = doc.splitTextToSize(text, contentWidth - 12);
-    const boxHeight = lines.length * 4.5 + 6;
 
     doc.setFillColor(...bgColor);
     doc.rect(margin, currentY, contentWidth, boxHeight, 'F');
@@ -178,8 +179,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setTextColor(...BODY);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.text(lines, margin + 6, currentY + 4.5);
-    currentY += boxHeight + 4;
+    doc.setCharSpace(0);
+    doc.text(lines, margin + 7, currentY + 5);
+    currentY += boxHeight + 6;
   }
 
   /** Metric card (label / big value / national average). */
@@ -1234,9 +1236,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setFillColor(248, 250, 252);
   doc.setDrawColor(226, 232, 240);
   doc.setLineWidth(0.3);
-  doc.rect(margin, currentY, contentWidth, 18, 'FD');
+  const srcBoxEstH = 22;
+  doc.rect(margin, currentY, contentWidth, srcBoxEstH, 'FD');
   doc.setFillColor(43, 108, 176);
-  doc.rect(margin, currentY, 1.5, 18, 'F');
+  doc.rect(margin, currentY, 1.5, srcBoxEstH, 'F');
   doc.setFontSize(8);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(15, 23, 42);
@@ -1246,7 +1249,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const sourceText = 'Inspection deficiencies documented on CMS Form 2567 (Statement of Deficiencies and Plan of Correction), issued by state survey agencies under contract with CMS. Each deficiency cites a specific federal regulation under 42 CFR Part 483 — Requirements for States and Long Term Care Facilities.';
   const sourceLines = doc.splitTextToSize(sourceText, contentWidth - 8);
   doc.text(sourceLines, margin + 4, currentY + 8);
-  currentY += 20;
+  const sourceBoxH = Math.max(20, sourceLines.length * 4 + 12);
+  currentY += sourceBoxH + 4;
 
   // CA Title 22 note for California facilities
   if (facility.state === 'CA') {
@@ -1254,7 +1258,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFont('helvetica', 'italic');
     doc.setTextColor(5, 150, 105);
     doc.text('California facilities are additionally subject to Title 22, Division 5 of the California Code of Regulations.', margin + 4, currentY);
-    currentY += 5;
+    currentY += 10;
   }
 
   addDataRow('Total Deficiencies:', String(facility.total_deficiencies || 0));
@@ -1914,6 +1918,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     const riskBg = ap.risk_level === 'critical' ? RED_BG : ap.risk_level === 'high' ? AMBER_BG : ap.risk_level === 'elevated' ? AMBER_BG : LIGHT_BG;
 
     // Intro paragraph
+    doc.setCharSpace(0);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...BODY);
@@ -2022,6 +2027,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       'https://data.cms.gov/provider-data/dataset/v6jf-q476'
     );
   } else {
+    doc.setCharSpace(0);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...STEEL);
