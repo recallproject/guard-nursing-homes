@@ -1130,9 +1130,9 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
                       {rows.map(([code, vals]) => (
                         <tr key={code}>
                           <td style={{ fontWeight: 600 }}>{claimsLabels[code] || `Measure ${code}`}</td>
-                          <td style={{ fontFamily: "'JetBrains Mono', monospace" }}>{vals.adj != null ? (vals.adj * 100).toFixed(2) + '%' : 'N/A'}</td>
-                          <td style={{ fontFamily: "'JetBrains Mono', monospace" }}>{vals.obs != null ? (vals.obs * 100).toFixed(2) + '%' : 'N/A'}</td>
-                          <td style={{ fontFamily: "'JetBrains Mono', monospace" }}>{vals.exp != null ? (vals.exp * 100).toFixed(2) + '%' : 'N/A'}</td>
+                          <td style={{ fontFamily: "'JetBrains Mono', monospace" }}>{vals.adj != null ? vals.adj.toFixed(2) + '%' : 'N/A'}</td>
+                          <td style={{ fontFamily: "'JetBrains Mono', monospace" }}>{vals.obs != null ? vals.obs.toFixed(2) + '%' : 'N/A'}</td>
+                          <td style={{ fontFamily: "'JetBrains Mono', monospace" }}>{vals.exp != null ? vals.exp.toFixed(2) + '%' : 'N/A'}</td>
                         </tr>
                       ))}
                     </tbody>
