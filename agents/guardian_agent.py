@@ -225,7 +225,52 @@ def check_banned_language(report_text, banned=BANNED_PHRASES):
     return flags
 
 
-# ── Check 6: Confidence Flags ───────────────────────────────────────────
+# ── Check 6: Clinical Red Flags ─────────────────────────────────────────
+
+# Quality measure codes and their national averages (computed March 2026)
+# These are the clinical indicators Paski flagged as critical for attorney reports
+CLINICAL_RED_FLAGS = {
+    "ls_408": {"name": "Depression (long-stay)", "national_avg": 12.49, "alert_multiplier": 2.0},
+    "ls_480": {"name": "Incontinence worsening (long-stay)", "national_avg": 18.98, "alert_multiplier": 1.5},
+    "ls_481": {"name": "Antipsychotic use (long-stay)", "national_avg": 16.34, "alert_multiplier": 1.5},
+    "ss_434": {"name": "New antipsychotic use (short-stay)", "national_avg": 1.39, "alert_multiplier": 2.0},
+    "ls_409": {"name": "Physical restraint use (long-stay)", "national_avg": 0.13, "alert_multiplier": 3.0},
+    "ls_479": {"name": "Pressure ulcers (long-stay)", "national_avg": 4.56, "alert_multiplier": 2.0},
+    "ls_404": {"name": "Weight loss (long-stay)", "national_avg": 4.99, "alert_multiplier": 2.0},
+}
+
+
+def check_clinical_red_flags(bundle, red_flags=CLINICAL_RED_FLAGS):
+    """Surface clinical quality concerns that attorneys and families need to see."""
+    flags = []
+    quality = bundle.get("quality_facts", {})
+    mds = quality.get("mds", {})
+    if not mds:
+        flags.append(make_flag("info", "clinical", "No quality measures data in bundle"))
+        return flags
+
+    for key, config in red_flags.items():
+        rtype, code = key.split("_", 1)
+        measures = mds.get(rtype, {})
+        measure = measures.get(code, {})
+        score = measure.get("s")
+
+        if score is None:
+            continue
+
+        threshold = config["national_avg"] * config["alert_multiplier"]
+        if score > threshold:
+            flags.append(make_flag("warning", "clinical_red_flag",
+                f"{config['name']}: {score:.1f}% (national avg: {config['national_avg']:.1f}%, "
+                f"threshold: {threshold:.1f}%) — ELEVATED"))
+        elif score > config["national_avg"]:
+            flags.append(make_flag("info", "clinical",
+                f"{config['name']}: {score:.1f}% (above national avg of {config['national_avg']:.1f}%)"))
+
+    return flags
+
+
+# ── Check 7: Confidence Flags ───────────────────────────────────────────
 
 def check_confidence(bundle, min_score=MIN_CONFIDENCE_SCORE):
     """Flag any low-confidence data joins in the bundle."""
@@ -260,6 +305,7 @@ def run_guardian(bundle, report_text):
     all_flags.extend(check_numeric_accuracy(bundle, report_text))
     all_flags.extend(check_citations(bundle, report_text))
     all_flags.extend(check_banned_language(report_text))
+    all_flags.extend(check_clinical_red_flags(bundle))
     all_flags.extend(check_confidence(bundle))
 
     # Determine verdict
