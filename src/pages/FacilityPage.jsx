@@ -23,7 +23,7 @@ import AntipsychoticAlert, { fetchAlertData } from '../components/facility/Antip
 import '../styles/facility.css';
 import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
-import ftagReference from '../../public/data/ftag-reference.json';
+import ftagReference from '../data/ftag-reference.json';
 
 // Accordion component for abuse/neglect citation groups
 function AbuseGroupAccordion({ ftag, desc, defs, harmCount, hasActualHarm }) {

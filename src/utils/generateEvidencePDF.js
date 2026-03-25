@@ -1,6 +1,6 @@
 import jsPDFModule from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import ftagReference from '../../public/data/ftag-reference.json';
+import ftagReference from '../data/ftag-reference.json';
 
 const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
 
