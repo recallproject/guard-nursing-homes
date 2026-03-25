@@ -1,70 +1,530 @@
 {
-  "F550": {"cfr": "42 CFR §483.10(a)", "title": "Resident Rights", "category": "Resident Rights", "ca_title22": "Title 22 §72527"},
-  "F557": {"cfr": "42 CFR §483.10(c)(6)", "title": "Respect, Dignity/Right to Have Personal Property", "category": "Resident Rights", "ca_title22": "Title 22 §72527"},
-  "F558": {"cfr": "42 CFR §483.10(e)", "title": "Reasonable Accommodations of Needs/Preferences", "category": "Resident Rights", "ca_title22": null},
-  "F561": {"cfr": "42 CFR §483.10(f)", "title": "Self-Determination — Right to Make Choices", "category": "Resident Rights", "ca_title22": null},
-  "F565": {"cfr": "42 CFR §483.10(g)(4)", "title": "Right to Voice Grievances Without Reprisal", "category": "Resident Rights", "ca_title22": "Title 22 §72527"},
-  "F578": {"cfr": "42 CFR §483.10(g)(14)&(15)", "title": "Request/Refuse/Discontinue Treatment; Formulate Advance Directives", "category": "Resident Rights", "ca_title22": null},
-  "F580": {"cfr": "42 CFR §483.10(g)(14)(i)-(iv)", "title": "Notification of Changes — Injury/Decline/Room Change", "category": "Resident Rights", "ca_title22": null},
-  "F583": {"cfr": "42 CFR §483.10(h)", "title": "Personal Privacy and Confidentiality of Records", "category": "Resident Rights", "ca_title22": null},
-  "F584": {"cfr": "42 CFR §483.10(i)", "title": "Safe, Clean, Comfortable, Homelike Environment", "category": "Resident Rights", "ca_title22": null},
-  "F600": {"cfr": "42 CFR §483.12", "title": "Free from Abuse and Neglect", "category": "Freedom from Abuse", "ca_title22": "Title 22 §72527"},
-  "F602": {"cfr": "42 CFR §483.12(a)(1)", "title": "Free from Misappropriation/Exploitation", "category": "Freedom from Abuse", "ca_title22": null},
-  "F603": {"cfr": "42 CFR §483.12(a)(2)", "title": "Free from Involuntary Seclusion", "category": "Freedom from Abuse", "ca_title22": null},
-  "F604": {"cfr": "42 CFR §483.12(a)(1)", "title": "Right to be Free from Physical Restraints", "category": "Freedom from Abuse", "ca_title22": null},
-  "F607": {"cfr": "42 CFR §483.12(b)(1)-(3)", "title": "Develop/Implement Abuse/Neglect Policies", "category": "Freedom from Abuse", "ca_title22": "Title 22 §72541"},
-  "F609": {"cfr": "42 CFR §483.12(c)(1)-(4)", "title": "Reporting of Alleged Violations", "category": "Freedom from Abuse", "ca_title22": "Title 22 §72541"},
-  "F610": {"cfr": "42 CFR §483.12(c)(2)-(4)", "title": "Investigate/Prevent/Correct Alleged Violation", "category": "Freedom from Abuse", "ca_title22": "Title 22 §72541"},
-  "F622": {"cfr": "42 CFR §483.15(c)(3)-(6)", "title": "Transfer/Discharge Requirements", "category": "Admission/Transfer/Discharge", "ca_title22": null},
-  "F623": {"cfr": "42 CFR §483.15(c)(3)-(6)", "title": "Notice Requirements Before Transfer/Discharge", "category": "Admission/Transfer/Discharge", "ca_title22": null},
-  "F636": {"cfr": "42 CFR §483.21(a)", "title": "Comprehensive Baseline Care Plan within 48 Hours", "category": "Care Planning", "ca_title22": null},
-  "F637": {"cfr": "42 CFR §483.21(a)(3)", "title": "Comprehensive Care Plan Development", "category": "Care Planning", "ca_title22": null},
-  "F641": {"cfr": "42 CFR §483.20(g)-(j)", "title": "Accuracy of Assessments", "category": "Assessment", "ca_title22": null},
-  "F656": {"cfr": "42 CFR §483.21(b)", "title": "Comprehensive Care Plans", "category": "Care Planning", "ca_title22": null},
-  "F657": {"cfr": "42 CFR §483.21(b)(2)(ii)-(iii)", "title": "Care Plan Timing and Revision", "category": "Care Planning", "ca_title22": null},
-  "F658": {"cfr": "42 CFR §483.21(b)(3)(i)", "title": "Services Provided Meet Professional Standards", "category": "Quality of Care", "ca_title22": null},
-  "F677": {"cfr": "42 CFR §483.24(a)(2)", "title": "ADL Care Provided for Dependent Residents", "category": "Quality of Life", "ca_title22": null},
-  "F679": {"cfr": "42 CFR §483.24(b)", "title": "Activities Meet Interest/Needs of Each Resident", "category": "Quality of Life", "ca_title22": null},
-  "F684": {"cfr": "42 CFR §483.25", "title": "Quality of Care", "category": "Quality of Care", "ca_title22": "Title 22 §72523"},
-  "F685": {"cfr": "42 CFR §483.25(a)", "title": "Treatment/Care for Special Needs", "category": "Quality of Care", "ca_title22": null},
-  "F686": {"cfr": "42 CFR §483.25(b)", "title": "Treatment/Services to Prevent/Heal Pressure Ulcers", "category": "Quality of Care", "ca_title22": "Title 22 §72523"},
-  "F688": {"cfr": "42 CFR §483.25(c)", "title": "Increase/Prevent Decrease in Range of Motion", "category": "Quality of Care", "ca_title22": null},
-  "F689": {"cfr": "42 CFR §483.25(d)", "title": "Free from Accident Hazards/Supervision/Devices", "category": "Quality of Care", "ca_title22": "Title 22 §72523"},
-  "F690": {"cfr": "42 CFR §483.25(e)", "title": "Bowel/Bladder Incontinence, Catheter, UTI", "category": "Quality of Care", "ca_title22": null},
-  "F691": {"cfr": "42 CFR §483.25(f)", "title": "Colostomy, Urostomy, or Ileostomy Care", "category": "Quality of Care", "ca_title22": null},
-  "F692": {"cfr": "42 CFR §483.25(g)", "title": "Nutrition/Hydration Status Maintenance", "category": "Quality of Care", "ca_title22": null},
-  "F693": {"cfr": "42 CFR §483.25(g)(1)-(3)", "title": "Tube Feeding Management/Restoration of Eating", "category": "Quality of Care", "ca_title22": null},
-  "F694": {"cfr": "42 CFR §483.25(h)", "title": "Respiratory/Tracheostomy Care and Suctioning", "category": "Quality of Care", "ca_title22": null},
-  "F695": {"cfr": "42 CFR §483.25(i)", "title": "Prostheses", "category": "Quality of Care", "ca_title22": null},
-  "F696": {"cfr": "42 CFR §483.25(k)", "title": "Pain Management", "category": "Quality of Care", "ca_title22": null},
-  "F697": {"cfr": "42 CFR §483.25(l)", "title": "Pain Assessment", "category": "Quality of Care", "ca_title22": null},
-  "F698": {"cfr": "42 CFR §483.25(m)", "title": "Dialysis", "category": "Quality of Care", "ca_title22": null},
-  "F699": {"cfr": "42 CFR §483.25(n)", "title": "Trauma Informed Care", "category": "Quality of Care", "ca_title22": null},
-  "F725": {"cfr": "42 CFR §483.35(a)", "title": "Sufficient Nursing Staff", "category": "Nursing Services", "ca_title22": "Title 22 §72329"},
-  "F726": {"cfr": "42 CFR §483.35(a)(3)&(4)", "title": "Competent Nursing Staff", "category": "Nursing Services", "ca_title22": "Title 22 §72329"},
-  "F727": {"cfr": "42 CFR §483.35(a)(1)(i)", "title": "RN 8 Consecutive Hours/Day, 7 Days/Week", "category": "Nursing Services", "ca_title22": "Title 22 §72329"},
-  "F728": {"cfr": "42 CFR §483.35(a)(1)(ii)", "title": "Licensed Nurse 24 Hours/Day", "category": "Nursing Services", "ca_title22": "Title 22 §72329"},
-  "F740": {"cfr": "42 CFR §483.40", "title": "Behavioral Health Services", "category": "Behavioral Health", "ca_title22": null},
-  "F741": {"cfr": "42 CFR §483.40(b)(1)-(3)", "title": "Sufficient/Competent Staff — Behavioral Health", "category": "Behavioral Health", "ca_title22": null},
-  "F755": {"cfr": "42 CFR §483.45(a)-(d)", "title": "Pharmacy Services/Procedures/Pharmacist/Records", "category": "Pharmacy Services", "ca_title22": "Title 22 §72367"},
-  "F756": {"cfr": "42 CFR §483.45(c)(3)&(d)", "title": "Drug Regimen Review/Report Irregularities", "category": "Pharmacy Services", "ca_title22": "Title 22 §72367"},
-  "F757": {"cfr": "42 CFR §483.45(d)", "title": "Unnecessary Medications", "category": "Pharmacy Services", "ca_title22": "Title 22 §72367"},
-  "F758": {"cfr": "42 CFR §483.45(e)", "title": "Psychotropic Medications — PRN Use Limitations", "category": "Pharmacy Services", "ca_title22": "Title 22 §72367"},
-  "F759": {"cfr": "42 CFR §483.45(f)", "title": "Medication Errors — Free of Significant Errors", "category": "Pharmacy Services", "ca_title22": "Title 22 §72367"},
-  "F760": {"cfr": "42 CFR §483.45(f)(2)", "title": "Residents Free of Significant Med Errors", "category": "Pharmacy Services", "ca_title22": null},
-  "F761": {"cfr": "42 CFR §483.45(g)", "title": "Label/Store Drugs and Biologicals", "category": "Pharmacy Services", "ca_title22": null},
-  "F812": {"cfr": "42 CFR §483.60", "title": "Food/Nutrition Services — Sufficient Staff", "category": "Dietary Services", "ca_title22": null},
-  "F835": {"cfr": "42 CFR §483.70(a)", "title": "Administration/Management — Governing Body", "category": "Administration", "ca_title22": null},
-  "F842": {"cfr": "42 CFR §483.70(i)", "title": "Resident Records — Identifiable Information", "category": "Administration", "ca_title22": null},
-  "F867": {"cfr": "42 CFR §483.75", "title": "QAPI Program", "category": "Quality Assurance", "ca_title22": null},
-  "F880": {"cfr": "42 CFR §483.80", "title": "Infection Prevention and Control", "category": "Infection Control", "ca_title22": "Title 22 §72533"},
-  "F881": {"cfr": "42 CFR §483.80(a)(1)-(2)", "title": "Antibiotic Stewardship Program", "category": "Infection Control", "ca_title22": null},
-  "F883": {"cfr": "42 CFR §483.80(d)", "title": "Influenza and Pneumococcal Immunizations", "category": "Infection Control", "ca_title22": null},
-  "F884": {"cfr": "42 CFR §483.80(d)(3)", "title": "COVID-19 Immunizations", "category": "Infection Control", "ca_title22": null},
-  "F908": {"cfr": "42 CFR §483.90", "title": "Physical Environment — Life Safety from Fire", "category": "Physical Environment", "ca_title22": null},
-  "F919": {"cfr": "42 CFR §483.90(i)", "title": "Sufficient Space/Equipment — Dining/Health Services", "category": "Physical Environment", "ca_title22": null},
-  "F921": {"cfr": "42 CFR §483.90(h)", "title": "Safe/Functional/Sanitary/Comfortable Environment", "category": "Physical Environment", "ca_title22": null},
-  "F925": {"cfr": "42 CFR §483.90(d)", "title": "Maintains Effective Pest Control Program", "category": "Physical Environment", "ca_title22": null},
-  "F944": {"cfr": "42 CFR §483.95", "title": "Required In-Service Training for Nurse Aides", "category": "Training", "ca_title22": null},
-  "F945": {"cfr": "42 CFR §483.95(a)", "title": "Required Training of Nursing Aides", "category": "Training", "ca_title22": null}
+  "F550": {
+    "cfr": "42 CFR \u00a7483.10(a)",
+    "title": "Resident Rights",
+    "category": "Resident Rights",
+    "ca_title22": "Title 22 \u00a772527"
+  },
+  "F552": {
+    "cfr": "42 CFR \u00a7483.10(c)(1)",
+    "title": "Right to Be Informed/Participate in Treatment",
+    "category": "Resident Rights",
+    "ca_title22": "Title 22 \u00a772527"
+  },
+  "F553": {
+    "cfr": "42 CFR \u00a7483.10(c)(2)-(3)",
+    "title": "Right to Participate in Care Planning",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F554": {
+    "cfr": "42 CFR \u00a7483.10(c)(7)",
+    "title": "Self-Administer Drugs if Clinically Appropriate",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F557": {
+    "cfr": "42 CFR \u00a7483.10(c)(6)",
+    "title": "Respect, Dignity/Right to Have Personal Property",
+    "category": "Resident Rights",
+    "ca_title22": "Title 22 \u00a772527"
+  },
+  "F558": {
+    "cfr": "42 CFR \u00a7483.10(e)",
+    "title": "Reasonable Accommodations of Needs/Preferences",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F561": {
+    "cfr": "42 CFR \u00a7483.10(f)",
+    "title": "Self-Determination \u2014 Right to Make Choices",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F565": {
+    "cfr": "42 CFR \u00a7483.10(g)(4)",
+    "title": "Right to Voice Grievances Without Reprisal",
+    "category": "Resident Rights",
+    "ca_title22": "Title 22 \u00a772527"
+  },
+  "F573": {
+    "cfr": "42 CFR \u00a7483.10(f)(9)",
+    "title": "Right to Access/Purchase Copies of Records",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F578": {
+    "cfr": "42 CFR \u00a7483.10(g)(14)&(15)",
+    "title": "Request/Refuse/Discontinue Treatment; Formulate Advance Directives",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F580": {
+    "cfr": "42 CFR \u00a7483.10(g)(14)(i)-(iv)",
+    "title": "Notification of Changes \u2014 Injury/Decline/Room Change",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F583": {
+    "cfr": "42 CFR \u00a7483.10(h)",
+    "title": "Personal Privacy and Confidentiality of Records",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F584": {
+    "cfr": "42 CFR \u00a7483.10(i)",
+    "title": "Safe, Clean, Comfortable, Homelike Environment",
+    "category": "Resident Rights",
+    "ca_title22": null
+  },
+  "F600": {
+    "cfr": "42 CFR \u00a7483.12",
+    "title": "Free from Abuse and Neglect",
+    "category": "Freedom from Abuse",
+    "ca_title22": "Title 22 \u00a772527"
+  },
+  "F602": {
+    "cfr": "42 CFR \u00a7483.12(a)(1)",
+    "title": "Free from Misappropriation/Exploitation",
+    "category": "Freedom from Abuse",
+    "ca_title22": null
+  },
+  "F603": {
+    "cfr": "42 CFR \u00a7483.12(a)(2)",
+    "title": "Free from Involuntary Seclusion",
+    "category": "Freedom from Abuse",
+    "ca_title22": null
+  },
+  "F604": {
+    "cfr": "42 CFR \u00a7483.12(a)(1)",
+    "title": "Right to be Free from Physical Restraints",
+    "category": "Freedom from Abuse",
+    "ca_title22": null
+  },
+  "F607": {
+    "cfr": "42 CFR \u00a7483.12(b)(1)-(3)",
+    "title": "Develop/Implement Abuse/Neglect Policies",
+    "category": "Freedom from Abuse",
+    "ca_title22": "Title 22 \u00a772541"
+  },
+  "F609": {
+    "cfr": "42 CFR \u00a7483.12(c)(1)-(4)",
+    "title": "Reporting of Alleged Violations",
+    "category": "Freedom from Abuse",
+    "ca_title22": "Title 22 \u00a772541"
+  },
+  "F610": {
+    "cfr": "42 CFR \u00a7483.12(c)(2)-(4)",
+    "title": "Investigate/Prevent/Correct Alleged Violation",
+    "category": "Freedom from Abuse",
+    "ca_title22": "Title 22 \u00a772541"
+  },
+  "F622": {
+    "cfr": "42 CFR \u00a7483.15(c)(3)-(6)",
+    "title": "Transfer/Discharge Requirements",
+    "category": "Admission/Transfer/Discharge",
+    "ca_title22": null
+  },
+  "F623": {
+    "cfr": "42 CFR \u00a7483.15(c)(3)-(6)",
+    "title": "Notice Requirements Before Transfer/Discharge",
+    "category": "Admission/Transfer/Discharge",
+    "ca_title22": null
+  },
+  "F635": {
+    "cfr": "42 CFR \u00a7483.21(a)(1)",
+    "title": "Admission Orders for Immediate Care",
+    "category": "Care Planning",
+    "ca_title22": null
+  },
+  "F636": {
+    "cfr": "42 CFR \u00a7483.21(a)",
+    "title": "Comprehensive Baseline Care Plan within 48 Hours",
+    "category": "Care Planning",
+    "ca_title22": null
+  },
+  "F637": {
+    "cfr": "42 CFR \u00a7483.21(a)(3)",
+    "title": "Comprehensive Care Plan Development",
+    "category": "Care Planning",
+    "ca_title22": null
+  },
+  "F641": {
+    "cfr": "42 CFR \u00a7483.20(g)-(j)",
+    "title": "Accuracy of Assessments",
+    "category": "Assessment",
+    "ca_title22": null
+  },
+  "F645": {
+    "cfr": "42 CFR \u00a7483.20(b)(2)(ii)",
+    "title": "PASARR Screening for Mental Disorders/ID",
+    "category": "Assessment",
+    "ca_title22": null
+  },
+  "F656": {
+    "cfr": "42 CFR \u00a7483.21(b)",
+    "title": "Comprehensive Care Plans",
+    "category": "Care Planning",
+    "ca_title22": null
+  },
+  "F657": {
+    "cfr": "42 CFR \u00a7483.21(b)(2)(ii)-(iii)",
+    "title": "Care Plan Timing and Revision",
+    "category": "Care Planning",
+    "ca_title22": null
+  },
+  "F658": {
+    "cfr": "42 CFR \u00a7483.21(b)(3)(i)",
+    "title": "Services Provided Meet Professional Standards",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F676": {
+    "cfr": "42 CFR \u00a7483.24(a)(1)",
+    "title": "Maintain Ability to Perform Activities of Daily Living",
+    "category": "Quality of Life",
+    "ca_title22": null
+  },
+  "F677": {
+    "cfr": "42 CFR \u00a7483.24(a)(2)",
+    "title": "ADL Care Provided for Dependent Residents",
+    "category": "Quality of Life",
+    "ca_title22": null
+  },
+  "F678": {
+    "cfr": "42 CFR \u00a7483.25(a)(2)",
+    "title": "Provide Basic Life Support Including CPR",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F679": {
+    "cfr": "42 CFR \u00a7483.24(b)",
+    "title": "Activities Meet Interest/Needs of Each Resident",
+    "category": "Quality of Life",
+    "ca_title22": null
+  },
+  "F684": {
+    "cfr": "42 CFR \u00a7483.25",
+    "title": "Quality of Care",
+    "category": "Quality of Care",
+    "ca_title22": "Title 22 \u00a772523"
+  },
+  "F685": {
+    "cfr": "42 CFR \u00a7483.25(a)",
+    "title": "Treatment/Care for Special Needs",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F686": {
+    "cfr": "42 CFR \u00a7483.25(b)",
+    "title": "Treatment/Services to Prevent/Heal Pressure Ulcers",
+    "category": "Quality of Care",
+    "ca_title22": "Title 22 \u00a772523"
+  },
+  "F688": {
+    "cfr": "42 CFR \u00a7483.25(c)",
+    "title": "Increase/Prevent Decrease in Range of Motion",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F689": {
+    "cfr": "42 CFR \u00a7483.25(d)",
+    "title": "Free from Accident Hazards/Supervision/Devices",
+    "category": "Quality of Care",
+    "ca_title22": "Title 22 \u00a772523"
+  },
+  "F690": {
+    "cfr": "42 CFR \u00a7483.25(e)",
+    "title": "Bowel/Bladder Incontinence, Catheter, UTI",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F691": {
+    "cfr": "42 CFR \u00a7483.25(f)",
+    "title": "Colostomy, Urostomy, or Ileostomy Care",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F692": {
+    "cfr": "42 CFR \u00a7483.25(g)",
+    "title": "Nutrition/Hydration Status Maintenance",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F693": {
+    "cfr": "42 CFR \u00a7483.25(g)(1)-(3)",
+    "title": "Tube Feeding Management/Restoration of Eating",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F694": {
+    "cfr": "42 CFR \u00a7483.25(h)",
+    "title": "Respiratory/Tracheostomy Care and Suctioning",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F695": {
+    "cfr": "42 CFR \u00a7483.25(i)",
+    "title": "Prostheses",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F696": {
+    "cfr": "42 CFR \u00a7483.25(k)",
+    "title": "Pain Management",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F697": {
+    "cfr": "42 CFR \u00a7483.25(l)",
+    "title": "Pain Assessment",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F698": {
+    "cfr": "42 CFR \u00a7483.25(m)",
+    "title": "Dialysis",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F699": {
+    "cfr": "42 CFR \u00a7483.25(n)",
+    "title": "Trauma Informed Care",
+    "category": "Quality of Care",
+    "ca_title22": null
+  },
+  "F710": {
+    "cfr": "42 CFR \u00a7483.30(a)",
+    "title": "Physician Supervision/Physician Orders",
+    "category": "Physician Services",
+    "ca_title22": null
+  },
+  "F725": {
+    "cfr": "42 CFR \u00a7483.35(a)",
+    "title": "Sufficient Nursing Staff",
+    "category": "Nursing Services",
+    "ca_title22": "Title 22 \u00a772329"
+  },
+  "F726": {
+    "cfr": "42 CFR \u00a7483.35(a)(3)&(4)",
+    "title": "Competent Nursing Staff",
+    "category": "Nursing Services",
+    "ca_title22": "Title 22 \u00a772329"
+  },
+  "F727": {
+    "cfr": "42 CFR \u00a7483.35(a)(1)(i)",
+    "title": "RN 8 Consecutive Hours/Day, 7 Days/Week",
+    "category": "Nursing Services",
+    "ca_title22": "Title 22 \u00a772329"
+  },
+  "F728": {
+    "cfr": "42 CFR \u00a7483.35(a)(1)(ii)",
+    "title": "Licensed Nurse 24 Hours/Day",
+    "category": "Nursing Services",
+    "ca_title22": "Title 22 \u00a772329"
+  },
+  "F732": {
+    "cfr": "42 CFR \u00a7483.35(g)",
+    "title": "Post Daily Nurse Staffing Information",
+    "category": "Nursing Services",
+    "ca_title22": "Title 22 \u00a772329"
+  },
+  "F740": {
+    "cfr": "42 CFR \u00a7483.40",
+    "title": "Behavioral Health Services",
+    "category": "Behavioral Health",
+    "ca_title22": null
+  },
+  "F741": {
+    "cfr": "42 CFR \u00a7483.40(b)(1)-(3)",
+    "title": "Sufficient/Competent Staff \u2014 Behavioral Health",
+    "category": "Behavioral Health",
+    "ca_title22": null
+  },
+  "F755": {
+    "cfr": "42 CFR \u00a7483.45(a)-(d)",
+    "title": "Pharmacy Services/Procedures/Pharmacist/Records",
+    "category": "Pharmacy Services",
+    "ca_title22": "Title 22 \u00a772367"
+  },
+  "F756": {
+    "cfr": "42 CFR \u00a7483.45(c)(3)&(d)",
+    "title": "Drug Regimen Review/Report Irregularities",
+    "category": "Pharmacy Services",
+    "ca_title22": "Title 22 \u00a772367"
+  },
+  "F757": {
+    "cfr": "42 CFR \u00a7483.45(d)",
+    "title": "Unnecessary Medications",
+    "category": "Pharmacy Services",
+    "ca_title22": "Title 22 \u00a772367"
+  },
+  "F758": {
+    "cfr": "42 CFR \u00a7483.45(e)",
+    "title": "Psychotropic Medications \u2014 PRN Use Limitations",
+    "category": "Pharmacy Services",
+    "ca_title22": "Title 22 \u00a772367"
+  },
+  "F759": {
+    "cfr": "42 CFR \u00a7483.45(f)",
+    "title": "Medication Errors \u2014 Free of Significant Errors",
+    "category": "Pharmacy Services",
+    "ca_title22": "Title 22 \u00a772367"
+  },
+  "F760": {
+    "cfr": "42 CFR \u00a7483.45(f)(2)",
+    "title": "Residents Free of Significant Med Errors",
+    "category": "Pharmacy Services",
+    "ca_title22": null
+  },
+  "F761": {
+    "cfr": "42 CFR \u00a7483.45(g)",
+    "title": "Label/Store Drugs and Biologicals",
+    "category": "Pharmacy Services",
+    "ca_title22": null
+  },
+  "F800": {
+    "cfr": "42 CFR \u00a7483.60(a)-(c)",
+    "title": "Provide Nourishing, Palatable, Well-Balanced Diet",
+    "category": "Dietary Services",
+    "ca_title22": null
+  },
+  "F802": {
+    "cfr": "42 CFR \u00a7483.60(a)(2)",
+    "title": "Sufficient Support Personnel for Dietary Services",
+    "category": "Dietary Services",
+    "ca_title22": null
+  },
+  "F804": {
+    "cfr": "42 CFR \u00a7483.60(c)-(d)",
+    "title": "Food Must Be Palatable and at Safe Temperature",
+    "category": "Dietary Services",
+    "ca_title22": null
+  },
+  "F812": {
+    "cfr": "42 CFR \u00a7483.60",
+    "title": "Food/Nutrition Services \u2014 Sufficient Staff",
+    "category": "Dietary Services",
+    "ca_title22": null
+  },
+  "F813": {
+    "cfr": "42 CFR \u00a7483.60(i)",
+    "title": "Food Storage, Handling, and Preparation",
+    "category": "Dietary Services",
+    "ca_title22": null
+  },
+  "F835": {
+    "cfr": "42 CFR \u00a7483.70(a)",
+    "title": "Administration/Management \u2014 Governing Body",
+    "category": "Administration",
+    "ca_title22": null
+  },
+  "F836": {
+    "cfr": "42 CFR \u00a7483.70(a)(1)",
+    "title": "Facility Licensed Under State/Local Law",
+    "category": "Administration",
+    "ca_title22": null
+  },
+  "F838": {
+    "cfr": "42 CFR \u00a7483.70(e)",
+    "title": "Facility-Wide Assessment of Resources",
+    "category": "Administration",
+    "ca_title22": null
+  },
+  "F842": {
+    "cfr": "42 CFR \u00a7483.70(i)",
+    "title": "Resident Records \u2014 Identifiable Information",
+    "category": "Administration",
+    "ca_title22": null
+  },
+  "F865": {
+    "cfr": "42 CFR \u00a7483.75(b)-(d)",
+    "title": "QAPI Plan and Program Activities",
+    "category": "Quality Assurance",
+    "ca_title22": null
+  },
+  "F867": {
+    "cfr": "42 CFR \u00a7483.75",
+    "title": "QAPI Program",
+    "category": "Quality Assurance",
+    "ca_title22": null
+  },
+  "F880": {
+    "cfr": "42 CFR \u00a7483.80",
+    "title": "Infection Prevention and Control",
+    "category": "Infection Control",
+    "ca_title22": "Title 22 \u00a772533"
+  },
+  "F881": {
+    "cfr": "42 CFR \u00a7483.80(a)(1)-(2)",
+    "title": "Antibiotic Stewardship Program",
+    "category": "Infection Control",
+    "ca_title22": null
+  },
+  "F883": {
+    "cfr": "42 CFR \u00a7483.80(d)",
+    "title": "Influenza and Pneumococcal Immunizations",
+    "category": "Infection Control",
+    "ca_title22": null
+  },
+  "F884": {
+    "cfr": "42 CFR \u00a7483.80(d)(3)",
+    "title": "COVID-19 Immunizations",
+    "category": "Infection Control",
+    "ca_title22": null
+  },
+  "F906": {
+    "cfr": "42 CFR \u00a7483.90(a)",
+    "title": "Life Safety from Fire \u2014 Adequate Power/Equipment",
+    "category": "Physical Environment",
+    "ca_title22": null
+  },
+  "F908": {
+    "cfr": "42 CFR \u00a7483.90",
+    "title": "Physical Environment \u2014 Life Safety from Fire",
+    "category": "Physical Environment",
+    "ca_title22": null
+  },
+  "F912": {
+    "cfr": "42 CFR \u00a7483.90(e)(1)",
+    "title": "Room Size \u2014 80 Sq Ft Per Resident Minimum",
+    "category": "Physical Environment",
+    "ca_title22": null
+  },
+  "F919": {
+    "cfr": "42 CFR \u00a7483.90(i)",
+    "title": "Sufficient Space/Equipment \u2014 Dining/Health Services",
+    "category": "Physical Environment",
+    "ca_title22": null
+  },
+  "F921": {
+    "cfr": "42 CFR \u00a7483.90(h)",
+    "title": "Safe/Functional/Sanitary/Comfortable Environment",
+    "category": "Physical Environment",
+    "ca_title22": null
+  },
+  "F925": {
+    "cfr": "42 CFR \u00a7483.90(d)",
+    "title": "Maintains Effective Pest Control Program",
+    "category": "Physical Environment",
+    "ca_title22": null
+  },
+  "F940": {
+    "cfr": "42 CFR \u00a7483.95(a)(1)",
+    "title": "Effective Training Program for All Staff",
+    "category": "Training",
+    "ca_title22": null
+  },
+  "F944": {
+    "cfr": "42 CFR \u00a7483.95",
+    "title": "Required In-Service Training for Nurse Aides",
+    "category": "Training",
+    "ca_title22": null
+  },
+  "F945": {
+    "cfr": "42 CFR \u00a7483.95(a)",
+    "title": "Required Training of Nursing Aides",
+    "category": "Training",
+    "ca_title22": null
+  }
 }

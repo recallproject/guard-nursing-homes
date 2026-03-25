@@ -1323,10 +1323,12 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       const ftagClean = def.ftag ? def.ftag.replace('F-0', 'F').replace('F-', 'F') : '';
       const ref = ftagClean ? ftagReference[ftagClean] : null;
       const ftagCell = ftagClean + (ref ? '\n' + ref.cfr : '');
-      const regTitle = ref ? ref.title : (def.description || 'No description').substring(0, 50);
+      const regTitle = ref ? ref.title : (def.description || 'No description');
       const regCell = regTitle + (ref ? '\n' + ref.category : '') + (isCA && ref && ref.ca_title22 ? '\nCA: ' + ref.ca_title22 : '');
-      const scope = def.scope_severity ? (def.scope_severity.includes('Wide') ? 'Widespread' : def.scope_severity.includes('Pattern') ? 'Pattern' : 'Isolated') : 'N/A';
-      const severity = def.severity_label || 'N/A';
+      const scopeMap = { 'J': 'Isolated', 'K': 'Pattern', 'L': 'Widespread', 'G': 'Isolated', 'H': 'Pattern', 'I': 'Widespread', 'D': 'Isolated', 'E': 'Pattern', 'F': 'Widespread', 'A': 'Isolated', 'B': 'Pattern', 'C': 'Widespread' };
+      const scope = def.scope_severity ? (scopeMap[def.scope_severity] || (def.scope_severity.includes('Wide') ? 'Widespread' : def.scope_severity.includes('Pattern') ? 'Pattern' : 'Isolated')) : 'N/A';
+      const sevLabelMap = { 'Immediate Jeopardy': 'Immediate Jeopardy', 'Actual Harm': 'Actual Harm', 'Potential for More Than Minimal Harm': 'Potential Harm', 'Potential for Minimal Harm': 'Minimal Harm' };
+      const severity = sevLabelMap[def.severity_label] || def.severity_label || 'N/A';
       const count = ftagClean ? (ftagCounts[ftagClean] || 1) + 'x' : '1x';
       return [ftagCell, regCell, scope, severity, count, date];
     });
@@ -1340,12 +1342,12 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 7.5 },
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: {
-        0: { cellWidth: 28, fontStyle: 'bold' },
-        1: { cellWidth: 55 },
-        2: { cellWidth: 20 },
-        3: { cellWidth: 25 },
+        0: { cellWidth: 26, fontStyle: 'bold' },
+        1: { cellWidth: 62 },
+        2: { cellWidth: 18 },
+        3: { cellWidth: 24 },
         4: { cellWidth: 14 },
-        5: { cellWidth: 20 },
+        5: { cellWidth: 18 },
       },
       didParseCell(data) {
         if (data.row.section === 'body') {
@@ -1354,9 +1356,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
             data.cell.styles.fillColor = RED_BG;
           else if (sev.includes('Actual Harm'))
             data.cell.styles.fillColor = AMBER_BG;
-          else if (sev.includes('Potential'))
+          else if (sev.includes('More Than Minimal'))
             data.cell.styles.fillColor = YELLOW_BG;
-          else if (sev.includes('Minimal') || sev.includes('No Harm'))
+          else if (sev.includes('Minimal'))
             data.cell.styles.fillColor = GREEN_BG;
           // Color the F-tag/CFR column
           if (data.column.index === 0 && data.row.section === 'body') {
@@ -1389,10 +1391,11 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         uniqueFtags[ftagClean] = { count: 0, highestSeverity: 'No Harm', severityRank: 0 };
       }
       uniqueFtags[ftagClean].count++;
-      const sevRank = d.severity_label === 'Immediate Jeopardy' ? 3 : d.severity_label === 'Actual Harm' ? 2 : d.severity_label === 'Potential Harm' ? 1 : 0;
+      const sevRank = d.severity_label === 'Immediate Jeopardy' ? 3 : d.severity_label === 'Actual Harm' ? 2 : (d.severity_label && d.severity_label.includes('More Than Minimal')) ? 1 : 0;
       if (sevRank > uniqueFtags[ftagClean].severityRank) {
         uniqueFtags[ftagClean].severityRank = sevRank;
-        uniqueFtags[ftagClean].highestSeverity = d.severity_label || 'No Harm';
+        const sevDisplay = d.severity_label === 'Immediate Jeopardy' ? 'Immediate Jeopardy' : d.severity_label === 'Actual Harm' ? 'Actual Harm' : (d.severity_label && d.severity_label.includes('More Than Minimal')) ? 'Potential Harm' : 'Minimal Harm';
+        uniqueFtags[ftagClean].highestSeverity = sevDisplay;
       }
     });
 
@@ -1425,29 +1428,30 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       alternateRowStyles: { fillColor: TABLE_ALT },
       columnStyles: isCA ? {
         0: { cellWidth: 16, fontStyle: 'bold' },
-        1: { cellWidth: 30 },
-        2: { cellWidth: 42 },
-        3: { cellWidth: 14 },
-        4: { cellWidth: 28 },
-        5: { cellWidth: 24, textColor: TEAL },
+        1: { cellWidth: 32 },
+        2: { cellWidth: 46 },
+        3: { cellWidth: 13, halign: 'center' },
+        4: { cellWidth: 26 },
+        5: { cellWidth: 21, textColor: TEAL },
       } : {
         0: { cellWidth: 18, fontStyle: 'bold' },
-        1: { cellWidth: 35 },
-        2: { cellWidth: 55 },
-        3: { cellWidth: 18 },
-        4: { cellWidth: 34 },
+        1: { cellWidth: 38 },
+        2: { cellWidth: 58 },
+        3: { cellWidth: 16, halign: 'center' },
+        4: { cellWidth: 30 },
       },
       didParseCell(data) {
         if (data.row.section === 'body' && data.column.index === 4) {
           const sev = data.cell.raw || '';
-          if (sev.includes('Immediate Jeopardy')) data.cell.styles.textColor = [220, 38, 38];
-          else if (sev.includes('Actual Harm')) data.cell.styles.textColor = [194, 65, 12];
-          else if (sev.includes('Potential')) data.cell.styles.textColor = [161, 98, 7];
+          if (sev.includes('Immediate Jeopardy')) { data.cell.styles.textColor = [220, 38, 38]; data.cell.styles.fontStyle = 'bold'; }
+          else if (sev.includes('Actual Harm')) { data.cell.styles.textColor = [194, 65, 12]; data.cell.styles.fontStyle = 'bold'; }
+          else if (sev.includes('Potential')) { data.cell.styles.textColor = [161, 98, 7]; }
+          else if (sev.includes('Minimal')) { data.cell.styles.textColor = [21, 128, 61]; }
           else data.cell.styles.textColor = [21, 128, 61];
         }
         if (data.row.section === 'body' && data.column.index === 3) {
           const count = parseInt(data.cell.raw) || 0;
-          if (count >= 3) data.cell.styles.textColor = [220, 38, 38];
+          if (count >= 3) { data.cell.styles.textColor = [220, 38, 38]; data.cell.styles.fontStyle = 'bold'; }
         }
       },
       margin: { left: margin, right: margin },
