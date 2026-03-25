@@ -12,6 +12,14 @@ import ComingSoonPage from '../components/ComingSoonPage';
 import ftagReference from '../../public/data/ftag-reference.json';
 import '../styles/evidence.css';
 
+// Normalize F-tag format: "F-0689" -> "F689", "F0689" -> "F689", "0689" -> "F689"
+const normalizeFtag = (ftag) => {
+  if (!ftag) return '';
+  const cleaned = ftag.replace(/^F-?0*/i, '');
+  return 'F' + cleaned;
+};
+const lookupFtag = (ftag) => ftagReference[normalizeFtag(ftag)] || {};
+
 export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   const COMING_SOON = false;
   const params = useParams();
@@ -857,12 +865,12 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
                       const isHarm = (sev || '').match(/^[GHI]/) || (def.severity_label || '').includes('Harm');
                       const rowStyle = isJeopardy ? { background: '#FEF2F2' } : isHarm ? { background: '#FFFBEB' } : {};
                       const ftag = def.ftag || '';
-                      const ref = ftagReference[ftag] || {};
+                      const ref = lookupFtag(ftag);
                       const citeCount = details.filter(d => d.ftag === ftag).length;
                       return (
                         <tr key={idx} style={rowStyle}>
                           <td>
-                            <strong style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: '#0F172A' }}>{ftag || 'N/A'}</strong>
+                            <strong style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: '#0F172A' }}>{normalizeFtag(ftag) || 'N/A'}</strong>
                             {ref.cfr && <div style={{ fontSize: '0.72rem', color: '#2B6CB0', marginTop: '2px' }}>{ref.cfr}</div>}
                           </td>
                           <td>
@@ -912,11 +920,11 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
                       return Object.entries(tagMap)
                         .sort((a, b) => b[1].count - a[1].count)
                         .map(([tag, info]) => {
-                          const ref = ftagReference[tag] || {};
+                          const ref = lookupFtag(tag);
                           const sevColor = info.worstLabel === 'Immediate Jeopardy' ? '#DC2626' : info.worstLabel === 'Actual Harm' ? '#B45309' : '#475569';
                           return (
                             <tr key={tag}>
-                              <td style={{ fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{tag}</td>
+                              <td style={{ fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{normalizeFtag(tag)}</td>
                               <td style={{ fontSize: '0.82rem', color: '#2B6CB0' }}>{ref.cfr || '—'}</td>
                               <td style={{ fontSize: '0.82rem' }}>{ref.title || '—'}</td>
                               <td style={{ fontWeight: 700, color: info.count >= 5 ? '#DC2626' : '#334155', fontFamily: "'JetBrains Mono', monospace" }}>{info.count}</td>
