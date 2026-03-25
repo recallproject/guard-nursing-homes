@@ -936,100 +936,6 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
             if (lowerIsBetter) {
               if (v > 0) data.cell.styles.textColor = RED;
               else if (v < 0) data.cell.styles.textColor = GREEN;
-        
-    // ---- Regulatory Reference Summary Table ----
-    checkPageBreak(40);
-    addSubHeading('Regulatory Reference Summary');
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'italic');
-    doc.setTextColor(...STEEL);
-    doc.text('Quick reference for demand letters and discovery requests. All citations reference 42 CFR Part 483.', margin, currentY);
-    currentY += 5;
-
-    const uniqueFtags = {};
-    facility.deficiency_details.forEach(d => {
-      const ftagClean = d.ftag ? d.ftag.replace('F-0', 'F').replace('F-', 'F') : null;
-      if (!ftagClean) return;
-      if (!uniqueFtags[ftagClean]) {
-        uniqueFtags[ftagClean] = { count: 0, highestSeverity: 'No Harm', severityRank: 0 };
-      }
-      uniqueFtags[ftagClean].count++;
-      const sevRank = d.severity_label === 'Immediate Jeopardy' ? 3 : d.severity_label === 'Actual Harm' ? 2 : d.severity_label === 'Potential Harm' ? 1 : 0;
-      if (sevRank > uniqueFtags[ftagClean].severityRank) {
-        uniqueFtags[ftagClean].severityRank = sevRank;
-        uniqueFtags[ftagClean].highestSeverity = d.severity_label || 'No Harm';
-      }
-    });
-
-    const regHead = isCA
-      ? [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity', 'CA Title 22']]
-      : [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity']];
-
-    const regRows = Object.entries(uniqueFtags)
-      .sort((a, b) => b[1].count - a[1].count)
-      .map(([ftag, data]) => {
-        const ref = ftagReference[ftag];
-        const row = [
-          ftag,
-          ref ? ref.cfr : '—',
-          ref ? ref.title : '—',
-          String(data.count),
-          data.highestSeverity,
-        ];
-        if (isCA) row.push(ref && ref.ca_title22 ? ref.ca_title22.replace('Title 22 ', '') : '—');
-        return row;
-      });
-
-    autoTable(doc, {
-      startY: currentY,
-      head: regHead,
-      body: regRows,
-      theme: 'grid',
-      styles: { fontSize: 7, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
-      headStyles: { fillColor: [30, 58, 95], textColor: WHITE, fontStyle: 'bold', fontSize: 7 },
-      alternateRowStyles: { fillColor: TABLE_ALT },
-      columnStyles: isCA ? {
-        0: { cellWidth: 16, fontStyle: 'bold' },
-        1: { cellWidth: 30 },
-        2: { cellWidth: 42 },
-        3: { cellWidth: 14 },
-        4: { cellWidth: 28 },
-        5: { cellWidth: 24, textColor: TEAL },
-      } : {
-        0: { cellWidth: 18, fontStyle: 'bold' },
-        1: { cellWidth: 35 },
-        2: { cellWidth: 55 },
-        3: { cellWidth: 18 },
-        4: { cellWidth: 34 },
-      },
-      didParseCell(data) {
-        if (data.row.section === 'body' && data.column.index === 4) {
-          const sev = data.cell.raw || '';
-          if (sev.includes('Immediate Jeopardy')) data.cell.styles.textColor = [220, 38, 38];
-          else if (sev.includes('Actual Harm')) data.cell.styles.textColor = [194, 65, 12];
-          else if (sev.includes('Potential')) data.cell.styles.textColor = [161, 98, 7];
-          else data.cell.styles.textColor = [21, 128, 61];
-        }
-        if (data.row.section === 'body' && data.column.index === 3) {
-          const count = parseInt(data.cell.raw) || 0;
-          if (count >= 3) data.cell.styles.textColor = [220, 38, 38];
-        }
-      },
-      margin: { left: margin, right: margin },
-    });
-    currentY = doc.lastAutoTable.finalY + 5;
-
-    // Footer note
-    checkPageBreak(12);
-    doc.setFontSize(7.5);
-    doc.setFont('helvetica', 'italic');
-    doc.setTextColor(...STEEL);
-    const footerNote = 'Federal regulations cited under 42 CFR Part 483. ' +
-      (isCA ? 'California state regulations cited under Title 22, Division 5, California Code of Regulations. ' : '') +
-      'Citation counts reflect available inspection data. Source: CMS Form 2567.';
-    const footLines = doc.splitTextToSize(footerNote, contentWidth);
-    doc.text(footLines, margin, currentY);
-    currentY += footLines.length * 4 + 4;
 
     } else {
               if (v < 0) data.cell.styles.textColor = RED;
@@ -1321,6 +1227,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // ================================================================
 
   addSectionHeader(4, 'Inspection History');
+  const isCA = facility.state === 'CA';
+
   // CMS-2567 source note
   checkPageBreak(20);
   doc.setFillColor(248, 250, 252);
@@ -1404,7 +1312,6 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       }
     });
 
-    const isCA = facility.state === 'CA';
     const headRow = isCA
       ? ['F-Tag / CFR', 'Regulation', 'Scope', 'Severity', 'Cited', 'Most Recent']
       : ['F-Tag / CFR', 'Regulation', 'Scope', 'Severity', 'Cited', 'Most Recent'];
@@ -1464,6 +1371,100 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       margin: { left: margin, right: margin },
     });
     currentY = doc.lastAutoTable.finalY + 5;
+        
+    // ---- Regulatory Reference Summary Table ----
+    checkPageBreak(40);
+    addSubHeading('Regulatory Reference Summary');
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    doc.text('Quick reference for demand letters and discovery requests. All citations reference 42 CFR Part 483.', margin, currentY);
+    currentY += 5;
+
+    const uniqueFtags = {};
+    facility.deficiency_details.forEach(d => {
+      const ftagClean = d.ftag ? d.ftag.replace('F-0', 'F').replace('F-', 'F') : null;
+      if (!ftagClean) return;
+      if (!uniqueFtags[ftagClean]) {
+        uniqueFtags[ftagClean] = { count: 0, highestSeverity: 'No Harm', severityRank: 0 };
+      }
+      uniqueFtags[ftagClean].count++;
+      const sevRank = d.severity_label === 'Immediate Jeopardy' ? 3 : d.severity_label === 'Actual Harm' ? 2 : d.severity_label === 'Potential Harm' ? 1 : 0;
+      if (sevRank > uniqueFtags[ftagClean].severityRank) {
+        uniqueFtags[ftagClean].severityRank = sevRank;
+        uniqueFtags[ftagClean].highestSeverity = d.severity_label || 'No Harm';
+      }
+    });
+
+    const regHead = isCA
+      ? [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity', 'CA Title 22']]
+      : [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity']];
+
+    const regRows = Object.entries(uniqueFtags)
+      .sort((a, b) => b[1].count - a[1].count)
+      .map(([ftag, data]) => {
+        const ref = ftagReference[ftag];
+        const row = [
+          ftag,
+          ref ? ref.cfr : '—',
+          ref ? ref.title : '—',
+          String(data.count),
+          data.highestSeverity,
+        ];
+        if (isCA) row.push(ref && ref.ca_title22 ? ref.ca_title22.replace('Title 22 ', '') : '—');
+        return row;
+      });
+
+    autoTable(doc, {
+      startY: currentY,
+      head: regHead,
+      body: regRows,
+      theme: 'grid',
+      styles: { fontSize: 7, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
+      headStyles: { fillColor: [30, 58, 95], textColor: WHITE, fontStyle: 'bold', fontSize: 7 },
+      alternateRowStyles: { fillColor: TABLE_ALT },
+      columnStyles: isCA ? {
+        0: { cellWidth: 16, fontStyle: 'bold' },
+        1: { cellWidth: 30 },
+        2: { cellWidth: 42 },
+        3: { cellWidth: 14 },
+        4: { cellWidth: 28 },
+        5: { cellWidth: 24, textColor: TEAL },
+      } : {
+        0: { cellWidth: 18, fontStyle: 'bold' },
+        1: { cellWidth: 35 },
+        2: { cellWidth: 55 },
+        3: { cellWidth: 18 },
+        4: { cellWidth: 34 },
+      },
+      didParseCell(data) {
+        if (data.row.section === 'body' && data.column.index === 4) {
+          const sev = data.cell.raw || '';
+          if (sev.includes('Immediate Jeopardy')) data.cell.styles.textColor = [220, 38, 38];
+          else if (sev.includes('Actual Harm')) data.cell.styles.textColor = [194, 65, 12];
+          else if (sev.includes('Potential')) data.cell.styles.textColor = [161, 98, 7];
+          else data.cell.styles.textColor = [21, 128, 61];
+        }
+        if (data.row.section === 'body' && data.column.index === 3) {
+          const count = parseInt(data.cell.raw) || 0;
+          if (count >= 3) data.cell.styles.textColor = [220, 38, 38];
+        }
+      },
+      margin: { left: margin, right: margin },
+    });
+    currentY = doc.lastAutoTable.finalY + 5;
+
+    // Footer note
+    checkPageBreak(12);
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    const footerNote = 'Federal regulations cited under 42 CFR Part 483. ' +
+      (isCA ? 'California state regulations cited under Title 22, Division 5, California Code of Regulations. ' : '') +
+      'Citation counts reflect available inspection data. Source: CMS Form 2567.';
+    const footLines = doc.splitTextToSize(footerNote, contentWidth);
+    doc.text(footLines, margin, currentY);
+    currentY += footLines.length * 4 + 4;
   } else {
     doc.setFontSize(9);
     doc.setFont('helvetica', 'italic');
