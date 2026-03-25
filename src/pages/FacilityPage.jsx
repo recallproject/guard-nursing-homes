@@ -2230,7 +2230,7 @@ export function FacilityPage() {
               <div className="pdf-compare-item"><span className="pdf-check">✓</span> Questions to ask</div>
             </div>
             <div className="pdf-compare-col paid">
-              <div className="pdf-compare-col-title paid">Evidence Report PDF — $29</div>
+              <div className="pdf-compare-col-title paid">Evidence Report PDF — Audit in Progress</div>
               <div className="pdf-compare-item"><span className="pdf-check">✓</span> Everything in the free report, plus:</div>
               <div className="pdf-compare-item"><span className="pdf-extra">+</span> Full deficiency narratives (inspector's own words)</div>
               <div className="pdf-compare-item"><span className="pdf-extra">+</span> Penalty timeline with fine amounts per incident</div>
@@ -2244,31 +2244,26 @@ export function FacilityPage() {
           </div>
         </div>
 
-        {/* Evidence Package CTA */}
+        {/* Evidence Package CTA — DISABLED DURING DATA AUDIT */}
         <div className="paid-upsell">
           <div className="paid-upsell-accent" />
           <div className="paid-upsell-body">
             <div className="paid-upsell-header">
-              <h3>Need This for a Case?</h3>
-              <span className="paid-price">$29</span>
+              <h3>Evidence Reports — Verification Audit in Progress</h3>
             </div>
             <div className="paid-upsell-desc">
-              A professionally cited Evidence Package. Everything in the free report plus deeper analysis — compiled from 16 federal databases into a single documented report.
+              We are cross-checking all facility data against live CMS sources to ensure 100% accuracy. Evidence Reports will return shortly with verified penalty data, updated staffing metrics, and enhanced clinical indicators.
             </div>
             <div className="paid-features">
-              <span className="paid-feature">Numbered source citations</span>
-              <span className="paid-feature">Multi-year trend analysis</span>
-              <span className="paid-feature">Side-by-side state/national comparisons</span>
-              <span className="paid-feature">Full ownership network map</span>
-              <span className="paid-feature">Staffing discrepancy documentation</span>
-              <span className="paid-feature">Related-party transaction detail</span>
+              <span className="paid-feature">Penalty data verified against CMS</span>
+              <span className="paid-feature">Staffing benchmarks updated</span>
+              <span className="paid-feature">New clinical red flags added</span>
+              <span className="paid-feature">Enhanced quality measure comparisons</span>
             </div>
             <div className="paid-upsell-actions">
-              <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn)}>Buy Evidence Report — $29</button>
-              <button className="btn-evidence btn-evidence--secondary" onClick={() => setShowEvidencePreview(true)}>Preview First</button>
+              <button className="ev-buy-btn" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>Temporarily Unavailable</button>
             </div>
-            <div className="paid-upsell-note">One-time purchase. Instant download. Used by attorneys, journalists, and regulators.</div>
-            <a href="/evidence-sample" className="paid-upsell-sample-link">↓ See a full sample report</a>
+            <div className="paid-upsell-note">Data accuracy is our priority. Reports will return soon with enhanced verification.</div>
           </div>
         </div>
 
@@ -2400,10 +2395,10 @@ export function FacilityPage() {
 
               <p className="ev-value-line">We analyze publicly available federal data from 16 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, ownership, quality measures, and cost reports into a single professional analysis.</p>
               <div className="ev-preview-actions">
-                <button className="ev-buy-btn" onClick={() => { setShowEvidencePreview(false); checkoutSingleReport(ccn); }}>
-                  Download Evidence Report — $29
+                <button className="ev-buy-btn" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>
+                  Temporarily Unavailable — Data Audit in Progress
                 </button>
-                <p className="ev-or-subscribe">or <Link to="/pricing" onClick={() => setShowEvidencePreview(false)}>subscribe for unlimited access</Link></p>
+                <p className="ev-or-subscribe" style={{ color: 'var(--text-cream)', opacity: 0.7 }}>Evidence Reports will return shortly with verified data</p>
               </div>
             </div>
           </div>

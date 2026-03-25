@@ -21,7 +21,7 @@ const normalizeFtag = (ftag) => {
 const lookupFtag = (ftag) => ftagReference[normalizeFtag(ftag)] || {};
 
 export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
-  const COMING_SOON = false;
+  const COMING_SOON = true;  // DATA AUDIT IN PROGRESS — re-enable after verification fixes
   const params = useParams();
   const ccn = ccnOverride || params.ccn;
   const { data, loading, error } = useFacilityData();
@@ -169,16 +169,16 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   if (COMING_SOON) {
     return (
       <ComingSoonPage
-        title="Evidence Packages"
-        description="Generate comprehensive, professionally documented PDF reports for any facility. Ten sections covering staffing, inspections, penalties, ownership, quality measures, and nearby alternatives — everything an attorney or ombudsman needs in one document."
+        title="Evidence Reports — Data Verification in Progress"
+        description="We are currently conducting a comprehensive data validation audit, cross-checking all facility records against live CMS sources to ensure 100% accuracy. Evidence Reports will return shortly with enhanced verification and updated penalty, staffing, and quality data."
         tier="professional"
         features={[
-          '10-section facility analysis in a single PDF',
-          'Staffing data with payroll verification',
-          'Complete inspection and deficiency history',
-          'Penalty and fine records with amounts',
-          'Nearby alternative facilities with comparative data',
-          'Ownership network context',
+          'All penalty and fine data verified against CMS Care Compare',
+          'Staffing metrics cross-checked with current PBJ submissions',
+          'National benchmarks updated to latest CMS figures',
+          'Enhanced quality measure comparisons with state averages',
+          'Ownership records validated against CMS ownership database',
+          'New clinical red flag indicators added',
         ]}
       />
     );

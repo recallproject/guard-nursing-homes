@@ -27,7 +27,7 @@ export default function ComingSoonPage({ title, description, tier, features = []
   return (
     <div className="coming-soon-page">
       <div className="coming-soon-page__inner">
-        <div className="coming-soon-page__badge">{info.label} Plan — Coming Soon</div>
+        <div className="coming-soon-page__badge">{info.label} — Data Verification Audit</div>
         <h1 className="coming-soon-page__title">{title}</h1>
         <p className="coming-soon-page__description">{description}</p>
 
