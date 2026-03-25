@@ -9,6 +9,7 @@ import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
 
 import ComingSoonPage from '../components/ComingSoonPage';
+import ftagReference from '../../public/data/ftag-reference.json';
 import '../styles/evidence.css';
 
 export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
@@ -791,6 +792,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           {/* Individual Deficiency Details */}
           {(() => {
             const details = deficiencyDetails || facility.deficiency_details || [];
+            const isCA = facility.state === 'CA';
             if (defDetailsLoading) {
               return (
                 <>
@@ -803,42 +805,132 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
 
             const sorted = [...details]
               .sort((a, b) => new Date(b.survey_date || 0) - new Date(a.survey_date || 0))
-              .slice(0, 25);
+              .slice(0, 50);
+
+            // Severity badge styles
+            const sevBadge = (sev, label) => {
+              const isJeopardy = (sev || '').match(/^[JKL]/) || (label || '').includes('Jeopardy');
+              const isHarm = (sev || '').match(/^[GHI]/) || (label || '').includes('Actual Harm');
+              const style = isJeopardy
+                ? { background: '#FEF2F2', color: '#DC2626', border: '1px solid #FECACA', padding: '2px 8px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 700 }
+                : isHarm
+                ? { background: '#FFFBEB', color: '#B45309', border: '1px solid #FDE68A', padding: '2px 8px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 600 }
+                : { background: '#F0FDF4', color: '#15803D', border: '1px solid #BBF7D0', padding: '2px 8px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 500 };
+              const text = isJeopardy ? 'Immediate Jeopardy' : isHarm ? 'Actual Harm' : (label || 'Potential Harm');
+              return <span style={style}>{text}</span>;
+            };
+
+            // Scope badge
+            const scopeBadge = (sev) => {
+              const letter = (sev || '')[0];
+              const scopeMap = { D: 'Isolated', E: 'Pattern', F: 'Widespread', G: 'Isolated', H: 'Pattern', I: 'Widespread', J: 'Isolated', K: 'Pattern', L: 'Widespread' };
+              const scope = scopeMap[letter] || '';
+              if (!scope) return null;
+              return <span style={{ background: '#F1F5F9', color: '#475569', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', fontSize: '0.72rem', fontWeight: 500 }}>{scope}</span>;
+            };
 
             return (
               <>
                 <h3 className="ev-subsection">Individual Deficiency Details</h3>
+                <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderLeft: '3px solid #2B6CB0', padding: '10px 14px', marginBottom: '12px', fontSize: '0.8rem', color: '#475569', lineHeight: 1.6 }}>
+                  <strong style={{ color: '#0F172A' }}>Data Source:</strong> Inspection deficiencies documented on <strong>CMS Form 2567</strong> (Statement of Deficiencies and Plan of Correction), issued by state survey agencies under contract with CMS. Each deficiency cites a specific federal regulation under <strong>42 CFR Part 483</strong>.
+                  {isCA && <div style={{ color: '#059669', marginTop: '4px' }}>California facilities are additionally subject to Title 22, Division 5 of the California Code of Regulations.</div>}
+                </div>
                 <p style={{ color: '#64748B', fontSize: '0.85rem', marginBottom: '0.75rem' }}>
-                  Showing {Math.min(25, details.length)} of {details.length} total citation{details.length !== 1 ? 's' : ''} (most recent first).
+                  Showing {Math.min(50, details.length)} of {details.length} total citation{details.length !== 1 ? 's' : ''} (most recent first). <span style={{ color: '#DC2626' }}>Red = Immediate Jeopardy</span>. <span style={{ color: '#B45309' }}>Amber = Actual Harm</span>.
                 </p>
                 <table className="ev-table">
                   <thead>
                     <tr>
-                      <th>Date</th>
-                      <th>F-Tag</th>
-                      <th>Severity</th>
-                      <th>Category</th>
-                      <th>Description</th>
+                      <th style={{ width: '120px' }}>F-Tag / CFR</th>
+                      <th>Regulation</th>
+                      <th style={{ width: '80px' }}>Scope</th>
+                      <th style={{ width: '110px' }}>Severity</th>
+                      <th style={{ width: '50px' }}>Cited</th>
+                      <th style={{ width: '80px' }}>Most Recent</th>
                     </tr>
                   </thead>
                   <tbody>
                     {sorted.map((def, idx) => {
                       const sev = def.scope_severity || '';
-                      const isJeopardy = sev.startsWith('J') || sev.startsWith('K') || sev.startsWith('L') || (def.severity_label || '').includes('Jeopardy');
-                      const isHarm = sev.startsWith('H') || sev.startsWith('I') || (def.severity_label || '').includes('Harm');
+                      const isJeopardy = (sev || '').match(/^[JKL]/) || (def.severity_label || '').includes('Jeopardy');
+                      const isHarm = (sev || '').match(/^[GHI]/) || (def.severity_label || '').includes('Harm');
                       const rowStyle = isJeopardy ? { background: '#FEF2F2' } : isHarm ? { background: '#FFFBEB' } : {};
+                      const ftag = def.ftag || '';
+                      const ref = ftagReference[ftag] || {};
+                      const citeCount = details.filter(d => d.ftag === ftag).length;
                       return (
                         <tr key={idx} style={rowStyle}>
-                          <td>{def.survey_date ? new Date(def.survey_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A'}</td>
-                          <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.8rem' }}>{def.ftag || 'N/A'}</td>
-                          <td style={{ fontWeight: 600 }}>{sev}{def.severity_label ? ` (${def.severity_label})` : ''}</td>
-                          <td>{def.category || 'N/A'}</td>
-                          <td style={{ fontSize: '0.8rem', maxWidth: '250px' }}>{(def.description || 'No description').substring(0, 80)}{(def.description || '').length > 80 ? '...' : ''}</td>
+                          <td>
+                            <strong style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.85rem', color: '#0F172A' }}>{ftag || 'N/A'}</strong>
+                            {ref.cfr && <div style={{ fontSize: '0.72rem', color: '#2B6CB0', marginTop: '2px' }}>{ref.cfr}</div>}
+                          </td>
+                          <td>
+                            <div style={{ fontWeight: 600, color: '#0F172A', fontSize: '0.85rem' }}>{ref.title || def.description?.substring(0, 60) || 'N/A'}</div>
+                            {ref.category && <div style={{ fontSize: '0.72rem', color: '#64748B', marginTop: '2px' }}>{ref.category}</div>}
+                            {isCA && ref.ca_title22 && <div style={{ fontSize: '0.72rem', color: '#059669', fontStyle: 'italic', marginTop: '2px' }}>CA: {ref.ca_title22}</div>}
+                          </td>
+                          <td>{scopeBadge(sev)}</td>
+                          <td>{sevBadge(sev, def.severity_label)}</td>
+                          <td style={{ fontFamily: "'JetBrains Mono', monospace", fontWeight: citeCount >= 3 ? 700 : 400, color: citeCount >= 3 ? '#DC2626' : '#334155' }}>{citeCount}x</td>
+                          <td style={{ fontSize: '0.8rem', color: '#475569' }}>{def.survey_date ? new Date(def.survey_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'N/A'}</td>
                         </tr>
                       );
                     })}
                   </tbody>
                 </table>
+
+                {/* Regulatory Reference Summary */}
+                <h3 className="ev-subsection" style={{ marginTop: '1.5rem' }}>Regulatory Reference Summary</h3>
+                <p style={{ color: '#64748B', fontSize: '0.82rem', marginBottom: '0.5rem' }}>Quick reference for demand letters and discovery requests. All citations reference 42 CFR Part 483.</p>
+                <table className="ev-table">
+                  <thead>
+                    <tr>
+                      <th>F-Tag</th>
+                      <th>Federal Regulation</th>
+                      <th>Regulation Title</th>
+                      <th>Times Cited</th>
+                      <th>Highest Severity</th>
+                      {isCA && <th style={{ color: '#059669' }}>CA Title 22</th>}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(() => {
+                      const tagMap = {};
+                      details.forEach(d => {
+                        const t = d.ftag;
+                        if (!t) return;
+                        if (!tagMap[t]) tagMap[t] = { count: 0, worstSev: 0, worstLabel: 'No Harm' };
+                        tagMap[t].count++;
+                        const s = d.scope_severity || '';
+                        const sevOrder = s.match(/^[JKL]/) ? 4 : s.match(/^[GHI]/) ? 3 : s.match(/^[DEF]/) ? 2 : 1;
+                        if (sevOrder > tagMap[t].worstSev) {
+                          tagMap[t].worstSev = sevOrder;
+                          tagMap[t].worstLabel = sevOrder === 4 ? 'Immediate Jeopardy' : sevOrder === 3 ? 'Actual Harm' : sevOrder === 2 ? 'Potential Harm' : 'No Harm';
+                        }
+                      });
+                      return Object.entries(tagMap)
+                        .sort((a, b) => b[1].count - a[1].count)
+                        .map(([tag, info]) => {
+                          const ref = ftagReference[tag] || {};
+                          const sevColor = info.worstLabel === 'Immediate Jeopardy' ? '#DC2626' : info.worstLabel === 'Actual Harm' ? '#B45309' : '#475569';
+                          return (
+                            <tr key={tag}>
+                              <td style={{ fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{tag}</td>
+                              <td style={{ fontSize: '0.82rem', color: '#2B6CB0' }}>{ref.cfr || '—'}</td>
+                              <td style={{ fontSize: '0.82rem' }}>{ref.title || '—'}</td>
+                              <td style={{ fontWeight: 700, color: info.count >= 5 ? '#DC2626' : '#334155', fontFamily: "'JetBrains Mono', monospace" }}>{info.count}</td>
+                              <td style={{ color: sevColor, fontWeight: 600, fontSize: '0.82rem' }}>{info.worstLabel}</td>
+                              {isCA && <td style={{ color: '#059669', fontSize: '0.82rem' }}>{ref.ca_title22 ? ref.ca_title22.replace('Title 22 ', '') : '—'}</td>}
+                            </tr>
+                          );
+                        });
+                    })()}
+                  </tbody>
+                </table>
+                <p style={{ fontSize: '0.75rem', color: '#94A3B8', fontStyle: 'italic', marginTop: '8px' }}>
+                  Federal regulations cited under 42 CFR Part 483. {isCA ? 'California state regulations cited under Title 22, Division 5, California Code of Regulations. ' : ''}Citation counts reflect available inspection data. Source: CMS Form 2567.
+                </p>
               </>
             );
           })()}
