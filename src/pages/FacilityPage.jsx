@@ -896,7 +896,7 @@ export function FacilityPage() {
                           </div>
                           <div className="deficiency-meta">
                             {surveyLabel} · {year} · Category: {def.category}
-                            {ftagNum && ftagReference[ftagNum] && <> · Cited {ftagCounts[ftagNum] || 1}x</>}
+                            {ftagNum && ftagReference[ftagNum] && <> · Cited {(deficiencyDetails || []).filter(d => { const c = d.ftag ? d.ftag.replace("F-0", "F").replace("F-", "F") : ""; return c === ftagNum; }).length || 1}x</>}
                           </div>
                           {facility.state === 'CA' && ftagNum && ftagReference[ftagNum]?.ca_title22 && (
                             <div style={{ fontSize: '12px', color: '#059669', fontStyle: 'italic', marginTop: '2px' }}>
