@@ -396,6 +396,55 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     };
   }
 
+  // ======================== FAMILY "WHAT STANDS OUT" ========================
+
+  function generateFamilyFindings() {
+    const findings = [];
+    if (facility.composite >= 60)
+      findings.push('This facility scores higher than most on our risk indicators, which combine staffing, inspection, penalty, and quality data. This may warrant closer review.');
+    if (facility.jeopardy_count > 0)
+      findings.push('State inspectors found conditions serious enough to be classified as "immediate jeopardy" — the most severe type of inspection finding — on ' + facility.jeopardy_count + ' occasion' + (facility.jeopardy_count > 1 ? 's' : '') + '.');
+    if (facility.harm_count > 0)
+      findings.push('Inspectors confirmed that residents were directly harmed by facility conditions on ' + facility.harm_count + ' occasion' + (facility.harm_count > 1 ? 's' : '') + '.');
+    if (facility.total_hprd && facility.total_hprd < 3.48)
+      findings.push('Staffing levels (' + num(facility.total_hprd) + ' total nursing hours per resident per day) are below the level that many experts consider a minimum safe threshold.');
+    if (facility.zero_rn_pct > 10)
+      findings.push('The facility reported no registered nurse on duty for ' + facility.zero_rn_pct.toFixed(0) + '% of days in the reporting period, which may affect the quality of care.');
+    if (facility.total_fines > 50000)
+      findings.push('The facility has been fined ' + fmt(facility.total_fines) + ' by the federal government for regulatory violations.');
+    if (facility.contractor_pct && facility.contractor_pct > 20)
+      findings.push('A higher-than-average share of nursing staff (' + facility.contractor_pct.toFixed(0) + '%) comes from temporary agencies, which may affect continuity of care.');
+    if (facility.worst_owner && facility.owner_portfolio_count > 10) {
+      const pf = allFacilities.filter((f) => f.worst_owner === facility.worst_owner);
+      const pfStars = pf.length > 1 ? (pf.reduce((s, f) => s + (f.stars || 0), 0) / pf.length).toFixed(1) : null;
+      findings.push('This facility is part of a larger chain (' + facility.worst_owner + ', ' + (pf.length || facility.owner_portfolio_count) + ' facilities)' + (pfStars ? ' with an average rating of ' + pfStars + ' out of 5 stars.' : '.'));
+    }
+    if (findings.length === 0)
+      findings.push('No major concerns were identified in the public data reviewed. This does not guarantee quality of care — families should still visit and ask questions.');
+    return findings;
+  }
+
+  // ======================== QUESTIONS TO ASK ========================
+
+  function generateQuestionsToAsk() {
+    const questions = [];
+    // Always include these core questions
+    questions.push('How has the facility addressed its most recent inspection findings?');
+    questions.push('What is the current nurse and aide staffing on day, evening, and weekend shifts?');
+    questions.push('How often does the facility rely on agency or temporary staff?');
+    // Conditional questions based on facility data
+    if (facility.total_fines > 0 || facility.jeopardy_count > 0 || facility.harm_count > 0)
+      questions.push('What steps has the facility taken after recent penalties, complaint findings, or safety concerns?');
+    if (facility.antipsychotic_pct > 15 || (facility.zero_rn_pct > 10))
+      questions.push('How are residents monitored for falls, pressure ulcers, antipsychotic use, mood changes, or other quality concerns noted in this report?');
+    else
+      questions.push('How does the facility monitor residents for falls, pressure ulcers, and mood changes?');
+    questions.push('How are families informed when concerns about a resident arise?');
+    if (facility.worst_owner && facility.owner_portfolio_count > 5)
+      questions.push('What is the relationship between the facility\'s local management and its corporate ownership?');
+    return questions;
+  }
+
   // ======================== TODAY STRING ========================
 
   const today = new Date().toLocaleDateString('en-US', {
@@ -425,7 +474,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setTextColor(...NAVY);
   doc.setFontSize(26);
   doc.setFont('helvetica', 'bold');
-  doc.text(isAttorney ? 'ATTORNEY EVIDENCE REPORT' : 'EVIDENCE REPORT', pageWidth / 2, currentY, { align: 'center' });
+  doc.text(isAttorney ? 'ATTORNEY EVIDENCE REPORT' : 'FAMILY FACILITY REVIEW', pageWidth / 2, currentY, { align: 'center' });
   currentY += 4;
   doc.setDrawColor(...RED);
   doc.setLineWidth(0.8);
@@ -706,17 +755,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     ['11.', 'Data Sources & Methodology', '16'],
     ['12.', 'Disclaimer', '17'],
   ] : [
-    ['1.', 'Executive Summary', '3'],
-    ['2.', 'Ownership Portfolio', '3'],
-    ['3.', 'Staffing Analysis', '5'],
-    ['4.', 'Inspection History', '7'],
+    ['1.', 'What Stands Out', '3'],
+    ['2.', 'Facility Snapshot & Ownership', '4'],
+    ['3.', 'Staffing Overview', '5'],
+    ['4.', 'Inspection & Penalty History', '7'],
     ['5.', 'Financial Penalties', '9'],
-    ['6.', 'Clinical Outcomes (Quality Measures)', '10'],
-    ['7.', 'Red Flags & Accountability Indicators', '11'],
+    ['6.', 'Quality & Resident Safety', '10'],
+    ['7.', 'Questions to Ask the Facility', '11'],
     ['8.', 'Comparison Context', '12'],
-    ['9.', 'Nearby Alternatives', '12'],
-    ['10.', 'Data Sources & Methodology', '13'],
-    ['11.', 'Disclaimer', '14'],
+    ['9.', 'Nearby Alternatives', '13'],
+    ['10.', 'Data Sources & Methodology', '14'],
+    ['11.', 'Disclaimer', '15'],
   ];
 
   tocEntries.forEach(([num, title, page]) => {
@@ -765,7 +814,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setTextColor(...BODY);
   const aboutText = isAttorney
     ? 'This Attorney Evidence Report compiles data from federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support attorneys conducting case evaluation, discovery planning, and regulatory compliance analysis for nursing home litigation. All data is publicly available, independently verifiable, and cited to original federal sources.'
-    : 'This report compiles data from 16 federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support families evaluating care options, attorneys conducting discovery, journalists investigating patterns, and regulators monitoring compliance. All data is publicly available and independently verifiable against original sources.';
+    : 'This report helps families review public information about a nursing home in one place. It brings together public data on staffing, inspections, penalties, ownership, and quality signals so you can better understand what stands out and what questions to ask. This report is a starting point, not the only basis for a decision. Families should combine this information with facility visits, direct questions, and advice from trusted professionals.';
   const aboutLines = doc.splitTextToSize(aboutText, contentWidth);
   doc.text(aboutLines, margin, currentY);
   currentY += aboutLines.length * 4.5 + 8;
@@ -788,41 +837,104 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.textWithLink(cmsUrl, margin, currentY, { url: cmsUrl });
 
   // ================================================================
-  //   PAGE 3 — SECTION 1: EXECUTIVE SUMMARY
+  //   PAGE 3 — SECTION 1: WHAT STANDS OUT / EXECUTIVE SUMMARY
   // ================================================================
 
   addNewPage();
-  addSectionHeader(1, 'Executive Summary');
-
-  // Metric row
   const mw = (contentWidth - 10) / 3;
-  drawMetricCard(
-    'RISK SCORE',
-    facility.composite ? facility.composite.toFixed(1) : null,
-    NATIONAL_AVG.composite, '', margin, currentY, mw
-  );
-  drawMetricCard(
-    'CMS STARS',
-    (facility.stars || 0) + '', NATIONAL_AVG.stars + '', '/5',
-    margin + mw + 5, currentY, mw
-  );
-  drawMetricCard(
-    'TOTAL FINES',
-    facility.total_fines ? '$' + Math.round(facility.total_fines / 1000) + 'K' : '$0',
-    '$' + Math.round(NATIONAL_AVG.total_fines / 1000) + 'K', '',
-    margin + (mw + 5) * 2, currentY, mw
-  );
-  currentY += 34;
 
-  // Assessment
-  addSubHeading('Assessment');
-  doc.setFontSize(9.5);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...BODY);
-  const summaryText = generateExecutiveSummary();
-  const summaryLines = doc.splitTextToSize(summaryText, contentWidth);
-  doc.text(summaryLines, margin, currentY);
-  currentY += summaryLines.length * 4.5 + 4;
+  if (isAttorney) {
+    addSectionHeader(1, 'Executive Summary');
+
+    // Metric row
+    drawMetricCard(
+      'RISK SCORE',
+      facility.composite ? facility.composite.toFixed(1) : null,
+      NATIONAL_AVG.composite, '', margin, currentY, mw
+    );
+    drawMetricCard(
+      'CMS STARS',
+      (facility.stars || 0) + '', NATIONAL_AVG.stars + '', '/5',
+      margin + mw + 5, currentY, mw
+    );
+    drawMetricCard(
+      'TOTAL FINES',
+      facility.total_fines ? '$' + Math.round(facility.total_fines / 1000) + 'K' : '$0',
+      '$' + Math.round(NATIONAL_AVG.total_fines / 1000) + 'K', '',
+      margin + (mw + 5) * 2, currentY, mw
+    );
+    currentY += 34;
+
+    // Assessment
+    addSubHeading('Assessment');
+    doc.setFontSize(9.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const summaryText = generateExecutiveSummary();
+    const summaryLines = doc.splitTextToSize(summaryText, contentWidth);
+    doc.text(summaryLines, margin, currentY);
+    currentY += summaryLines.length * 4.5 + 4;
+  } else {
+    // ── FAMILY VERSION: "What Stands Out" ──
+    addSectionHeader(1, 'What Stands Out');
+
+    // Metric row (same cards, family-friendly)
+    drawMetricCard(
+      'RISK SCORE',
+      facility.composite ? facility.composite.toFixed(1) : null,
+      NATIONAL_AVG.composite, '', margin, currentY, mw
+    );
+    drawMetricCard(
+      'CMS STARS',
+      (facility.stars || 0) + '', NATIONAL_AVG.stars + '', '/5',
+      margin + mw + 5, currentY, mw
+    );
+    drawMetricCard(
+      'TOTAL FINES',
+      facility.total_fines ? '$' + Math.round(facility.total_fines / 1000) + 'K' : '$0',
+      '$' + Math.round(NATIONAL_AVG.total_fines / 1000) + 'K', '',
+      margin + (mw + 5) * 2, currentY, mw
+    );
+    currentY += 34;
+
+    // Plain-language intro
+    doc.setFontSize(9.5);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const familyIntro = 'Based on public records, here are the areas that may deserve your attention. A concerning pattern does not prove poor care in every case, but it may suggest topics to discuss directly with the facility.';
+    const familyIntroLines = doc.splitTextToSize(familyIntro, contentWidth);
+    doc.text(familyIntroLines, margin, currentY);
+    currentY += familyIntroLines.length * 4.5 + 6;
+
+    // Auto-generated plain-language findings
+    const familyFindings = generateFamilyFindings();
+    familyFindings.forEach((finding, i) => {
+      checkPageBreak(14);
+      // Navy left-bar callout style
+      const fLines = doc.splitTextToSize(finding, contentWidth - 12);
+      const fBoxH = fLines.length * 4.5 + 6;
+      doc.setFillColor(...LIGHT_BG);
+      doc.rect(margin + 3, currentY - 1, contentWidth - 3, fBoxH, 'F');
+      const barColor = (i === 0 && facility.composite >= 60) ? RED : NAVY;
+      doc.setFillColor(...barColor);
+      doc.rect(margin, currentY - 1, 3, fBoxH, 'F');
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...BODY);
+      doc.text(fLines, margin + 7, currentY + 4);
+      currentY += fBoxH + 3;
+    });
+    currentY += 4;
+
+    // Data dates note
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    const dateNote = 'All findings are drawn from public CMS and state records as of ' + DATA_DATE + '. See Data Dates & Limitations at the end of this report.';
+    const dateNoteLines = doc.splitTextToSize(dateNote, contentWidth);
+    doc.text(dateNoteLines, margin, currentY);
+    currentY += dateNoteLines.length * 4 + 6;
+  }
 
   // ================================================================
   //   ATTORNEY TAKEAWAYS (attorney mode only, after executive summary)
@@ -874,10 +986,20 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   // ================================================================
-  //   SECTION 2 — OWNERSHIP PORTFOLIO
+  //   SECTION 2 — OWNERSHIP PORTFOLIO / FACILITY SNAPSHOT
   // ================================================================
 
-  addSectionHeader(2, 'Ownership Portfolio');
+  addSectionHeader(2, isAttorney ? 'Ownership Portfolio' : 'Facility Snapshot');
+
+  if (!isAttorney) {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const ownerIntro = 'Ownership and management structure can matter because staffing practices, accountability, and responsiveness may vary across different owners and chains. Here are the basic facts about who operates this facility.';
+    const ownerIntroLines = doc.splitTextToSize(ownerIntro, contentWidth);
+    doc.text(ownerIntroLines, margin, currentY);
+    currentY += ownerIntroLines.length * 4.5 + 4;
+  }
 
   addDataRow('Owner Name:', facility.worst_owner || 'N/A');
   if (facility.chain_name) addDataRow('Chain Name:', facility.chain_name);
@@ -1068,7 +1190,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   SECTION 3 — STAFFING ANALYSIS
   // ================================================================
 
-  addSectionHeader(3, 'Staffing Analysis');
+  addSectionHeader(3, isAttorney ? 'Staffing Analysis' : 'Staffing Overview');
+
+  if (!isAttorney) {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const staffIntro = 'Staffing is one of the strongest public signals families can review. Lower staffing or higher turnover may affect how consistently residents are monitored, assisted, and supported. The numbers below come from data facilities report to CMS and may not fully capture day-to-day variation across shifts.';
+    const staffIntroLines = doc.splitTextToSize(staffIntro, contentWidth);
+    doc.text(staffIntroLines, margin, currentY);
+    currentY += staffIntroLines.length * 4.5 + 4;
+  }
 
   // Source note
   doc.setFontSize(7.5);
@@ -1410,8 +1542,18 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   SECTION 4 — INSPECTION HISTORY
   // ================================================================
 
-  addSectionHeader(4, 'Inspection History');
+  addSectionHeader(4, isAttorney ? 'Inspection History' : 'Inspection & Penalty History');
   const isCA = facility.state === 'CA';
+
+  if (!isAttorney) {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const inspIntro = 'Inspection findings and penalties can help families understand whether regulators identified repeated or serious concerns. A higher number does not prove unsafe care in every case, but it may suggest areas to ask about directly.';
+    const inspIntroLines = doc.splitTextToSize(inspIntro, contentWidth);
+    doc.text(inspIntroLines, margin, currentY);
+    currentY += inspIntroLines.length * 4.5 + 4;
+  }
 
   // Attorney mode: surface complaint investigation data prominently at the top
   if (isAttorney) {
@@ -2046,7 +2188,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   SECTION 6 — CLINICAL OUTCOMES (Quality Measures)
   // ================================================================
 
-  addSectionHeader(6, 'Clinical Outcomes (Quality Measures)');
+  addSectionHeader(6, isAttorney ? 'Clinical Outcomes (Quality Measures)' : 'Quality & Resident Safety');
+
+  if (!isAttorney) {
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const qualIntro = 'These measures reflect patterns in resident care that may be worth understanding, especially if they are notably different from common comparison points. Quality measures may be updated on different schedules and should be interpreted carefully.';
+    const qualIntroLines = doc.splitTextToSize(qualIntro, contentWidth);
+    doc.text(qualIntroLines, margin, currentY);
+    currentY += qualIntroLines.length * 4.5 + 4;
+  }
 
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
@@ -2210,7 +2362,14 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   SECTION 7 — ANTIPSYCHOTIC PRESCRIBING & CHEMICAL RESTRAINT
   // ================================================================
 
-  addSectionHeader(7, 'Antipsychotic Prescribing & Chemical Restraint Risk');
+  if (isAttorney) {
+    addSectionHeader(7, 'Antipsychotic Prescribing & Chemical Restraint Risk');
+  }
+  // Consumer: antipsychotic data is folded into Quality & Resident Safety — skip section header
+  if (!isAttorney) {
+    checkPageBreak(30);
+    addSubHeading('Antipsychotic Medication Use');
+  }
 
   if (antipsychoticData) {
     const ap = antipsychoticData;
@@ -2353,7 +2512,12 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   SECTION 8 — RED FLAGS
   // ================================================================
 
-  addSectionHeader(8, 'Red Flags & Accountability Indicators');
+  if (isAttorney) {
+    addSectionHeader(8, 'Red Flags & Accountability Indicators');
+  } else {
+    checkPageBreak(30);
+    addSubHeading('Areas of Concern');
+  }
 
   const redFlags = [];
 
@@ -2445,10 +2609,56 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   }
 
   // ================================================================
-  //   SECTION 9 — COMPARISON CONTEXT
+  //   SECTION — QUESTIONS TO ASK (consumer only)
   // ================================================================
 
-  addSectionHeader(9, 'Comparison Context');
+  if (!isAttorney) {
+    addSectionHeader(7, 'Questions to Ask the Facility');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const qIntro = 'These questions are based on the data in this report. They are designed to help you have informed conversations with the facility\'s staff and administration.';
+    const qIntroLines = doc.splitTextToSize(qIntro, contentWidth);
+    doc.text(qIntroLines, margin, currentY);
+    currentY += qIntroLines.length * 4.5 + 6;
+
+    const questions = generateQuestionsToAsk();
+    questions.forEach((q, i) => {
+      checkPageBreak(16);
+      // Numbered question with callout styling
+      const qLines = doc.splitTextToSize(q, contentWidth - 14);
+      const qBoxH = qLines.length * 4.5 + 6;
+      doc.setFillColor(...LIGHT_BG);
+      doc.rect(margin + 3, currentY - 1, contentWidth - 3, qBoxH, 'F');
+      doc.setFillColor(...TEAL);
+      doc.rect(margin, currentY - 1, 3, qBoxH, 'F');
+      doc.setFontSize(9);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...TEAL);
+      doc.text((i + 1) + '.', margin + 6, currentY + 4);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...BODY);
+      doc.text(qLines, margin + 12, currentY + 4);
+      currentY += qBoxH + 3;
+    });
+    currentY += 6;
+
+    // Reminder note
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'italic');
+    doc.setTextColor(...STEEL);
+    const qNote = 'Tip: You can bring a copy of this report when visiting the facility. Staff should be willing to discuss any of these topics openly.';
+    const qNoteLines = doc.splitTextToSize(qNote, contentWidth);
+    doc.text(qNoteLines, margin, currentY);
+    currentY += qNoteLines.length * 4 + 6;
+  }
+
+  // ================================================================
+  //   SECTION — COMPARISON CONTEXT
+  // ================================================================
+
+  addSectionHeader(isAttorney ? 9 : 8, 'Comparison Context');
 
   addSubHeading('How This Facility Compares');
 
@@ -2515,7 +2725,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // ================================================================
 
   if (!isAttorney) {
-  addSectionHeader(10, 'Nearby Alternatives');
+  addSectionHeader(9, 'Nearby Alternatives');
 
   if (nearbyAlternatives && nearbyAlternatives.length > 0) {
     doc.setFontSize(9);
@@ -2679,7 +2889,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   METHODOLOGY SECTION (always starts on a new page)
   // ================================================================
 
-  const methodSectionNum = isAttorney ? 11 : 11;
+  const methodSectionNum = isAttorney ? 11 : 10;
 
   addNewPage();
   addSectionHeader(methodSectionNum, 'Data Sources & Methodology');
@@ -2885,7 +3095,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const cleanName = facility.name.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50);
   const filename = isAttorney
     ? 'OversightReport_Attorney_' + cleanName + '_' + dateStr + '.pdf'
-    : 'OversightReport_Evidence_' + cleanName + '_' + dateStr + '.pdf';
+    : 'OversightReport_Family_' + cleanName + '_' + dateStr + '.pdf';
 
   doc.save(filename);
 }
