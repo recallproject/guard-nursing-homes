@@ -12,7 +12,8 @@ const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
  * @param {Array} nearbyAlternatives - Array of nearby facilities with better scores
  * @param {Array} allFacilities - All facilities for ownership portfolio analysis
  */
-export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = [], antipsychoticData = null, dataAsOf = null) {
+export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = [], antipsychoticData = null, dataAsOf = null, reportType = 'consumer') {
+  const isAttorney = reportType === 'attorney';
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -424,7 +425,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setTextColor(...NAVY);
   doc.setFontSize(26);
   doc.setFont('helvetica', 'bold');
-  doc.text('EVIDENCE REPORT', pageWidth / 2, currentY, { align: 'center' });
+  doc.text(isAttorney ? 'ATTORNEY EVIDENCE REPORT' : 'EVIDENCE REPORT', pageWidth / 2, currentY, { align: 'center' });
   currentY += 4;
   doc.setDrawColor(...RED);
   doc.setLineWidth(0.8);
@@ -458,68 +459,150 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.text('CCN: ' + facility.ccn, pageWidth / 2, currentY, { align: 'center' });
   currentY += 16;
 
-  // Three metric cards
-  const cardW = (contentWidth - 10) / 3;
-  const cardY = currentY;
+  // Cover metric cards — attorney version leads with IJ/Harm/Deficiencies/Fines (4 cards)
+  // Consumer version keeps Risk Score / Stars / Fines (3 cards)
+  if (isAttorney) {
+    const cardCount = 4;
+    const cardW = (contentWidth - 5 * (cardCount - 1)) / cardCount;
+    const cardY = currentY;
 
-  // Risk Score card
-  const riskVal = (facility.composite || 0).toFixed(1);
-  doc.setFillColor(...LIGHT_BG);
-  doc.setDrawColor(...DIVIDER);
-  doc.setLineWidth(0.3);
-  doc.rect(margin, cardY, cardW, 30, 'FD');
-  doc.setFontSize(7.5);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...STEEL);
-  doc.text('RISK SCORE', margin + cardW / 2, cardY + 6, { align: 'center' });
-  doc.setFontSize(20);
-  doc.setFont('helvetica', 'bold');
-  const riskC = facility.composite >= 60 ? RED : facility.composite >= 40 ? AMBER : GREEN;
-  doc.setTextColor(...riskC);
-  doc.text(riskVal, margin + cardW / 2, cardY + 19, { align: 'center' });
-  doc.setFontSize(7);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...STEEL);
-  doc.text("Nat'l avg: " + NATIONAL_AVG.composite, margin + cardW / 2, cardY + 26, { align: 'center' });
+    // IJ Citations card
+    doc.setFillColor(...(facility.jeopardy_count > 0 ? RED_BG : LIGHT_BG));
+    doc.setDrawColor(...DIVIDER);
+    doc.setLineWidth(0.3);
+    doc.rect(margin, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('IMMEDIATE JEOPARDY', margin + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...(facility.jeopardy_count > 0 ? RED : BODY));
+    doc.text(String(facility.jeopardy_count || 0), margin + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text('citations', margin + cardW / 2, cardY + 26, { align: 'center' });
 
-  // CMS Stars card
-  const starsX = margin + cardW + 5;
-  doc.setFillColor(...LIGHT_BG);
-  doc.rect(starsX, cardY, cardW, 30, 'FD');
-  doc.setFontSize(7.5);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...STEEL);
-  doc.text('CMS STARS', starsX + cardW / 2, cardY + 6, { align: 'center' });
-  doc.setFontSize(20);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...BODY);
-  doc.text((facility.stars || 0) + '/5', starsX + cardW / 2, cardY + 19, { align: 'center' });
-  doc.setFontSize(7);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...STEEL);
-  doc.text("Nat'l avg: " + NATIONAL_AVG.stars + '/5', starsX + cardW / 2, cardY + 26, { align: 'center' });
+    // Actual Harm card
+    const harmX = margin + cardW + 5;
+    doc.setFillColor(...(facility.harm_count > 0 ? AMBER_BG : LIGHT_BG));
+    doc.rect(harmX, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('ACTUAL HARM', harmX + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...(facility.harm_count > 0 ? AMBER : BODY));
+    doc.text(String(facility.harm_count || 0), harmX + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text('citations', harmX + cardW / 2, cardY + 26, { align: 'center' });
 
-  // Total Fines card
-  const finesX = margin + (cardW + 5) * 2;
-  doc.setFillColor(...LIGHT_BG);
-  doc.rect(finesX, cardY, cardW, 30, 'FD');
-  doc.setFontSize(7.5);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...STEEL);
-  doc.text('TOTAL FINES', finesX + cardW / 2, cardY + 6, { align: 'center' });
-  doc.setFontSize(18);
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...BODY);
-  const fineStr = facility.total_fines > 999
-    ? '$' + Math.round(facility.total_fines / 1000) + 'K'
-    : fmt(facility.total_fines || 0);
-  doc.text(fineStr, finesX + cardW / 2, cardY + 19, { align: 'center' });
-  doc.setFontSize(7);
-  doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...STEEL);
-  doc.text("Nat'l avg: $" + Math.round(NATIONAL_AVG.total_fines / 1000) + 'K', finesX + cardW / 2, cardY + 26, { align: 'center' });
+    // Total Deficiencies card
+    const defX = margin + (cardW + 5) * 2;
+    doc.setFillColor(...LIGHT_BG);
+    doc.rect(defX, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('TOTAL DEFICIENCIES', defX + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    doc.text(String(facility.total_deficiencies || 0), defX + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text("nat'l avg: " + NATIONAL_AVG.total_deficiencies.toFixed(0), defX + cardW / 2, cardY + 26, { align: 'center' });
 
-  currentY = cardY + 38;
+    // Total Fines card
+    const finesX = margin + (cardW + 5) * 3;
+    doc.setFillColor(...LIGHT_BG);
+    doc.rect(finesX, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('TOTAL FINES', finesX + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(18);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    const fineStr = facility.total_fines > 999
+      ? '$' + Math.round(facility.total_fines / 1000) + 'K'
+      : fmt(facility.total_fines || 0);
+    doc.text(fineStr, finesX + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text("nat'l avg: $" + Math.round(NATIONAL_AVG.total_fines / 1000) + 'K', finesX + cardW / 2, cardY + 26, { align: 'center' });
+
+    currentY = cardY + 38;
+  } else {
+    // Consumer version: Risk Score / Stars / Fines
+    const cardW = (contentWidth - 10) / 3;
+    const cardY = currentY;
+
+    // Risk Score card
+    const riskVal = (facility.composite || 0).toFixed(1);
+    doc.setFillColor(...LIGHT_BG);
+    doc.setDrawColor(...DIVIDER);
+    doc.setLineWidth(0.3);
+    doc.rect(margin, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('RISK SCORE', margin + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    const riskC = facility.composite >= 60 ? RED : facility.composite >= 40 ? AMBER : GREEN;
+    doc.setTextColor(...riskC);
+    doc.text(riskVal, margin + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text("Nat'l avg: " + NATIONAL_AVG.composite, margin + cardW / 2, cardY + 26, { align: 'center' });
+
+    // CMS Stars card
+    const starsX = margin + cardW + 5;
+    doc.setFillColor(...LIGHT_BG);
+    doc.rect(starsX, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('CMS STARS', starsX + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    doc.text((facility.stars || 0) + '/5', starsX + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text("Nat'l avg: " + NATIONAL_AVG.stars + '/5', starsX + cardW / 2, cardY + 26, { align: 'center' });
+
+    // Total Fines card
+    const finesX = margin + (cardW + 5) * 2;
+    doc.setFillColor(...LIGHT_BG);
+    doc.rect(finesX, cardY, cardW, 30, 'FD');
+    doc.setFontSize(7.5);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...STEEL);
+    doc.text('TOTAL FINES', finesX + cardW / 2, cardY + 6, { align: 'center' });
+    doc.setFontSize(18);
+    doc.setFont('helvetica', 'bold');
+    doc.setTextColor(...BODY);
+    const fineStr = facility.total_fines > 999
+      ? '$' + Math.round(facility.total_fines / 1000) + 'K'
+      : fmt(facility.total_fines || 0);
+    doc.text(fineStr, finesX + cardW / 2, cardY + 19, { align: 'center' });
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...STEEL);
+    doc.text("Nat'l avg: $" + Math.round(NATIONAL_AVG.total_fines / 1000) + 'K', finesX + cardW / 2, cardY + 26, { align: 'center' });
+
+    currentY = cardY + 38;
+  }
 
   // Key Findings box
   const findings = generateKeyFindings();
@@ -562,8 +645,15 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // "Prepared for" blank line
   doc.setFontSize(8.5);
   doc.setTextColor(...STEEL);
-  doc.text('Prepared for: ___________________________________________', pageWidth / 2, currentY, { align: 'center' });
-  currentY += 10;
+  if (isAttorney) {
+    doc.text('Prepared for: ___________________________________________', pageWidth / 2, currentY, { align: 'center' });
+    currentY += 6;
+    doc.text('Matter: ________________________________________________', pageWidth / 2, currentY, { align: 'center' });
+    currentY += 10;
+  } else {
+    doc.text('Prepared for: ___________________________________________', pageWidth / 2, currentY, { align: 'center' });
+    currentY += 10;
+  }
 
   doc.setDrawColor(...RED);
   doc.setLineWidth(0.6);
@@ -602,7 +692,20 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY += 10;
 
   // TOC entries — page numbers are approximate, will vary by content
-  const tocEntries = [
+  const tocEntries = isAttorney ? [
+    ['1.', 'Executive Summary & Attorney Takeaways', '3'],
+    ['2.', 'Ownership Portfolio', '4'],
+    ['3.', 'Staffing Analysis', '6'],
+    ['4.', 'Inspection History', '8'],
+    ['5.', 'Financial Penalties', '10'],
+    ['6.', 'Clinical Outcomes (Quality Measures)', '11'],
+    ['7.', 'Antipsychotic Prescribing & Chemical Restraint Risk', '12'],
+    ['8.', 'Red Flags & Accountability Indicators', '13'],
+    ['9.', 'Comparison Context', '14'],
+    ['10.', 'Suggested Records to Request', '15'],
+    ['11.', 'Data Sources & Methodology', '16'],
+    ['12.', 'Disclaimer', '17'],
+  ] : [
     ['1.', 'Executive Summary', '3'],
     ['2.', 'Ownership Portfolio', '3'],
     ['3.', 'Staffing Analysis', '5'],
@@ -660,7 +763,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...BODY);
-  const aboutText = 'This report compiles data from 16 federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support families evaluating care options, attorneys conducting discovery, journalists investigating patterns, and regulators monitoring compliance. All data is publicly available and independently verifiable against original sources.';
+  const aboutText = isAttorney
+    ? 'This Attorney Evidence Report compiles data from federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support attorneys conducting case evaluation, discovery planning, and regulatory compliance analysis for nursing home litigation. All data is publicly available, independently verifiable, and cited to original federal sources.'
+    : 'This report compiles data from 16 federal databases maintained by the Centers for Medicare & Medicaid Services (CMS). It is designed to support families evaluating care options, attorneys conducting discovery, journalists investigating patterns, and regulators monitoring compliance. All data is publicly available and independently verifiable against original sources.';
   const aboutLines = doc.splitTextToSize(aboutText, contentWidth);
   doc.text(aboutLines, margin, currentY);
   currentY += aboutLines.length * 4.5 + 8;
@@ -718,6 +823,55 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   const summaryLines = doc.splitTextToSize(summaryText, contentWidth);
   doc.text(summaryLines, margin, currentY);
   currentY += summaryLines.length * 4.5 + 4;
+
+  // ================================================================
+  //   ATTORNEY TAKEAWAYS (attorney mode only, after executive summary)
+  // ================================================================
+
+  if (isAttorney) {
+    checkPageBreak(60);
+    addSubHeading('Attorney Takeaways');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const takeawayIntro = 'The following findings from federal data may be most relevant to case evaluation:';
+    doc.text(takeawayIntro, margin, currentY);
+    currentY += 7;
+
+    const takeaways = [];
+    if (facility.jeopardy_count > 0)
+      takeaways.push('Immediate Jeopardy: ' + facility.jeopardy_count + ' IJ citation' + (facility.jeopardy_count > 1 ? 's' : '') + ' documented by state surveyors — the highest severity level under 42 CFR §488.301, indicating conditions likely to cause serious harm or death.');
+    if (facility.harm_count > 0)
+      takeaways.push('Actual Harm: ' + facility.harm_count + ' actual-harm citation' + (facility.harm_count > 1 ? 's' : '') + ' — inspectors confirmed residents were directly harmed by facility conditions or practices.');
+    if (facility.total_hprd && facility.total_hprd < 3.48)
+      takeaways.push('Understaffing: Total staffing of ' + num(facility.total_hprd) + ' HPRD is ' + ((1 - facility.total_hprd / 3.48) * 100).toFixed(0) + '% below the 3.48 HPRD threshold cited by 18 state AGs as minimum safe staffing.');
+    if (facility.zero_rn_pct > 0)
+      takeaways.push('Zero-RN Days: Facility reported zero registered nurse hours on ' + facility.zero_rn_pct.toFixed(1) + '% of days — potential violation of 42 CFR §483.35 (RN required 8 hrs/day, 7 days/week).');
+    if (facility.total_fines > 0)
+      takeaways.push('Financial Penalties: ' + fmt(facility.total_fines) + ' in federal civil monetary penalties across ' + (facility.fine_count || 0) + ' enforcement action' + ((facility.fine_count || 0) > 1 ? 's' : '') + ', establishing a pattern of regulatory noncompliance.');
+    if (facility.denial_count > 0)
+      takeaways.push('Payment Denials: ' + facility.denial_count + ' CMS payment denial' + (facility.denial_count > 1 ? 's' : '') + ' — the most severe enforcement action short of facility closure.');
+    if (facility.worst_owner && facility.owner_portfolio_count > 5)
+      takeaways.push('Corporate Oversight: Operated by ' + facility.worst_owner + ' (' + facility.owner_portfolio_count + ' facilities). Portfolio-wide patterns may support corporate negligence theories.');
+    if (facility.contractor_pct && facility.contractor_pct > 20)
+      takeaways.push('Contract Staffing Reliance: ' + facility.contractor_pct.toFixed(1) + '% contract RN staffing (national avg: ' + NATIONAL_AVG.contractor_pct + '%). High reliance on temporary staff disrupts continuity of care.');
+
+    if (takeaways.length === 0)
+      takeaways.push('No major red flags identified in available federal data. This does not preclude facility-specific concerns outside the scope of CMS datasets.');
+
+    takeaways.forEach((t, i) => {
+      checkPageBreak(14);
+      doc.setFontSize(8.5);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...NAVY);
+      const bullet = (i + 1) + '. ';
+      const tLines = doc.splitTextToSize(bullet + t, contentWidth - 4);
+      doc.text(tLines, margin + 2, currentY);
+      currentY += tLines.length * 4 + 3;
+    });
+    currentY += 6;
+  }
 
   // ================================================================
   //   SECTION 2 — OWNERSHIP PORTFOLIO
@@ -1259,6 +1413,39 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   addSectionHeader(4, 'Inspection History');
   const isCA = facility.state === 'CA';
 
+  // Attorney mode: surface complaint investigation data prominently at the top
+  if (isAttorney) {
+    const complaintDatesEarly = new Set();
+    if (facility.deficiency_details && facility.deficiency_details.length > 0) {
+      facility.deficiency_details.forEach((d) => {
+        if (d.is_complaint === true && d.survey_date) complaintDatesEarly.add(d.survey_date);
+      });
+    }
+    const complaintCountEarly = complaintDatesEarly.size;
+    const complaintCitationsEarly = (facility.deficiency_details || []).filter(d => d.is_complaint === true).length;
+
+    if (complaintCountEarly > 0) {
+      checkPageBreak(30);
+      doc.setFillColor(...AMBER_BG);
+      doc.setDrawColor(...DIVIDER);
+      doc.setLineWidth(0.3);
+      const cBoxH = 22;
+      doc.rect(margin, currentY, contentWidth, cBoxH, 'FD');
+      doc.setFillColor(...AMBER);
+      doc.rect(margin, currentY, 3, cBoxH, 'F');
+      doc.setFontSize(9.5);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...AMBER);
+      doc.text('COMPLAINT INVESTIGATIONS: ' + complaintCountEarly + ' investigations yielding ' + complaintCitationsEarly + ' citations', margin + 7, currentY + 7);
+      doc.setFontSize(8.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(...BODY);
+      const yieldEarly = complaintCountEarly > 0 ? (complaintCitationsEarly / complaintCountEarly).toFixed(1) : '0';
+      doc.text(yieldEarly + ' citations per investigation (national avg complaints: ' + NATIONAL_AVG.complaint_investigations + '). See Complaint-Driven Investigations below for detail.', margin + 7, currentY + 14);
+      currentY += cBoxH + 6;
+    }
+  }
+
   // CMS-2567 source note
   checkPageBreak(20);
   doc.setFillColor(248, 250, 252);
@@ -1431,9 +1618,62 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       }
     });
 
-    const regHead = isCA
-      ? [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity', 'CA Title 22']]
-      : [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity']];
+    // Discovery angle mapping — common F-tag categories to discovery suggestions
+    const discoveryAngleMap = {
+      'F600': 'Abuse investigation records, incident reports',
+      'F602': 'Abuse prevention program docs, training records',
+      'F603': 'Abuse reporting logs, state agency notifications',
+      'F609': 'Reporting timelines, incident investigation files',
+      'F610': 'Investigation completion records, corrective actions',
+      'F656': 'Comprehensive care plans, MDS assessments',
+      'F657': 'Care plan revision history, IDT meeting minutes',
+      'F677': 'ADL care records, nursing notes',
+      'F684': 'Treatment records, physician orders',
+      'F686': 'Wound care protocols, pressure ulcer staging records',
+      'F688': 'Restorative nursing programs, physical therapy records',
+      'F689': 'Fall prevention program, incident/accident reports',
+      'F690': 'Bowel/bladder retraining programs',
+      'F692': 'Nutrition assessments, dietary plans, weight records',
+      'F693': 'Tube feeding orders, nutritional monitoring',
+      'F695': 'Respiratory care records, oxygen therapy logs',
+      'F696': 'Medication pass records, pharmacy reviews',
+      'F697': 'Pain assessments, PRN medication administration',
+      'F698': 'Dialysis coordination records',
+      'F699': 'Trauma assessments, transfer records',
+      'F700': 'Bedrail assessments, restraint reduction records',
+      'F725': 'Staffing schedules, PBJ submissions',
+      'F726': 'Competency evaluations, in-service training records',
+      'F740': 'Behavioral health treatment plans',
+      'F741': 'Psychotropic medication consents, reduction attempts',
+      'F755': 'Pharmacy consultant reports, medication error logs',
+      'F756': 'Unnecessary drug reviews, gradual dose reduction records',
+      'F757': 'Psychotropic PRN orders, clinical justifications',
+      'F758': 'Antipsychotic medication records, diagnosis documentation',
+      'F759': 'Medication reconciliation records',
+      'F760': 'Medication error reports, adverse event tracking',
+      'F761': 'Pharmacy labeling records, storage audits',
+      'F775': 'QAPI meeting minutes, quality improvement plans',
+      'F800': 'Infection control logs, antibiotic stewardship records',
+      'F835': 'QAPI program documentation, performance metrics',
+      'F838': 'Facility assessment, staffing plan documentation',
+      'F867': 'QAPI corrective action plans',
+      'F880': 'Infection prevention program, outbreak response records',
+      'F921': 'Maintenance work orders, safety inspection logs',
+      'F944': 'Grievance logs, resident council minutes',
+    };
+    const getDiscoveryAngle = (ftag) => discoveryAngleMap[ftag] || 'Request CMS-2567, POC';
+
+    // Build header and rows conditionally based on attorney mode and CA
+    let regHead, regColStyles;
+    if (isAttorney) {
+      regHead = isCA
+        ? [['F-Tag', 'CFR', 'Regulation', 'Cited', 'Severity', 'Discovery Angle', 'CA T22']]
+        : [['F-Tag', 'CFR', 'Regulation', 'Cited', 'Severity', 'Discovery Angle']];
+    } else {
+      regHead = isCA
+        ? [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity', 'CA Title 22']]
+        : [['F-Tag', 'Federal Regulation', 'Regulation Title', 'Times Cited', 'Highest Severity']];
+    }
 
     const regRows = Object.entries(uniqueFtags)
       .sort((a, b) => b[1].count - a[1].count)
@@ -1446,9 +1686,50 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
           String(data.count),
           data.highestSeverity,
         ];
+        if (isAttorney) row.push(getDiscoveryAngle(ftag));
         if (isCA) row.push(ref && ref.ca_title22 ? ref.ca_title22.replace('Title 22 ', '') : '—');
         return row;
       });
+
+    // Column styles vary by mode
+    let regColStylesFinal;
+    if (isAttorney && isCA) {
+      regColStylesFinal = {
+        0: { cellWidth: 14, fontStyle: 'bold' },
+        1: { cellWidth: 24 },
+        2: { cellWidth: 30 },
+        3: { cellWidth: 14, halign: 'center' },
+        4: { cellWidth: 22 },
+        5: { cellWidth: 38 },
+        6: { cellWidth: 18, textColor: TEAL },
+      };
+    } else if (isAttorney) {
+      regColStylesFinal = {
+        0: { cellWidth: 16, fontStyle: 'bold' },
+        1: { cellWidth: 28 },
+        2: { cellWidth: 36 },
+        3: { cellWidth: 14, halign: 'center' },
+        4: { cellWidth: 24 },
+        5: { cellWidth: 44 },
+      };
+    } else if (isCA) {
+      regColStylesFinal = {
+        0: { cellWidth: 16, fontStyle: 'bold' },
+        1: { cellWidth: 32 },
+        2: { cellWidth: 46 },
+        3: { cellWidth: 13, halign: 'center' },
+        4: { cellWidth: 26 },
+        5: { cellWidth: 21, textColor: TEAL },
+      };
+    } else {
+      regColStylesFinal = {
+        0: { cellWidth: 18, fontStyle: 'bold' },
+        1: { cellWidth: 38 },
+        2: { cellWidth: 58 },
+        3: { cellWidth: 16, halign: 'center' },
+        4: { cellWidth: 30 },
+      };
+    }
 
     autoTable(doc, {
       startY: currentY,
@@ -1458,20 +1739,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       styles: { fontSize: 7, cellPadding: 2.5, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15, overflow: 'linebreak' },
       headStyles: { fillColor: [30, 58, 95], textColor: WHITE, fontStyle: 'bold', fontSize: 7 },
       alternateRowStyles: { fillColor: TABLE_ALT },
-      columnStyles: isCA ? {
-        0: { cellWidth: 16, fontStyle: 'bold' },
-        1: { cellWidth: 32 },
-        2: { cellWidth: 46 },
-        3: { cellWidth: 13, halign: 'center' },
-        4: { cellWidth: 26 },
-        5: { cellWidth: 21, textColor: TEAL },
-      } : {
-        0: { cellWidth: 18, fontStyle: 'bold' },
-        1: { cellWidth: 38 },
-        2: { cellWidth: 58 },
-        3: { cellWidth: 16, halign: 'center' },
-        4: { cellWidth: 30 },
-      },
+      columnStyles: regColStylesFinal,
       didParseCell(data) {
         if (data.row.section === 'body' && data.column.index === 4) {
           const sev = data.cell.raw || '';
@@ -2243,9 +2511,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY = doc.lastAutoTable.finalY + 8;
 
   // ================================================================
-  //   SECTION 10 — NEARBY ALTERNATIVES
+  //   SECTION 10 — NEARBY ALTERNATIVES (consumer only)
   // ================================================================
 
+  if (!isAttorney) {
   addSectionHeader(10, 'Nearby Alternatives');
 
   if (nearbyAlternatives && nearbyAlternatives.length > 0) {
@@ -2337,13 +2606,83 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.text('No nearby facilities with better scores found within search radius.', margin, currentY);
     currentY += 8;
   }
+  } // end if (!isAttorney) — skip Nearby Alternatives for attorney reports
 
   // ================================================================
-  //   SECTION 11 — METHODOLOGY (always starts on a new page)
+  //   SUGGESTED RECORDS TO REQUEST (attorney mode only)
   // ================================================================
+
+  if (isAttorney) {
+    addNewPage();
+    addSectionHeader(10, 'Suggested Records to Request');
+
+    doc.setFontSize(9);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(...BODY);
+    const recIntro = 'Based on this facility\'s deficiency patterns and enforcement history, the following records may be relevant to discovery or pre-litigation case evaluation. All items are standard records that Medicare-certified facilities are required to maintain.';
+    const recLines = doc.splitTextToSize(recIntro, contentWidth);
+    doc.text(recLines, margin, currentY);
+    currentY += recLines.length * 4.5 + 6;
+
+    const recordCategories = [
+      ['Staffing Records', [
+        'Payroll-Based Journal (PBJ) daily nurse staffing submissions',
+        'Staff schedules (all shifts) for relevant time period',
+        'Agency/contract staffing invoices and assignments',
+        'RN coverage logs and on-call records',
+        'Staff competency evaluations and in-service training records',
+      ]],
+      ['Inspection & Compliance', [
+        'CMS Form 2567 — Statement of Deficiencies and Plan of Correction',
+        'State survey agency correspondence and revisit reports',
+        'Facility\'s written Plans of Correction for all cited deficiencies',
+        'Internal compliance audit reports',
+      ]],
+      ['Clinical Records', [
+        'Comprehensive care plans and MDS assessments for affected resident(s)',
+        'Incident/accident reports for relevant time period',
+        'Medication administration records (MARs)',
+        'Physician orders (including PRN psychotropic medications)',
+        'Nursing notes and shift reports',
+      ]],
+      ['Quality Assurance', [
+        'QAPI meeting minutes and quality improvement plans',
+        'Abuse investigation records and state agency notifications',
+        'Grievance logs and resident/family complaint records',
+        'Resident council meeting minutes',
+      ]],
+      ['Corporate & Financial', [
+        'Management agreements and related-party transaction disclosures',
+        'Ownership change documentation (if applicable)',
+        'Insurance policies (general liability, professional liability)',
+        'Cost report filings (CMS-2540)',
+      ]],
+    ];
+
+    recordCategories.forEach(([category, items]) => {
+      checkPageBreak(20 + items.length * 6);
+      addSubHeading(category);
+      items.forEach((item) => {
+        checkPageBreak(7);
+        doc.setFontSize(8.5);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(...BODY);
+        const itemLines = doc.splitTextToSize('\u2022  ' + item, contentWidth - 8);
+        doc.text(itemLines, margin + 4, currentY);
+        currentY += itemLines.length * 4 + 2;
+      });
+      currentY += 4;
+    });
+  }
+
+  // ================================================================
+  //   METHODOLOGY SECTION (always starts on a new page)
+  // ================================================================
+
+  const methodSectionNum = isAttorney ? 11 : 11;
 
   addNewPage();
-  addSectionHeader(11, 'Data Sources & Methodology');
+  addSectionHeader(methodSectionNum, 'Data Sources & Methodology');
 
   addSubHeading('Data Sources');
   doc.setFontSize(9);
@@ -2375,6 +2714,43 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     currentY += 6;
   });
   currentY += 4;
+
+  // Data Freshness Table
+  checkPageBreak(50);
+  addSubHeading('Data Freshness');
+  doc.setFontSize(8.5);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...BODY);
+  doc.text('Each data source has a different update cadence. This table shows the most recent data available at report generation.', margin, currentY);
+  currentY += 6;
+
+  const freshnessRows = [
+    ['Provider Information & Stars', DATA_DATE, 'Monthly'],
+    ['Reported Staffing (HPRD)', DATA_DATE, 'Quarterly'],
+    ['Health Deficiencies (CMS-2567)', '2017 – Dec 2025', 'Ongoing (inspection-triggered)'],
+    ['Penalties & Payment Denials', DATA_DATE, 'Monthly'],
+    ['Ownership Database', 'January 2026', 'Quarterly'],
+    ['Part D Prescriber (Antipsychotics)', '2023', 'Annual'],
+    ['Quality Measures (MDS)', DATA_DATE, 'Quarterly'],
+    ['Fire Safety Inspections', DATA_DATE, 'Ongoing (inspection-triggered)'],
+  ];
+
+  autoTable(doc, {
+    startY: currentY,
+    head: [['Dataset', 'Data As Of', 'Update Cadence']],
+    body: freshnessRows,
+    theme: 'grid',
+    styles: { fontSize: 8, cellPadding: 3, textColor: BODY, lineColor: DIVIDER, lineWidth: 0.15 },
+    headStyles: { fillColor: TABLE_HEADER, textColor: WHITE, fontStyle: 'bold', fontSize: 8.5 },
+    alternateRowStyles: { fillColor: TABLE_ALT },
+    columnStyles: {
+      0: { cellWidth: 65, fontStyle: 'bold' },
+      1: { cellWidth: 45, halign: 'center' },
+      2: { cellWidth: 55 },
+    },
+    margin: { left: margin, right: margin },
+  });
+  currentY = doc.lastAutoTable.finalY + 8;
 
   addSubHeading('Composite Risk Score Formula');
   doc.setFontSize(9);
@@ -2449,8 +2825,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   //   SECTION 12 — DISCLAIMER (always starts on a new page)
   // ================================================================
 
+  const disclaimerSectionNum = methodSectionNum + 1;
   addNewPage();
-  addSectionHeader(12, 'Disclaimer');
+  addSectionHeader(disclaimerSectionNum, 'Disclaimer');
 
   const disclaimers = [
     'This report is generated from public CMS and state datasets using a structured evidence workflow with source dates, citations, and verification checks for numeric consistency, freshness, and language safety. Attorney-facing outputs undergo human review before release; the report is intended as an evidence-organizing tool, not a substitute for independent legal analysis or case-specific investigation.',
@@ -2506,7 +2883,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // ================================================================
 
   const cleanName = facility.name.replace(/[^a-zA-Z0-9]/g, '_').substring(0, 50);
-  const filename = 'OversightReport_Evidence_' + cleanName + '_' + dateStr + '.pdf';
+  const filename = isAttorney
+    ? 'OversightReport_Attorney_' + cleanName + '_' + dateStr + '.pdf'
+    : 'OversightReport_Evidence_' + cleanName + '_' + dateStr + '.pdf';
 
   doc.save(filename);
 }

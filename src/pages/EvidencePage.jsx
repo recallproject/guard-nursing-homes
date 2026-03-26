@@ -104,6 +104,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   }, [facility, allFacilities]);
 
   const [pdfLoading, setPdfLoading] = useState(false);
+  const [reportType, setReportType] = useState('consumer');
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
   const [defDetailsLoading, setDefDetailsLoading] = useState(false);
   const [antipsychoticAlerts, setAntipsychoticAlerts] = useState(null);
@@ -157,12 +158,12 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
       const stateCode = facility.state?.toUpperCase();
       const stateMetadata = stateCode && data?.states?.[stateCode]?._metadata;
       const dataAsOf = stateMetadata?.data_as_of || null;
-      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData, dataAsOf);
-      window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state}});
+      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData, dataAsOf, reportType);
+      window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state, reportType}});
     } finally {
       setPdfLoading(false);
     }
-  }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails, antipsychoticAlerts]);
+  }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails, antipsychoticAlerts, reportType]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -325,11 +326,20 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
         <Link to={`/facility/${ccn}`} className="ev-back">Back to Report Card</Link>
         <h2 className="ev-badge">Evidence Package</h2>
         <div className="ev-header-actions">
+          <select
+            value={reportType}
+            onChange={(e) => setReportType(e.target.value)}
+            className="ev-btn ev-btn-secondary"
+            style={{ marginRight: '8px', cursor: 'pointer' }}
+          >
+            <option value="consumer">Consumer Report</option>
+            <option value="attorney">Attorney Report</option>
+          </select>
           <button onClick={handlePrint} className="ev-btn ev-btn-secondary">
             Print Version
           </button>
           <button onClick={handleDownloadPDF} className="ev-btn ev-btn-primary" disabled={pdfLoading}>
-            {pdfLoading ? 'Generating PDF...' : 'Download PDF'}
+            {pdfLoading ? 'Generating PDF...' : (reportType === 'attorney' ? 'Download Attorney PDF' : 'Download PDF')}
           </button>
         </div>
       </div>
