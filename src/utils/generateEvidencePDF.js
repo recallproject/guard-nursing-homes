@@ -2429,6 +2429,22 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   });
   currentY += 6;
 
+  // ── Methodology & Verification paragraph ──
+  checkPageBreak(30);
+  addSubHeading('Methodology & Verification');
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...BODY);
+  const methodologyPara = 'The Oversight Report compiles findings from structured public CMS datasets and selected state sources, then normalizes and cross-references those records into a facility-level evidence file with source dates, versioning, and citations. Attorney-facing reports are generated from a frozen evidence bundle and reviewed through a verification workflow that checks data freshness, numeric consistency, citation support, benchmark validity, and language safety before release. Reports that contain unresolved inconsistencies, low-confidence joins, or unsupported claims are held for human review rather than delivered automatically. This approach is designed to make each report traceable, contestable, and defensible.';
+  const methLines = doc.splitTextToSize(methodologyPara, contentWidth - 4);
+  doc.text(methLines, margin + 2, currentY);
+  currentY += methLines.length * 4.5 + 4;
+
+  doc.setFontSize(8.5);
+  doc.setFont('helvetica', 'italic');
+  doc.text('Every substantive claim is tied to a source record, reviewed for consistency, and delivered with clear data dates and limitations.', margin + 2, currentY);
+  currentY += 10;
+
   // ================================================================
   //   SECTION 12 — DISCLAIMER (always starts on a new page)
   // ================================================================
@@ -2437,7 +2453,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   addSectionHeader(12, 'Disclaimer');
 
   const disclaimers = [
-    'This report is generated from publicly available federal data and is provided for informational purposes only.',
+    'This report is generated from public CMS and state datasets using a structured evidence workflow with source dates, citations, and verification checks for numeric consistency, freshness, and language safety. Attorney-facing outputs undergo human review before release; the report is intended as an evidence-organizing tool, not a substitute for independent legal analysis or case-specific investigation.',
     'This document does not constitute legal advice, medical advice, or a recommendation for or against any specific facility. Risk scores represent patterns in federal data that may warrant further investigation.',
     'Facilities should be evaluated through personal visits, consultation with healthcare professionals, and review of current inspection reports. Conditions may have changed since data collection.',
     'If you have concerns about a nursing home, contact: Your state survey agency (health department), HHS Office of Inspector General (tips.hhs.gov), or National Eldercare Locator (1-800-677-1116).',
