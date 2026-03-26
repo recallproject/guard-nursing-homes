@@ -24,6 +24,8 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+from pattern_analyzer import load_deficiency_details, analyze_patterns
+
 # Path to state JSON files (relative to repo root)
 STATES_DIR = Path(__file__).resolve().parent.parent / "public" / "data" / "states"
 OUTPUT_DIR = Path(__file__).resolve().parent / "bundles"
@@ -46,6 +48,17 @@ STANDARD_LIMITATIONS = [
     "Penalty data covers last 3 years of CMS enforcement actions",
     "Star ratings are computed by CMS and may lag behind underlying data",
 ]
+
+
+def _build_pattern_section(state_code, ccn):
+    """Build pattern analysis for the evidence bundle."""
+    try:
+        deficiencies = load_deficiency_details(state_code, ccn)
+        if deficiencies:
+            return analyze_patterns(deficiencies)
+    except Exception as e:
+        print(f"  Warning: pattern analysis unavailable ({e})")
+    return {"empty": True, "total": 0}
 
 
 def find_facility(state_code, ccn):
@@ -145,6 +158,9 @@ def build_bundle(state_code, ccn):
         },
 
         "quality_facts": fac.get("quality_measures", {}),
+
+        # Pattern analysis — attorney-ready deficiency breakdown
+        "pattern_analysis": _build_pattern_section(state_code, ccn),
 
         # Confidence flags — empty for now, populated by Linkage agent later
         "confidence_flags": [],
