@@ -153,7 +153,11 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
         }
       }
       const facilityAntipsychoticData = antipsychoticAlerts ? (antipsychoticAlerts[String(facility.ccn)] || null) : null;
-      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData);
+      // Extract data_as_of from state metadata for dynamic date labeling
+      const stateCode = facility.state?.toUpperCase();
+      const stateMetadata = stateCode && data?.states?.[stateCode]?._metadata;
+      const dataAsOf = stateMetadata?.data_as_of || null;
+      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData, dataAsOf);
       window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state}});
     } finally {
       setPdfLoading(false);

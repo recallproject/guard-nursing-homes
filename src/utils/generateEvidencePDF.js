@@ -12,12 +12,22 @@ const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
  * @param {Array} nearbyAlternatives - Array of nearby facilities with better scores
  * @param {Array} allFacilities - All facilities for ownership portfolio analysis
  */
-export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = [], antipsychoticData = null) {
+export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = [], antipsychoticData = null, dataAsOf = null) {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
     format: 'letter',
   });
+
+  // Dynamic "data as of" label — pulled from state JSON _metadata
+  const formatDataDate = (isoDate) => {
+    if (!isoDate) return 'Current';
+    try {
+      const d = new Date(isoDate + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+    } catch { return isoDate; }
+  };
+  const DATA_DATE = formatDataDate(dataAsOf);
 
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -544,7 +554,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   doc.setFont('helvetica', 'normal');
   doc.text('Generated: ' + today, pageWidth / 2, currentY, { align: 'center' });
   currentY += 5;
-  doc.text('Data through: Q3 2025 (staffing) · Dec 2025 (inspections) · Jan 2026 (ownership)', pageWidth / 2, currentY, { align: 'center' });
+  doc.text('CMS data as of: ' + DATA_DATE, pageWidth / 2, currentY, { align: 'center' });
   currentY += 5;
   doc.text('oversightreports.com', pageWidth / 2, currentY, { align: 'center' });
   currentY += 8;
@@ -2343,10 +2353,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   currentY += 5;
 
   const sources = [
-    ['CMS Care Compare — Provider Information & Star Ratings (March 2026)', 'https://data.cms.gov/provider-data/'],
-    ['CMS NH Provider Info — Reported Staffing HPRD & Turnover (March 2026)', 'https://data.cms.gov/provider-data/dataset/4pq5-n9py'],
+    ['CMS Care Compare — Provider Information & Star Ratings (' + DATA_DATE + ')', 'https://data.cms.gov/provider-data/'],
+    ['CMS NH Provider Info — Reported Staffing HPRD & Turnover (' + DATA_DATE + ')', 'https://data.cms.gov/provider-data/dataset/4pq5-n9py'],
     ['CMS Health Deficiencies — State Survey Inspections (2017–2025)', 'https://data.cms.gov/provider-data/dataset/r5ix-sfxw'],
-    ['CMS Penalties — Civil Monetary Penalties & Payment Denials (March 2026)', 'https://data.cms.gov/provider-data/dataset/g6vv-u9sr'],
+    ['CMS Penalties — Civil Monetary Penalties & Payment Denials (' + DATA_DATE + ')', 'https://data.cms.gov/provider-data/dataset/g6vv-u9sr'],
     ['CMS Ownership Database — Corporate Structure (January 2026)', 'https://data.cms.gov/provider-data/dataset/y2hd-n93e'],
     ['CMS HCRIS Cost Reports (FY2024 related-party transactions)', 'https://www.cms.gov/Research-Statistics-Data-and-Systems/Downloadable-Public-Use-Files/Cost-Reports'],
     ['CMS Medicare Part D Prescriber Data (Antipsychotic Claims, 2023)', 'https://data.cms.gov/provider-data/dataset/v6jf-q476'],
