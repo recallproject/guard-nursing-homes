@@ -1,4 +1,23 @@
-// Stripe Payment Links (LIVE)
+/**
+ * Stripe Payment Links (LIVE)
+ *
+ * IMPORTANT — MANUAL SETUP REQUIRED FOR SECURE PAYMENT VERIFICATION:
+ *
+ * Each Payment Link below must be configured in Stripe Dashboard with:
+ *
+ * 1. Success URL including {CHECKOUT_SESSION_ID}:
+ *    - Subscription links: https://www.oversightreports.com/success?session_id={CHECKOUT_SESSION_ID}
+ *    - Single report link: https://www.oversightreports.com/evidence-success?session_id={CHECKOUT_SESSION_ID}
+ *
+ * 2. Metadata on each subscription Payment Link:
+ *    - Key: "tier"  Value: "pro" (for Pro links) or "professional" (for Professional links)
+ *
+ * Without {CHECKOUT_SESSION_ID} in the success URL, the payment verification
+ * falls back to the insecure localStorage-based flow. The session_id is what
+ * allows the server to verify with Stripe that payment actually occurred.
+ *
+ * To update: Stripe Dashboard > Payment Links > [link] > After payment > Success page URL
+ */
 const PAYMENT_LINKS = {
   pro_monthly: 'https://buy.stripe.com/aFacN54V26yhca05pt0x203',
   pro_annual: 'https://buy.stripe.com/eVq7sLdry2i12zq5pt0x202',

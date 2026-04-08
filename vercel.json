@@ -23,9 +23,33 @@
       ]
     },
     {
-      "source": "/api/(.*)",
+      "source": "/api/stripe-webhook",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" }
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/verify-subscription",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/check-subscription",
+      "headers": [
+        { "key": "Cache-Control", "value": "private, no-cache, no-store" }
+      ]
+    },
+    {
+      "source": "/api/send-evidence",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/verify-token",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
       ]
     },
     {

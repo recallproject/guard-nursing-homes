@@ -1,3 +1,20 @@
+/**
+ * Evidence Report Success Page
+ *
+ * SECURITY MODEL:
+ * After Stripe payment, user is redirected here with ?session_id=cs_xxx.
+ * The CCN is stored in localStorage before checkout (not security-sensitive,
+ * just identifies which report they want).
+ *
+ * This page passes both session_id and ccn to /api/send-evidence, which
+ * verifies payment with Stripe before generating the download token.
+ * Without a valid paid session_id, no download link is generated.
+ *
+ * STRIPE PAYMENT LINK SETUP (MANUAL STEP):
+ * The single-report Payment Link success URL must be:
+ *   https://www.oversightreports.com/evidence-success?session_id={CHECKOUT_SESSION_ID}
+ * Stripe will replace {CHECKOUT_SESSION_ID} with the real session ID on redirect.
+ */
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -5,16 +22,38 @@ import '../styles/design.css';
 
 export default function EvidenceSuccessPage() {
   const [searchParams] = useSearchParams();
-  const ccn = searchParams.get('ccn') || '';
+
+  // session_id comes from Stripe redirect URL (server-verified, secure)
+  const sessionId = searchParams.get('session_id') || '';
+
+  // CCN comes from localStorage (set before checkout) or URL fallback
+  // Not security-sensitive — just identifies which facility report to generate.
+  // The actual access control is the Stripe session verification.
+  const ccnFromUrl = searchParams.get('ccn') || '';
+  const ccnFromStorage = typeof window !== 'undefined'
+    ? localStorage.getItem('pending_single_report') || ''
+    : '';
+  const ccn = ccnFromStorage || ccnFromUrl;
+
   const [status, setStatus] = useState('loading'); // loading | ready | error
   const [downloadUrl, setDownloadUrl] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Clean up localStorage
+    localStorage.removeItem('pending_single_report');
+
+    if (!sessionId) {
+      setStatus('error');
+      setErrorMsg('No payment session found. If you just completed payment, please check your email or contact support.');
+      return;
+    }
+
     if (!ccn) {
       setStatus('error');
-      setErrorMsg('No facility ID found. Please contact support.');
+      setErrorMsg('No facility ID found. Please contact support with your payment confirmation.');
       return;
     }
 
@@ -23,15 +62,18 @@ export default function EvidenceSuccessPage() {
         const res = await fetch('/api/send-evidence', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ccn }),
+          body: JSON.stringify({ ccn, checkout_session_id: sessionId }),
         });
         const data = await res.json();
         if (res.ok && data.success) {
           setDownloadUrl(data.downloadUrl);
           setStatus('ready');
           window.plausible && window.plausible('Evidence-Purchase-Complete', { props: { ccn } });
+        } else if (res.status === 402) {
+          setErrorMsg('Payment has not been completed. Please complete checkout and try again.');
+          setStatus('error');
         } else {
-          setErrorMsg(data.error || 'Something went wrong. Please try again.');
+          setErrorMsg(data.error || 'Something went wrong verifying your payment. Please contact support.');
           setStatus('error');
         }
       } catch {
@@ -41,7 +83,7 @@ export default function EvidenceSuccessPage() {
     }
 
     getDownloadLink();
-  }, [ccn]);
+  }, [ccn, sessionId]);
 
   return (
     <>
