@@ -120,10 +120,10 @@ def enrich_state_files(quality_measures):
             if old_measures != {'mds': q}:
                 changed_measures += 1
 
-            # Update quality measures
-            fac['quality_measures'] = {
-                'mds': q
-            }
+            # Update quality measures (merge to preserve claims/qrp keys)
+            if 'quality_measures' not in fac:
+                fac['quality_measures'] = {}
+            fac['quality_measures']['mds'] = q
             changed = True
 
         if changed:

@@ -7,7 +7,13 @@ export function DownloadButton({ facility, nearbyFacilities = [], allFacilities 
   const handleDownload = async () => {
     if (!facility || isGenerating) return;
 
-    window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state}});
+    window.plausible && window.plausible('Free-PDF-Download', {
+      props: {
+        ccn: facility.ccn || facility.provider_number || '',
+        state: facility.state,
+        composite_score: String(facility.composite || '')
+      }
+    });
     try {
       setIsGenerating(true);
       setTimeout(() => {

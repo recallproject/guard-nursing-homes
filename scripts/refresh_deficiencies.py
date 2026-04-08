@@ -28,6 +28,8 @@ def load_health_citations_from_csv(csv_path):
     deficiencies = defaultdict(list)
     complaint_counts = defaultdict(int)
     serious_counts = defaultdict(int)
+    harm_counts = defaultdict(int)
+    jeopardy_counts = defaultdict(int)
 
     with open(csv_path, 'r', encoding='utf-8-sig') as f:
         reader = csv.DictReader(f)
@@ -48,11 +50,16 @@ def load_health_citations_from_csv(csv_path):
             scope_severity = row.get('Scope and Severity Code', '').strip().upper()
             if scope_severity in ['G', 'H', 'I', 'J', 'K', 'L']:
                 serious_counts[ccn] += 1
+            # Split: G/H/I = actual harm, J/K/L = immediate jeopardy
+            if scope_severity in ['G', 'H', 'I']:
+                harm_counts[ccn] += 1
+            elif scope_severity in ['J', 'K', 'L']:
+                jeopardy_counts[ccn] += 1
 
     print(f"Loaded health citations for {len(deficiencies)} facilities from CSV")
     total_records = sum(len(v) for v in deficiencies.values())
     print(f"Total health citation records: {total_records}")
-    return deficiencies, complaint_counts, serious_counts
+    return deficiencies, complaint_counts, serious_counts, harm_counts, jeopardy_counts
 
 
 def load_fire_citations_from_csv(csv_path):
@@ -75,7 +82,7 @@ def load_fire_citations_from_csv(csv_path):
     return fire_deficiencies
 
 
-def enrich_state_files(health_deficiencies, complaint_counts, serious_counts, fire_deficiencies):
+def enrich_state_files(health_deficiencies, complaint_counts, serious_counts, harm_counts, jeopardy_counts, fire_deficiencies):
     """Update deficiency fields in each state JSON file."""
     updated_count = 0
     changed_deficiency_count = 0
@@ -97,6 +104,8 @@ def enrich_state_files(health_deficiencies, complaint_counts, serious_counts, fi
             new_total_deficiencies = len(health_deficiencies.get(ccn, []))
             new_complaint_investigations = complaint_counts.get(ccn, 0)
             new_serious_deficiency_count = serious_counts.get(ccn, 0)
+            new_harm_count = harm_counts.get(ccn, 0)
+            new_jeopardy_count = jeopardy_counts.get(ccn, 0)
             
             # Get fire safety count
             new_fire_deficiency_count = fire_deficiencies.get(ccn, 0)
@@ -112,6 +121,8 @@ def enrich_state_files(health_deficiencies, complaint_counts, serious_counts, fi
             fac['fire_deficiency_count'] = new_fire_deficiency_count
             fac['complaint_investigations'] = new_complaint_investigations
             fac['serious_deficiency_count'] = new_serious_deficiency_count
+            fac['harm_count'] = new_harm_count
+            fac['jeopardy_count'] = new_jeopardy_count
             changed = True
             updated_count += 1
 
@@ -151,13 +162,13 @@ def main():
         sys.exit(1)
 
     print(f"Reading: {health_csv_path}")
-    health_deficiencies, complaint_counts, serious_counts = load_health_citations_from_csv(health_csv_path)
+    health_deficiencies, complaint_counts, serious_counts, harm_counts, jeopardy_counts = load_health_citations_from_csv(health_csv_path)
     
     print(f"Reading: {fire_csv_path}")
     fire_deficiencies = load_fire_citations_from_csv(fire_csv_path)
     
     verify_bay_crest(health_deficiencies, complaint_counts, serious_counts, fire_deficiencies)
-    enrich_state_files(health_deficiencies, complaint_counts, serious_counts, fire_deficiencies)
+    enrich_state_files(health_deficiencies, complaint_counts, serious_counts, harm_counts, jeopardy_counts, fire_deficiencies)
     print("\n✅ Done! Re-run compute_national_averages.py to update benchmarks.")
 
 

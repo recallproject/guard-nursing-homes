@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
 import FeedbackButton from './components/FeedbackButton';
+import FacilityErrorBoundary from './components/FacilityErrorBoundary';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
 import './styles/design.css';
@@ -39,6 +40,7 @@ const AntipsychoticTrendsPage = lazy(() => import('./pages/AntipsychoticTrendsPa
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const FamiliesPage = lazy(() => import('./pages/FamiliesPage'));
 const HospitalsPage = lazy(() => import('./pages/HospitalsPage'));
+const AttorneysPage = lazy(() => import('./pages/AttorneysPage'));
 const StatePage = lazy(() => import('./pages/StatePage'));
 
 function LoadingFallback() {
@@ -60,7 +62,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/" element={<MapPage />} />
-          <Route path="/facility/:ccn" element={<FacilityPage />} />
+          <Route path="/facility/:ccn" element={<FacilityErrorBoundary><FacilityPage /></FacilityErrorBoundary>} />
           <Route path="/professionals" element={<ProfessionalsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/screening" element={<ScreeningPage />} />
@@ -90,6 +92,7 @@ function App() {
           <Route path="/antipsychotic-trends" element={<AntipsychoticTrendsPage />} />
           <Route path="/families" element={<FamiliesPage />} />
           <Route path="/hospitals" element={<HospitalsPage />} />
+          <Route path="/attorneys" element={<AttorneysPage />} />
           <Route path="/state/:code" element={<StatePage />} />
           <Route path="/favorites" element={<Navigate to="/watchlist" replace />} />
           <Route path="/ask-clinician" element={<Navigate to="/ask-a-clinician" replace />} />

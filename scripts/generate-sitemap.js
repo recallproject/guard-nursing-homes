@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -9,8 +9,14 @@ const publicDir = join(__dirname, '..', 'public');
 const BASE_URL = 'https://www.oversightreports.com';
 const today = new Date().toISOString().split('T')[0];
 
-// Load facility data
-const facilityData = JSON.parse(readFileSync(join(publicDir, 'facilities_map_data.json'), 'utf8'));
+// Load facility data from split state files (public/data/states/*.json)
+const statesDir = join(publicDir, 'data', 'states');
+const facilityData = { states: {} };
+for (const file of readdirSync(statesDir).filter(f => f.endsWith('.json'))) {
+  const stateCode = file.replace('.json', '');
+  const stateData = JSON.parse(readFileSync(join(statesDir, file), 'utf8'));
+  facilityData.states[stateCode] = stateData;
+}
 const chainData = JSON.parse(readFileSync(join(publicDir, 'data', 'chain_performance.json'), 'utf8'));
 
 const urls = [];
