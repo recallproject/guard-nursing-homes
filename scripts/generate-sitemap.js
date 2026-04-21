@@ -37,6 +37,16 @@ const staticPages = [
   { path: '/trends', priority: '0.6' },
   { path: '/watchlist', priority: '0.6' },
   { path: '/referral-scorecard', priority: '0.6' },
+  { path: '/know-your-rights', priority: '0.7' },
+  { path: '/evidence-sample', priority: '0.7' },
+  { path: '/data-transparency', priority: '0.6' },
+  { path: '/families', priority: '0.7' },
+  { path: '/attorneys', priority: '0.7' },
+  { path: '/hospitals', priority: '0.6' },
+  { path: '/antipsychotic-trends', priority: '0.6' },
+  { path: '/compare', priority: '0.6' },
+  { path: '/about', priority: '0.5' },
+  { path: '/ask-a-clinician', priority: '0.5' },
 ];
 
 staticPages.forEach(p => {

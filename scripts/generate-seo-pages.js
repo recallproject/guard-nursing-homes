@@ -351,6 +351,41 @@ const staticPages = [
     title: 'Privacy Policy | The Oversight Report',
     description: 'Privacy policy for The Oversight Report. We use privacy-friendly analytics and never sell your data.'
   },
+  {
+    route: 'know-your-rights',
+    title: 'Know Your Rights — Nursing Home Discharge Appeals & Patient Safety | The Oversight Report',
+    description: 'Your rights in a nursing home. Discharge appeal procedures, CMS complaint filing, ombudsman contacts, and free resources for families.'
+  },
+  {
+    route: 'evidence-sample',
+    title: 'Sample Evidence Report — Litigation-Ready Nursing Home Documentation | The Oversight Report',
+    description: 'Preview a sample evidence report. 17-page litigation-ready documentation with staffing data, inspection citations, penalties, and ownership analysis.'
+  },
+  {
+    route: 'data-transparency',
+    title: 'Data Transparency — CMS Dataset Sources & Coverage | The Oversight Report',
+    description: 'Full transparency on the 18 CMS datasets powering The Oversight Report. See data sources, update frequencies, and coverage details.'
+  },
+  {
+    route: 'families',
+    title: 'For Families — Nursing Home Safety Resources | The Oversight Report',
+    description: 'Free nursing home safety tools for families. Look up any facility, check staffing levels, read inspection reports, and understand your rights.'
+  },
+  {
+    route: 'attorneys',
+    title: 'For Attorneys — Nursing Home Litigation Evidence & Data | The Oversight Report',
+    description: 'Evidence-grade nursing home data for elder abuse and neglect litigation. Staffing records, inspection citations, penalty history, and ownership networks.'
+  },
+  {
+    route: 'hospitals',
+    title: 'For Hospitals — Nursing Home Referral & Discharge Data | The Oversight Report',
+    description: 'Nursing home safety data for hospital discharge planners and case managers. Compare facilities by staffing, inspections, and readmission risk.'
+  },
+  {
+    route: 'antipsychotic-trends',
+    title: 'Antipsychotic Prescribing Trends — Nursing Home Medication Data | The Oversight Report',
+    description: 'National trends in antipsychotic prescribing across nursing homes. Facility-level data on chemical restraint use and CMS quality measures.'
+  },
 ];
 
 console.log('Generating SEO pages with static HTML content...');
