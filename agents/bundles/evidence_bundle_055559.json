@@ -1,0 +1,203 @@
+{
+  "bundle_version": "1.0",
+  "created_at": "2026-03-25T16:55:15.185433",
+  "data_as_of": "2026-03-01",
+  "facility_identity": {
+    "ccn": "055559",
+    "name": "BAY CREST CARE CENTER",
+    "address": "3750 GARNET STREET",
+    "city": "TORRANCE",
+    "state": "CA",
+    "zip": "90503",
+    "phone": "",
+    "beds": 80,
+    "residents": null
+  },
+  "star_ratings": {
+    "overall": 1,
+    "staffing": 2,
+    "quality": 2,
+    "inspection": 1
+  },
+  "staffing_facts": {
+    "total_hprd": 3.764,
+    "rn_hprd": 0.326,
+    "lpn_hprd": 0.993,
+    "cna_hprd": 2.445,
+    "adj_total_hprd": 3.656,
+    "adj_rn_hprd": 0.317,
+    "total_turnover": 59.3,
+    "rn_turnover": 40.0,
+    "admin_turnover": 0.0,
+    "weekend_total_hprd": 3.534,
+    "weekend_rn_hprd": 0.254
+  },
+  "penalty_facts": {
+    "total_fines": 156358.0,
+    "fine_count": 5,
+    "denial_count": 3,
+    "penalty_timeline": [
+      {
+        "type": "Fine",
+        "date": "2025-11-03",
+        "amount": 68085.0
+      },
+      {
+        "type": "Payment Denial",
+        "date": "2025-11-03",
+        "denial_start": "2025-12-09",
+        "denial_days": 4
+      },
+      {
+        "type": "Fine",
+        "date": "2025-10-15",
+        "amount": 12425.0
+      },
+      {
+        "type": "Fine",
+        "date": "2025-08-19",
+        "amount": 16149.0
+      },
+      {
+        "type": "Payment Denial",
+        "date": "2025-08-19",
+        "denial_start": "2025-09-18",
+        "denial_days": 1
+      },
+      {
+        "type": "Fine",
+        "date": "2023-12-07",
+        "amount": 51506.0
+      },
+      {
+        "type": "Payment Denial",
+        "date": "2023-12-07",
+        "denial_start": "2024-02-13",
+        "denial_days": 21
+      },
+      {
+        "type": "Fine",
+        "date": "2023-04-21",
+        "amount": 8193.0
+      }
+    ]
+  },
+  "inspection_facts": {
+    "total_deficiencies": 132,
+    "fire_deficiency_count": 16,
+    "complaint_investigations": 100,
+    "serious_deficiency_count": 0
+  },
+  "ownership_facts": {
+    "chain_name": "GENESIS HEALTHCARE",
+    "ownership_type": "Organization",
+    "owner_count": 23,
+    "chain_avg_stars": 2.2,
+    "owner_avg_stars": 2.26
+  },
+  "quality_facts": {
+    "mds": {
+      "ls": {
+        "401": {
+          "s": 1.92,
+          "d": "Percentage of long-stay residents whose need for help with daily activities has increased"
+        },
+        "404": {
+          "s": 6.78,
+          "d": "Percentage of long-stay residents who lose too much weight"
+        },
+        "406": {
+          "s": 0.0,
+          "d": "Percentage of long-stay residents with a catheter inserted and left in their bladder"
+        },
+        "407": {
+          "s": 0.0,
+          "d": "Percentage of long-stay residents with a urinary tract infection"
+        },
+        "408": {
+          "s": 68.97,
+          "d": "Percentage of long-stay residents who have depressive symptoms"
+        },
+        "409": {
+          "s": 1.59,
+          "d": "Percentage of long-stay residents who were physically restrained"
+        },
+        "410": {
+          "s": 0.0,
+          "d": "Percentage of long-stay residents experiencing one or more falls with major injury"
+        },
+        "415": {
+          "s": 98.41,
+          "d": "Percentage of long-stay residents assessed and appropriately given the pneumococcal vaccine"
+        },
+        "452": {
+          "s": 15.0,
+          "d": "Percentage of long-stay residents who received an antianxiety or hypnotic medication"
+        },
+        "479": {
+          "s": 9.64,
+          "d": "Percentage of long-stay residents with pressure ulcers"
+        },
+        "480": {
+          "s": 20.69,
+          "d": "Percentage of long-stay residents with new or worsened bowel or bladder incontinence"
+        },
+        "481": {
+          "s": 13.51,
+          "d": "Percentage of long-stay residents who received an antipsychotic medication"
+        }
+      },
+      "ss": {
+        "430": {
+          "s": 59.46,
+          "d": "Percentage of short-stay residents assessed and appropriately given the pneumococcal vaccine"
+        },
+        "434": {
+          "s": 3.85,
+          "d": "Percentage of short-stay residents who newly received an antipsychotic medication"
+        }
+      }
+    }
+  },
+  "confidence_flags": [],
+  "citations": [
+    {
+      "source": "CMS Provider Info",
+      "dataset_id": "4pq5-n9py",
+      "date": "2026-03-01"
+    },
+    {
+      "source": "CMS Penalties",
+      "dataset_id": "g6vv-u9sr",
+      "date": "2026-03-01"
+    },
+    {
+      "source": "CMS Health Citations",
+      "dataset_id": "r5ix-sfxw",
+      "date": "2026-03-01"
+    },
+    {
+      "source": "CMS Fire Safety Citations",
+      "dataset_id": "ifjz-ge4w",
+      "date": "2026-03-01"
+    },
+    {
+      "source": "CMS Ownership",
+      "dataset_id": "y2hd-n93e",
+      "date": "2026-03-01"
+    },
+    {
+      "source": "CMS Quality Measures MDS",
+      "dataset_id": "djen-97ju",
+      "date": "2026-03-01"
+    }
+  ],
+  "limitations": [
+    "Staffing data is self-reported by facilities to CMS",
+    "Quality measures may have a reporting lag of 1-2 quarters",
+    "Ownership data reflects current filing, not historical changes",
+    "Penalty data covers last 3 years of CMS enforcement actions",
+    "Star ratings are computed by CMS and may lag behind underlying data"
+  ],
+  "bundle_hash": "34e8ae51b80b5951"
+}

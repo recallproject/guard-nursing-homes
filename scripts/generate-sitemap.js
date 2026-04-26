@@ -94,7 +94,30 @@ writeFileSync(join(publicDir, 'sitemap.xml'), xml);
 console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains)`);
 
 // Generate robots.txt
-const robots = `User-agent: *
+const robots = `# Block AI/LLM scraping bots
+User-agent: CCBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+# Allow legitimate search engines and all other bots
+User-agent: *
 Allow: /
 
 Sitemap: ${BASE_URL}/sitemap.xml

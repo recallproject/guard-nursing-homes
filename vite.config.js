@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   base: '/',
   build: {
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -13,7 +14,10 @@ export default defineConfig({
           pdf: ['jspdf', 'jspdf-autotable'],
           maps: ['d3-geo', 'd3-selection', 'topojson-client'],
           animation: ['gsap'],
-        }
+        },
+        chunkFileNames: 'assets/[hash].js',
+        entryFileNames: 'assets/[hash].js',
+        assetFileNames: 'assets/[hash].[ext]',
       }
     }
   }

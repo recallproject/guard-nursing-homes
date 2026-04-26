@@ -25,3 +25,9 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Large CMS raw data files
+data/cms_raw/
+*.csv
+test_fixed_output.pdf
+~$*

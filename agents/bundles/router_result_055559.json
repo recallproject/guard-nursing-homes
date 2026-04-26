@@ -1,0 +1,12 @@
+{
+  "decision": "HUMAN_REVIEW",
+  "reason": "Attorney report \u2014 requires clinician review before delivery",
+  "guardian_status": "PASS",
+  "report_type": "attorney",
+  "facility": "BAY CREST CARE CENTER",
+  "ccn": "055559",
+  "action_items": [
+    "Standard clinician review"
+  ],
+  "decided_at": "2026-03-25T16:55:15.290892"
+}

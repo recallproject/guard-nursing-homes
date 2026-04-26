@@ -1,0 +1,573 @@
+[
+  {
+    "provider_type": "LTACH",
+    "ccn": "052031",
+    "name": "BARLOW RESPIRATORY HOSPITAL",
+    "address": "2000 STADIUM WAY",
+    "city": "LOS ANGELES",
+    "state": "CA",
+    "zip": "90026",
+    "phone": "(213) 250-4200",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "3.11",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "930000014",
+    "cdph_license": "930000011.0",
+    "cdph_county": "LOS ANGELES",
+    "cdph_capacity": 105,
+    "cdph_hcai_id": "106190052.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 34.075809,
+    "cdph_lon": -118.2481425,
+    "beds": "99"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052032",
+    "name": "KINDRED HOSPITAL - LOS ANGELES",
+    "address": "5525 W SLAUSON AVENUE",
+    "city": "LOS ANGELES",
+    "state": "CA",
+    "zip": "90056",
+    "phone": "(310) 642-0325",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "0.63",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "930000088",
+    "cdph_license": "930000053.0",
+    "cdph_county": "LOS ANGELES",
+    "cdph_capacity": 81,
+    "cdph_hcai_id": "106190305.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 33.989157,
+    "cdph_lon": -118.3783815,
+    "beds": "81"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052033",
+    "name": "VIBRA HOSPITAL OF SACRAMENTO",
+    "address": "330 MONTROSE DRIVE",
+    "city": "FOLSOM",
+    "state": "CA",
+    "zip": "95630",
+    "phone": "(916) 351-9151",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "35.78",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "30000907",
+    "cdph_license": "30000377.0",
+    "cdph_county": "SACRAMENTO",
+    "cdph_capacity": 58,
+    "cdph_hcai_id": "106344035.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 38.681253,
+    "cdph_lon": -121.1589405,
+    "beds": "58"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052034",
+    "name": "KINDRED HOSPITAL - SAN FRANCISCO BAY AREA",
+    "address": "2800 BENEDICT DRIVE",
+    "city": "SAN LEANDRO",
+    "state": "CA",
+    "zip": "94577",
+    "phone": "(510) 357-8300",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "8.84",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "140000148",
+    "cdph_license": "140000066.0",
+    "cdph_county": "ALAMEDA",
+    "cdph_capacity": 99,
+    "cdph_hcai_id": "106010887.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 37.71612,
+    "cdph_lon": -122.130801,
+    "beds": "99"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052035",
+    "name": "KINDRED HOSPITAL WESTMINSTER",
+    "address": "200 HOSPITAL CIRCLE",
+    "city": "WESTMINSTER",
+    "state": "CA",
+    "zip": "92683",
+    "phone": "(714) 893-4541",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "2.39",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "60000017",
+    "cdph_license": "60000183.0",
+    "cdph_county": "ORANGE",
+    "cdph_capacity": 109,
+    "cdph_hcai_id": "106301380.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 33.763716,
+    "cdph_lon": -117.9953145,
+    "beds": "109"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052036",
+    "name": "KINDRED HOSPITAL - SAN DIEGO",
+    "address": "1940 EL CAJON BLVD",
+    "city": "SAN DIEGO",
+    "state": "CA",
+    "zip": "92104",
+    "phone": "(619) 543-4500",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "25.26",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "90000048",
+    "cdph_license": "90000059.0",
+    "cdph_county": "SAN DIEGO",
+    "cdph_capacity": 70,
+    "cdph_hcai_id": "106370721.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 32.756202,
+    "cdph_lon": -117.144657,
+    "beds": "70"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052037",
+    "name": "KINDRED HOSPITAL ONTARIO",
+    "address": "550 NORTH MONTEREY",
+    "city": "ONTARIO",
+    "state": "CA",
+    "zip": "91764",
+    "phone": "(909) 391-0333",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "4.49",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "240000040",
+    "cdph_license": "240000561.0",
+    "cdph_county": "SAN BERNARDINO",
+    "cdph_capacity": 91,
+    "cdph_hcai_id": "106361274.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 34.06905825,
+    "cdph_lon": -117.6436833,
+    "beds": "91"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052038",
+    "name": "KINDRED HOSPITAL -- LA MIRADA",
+    "address": "14900 E IMPERIAL HWY",
+    "city": "LA MIRADA",
+    "state": "CA",
+    "zip": "90638",
+    "phone": "(562) 944-1900",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "10.52",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS"
+    ],
+    "beds": "277"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052039",
+    "name": "KINDRED HOSPITAL BREA",
+    "address": "875 N BREA BLVD",
+    "city": "BREA",
+    "state": "CA",
+    "zip": "92821",
+    "phone": "(714) 529-6842",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "25.81",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "60001360",
+    "cdph_license": "60000407.0",
+    "cdph_county": "ORANGE",
+    "cdph_capacity": 48,
+    "cdph_hcai_id": "106301127.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 33.934464,
+    "cdph_lon": -117.894024,
+    "beds": "48"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052043",
+    "name": "KENTFIELD HOSPITAL",
+    "address": "1125 SIR FRANCIS DRAKE BLVD",
+    "city": "KENTFIELD",
+    "state": "CA",
+    "zip": "94904",
+    "phone": "(415) 456-9680",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "31.96",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "110000946",
+    "cdph_license": "110000358.0",
+    "cdph_county": "MARIN",
+    "cdph_capacity": 60,
+    "cdph_hcai_id": "106210993.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 37.958733,
+    "cdph_lon": -122.552415,
+    "beds": "120"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052044",
+    "name": "SELECT SPECIALTY HOSPITAL - SAN DIEGO",
+    "address": "555 WASHINGTON STREET",
+    "city": "SAN DIEGO",
+    "state": "CA",
+    "zip": "92103",
+    "phone": "(619) 260-8300",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "8.81",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "90000977",
+    "cdph_license": "90000404.0",
+    "cdph_county": "SAN DIEGO",
+    "cdph_capacity": 110,
+    "cdph_hcai_id": "106374094.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 32.749362,
+    "cdph_lon": -117.1599345,
+    "beds": "110"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052045",
+    "name": "KINDRED HOSPITAL BALDWIN PARK",
+    "address": "14148 FRANCISQUITO AVENUE",
+    "city": "BALDWIN PARK",
+    "state": "CA",
+    "zip": "91706",
+    "phone": "(626) 388-2700",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "1.41",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "930000144",
+    "cdph_license": "930000390.0",
+    "cdph_county": "LOS ANGELES",
+    "cdph_capacity": 91,
+    "cdph_hcai_id": "106190049.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 34.062876,
+    "cdph_lon": -117.967608,
+    "beds": "95"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052046",
+    "name": "KINDRED HOSPITAL PARAMOUNT",
+    "address": "16453 COLORADO AVENUE",
+    "city": "PARAMOUNT",
+    "state": "CA",
+    "zip": "90723",
+    "phone": "(562) 531-3110",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "4.27",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "930000033",
+    "cdph_license": "930000088.0",
+    "cdph_county": "LOS ANGELES",
+    "cdph_capacity": 183,
+    "cdph_hcai_id": "106190599.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 33.884334,
+    "cdph_lon": -118.1621475,
+    "beds": "177"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052047",
+    "name": "VIBRA HOSPITAL OF NORTHERN CALIFORNIA",
+    "address": "2801 EUREKA WAY",
+    "city": "REDDING",
+    "state": "CA",
+    "zip": "96001",
+    "phone": "(530) 246-9000",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "20.90",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "230000422",
+    "cdph_license": "230000191.0",
+    "cdph_county": "SHASTA",
+    "cdph_capacity": 50,
+    "cdph_hcai_id": "106454012.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 40.58570688,
+    "cdph_lon": -122.4130195,
+    "beds": "56"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052049",
+    "name": "KINDRED HOSPITAL RANCHO",
+    "address": "10841 WHITE OAK AVENUE",
+    "city": "RANCHO CUCAMONGA",
+    "state": "CA",
+    "zip": "91730",
+    "phone": "(909) 581-6400",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "43.33",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "240001515",
+    "cdph_license": "240000652.0",
+    "cdph_county": "SAN BERNARDINO",
+    "cdph_capacity": 55,
+    "cdph_hcai_id": "106364188.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 34.103529,
+    "cdph_lon": -117.5663205,
+    "beds": "55"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052050",
+    "name": "KINDRED HOSPITAL SOUTH BAY",
+    "address": "1246 WEST 155TH STREET",
+    "city": "GARDENA",
+    "state": "CA",
+    "zip": "90247",
+    "phone": "(310) 323-5330",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "0.00",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "930000039",
+    "cdph_license": "930000037.0",
+    "cdph_county": "LOS ANGELES",
+    "cdph_capacity": 54,
+    "cdph_hcai_id": "106190196.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 33.890004,
+    "cdph_lon": -118.2973995,
+    "beds": "58"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052052",
+    "name": "KINDRED HOSPITAL RIVERSIDE",
+    "address": "2224 MEDICAL CENTER DRIVE",
+    "city": "PERRIS",
+    "state": "CA",
+    "zip": "92571",
+    "phone": "(951) 436-3535",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "5.75",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "250000004",
+    "cdph_license": "250000234.0",
+    "cdph_county": "RIVERSIDE",
+    "cdph_capacity": 40,
+    "cdph_hcai_id": "106332172.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 33.812262,
+    "cdph_lon": -117.2223315,
+    "beds": "40"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052054",
+    "name": "MONROVIA MEMORIAL HOSPITAL",
+    "address": "323 SOUTH HELIOTROPE AVENUE",
+    "city": "MONROVIA",
+    "state": "CA",
+    "zip": "91016",
+    "phone": "(626) 408-9800",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "53.24",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "930000107",
+    "cdph_license": "930000107.0",
+    "cdph_county": "LOS ANGELES",
+    "cdph_capacity": 49,
+    "cdph_hcai_id": "106190541.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 34.14907548,
+    "cdph_lon": -117.9922299,
+    "beds": "49"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052055",
+    "name": "CENTRAL VALLEY SPECIALTY HOSPITAL",
+    "address": "730 17TH STREET",
+    "city": "MODESTO",
+    "state": "CA",
+    "zip": "95354",
+    "phone": "(209) 248-7700",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "98.66",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "30000129",
+    "cdph_license": "30000464.0",
+    "cdph_county": "STANISLAUS",
+    "cdph_capacity": 96,
+    "cdph_hcai_id": "106500954.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 37.64349,
+    "cdph_lon": -120.990735,
+    "beds": "36"
+  },
+  {
+    "provider_type": "LTACH",
+    "ccn": "052057",
+    "name": "SONOMA SPECIALTY HOSPITAL",
+    "address": "501 PETALUMA AVENUE",
+    "city": "SEBASTOPOL",
+    "state": "CA",
+    "zip": "95472",
+    "phone": "(707) 823-8511",
+    "quality_measures": {
+      "measure_code": "L_028_02_OBS_RATE",
+      "score": "14.22",
+      "measure_date_range": "-"
+    },
+    "cms_source": true,
+    "data_sources": [
+      "CMS",
+      "CDPH"
+    ],
+    "cdph_facid": "110000038",
+    "cdph_license": "110000091.0",
+    "cdph_county": "SONOMA",
+    "cdph_capacity": 58,
+    "cdph_hcai_id": "106491338.0",
+    "cdph_status": "OPEN",
+    "cdph_lat": 38.397339,
+    "cdph_lon": -122.8190805,
+    "beds": "37"
+  }
+]

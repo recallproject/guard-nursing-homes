@@ -1,0 +1,373 @@
+{
+  "total": 129,
+  "category_breakdown": [
+    {
+      "category": "Quality of Life and Care Deficiencies",
+      "count": 31,
+      "complaint_count": 22,
+      "ftags": [
+        "F-0689",
+        "F-0678",
+        "F-0689",
+        "F-0697",
+        "F-0692",
+        "F-0689",
+        "F-0677",
+        "F-0689",
+        "F-0688",
+        "F-0697",
+        "F-0694",
+        "F-0684",
+        "F-0676",
+        "F-0684",
+        "F-0684",
+        "F-0677",
+        "F-0688",
+        "F-0690",
+        "F-0693",
+        "F-0684",
+        "F-0689",
+        "F-0676",
+        "F-0695",
+        "F-0684",
+        "F-0684",
+        "F-0698",
+        "F-0686",
+        "F-0684",
+        "F-0677",
+        "F-0695",
+        "F-0695"
+      ]
+    },
+    {
+      "category": "Resident Rights Deficiencies",
+      "count": 23,
+      "complaint_count": 18,
+      "ftags": [
+        "F-0558",
+        "F-0550",
+        "F-0558",
+        "F-0550",
+        "F-0550",
+        "F-0558",
+        "F-0550",
+        "F-0573",
+        "F-0580",
+        "F-0558",
+        "F-0550",
+        "F-0583",
+        "F-0553",
+        "F-0584",
+        "F-0580",
+        "F-0554",
+        "F-0558",
+        "F-0580",
+        "F-0550",
+        "F-0550",
+        "F-0550",
+        "F-0552",
+        "F-0554"
+      ]
+    },
+    {
+      "category": "Pharmacy Service Deficiencies",
+      "count": 19,
+      "complaint_count": 15,
+      "ftags": [
+        "F-0757",
+        "F-0760",
+        "F-0755",
+        "F-0755",
+        "F-0755",
+        "F-0760",
+        "F-0761",
+        "F-0755",
+        "F-0755",
+        "F-0755",
+        "F-0760",
+        "F-0759",
+        "F-0761",
+        "F-0755",
+        "F-0755",
+        "F-0761",
+        "F-0755",
+        "F-0755",
+        "F-0760"
+      ]
+    },
+    {
+      "category": "Resident Assessment and Care Planning Deficiencies",
+      "count": 17,
+      "complaint_count": 12,
+      "ftags": [
+        "F-0842",
+        "F-0656",
+        "F-0842",
+        "F-0645",
+        "F-0842",
+        "F-0656",
+        "F-0842",
+        "F-0635",
+        "F-0641",
+        "F-0656",
+        "F-0656",
+        "F-0656",
+        "F-0657",
+        "F-0641",
+        "F-0656",
+        "F-0842",
+        "F-0656"
+      ]
+    },
+    {
+      "category": "Freedom from Abuse, Neglect, and Exploitation Deficiencies",
+      "count": 10,
+      "complaint_count": 9,
+      "ftags": [
+        "F-0600",
+        "F-0600",
+        "F-0609",
+        "F-0600",
+        "F-0609",
+        "F-0604",
+        "F-0600",
+        "F-0609",
+        "F-0610",
+        "F-0609"
+      ]
+    },
+    {
+      "category": "Nursing and Physician Services Deficiencies",
+      "count": 8,
+      "complaint_count": 7,
+      "ftags": [
+        "F-0725",
+        "F-0726",
+        "F-0725",
+        "F-0710",
+        "F-0725",
+        "F-0726",
+        "F-0726",
+        "F-0732"
+      ]
+    },
+    {
+      "category": "Administration Deficiencies",
+      "count": 8,
+      "complaint_count": 6,
+      "ftags": [
+        "F-0867",
+        "F-0865",
+        "F-0865",
+        "F-0865",
+        "F-0940",
+        "F-0836",
+        "F-0867",
+        "F-0838"
+      ]
+    },
+    {
+      "category": "Nutrition and Dietary Deficiencies",
+      "count": 6,
+      "complaint_count": 4,
+      "ftags": [
+        "F-0812",
+        "F-0813",
+        "F-0804",
+        "F-0802",
+        "F-0800",
+        "F-0812"
+      ]
+    },
+    {
+      "category": "Environmental Deficiencies",
+      "count": 5,
+      "complaint_count": 3,
+      "ftags": [
+        "F-0925",
+        "F-0908",
+        "F-0912",
+        "F-0921",
+        "F-0906"
+      ]
+    },
+    {
+      "category": "Infection Control Deficiencies",
+      "count": 2,
+      "complaint_count": 1,
+      "ftags": [
+        "F-0880",
+        "F-0880"
+      ]
+    }
+  ],
+  "severity_summary": {
+    "Immediate Jeopardy": 4,
+    "Actual Harm": 4,
+    "Potential for More Than Minimal Harm": 120,
+    "Potential for Minimal Harm": 1
+  },
+  "ij_count": 4,
+  "harm_count": 4,
+  "ij_findings": [
+    {
+      "date": "2025-11-09",
+      "ftag": "F-0689",
+      "cfr": "42 CFR \u00a7483.25(d)",
+      "title": "Free from Accident Hazards/Supervision/Devices",
+      "scope": "Isolated",
+      "from_complaint": true,
+      "corrected": true,
+      "correction_date": "2025-11-11"
+    },
+    {
+      "date": "2025-08-19",
+      "ftag": "F-0678",
+      "cfr": "42 CFR \u00a7483.25(a)(2)",
+      "title": "Provide Basic Life Support Including CPR",
+      "scope": "Isolated",
+      "from_complaint": true,
+      "corrected": true,
+      "correction_date": "2025-09-08"
+    },
+    {
+      "date": "2023-05-02",
+      "ftag": "F-0757",
+      "cfr": "42 CFR \u00a7483.45(d)",
+      "title": "Unnecessary Medications",
+      "scope": "Isolated",
+      "from_complaint": true,
+      "corrected": true,
+      "correction_date": "2023-05-30"
+    },
+    {
+      "date": "2023-01-03",
+      "ftag": "F-0600",
+      "cfr": "42 CFR \u00a7483.12",
+      "title": "Free from Abuse and Neglect",
+      "scope": "Isolated",
+      "from_complaint": true,
+      "corrected": true,
+      "correction_date": "2023-01-30"
+    }
+  ],
+  "harm_findings": [
+    {
+      "date": "2025-10-17",
+      "ftag": "F-0689",
+      "cfr": "42 CFR \u00a7483.25(d)",
+      "title": "Free from Accident Hazards/Supervision/Devices",
+      "scope": "Isolated",
+      "from_complaint": true
+    },
+    {
+      "date": "2024-02-09",
+      "ftag": "F-0697",
+      "cfr": "42 CFR \u00a7483.25(l)",
+      "title": "Pain Assessment",
+      "scope": "Isolated",
+      "from_complaint": true
+    },
+    {
+      "date": "2024-01-12",
+      "ftag": "F-0692",
+      "cfr": "42 CFR \u00a7483.25(g)",
+      "title": "Nutrition/Hydration Status Maintenance",
+      "scope": "Isolated",
+      "from_complaint": false
+    },
+    {
+      "date": "2023-06-16",
+      "ftag": "F-0689",
+      "cfr": "42 CFR \u00a7483.25(d)",
+      "title": "Free from Accident Hazards/Supervision/Devices",
+      "scope": "Isolated",
+      "from_complaint": true
+    }
+  ],
+  "top_ftags": [
+    {
+      "ftag": "F755",
+      "count": 10,
+      "cfr": "42 CFR \u00a7483.45(a)-(d)",
+      "title": "Pharmacy Services/Procedures/Pharmacist/Records",
+      "category": "Pharmacy Services",
+      "ca_title22": "Title 22 \u00a772367"
+    },
+    {
+      "ftag": "F550",
+      "count": 8,
+      "cfr": "42 CFR \u00a7483.10(a)",
+      "title": "Resident Rights",
+      "category": "Resident Rights",
+      "ca_title22": "Title 22 \u00a772527"
+    },
+    {
+      "ftag": "F656",
+      "count": 7,
+      "cfr": "42 CFR \u00a7483.21(b)",
+      "title": "Comprehensive Care Plans",
+      "category": "Care Planning",
+      "ca_title22": null
+    },
+    {
+      "ftag": "F684",
+      "count": 7,
+      "cfr": "42 CFR \u00a7483.25",
+      "title": "Quality of Care",
+      "category": "Quality of Care",
+      "ca_title22": "Title 22 \u00a772523"
+    },
+    {
+      "ftag": "F689",
+      "count": 5,
+      "cfr": "42 CFR \u00a7483.25(d)",
+      "title": "Free from Accident Hazards/Supervision/Devices",
+      "category": "Quality of Care",
+      "ca_title22": "Title 22 \u00a772523"
+    },
+    {
+      "ftag": "F842",
+      "count": 5,
+      "cfr": "42 CFR \u00a7483.70(i)",
+      "title": "Resident Records \u2014 Identifiable Information",
+      "category": "Administration",
+      "ca_title22": null
+    },
+    {
+      "ftag": "F558",
+      "count": 5,
+      "cfr": "42 CFR \u00a7483.10(e)",
+      "title": "Reasonable Accommodations of Needs/Preferences",
+      "category": "Resident Rights",
+      "ca_title22": null
+    },
+    {
+      "ftag": "F600",
+      "count": 4,
+      "cfr": "42 CFR \u00a7483.12",
+      "title": "Free from Abuse and Neglect",
+      "category": "Freedom from Abuse",
+      "ca_title22": "Title 22 \u00a772527"
+    },
+    {
+      "ftag": "F760",
+      "count": 4,
+      "cfr": "42 CFR \u00a7483.45(f)(2)",
+      "title": "Residents Free of Significant Med Errors",
+      "category": "Pharmacy Services",
+      "ca_title22": null
+    },
+    {
+      "ftag": "F609",
+      "count": 4,
+      "cfr": "42 CFR \u00a7483.12(c)(1)-(4)",
+      "title": "Reporting of Alleged Violations",
+      "category": "Freedom from Abuse",
+      "ca_title22": "Title 22 \u00a772541"
+    }
+  ],
+  "complaint_count": 97,
+  "complaint_ratio": 75.2,
+  "attorney_summary": "This facility has 129 documented deficiencies on record.\nCMS found 4 Immediate Jeopardy finding(s) \u2014 the highest severity level, indicating conditions that caused or were likely to cause serious injury, harm, impairment, or death to a resident.\n  - 2025-11-09: F-0689 (42 CFR \u00a7483.25(d)) \u2014 Free from Accident Hazards/Supervision/Devices\n  - 2025-08-19: F-0678 (42 CFR \u00a7483.25(a)(2)) \u2014 Provide Basic Life Support Including CPR\n  - 2023-05-02: F-0757 (42 CFR \u00a7483.45(d)) \u2014 Unnecessary Medications\nAdditionally, 4 finding(s) were classified as Actual Harm \u2014 meaning CMS determined that a resident was harmed as a result of the deficiency.\n75.2% of deficiencies originated from complaint investigations, suggesting a pattern of external reports of concern.\nMost frequent deficiency categories: Quality of Life and Care Deficiencies (31), Resident Rights Deficiencies (23), Pharmacy Service Deficiencies (19).\nMost frequently cited regulations:\n  - F755 \u2014 42 CFR \u00a7483.45(a)-(d): Pharmacy Services/Procedures/Pharmacist/Records (cited 10x)\n  - F550 \u2014 42 CFR \u00a7483.10(a): Resident Rights (cited 8x)\n  - F656 \u2014 42 CFR \u00a7483.21(b): Comprehensive Care Plans (cited 7x)\n  - F684 \u2014 42 CFR \u00a7483.25: Quality of Care (cited 7x)\n  - F689 \u2014 42 CFR \u00a7483.25(d): Free from Accident Hazards/Supervision/Devices (cited 5x)"
+}
