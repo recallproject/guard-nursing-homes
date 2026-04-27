@@ -19,6 +19,17 @@ for (const file of readdirSync(statesDir).filter(f => f.endsWith('.json'))) {
 }
 const chainData = JSON.parse(readFileSync(join(publicDir, 'data', 'chain_performance.json'), 'utf8'));
 
+// Load blog posts index (optional)
+let blogPosts = [];
+try {
+  const blogIndex = JSON.parse(
+    readFileSync(join(publicDir, 'data', 'blog', 'posts-index.json'), 'utf8')
+  );
+  blogPosts = Array.isArray(blogIndex.posts) ? blogIndex.posts : [];
+} catch (err) {
+  console.warn('No blog posts-index.json found or unreadable:', err.message);
+}
+
 const urls = [];
 
 // Homepage
@@ -57,6 +68,21 @@ staticPages.forEach(p => {
 urls.push({ loc: '/terms', priority: '0.3', changefreq: 'yearly' });
 urls.push({ loc: '/privacy', priority: '0.3', changefreq: 'yearly' });
 
+// Blog listing + individual posts
+urls.push({ loc: '/blog', priority: '0.7', changefreq: 'monthly' });
+let blogCount = 0;
+for (const post of blogPosts) {
+  if (post && post.slug) {
+    urls.push({
+      loc: `/blog/${post.slug}`,
+      priority: '0.7',
+      changefreq: 'monthly',
+      lastmod: post.updatedDate || post.publishedDate || undefined,
+    });
+    blogCount++;
+  }
+}
+
 // All facility pages
 let facilityCount = 0;
 for (const [stateCode, stateData] of Object.entries(facilityData.states)) {
@@ -83,7 +109,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url>
     <loc>${BASE_URL}${u.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${u.lastmod || today}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join('\n')}
@@ -91,7 +117,7 @@ ${urls.map(u => `  <url>
 `;
 
 writeFileSync(join(publicDir, 'sitemap.xml'), xml);
-console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains)`);
+console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains, ${blogCount} blog posts)`);
 
 // Generate robots.txt
 const robots = `# Block AI/LLM scraping bots

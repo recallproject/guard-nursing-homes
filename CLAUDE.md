@@ -1,8 +1,25 @@
 # GUARD — Nursing Home Safety Platform
 
+## ⚡ READ FIRST BEFORE ANYTHING ELSE
+At the start of every conversation, read `~/Desktop/OversightReports-Outreach/PROJECT-STATE.md` before responding to anything.
+
+That file is the single source of truth shared across both OversightReports Claude Desktop projects (dev + outreach). It contains:
+- Verified data stats (facility counts, fines, deficiencies, PBJ, related-party totals)
+- Current deployment state (latest deploy ID, what changed, what's live)
+- Outreach campaign status (who's engaged, what's posted, what's queued)
+- Open questions / unresolved decisions
+- File locations across Desktop, LaCie drive, Obsidian, and Notion
+
+**Critical rule:** Never claim stats about the platform (facility counts, dollar totals, data source counts, etc.) without verifying they're in PROJECT-STATE.md. If a number isn't there, audit from source before citing it.
+
+If PROJECT-STATE.md is more than 48 hours old, tell Rob to update it before proceeding with anything that depends on current state.
+
+When material changes happen in this repo (deploy, data update, significant code change), remind Rob to update PROJECT-STATE.md before ending the session.
+
 ## Project Overview
 React 19 + Vite frontend serving nursing home safety data for 14,713 Medicare-certified facilities.
 Deployed on Vercel. Data sourced from CMS/Medicare federal databases.
+Full data source list in PROJECT-STATE.md and `~/Documents/Obsidian Vault/01_Oversight/CMS Data Sources.md`.
 
 ## Tech Stack
 - React 19 with Vite

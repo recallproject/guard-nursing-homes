@@ -1,0 +1,135 @@
+{
+  "posts": [
+    {
+      "slug": "american-senior-communities-89-facilities-after-the-ceos-conviction",
+      "title": "American Senior Communities — 89 Facilities After the CEO’s Conviction",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-04-07",
+      "updatedDate": null,
+      "category": "Enforcement",
+      "tags": [
+        "American Senior Communities",
+        "Burkhart",
+        "Biden pardon",
+        "nursing homes",
+        "enforcement",
+        "staffing",
+        "Indiana"
+      ],
+      "readTime": "8 min",
+      "excerpt": "James Burkhart was convicted of a $19.4 million fraud scheme and pardoned by President Biden. His name has been scrubbed from CMS records. But American Senior Communities still operates 89 Indiana nursing homes — with a 2.0 staffing star average, $86.8 million in related-party costs, and one facility reporting zero bedside RN hours on 67% of days."
+    },
+    {
+      "slug": "what-cms-ownership-records-show-about-former-skyline-personnel",
+      "title": "What CMS Ownership Records Show About Former Skyline Personnel",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-04-04",
+      "updatedDate": null,
+      "category": "Enforcement",
+      "tags": [
+        "Skyline Healthcare",
+        "Schwartz",
+        "Augustyniak",
+        "ownership",
+        "CMS",
+        "nursing homes",
+        "CHOW",
+        "Friedman"
+      ],
+      "readTime": "10 min",
+      "excerpt": "CMS ownership records show that Skyline Healthcare’s former CFO is currently listed in an operational management role at a New York nursing home, and Joseph Schwartz’s son holds a 10% ownership stake at a Miami Beach facility. Both findings connect to a network that also appears across former Skyline facilities in Florida."
+    },
+    {
+      "slug": "where-skylines-56-nursing-homes-went",
+      "title": "Where Skyline’s 56 Nursing Homes Went",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-04-01",
+      "updatedDate": null,
+      "category": "Enforcement",
+      "tags": [
+        "Skyline Healthcare",
+        "Schwartz",
+        "ownership",
+        "CHOW",
+        "nursing homes",
+        "enforcement",
+        "antipsychotics",
+        "related-party"
+      ],
+      "readTime": "14 min",
+      "excerpt": "Joseph Schwartz was convicted, pardoned, and barred from CMS ownership. But all 56 of his nursing homes are still operating — under 11 different successor chains, with $1.33 million in current penalties, $46.4 million in related-party costs, and 25 facilities reporting antipsychotic prescribing rates above 20%. Here is where each one went, with links to every facility page."
+    },
+    {
+      "slug": "crush-rfi-public-comment-full-text",
+      "title": "I Submitted a Public Comment to CMS on the CRUSH RFI — Here's the Full Text",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-03-30",
+      "updatedDate": null,
+      "category": "Policy",
+      "tags": [
+        "CRUSH",
+        "CMS",
+        "RFI",
+        "fraud",
+        "enforcement",
+        "public comment",
+        "nursing homes"
+      ],
+      "readTime": "8 min",
+      "excerpt": "The full text of the public comment I submitted to CMS on the CRUSH RFI (Docket CMS-2026-0826) on March 30, 2026 — covering zero-RN days, antipsychotic prescribing, related-party transactions, and ownership transparency across all 14,713 Medicare-certified SNFs."
+    },
+    {
+      "slug": "the-government-is-going-after-healthcare-fraud-heres-what-actually-happened",
+      "title": "The Government Is Going After Healthcare Fraud — Here’s What Actually Happened",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-03-28",
+      "updatedDate": null,
+      "category": "Enforcement",
+      "tags": [
+        "CRUSH",
+        "CMS",
+        "fraud",
+        "enforcement",
+        "task force",
+        "nursing homes",
+        "hospice",
+        "pardons"
+      ],
+      "readTime": "12 min",
+      "excerpt": "Between January and April 2026, the federal government launched a fraud task force, published a sweeping RFI on healthcare enforcement, suspended hundreds of providers, and arrested hospice operators in two major busts — while pardoning convicted nursing home operators. Here is the full timeline, sourced from federal records."
+    },
+    {
+      "slug": "harvard-ai-healthcare-why-i-came-back-to-the-data",
+      "title": "What I Learned About AI in Healthcare at Harvard — And Why I Came Back to the Data",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-03-07",
+      "updatedDate": null,
+      "category": "AI & Healthcare",
+      "tags": [
+        "Harvard",
+        "AI",
+        "healthcare",
+        "agentic AI",
+        "data science",
+        "HDSR"
+      ],
+      "readTime": "7 min",
+      "excerpt": "Two Harvard courses on agentic AI in healthcare taught me how to think about AI governance. They also convinced me the foundational problem is not AI. It is data transparency."
+    },
+    {
+      "slug": "why-i-built-the-oversight-report",
+      "title": "Why I Built The Oversight Report",
+      "author": "Robert Benard, MS, RN, CNS, AGACNP-BC, PMHNP-BC",
+      "publishedDate": "2026-02-24",
+      "updatedDate": null,
+      "category": "About",
+      "tags": [
+        "transparency",
+        "nursing homes",
+        "origin story"
+      ],
+      "readTime": "5 min",
+      "excerpt": "Families kept asking me if a nursing home was any good. I never had a good answer. The data existed — it was just impossible to find. So I built a tool that puts it all in one place."
+    }
+  ]
+}
