@@ -337,7 +337,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
     <div className="v5-landing">
 
       {/* ═══════ HERO — Search-first above the fold ═══════ */}
-      <section className="v5-hero">
+      <section className="v5-hero dlc-prov-2026q2">
         <div className="v5-hero-tagline">Nursing Home Safety Data, Independently Reviewed</div>
         <h1 className="v5-hero-title">Look up any nursing home in America</h1>
         <p className="v5-hero-sub">

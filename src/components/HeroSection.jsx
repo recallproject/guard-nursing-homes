@@ -142,7 +142,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
   };
 
   return (
-    <section className="hero-section" ref={heroRef}>
+    <section className="hero-section dlc-prov-2026q2" ref={heroRef}>
       <div className="hero-background">
         <div className="hero-gradient"></div>
         <div className="hero-particles">
