@@ -347,7 +347,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-or-browse">
           or <a href="#v5-state-grid" onClick={(e) => { e.preventDefault(); onExplore && onExplore(); }}>Browse by State</a>
           {' '}&middot;{' '}
-          <Link to="/pricing">Evidence Reports for Attorneys</Link>
+          <Link to="/attorneys">For Attorneys</Link>
         </div>
 
         {/* Hero social proof bar */}
@@ -696,7 +696,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
             <div className="v5-persona-body">
               <div className="v5-persona-badge">Attorneys</div>
               <div className="v5-persona-quote">"I need documented evidence of a pattern -- deficiencies, fines, staffing failures -- in a format I can attach to a filing."</div>
-              <button type="button" className="v5-persona-action" onClick={() => navigate('/pricing')}>Evidence Report &rarr; $29 per facility</button>
+              <button type="button" className="v5-persona-action" onClick={() => onSearch && onSearch()}>Find any facility &rarr; Free Brief</button>
             </div>
           </div>
           <div className="v5-persona-card v5-fade-in">
@@ -704,24 +704,13 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
             <div className="v5-persona-body">
               <div className="v5-persona-badge">Hospitals &amp; Discharge Planners</div>
               <div className="v5-persona-quote">"We discharge 200+ patients per month to post-acute care. We need a fast, data-driven way to compare facilities for each patient."</div>
-              <button type="button" className="v5-persona-action" onClick={() => navigate('/referral-scorecard')}>Referral Scorecard &rarr; Coming soon</button>
+              <button type="button" className="v5-persona-action" onClick={() => navigate('/referral-scorecard')}>Referral Scorecard &rarr; Free tool</button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ═══════ PRICING CTA BANNER ═══════ */}
-      <div className="v5-pricing-banner">
-        <div className="v5-pricing-banner-inner">
-          <div className="v5-pricing-banner-text">
-            <h3>Need documentation for legal or professional use?</h3>
-            <p>Evidence Reports include clinician-reviewed analysis, downloadable PDFs with citation data, and chain-wide ownership analysis. Starting at $29.</p>
-          </div>
-          <Link to="/pricing" className="v5-pricing-banner-btn">
-            View Pricing &amp; Plans &rarr;
-          </Link>
-        </div>
-      </div>
+      {/* Pricing banner removed — everything except Ask a Clinician is free; banner no longer needed */}
 
       {/* ═══════ METHODOLOGY BAR ═══════ */}
       <div className="v5-method-bar">
@@ -754,7 +743,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <Link to="/compare" className="v5-footer-link">Compare Tools</Link>
           <Link to="/methodology" className="v5-footer-link">Methodology</Link>
           <Link to="/pricing" className="v5-footer-link">Pricing</Link>
-          <Link to="/pricing" className="v5-footer-link">Evidence PDFs</Link>
+          <Link to="/ask-a-clinician" className="v5-footer-link">Ask a Clinician</Link>
           <Link to="/about" className="v5-footer-link">About</Link>
           <a href="mailto:contact@oversightreports.com" className="v5-footer-link">Contact</a>
         </div>
@@ -763,14 +752,14 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ STICKY CTA — Desktop ═══════ */}
       <div className={`v5-sticky-cta ${showSticky ? 'v5-sticky-visible' : ''}`}>
         <button className="v5-sticky-btn primary" onClick={() => onSearch && onSearch()}>Search a Facility</button>
-        <Link to="/pricing" className="v5-sticky-btn secondary">Evidence Reports</Link>
+        <Link to="/ask-a-clinician" className="v5-sticky-btn secondary">Ask a Clinician</Link>
         <button className="v5-sticky-btn tertiary" onClick={() => onExplore && onExplore()}>Browse by State</button>
       </div>
 
       {/* ═══════ MOBILE STICKY CTA BAR — visible only on mobile (md:hidden via CSS) ═══════ */}
       <div className={`v5-mobile-cta-bar ${showSticky ? 'v5-sticky-visible' : ''}`}>
-        <Link to="/pricing" className="v5-mobile-cta-btn primary">Get Full Report</Link>
-        <button className="v5-mobile-cta-btn secondary" onClick={() => onSearch && onSearch()}>Free Alerts</button>
+        <button className="v5-mobile-cta-btn primary" onClick={() => onSearch && onSearch()}>Search a Facility</button>
+        <Link to="/ask-a-clinician" className="v5-mobile-cta-btn secondary">Ask a Clinician</Link>
       </div>
 
     </div>
