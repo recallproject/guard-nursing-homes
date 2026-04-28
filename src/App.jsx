@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
@@ -45,6 +45,12 @@ const StatePage = lazy(() => import('./pages/StatePage'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 
+// Redirect /evidence/:ccn -> /facility/:ccn (Facility Brief is now free on every facility page)
+function EvidenceRedirect() {
+  const { ccn } = useParams();
+  return <Navigate to={`/facility/${ccn}`} replace />;
+}
+
 function LoadingFallback() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh', color: '#94a3b8' }}>
@@ -71,7 +77,8 @@ function App() {
           <Route path="/discrepancies" element={<DiscrepanciesPage />} />
           <Route path="/ownership" element={<OwnershipPage />} />
           <Route path="/referral-scorecard" element={<ReferralScorecardPage />} />
-          <Route path="/evidence/:ccn" element={<EvidencePage />} />
+          {/* /evidence/:ccn redirects to /facility/:ccn — Facility Brief is now free on every facility page */}
+          <Route path="/evidence/:ccn" element={<EvidenceRedirect />} />
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/trends" element={<TrendsPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />

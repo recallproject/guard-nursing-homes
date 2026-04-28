@@ -34,8 +34,8 @@ export default function AttorneysPage() {
             financial penalties, and ownership networks. Sourced directly from CMS. Cited and ready for litigation.
           </p>
           <div className="attorneys-hero-actions">
-            <Link to="/evidence-sample" className="attorneys-cta-primary">Preview Sample Report</Link>
-            <Link to="/pricing" className="attorneys-cta-secondary">See Pricing</Link>
+            <Link to="/evidence-sample" className="attorneys-cta-primary">Preview Sample Brief</Link>
+            <Link to="/" className="attorneys-cta-secondary">Find a Facility →</Link>
           </div>
           <div className="attorneys-hero-trust">
             <span>
@@ -197,42 +197,22 @@ export default function AttorneysPage() {
         </div>
       </section>
 
-      {/* PRICING */}
+      {/* PRICING — replaced with free-for-attorneys callout */}
       <section className="attorneys-section attorneys-pricing" id="pricing">
         <div className="attorneys-container">
-          <h2 className="attorneys-section-title">Pricing</h2>
-          <p className="attorneys-section-subtitle">
-            No contracts. Every report includes numbered source citations.
-          </p>
-          <div className="attorneys-pricing-grid">
-            <div className="attorneys-price-card">
-              <div className="attorneys-price-name">Single Report</div>
-              <div className="attorneys-price-amount">$29</div>
-              <div className="attorneys-price-period">per facility, one-time</div>
-              <div className="attorneys-price-desc">One complete facility evidence report with cited sources. For single-case research.</div>
-              <ul className="attorneys-price-features">
-                <li><span className="attorneys-price-check">&#10003;</span> 11-section cited PDF</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Payroll-verified staffing data</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Full penalty &amp; inspection history</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Ownership network analysis</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Delivered instantly</li>
-              </ul>
-              <Link to="/pricing" className="attorneys-cta-secondary" style={{ display: 'block', textAlign: 'center' }}>Buy Single Report</Link>
-            </div>
-            <div className="attorneys-price-card featured">
-              <div className="attorneys-price-badge">RECOMMENDED</div>
-              <div className="attorneys-price-name">Professional</div>
-              <div className="attorneys-price-amount">$59</div>
-              <div className="attorneys-price-period">per month</div>
-              <div className="attorneys-price-desc">Unlimited evidence reports for practices handling multiple nursing home cases.</div>
-              <ul className="attorneys-price-features">
-                <li><span className="attorneys-price-check">&#10003;</span> Unlimited Evidence Reports</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Saved facility watchlist</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Alerts on new citations &amp; penalties</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Bulk PDF export</li>
-                <li><span className="attorneys-price-check">&#10003;</span> Cancel anytime</li>
-              </ul>
-              <Link to="/pricing" className="attorneys-cta-primary" style={{ display: 'block', textAlign: 'center' }}>Start Professional — $59/mo</Link>
+          <div className="attorneys-trust-card" style={{ textAlign: 'center' }}>
+            <h2 className="attorneys-section-title" style={{ marginBottom: '0.75rem' }}>Free for Attorneys. Always.</h2>
+            <p className="attorneys-section-subtitle" style={{ marginBottom: '1.5rem' }}>
+              Every Facility Brief is downloadable for free from any facility page. No paywall, no login,
+              no email gate. Numbered CMS source citations on every claim.
+            </p>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '640px', margin: '0 auto 1.5rem' }}>
+              We charge for human work, not for data. If you have an active case and need a clinician-signed
+              evidence memo, that&apos;s a separate paid service handled directly with Robert Benard, NP.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link to="/" className="attorneys-cta-primary">Find a Facility →</Link>
+              <Link to="/ask-a-clinician" className="attorneys-cta-secondary">Ask a Clinician — $49</Link>
             </div>
           </div>
         </div>
@@ -260,8 +240,8 @@ export default function AttorneysPage() {
         <h2>20 hours of discovery research.<br />Done in 30 seconds.</h2>
         <p>Search any facility. Review the data. Download a cited Evidence Report.</p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to="/evidence-sample" className="attorneys-cta-primary">Preview Sample Report</Link>
-          <Link to="/pricing" className="attorneys-cta-secondary">See All Pricing</Link>
+          <Link to="/evidence-sample" className="attorneys-cta-primary">Preview Sample Brief</Link>
+          <Link to="/ask-a-clinician" className="attorneys-cta-secondary">Ask a Clinician — $49</Link>
         </div>
       </section>
 

@@ -36,6 +36,18 @@ export function generatePDF(facility, options = {}) {
   const { nearbyFacilities = [], allFacilities = [], isSample = false, samplePercentiles = null, antipsychoticData = null } = options;
 
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });
+
+  // ======================== PROVENANCE / CANARY METADATA ========================
+  // Canary fingerprint: dlc-prov-2026q2-9c4f5b3a — used to detect unauthorized reproduction.
+  // Mirrors the canary token deployed in the live site HTML.
+  doc.setProperties({
+    title: 'The Oversight Report — Family Report',
+    author: 'Robert Benard, NP — DataLink Clinical LLC',
+    creator: 'oversightreports.com — provenance dlc-prov-2026q2-9c4f5b3a',
+    subject: 'Facility data report. Provenance fingerprint dlc-prov-2026q2-9c4f5b3a. © DataLink Clinical LLC.',
+    keywords: 'nursing home, CMS, oversight, family report, dlc-prov-2026q2, dlc-prov-2026q2-9c4f5b3a, DataLink Clinical',
+  });
+
   const pw = doc.internal.pageSize.getWidth();
   const ph = doc.internal.pageSize.getHeight();
   const M = 18; // margin
@@ -155,6 +167,20 @@ export function generatePDF(facility, options = {}) {
     doc.setFontSize(7.5);
     doc.setTextColor(...C.muted);
     doc.text(`The Oversight Report  |  oversightreports.com  |  Data: CMS Medicare.gov  |  Generated ${today}  |  Page ${page}`, pw / 2, ph - 8, { align: 'center' });
+
+    // ── Invisible canary token (white-on-white, ~4pt) ──
+    // Travels in the PDF text layer. Findable via grep on extracted text but invisible to readers.
+    doc.setFontSize(4);
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'normal');
+    doc.text(
+      'DLC-PROVENANCE: dlc-prov-2026q2-9c4f5b3a — © DataLink Clinical LLC — oversightreports.com',
+      pw / 2,
+      ph - 2,
+      { align: 'center' }
+    );
+    // Restore muted color for any subsequent footer calls
+    doc.setTextColor(...C.muted);
   };
 
   const newPage = () => { doc.addPage(); page++; y = M; footer(); };
@@ -1340,12 +1366,20 @@ export function generatePDF(facility, options = {}) {
   y = (doc.lastAutoTable?.finalY ?? doc.previousAutoTable?.finalY ?? y) + 6;
 
   // Disclaimer
-  needsPage(25);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  const disc = doc.splitTextToSize(
+    'This analysis is for informational purposes only. Risk scores indicate areas warranting further investigation, not confirmed issues. All data sourced from publicly available CMS datasets. Always visit facilities in person and consult with healthcare professionals before making decisions. DataLink Clinical reserves provenance fingerprint dlc-prov-2026q2 for forensic verification of unauthorized reproduction.',
+    W - 12
+  );
+  // Dynamic box height: 5mm top padding (title) + line height * lines + 4mm bottom padding
+  const discBoxHeight = 10 + disc.length * 3.6 + 3;
+  needsPage(discBoxHeight + 4);
   doc.setFillColor(...C.warningBg);
   doc.setDrawColor(...C.warningBar);
-  doc.roundedRect(M, y, W, 22, 2, 2, 'FD');
+  doc.roundedRect(M, y, W, discBoxHeight, 2, 2, 'FD');
   doc.setFillColor(...C.warningBar);
-  doc.rect(M, y, 3, 22, 'F');
+  doc.rect(M, y, 3, discBoxHeight, 'F');
 
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
@@ -1354,12 +1388,9 @@ export function generatePDF(facility, options = {}) {
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  const disc = doc.splitTextToSize(
-    'This analysis is for informational purposes only. Risk scores indicate areas warranting further investigation, not confirmed issues. All data sourced from publicly available CMS datasets. Always visit facilities in person and consult with healthcare professionals before making decisions.',
-    W - 12
-  );
+  doc.setTextColor(...C.warning);
   doc.text(disc, M + 6, y + 10);
-  y += 26;
+  y += discBoxHeight + 4;
 
   // About footer
   doc.setFontSize(8);
