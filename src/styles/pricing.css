@@ -136,10 +136,11 @@
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(320px, 480px));
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1080px;
   margin: 0 auto;
+  justify-content: center;
 }
 
 .pricing-card {

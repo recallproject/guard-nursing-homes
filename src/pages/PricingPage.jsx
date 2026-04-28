@@ -17,6 +17,7 @@ const tiers = [
     price: '$0',
     period: 'forever',
     description: 'For families and attorneys',
+    badge: 'ALWAYS FREE',
     features: [
       'Family Report — plain-language safety summary',
       'Facility Brief — full inspection + regulatory data',
