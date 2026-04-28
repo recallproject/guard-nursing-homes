@@ -188,51 +188,45 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Academic Access Section */}
-      <section className="pricing-academic">
-        <div className="container-narrow">
-          <h3>Academic Access</h3>
-          <p>
-            Academic researchers with a .edu email can request free Professional-tier access. We ask that you cite The Oversight Report in your methodology.
-          </p>
-          <a
-            href="mailto:contact@oversightreports.com?subject=Academic Access Request"
-            className="btn btn-secondary"
-          >
-            Contact: contact@oversightreports.com
-          </a>
-        </div>
-      </section>
-
-      {/* Transparency Section */}
+      {/* Why this is free — consolidated trust + support block */}
       <section className="pricing-transparency">
         <div className="container-narrow">
           <div className="pricing-transparency-quote">
             <p>
-              &ldquo;Safety data should be free — and it is. Pro features fund servers, data processing, and
-              development. No ads, no sponsors, no conflicts of interest. Your subscription keeps it that way.&rdquo;
+              &ldquo;Safety data should be free — and it is. Every report card, every Family Report,
+              every Facility Brief, every state page. No ads, no sponsors, no conflicts of interest.
+              I charge for one thing: the time I spend reviewing a facility&rsquo;s record as a clinician.&rdquo;
             </p>
           </div>
           <div className="pricing-author">
             <div className="pricing-author-name">— Robert Benard, NP</div>
             <div className="pricing-author-title">Founder, DataLink Clinical LLC</div>
           </div>
-        </div>
-      </section>
 
-      {/* Donation Section */}
-      <section className="pricing-donation">
-        <div className="container-narrow">
-          <h3>Not Ready to Subscribe?</h3>
-          <p>If The Oversight Report helped you, consider supporting the project.</p>
-          <a
-            href="https://ko-fi.com/oversightreports"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-secondary"
-          >
-            Support on Ko-fi ☕
-          </a>
+          <div className="pricing-support-row">
+            <div className="pricing-support-item">
+              <h4>Academic Access</h4>
+              <p>Researchers with a .edu email can request bulk data access. Cite The Oversight Report in your methodology.</p>
+              <a
+                href="mailto:contact@oversightreports.com?subject=Academic Access Request"
+                className="pricing-support-link"
+              >
+                contact@oversightreports.com →
+              </a>
+            </div>
+            <div className="pricing-support-item">
+              <h4>Support the Project</h4>
+              <p>If this helped you or someone you love, consider supporting the work. Optional, never required.</p>
+              <a
+                href="https://ko-fi.com/oversightreports"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pricing-support-link"
+              >
+                Support on Ko-fi ☕ →
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
