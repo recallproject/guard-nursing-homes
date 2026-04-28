@@ -7,6 +7,7 @@ import { haversineDistance } from '../utils/haversine';
 import { checkoutSingleReport } from '../utils/stripe';
 import { NearbyFacilities } from '../components/NearbyFacilities';
 import { DownloadButton } from '../components/DownloadButton';
+import FacilityDownloads from '../components/FacilityDownloads';
 import { ActionPaths } from '../components/ActionPaths';
 import StaffingSection from '../components/StaffingSection';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
@@ -318,7 +319,7 @@ export function FacilityPage() {
 
   // Intersection Observer for active section nav tracking (same pattern as methodology page)
   useEffect(() => {
-    const sectionIds = ['s-safety', 's-inspections', 's-complaints', 's-staffing', 's-quality', 's-fines', 's-fire', 's-ownership', 's-questions'];
+    const sectionIds = ['s-safety', 's-inspections', 's-complaints', 's-staffing', 's-quality', 's-fines', 's-fire', 's-ownership', 's-questions', 's-downloads'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -456,7 +457,25 @@ export function FacilityPage() {
               : 'Star facilities to compare them in My Favorites'}
           </span>
         </div>
-        <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} antipsychoticData={antipsychoticDataForPDF} />
+        <a
+          href="#s-downloads"
+          className="fd-topbar-pill"
+          onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('s-downloads');
+            if (el) {
+              const top = el.getBoundingClientRect().top + window.scrollY - 24;
+              window.scrollTo({ top, behavior: 'smooth' });
+            }
+          }}
+          aria-label="Jump to free reports at the bottom of the page"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19" />
+            <polyline points="19 12 12 19 5 12" />
+          </svg>
+          Free reports below
+        </a>
       </div>
 
       <div className="fp-body">
@@ -557,6 +576,7 @@ export function FacilityPage() {
             { id: 's-fire', num: '07', label: 'Fire Safety' },
             { id: 's-ownership', num: '08', label: 'Ownership' },
             { id: 's-questions', num: '09', label: 'Questions' },
+            { id: 's-downloads', num: '10', label: 'Downloads' },
           ].map(sec => (
             <a key={sec.id} href={`#${sec.id}`} className={`fp-sidebar-link${activeSection === sec.id ? ' active' : ''}`} onClick={e => {
               e.preventDefault();
@@ -2181,8 +2201,7 @@ export function FacilityPage() {
           })()}
         </div>
 
-        {/* Change #11: Ask a Clinician CTA — highest-intent moment */}
-        <ClinicianCTA facility={facility} placement="after-questions" />
+        {/* Mid-page Ask a Clinician CTA removed — now lives in FacilityDownloads section */}
 
         {/* Section 11 — What You Can Do */}
         <div className="section">
@@ -2196,77 +2215,13 @@ export function FacilityPage() {
         {/* Nearby Alternatives */}
         <NearbyFacilities facility={facility} />
 
-        {/* Free Report CTA */}
-        <div className="free-report-cta">
-          <h3>Download Your Free Safety Report</h3>
-          <p style={{ fontSize: '15px', color: 'var(--text-secondary, #9d97b8)', maxWidth: '560px', margin: '0 auto' }}>
-            Everything above — packaged into a shareable PDF with your facility's personalized analysis.
-          </p>
-          <div className="free-report-features">
-            <span>All inspection data</span>
-            <span>Staffing analysis &amp; trends</span>
-            <span>Financial transparency</span>
-            <span>Ownership breakdown</span>
-            <span>Visit questions &amp; checklist</span>
-            <span>Nearby alternatives</span>
-          </div>
-          <DownloadButton facility={facility} nearbyFacilities={nearbyForPDF} allFacilities={allFacilities} label="Download Free Report (PDF)" variant="prominent" />
-          <div className="free-report-note">Free forever. No login. No email required.</div>
-        </div>
-
-        {/* Free vs Evidence comparison grid */}
-        <div className="pdf-upsell-section">
-          <h3 className="pdf-upsell-title">Want the complete picture?</h3>
-          <p style={{ fontSize: '13px', color: '#64748b', marginBottom: '16px' }}>Everything on this page — plus the deep-dive analysis that doesn't fit on a free report card.</p>
-
-          <div className="pdf-compare-grid">
-            <div className="pdf-compare-col free">
-              <div className="pdf-compare-col-title">Free Report Card (This Page)</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Safety score &amp; 6 key metrics</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Deficiency list with severity</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Staffing hours vs benchmarks</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Quality measures by category</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Fines &amp; penalty timeline</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Questions to ask</div>
-            </div>
-            <div className="pdf-compare-col paid">
-              <div className="pdf-compare-col-title paid">Evidence Report PDF — Audit in Progress</div>
-              <div className="pdf-compare-item"><span className="pdf-check">✓</span> Everything in the free report, plus:</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Full deficiency narratives (inspector's own words)</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Penalty timeline with fine amounts per incident</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Ownership chain analysis (PE, REIT, operator history)</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing trend analysis (improving or declining?)</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Complaint investigation yield — citations per investigation</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Staffing vs. the 3.48 HPRD threshold cited by 18 state AGs</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Risk score methodology with 42 CFR regulatory references</div>
-              <div className="pdf-compare-item"><span className="pdf-extra">+</span> Print-ready format for attorneys, ombudsmen, and family meetings</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Evidence Package CTA — DISABLED DURING DATA AUDIT */}
-        <div className="paid-upsell">
-          <div className="paid-upsell-accent" />
-          <div className="paid-upsell-body">
-            <div className="paid-upsell-header">
-              <h3>Evidence Reports — Verification Audit in Progress</h3>
-            </div>
-            <div className="paid-upsell-desc">
-              We are cross-checking all facility data against live CMS sources to ensure 100% accuracy. Evidence Reports will return shortly with verified penalty data, updated staffing metrics, and enhanced clinical indicators.
-            </div>
-            <div className="paid-features">
-              <span className="paid-feature">Penalty data verified against CMS</span>
-              <span className="paid-feature">Staffing benchmarks updated</span>
-              <span className="paid-feature">New clinical red flags added</span>
-              <span className="paid-feature">Enhanced quality measure comparisons</span>
-            </div>
-            <div className="paid-upsell-actions">
-              <button className="ev-buy-btn" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>Temporarily Unavailable</button>
-            </div>
-            <div className="paid-upsell-note">Data accuracy is our priority. Reports will return soon with enhanced verification.</div>
-          </div>
-        </div>
-
+        {/* Section 10 — Downloads (Family Report + Facility Brief + Ask a Clinician) */}
+        <FacilityDownloads
+          facility={facility}
+          nearbyFacilities={nearbyForPDF}
+          allFacilities={allFacilities}
+          antipsychoticData={antipsychoticDataForPDF}
+        />
 
         {/* Data Sources */}
         <div className="section">
@@ -2319,92 +2274,7 @@ export function FacilityPage() {
           <strong>About This Data:</strong> The Oversight Report identifies patterns and discrepancies in publicly available federal data. These indicators do not constitute evidence of wrongdoing. If you have concerns about a facility, contact your state survey agency or the HHS Office of Inspector General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
         </div>
 
-        {/* Evidence Preview Modal */}
-        {showEvidencePreview && facility && (
-          <div className="ev-preview-overlay" onClick={() => setShowEvidencePreview(false)}>
-            <div className="ev-preview-modal" onClick={e => e.stopPropagation()}>
-              <button className="ev-preview-close" onClick={() => setShowEvidencePreview(false)}>&times;</button>
-              <h2>Evidence Package — {facility.name}</h2>
-              <p className="ev-preview-subtitle">10-section professionally documented report. Here's what's inside:</p>
-
-              <div className="ev-preview-sections">
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">1</span>
-                  <div>
-                    <strong>Executive Summary</strong>
-                    <p>Risk score: {facility.composite?.toFixed(1) || 'N/A'} · CMS Stars: {facility.stars || 0}/5 · Auto-generated assessment</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">2</span>
-                  <div>
-                    <strong>Ownership Profile</strong>
-                    <p>Owner: {facility.worst_owner || 'N/A'} · Type: {facility.ownership_type || 'N/A'} · Portfolio: {facility.owner_portfolio_count || 1} facilities</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">3</span>
-                  <div>
-                    <strong>Staffing Analysis</strong>
-                    <p>RN: {facility.rn_hprd?.toFixed(1) || 'N/A'} · CNA: {facility.cna_hprd?.toFixed(1) || 'N/A'} · Total: {facility.total_hprd?.toFixed(1) || 'N/A'} HPRD · Zero-RN days: {facility.zero_rn_pct?.toFixed(0) || 0}%</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">4</span>
-                  <div>
-                    <strong>Inspection History</strong>
-                    <p>{facility.total_deficiencies || 0} deficiencies · {facility.jeopardy_count || 0} serious harm · {facility.harm_count || 0} residents hurt</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">5</span>
-                  <div>
-                    <strong>Financial Penalties</strong>
-                    <p>${Math.round(facility.total_fines || 0).toLocaleString()} in fines · {facility.fine_count || 0} penalties</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">6</span>
-                  <div>
-                    <strong>Red Flags &amp; Accountability</strong>
-                    <p>Automated pattern detection across all data sources</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">7</span>
-                  <div>
-                    <strong>Nearby Alternatives</strong>
-                    <p>5 closest facilities with better safety records</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">8</span>
-                  <div>
-                    <strong>Methodology &amp; Data Sources</strong>
-                    <p>CMS PBJ, Deficiencies, Penalties, Ownership — all cited</p>
-                  </div>
-                </div>
-                <div className="ev-preview-section">
-                  <span className="ev-preview-num">9</span>
-                  <div>
-                    <strong>Legal Disclaimer</strong>
-                    <p>Proper disclaimers and agency contact information</p>
-                  </div>
-                </div>
-              </div>
-
-              <p className="ev-value-line">We analyze publicly available federal data from 16 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, ownership, quality measures, and cost reports into a single professional analysis.</p>
-              <div className="ev-preview-actions">
-                <button className="ev-buy-btn" disabled style={{ opacity: 0.5, cursor: 'not-allowed' }}>
-                  Temporarily Unavailable — Data Audit in Progress
-                </button>
-                <p className="ev-or-subscribe" style={{ color: 'var(--text-cream)', opacity: 0.7 }}>Evidence Reports will return shortly with verified data</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <ClinicianCTA />
+        {/* Evidence Preview Modal + bottom ClinicianCTA removed — both replaced by FacilityDownloads section */}
 
         </div>{/* end fp-sections-main */}
         </div>{/* end fp-sections-layout */}
