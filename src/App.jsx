@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, useLocation, useParams } from 'react-router-do
 import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
+import CaliforniaBanner from './components/landing/CaliforniaBanner';
 import FeedbackButton from './components/FeedbackButton';
 import FacilityErrorBoundary from './components/FacilityErrorBoundary';
 import { SaveToast } from './components/SaveToast';
@@ -68,6 +69,7 @@ function App() {
 
   return (
     <>
+      <CaliforniaBanner />
       <Header transparent={isLandingPage} lightMode={isLandingPage} />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>

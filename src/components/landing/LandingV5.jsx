@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { submitLead } from '../../utils/submitLead';
 import { track } from '../../utils/analytics';
-import CaliforniaBanner from './CaliforniaBanner';
 import '../../styles/landing-v5.css';
 
 /* ═══════════════════════════════════════════
@@ -336,8 +335,6 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
 
   return (
     <div className="v5-landing">
-
-      <CaliforniaBanner />
 
       {/* ═══════ HERO — Search-first above the fold ═══════ */}
       <section className="v5-hero dlc-prov-2026q2">

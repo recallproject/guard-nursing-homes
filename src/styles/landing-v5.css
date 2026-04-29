@@ -1106,7 +1106,10 @@ a.v5-sticky-btn.secondary {
 
 /* ═══ CALIFORNIA BANNER — top-of-homepage news strip ═══ */
 .ca-banner {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background: linear-gradient(90deg, #FEF3C7 0%, #FDE68A 100%);
   border-bottom: 1px solid #F59E0B;
   display: flex;
@@ -1116,7 +1119,19 @@ a.v5-sticky-btn.secondary {
   font-size: 14px;
   color: #78350F;
   text-align: center;
-  z-index: 60;
+  z-index: 1100;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+/* When banner is present, push the fixed site header down so it doesn't cover the banner */
+.ca-banner ~ .site-header {
+  top: 44px;
+}
+
+/* Push the page-content padding down by banner height for landing pages */
+.ca-banner ~ * .v5-hero {
+  padding-top: 180px;
 }
 
 .ca-banner-link {
