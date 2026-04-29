@@ -50,9 +50,9 @@ const BlogPost = lazy(() => import('./pages/BlogPost'));
 const PostAcuteHomePage = lazy(() => import('./pages/PostAcuteHomePage'));
 const HospicePage = lazy(() => import('./pages/HospicePage'));
 
-// Feature flag: when true, / renders the new post-acute hub and SNF UX moves to /skilled-nursing.
-// When false, / renders MapPage (current behavior). Toggle in .env via VITE_POST_ACUTE_HOME_ENABLED.
-const POST_ACUTE_HOME_ENABLED = import.meta.env.VITE_POST_ACUTE_HOME_ENABLED === 'true';
+// Feature flag: post-acute hub homepage is ON by default. To roll back, set
+// VITE_POST_ACUTE_HOME_ENABLED=false in Vercel project env vars and redeploy.
+const POST_ACUTE_HOME_ENABLED = import.meta.env.VITE_POST_ACUTE_HOME_ENABLED !== 'false';
 
 // Redirect /evidence/:ccn -> /facility/:ccn (Facility Brief is now free on every facility page)
 function EvidenceRedirect() {
