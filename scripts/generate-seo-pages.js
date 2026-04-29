@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -21,10 +21,13 @@ for (const file of readdirSync(statesDir).filter(f => f.endsWith('.json'))) {
   facilityData.states[stateCode] = stateData;
 }
 const chainData = JSON.parse(readFileSync(join(publicDir, 'data', 'chain_performance.json'), 'utf8'));
+const blogPostsIndex = JSON.parse(readFileSync(join(publicDir, 'data', 'blog', 'posts-index.json'), 'utf8'));
+const blogPosts = Array.isArray(blogPostsIndex.posts) ? blogPostsIndex.posts : [];
 
 let pageCount = 0;
 
-function createPage(route, title, description, canonical, bodyContent = '') {
+function createPage(route, title, description, canonical, bodyContent = '', options = {}) {
+  const { ogType = 'website', ogImage, extraHead = '', noindex = false } = options;
   let html = template;
 
   // Replace title
@@ -41,6 +44,10 @@ function createPage(route, title, description, canonical, bodyContent = '') {
 
   // Replace OG tags
   html = html.replace(
+    /<meta property="og:type" content="[^"]*"/,
+    `<meta property="og:type" content="${escapeAttr(ogType)}"`
+  );
+  html = html.replace(
     /<meta property="og:title" content="[^"]*"/,
     `<meta property="og:title" content="${escapeAttr(title)}"`
   );
@@ -52,6 +59,16 @@ function createPage(route, title, description, canonical, bodyContent = '') {
     /<meta property="og:url" content="[^"]*"/,
     `<meta property="og:url" content="${BASE_URL}${canonical}"`
   );
+  if (ogImage) {
+    html = html.replace(
+      /<meta property="og:image" content="[^"]*"/,
+      `<meta property="og:image" content="${escapeAttr(ogImage)}"`
+    );
+    html = html.replace(
+      /<meta name="twitter:image" content="[^"]*"/,
+      `<meta name="twitter:image" content="${escapeAttr(ogImage)}"`
+    );
+  }
 
   // Replace Twitter tags
   html = html.replace(
@@ -63,10 +80,16 @@ function createPage(route, title, description, canonical, bodyContent = '') {
     `<meta name="twitter:description" content="${escapeAttr(description)}"`
   );
 
-  // Add canonical link (insert before </head>)
+  // Replace the template canonical instead of appending another one.
+  html = html.replace(/^\s*<link\b(?=[^>]*rel="canonical")[^>]*>\n?/gmi, '');
+  const headTags = [
+    `  <link rel="canonical" href="${BASE_URL}${canonical}" data-rh="true" />`,
+    noindex ? '  <meta name="robots" content="noindex" data-rh="true" />' : '',
+    extraHead.trim(),
+  ].filter(Boolean).join('\n');
   html = html.replace(
     '</head>',
-    `  <link rel="canonical" href="${BASE_URL}${canonical}" />\n  </head>`
+    `${headTags}\n  </head>`
   );
 
   // Inject static body content into <div id="root"> for SEO
@@ -85,11 +108,125 @@ function createPage(route, title, description, canonical, bodyContent = '') {
 }
 
 function escapeHtml(str) {
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return String(str ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 function escapeAttr(str) {
-  return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return String(str ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function escapeJsonForHtml(json) {
+  return json
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
+}
+
+function formatDisplayDate(iso) {
+  if (!iso) return '';
+  const [year, month, day] = iso.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  if (Number.isNaN(date.getTime())) return iso;
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+function sortedBlogPosts() {
+  return [...blogPosts].sort((a, b) => (b.publishedDate || '').localeCompare(a.publishedDate || ''));
+}
+
+function readBlogPost(slug) {
+  return JSON.parse(readFileSync(join(publicDir, 'data', 'blog', `${slug}.json`), 'utf8'));
+}
+
+function blogListBodyContent(posts) {
+  return `
+    <main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:960px;margin:0 auto;padding:32px 24px;color:#0F172A;">
+      <header style="margin-bottom:32px;">
+        <p style="font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4F46E5;margin:0 0 8px 0;">Blog</p>
+        <h1 style="font-size:36px;line-height:1.1;margin:0 0 12px 0;">Writing on Nursing Home Oversight</h1>
+        <p style="font-size:18px;line-height:1.6;color:#475569;margin:0;">Notes on CMS enforcement data, program integrity, and healthcare transparency.</p>
+      </header>
+      <section>
+        ${posts.map(post => `
+          <article style="border-top:1px solid #E2E8F0;padding:24px 0;">
+            <p style="font-size:13px;color:#64748B;margin:0 0 8px 0;">${escapeHtml(post.category || 'Blog')} · ${escapeHtml(formatDisplayDate(post.publishedDate))}${post.readTime ? ` · ${escapeHtml(post.readTime)}` : ''}</p>
+            <h2 style="font-size:24px;line-height:1.25;margin:0 0 8px 0;">
+              <a href="/blog/${encodeURIComponent(post.slug)}" style="color:#0F172A;text-decoration:none;">${escapeHtml(post.title)}</a>
+            </h2>
+            <p style="font-size:16px;line-height:1.6;color:#475569;margin:0;">${escapeHtml(post.excerpt || '')}</p>
+          </article>
+        `).join('')}
+      </section>
+    </main>`;
+}
+
+function blogPostBodyContent(post) {
+  return `
+    <main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:820px;margin:0 auto;padding:32px 24px;color:#0F172A;">
+      <nav style="margin-bottom:24px;font-size:14px;">
+        <a href="/blog" style="color:#4F46E5;text-decoration:none;">All posts</a>
+      </nav>
+      <article>
+        <header style="margin-bottom:28px;">
+          <p style="font-size:13px;color:#64748B;margin:0 0 10px 0;">${escapeHtml(post.category || 'Blog')} · ${escapeHtml(formatDisplayDate(post.publishedDate))}${post.readTime ? ` · ${escapeHtml(post.readTime)}` : ''}</p>
+          <h1 style="font-size:40px;line-height:1.08;margin:0 0 12px 0;">${escapeHtml(post.title)}</h1>
+          <p style="font-size:16px;color:#475569;margin:0;">By ${escapeHtml(post.author || 'Robert Benard')}</p>
+          ${post.excerpt ? `<p style="font-size:18px;line-height:1.6;color:#334155;margin:20px 0 0 0;">${escapeHtml(post.excerpt)}</p>` : ''}
+        </header>
+        <div style="font-size:17px;line-height:1.75;color:#1E293B;">
+          ${post.content || ''}
+        </div>
+      </article>
+    </main>`;
+}
+
+function blogPostExtraHead(post, canonicalUrl, metaDescription) {
+  const tags = [];
+  tags.push(`  <meta property="article:published_time" content="${escapeAttr(post.publishedDate || '')}" data-rh="true" />`);
+  if (post.updatedDate) {
+    tags.push(`  <meta property="article:modified_time" content="${escapeAttr(post.updatedDate)}" data-rh="true" />`);
+  }
+  if (post.author) {
+    tags.push(`  <meta property="article:author" content="${escapeAttr(post.author)}" data-rh="true" />`);
+  }
+  if (post.category) {
+    tags.push(`  <meta property="article:section" content="${escapeAttr(post.category)}" data-rh="true" />`);
+  }
+  if (Array.isArray(post.tags)) {
+    for (const tag of post.tags) {
+      tags.push(`  <meta property="article:tag" content="${escapeAttr(tag)}" data-rh="true" />`);
+    }
+  }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt || metaDescription,
+    datePublished: post.publishedDate,
+    dateModified: post.updatedDate || post.publishedDate,
+    author: {
+      '@type': 'Person',
+      name: post.author || 'Robert Benard, NP',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'OversightReports.com',
+      url: BASE_URL,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+    },
+    articleSection: post.category || undefined,
+    keywords: Array.isArray(post.tags) ? post.tags.join(', ') : undefined,
+  };
+  tags.push(`  <script type="application/ld+json">${escapeJsonForHtml(JSON.stringify(jsonLd))}</script>`);
+  return tags.join('\n');
 }
 
 // ── Helper: format currency ──
@@ -400,6 +537,71 @@ for (const page of staticPages) {
 }
 console.log(`  ✓ ${staticPages.length} static pages`);
 
+// ── Utility pages that should be directly reachable but not indexed ──
+const utilityPages = [
+  {
+    route: 'success',
+    title: 'Payment Complete — The Oversight Report',
+    description: 'Payment confirmation for The Oversight Report.'
+  },
+  {
+    route: 'ask-a-clinician-submitted',
+    title: 'Request Received — The Oversight Report',
+    description: 'Your Ask a Clinician request was received.'
+  },
+  {
+    route: 'evidence-success',
+    title: 'Evidence Request Received — The Oversight Report',
+    description: 'Your evidence report request was received.'
+  },
+  {
+    route: 'evidence-download',
+    title: 'Download Evidence Report — The Oversight Report',
+    description: 'Download your evidence report from The Oversight Report.'
+  },
+];
+
+for (const page of utilityPages) {
+  createPage(page.route, page.title, page.description, `/${page.route}`, '', { noindex: true });
+}
+console.log(`  ✓ ${utilityPages.length} noindex utility pages`);
+
+// ── Blog pages (with article metadata and static HTML body) ──
+const orderedBlogPosts = sortedBlogPosts();
+createPage(
+  'blog',
+  'Blog — The Oversight Report',
+  'Writing on nursing home oversight, CMS enforcement data, and healthcare transparency from Robert Benard, NP, founder of DataLink Clinical LLC.',
+  '/blog',
+  blogListBodyContent(orderedBlogPosts)
+);
+
+let blogCount = 0;
+for (const summary of orderedBlogPosts) {
+  if (!summary.slug) continue;
+  const post = readBlogPost(summary.slug);
+  const metaTitle = post.seo?.metaTitle || `${post.title} — The Oversight Report`;
+  const metaDescription = post.seo?.metaDescription || post.excerpt || '';
+  const ogImage = post.seo?.ogImage || `${BASE_URL}/og-image.png?v=2`;
+  const canonicalPath = `/blog/${encodeURIComponent(post.slug)}`;
+  const canonicalUrl = `${BASE_URL}${canonicalPath}`;
+
+  createPage(
+    `blog/${encodeURIComponent(post.slug)}`,
+    metaTitle,
+    metaDescription,
+    canonicalPath,
+    blogPostBodyContent(post),
+    {
+      ogType: 'article',
+      ogImage,
+      extraHead: blogPostExtraHead(post, canonicalUrl, metaDescription),
+    }
+  );
+  blogCount++;
+}
+console.log(`  ✓ ${blogCount} blog pages (with static HTML content)`);
+
 // ── Facility pages (with body content for Googlebot) ──
 let facilityCount = 0;
 for (const [stateCode, stateData] of Object.entries(facilityData.states)) {
@@ -448,5 +650,5 @@ for (const chain of chainData) {
 }
 console.log(`  ✓ ${chainCount} chain pages (with static HTML content)`);
 
-console.log(`\nSEO pages generated: ${pageCount} total (${staticPages.length} static + ${facilityCount} facilities + ${chainCount} chains)`);
-console.log('✅ All facility pages now include static HTML for Google indexing.');
+console.log(`\nSEO pages generated: ${pageCount} total (${staticPages.length} static + ${utilityPages.length} utility + ${blogCount} blog + ${facilityCount} facilities + ${chainCount} chains)`);
+console.log('✅ Indexable SEO pages now include a single canonical and static HTML for crawlers.');
