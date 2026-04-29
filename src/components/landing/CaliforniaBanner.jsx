@@ -5,14 +5,14 @@ import { track } from '../../utils/analytics';
 const DISMISS_KEY = 'ca_banner_dismissed_v1';
 
 export default function CaliforniaBanner() {
-  const [dismissed, setDismissed] = useState(true);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
     try {
-      setDismissed(localStorage.getItem(DISMISS_KEY) === '1');
-    } catch {
-      setDismissed(false);
-    }
+      if (localStorage.getItem(DISMISS_KEY) === '1') {
+        setDismissed(true);
+      }
+    } catch {}
   }, []);
 
   const handleClick = () => {
