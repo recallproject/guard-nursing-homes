@@ -1103,3 +1103,93 @@ a.v5-sticky-btn.secondary {
     padding-bottom: calc(40px + env(safe-area-inset-bottom));
   }
 }
+
+/* ═══ CALIFORNIA BANNER — top-of-homepage news strip ═══ */
+.ca-banner {
+  position: relative;
+  background: linear-gradient(90deg, #FEF3C7 0%, #FDE68A 100%);
+  border-bottom: 1px solid #F59E0B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 48px 12px 24px;
+  font-size: 14px;
+  color: #78350F;
+  text-align: center;
+  z-index: 60;
+}
+
+.ca-banner-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ca-banner-flag {
+  background: #B45309;
+  color: #FEF3C7;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.ca-banner-text {
+  color: #78350F;
+}
+
+.ca-banner-text strong {
+  color: #451A03;
+  font-weight: 700;
+}
+
+.ca-banner-cta {
+  color: #451A03;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ca-banner-link:hover .ca-banner-cta {
+  text-decoration: none;
+}
+
+.ca-banner-close {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 0;
+  color: #78350F;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+.ca-banner-close:hover {
+  background: rgba(120, 53, 15, 0.12);
+}
+
+@media (max-width: 720px) {
+  .ca-banner {
+    font-size: 13px;
+    padding: 10px 40px 10px 16px;
+  }
+  .ca-banner-link {
+    gap: 8px;
+  }
+  .ca-banner-cta {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+  }
+}

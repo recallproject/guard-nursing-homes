@@ -42,6 +42,7 @@ const FamiliesPage = lazy(() => import('./pages/FamiliesPage'));
 const HospitalsPage = lazy(() => import('./pages/HospitalsPage'));
 const AttorneysPage = lazy(() => import('./pages/AttorneysPage'));
 const StatePage = lazy(() => import('./pages/StatePage'));
+const StateHubPage = lazy(() => import('./pages/StateHubPage'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 
@@ -103,6 +104,8 @@ function App() {
           <Route path="/hospitals" element={<HospitalsPage />} />
           <Route path="/attorneys" element={<AttorneysPage />} />
           <Route path="/state/:code" element={<StatePage />} />
+          <Route path="/states/:stateCode" element={<StateHubPage />} />
+          <Route path="/california" element={<Navigate to="/states/california" replace />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/favorites" element={<Navigate to="/watchlist" replace />} />

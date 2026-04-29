@@ -58,6 +58,7 @@ const staticPages = [
   { path: '/compare', priority: '0.6' },
   { path: '/about', priority: '0.5' },
   { path: '/ask-a-clinician', priority: '0.5' },
+  { path: '/states/california', priority: '0.8' },
 ];
 
 staticPages.forEach(p => {

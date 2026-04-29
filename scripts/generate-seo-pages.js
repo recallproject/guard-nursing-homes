@@ -386,6 +386,11 @@ const staticPages = [
     title: 'Antipsychotic Prescribing Trends — Nursing Home Medication Data | The Oversight Report',
     description: 'National trends in antipsychotic prescribing across nursing homes. Facility-level data on chemical restraint use and CMS quality measures.'
   },
+  {
+    route: 'states/california',
+    title: 'California Nursing Homes, Hospice, Home Health & Rehab — The Oversight Report',
+    description: 'Federal CMS oversight data on every California nursing home, hospice, home health agency, and rehab facility. Inspections, ownership, staffing, complaints. Free, no paywall.'
+  },
 ];
 
 console.log('Generating SEO pages with static HTML content...');
