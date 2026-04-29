@@ -47,6 +47,12 @@ const StateHubPage = lazy(() => import('./pages/StateHubPage'));
 const StateTypePage = lazy(() => import('./pages/StateTypePage'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
+const PostAcuteHomePage = lazy(() => import('./pages/PostAcuteHomePage'));
+const HospicePage = lazy(() => import('./pages/HospicePage'));
+
+// Feature flag: when true, / renders the new post-acute hub and SNF UX moves to /skilled-nursing.
+// When false, / renders MapPage (current behavior). Toggle in .env via VITE_POST_ACUTE_HOME_ENABLED.
+const POST_ACUTE_HOME_ENABLED = import.meta.env.VITE_POST_ACUTE_HOME_ENABLED === 'true';
 
 // Redirect /evidence/:ccn -> /facility/:ccn (Facility Brief is now free on every facility page)
 function EvidenceRedirect() {
@@ -64,7 +70,12 @@ function LoadingFallback() {
 
 function App() {
   const location = useLocation();
-  const isLandingPage = location.pathname === '/' || location.pathname === '';
+  // Landing-page treatment (transparent header) applies to / and to the SNF page when the
+  // post-acute hub is enabled — /skilled-nursing renders MapPage and needs the same header style.
+  const isLandingPage =
+    location.pathname === '/' ||
+    location.pathname === '' ||
+    location.pathname === '/skilled-nursing';
   const { lastAdded, clearLastAdded } = useWatchlist();
 
   return (
@@ -73,7 +84,9 @@ function App() {
       <Header transparent={isLandingPage} lightMode={isLandingPage} />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
-          <Route path="/" element={<MapPage />} />
+          <Route path="/" element={POST_ACUTE_HOME_ENABLED ? <PostAcuteHomePage /> : <MapPage />} />
+          <Route path="/skilled-nursing" element={<MapPage />} />
+          <Route path="/hospice" element={<HospicePage />} />
           <Route path="/facility/:ccn" element={<FacilityErrorBoundary><FacilityPage /></FacilityErrorBoundary>} />
           <Route path="/professionals" element={<ProfessionalsPage />} />
           <Route path="/pricing" element={<PricingPage />} />

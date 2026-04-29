@@ -1,0 +1,73 @@
+// Config for the post-acute care setting tiles on the new homepage.
+// Status drives card behavior:
+//   - 'live'   : clickable, links to its route
+//   - 'next'   : clickable, links to a "coming soon" page (lead capture)
+//   - 'coming' : not clickable, badge only
+
+export const POST_ACUTE_SETTINGS = [
+  {
+    id: 'snf',
+    label: 'Nursing Homes',
+    sub: 'Skilled nursing facilities (SNFs)',
+    iconCode: 'SN',
+    desc: 'Inpatient rehab and long-term care after a hospital stay.',
+    count: '14,713',
+    countUnit: 'facilities',
+    hook: '34% had a zero-RN day in Q3 2025',
+    route: '/skilled-nursing',
+    status: 'live',
+    statusLabel: 'Live',
+  },
+  {
+    id: 'hospice',
+    label: 'Hospice',
+    sub: 'End-of-life care · home or facility',
+    iconCode: 'HS',
+    desc: 'CA Auditor methodology · DOJ ground-truth validation · live-discharge patterns flagged for review.',
+    count: '5,500',
+    countUnit: 'providers',
+    hook: '87% of national outliers concentrated',
+    route: '/hospice',
+    status: 'next',
+    statusLabel: 'Launching May',
+  },
+  {
+    id: 'home-health',
+    label: 'Home Health',
+    sub: 'Home health agencies (HHA)',
+    iconCode: 'HH',
+    desc: 'Nurses and therapists who come to the home.',
+    count: '12,251',
+    countUnit: 'agencies',
+    hook: 'CMS Star + OASIS outcomes',
+    route: null,
+    status: 'coming',
+    statusLabel: 'Coming June',
+  },
+  {
+    id: 'irf',
+    label: 'Inpatient Rehab',
+    sub: 'IRFs · 3-hr/day intensive rehab',
+    iconCode: 'IR',
+    desc: 'Recovery after stroke, hip, or major surgery.',
+    count: '~1,200',
+    countUnit: 'facilities',
+    hook: 'IRF Compare data',
+    route: null,
+    status: 'coming',
+    statusLabel: 'Q3 2026',
+  },
+  {
+    id: 'ltach',
+    label: 'LTACH',
+    sub: 'Long-term acute care hospitals',
+    iconCode: 'LT',
+    desc: 'Long-stay hospital care for medically complex patients.',
+    count: '~370',
+    countUnit: 'hospitals',
+    hook: 'LTCH Compare data',
+    route: null,
+    status: 'coming',
+    statusLabel: 'Q3 2026',
+  },
+];
