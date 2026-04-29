@@ -96,6 +96,13 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
       ]
     },
     {
+      label: 'States',
+      paths: ['/states', '/state'],
+      items: [
+        { to: '/states/california', label: 'California', desc: '6,456 facilities — SNF, hospice, home health, rehab' },
+      ]
+    },
+    {
       label: 'About',
       paths: ['/about', '/methodology', '/pricing', '/blog'],
       items: [
