@@ -1,7 +1,26 @@
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { POST_ACUTE_SETTINGS } from '../data/postAcuteSettings';
 import '../styles/post-acute-home.css';
+
+// ISO 8601 UTC timestamp of the most recent CMS data refresh. Update when you pull new data.
+const LAST_REFRESH_ISO = '2026-04-29T02:00:00Z';
+
+function formatAgo(iso) {
+  const last = new Date(iso);
+  if (Number.isNaN(last.getTime())) return 'recently';
+  const diffMs = Date.now() - last.getTime();
+  if (diffMs < 0) return 'just now';
+  const mins = Math.floor(diffMs / 60000);
+  const hrs = Math.floor(mins / 60);
+  const days = Math.floor(hrs / 24);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins} min ago`;
+  if (hrs < 24) return `${hrs} hr ago`;
+  if (days < 7) return `${days} day${days === 1 ? '' : 's'} ago`;
+  return last.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
 
 function Tile({ setting }) {
   const isClickable = setting.status === 'live' || setting.status === 'next';
@@ -47,6 +66,12 @@ export default function PostAcuteHomePage() {
     navigate('/skilled-nursing');
   };
 
+  // Compute "X ago" once on mount.
+  useEffect(() => {
+    const el = document.getElementById('pa-ticker-ago');
+    if (el) el.textContent = formatAgo(LAST_REFRESH_ISO);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -63,8 +88,7 @@ export default function PostAcuteHomePage() {
           <hr className="pa-masthead-rule" />
           <p className="pa-hero-sub">
             Free, sourced, clinician-built reports on every Medicare-certified post-acute provider in America —{' '}
-            <strong>nursing homes, hospice, home health, inpatient rehab, and LTACH.</strong>
-            {' '}Signed by Robert Benard, NP.
+            <strong>nursing homes, hospice, home health, inpatient rehab, and{' '}LTACH.</strong>
           </p>
 
           <form className="pa-hero-search" onSubmit={handleSearchSubmit}>
@@ -77,16 +101,29 @@ export default function PostAcuteHomePage() {
             <button type="submit" className="pa-hero-search-submit">Search</button>
           </form>
 
-          <div className="pa-hero-proof">
-            <span className="pa-hero-proof-item">33,800 providers</span>
-            <span className="pa-hero-proof-sep">·</span>
-            <span className="pa-hero-proof-item">50 states</span>
-            <span className="pa-hero-proof-sep">·</span>
-            <span className="pa-hero-proof-item">refreshed monthly</span>
-            <span className="pa-hero-proof-sep">·</span>
-            <span className="pa-hero-proof-item">no commissions</span>
-            <span className="pa-hero-proof-sep">·</span>
-            <span className="pa-hero-proof-item">no operator funding</span>
+          {/* Live ticker + receipts row */}
+          <div className="pa-ticker">
+            <div className="pa-ticker-row">
+              <span className="pa-ticker-pulse" aria-hidden="true"></span>
+              <span className="pa-ticker-live">Live</span>
+              <span className="pa-ticker-sep">·</span>
+              <span className="pa-ticker-muted">data refreshed</span>{' '}
+              <span className="pa-ticker-strong" id="pa-ticker-ago" data-iso={LAST_REFRESH_ISO}>recently</span>
+              <span className="pa-ticker-sep">·</span>
+              <span className="pa-ticker-strong">33,800</span>{' '}
+              <span className="pa-ticker-muted">providers</span>
+              <span className="pa-ticker-sep">·</span>
+              <span className="pa-ticker-strong">50</span>{' '}
+              <span className="pa-ticker-muted">states</span>
+            </div>
+            <div className="pa-ticker-secondary">no operator funding</div>
+            <div className="pa-ticker-links">
+              <Link to="/methodology">METHODOLOGY <span className="pa-ticker-arrow" aria-hidden="true">↗</span></Link>
+              <span className="pa-ticker-sep-thin">·</span>
+              <Link to="/data-transparency">DATA SOURCES <span className="pa-ticker-arrow" aria-hidden="true">↗</span></Link>
+              <span className="pa-ticker-sep-thin">·</span>
+              <Link to="/refresh-log">REFRESH LOG <span className="pa-ticker-arrow" aria-hidden="true">↗</span></Link>
+            </div>
           </div>
         </section>
 

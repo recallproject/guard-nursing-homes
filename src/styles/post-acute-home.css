@@ -141,9 +141,79 @@
 .pa-home .pa-hero-search-submit:hover {
   background: var(--pa-primary-dark);
 }
+
+/* Live ticker + receipts row — sits below the search bar */
+.pa-home .pa-ticker {
+  max-width: 760px;
+  margin: 28px auto 0;
+  text-align: center;
+}
+.pa-home .pa-ticker-row {
+  display: inline-flex; align-items: center;
+  gap: 10px; flex-wrap: wrap; justify-content: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+}
+.pa-home .pa-ticker-pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--pa-teal);
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(13,148,136,0.5);
+  animation: pa-ticker-pulse 2.4s ease-in-out infinite;
+}
+@keyframes pa-ticker-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pa-home .pa-ticker-live {
+  font-weight: 700;
+  color: var(--pa-teal);
+}
+.pa-home .pa-ticker-sep { color: var(--pa-light-muted); }
+.pa-home .pa-ticker-muted { color: var(--pa-muted); }
+.pa-home .pa-ticker-strong { color: var(--pa-navy); font-weight: 700; }
+
+.pa-home .pa-ticker-secondary {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: var(--pa-muted);
+  margin-top: 6px;
+}
+
+.pa-home .pa-ticker-links {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap;
+  margin-top: 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+}
+.pa-home .pa-ticker-links a {
+  color: var(--pa-light-muted);
+  transition: color 120ms ease;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.pa-home .pa-ticker-links a:hover { color: var(--pa-primary); }
+.pa-home .pa-ticker-arrow {
+  font-size: 13px;
+  display: inline-block;
+  transition: transform 120ms ease;
+}
+.pa-home .pa-ticker-links a:hover .pa-ticker-arrow {
+  transform: translate(1px, -1px);
+}
+.pa-home .pa-ticker-sep-thin { color: var(--pa-border); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pa-home .pa-ticker-pulse { animation: none; opacity: 0.7; }
+}
 .pa-home .pa-hero-sub {
   font-size: 17px; color: var(--pa-text);
   max-width: 660px; margin: 0 auto 28px; line-height: 1.6;
+  text-wrap: pretty;
 }
 .pa-home .pa-hero-sub strong { color: var(--pa-navy); font-weight: 600; }
 .pa-home .pa-hero-proof {

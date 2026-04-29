@@ -49,6 +49,7 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const PostAcuteHomePage = lazy(() => import('./pages/PostAcuteHomePage'));
 const HospicePage = lazy(() => import('./pages/HospicePage'));
+const RefreshLogPage = lazy(() => import('./pages/RefreshLogPage'));
 
 // Feature flag: post-acute hub homepage is ON by default. To roll back, set
 // VITE_POST_ACUTE_HOME_ENABLED=false in Vercel project env vars and redeploy.
@@ -87,6 +88,7 @@ function App() {
           <Route path="/" element={POST_ACUTE_HOME_ENABLED ? <PostAcuteHomePage /> : <MapPage />} />
           <Route path="/skilled-nursing" element={<MapPage />} />
           <Route path="/hospice" element={<HospicePage />} />
+          <Route path="/refresh-log" element={<RefreshLogPage />} />
           <Route path="/facility/:ccn" element={<FacilityErrorBoundary><FacilityPage /></FacilityErrorBoundary>} />
           <Route path="/professionals" element={<ProfessionalsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
