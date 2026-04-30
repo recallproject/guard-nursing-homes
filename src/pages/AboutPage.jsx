@@ -38,10 +38,6 @@ export default function AboutPage() {
             <div className="about-credentials">
               <div className="about-credential">
                 <div className="about-credential-marker"></div>
-                <span>Addiction Medicine Consult Service — Highland Hospital, Oakland</span>
-              </div>
-              <div className="about-credential">
-                <div className="about-credential-marker"></div>
                 <span>Critical Care & Neurocritical Care — Sutter Health, San Francisco</span>
               </div>
               <div className="about-credential">
@@ -59,7 +55,7 @@ export default function AboutPage() {
         {/* WHY THIS EXISTS */}
         <div className="about-section">
           <h2>Why This Exists</h2>
-          <p>I've spent 20+ years in acute care — ICU beds, trauma bays, psych emergencies, and now addiction medicine. The one thing that connects all of it is what happens at discharge. A patient stabilizes, and then somebody has to figure out where they go next.</p>
+          <p>I've spent 20+ years in acute care — ICU beds, trauma bays, psych emergencies. The one thing that connects all of it is what happens at discharge. A patient stabilizes, and then somebody has to figure out where they go next.</p>
           <p>For nursing homes, home health, dialysis, hospice — the question is always the same. A family member at the bedside, exhausted, scared, asks: <em>"Is this place any good?"</em></p>
           <p>I never had a good answer. The data existed — scattered across half a dozen government websites, buried in spreadsheets nobody reads, formatted for regulators instead of families. So I built the tool I wished I'd had for the last 20 years.</p>
         </div>
@@ -106,7 +102,7 @@ export default function AboutPage() {
               Heeney M, Anderson E, Lind K, Sirey L, Ullal M, Liang A, <span className="author-highlight">Benard R</span>, Herring A. "High-Dose Fentanyl and Buprenorphine Continuation as Support for the Treatment of Buprenorphine Precipitated Withdrawal."
             </div>
             <div className="about-citation-venue">
-              Alameda Health System, Division of Addiction Medicine. Presented at AMERSA National Conference, 2024.
+              Presented at AMERSA National Conference, 2024.
             </div>
           </div>
           <div className="about-citation">
@@ -115,7 +111,7 @@ export default function AboutPage() {
               Heeney M, Anderson E, Sirey L, Ullal M, Liang A, <span className="author-highlight">Benard R</span>, Lind K, Herring A. "Evaluation of Outcomes of Extended-Release Buprenorphine Administered During Emergency Department and Inpatient Visits."
             </div>
             <div className="about-citation-venue">
-              Alameda Health System, Division of Addiction Medicine. Presented at AMERSA National Conference, 2024.
+              Presented at AMERSA National Conference, 2024.
             </div>
           </div>
         </div>
@@ -124,10 +120,6 @@ export default function AboutPage() {
         <div className="about-section">
           <h2>Education & Training</h2>
           <div className="about-training-grid">
-            <div className="about-training-card">
-              <div className="about-training-institution">Highland Hospital, Oakland</div>
-              <div className="about-training-detail">Addiction Medicine Consult Service<br />Nurse Practitioner</div>
-            </div>
             <div className="about-training-card">
               <div className="about-training-institution">Sutter Health, San Francisco</div>
               <div className="about-training-detail">Critical Care & Neurocritical Care<br />Nurse Practitioner</div>
@@ -138,7 +130,7 @@ export default function AboutPage() {
             </div>
             <div className="about-training-card">
               <div className="about-training-institution">Clinical Experience</div>
-              <div className="about-training-detail">20+ years across acute care, critical care, psychiatry, and addiction medicine</div>
+              <div className="about-training-detail">20+ years across acute care, critical care, and psychiatry</div>
             </div>
           </div>
         </div>

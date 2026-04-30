@@ -6,6 +6,7 @@ import { useFacilityData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
 import ComingSoonPage from '../components/ComingSoonPage';
+import ReferralScorecardComingSoon from '../components/ReferralScorecardComingSoon';
 import '../styles/referral-scorecard.css';
 
 const US_STATES = {
@@ -31,7 +32,12 @@ const FACILITY_TYPES = {
 };
 
 export function ReferralScorecardPage() {
-  const COMING_SOON = false;
+  // Coming-soon mode: blurred scorecard preview + overlay card with notify-me form.
+  // To launch the live tool, set COMING_SOON to false. The full implementation below
+  // is intact and wired up — it's just gated behind this flag.
+  const COMING_SOON = true;
+  if (COMING_SOON) return <ReferralScorecardComingSoon />;
+
 
   const [searchParams, setSearchParams] = useSearchParams();
   const { getAllFacilities, loading, error } = useFacilityData();
