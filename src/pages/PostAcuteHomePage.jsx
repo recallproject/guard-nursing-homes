@@ -177,19 +177,12 @@ export default function PostAcuteHomePage() {
           </div>
         </section>
 
-        {/* AUTHOR */}
+        {/* AUTHOR — mission only; bio + credentials live on /about */}
         <section className="pa-author">
-          <div className="pa-author-inner">
-            <div>
-              <h2>Why this exists.</h2>
-              <p>33,800 Medicare-certified post-acute providers sit at the center of one of the country's largest hidden cost drivers and most chronic patient-safety failures. CMS publishes the data; almost nobody connects it.</p>
-              <p>The Oversight Report is the integration: clinical interpretation, ownership networks, related-party financial flows, and federal enforcement history — sourced, signed, and free for families.</p>
-            </div>
-            <div className="pa-author-card">
-              <div className="pa-author-name">Robert Benard, NP</div>
-              <div className="pa-author-creds">AGACNP-BC · PMHNP-BC · Highland Hospital · Oakland, CA</div>
-              <div className="pa-author-bio">Acute-care and psychiatric nurse practitioner. Builds and signs The Oversight Report independently through DataLink Clinical LLC.</div>
-            </div>
+          <div className="pa-author-inner pa-author-inner--single">
+            <h2>Why this exists.</h2>
+            <p>33,800 Medicare-certified post-acute providers sit at the center of one of the country's largest hidden cost drivers and most chronic patient-safety failures. CMS publishes the data; almost nobody connects it.</p>
+            <p>The Oversight Report is the integration: clinical interpretation, ownership networks, related-party financial flows, and federal enforcement history — sourced, signed, and free for families.</p>
           </div>
         </section>
 
