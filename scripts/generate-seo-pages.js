@@ -597,7 +597,7 @@ for (const summary of orderedBlogPosts) {
   const post = readBlogPost(summary.slug);
   const metaTitle = post.seo?.metaTitle || `${post.title} — The Oversight Report`;
   const metaDescription = post.seo?.metaDescription || post.excerpt || '';
-  const ogImage = post.seo?.ogImage || `${BASE_URL}/og-image.png?v=2`;
+  const ogImage = post.seo?.ogImage || `${BASE_URL}/og-image.png?v=3`;
   const canonicalPath = `/blog/${encodeURIComponent(post.slug)}`;
   const canonicalUrl = `${BASE_URL}${canonicalPath}`;
 

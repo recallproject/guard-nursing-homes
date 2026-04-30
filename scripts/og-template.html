@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OG Image — The Oversight Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Match landing page tokens exactly */
+  :root {
+    --pa-navy: #1D3557;
+    --pa-primary: #2B6CB0;
+    --pa-bg: #EDF1F7;
+    --pa-bg-light: #F8FAFC;
+    --pa-text: #334155;
+    --pa-muted: #64748B;
+    --pa-border: #D7E0EA;
+    --pa-amber: #D97706;
+    --pa-teal: #0D9488;
+  }
+
+  html, body {
+    width: 1200px;
+    height: 630px;
+    background: #fff;
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--pa-text);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .og {
+    width: 1200px;
+    height: 630px;
+    /* Mirror the landing page hero gradient */
+    background: linear-gradient(180deg, #edf1f7 0%, #ffffff 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 56px 80px;
+    overflow: hidden;
+  }
+
+  /* Top accent bar — yellow tab from the live site header */
+  .og::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+  }
+
+  .eyebrow {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pa-primary);
+    margin-bottom: 24px;
+  }
+
+  .masthead {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 1.0;
+    color: var(--pa-navy);
+    letter-spacing: -0.015em;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  .masthead em {
+    font-style: italic;
+    color: var(--pa-primary);
+    font-weight: 700;
+  }
+
+  .sub {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 32px;
+    color: var(--pa-navy);
+    margin-bottom: 28px;
+  }
+
+  .rule {
+    width: 220px;
+    height: 1px;
+    background: var(--pa-border);
+    margin-bottom: 30px;
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--pa-navy);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-num.accent { color: var(--pa-primary); }
+  .stat-num.amber { color: var(--pa-amber); }
+  .stat-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--pa-muted);
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--pa-border);
+  }
+
+  .continuum {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--pa-text);
+    margin-bottom: auto;
+    margin-top: 4px;
+  }
+  .continuum span {
+    color: var(--pa-muted);
+    font-weight: 500;
+    margin: 0 10px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 32px;
+    left: 0; right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+    font-size: 14px;
+    color: var(--pa-muted);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+  .footer .url {
+    color: var(--pa-navy);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+  .footer .built {
+    font-style: italic;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+  <div class="og">
+    <div class="eyebrow">FREE · CLINICIAN-BUILT · SOURCED FROM CMS</div>
+
+    <div class="masthead">The <em>Oversight</em> Report</div>
+    <div class="sub">Post-acute care safety data.</div>
+
+    <div class="rule"></div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">33,800</div>
+        <div class="stat-label">Post-Acute Providers</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num accent">50</div>
+        <div class="stat-label">States</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num amber">5</div>
+        <div class="stat-label">Care Settings</div>
+      </div>
+    </div>
+
+    <div class="continuum">
+      Nursing homes <span>·</span> Hospice <span>·</span> Home health <span>·</span> Inpatient rehab <span>·</span> LTACH
+    </div>
+
+    <div class="footer">
+      <div class="built">Independent · No operator funding · Updated monthly</div>
+      <div class="url">oversightreports.com</div>
+    </div>
+  </div>
+</body>
+</html>

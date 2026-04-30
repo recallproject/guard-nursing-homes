@@ -31,3 +31,6 @@ data/cms_raw/
 *.csv
 test_fixed_output.pdf
 ~$*
+
+# Local rollback/backup files
+*.bak
