@@ -335,7 +335,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
           Twenty years at the bedside taught me that families deserve better tools for the hardest decisions in healthcare. The Oversight Report exists because the data was always public — nobody had assembled it into something usable.
         </div>
         <div className="v4-builder-creds">
-          <span className="v4-builder-cred">Highland Hospital / Sutter Health</span>
+          <span className="v4-builder-cred">20+ years bedside · acute &amp; critical care</span>
           <span className="v4-builder-cred">Cited: Harvard Data Science Review</span>
         </div>
         <Link to="/about" className="v4-builder-link">Read the full story</Link>

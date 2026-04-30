@@ -80,7 +80,7 @@ export default function HospicePage() {
             </div>
             <div className="pa-author-card">
               <div className="pa-author-name">Robert Benard, NP</div>
-              <div className="pa-author-creds">AGACNP-BC · PMHNP-BC · Highland Hospital · Oakland, CA</div>
+              <div className="pa-author-creds">AGACNP-BC · PMHNP-BC · DataLink Clinical LLC</div>
               <div className="pa-author-bio">Methodology and clinical interpretation by Robert Benard, NP. Independent. Sourced. Signed.</div>
             </div>
           </div>

@@ -38,7 +38,7 @@ export default function AboutPage() {
             <div className="about-credentials">
               <div className="about-credential">
                 <div className="about-credential-marker"></div>
-                <span>Critical Care & Neurocritical Care — Sutter Health, San Francisco</span>
+                <span>Acute, Critical, & Neurocritical Care — Nurse Practitioner</span>
               </div>
               <div className="about-credential">
                 <div className="about-credential-marker"></div>
@@ -121,8 +121,12 @@ export default function AboutPage() {
           <h2>Education & Training</h2>
           <div className="about-training-grid">
             <div className="about-training-card">
-              <div className="about-training-institution">Sutter Health, San Francisco</div>
-              <div className="about-training-detail">Critical Care & Neurocritical Care<br />Nurse Practitioner</div>
+              <div className="about-training-institution">Acute &amp; Critical Care Nurse Practitioner</div>
+              <div className="about-training-detail">AGACNP-BC · Critical Care &amp; Neurocritical Care<br />Adult-Gerontology Acute Care</div>
+            </div>
+            <div className="about-training-card">
+              <div className="about-training-institution">Psychiatric-Mental Health Nurse Practitioner</div>
+              <div className="about-training-detail">PMHNP-BC · Board-Certified<br />Across the Lifespan</div>
             </div>
             <div className="about-training-card">
               <div className="about-training-institution">Harvard Data Science Initiative</div>
