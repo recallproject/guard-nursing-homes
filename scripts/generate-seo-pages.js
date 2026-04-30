@@ -528,6 +528,21 @@ const staticPages = [
     title: 'California Nursing Homes, Hospice, Home Health & Rehab — The Oversight Report',
     description: 'Federal CMS oversight data on every California nursing home, hospice, home health agency, and rehab facility. Inspections, ownership, staffing, complaints. Free, no paywall.'
   },
+  {
+    route: 'skilled-nursing',
+    title: 'Nursing Home Safety Data — Every Medicare-Certified SNF | The Oversight Report',
+    description: 'Free, sourced safety data on every Medicare-certified skilled nursing facility in America. Inspections, staffing, penalties, ownership networks. No commissions, no operator funding.'
+  },
+  {
+    route: 'hospice',
+    title: 'Hospice Care Safety Data — Launching May 2026 | The Oversight Report',
+    description: 'Hospice care intelligence platform launching May 2026. Every Medicare-certified hospice in America, screened with a state-auditor methodology validated against prosecuted cases.'
+  },
+  {
+    route: 'refresh-log',
+    title: 'Refresh Log — Public Record of Data Updates | The Oversight Report',
+    description: 'A dated, public record of every CMS data refresh, dataset addition, and methodology change on The Oversight Report. Independent. Sourced. Signed.'
+  },
 ];
 
 console.log('Generating SEO pages with static HTML content...');
