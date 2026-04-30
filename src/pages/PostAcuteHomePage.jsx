@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { POST_ACUTE_SETTINGS } from '../data/postAcuteSettings';
+import HeroSearchDropdown from '../components/HeroSearchDropdown';
 import '../styles/post-acute-home.css';
 
 // ISO 8601 UTC timestamp of the most recent CMS data refresh. Update when you pull new data.
@@ -91,15 +92,7 @@ export default function PostAcuteHomePage() {
             <strong>nursing homes, hospice, home health, inpatient rehab, and{' '}LTACH.</strong>
           </p>
 
-          <form className="pa-hero-search" onSubmit={handleSearchSubmit}>
-            <input
-              type="text"
-              className="pa-hero-search-input"
-              placeholder="Address, city, ZIP, or facility name"
-              aria-label="Search post-acute care facility"
-            />
-            <button type="submit" className="pa-hero-search-submit">Search</button>
-          </form>
+          <HeroSearchDropdown />
 
           {/* Live ticker + receipts row */}
           <div className="pa-ticker">
