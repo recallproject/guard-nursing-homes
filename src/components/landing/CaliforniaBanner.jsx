@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { track } from '../../utils/analytics';
 
 const DISMISS_KEY = 'ca_banner_dismissed_v1';
 
+// Routes where the CA banner should NOT appear. Hospice page is positioned
+// nationally; the CA banner conflicts with the "framework applies to all 50
+// states" framing.
+const HIDE_ON_PREFIXES = ['/hospice'];
+
 export default function CaliforniaBanner() {
   const [dismissed, setDismissed] = useState(false);
+  const location = useLocation();
+  const isHidden = HIDE_ON_PREFIXES.some(p => location.pathname.startsWith(p));
 
   useEffect(() => {
     try {
@@ -28,7 +35,7 @@ export default function CaliforniaBanner() {
     window.plausible && window.plausible('CA-Banner-Dismiss');
   };
 
-  if (dismissed) return null;
+  if (dismissed || isHidden) return null;
 
   return (
     <div className="ca-banner">
