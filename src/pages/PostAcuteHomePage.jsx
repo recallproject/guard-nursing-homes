@@ -137,29 +137,6 @@ export default function PostAcuteHomePage() {
           </div>
         </section>
 
-        {/* MOAT — cross-setting ownership view teaser */}
-        <section className="pa-moat-section">
-          <div className="pa-moat-card">
-            <div>
-              <div className="pa-moat-eyebrow">// in build · launches with hospice</div>
-              <h3 className="pa-moat-title">The cross-setting ownership view.</h3>
-              <p>The same operators run nursing homes, hospice, and home health — often through commonly-owned management companies that shift money out of resident care and into related parties.</p>
-              <p>Top operators by combined facility count across settings, with HCRIS related-party flows, federal CMP totals, and chain-average quality scores.</p>
-              <div className="pa-moat-cta">→ free, public, sourced — launching with the Hospice page</div>
-            </div>
-            <div className="pa-moat-vis">
-              <div className="pa-moat-vis-head">Top operators · cross-setting (sample)</div>
-              <div><span className="pa-opname">Operator A</span> · SNF 84 · Hospice 41 · HHA 22</div>
-              <div><span className="pa-opname">Operator B</span> · SNF 67 · Hospice 38 · HHA 15</div>
-              <div><span className="pa-opname">Operator C</span> · SNF 52 · Hospice 29 · HHA 31</div>
-              <div><span className="pa-opname">Operator D</span> · SNF 49 · Hospice 24 · HHA 18</div>
-              <div style={{ marginTop: 8, paddingTop: 8, borderTop: '1px solid var(--pa-border)', color: 'var(--pa-muted)' }}>
-                Related-party flows: <span className="pa-num">$3.04B</span> · FY2024
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* TRUST STRIP */}
         <section className="pa-trust-strip">
           <div className="pa-trust-inner">

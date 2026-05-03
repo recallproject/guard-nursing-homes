@@ -79,6 +79,7 @@ function App() {
   const isLandingPage =
     location.pathname === '/' ||
     location.pathname === '' ||
+    location.pathname === '/post-acute' ||
     location.pathname === '/skilled-nursing';
   const { lastAdded, clearLastAdded } = useWatchlist();
 
@@ -89,6 +90,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/" element={POST_ACUTE_HOME_ENABLED ? <PostAcuteHomePage /> : <MapPage />} />
+          <Route path="/post-acute" element={<PostAcuteHomePage />} />
           <Route path="/skilled-nursing" element={<MapPage />} />
           <Route path="/hospice" element={<HospicePage />} />
           <Route path="/hospice/compare" element={<HospiceComparePage />} />

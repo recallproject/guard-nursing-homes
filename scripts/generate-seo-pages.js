@@ -529,6 +529,11 @@ const staticPages = [
     description: 'Federal CMS oversight data on every California nursing home, hospice, home health agency, and rehab facility. Inspections, ownership, staffing, complaints. Free, no paywall.'
   },
   {
+    route: 'post-acute',
+    title: 'Post-Acute Care Safety Data | The Oversight Report',
+    description: 'Free, sourced safety data on nursing homes, hospice, home health, inpatient rehab, and LTACH providers. Clinician-built and independent, with no operator funding.'
+  },
+  {
     route: 'skilled-nursing',
     title: 'Nursing Home Safety Data — Every Medicare-Certified SNF | The Oversight Report',
     description: 'Free, sourced safety data on every Medicare-certified skilled nursing facility in America. Inspections, staffing, penalties, ownership networks. No commissions, no operator funding.'

@@ -25,22 +25,29 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Run news + DOJ pipelines
+      - name: Run feeds + court + MFCU pipelines
         run: |
           set -e
-          node scripts/build-hospice-news-feed.js || echo "news pipeline failed (continuing)"
-          node scripts/build-doj-actions.js      || echo "doj pipeline failed (continuing)"
+          node scripts/build-hospice-news-feed.js     || echo "news pipeline failed (continuing)"
+          node scripts/build-doj-actions.js           || echo "doj pipeline failed (continuing)"
+          node scripts/build-courtlistener-actions.js || echo "courtlistener pipeline failed (continuing)"
+          node scripts/build-mfcu-actions.js          || echo "mfcu pipeline failed (continuing)"
 
       - name: Commit if data changed
         run: |
           git config user.name  "oversight-bot"
           git config user.email "bot@oversightreports.com"
-          git add public/data/hospice/news-feed.json public/data/hospice/doj-actions.json
+          git add public/data/hospice/news-feed.json \
+                  public/data/hospice/doj-actions.json \
+                  public/data/hospice/courtlistener-actions.json \
+                  public/data/hospice/mfcu-actions.json
           if git diff --cached --quiet; then
             echo "No data changes; nothing to commit."
             exit 0
           fi
           NEWS_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/news-feed.json')).feed_items?.length ?? 0)")
           DOJ_COUNT=$(node  -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/doj-actions.json')).actions?.length ?? 0)")
-          git commit -m "Daily hospice feed refresh: ${NEWS_COUNT} news + ${DOJ_COUNT} DOJ items"
+          COURT_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/courtlistener-actions.json')).actions?.length ?? 0)")
+          MFCU_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/mfcu-actions.json')).actions?.length ?? 0)")
+          git commit -m "Daily hospice feed refresh: ${NEWS_COUNT} news + ${DOJ_COUNT} DOJ + ${COURT_COUNT} court + ${MFCU_COUNT} MFCU items"
           git push origin HEAD:main

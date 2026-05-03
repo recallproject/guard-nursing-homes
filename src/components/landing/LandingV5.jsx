@@ -4,6 +4,24 @@ import { submitLead } from '../../utils/submitLead';
 import { track } from '../../utils/analytics';
 import '../../styles/landing-v5.css';
 
+// ISO 8601 timestamp of the most recent CMS data refresh. Update when new data is pulled.
+const LAST_REFRESH_ISO = '2026-04-29T02:00:00Z';
+
+function formatRefreshAgo(iso) {
+  const last = new Date(iso);
+  if (Number.isNaN(last.getTime())) return 'recently';
+  const diffMs = Date.now() - last.getTime();
+  if (diffMs < 0) return 'just now';
+  const mins = Math.floor(diffMs / 60000);
+  const hrs = Math.floor(mins / 60);
+  const days = Math.floor(hrs / 24);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return `${mins} min ago`;
+  if (hrs < 24) return `${hrs} hr ago`;
+  if (days < 30) return `${days} day${days === 1 ? '' : 's'} ago`;
+  return last.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
 /* ═══════════════════════════════════════════
    INLINE SEARCH — Reused from LandingV4
    ═══════════════════════════════════════════ */
@@ -336,12 +354,17 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
   return (
     <div className="v5-landing">
 
-      {/* ═══════ HERO — Search-first above the fold ═══════ */}
+      {/* ═══════ HERO — Masthead treatment matching Hospice landing ═══════ */}
       <section className="v5-hero dlc-prov-2026q2">
-        <div className="v5-hero-tagline">Nursing Home Safety Data, Independently Reviewed</div>
-        <h1 className="v5-hero-title">Look up any nursing home in America</h1>
+        <div className="v5-hero-eyebrow">Free · Clinician-built · Sourced from CMS</div>
+        <h1 className="v5-masthead">
+          The <span className="v5-masthead-accent">Oversight</span> Report
+        </h1>
+        <div className="v5-masthead-sub">Nursing home safety data.</div>
+        <hr className="v5-masthead-rule" />
         <p className="v5-hero-sub">
-          Free safety reports with inspections, staffing, fines, and ownership data for every Medicare-certified facility.
+          Free safety reports with inspections, staffing, fines, and ownership data for{' '}
+          <strong>every Medicare-certified nursing home in America.</strong>
         </p>
         <InlineSearch searchFacilities={searchFacilities} onFallbackSearch={onSearch} large />
         <div className="v5-or-browse">
@@ -350,15 +373,28 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <Link to="/attorneys">For Attorneys</Link>
         </div>
 
-        {/* Hero social proof bar */}
-        <div className="v5-hero-proof">
-          <span className="v5-hero-proof-item">14,713 facilities analyzed</span>
-          <span className="v5-hero-proof-sep">&middot;</span>
-          <span className="v5-hero-proof-item">18 federal databases</span>
-          <span className="v5-hero-proof-sep">&middot;</span>
-          <span className="v5-hero-proof-item">$492M in fines tracked</span>
-          <span className="v5-hero-proof-sep">&middot;</span>
-          <span className="v5-hero-proof-item">Updated March 2026</span>
+        {/* Live status ticker */}
+        <div className="v5-ticker">
+          <div className="v5-ticker-row">
+            <span className="v5-ticker-pulse" aria-hidden="true"></span>
+            <span className="v5-ticker-live">Live</span>
+            <span className="v5-ticker-sep">·</span>
+            <span className="v5-ticker-muted">data refreshed</span>&nbsp;
+            <span className="v5-ticker-strong">{formatRefreshAgo(LAST_REFRESH_ISO)}</span>
+            <span className="v5-ticker-sep">·</span>
+            <span className="v5-ticker-strong">14,713</span>&nbsp;
+            <span className="v5-ticker-muted">facilities</span>
+            <span className="v5-ticker-sep">·</span>
+            <span className="v5-ticker-strong">50 states</span>
+          </div>
+          <div className="v5-ticker-secondary">no operator funding</div>
+          <div className="v5-ticker-links">
+            <Link to="/methodology">METHODOLOGY <span className="v5-ticker-arrow" aria-hidden="true">↗</span></Link>
+            <span className="v5-ticker-sep-thin">·</span>
+            <Link to="/data-transparency">DATA SOURCES <span className="v5-ticker-arrow" aria-hidden="true">↗</span></Link>
+            <span className="v5-ticker-sep-thin">·</span>
+            <Link to="/refresh-log">REFRESH LOG <span className="v5-ticker-arrow" aria-hidden="true">↗</span></Link>
+          </div>
         </div>
       </section>
 

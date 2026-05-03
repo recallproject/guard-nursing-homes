@@ -25,29 +25,31 @@ const STATE_NAME = {
 const stateFileCache = new Map();
 let indexCache = null;
 
-// Module-level cache for public-record feeds (loaded once, refreshed on a
-// 5-minute browser poll inside the component). Each entry is `{ data, loadedAt }`.
+// Module-level cache for public-record feeds. Each entry is `{ data, loadedAt }`.
 const pubRecCache = {
   oig: null,
   news: null,
   doj: null,
+  court: null,
+  mfcu: null,
 };
 
 async function fetchPubRecFeeds() {
-  const [oigRes, newsRes, dojRes] = await Promise.all([
-    fetch('/data/hospice/oig-exclusions.json'),
-    fetch('/data/hospice/news-feed.json'),
-    fetch('/data/hospice/doj-actions.json'),
+  const fetchJson = (url) => fetch(url).then((res) => (res.ok ? res.json() : null)).catch(() => null);
+  const [oig, news, doj, court, mfcu] = await Promise.all([
+    fetchJson('/data/hospice/oig-exclusions.json'),
+    fetchJson('/data/hospice/news-feed.json'),
+    fetchJson('/data/hospice/doj-actions.json'),
+    fetchJson('/data/hospice/courtlistener-actions.json'),
+    fetchJson('/data/hospice/mfcu-actions.json'),
   ]);
-  const [oig, news, doj] = await Promise.all([
-    oigRes.ok ? oigRes.json() : null,
-    newsRes.ok ? newsRes.json() : null,
-    dojRes.ok ? dojRes.json() : null,
-  ]);
-  pubRecCache.oig = { data: oig, loadedAt: Date.now() };
-  pubRecCache.news = { data: news, loadedAt: Date.now() };
-  pubRecCache.doj = { data: doj, loadedAt: Date.now() };
-  return { oig, news, doj };
+  const loadedAt = Date.now();
+  pubRecCache.oig = { data: oig, loadedAt };
+  pubRecCache.news = { data: news, loadedAt };
+  pubRecCache.doj = { data: doj, loadedAt };
+  pubRecCache.court = { data: court, loadedAt };
+  pubRecCache.mfcu = { data: mfcu, loadedAt };
+  return { oig, news, doj, court, mfcu };
 }
 
 // Format an ISO timestamp like "2 hr ago" / "12 min ago" / "Apr 27".
@@ -147,12 +149,13 @@ export default function HospiceProviderPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Public-record feeds (OIG / news / DOJ). Loaded once on mount and re-fetched
-  // when the tab regains focus.
+  // Public-record feeds. Loaded once on mount and re-fetched when the tab regains focus.
   const [pubRec, setPubRec] = useState({
     oig: pubRecCache.oig?.data ?? null,
     news: pubRecCache.news?.data ?? null,
     doj: pubRecCache.doj?.data ?? null,
+    court: pubRecCache.court?.data ?? null,
+    mfcu: pubRecCache.mfcu?.data ?? null,
   });
 
   useEffect(() => {
@@ -233,12 +236,14 @@ export default function HospiceProviderPage() {
     let cancelled = false;
 
     async function loadFeeds() {
-      if (pubRecCache.oig && pubRecCache.news && pubRecCache.doj) {
+      if (pubRecCache.oig && pubRecCache.news && pubRecCache.doj && pubRecCache.court && pubRecCache.mfcu) {
         if (!cancelled) {
           setPubRec({
             oig: pubRecCache.oig.data,
             news: pubRecCache.news.data,
             doj: pubRecCache.doj.data,
+            court: pubRecCache.court.data,
+            mfcu: pubRecCache.mfcu.data,
           });
         }
       }
@@ -493,7 +498,23 @@ export default function HospiceProviderPage() {
     url: it.url,
     raw: it,
   }));
-  const mergedPubRec = [...dojItems, ...oigItems, ...newsItems].sort((a, b) => {
+  const courtItems = ((pubRec.court?.items_by_ccn || {})[ccnKey] || []).map((it) => ({
+    source: 'court',
+    date: it.date_filed,
+    headline: it.case_caption,
+    summary: `${it.court || 'Federal court'}. ${it.summary || ''}`.trim(),
+    url: it.docket_url,
+    raw: it,
+  }));
+  const mfcuItems = ((pubRec.mfcu?.items_by_ccn || {})[ccnKey] || []).map((it) => ({
+    source: 'mfcu',
+    date: it.date,
+    headline: it.headline,
+    summary: `${it.ag_state || 'State'} AG (${it.action_type || 'action'}). ${it.summary || ''}`.trim(),
+    url: it.source_url,
+    raw: it,
+  }));
+  const mergedPubRec = [...dojItems, ...mfcuItems, ...courtItems, ...oigItems, ...newsItems].sort((a, b) => {
     const da = new Date(a.date || 0).getTime();
     const db = new Date(b.date || 0).getTime();
     return db - da;
@@ -503,12 +524,16 @@ export default function HospiceProviderPage() {
   const oigCount = oigItems.length;
   const newsCount = newsItems.length;
   const dojCount = dojItems.length;
+  const courtCount = courtItems.length;
+  const mfcuCount = mfcuItems.length;
   const totalPubRec = mergedPubRec.length;
 
   // Per-source last-update timestamps.
   const oigGeneratedAt = pubRec.oig?.generated_at;
   const newsGeneratedAt = pubRec.news?.generated_at;
   const dojGeneratedAt = pubRec.doj?.generated_at;
+  const courtGeneratedAt = pubRec.court?.generated_at;
+  const mfcuGeneratedAt = pubRec.mfcu?.generated_at;
 
   return (
     <div className="hospice-provider">
@@ -1000,12 +1025,16 @@ export default function HospiceProviderPage() {
                   <span className="hp-pubrec-feed-time pending">live · weekly</span>
                 </div>
                 <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name pending">CourtListener · federal</span>
-                  <span className="hp-pubrec-feed-time pending">coming soon</span>
+                  <span className="hp-pubrec-feed-name">CourtListener · federal</span>
+                  <span className="hp-pubrec-feed-time">
+                    Court · {courtGeneratedAt ? relTime(courtGeneratedAt) : 'pending'}
+                  </span>
                 </div>
                 <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name pending">State AG MFCU</span>
-                  <span className="hp-pubrec-feed-time pending">coming soon</span>
+                  <span className="hp-pubrec-feed-name">State AG MFCU</span>
+                  <span className="hp-pubrec-feed-time">
+                    AG · {mfcuGeneratedAt ? relTime(mfcuGeneratedAt) : 'pending'}
+                  </span>
                 </div>
               </div>
             </div>

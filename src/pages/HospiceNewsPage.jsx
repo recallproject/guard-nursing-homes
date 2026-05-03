@@ -7,6 +7,8 @@ import '../styles/hospice-news.css';
 const NEWS_FEED_URL = '/data/hospice/news-feed.json';
 const DOJ_ACTIONS_URL = '/data/hospice/doj-actions.json';
 const OIG_EXCLUSIONS_URL = '/data/hospice/oig-exclusions.json';
+const COURTLISTENER_URL = '/data/hospice/courtlistener-actions.json';
+const MFCU_URL = '/data/hospice/mfcu-actions.json';
 
 const SOURCE_FILTERS = [
   { key: 'all',   label: 'All' },
@@ -141,6 +143,34 @@ function normalizeDojItems(dojActions) {
   }));
 }
 
+function normalizeCourtItems(courtActions) {
+  if (!courtActions || !Array.isArray(courtActions.actions)) return [];
+  return courtActions.actions.map((it, idx) => ({
+    id: 'court-' + (it.docket_url || it.ccn || idx),
+    source: 'court',
+    source_label: it.court ? 'Court . ' + it.court : 'Court . Federal',
+    date: it.date_filed,
+    headline: it.case_caption,
+    summary: it.summary,
+    url: it.docket_url,
+    matched_ccns: it.ccn ? [String(it.ccn)] : [],
+  }));
+}
+
+function normalizeMfcuItems(mfcuActions) {
+  if (!mfcuActions || !Array.isArray(mfcuActions.actions)) return [];
+  return mfcuActions.actions.map((it, idx) => ({
+    id: 'ag-' + (it.source_url || it.ccn || idx),
+    source: 'ag',
+    source_label: it.ag_state ? 'State AG . ' + it.ag_state : 'State AG',
+    date: it.date,
+    headline: it.headline,
+    summary: it.summary,
+    url: it.source_url,
+    matched_ccns: it.ccn ? [String(it.ccn)] : [],
+  }));
+}
+
 function normalizeOigItems(oigData) {
   if (!oigData || !Array.isArray(oigData.unmatched_hospice_relevant_items)) return [];
   return oigData.unmatched_hospice_relevant_items.map((it) => {
@@ -180,16 +210,20 @@ export default function HospiceNewsPage() {
   const fetchAll = useCallback(async () => {
     try {
       const cacheBust = '?t=' + Date.now();
-      const [newsRes, dojRes, oigRes] = await Promise.all([
+      const [newsRes, dojRes, oigRes, courtRes, mfcuRes] = await Promise.all([
         fetch(NEWS_FEED_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
         fetch(DOJ_ACTIONS_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
         fetch(OIG_EXCLUSIONS_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+        fetch(COURTLISTENER_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+        fetch(MFCU_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
       ]);
 
       const merged = [
         ...normalizeNewsItems(newsRes),
         ...normalizeDojItems(dojRes),
         ...normalizeOigItems(oigRes),
+        ...normalizeCourtItems(courtRes),
+        ...normalizeMfcuItems(mfcuRes),
       ];
 
       // Sort by date desc; items missing dates go last
@@ -202,7 +236,7 @@ export default function HospiceNewsPage() {
         return db - da;
       });
 
-      const stamps = [newsRes, dojRes, oigRes]
+      const stamps = [newsRes, dojRes, oigRes, courtRes, mfcuRes]
         .map((x) => (x && x.generated_at ? parseDateSafe(x.generated_at) : null))
         .filter(Boolean);
       const maxStamp = stamps.length ? new Date(Math.max(...stamps.map((d) => d.getTime()))) : null;

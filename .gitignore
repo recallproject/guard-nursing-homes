@@ -34,3 +34,6 @@ test_fixed_output.pdf
 
 # Local rollback/backup files
 *.bak
+
+# Pipeline request caches
+scripts/.cache/

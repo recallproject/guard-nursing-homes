@@ -454,48 +454,6 @@
 .pa-home .pa-tile-coming { opacity: 0.62; }
 .pa-home .pa-tile-coming .pa-tile-arrow { display: none; }
 
-/* moat artifact card */
-.pa-home .pa-moat-section { padding: 24px 32px 64px; }
-.pa-home .pa-moat-card {
-  max-width: 1400px; margin: 0 auto;
-  background: var(--pa-bg-card);
-  border: 2px solid var(--pa-amber);
-  border-radius: var(--pa-radius-lg);
-  padding: 36px 40px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center;
-  box-shadow: var(--pa-shadow-md);
-}
-@media (max-width: 800px) { .pa-home .pa-moat-card { grid-template-columns: 1fr; padding: 28px; } }
-.pa-home .pa-moat-eyebrow {
-  font-family: "JetBrains Mono", monospace; font-size: 11px;
-  color: var(--pa-amber); letter-spacing: 0.18em; text-transform: uppercase;
-  margin-bottom: 12px; font-weight: 700;
-}
-.pa-home .pa-moat-title {
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 30px; line-height: 1.2; color: var(--pa-navy); margin: 0 0 14px; font-weight: 700;
-}
-.pa-home .pa-moat-card p { color: var(--pa-text); margin: 0 0 8px; }
-.pa-home .pa-moat-cta {
-  color: var(--pa-amber); font-family: "JetBrains Mono", monospace;
-  font-size: 13px; margin-top: 18px; font-weight: 600;
-}
-.pa-home .pa-moat-vis {
-  font-family: "JetBrains Mono", monospace; font-size: 12.5px;
-  color: var(--pa-text); background: var(--pa-bg-light);
-  border: 1px solid var(--pa-border); border-radius: var(--pa-radius);
-  padding: 18px; line-height: 1.85;
-}
-.pa-home .pa-moat-vis-head {
-  color: var(--pa-light-muted);
-  border-bottom: 1px solid var(--pa-border);
-  padding-bottom: 8px; margin-bottom: 8px;
-  font-size: 10.5px; letter-spacing: 0.1em;
-  text-transform: uppercase; font-weight: 700;
-}
-.pa-home .pa-moat-vis .pa-opname { color: var(--pa-navy); font-weight: 700; }
-.pa-home .pa-moat-vis .pa-num { color: var(--pa-amber); font-weight: 700; }
-
 /* trust strip */
 .pa-home .pa-trust-strip {
   background: var(--pa-bg-card);
