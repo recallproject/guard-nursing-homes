@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-03T03:09:59.604Z",
+  "generated_at": "2026-05-03T14:14:32.621Z",
   "source": "State AG MFCU",
   "coverage_note": "Best-effort scrape of state AG press-release RSS feeds for the 6 highest-volume Medicaid fraud states (CA, TX, NY, FL, IL, PA). No unified MFCU feed exists. State-specific feeds may break or change format; failures are logged and skipped, not fatal. Defamation guardrail: only items with a high- or medium-confidence match to a hospice in the AG's own state are emitted.",
   "states_attempted": [
@@ -22,7 +22,7 @@
     },
     {
       "state": "NY",
-      "reason": "not RSS/Atom (content-type=cached)"
+      "reason": "not RSS/Atom (content-type=text/html; charset=UTF-8)"
     },
     {
       "state": "FL",
