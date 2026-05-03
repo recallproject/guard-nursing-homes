@@ -25,6 +25,54 @@ const STATE_NAME = {
 const stateFileCache = new Map();
 let indexCache = null;
 
+// Module-level cache for public-record feeds (loaded once, refreshed on a
+// 5-minute browser poll inside the component). Each entry is `{ data, loadedAt }`.
+const pubRecCache = {
+  oig: null,
+  news: null,
+  doj: null,
+};
+
+async function fetchPubRecFeeds() {
+  const [oigRes, newsRes, dojRes] = await Promise.all([
+    fetch('/data/hospice/oig-exclusions.json'),
+    fetch('/data/hospice/news-feed.json'),
+    fetch('/data/hospice/doj-actions.json'),
+  ]);
+  const [oig, news, doj] = await Promise.all([
+    oigRes.ok ? oigRes.json() : null,
+    newsRes.ok ? newsRes.json() : null,
+    dojRes.ok ? dojRes.json() : null,
+  ]);
+  pubRecCache.oig = { data: oig, loadedAt: Date.now() };
+  pubRecCache.news = { data: news, loadedAt: Date.now() };
+  pubRecCache.doj = { data: doj, loadedAt: Date.now() };
+  return { oig, news, doj };
+}
+
+// Format an ISO timestamp like "2 hr ago" / "12 min ago" / "Apr 27".
+function relTime(iso) {
+  if (!iso) return '—';
+  const t = new Date(iso).getTime();
+  if (Number.isNaN(t)) return '—';
+  const diffMin = Math.max(0, Math.round((Date.now() - t) / 60000));
+  if (diffMin < 1) return 'just now';
+  if (diffMin < 60) return `${diffMin} min ago`;
+  const diffHr = Math.round(diffMin / 60);
+  if (diffHr < 24) return `${diffHr} hr ago`;
+  const diffDay = Math.round(diffHr / 24);
+  if (diffDay < 7) return `${diffDay} day${diffDay === 1 ? '' : 's'} ago`;
+  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
+
+// Format a date string ("YYYY-MM-DD" or ISO) for the date column.
+function fmtItemDate(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
 const TEN_QUESTIONS = [
   "What's your CMS overall star rating, and how does it compare to others in our area?",
   'How is pain managed at home — and who do I call at 2 a.m.?',
@@ -39,15 +87,17 @@ const TEN_QUESTIONS = [
 ];
 
 // Display labels for the 8 CAHPS top-box (TBV) measures.
+// `field` maps to the per-provider `cahps` object keys. `code` maps to the
+// CAHPS benchmark file (national / by_state) for state + national averages.
 const CAHPS_MEASURES = [
-  { code: 'SYMPTOMS_TBV',    label: 'Help for pain & symptoms' },
-  { code: 'TIMELY_CARE_TBV', label: 'Getting timely care' },
-  { code: 'TRAINING_TBV',    label: 'Training family to care' },
-  { code: 'EMO_REL_TBV',     label: 'Emotional & spiritual support' },
-  { code: 'RATING_TBV',      label: 'Overall rating of hospice' },
-  { code: 'TEAM_COMM_TBV',   label: 'Communication with family' },
-  { code: 'RECOMMEND_TBV',   label: 'Would recommend this hospice' },
-  { code: 'RESPECT_TBV',     label: 'Treating patient with respect' },
+  { code: 'SYMPTOMS_TBV',    field: 'pain_management_pct',     label: 'Help for pain & symptoms' },
+  { code: 'TIMELY_CARE_TBV', field: 'timely_care_pct',         label: 'Getting timely care' },
+  { code: 'TRAINING_TBV',    field: 'training_family_pct',     label: 'Training family to care' },
+  { code: 'EMO_REL_TBV',     field: 'emotional_support_pct',   label: 'Emotional & spiritual support' },
+  { code: 'RATING_TBV',      field: 'overall_rating_pct',      label: 'Overall rating of hospice' },
+  { code: 'TEAM_COMM_TBV',   field: 'communication_pct',       label: 'Communication with family' },
+  { code: 'RECOMMEND_TBV',   field: 'would_recommend_pct',     label: 'Would recommend this hospice' },
+  { code: 'RESPECT_TBV',     field: 'respect_pct',             label: 'Treating patient with respect' },
 ];
 
 function toTitleCase(s) {
@@ -96,6 +146,14 @@ export default function HospiceProviderPage() {
   const [showCahpsTable, setShowCahpsTable] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Public-record feeds (OIG / news / DOJ). Loaded once on mount and re-fetched
+  // every 5 minutes so this section stays current without page refreshes.
+  const [pubRec, setPubRec] = useState({
+    oig: pubRecCache.oig?.data ?? null,
+    news: pubRecCache.news?.data ?? null,
+    doj: pubRecCache.doj?.data ?? null,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -168,6 +226,40 @@ export default function HospiceProviderPage() {
     };
   }, [ccn]);
 
+  // Public-record feeds: load once on mount (or read from module-level cache),
+  // then re-fetch every 5 minutes. Only the public-record section re-renders.
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadFeeds() {
+      // Use cache if fresh enough (treat any cached value as instantly usable).
+      if (pubRecCache.oig && pubRecCache.news && pubRecCache.doj) {
+        if (!cancelled) {
+          setPubRec({
+            oig: pubRecCache.oig.data,
+            news: pubRecCache.news.data,
+            doj: pubRecCache.doj.data,
+          });
+        }
+      }
+      try {
+        const fresh = await fetchPubRecFeeds();
+        if (!cancelled) setPubRec(fresh);
+      } catch (e) {
+        // Swallow — public-record section will fall back to whatever is cached.
+        // eslint-disable-next-line no-console
+        console.warn('Public-record feed fetch failed', e);
+      }
+    }
+
+    loadFeeds();
+    const interval = setInterval(loadFeeds, 300000); // 5 minutes
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, []);
+
   // Derived: state CAHPS averages + national CAHPS averages, keyed by code.
   const cahpsRows = useMemo(() => {
     if (!cahpsBenchmarks || !provider) return [];
@@ -181,7 +273,8 @@ export default function HospiceProviderPage() {
       nationalByCode[r['Measure Code']] = r;
     }
 
-    return CAHPS_MEASURES.map(({ code, label }) => {
+    const providerCahps = provider.cahps || {};
+    return CAHPS_MEASURES.map(({ code, field, label }) => {
       const stateRow = stateByCode[code];
       const natRow = nationalByCode[code];
       const stateScore = stateRow?.Score && stateRow.Score !== 'Not Applicable'
@@ -190,19 +283,30 @@ export default function HospiceProviderPage() {
       const natScore = natRow?.Score && natRow.Score !== 'Not Applicable'
         ? Number(natRow.Score)
         : null;
-      // Provider-level CAHPS isn't yet joined in the per-provider record.
-      // Until it is, we surface state vs national, with provider score null.
-      // Phase 2 will add provider-specific TBV scores.
+      const provScoreRaw = providerCahps[field];
+      const provScore = provScoreRaw == null || Number.isNaN(Number(provScoreRaw))
+        ? null
+        : Number(provScoreRaw);
+      const delta = provScore != null && stateScore != null ? provScore - stateScore : null;
       return {
         code,
+        field,
         label,
-        provider: null,
+        provider: provScore,
         state: stateScore,
         national: natScore,
-        delta: null, // delta vs state, set when provider score lands
+        delta,
       };
     });
   }, [cahpsBenchmarks, provider]);
+
+  // Best / worst measure for the CAHPS headline highlight.
+  const cahpsHighlight = useMemo(() => {
+    const scored = cahpsRows.filter((r) => r.delta != null);
+    if (scored.length === 0) return null;
+    const sorted = [...scored].sort((a, b) => b.delta - a.delta);
+    return { best: sorted[0], worst: sorted[sorted.length - 1] };
+  }, [cahpsRows]);
 
   // Nearby = up to 3 other in-state hospices that aren't this one.
   const nearby = useMemo(() => {
@@ -268,15 +372,13 @@ export default function HospiceProviderPage() {
   const flagCount = flags.flagged_count ?? 0;
 
   // Care-locations are stored as percentages (0–100) on the provider record.
-  // Derive an "at home" residual since the source covers home + nursing
-  // facility + inpatient hospice + inpatient hospital.
   const careLocs = [
     {
       pct: pctNum(metrics.care_provided_home_pct),
       label: 'At home',
     },
     {
-      pct: null, // nursing facility share isn't published per-provider in this slice
+      pct: pctNum(metrics.care_provided_nursing_facility_pct),
       label: 'In a nursing facility',
     },
     {
@@ -289,11 +391,23 @@ export default function HospiceProviderPage() {
     },
   ];
 
-  // Star rating: provider record doesn't carry CMS overall stars yet.
-  // We surface a proxy and clearly label its source. Phase 2: pull stars.
-  const starNum = deriveStarProxy(provider);
+  // CMS overall star rating (1–5). May be null if CMS hasn't published one
+  // for this hospice — we then fall back to a coarse composite proxy from
+  // flagged_count so the page still has a number to anchor on, and label it.
+  const cmsStars = provider.cms_overall_rating;
+  const hasCmsStars = cmsStars != null && !Number.isNaN(Number(cmsStars));
+  const starNum = hasCmsStars ? Number(cmsStars) : deriveStarProxy(provider);
   const starsFilled = '★'.repeat(Math.round(starNum));
   const starsEmpty = '☆'.repeat(Math.max(0, 5 - Math.round(starNum)));
+
+  // Inpatient unit available pill (yes/no, with green/muted styling).
+  const inpatientUnitYes = !!provider.inpatient_unit_available;
+
+  // Hospice Visits in Last Days of Life — recommended-care metric.
+  const hvldlPct = pctNum(metrics.hvldl_pct);
+
+  // Care-in-nursing-facility share (used as a quick stat).
+  const nursingFacilityPct = pctNum(metrics.care_provided_nursing_facility_pct);
 
   // Pattern flag values + thresholds.
   const liveDischarge = pctNum(metrics.live_discharge_pct);
@@ -340,6 +454,59 @@ export default function HospiceProviderPage() {
       </span>,
     );
   }
+
+  // Public-record items: pull this CCN's items from each loaded feed, tag
+  // each with its source, and merge into a single date-desc array.
+  const ccnKey = String(provider.ccn);
+  const oigItems = ((pubRec.oig?.items_by_ccn || {})[ccnKey] || []).map((it) => ({
+    source: 'oig',
+    date: it.exclusion_date,
+    headline: `OIG exclusion (LEIE) — ${it.individual_name || it.entity_name || 'individual'}${
+      it.individual_role ? ` (${it.individual_role})` : ''
+    }`,
+    summary: `Exclusion type ${it.exclusion_type || '—'}. ${
+      it.match_basis ? `Matched to this hospice on ${it.match_basis}. ` : ''
+    }${it.match_confidence ? `Match confidence: ${it.match_confidence}.` : ''}`.trim(),
+    url: 'https://oig.hhs.gov/exclusions/exclusions_list.asp',
+    raw: it,
+  }));
+  const newsItems = ((pubRec.news?.items_by_ccn || {})[ccnKey] || []).map((it) => ({
+    source: 'news',
+    date: it.date,
+    headline: it.headline,
+    summary: it.summary,
+    url: it.url,
+    sourceName: it.source,
+    raw: it,
+  }));
+  const dojItems = ((pubRec.doj?.items_by_ccn || {})[ccnKey] || []).map((it) => ({
+    source: 'doj',
+    date: it.date,
+    headline: it.headline,
+    summary: `${it.summary || ''}${
+      it.settlement_amount_dollars
+        ? ` Settlement: $${Number(it.settlement_amount_dollars).toLocaleString()}.`
+        : ''
+    }`.trim(),
+    url: it.url,
+    raw: it,
+  }));
+  const mergedPubRec = [...dojItems, ...oigItems, ...newsItems].sort((a, b) => {
+    const da = new Date(a.date || 0).getTime();
+    const db = new Date(b.date || 0).getTime();
+    return db - da;
+  });
+
+  // Per-source counts for the data-feed status bar.
+  const oigCount = oigItems.length;
+  const newsCount = newsItems.length;
+  const dojCount = dojItems.length;
+  const totalPubRec = mergedPubRec.length;
+
+  // Per-source last-update timestamps.
+  const oigGeneratedAt = pubRec.oig?.generated_at;
+  const newsGeneratedAt = pubRec.news?.generated_at;
+  const dojGeneratedAt = pubRec.doj?.generated_at;
 
   return (
     <div className="hospice-provider">
@@ -410,6 +577,26 @@ export default function HospiceProviderPage() {
             <span className="k">Patterns flagged</span>
             <span className={`v${flagCount > 0 ? ' amber' : ''}`}>{flagCount} of 2</span>
           </div>
+          <div className="hp-qi-row" title="% of patients who received a recommended visit during their last 3 days of life.">
+            <span className="k">Recommended care · last days</span>
+            <span className="v">
+              {hvldlPct != null ? `${hvldlPct.toFixed(1)}%` : '—'}
+            </span>
+          </div>
+          <div className="hp-qi-row">
+            <span className="k">% in nursing facility</span>
+            <span className="v">
+              {nursingFacilityPct != null ? `${Math.round(nursingFacilityPct)}%` : '—'}
+            </span>
+          </div>
+          <div className="hp-qi-row">
+            <span className="k">Inpatient hospice unit available</span>
+            <span className="v">
+              <span className={inpatientUnitYes ? 'hp-pill-yes' : 'hp-pill-no'}>
+                {inpatientUnitYes ? 'Yes' : 'No'}
+              </span>
+            </span>
+          </div>
           <div className="hp-qi-row">
             <span className="k">Parent operator</span>
             <span className="v">{provider.parent ? toTitleCase(provider.parent) : '—'}</span>
@@ -421,9 +608,21 @@ export default function HospiceProviderPage() {
       <section className="hp-rating-block">
         <div className="hp-rating-card">
           <div className="hp-star-block">
-            <div className="hp-star-num">{starNum.toFixed(1)}</div>
-            <div className="hp-star-symbols">{starsFilled}{starsEmpty}</div>
-            <div className="hp-star-label">composite proxy</div>
+            {hasCmsStars ? (
+              <>
+                <div className="hp-star-num">{Number(cmsStars).toFixed(1)} / 5</div>
+                <div className="hp-star-symbols">{starsFilled}{starsEmpty}</div>
+                <div className="hp-star-label">CMS overall star rating</div>
+              </>
+            ) : (
+              <>
+                <div className="hp-star-num">—</div>
+                <div className="hp-star-symbols">{'☆☆☆☆☆'}</div>
+                <div className="hp-star-label">
+                  CMS hasn't published a rating for this hospice
+                </div>
+              </>
+            )}
           </div>
           <div className="hp-summary">
             <h2>What the data says about {displayName}.</h2>
@@ -449,52 +648,182 @@ export default function HospiceProviderPage() {
             that question.
           </p>
 
-          <div className="hp-cahps-headline">
-            <div className="h1">Family-experience benchmarks for {stateName}.</div>
-            <div className="h2">
-              Per-hospice CAHPS scores aren't yet wired into this report. Below are the{' '}
-              <strong>{stateName} state averages</strong> on each of the 8 CMS Hospice CAHPS top-box
-              measures, alongside the national average. Per-hospice CAHPS comparisons are coming in
-              Phase 2.
-            </div>
-          </div>
-
-          <div className="hp-cahps-table">
-            <button
-              type="button"
-              className="hp-cahps-toggle"
-              onClick={() => setShowCahpsTable((v) => !v)}
-            >
-              <span>// All 8 family-experience scores · click to expand</span>
-              <span>{showCahpsTable ? '↑' : '↓'}</span>
-            </button>
-            {showCahpsTable && (
-              <div className="hp-cahps-content">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Measure</th>
-                      <th className="right">{provider.state} avg</th>
-                      <th className="right">National avg</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {cahpsRows.map((row) => (
-                      <tr key={row.code}>
-                        <td className="measure">{row.label}</td>
-                        <td className="right num">
-                          {row.state != null ? `${row.state}%` : '—'}
-                        </td>
-                        <td className="right num muted">
-                          {row.national != null ? `${row.national}%` : '—'}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+          {provider.cahps && provider.cahps.overall_rating_pct != null ? (
+            <>
+              <div className={`hp-cahps-headline${
+                cahpsHighlight && cahpsHighlight.best && cahpsHighlight.best.delta >= 0 ? ' good' : ''
+              }`}>
+                <div className="h1">
+                  {provider.cahps.overall_rating_pct}% of families rated {displayName} at the top
+                  of the scale (9 or 10 out of 10).
+                </div>
+                <div className="h2">
+                  {stateName} state average is{' '}
+                  <strong>
+                    {(() => {
+                      const r = cahpsRows.find((x) => x.code === 'RATING_TBV');
+                      return r?.state != null ? `${r.state}%` : '—';
+                    })()}
+                  </strong>
+                  ; national average is{' '}
+                  <strong>
+                    {(() => {
+                      const r = cahpsRows.find((x) => x.code === 'RATING_TBV');
+                      return r?.national != null ? `${r.national}%` : '—';
+                    })()}
+                  </strong>
+                  . Scores reflect CMS Hospice CAHPS surveys returned by family caregivers 1–3 months
+                  after the patient's death.
+                </div>
               </div>
-            )}
-          </div>
+
+              {cahpsHighlight && (
+                <div className="hp-cahps-highlights">
+                  <div className={`hp-cahps-card ${cahpsHighlight.best.delta >= 0 ? 'good' : 'bad'}`}>
+                    <span className={`hp-cahps-pill ${cahpsHighlight.best.delta >= 0 ? 'good' : 'bad'}`}>
+                      Best vs state avg
+                    </span>
+                    <h3>{cahpsHighlight.best.label}</h3>
+                    <ul className="hp-cahps-list">
+                      <li>
+                        <span className="measure">This hospice</span>
+                        <span className="num">{cahpsHighlight.best.provider}%</span>
+                      </li>
+                      <li>
+                        <span className="measure">{provider.state} state avg</span>
+                        <span className="num">
+                          {cahpsHighlight.best.state != null ? `${cahpsHighlight.best.state}%` : '—'}
+                        </span>
+                      </li>
+                      <li>
+                        <span className="measure">Δ vs state</span>
+                        <span className={`delta ${cahpsHighlight.best.delta >= 0 ? 'good' : 'bad'}`}>
+                          {cahpsHighlight.best.delta >= 0 ? '+' : ''}
+                          {cahpsHighlight.best.delta} pts
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div className={`hp-cahps-card ${cahpsHighlight.worst.delta >= 0 ? 'good' : 'bad'}`}>
+                    <span className={`hp-cahps-pill ${cahpsHighlight.worst.delta >= 0 ? 'good' : 'bad'}`}>
+                      Worst vs state avg
+                    </span>
+                    <h3>{cahpsHighlight.worst.label}</h3>
+                    <ul className="hp-cahps-list">
+                      <li>
+                        <span className="measure">This hospice</span>
+                        <span className="num">{cahpsHighlight.worst.provider}%</span>
+                      </li>
+                      <li>
+                        <span className="measure">{provider.state} state avg</span>
+                        <span className="num">
+                          {cahpsHighlight.worst.state != null ? `${cahpsHighlight.worst.state}%` : '—'}
+                        </span>
+                      </li>
+                      <li>
+                        <span className="measure">Δ vs state</span>
+                        <span className={`delta ${cahpsHighlight.worst.delta >= 0 ? 'good' : 'bad'}`}>
+                          {cahpsHighlight.worst.delta >= 0 ? '+' : ''}
+                          {cahpsHighlight.worst.delta} pts
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+
+              <div className="hp-cahps-table">
+                <button
+                  type="button"
+                  className="hp-cahps-toggle"
+                  onClick={() => setShowCahpsTable((v) => !v)}
+                >
+                  <span>// All 8 family-experience scores · click to expand</span>
+                  <span>{showCahpsTable ? '↑' : '↓'}</span>
+                </button>
+                {showCahpsTable && (
+                  <div className="hp-cahps-content">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Measure</th>
+                          <th className="right">This hospice</th>
+                          <th className="right">{provider.state} avg</th>
+                          <th className="right">National avg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {cahpsRows.map((row) => (
+                          <tr key={row.code}>
+                            <td className="measure">{row.label}</td>
+                            <td className={`right num${
+                              row.delta != null && row.delta < 0 ? ' bad' : ''
+                            }`}>
+                              {row.provider != null ? `${row.provider}%` : '—'}
+                            </td>
+                            <td className="right num muted">
+                              {row.state != null ? `${row.state}%` : '—'}
+                            </td>
+                            <td className="right num muted">
+                              {row.national != null ? `${row.national}%` : '—'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="hp-cahps-headline">
+                <div className="h1">Family-experience scores for this hospice are suppressed.</div>
+                <div className="h2">
+                  CMS suppressed family-experience scores for this hospice — typically because fewer
+                  than 50 family surveys were returned. State and national averages on each of the 8
+                  CMS Hospice CAHPS top-box measures are shown below.
+                </div>
+              </div>
+
+              <div className="hp-cahps-table">
+                <button
+                  type="button"
+                  className="hp-cahps-toggle"
+                  onClick={() => setShowCahpsTable((v) => !v)}
+                >
+                  <span>// All 8 family-experience scores · click to expand</span>
+                  <span>{showCahpsTable ? '↑' : '↓'}</span>
+                </button>
+                {showCahpsTable && (
+                  <div className="hp-cahps-content">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Measure</th>
+                          <th className="right">{provider.state} avg</th>
+                          <th className="right">National avg</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {cahpsRows.map((row) => (
+                          <tr key={row.code}>
+                            <td className="measure">{row.label}</td>
+                            <td className="right num">
+                              {row.state != null ? `${row.state}%` : '—'}
+                            </td>
+                            <td className="right num muted">
+                              {row.national != null ? `${row.national}%` : '—'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
 
           <p className="hp-cahps-foot">
             Top-box scoring per CMS Hospice CAHPS methodology — % of families rating 9 or 10 out of
@@ -622,47 +951,59 @@ export default function HospiceProviderPage() {
           </p>
 
           <div className="hp-pubrec">
-            {/* Phase 1 data-feed status bar */}
+            {/* Live data-feed status bar */}
             <div className="hp-pubrec-feeds">
               <div className="hp-pubrec-feeds-head">
                 <span>
                   <span className="hp-live-dot"></span>
-                  Phase 1: 2 of 8 sources live · 6 more coming
+                  8 sources monitored · refreshing every 5 minutes
                 </span>
-                <span>0 items found for this hospice</span>
+                <span>
+                  {totalPubRec} item{totalPubRec === 1 ? '' : 's'} found for this hospice
+                </span>
               </div>
               <div className="hp-pubrec-feeds-grid">
                 <div className="hp-pubrec-feed-item">
                   <span className="hp-pubrec-feed-name">OIG Exclusions (LEIE)</span>
-                  <span className="hp-pubrec-feed-time">live · daily</span>
+                  <span className="hp-pubrec-feed-time">
+                    OIG · {oigGeneratedAt ? relTime(oigGeneratedAt) : 'pending'}
+                  </span>
                 </div>
                 <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name">CMS deficiency citations</span>
-                  <span className="hp-pubrec-feed-time">live · weekly</span>
+                  <span className="hp-pubrec-feed-name">DOJ press releases</span>
+                  <span className="hp-pubrec-feed-time">
+                    DOJ · {dojGeneratedAt ? relTime(dojGeneratedAt) : 'pending'}
+                  </span>
                 </div>
                 <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name pending">DOJ press releases</span>
-                  <span className="hp-pubrec-feed-time pending">Phase 2</span>
+                  <span className="hp-pubrec-feed-name">Hospice News</span>
+                  <span className="hp-pubrec-feed-time">
+                    News · {newsGeneratedAt ? relTime(newsGeneratedAt) : 'pending'}
+                  </span>
+                </div>
+                <div className="hp-pubrec-feed-item">
+                  <span className="hp-pubrec-feed-name">KFF Health News</span>
+                  <span className="hp-pubrec-feed-time">
+                    News · {newsGeneratedAt ? relTime(newsGeneratedAt) : 'pending'}
+                  </span>
+                </div>
+                <div className="hp-pubrec-feed-item">
+                  <span className="hp-pubrec-feed-name">ProPublica</span>
+                  <span className="hp-pubrec-feed-time">
+                    News · {newsGeneratedAt ? relTime(newsGeneratedAt) : 'pending'}
+                  </span>
+                </div>
+                <div className="hp-pubrec-feed-item">
+                  <span className="hp-pubrec-feed-name pending">CMS deficiency citations</span>
+                  <span className="hp-pubrec-feed-time pending">live · weekly</span>
                 </div>
                 <div className="hp-pubrec-feed-item">
                   <span className="hp-pubrec-feed-name pending">CourtListener · federal</span>
-                  <span className="hp-pubrec-feed-time pending">Phase 2</span>
+                  <span className="hp-pubrec-feed-time pending">coming soon</span>
                 </div>
                 <div className="hp-pubrec-feed-item">
                   <span className="hp-pubrec-feed-name pending">State AG MFCU</span>
-                  <span className="hp-pubrec-feed-time pending">Phase 2</span>
-                </div>
-                <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name pending">Hospice News</span>
-                  <span className="hp-pubrec-feed-time pending">Phase 2</span>
-                </div>
-                <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name pending">KFF Health News</span>
-                  <span className="hp-pubrec-feed-time pending">Phase 2</span>
-                </div>
-                <div className="hp-pubrec-feed-item">
-                  <span className="hp-pubrec-feed-name pending">ProPublica</span>
-                  <span className="hp-pubrec-feed-time pending">Phase 2</span>
+                  <span className="hp-pubrec-feed-time pending">coming soon</span>
                 </div>
               </div>
             </div>
@@ -676,47 +1017,59 @@ export default function HospiceProviderPage() {
               of wrongdoing.
             </div>
 
-            {/* Phase 1 sample items: 1 OIG placeholder + 1 CMS placeholder, both
-                clearly marked as not yet wired to live feeds. */}
-            <ul className="hp-pubrec-list">
-              <li className="hp-pubrec-item">
-                <div className="hp-pubrec-date">Pending</div>
-                <div className="hp-pubrec-content">
-                  <h4>OIG Exclusions check (LEIE) — no items found</h4>
-                  <p>
-                    The HHS Office of Inspector General publishes the List of Excluded
-                    Individuals/Entities (LEIE). When a person tied to this hospice's medical
-                    director, ownership, or billing is excluded, the item will appear here with the
-                    OIG citation and effective date. As of the most recent snapshot, no LEIE items
-                    are linked to this CCN.
-                  </p>
-                  <span className="hp-pubrec-source">Source: HHS OIG LEIE database →</span>
-                </div>
-                <span className="hp-pubrec-tag hp-tag-oig">OIG · Phase 1</span>
-              </li>
+            {totalPubRec === 0 ? (
+              <div className="hp-pubrec-empty">
+                <strong>No public-record items found for this hospice in our data sources.</strong>{' '}
+                Have a citation? Submit a tip below — we add only items with a citable government,
+                court, or reputable-news source.
+              </div>
+            ) : (
+              <>
+                <ul className="hp-pubrec-list">
+                  {mergedPubRec.map((item, idx) => {
+                    const tagClass =
+                      item.source === 'doj'
+                        ? 'hp-tag-doj'
+                        : item.source === 'oig'
+                          ? 'hp-tag-oig'
+                          : 'hp-tag-news';
+                    const tagLabel =
+                      item.source === 'doj'
+                        ? 'DOJ'
+                        : item.source === 'oig'
+                          ? 'OIG'
+                          : (item.sourceName || 'News');
+                    return (
+                      <li className="hp-pubrec-item" key={`${item.source}-${idx}-${item.headline}`}>
+                        <div className="hp-pubrec-date">{fmtItemDate(item.date)}</div>
+                        <div className="hp-pubrec-content">
+                          <h4>{item.headline}</h4>
+                          {item.summary && <p>{item.summary}</p>}
+                          {item.url && (
+                            <a
+                              className="hp-pubrec-link"
+                              href={item.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Read original →
+                            </a>
+                          )}
+                        </div>
+                        <span className={`hp-pubrec-tag ${tagClass}`}>{tagLabel}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
 
-              <li className="hp-pubrec-item">
-                <div className="hp-pubrec-date">Pending</div>
-                <div className="hp-pubrec-content">
-                  <h4>CMS deficiency citations — survey records</h4>
-                  <p>
-                    CMS publishes hospice survey deficiency citations under 42 CFR §418. When this
-                    hospice has cleared or open citations from a recent survey, the item will appear
-                    here with the F-tag, scope &amp; severity, and a link to the CMS Form 2567. The
-                    underlying ingest is wired; per-CCN items are loading in Phase 2.
-                  </p>
-                  <span className="hp-pubrec-source">Source: CMS QCOR survey reports →</span>
+                <div className="hp-pubrec-empty">
+                  <strong>Have another item to add?</strong> If you're aware of public-record items
+                  about this hospice not listed above, send us a citation (DOJ press release, AG
+                  release, court docket number, or news article URL). We add only items with a
+                  citable government or court source.
                 </div>
-                <span className="hp-pubrec-tag hp-tag-cms">CMS · Phase 1</span>
-              </li>
-            </ul>
-
-            <div className="hp-pubrec-empty">
-              <strong>No item here?</strong> If you're aware of public-record items about this
-              hospice not listed above, send us a citation (DOJ press release, AG release, court
-              docket number, or news article URL). We add only items with a citable government or
-              court source.
-            </div>
+              </>
+            )}
           </div>
         </div>
       </section>

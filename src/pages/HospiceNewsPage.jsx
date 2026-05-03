@@ -1,200 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import '../styles/hospice-news.css';
 
-// --- Sample feed (Phase 1). Phase 2 will replace this with the real data feed.
-const SAMPLE_FEED = [
-  {
-    id: 'hn-001',
-    date: 'May 1, 2026',
-    time: '2:14 PM',
-    bucket: 'today',
-    source: 'doj',
-    sourceTag: 'DOJ · Settled',
-    headline: 'Florida hospice chain settles $14.2M False Claims Act case with DOJ',
-    summary:
-      "According to the Department of Justice, Sunlight Hospice Group of Tampa agreed to pay $14.2M to resolve allegations of billing Medicare for hospice care provided to patients who did not meet the program's terminal-illness eligibility criteria between 2019 and 2023. The settlement contains no admission of wrongdoing.",
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'DOJ press release',
-    extraLinkText: 'Read the complaint',
-    hospiceCcn: '101501',
-  },
-  {
-    id: 'hn-002',
-    date: 'May 1, 2026',
-    time: '11:42 AM',
-    bucket: 'today',
-    source: 'news',
-    sourceTag: 'News · Industry',
-    headline: 'Hospice News: PE consolidation in 2025 hit highest level since 2018',
-    summary:
-      'As reported by Hospice News, private-equity-backed acquisitions of hospice agencies in 2025 reached the highest annual level since 2018, with 47 transactions totaling roughly $2.1B. Three Texas-based platforms accounted for nearly 40% of the volume.',
-    hospiceLinkText: 'Affected hospices (47)',
-    sourceLinkText: 'Hospice News article',
-  },
-  {
-    id: 'hn-003',
-    date: 'May 1, 2026',
-    time: '9:18 AM',
-    bucket: 'today',
-    source: 'oig',
-    sourceTag: 'OIG · Exclusion',
-    headline: 'OIG excludes former medical director of Texas hospice from federal programs',
-    summary:
-      "The HHS Office of Inspector General excluded a physician who served as medical director at Comfort Rest Hospice of Houston from federal program participation. The exclusion was based on the physician's separate state license action; the hospice itself was not excluded.",
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'OIG Exclusions Database',
-    hospiceCcn: '451502',
-  },
-  {
-    id: 'hn-004',
-    date: 'Apr 30, 2026',
-    time: '3:55 PM',
-    bucket: 'week',
-    source: 'news',
-    sourceTag: 'News · Investigation',
-    headline: 'KFF Health News: Three California hospices flagged in CMS audit findings',
-    summary:
-      'KFF Health News reported on a CMS audit identifying three Los Angeles-area hospices with billing patterns warranting further review. The audit findings were obtained through a FOIA request. CMS has not announced enforcement actions related to the audit.',
-    hospiceLinkText: 'Affected hospices (3)',
-    sourceLinkText: 'KFF Health News article',
-  },
-  {
-    id: 'hn-005',
-    date: 'Apr 29, 2026',
-    time: '10:30 AM',
-    bucket: 'week',
-    source: 'cms',
-    sourceTag: 'CMS · Termination',
-    headline: 'CMS issues termination notice to Kentucky hospice for survey deficiencies',
-    summary:
-      'CMS notified Bluegrass End-of-Life Care of Lexington of intent to terminate its Medicare provider agreement effective June 15, 2026, citing condition-level deficiencies under §418.106 (Drugs and biologicals). The hospice has 60 days to submit a plan of correction.',
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'CMS QCOR survey report',
-    hospiceCcn: '181503',
-  },
-  {
-    id: 'hn-006',
-    date: 'Apr 28, 2026',
-    time: '4:12 PM',
-    bucket: 'week',
-    source: 'ag',
-    sourceTag: 'State AG · TX',
-    headline: 'Texas AG announces $8.7M Medicaid fraud settlement with Houston hospice',
-    summary:
-      "Per a press release from the Texas Attorney General's Civil Medicaid Fraud Division, Houston-based Lone Star Hospice agreed to pay $8.7M to resolve Medicaid fraud allegations related to hospice eligibility certifications between 2020 and 2024. The hospice did not admit liability.",
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'TX AG press release',
-    hospiceCcn: '451504',
-  },
-  {
-    id: 'hn-007',
-    date: 'Apr 27, 2026',
-    time: '8:45 AM',
-    bucket: 'week',
-    source: 'news',
-    sourceTag: 'News · Investigation',
-    headline: 'ProPublica investigation: Live discharge patterns at high-volume hospice chains',
-    summary:
-      'ProPublica published a multi-month investigation examining hospices with high early-live-discharge rates concentrated in Florida, Nevada, and Arizona. The piece names 12 hospices across three corporate parents. Cites CMS Hospice Care Index data.',
-    hospiceLinkText: 'Affected hospices (12)',
-    sourceLinkText: 'ProPublica article',
-  },
-  {
-    id: 'hn-008',
-    date: 'Apr 26, 2026',
-    time: '2:01 PM',
-    bucket: 'week',
-    source: 'court',
-    sourceTag: 'Court · FCA',
-    headline: 'Federal civil docket opened: qui tam suit alleges hospice billing fraud',
-    summary:
-      'A False Claims Act qui tam complaint filed by a former employee of an Arizona hospice was unsealed in the District of Arizona. Allegations involve hospice eligibility certification practices between 2021 and 2024. The complaint is unverified at this stage; defendants have not yet responded.',
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'CourtListener docket',
-    hospiceCcn: '031505',
-  },
-  {
-    id: 'hn-009',
-    date: 'Apr 22, 2026',
-    time: '11:08 AM',
-    bucket: 'earlier',
-    source: 'ag',
-    sourceTag: 'State AG · CA',
-    headline: 'California AG announces $267M Medi-Cal hospice fraud settlement',
-    summary:
-      'California Attorney General announced a settlement covering 23 hospices identified through a multi-year Medi-Cal Fraud Control Unit investigation. The case is the largest hospice-related Medi-Cal recovery on record.',
-    hospiceLinkText: 'Affected hospices (23)',
-    sourceLinkText: 'CA AG press release',
-  },
-  {
-    id: 'hn-010',
-    date: 'Apr 18, 2026',
-    time: '9:24 AM',
-    bucket: 'earlier',
-    source: 'oig',
-    sourceTag: 'OIG · Report',
-    headline: 'OIG report: hospice general inpatient utilization patterns vary 12x by state',
-    summary:
-      'The HHS Office of Inspector General published a national analysis of hospice General Inpatient (GIP) utilization showing 12-fold variation across states. The report identifies seven states where outlier providers warrant closer scrutiny.',
-    sourceLinkText: 'OIG report',
-  },
-  {
-    id: 'hn-011',
-    date: 'Apr 14, 2026',
-    time: '3:40 PM',
-    bucket: 'earlier',
-    source: 'doj',
-    sourceTag: 'DOJ · Settled',
-    headline: '$3.2M False Claims settlement with Georgia hospice',
-    summary:
-      'Per the DOJ, an Atlanta-area hospice agreed to pay $3.2M to resolve allegations of billing Medicare for hospice care for patients later determined ineligible. Settlement includes a five-year corporate integrity agreement.',
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'DOJ press release',
-    hospiceCcn: '111506',
-  },
-  {
-    id: 'hn-012',
-    date: 'Apr 9, 2026',
-    time: '12:50 PM',
-    bucket: 'earlier',
-    source: 'news',
-    sourceTag: 'News · Industry',
-    headline: 'Hospice News: New York AG opens inquiry into upstate hospice acquisitions',
-    summary:
-      "As reported by Hospice News, the New York AG's Medicaid Fraud Control Unit has opened a preliminary inquiry into a series of hospice acquisitions in the Buffalo and Rochester regions over the past 18 months.",
-    sourceLinkText: 'Hospice News article',
-  },
-  {
-    id: 'hn-013',
-    date: 'Apr 4, 2026',
-    time: '5:18 PM',
-    bucket: 'earlier',
-    source: 'oig',
-    sourceTag: 'OIG · Exclusion',
-    headline: 'OIG excludes hospice administrator following state license revocation',
-    summary:
-      "The HHS Office of Inspector General excluded a hospice administrator from federal program participation following revocation of the individual's state nursing-home administrator license. The hospice's federal certification is unaffected.",
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'OIG Exclusions Database',
-    hospiceCcn: '361507',
-  },
-  {
-    id: 'hn-014',
-    date: 'Apr 2, 2026',
-    time: '10:15 AM',
-    bucket: 'earlier',
-    source: 'ag',
-    sourceTag: 'State AG · PA',
-    headline: 'Pennsylvania AG: $1.4M settlement with Pittsburgh hospice over Medicaid billing',
-    summary:
-      "Per the Pennsylvania AG's Medicaid Fraud Control Section, a Pittsburgh-area hospice agreed to a $1.4M settlement to resolve Medicaid billing allegations related to general inpatient care levels between 2022 and 2024.",
-    hospiceLinkText: 'Hospice profile',
-    sourceLinkText: 'PA AG press release',
-    hospiceCcn: '391508',
-  },
-];
+// --- Source files (real aggregated data) ---
+const NEWS_FEED_URL = '/data/hospice/news-feed.json';
+const DOJ_ACTIONS_URL = '/data/hospice/doj-actions.json';
+const OIG_EXCLUSIONS_URL = '/data/hospice/oig-exclusions.json';
+
+const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 
 const SOURCE_FILTERS = [
   { key: 'all',   label: 'All' },
@@ -215,79 +29,293 @@ const TAG_CLASS = {
   court: 'hn-tag-court',
 };
 
-const BUCKET_LABELS = [
-  { key: 'today',   label: 'Today · May 1, 2026' },
-  { key: 'week',    label: 'This week · April 26 – April 30' },
-  { key: 'earlier', label: 'Earlier in April' },
-];
+const NEWS_SOURCE_LABELS = new Set(['Hospice News', 'KFF Health News', 'ProPublica']);
 
-function FeedLinks({ item }) {
-  const parts = [];
-  if (item.hospiceLinkText) {
-    parts.push(
-      item.hospiceCcn ? (
-        <Link key="hospice" to={'/hospice/' + item.hospiceCcn}>
-          {item.hospiceLinkText} →
-        </Link>
-      ) : (
-        <span key="hospice" className="plain">{item.hospiceLinkText} →</span>
-      )
-    );
-  }
-  if (item.sourceLinkText) {
-    parts.push(
-      <a key="source" href="#" onClick={(e) => e.preventDefault()}>
-        {item.sourceLinkText} →
-      </a>
-    );
-  }
-  if (item.extraLinkText) {
-    parts.push(
-      <a key="extra" href="#" onClick={(e) => e.preventDefault()}>
-        {item.extraLinkText} →
-      </a>
-    );
-  }
+// ---------- helpers ----------
 
-  // Interleave separators
-  const out = [];
-  parts.forEach((node, i) => {
-    if (i > 0) out.push(<span key={'sep-' + i} className="sep">·</span>);
-    out.push(node);
-  });
-  return <div className="links">{out}</div>;
+function parseDateSafe(s) {
+  if (!s) return null;
+  const d = new Date(s);
+  if (Number.isNaN(d.getTime())) return null;
+  return d;
 }
+
+function formatDate(d) {
+  if (!d) return '';
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function formatTime(d) {
+  if (!d) return '';
+  return d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+}
+
+function formatMonthYear(d) {
+  return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+function formatBucketKey(d) {
+  if (!d) return 'unknown';
+  const now = new Date();
+  const startOfDay = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate());
+  const today = startOfDay(now);
+  const dayOf = startOfDay(d);
+  const diffDays = Math.round((today - dayOf) / (24 * 60 * 60 * 1000));
+
+  if (diffDays === 0) return 'today';
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays > 1 && diffDays <= 7) return 'thisweek';
+
+  // Earlier in same month as today
+  if (d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()) {
+    return 'earlierMonth:' + now.getFullYear() + '-' + now.getMonth();
+  }
+  // Group by year-month
+  return 'month:' + d.getFullYear() + '-' + d.getMonth();
+}
+
+function formatBucketLabel(key, sampleDate) {
+  if (key === 'today') return 'Today';
+  if (key === 'yesterday') return 'Yesterday';
+  if (key === 'thisweek') return 'This week';
+  if (key === 'unknown') return 'Date unknown';
+  if (key.startsWith('earlierMonth:')) {
+    const now = new Date();
+    return 'Earlier in ' + now.toLocaleDateString('en-US', { month: 'long' });
+  }
+  if (key.startsWith('month:') && sampleDate) {
+    return formatMonthYear(sampleDate);
+  }
+  return '';
+}
+
+function formatRelativeAgo(then, now) {
+  if (!then) return null;
+  const diffSec = Math.max(0, Math.floor((now - then) / 1000));
+  if (diffSec < 60) return 'just now';
+  const diffMin = Math.floor(diffSec / 60);
+  if (diffMin < 60) return diffMin + ' min ago';
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return diffHr + ' hr ago';
+  const diffDay = Math.floor(diffHr / 24);
+  return diffDay + ' day' + (diffDay === 1 ? '' : 's') + ' ago';
+}
+
+function formatDollarsCompact(n) {
+  if (!n || n <= 0) return '$0';
+  if (n >= 1_000_000_000) return '$' + (n / 1_000_000_000).toFixed(1) + 'B';
+  if (n >= 1_000_000) return '$' + (n / 1_000_000).toFixed(1) + 'M';
+  if (n >= 1_000) return '$' + (n / 1_000).toFixed(0) + 'K';
+  return '$' + n.toFixed(0);
+}
+
+// ---------- normalization ----------
+
+function normalizeNewsItems(newsFeed) {
+  if (!newsFeed || !Array.isArray(newsFeed.feed_items)) return [];
+  return newsFeed.feed_items.map((it) => {
+    const isNews = NEWS_SOURCE_LABELS.has(it.source);
+    return {
+      id: 'news-' + it.id,
+      source: isNews ? 'news' : 'news',
+      source_label: it.source ? 'News . ' + it.source : 'News',
+      date: it.date,
+      headline: it.headline,
+      summary: it.summary,
+      url: it.url,
+      matched_ccns: Array.isArray(it.matched_ccns) ? it.matched_ccns : [],
+    };
+  });
+}
+
+function normalizeDojItems(dojActions) {
+  if (!dojActions || !Array.isArray(dojActions.actions)) return [];
+  return dojActions.actions.map((it) => ({
+    id: 'doj-' + it.id,
+    source: 'doj',
+    source_label: it.type ? 'DOJ . ' + it.type : 'DOJ . Settled',
+    date: it.date,
+    headline: it.headline,
+    summary: it.summary,
+    url: it.url,
+    matched_ccns: Array.isArray(it.matched_ccns) ? it.matched_ccns : [],
+    settlement_amount: typeof it.settlement_amount_dollars === 'number' ? it.settlement_amount_dollars : 0,
+  }));
+}
+
+function normalizeOigItems(oigData) {
+  if (!oigData || !Array.isArray(oigData.unmatched_hospice_relevant_items)) return [];
+  return oigData.unmatched_hospice_relevant_items.map((it) => {
+    const who = it.individual_name || it.entity_name || 'Excluded party';
+    const where = it.address && it.address.state ? ' (' + (it.address.city || '') + (it.address.city ? ', ' : '') + it.address.state + ')' : '';
+    const partyType = it.excluded_party_type === 'entity' ? 'entity' : 'individual';
+    const headline = 'OIG exclusion: ' + who + where;
+    const specialty = [it.provider_general, it.provider_specialty].filter(Boolean).join(' / ');
+    const summary = 'The HHS Office of Inspector General excluded this ' + partyType +
+      (specialty ? ' (' + specialty + ')' : '') +
+      ' from federal program participation under section ' + (it.exclusion_type || 'unspecified') +
+      '. NPI: ' + (it.npi && it.npi !== '0000000000' ? it.npi : 'not on file') + '.';
+    return {
+      id: 'oig-' + it.leie_record_id,
+      source: 'oig',
+      source_label: 'OIG . Exclusion',
+      date: it.exclusion_date,
+      headline,
+      summary,
+      url: 'https://exclusions.oig.hhs.gov/',
+      matched_ccns: [],
+    };
+  });
+}
+
+// ---------- component ----------
 
 export default function HospiceNewsPage() {
   const [activeSource, setActiveSource] = useState('all');
+  const [items, setItems] = useState([]);
+  const [generatedAtMax, setGeneratedAtMax] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [errored, setErrored] = useState(false);
+  const [now, setNow] = useState(() => new Date());
+  const intervalRef = useRef(null);
+  const tickRef = useRef(null);
 
-  // Per-source counts (computed from the sample feed).
-  const sourceCounts = useMemo(() => {
-    const counts = { all: SAMPLE_FEED.length };
-    for (const f of SOURCE_FILTERS) {
-      if (f.key === 'all') continue;
-      counts[f.key] = SAMPLE_FEED.filter((item) => item.source === f.key).length;
+  const fetchAll = useCallback(async () => {
+    try {
+      const cacheBust = '?t=' + Date.now();
+      const [newsRes, dojRes, oigRes] = await Promise.all([
+        fetch(NEWS_FEED_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+        fetch(DOJ_ACTIONS_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+        fetch(OIG_EXCLUSIONS_URL + cacheBust).then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      ]);
+
+      const merged = [
+        ...normalizeNewsItems(newsRes),
+        ...normalizeDojItems(dojRes),
+        ...normalizeOigItems(oigRes),
+      ];
+
+      // Sort by date desc; items missing dates go last
+      merged.sort((a, b) => {
+        const da = parseDateSafe(a.date);
+        const db = parseDateSafe(b.date);
+        if (!da && !db) return 0;
+        if (!da) return 1;
+        if (!db) return -1;
+        return db - da;
+      });
+
+      const stamps = [newsRes, dojRes, oigRes]
+        .map((x) => (x && x.generated_at ? parseDateSafe(x.generated_at) : null))
+        .filter(Boolean);
+      const maxStamp = stamps.length ? new Date(Math.max(...stamps.map((d) => d.getTime()))) : null;
+
+      setItems(merged);
+      setGeneratedAtMax(maxStamp);
+      setErrored(false);
+    } catch (e) {
+      setErrored(true);
+    } finally {
+      setLoading(false);
     }
-    return counts;
   }, []);
 
-  const filtered = useMemo(() => {
-    if (activeSource === 'all') return SAMPLE_FEED;
-    return SAMPLE_FEED.filter((item) => item.source === activeSource);
-  }, [activeSource]);
+  // Initial fetch + interval polling
+  useEffect(() => {
+    fetchAll();
 
-  const grouped = useMemo(() => {
-    const map = { today: [], week: [], earlier: [] };
-    for (const item of filtered) {
-      if (map[item.bucket]) map[item.bucket].push(item);
+    const tick = () => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
+      fetchAll();
+    };
+    intervalRef.current = setInterval(tick, POLL_INTERVAL_MS);
+
+    // Update "ago" text every 30s
+    tickRef.current = setInterval(() => setNow(new Date()), 30 * 1000);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (tickRef.current) clearInterval(tickRef.current);
+    };
+  }, [fetchAll]);
+
+  // ---------- derived ----------
+
+  const sourceCounts = useMemo(() => {
+    const counts = { all: items.length, doj: 0, ag: 0, oig: 0, cms: 0, court: 0, news: 0 };
+    for (const it of items) {
+      if (counts[it.source] !== undefined) counts[it.source] += 1;
     }
-    return map;
+    return counts;
+  }, [items]);
+
+  const filtered = useMemo(() => {
+    if (activeSource === 'all') return items;
+    return items.filter((it) => it.source === activeSource);
+  }, [items, activeSource]);
+
+  const stats = useMemo(() => {
+    const ms7 = 7 * 24 * 60 * 60 * 1000;
+    const ms30 = 30 * 24 * 60 * 60 * 1000;
+    const ms365 = 365 * 24 * 60 * 60 * 1000;
+    const nowTs = Date.now();
+    let count7 = 0;
+    let count30 = 0;
+    let dojSum12 = 0;
+    for (const it of items) {
+      const d = parseDateSafe(it.date);
+      if (!d) continue;
+      const age = nowTs - d.getTime();
+      if (age <= ms7) count7 += 1;
+      if (age <= ms30) count30 += 1;
+      if (it.source === 'doj' && age <= ms365 && it.settlement_amount) {
+        dojSum12 += it.settlement_amount;
+      }
+    }
+    return { total: items.length, count7, count30, dojSum12 };
+  }, [items]);
+
+  // Group filtered items into ordered buckets
+  const grouped = useMemo(() => {
+    const buckets = new Map(); // key -> { label, items: [] }
+    const order = ['today', 'yesterday', 'thisweek'];
+    const earlierMonthKeys = [];
+    const monthKeys = [];
+
+    for (const it of filtered) {
+      const d = parseDateSafe(it.date);
+      const key = formatBucketKey(d);
+      if (!buckets.has(key)) {
+        buckets.set(key, { key, label: formatBucketLabel(key, d), items: [] });
+        if (key.startsWith('earlierMonth:') && !earlierMonthKeys.includes(key)) earlierMonthKeys.push(key);
+        else if (key.startsWith('month:') && !monthKeys.includes(key)) monthKeys.push(key);
+      }
+      buckets.get(key).items.push(it);
+    }
+
+    // Sort month: keys descending by year-month
+    monthKeys.sort((a, b) => {
+      const [, ay, am] = a.match(/month:(\d+)-(\d+)/) || [];
+      const [, by, bm] = b.match(/month:(\d+)-(\d+)/) || [];
+      const av = parseInt(ay, 10) * 12 + parseInt(am, 10);
+      const bv = parseInt(by, 10) * 12 + parseInt(bm, 10);
+      return bv - av;
+    });
+
+    const ordered = [];
+    for (const k of order) if (buckets.has(k)) ordered.push(buckets.get(k));
+    for (const k of earlierMonthKeys) ordered.push(buckets.get(k));
+    for (const k of monthKeys) ordered.push(buckets.get(k));
+    if (buckets.has('unknown')) ordered.push(buckets.get('unknown'));
+    return ordered;
   }, [filtered]);
+
+  const lastUpdateAgo = formatRelativeAgo(generatedAtMax, now);
 
   return (
     <>
       <Helmet>
-        <title>Hospice Public Record · Live Feed | The Oversight Report</title>
+        <title>Hospice Public Record . Live Feed | The Oversight Report</title>
         <meta
           name="description"
           content="Every public-record event involving a U.S. hospice — DOJ settlements, state AG actions, OIG exclusions, CMS deficiencies, federal court filings, and reputable news, dated and sourced."
@@ -305,13 +333,13 @@ export default function HospiceNewsPage() {
 
         {/* HERO */}
         <section className="hn-hero">
-          <div className="hn-hero-tagline">// hospice public record · national feed</div>
+          <div className="hn-hero-tagline">// hospice public record . national feed</div>
           <h1 className="hn-hero-title">
             Every public-record event involving a hospice, <em>as it happens.</em>
           </h1>
           <p className="hn-hero-sub">
             DOJ settlements, state AG actions, OIG exclusions, CMS deficiency citations, federal court filings, and reputable news coverage —{' '}
-            <strong>aggregated from 8 government and journalism sources, sourced and dated, refreshed throughout the day</strong>.
+            <strong>aggregated from government and journalism sources, sourced and dated, refreshed throughout the day</strong>.
           </p>
 
           <div className="hn-ticker">
@@ -320,12 +348,16 @@ export default function HospiceNewsPage() {
               <span className="hn-ticker-live">Live</span>
               <span className="hn-ticker-sep">·</span>
               <span className="hn-ticker-muted">last update</span>
-              &nbsp;<span className="hn-ticker-strong">38 min ago</span>
+              &nbsp;<span className="hn-ticker-strong">{lastUpdateAgo || (loading ? 'loading...' : 'n/a')}</span>
               <span className="hn-ticker-sep">·</span>
-              <span className="hn-ticker-muted">next refresh</span>
-              &nbsp;<span className="hn-ticker-strong">22 min</span>
+              <span className="hn-ticker-muted">browser refresh</span>
+              &nbsp;<span className="hn-ticker-strong">every 5 min</span>
             </div>
-            <span className="hn-ticker-note">sample feed · 14 items · phase 2 will replace with live data</span>
+            <span className="hn-ticker-note">
+              {errored
+                ? 'feed temporarily unavailable . retrying'
+                : 'live feed . ' + items.length + ' item' + (items.length === 1 ? '' : 's') + ' . auto-refresh on'}
+            </span>
           </div>
         </section>
 
@@ -333,23 +365,23 @@ export default function HospiceNewsPage() {
         <div className="hn-stat-strip">
           <div className="hn-stat-cell">
             <div className="lbl">Items in feed (all-time)</div>
-            <div className="val">2,847</div>
-            <div className="sub">since launch · 6,943 hospices monitored</div>
+            <div className="val">{stats.total.toLocaleString()}</div>
+            <div className="sub">across DOJ, OIG, and reputable news sources</div>
           </div>
           <div className="hn-stat-cell">
             <div className="lbl">Past 7 days</div>
-            <div className="val">14</div>
-            <div className="sub">8 news · 3 enforcement · 3 OIG/CMS</div>
+            <div className="val">{stats.count7}</div>
+            <div className="sub">new items in the last week</div>
           </div>
           <div className="hn-stat-cell">
             <div className="lbl">Past 30 days</div>
-            <div className="val">47</div>
-            <div className="sub">spike vs. 30-day rolling avg</div>
+            <div className="val">{stats.count30}</div>
+            <div className="sub">rolling 30-day count</div>
           </div>
           <div className="hn-stat-cell">
             <div className="lbl">DOJ FCA dollars (12mo)</div>
-            <div className="val">$118.4M</div>
-            <div className="sub">across 8 settlements involving hospice providers</div>
+            <div className="val">{formatDollarsCompact(stats.dojSum12)}</div>
+            <div className="sub">summed across DOJ items in past 12 months</div>
           </div>
         </div>
 
@@ -402,7 +434,22 @@ export default function HospiceNewsPage() {
 
         {/* FEED */}
         <div className="hn-feed-wrap">
-          {filtered.length === 0 ? (
+          {loading && items.length === 0 ? (
+            <>
+              <div className="hn-feed-day-label">Loading feed</div>
+              <div className="hn-feed-empty">
+                Fetching the latest items from DOJ, OIG, and news sources.
+              </div>
+            </>
+          ) : items.length === 0 ? (
+            <>
+              <div className="hn-feed-day-label">No items in the feed yet</div>
+              <div className="hn-feed-empty">
+                No public-record items in the feed yet. New items appear within an hour of publication.
+                Subscribe via RSS to get notified.
+              </div>
+            </>
+          ) : filtered.length === 0 ? (
             <>
               <div className="hn-feed-day-label">No items match this filter</div>
               <div className="hn-feed-empty">
@@ -410,20 +457,19 @@ export default function HospiceNewsPage() {
               </div>
             </>
           ) : (
-            BUCKET_LABELS.map((bucket) => {
-              const items = grouped[bucket.key];
-              if (!items || items.length === 0) return null;
-              return (
-                <div key={bucket.key}>
-                  <div className="hn-feed-day-label">
-                    {bucket.label}
-                    <span className="badge">{items.length} item{items.length === 1 ? '' : 's'}</span>
-                  </div>
-                  {items.map((item) => (
+            grouped.map((bucket) => (
+              <div key={bucket.key}>
+                <div className="hn-feed-day-label">
+                  {bucket.label}
+                  <span className="badge">{bucket.items.length} item{bucket.items.length === 1 ? '' : 's'}</span>
+                </div>
+                {bucket.items.map((item) => {
+                  const d = parseDateSafe(item.date);
+                  return (
                     <article key={item.id} className="hn-feed-item">
                       <div className="hn-feed-meta">
-                        <span className="date">{item.date}</span>
-                        <span className="time">{item.time}</span>
+                        <span className="date">{formatDate(d)}</span>
+                        <span className="time">{formatTime(d)}</span>
                       </div>
                       <div className="hn-feed-content">
                         <h3>{item.headline}</h3>
@@ -431,18 +477,14 @@ export default function HospiceNewsPage() {
                         <FeedLinks item={item} />
                       </div>
                       <span className={'hn-feed-tag ' + (TAG_CLASS[item.source] || 'hn-tag-news')}>
-                        {item.sourceTag}
+                        {item.source_label}
                       </span>
                     </article>
-                  ))}
-                </div>
-              );
-            })
+                  );
+                })}
+              </div>
+            ))
           )}
-
-          <div className="hn-feed-load-more">
-            <button type="button" className="hn-btn">Load older items (26 more in April)</button>
-          </div>
         </div>
 
         {/* SUBSCRIBE / RSS */}
@@ -462,4 +504,38 @@ export default function HospiceNewsPage() {
       </div>
     </>
   );
+}
+
+function FeedLinks({ item }) {
+  const ccns = Array.isArray(item.matched_ccns) ? item.matched_ccns : [];
+  const parts = [];
+
+  if (ccns.length === 1) {
+    parts.push(
+      <Link key="hospice" to={'/hospice/' + ccns[0]}>
+        View hospice profile →
+      </Link>
+    );
+  } else if (ccns.length > 1) {
+    parts.push(
+      <Link key="hospice" to={'/hospice/' + ccns[0]}>
+        View {ccns.length} affected hospices →
+      </Link>
+    );
+  }
+
+  if (item.url) {
+    parts.push(
+      <a key="source" href={item.url} target="_blank" rel="noopener noreferrer">
+        Source →
+      </a>
+    );
+  }
+
+  const out = [];
+  parts.forEach((node, i) => {
+    if (i > 0) out.push(<span key={'sep-' + i} className="sep">·</span>);
+    out.push(node);
+  });
+  return <div className="links">{out}</div>;
 }

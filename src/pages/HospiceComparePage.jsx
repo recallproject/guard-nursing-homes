@@ -38,7 +38,17 @@ const STATE_NAMES = {
 const VALID_STATE_CODES = new Set(Object.keys(STATE_NAMES));
 let hospiceIndexPromise = null;
 let hospiceSummaryPromise = null;
+let cahpsBenchmarksPromise = null;
+let oigExclusionsPromise = null;
+let newsFeedPromise = null;
+let dojActionsPromise = null;
 const hospiceStatePromises = new Map();
+
+// Hospice typical length of stay (days) — used to estimate annual patient
+// throughput from average daily census. CMS Hospice Statistics Update reports
+// an average length of stay around 92 days, but median is around 18; we use a
+// conservative ~70-day estimate that matches industry-reported throughput.
+const HOSPICE_TYPICAL_LOS_DAYS = 70;
 
 const SAMPLE_PROVIDERS = [
   {
@@ -230,6 +240,72 @@ async function loadHospiceSummary() {
   return hospiceSummaryPromise;
 }
 
+async function loadCahpsBenchmarks() {
+  if (!cahpsBenchmarksPromise) {
+    cahpsBenchmarksPromise = fetch('/data/hospice/cahps-benchmarks.json')
+      .then((res) => (res.ok ? res.json() : null))
+      .catch(() => null);
+  }
+  return cahpsBenchmarksPromise;
+}
+
+async function loadOigExclusions() {
+  if (!oigExclusionsPromise) {
+    oigExclusionsPromise = fetch('/data/hospice/oig-exclusions.json')
+      .then((res) => (res.ok ? res.json() : { items_by_ccn: {} }))
+      .catch(() => ({ items_by_ccn: {} }));
+  }
+  return oigExclusionsPromise;
+}
+
+async function loadNewsFeed() {
+  if (!newsFeedPromise) {
+    newsFeedPromise = fetch('/data/hospice/news-feed.json')
+      .then((res) => (res.ok ? res.json() : { items_by_ccn: {}, feed_items: [] }))
+      .catch(() => ({ items_by_ccn: {}, feed_items: [] }));
+  }
+  return newsFeedPromise;
+}
+
+async function loadDojActions() {
+  if (!dojActionsPromise) {
+    dojActionsPromise = fetch('/data/hospice/doj-actions.json')
+      .then((res) => (res.ok ? res.json() : { items_by_ccn: {} }))
+      .catch(() => ({ items_by_ccn: {} }));
+  }
+  return dojActionsPromise;
+}
+
+// Build a per-state CAHPS average map from cahps-benchmarks.json (TBV codes
+// are the "top-box" positive responses). Falls back to national average.
+function buildCahpsAverages(benchmarks, stateCode) {
+  if (!benchmarks) return DEFAULT_CAHPS_AVG;
+  const code = String(stateCode || '').toUpperCase();
+  const stateRows = Array.isArray(benchmarks.by_state)
+    ? benchmarks.by_state.filter((r) => String(r.State || '').toUpperCase() === code)
+    : [];
+  const nationalRows = Array.isArray(benchmarks.national) ? benchmarks.national : [];
+
+  function pick(measureCode) {
+    const fromState = stateRows.find((r) => r['Measure Code'] === measureCode);
+    if (fromState && fromState.Score && !Number.isNaN(Number(fromState.Score))) {
+      return Number(fromState.Score);
+    }
+    const fromNat = nationalRows.find((r) => r['Measure Code'] === measureCode);
+    if (fromNat && fromNat.Score && !Number.isNaN(Number(fromNat.Score))) {
+      return Number(fromNat.Score);
+    }
+    return null;
+  }
+
+  return {
+    overall: pick('RATING_TBV') ?? DEFAULT_CAHPS_AVG.overall,
+    recommend: pick('RECOMMEND_TBV') ?? DEFAULT_CAHPS_AVG.recommend,
+    pain: pick('SYMPTOMS_TBV') ?? DEFAULT_CAHPS_AVG.pain,
+    comm: pick('TEAM_COMM_TBV') ?? DEFAULT_CAHPS_AVG.comm,
+  };
+}
+
 async function loadHospiceState(stateCode) {
   const code = String(stateCode || '').toUpperCase();
   if (!VALID_STATE_CODES.has(code)) {
@@ -319,6 +395,57 @@ function starsString(v) {
   return `${Number(v).toFixed(1)} / 5`;
 }
 
+// Render a 1–5 star rating with filled / empty glyphs for visual scan.
+function starsGlyph(v) {
+  if (v == null) return '';
+  const rounded = Math.round(Number(v) * 2) / 2; // half-stars
+  const full = Math.floor(rounded);
+  const half = rounded - full >= 0.5 ? 1 : 0;
+  const empty = 5 - full - half;
+  return '★'.repeat(full) + (half ? '½' : '') + '☆'.repeat(empty);
+}
+
+// Resolve the CMS overall rating from either the new top-level field or the
+// older nested metric, returning the first non-null match.
+function getCmsRating(p) {
+  return (
+    p?.cms_overall_rating ?? p?.metrics?.cms_star ?? p?.metrics?.cms_rating ?? null
+  );
+}
+
+// Resolve the inpatient-unit availability from either the new top-level field
+// or the older nested metric.
+function getInpatientUnit(p) {
+  if (typeof p?.inpatient_unit_available === 'boolean') return p.inpatient_unit_available;
+  if (typeof p?.metrics?.inpatient_unit === 'boolean') return p.metrics.inpatient_unit;
+  return null;
+}
+
+// Resolve a CAHPS measure for a provider, preferring the new `cahps` object
+// but falling back to the legacy nested fields used by SAMPLE_PROVIDERS.
+function getCahps(p, key) {
+  const cahps = p?.cahps || {};
+  switch (key) {
+    case 'overall':
+      return cahps.overall_rating_pct ?? p?.metrics?.cahps_overall ?? null;
+    case 'recommend':
+      return cahps.would_recommend_pct ?? p?.metrics?.cahps_recommend ?? null;
+    case 'pain':
+      return cahps.pain_management_pct ?? p?.metrics?.cahps_pain ?? null;
+    case 'comm':
+      return cahps.communication_pct ?? p?.metrics?.cahps_comm ?? null;
+    default:
+      return null;
+  }
+}
+
+// Estimate annual patients served from average daily census and a typical
+// length of stay. This is an estimate, not an exact CMS-reported number.
+function estimateAnnualPatients(avgDailyCensus) {
+  if (avgDailyCensus == null || Number.isNaN(Number(avgDailyCensus))) return null;
+  return Math.round((Number(avgDailyCensus) * 365) / HOSPICE_TYPICAL_LOS_DAYS);
+}
+
 function liveDischargeBucket(v) {
   if (v == null) return { cls: '', pill: '', label: '' };
   if (v >= 30) return { cls: 'bad', pill: 'pill-flagged', label: 'Far above 90th pct' };
@@ -341,11 +468,46 @@ function cahpsCell(pct, stateAvg) {
   return { cls: 'below', delta: `${diff.toFixed(0)} vs benchmark` };
 }
 
-function recommendation(p) {
-  const fc = getFlagCount(p);
-  if (fc >= 2) return { cls: 'rec-avoid', label: 'Closer review' };
-  if (fc === 1) return { cls: 'rec-consider', label: 'Consider with caution' };
-  return { cls: 'rec-recommend', label: 'No flagged patterns' };
+function recommendation(p, ctx = {}) {
+  const flagCount = getFlagCount(p);
+  const publicRecord = ctx.publicRecordCount ?? 0;
+  const cahpsAvg = ctx.cahpsAvg || DEFAULT_CAHPS_AVG;
+
+  const overall = getCahps(p, 'overall');
+  const recommend = getCahps(p, 'recommend');
+  const pain = getCahps(p, 'pain');
+  const comm = getCahps(p, 'comm');
+
+  // Bottom-quartile signal: CAHPS values that exist AND are >= 5pts below the
+  // state benchmark on at least 2 of 4 measures.
+  const cahpsValues = [
+    [overall, cahpsAvg.overall],
+    [recommend, cahpsAvg.recommend],
+    [pain, cahpsAvg.pain],
+    [comm, cahpsAvg.comm],
+  ];
+  let cahpsBelow = 0;
+  let cahpsAtOrAbove = 0;
+  let cahpsKnown = 0;
+  for (const [v, avg] of cahpsValues) {
+    if (v == null) continue;
+    cahpsKnown += 1;
+    if (Number(v) >= Number(avg) - 1) cahpsAtOrAbove += 1;
+    if (Number(v) <= Number(avg) - 5) cahpsBelow += 1;
+  }
+  const cahpsBottomQuartile = cahpsKnown >= 2 && cahpsBelow >= 2;
+  const cahpsAtOrAboveAvg = cahpsKnown >= 2 && cahpsAtOrAbove === cahpsKnown;
+
+  if (flagCount >= 2 || publicRecord >= 3 || cahpsBottomQuartile) {
+    return { cls: 'rec-avoid', label: 'Closer review' };
+  }
+  if (flagCount === 1 || publicRecord >= 1) {
+    return { cls: 'rec-consider', label: 'Consider with caution' };
+  }
+  if (cahpsKnown === 0 || cahpsAtOrAboveAvg) {
+    return { cls: 'rec-recommend', label: 'Recommend' };
+  }
+  return { cls: 'rec-consider', label: 'Consider with caution' };
 }
 
 function fmtPct(v, digits = 1) {
@@ -366,7 +528,7 @@ function metricPenalty(value, threshold, multiplier) {
 // rough sort: lower flag severity + lower discharge/GIP outlier rates + higher star = better
 function compositeRank(p, thresholds = DEFAULT_THRESHOLDS) {
   const m = p.metrics || {};
-  const star = m.cms_star ?? m.cms_rating ?? null;
+  const star = getCmsRating(p);
   const flagPenalty = getFlagCount(p) * 50;
   const ldPenalty = metricPenalty(m.live_discharge_pct, thresholds.live_discharge_p90, 1.5);
   const gipPenalty = metricPenalty(m.gip_pct, thresholds.gip_p90, 10);
@@ -390,6 +552,12 @@ export default function HospiceComparePage() {
   const [error, setError] = useState(null);
   const [usingSample, setUsingSample] = useState(false);
   const [thresholds, setThresholds] = useState(DEFAULT_THRESHOLDS);
+  const [cahpsAvg, setCahpsAvg] = useState(DEFAULT_CAHPS_AVG);
+  const [enforcement, setEnforcement] = useState({
+    oig: {},
+    news: {},
+    doj: {},
+  });
   const [resolved, setResolved] = useState({
     label: 'Compare hospices',
     inputLabel: '',
@@ -432,13 +600,23 @@ export default function HospiceComparePage() {
       setLoading(true);
       setError(null);
       try {
-        const [index, nationalSummary] = await Promise.all([
-          loadHospiceIndex(),
-          loadHospiceSummary().catch(() => ({ thresholds: DEFAULT_THRESHOLDS })),
-        ]);
+        const [index, nationalSummary, benchmarks, oigData, newsData, dojData] =
+          await Promise.all([
+            loadHospiceIndex(),
+            loadHospiceSummary().catch(() => ({ thresholds: DEFAULT_THRESHOLDS })),
+            loadCahpsBenchmarks(),
+            loadOigExclusions(),
+            loadNewsFeed(),
+            loadDojActions(),
+          ]);
         if (cancelled) return;
         const rankThresholds = nationalSummary?.thresholds || DEFAULT_THRESHOLDS;
         setThresholds(rankThresholds);
+        setEnforcement({
+          oig: oigData?.items_by_ccn || {},
+          news: newsData?.items_by_ccn || {},
+          doj: dojData?.items_by_ccn || {},
+        });
 
         let filtered = [];
         let label = 'Compare hospices';
@@ -511,6 +689,14 @@ export default function HospiceComparePage() {
         const top4 = [...filtered]
           .sort((a, b) => compositeRank(a, rankThresholds) - compositeRank(b, rankThresholds))
           .slice(0, 4);
+
+        // Choose CAHPS benchmark state: explicit `state` param wins, else the
+        // most-common state across the filtered providers, else fall back.
+        const predominantStateLoc = mostCommonLocation(filtered);
+        const benchmarkState =
+          state || predominantStateLoc?.state || top4[0]?.state || '';
+        setCahpsAvg(buildCahpsAverages(benchmarks, benchmarkState));
+
         if (top4.length === 0) {
           setProviders(SAMPLE_PROVIDERS);
           setUsingSample(true);
@@ -588,17 +774,61 @@ export default function HospiceComparePage() {
     return bi;
   };
 
-  const starVals = ranked.map((p) => p.metrics?.cms_star ?? null);
-  const overallVals = ranked.map((p) => p.metrics?.cahps_overall ?? null);
-  const recVals = ranked.map((p) => p.metrics?.cahps_recommend ?? null);
-  const painVals = ranked.map((p) => p.metrics?.cahps_pain ?? null);
-  const commVals = ranked.map((p) => p.metrics?.cahps_comm ?? null);
+  const starVals = ranked.map((p) => getCmsRating(p));
+  const overallVals = ranked.map((p) => getCahps(p, 'overall'));
+  const recVals = ranked.map((p) => getCahps(p, 'recommend'));
+  const painVals = ranked.map((p) => getCahps(p, 'pain'));
+  const commVals = ranked.map((p) => getCahps(p, 'comm'));
+  const hvldlVals = ranked.map((p) => p.metrics?.hvldl_pct ?? p.metrics?.recommended_last_days_pct ?? null);
+  const censusVals = ranked.map((p) => p.metrics?.avg_daily_census ?? null);
+  const patientsVals = ranked.map((p) => p.metrics?.patients_fy24 ?? p.metrics?.patients ?? estimateAnnualPatients(p.metrics?.avg_daily_census));
+  const homeVals = ranked.map((p) => p.metrics?.care_provided_home_pct ?? null);
+  const nfVals = ranked.map((p) => p.metrics?.care_provided_nursing_facility_pct ?? p.metrics?.care_provided_nursing_pct ?? null);
 
   const bestStar = bestIdx(starVals, 'high');
   const bestOverall = bestIdx(overallVals, 'high');
   const bestRec = bestIdx(recVals, 'high');
   const bestPain = bestIdx(painVals, 'high');
   const bestComm = bestIdx(commVals, 'high');
+  const bestHvldl = bestIdx(hvldlVals, 'high');
+  const bestCensus = bestIdx(censusVals, 'high');
+  const bestPatients = bestIdx(patientsVals, 'high');
+  const bestHome = bestIdx(homeVals, 'high');
+
+  // Per-provider public-record + news counts wired from aggregator data.
+  // Counts oig + news + doj items_by_ccn entries for each provider, and
+  // separately tallies news mentions in the past 12 months.
+  const oneYearAgoMs = Date.now() - 365 * 24 * 60 * 60 * 1000;
+  const enforcementByCcn = useMemo(() => {
+    const map = new Map();
+    for (const p of ranked) {
+      const ccn = String(p.ccn || '');
+      const oig = enforcement.oig?.[ccn] || [];
+      const news = enforcement.news?.[ccn] || [];
+      const doj = enforcement.doj?.[ccn] || [];
+      const sourceLabels = [];
+      if (oig.length) sourceLabels.push(`${oig.length} OIG`);
+      if (doj.length) sourceLabels.push(`${doj.length} DOJ`);
+      if (news.length) sourceLabels.push(`${news.length} news`);
+
+      const newsLast12 = news.filter((item) => {
+        const d = item?.date ? Date.parse(item.date) : NaN;
+        return Number.isFinite(d) && d >= oneYearAgoMs;
+      });
+
+      map.set(ccn, {
+        publicRecordCount: oig.length + doj.length + news.length,
+        publicRecordNote: sourceLabels.join(' + '),
+        newsLast12Count: newsLast12.length,
+        newsLast12Note: newsLast12.length
+          ? newsLast12.some((n) => /enforce|fraud|indict|settle|charge/i.test(n.headline || ''))
+            ? 'enforcement'
+            : ''
+          : '',
+      });
+    }
+    return map;
+  }, [ranked, enforcement, oneYearAgoMs]);
 
   const handlePrint = () => window.print();
 
@@ -752,12 +982,32 @@ export default function HospiceComparePage() {
 
           {/* Section: Provider basics */}
           <SectionHeader label="Provider basics" />
-          <Row label="Avg daily census" cells={ranked.map((p) => (
-            <span className="hc-num">{fmtInt(p.metrics?.avg_daily_census)}</span>
-          ))} />
-          <Row label="Patients (FY24)" cells={ranked.map((p) => (
-            <span className="hc-num">{fmtInt(p.metrics?.patients_fy24 ?? p.metrics?.patients)}</span>
-          ))} />
+          <Row
+            label="Avg daily census"
+            cells={ranked.map((p) => (
+              <span className="hc-num">{fmtInt(p.metrics?.avg_daily_census)}</span>
+            ))}
+            bestIdx={bestCensus}
+          />
+          <Row
+            label="Patients (FY24, est.)"
+            cells={ranked.map((p) => {
+              const reported = p.metrics?.patients_fy24 ?? p.metrics?.patients;
+              if (reported != null) {
+                return <span className="hc-num">{fmtInt(reported)}</span>;
+              }
+              const adc = p.metrics?.avg_daily_census;
+              const est = estimateAnnualPatients(adc);
+              if (est == null) return <span style={{ color: '#94A3B8' }}>—</span>;
+              return (
+                <span style={{ display: 'inline-flex', flexDirection: 'column' }}>
+                  <span className="hc-num">{fmtInt(est)}</span>
+                  <span style={{ fontSize: 10, color: '#64748B' }}>est. from ADC</span>
+                </span>
+              );
+            })}
+            bestIdx={bestPatients}
+          />
           <Row label="Parent operator" cells={ranked.map((p) => (
             <span style={{ fontSize: 12 }}>
               {p.parent ? `${p.parent}${p.parent_locations ? ` · ${p.parent_locations} location${p.parent_locations === 1 ? '' : 's'}` : ''}` : 'Independent'}
@@ -771,20 +1021,29 @@ export default function HospiceComparePage() {
           <SectionHeader label="Quality & rating" />
           <Row
             label="CMS overall rating"
-            cells={ranked.map((p, i) => (
-              <span className={`hc-stars ${starsBucket(p.metrics?.cms_star)}`}>
-                {p.metrics?.cms_star != null ? starsString(p.metrics.cms_star) : '—'}
-              </span>
-            ))}
+            cells={ranked.map((p) => {
+              const v = getCmsRating(p);
+              if (v == null) {
+                return <span style={{ color: '#94A3B8' }}>—</span>;
+              }
+              return (
+                <span className={`hc-stars ${starsBucket(v)}`}>
+                  <span style={{ marginRight: 6 }}>{starsGlyph(v)}</span>
+                  <span style={{ fontSize: 11, color: '#64748B' }}>{starsString(v)}</span>
+                </span>
+              );
+            })}
             bestIdx={bestStar}
           />
           <Row
             label="Recommended care · last days"
             cells={ranked.map((p) => {
-              const v = p.metrics?.recommended_last_days_pct;
-              const cls = v == null ? '' : v >= 90 ? 'good' : v >= 80 ? '' : 'warn';
-              return <span className={`hc-num ${cls}`}>{v == null ? '—' : `${Math.round(v)}%`}</span>;
+              const v = p.metrics?.hvldl_pct ?? p.metrics?.recommended_last_days_pct;
+              if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
+              const cls = v >= 90 ? 'good' : v >= 80 ? '' : 'warn';
+              return <span className={`hc-num ${cls}`}>{`${Math.round(v)}%`}</span>;
             })}
+            bestIdx={bestHvldl}
           />
 
           {/* Section: Family experience */}
@@ -792,12 +1051,13 @@ export default function HospiceComparePage() {
           <Row
             label="Overall rating"
             cells={ranked.map((p) => {
-              const v = p.metrics?.cahps_overall;
-              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.overall);
+              const v = getCahps(p, 'overall');
+              const c = cahpsCell(v, cahpsAvg.overall);
+              if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
               return (
                 <span className={`hc-cahps ${c.cls}`}>
-                  <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
-                  {v != null && <span className="delta">{c.delta}</span>}
+                  <span className="pct">{`${Math.round(v)}%`}</span>
+                  <span className="delta">{c.delta}</span>
                 </span>
               );
             })}
@@ -806,12 +1066,13 @@ export default function HospiceComparePage() {
           <Row
             label="Would recommend"
             cells={ranked.map((p) => {
-              const v = p.metrics?.cahps_recommend;
-              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.recommend);
+              const v = getCahps(p, 'recommend');
+              const c = cahpsCell(v, cahpsAvg.recommend);
+              if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
               return (
                 <span className={`hc-cahps ${c.cls}`}>
-                  <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
-                  {v != null && <span className="delta">{c.delta}</span>}
+                  <span className="pct">{`${Math.round(v)}%`}</span>
+                  <span className="delta">{c.delta}</span>
                 </span>
               );
             })}
@@ -820,12 +1081,13 @@ export default function HospiceComparePage() {
           <Row
             label="Help for pain & symptoms"
             cells={ranked.map((p) => {
-              const v = p.metrics?.cahps_pain;
-              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.pain);
+              const v = getCahps(p, 'pain');
+              const c = cahpsCell(v, cahpsAvg.pain);
+              if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
               return (
                 <span className={`hc-cahps ${c.cls}`}>
-                  <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
-                  {v != null && <span className="delta">{c.delta}</span>}
+                  <span className="pct">{`${Math.round(v)}%`}</span>
+                  <span className="delta">{c.delta}</span>
                 </span>
               );
             })}
@@ -834,12 +1096,13 @@ export default function HospiceComparePage() {
           <Row
             label="Communication with family"
             cells={ranked.map((p) => {
-              const v = p.metrics?.cahps_comm;
-              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.comm);
+              const v = getCahps(p, 'comm');
+              const c = cahpsCell(v, cahpsAvg.comm);
+              if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
               return (
                 <span className={`hc-cahps ${c.cls}`}>
-                  <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
-                  {v != null && <span className="delta">{c.delta}</span>}
+                  <span className="pct">{`${Math.round(v)}%`}</span>
+                  <span className="delta">{c.delta}</span>
                 </span>
               );
             })}
@@ -880,38 +1143,60 @@ export default function HospiceComparePage() {
 
           {/* Section: Where care is delivered */}
           <SectionHeader label="Where care is delivered" />
-          <Row label="% care at home" cells={ranked.map((p) => (
-            <span className="hc-num">{fmtPct(p.metrics?.care_provided_home_pct, 0)}</span>
-          ))} />
-          <Row label="% in nursing facility" cells={ranked.map((p) => (
-            <span className="hc-num">{fmtPct(p.metrics?.care_provided_nursing_pct ?? p.metrics?.care_provided_nursing_facility_pct, 0)}</span>
-          ))} />
+          <Row
+            label="% care at home"
+            cells={ranked.map((p) => {
+              const v = p.metrics?.care_provided_home_pct;
+              if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
+              return <span className="hc-num">{fmtPct(v, 0)}</span>;
+            })}
+            bestIdx={bestHome}
+          />
+          <Row label="% in nursing facility" cells={ranked.map((p) => {
+            const v = p.metrics?.care_provided_nursing_facility_pct ?? p.metrics?.care_provided_nursing_pct;
+            if (v == null) return <span style={{ color: '#94A3B8' }}>—</span>;
+            return <span className="hc-num">{fmtPct(v, 0)}</span>;
+          })} />
           <Row label="Inpatient hospice unit available" cells={ranked.map((p) => {
-            const v = p.metrics?.inpatient_unit;
+            const v = getInpatientUnit(p);
             if (v === true) return <span className="hc-pill pill-ok">Yes</span>;
             if (v === false) return <span className="hc-pill pill-neutral">No</span>;
-            return <span className="hc-pill pill-neutral">—</span>;
+            return <span style={{ color: '#94A3B8' }}>—</span>;
           })} />
 
           {/* Section: Public record */}
           <SectionHeader label="Public record & enforcement" />
           <Row label="Public-record items (3yr)" cells={ranked.map((p) => {
-            const v = p.metrics?.public_record_items ?? 0;
+            // For sample providers (no real CCN match), keep the legacy fields.
+            const enforcementCounts = enforcementByCcn.get(String(p.ccn || ''));
+            const usingReal = !p.sample;
+            const v = usingReal
+              ? (enforcementCounts?.publicRecordCount ?? 0)
+              : (p.metrics?.public_record_items ?? 0);
+            const note = usingReal
+              ? enforcementCounts?.publicRecordNote
+              : p.metrics?.public_record_note;
             const cls = v === 0 ? 'good' : v >= 3 ? 'bad' : '';
             return (
               <span style={{ display: 'inline-flex', alignItems: 'center' }}>
                 <span className={`hc-num ${cls}`}>{v}</span>
-                {p.metrics?.public_record_note && (
+                {note && (
                   <span style={{ fontSize: 11, color: v >= 3 ? '#DC2626' : '#64748B', marginLeft: 8 }}>
-                    {p.metrics.public_record_note}
+                    {note}
                   </span>
                 )}
               </span>
             );
           })} />
           <Row label="News mentions (12mo)" cells={ranked.map((p) => {
-            const v = p.metrics?.news_mentions ?? 0;
-            const note = p.metrics?.news_mentions_note;
+            const enforcementCounts = enforcementByCcn.get(String(p.ccn || ''));
+            const usingReal = !p.sample;
+            const v = usingReal
+              ? (enforcementCounts?.newsLast12Count ?? 0)
+              : (p.metrics?.news_mentions ?? 0);
+            const note = usingReal
+              ? enforcementCounts?.newsLast12Note
+              : p.metrics?.news_mentions_note;
             const isEnf = note && note.toLowerCase().includes('enforce');
             const cls = v === 0 ? 'good' : isEnf ? 'bad' : '';
             return (
@@ -929,7 +1214,11 @@ export default function HospiceComparePage() {
           {/* Section: Bottom line */}
           <SectionHeader label="Bottom line" />
           <Row label="Recommendation" cells={ranked.map((p) => {
-            const r = recommendation(p);
+            const enforcementCounts = enforcementByCcn.get(String(p.ccn || ''));
+            const publicRecordCount = p.sample
+              ? (p.metrics?.public_record_items ?? 0)
+              : (enforcementCounts?.publicRecordCount ?? 0);
+            const r = recommendation(p, { publicRecordCount, cahpsAvg });
             return <span className={`hc-recommend ${r.cls}`}>{r.label}</span>;
           })} />
         </div>

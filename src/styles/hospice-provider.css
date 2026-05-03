@@ -670,6 +670,35 @@
 }
 .hospice-provider .hp-tag-oig { background: rgba(124,58,237,.10); color: var(--hp-purple); border: 1px solid rgba(124,58,237,.3); }
 .hospice-provider .hp-tag-cms { background: rgba(43,108,176,.10); color: var(--hp-primary); border: 1px solid rgba(43,108,176,.3); }
+.hospice-provider .hp-tag-doj { background: rgba(220,38,38,.10); color: var(--hp-red); border: 1px solid rgba(220,38,38,.3); }
+.hospice-provider .hp-tag-news { background: rgba(107,114,128,.10); color: #6B7280; border: 1px solid rgba(107,114,128,.3); }
+.hospice-provider .hp-pubrec-link {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: var(--hp-primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 6px;
+  margin-left: 10px;
+  display: inline-block;
+  text-decoration: none;
+}
+.hospice-provider .hp-pubrec-link:hover { text-decoration: underline; }
+.hospice-provider .hp-pill-yes {
+  display: inline-block; padding: 2px 8px; border-radius: 999px;
+  background: rgba(13,148,136,.10); color: var(--hp-teal);
+  border: 1px solid rgba(13,148,136,.3);
+  font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.hospice-provider .hp-pill-no {
+  display: inline-block; padding: 2px 8px; border-radius: 999px;
+  background: rgba(107,114,128,.10); color: #6B7280;
+  border: 1px solid rgba(107,114,128,.3);
+  font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
 .hospice-provider .hp-pubrec-empty {
   margin-top: 22px;
   padding: 14px 18px;
