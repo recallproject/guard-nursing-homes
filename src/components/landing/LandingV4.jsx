@@ -190,7 +190,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
         <div className="v4-hero-tagline">Nursing Home Safety Data, Independently Reviewed</div>
         <h1 className="v4-hero-title">Search any nursing home in America.</h1>
         <p className="v4-hero-sub">
-          Inspections, staffing, fines, and ownership for all 14,713 Medicare-certified facilities.
+          Inspections, staffing, fines, and ownership for all 14,699 Medicare-certified facilities.
         </p>
 
         <InlineSearch searchFacilities={searchFacilities} onFallbackSearch={onSearch} />
@@ -248,7 +248,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
               </div>
               <div>
                 <div className="v4-care-card-name">Nursing Homes</div>
-                <div className="v4-care-card-count">14,713 facilities</div>
+                <div className="v4-care-card-count">14,699 facilities</div>
               </div>
             </div>
             <div className="v4-care-card-desc">Long-term and skilled nursing care. Safety scores, staffing verified against payroll, ownership networks, fines, and financial transparency.</div>
@@ -344,7 +344,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ 8. FINAL CTA ═══════ */}
       <section className="v4-final-cta">
         <h2>Search any nursing facility</h2>
-        <p>14,713 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
+        <p>14,699 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
         <div className="v4-final-search">
           <InlineSearch searchFacilities={searchFacilities} placeholder="Facility name, city, or ZIP code" onFallbackSearch={onSearch} />
         </div>

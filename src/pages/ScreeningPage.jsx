@@ -363,7 +363,7 @@ export function ScreeningPage() {
               <div className="screening-intro-stat-label">States covered</div>
             </div>
             <div className="screening-intro-stat">
-              <div className="screening-intro-stat-value">14,713</div>
+              <div className="screening-intro-stat-value">14,699</div>
               <div className="screening-intro-stat-label">Medicare-certified facilities</div>
             </div>
             <div className="screening-intro-stat">

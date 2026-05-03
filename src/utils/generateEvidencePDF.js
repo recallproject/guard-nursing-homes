@@ -1233,7 +1233,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   // Source note
   doc.setFontSize(7.5);
   doc.setTextColor(...STEEL);
-  doc.text('Source: CMS NH Provider Info (Reported Staffing) — ' + (nationalAveragesData.national._computed_on || 'March 2026') + '  |  National averages computed from ' + (nationalAveragesData.national._computed_from || '14,713') + ' facilities', margin, currentY);
+  doc.text('Source: CMS NH Provider Info (Reported Staffing) — ' + (nationalAveragesData.national._computed_on || 'March 2026') + '  |  National averages computed from ' + (nationalAveragesData.national._computed_from || '14,699') + ' facilities', margin, currentY);
   currentY += 6;
 
   // Metric row

@@ -44,7 +44,7 @@ export default function AttorneysPage() {
             </span>
             <span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              14,713 facilities
+              14,699 facilities
             </span>
             <span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -57,7 +57,7 @@ export default function AttorneysPage() {
       {/* STATS */}
       <section className="attorneys-stats">
         <div className="attorneys-stat">
-          <div className="attorneys-stat-num">14,713</div>
+          <div className="attorneys-stat-num">14,699</div>
           <div className="attorneys-stat-label">Facilities Covered</div>
         </div>
         <div className="attorneys-stat">
@@ -149,7 +149,7 @@ export default function AttorneysPage() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               </div>
               <h3>Search Facility</h3>
-              <p>Search by name, city, state, or CMS provider number. All 14,713 Medicare-certified nursing homes are covered.</p>
+              <p>Search by name, city, state, or CMS provider number. All 14,699 Medicare-certified nursing homes are covered.</p>
             </div>
             <div className="attorneys-step">
               <div className="attorneys-step-num">2</div>

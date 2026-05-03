@@ -22,7 +22,7 @@ STATES_DIR = os.path.join(os.path.dirname(__file__), '..', 'public', 'data', 'st
 
 # The underlying CMS data snapshot date — update this each time you download fresh CMS data
 # This should reflect when the CMS data was published, not when we downloaded it
-CMS_DATA_DATE = "2026-03-01"  # NH_ProviderInfo_Mar2026.csv — refreshed 2026-03-25
+CMS_DATA_DATE = "2026-04-29"  # NH_ProviderInfo_Apr2026.csv — refreshed 2026-05-03
 
 
 def add_metadata():

@@ -153,7 +153,7 @@ export default function WhyThisExists() {
                   </div>
                   <div className="author-bio-detail">
                     <strong>Facilities Covered</strong>
-                    <span>14,713 Medicare-certified nursing homes across all 50 states</span>
+                    <span>14,699 Medicare-certified nursing homes across all 50 states</span>
                   </div>
                   <div className="author-bio-detail">
                     <strong>Contact</strong>

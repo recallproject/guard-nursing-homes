@@ -622,7 +622,7 @@ export function generatePDF(facility, options = {}) {
     doc.setFontSize(8.5);
     doc.setFont('helvetica', 'italic');
     doc.setTextColor(...C.muted);
-    const compareCount = isSample ? '14,713' : num(allFacilities.length);
+    const compareCount = isSample ? '14,699' : num(allFacilities.length);
     doc.text(`Comparing to all ${compareCount} Medicare-certified nursing homes`, M, y);
     y += 7;
 
@@ -742,7 +742,7 @@ export function generatePDF(facility, options = {}) {
   } else {
     // Not enough data for percentiles
     calloutBox(
-      'National percentile rankings are not available in this sample report. Full reports generated from the facility page include rankings against all 14,713 Medicare-certified nursing homes.',
+      'National percentile rankings are not available in this sample report. Full reports generated from the facility page include rankings against all 14,699 Medicare-certified nursing homes.',
       'info'
     );
   }
@@ -1313,7 +1313,7 @@ export function generatePDF(facility, options = {}) {
   sectionHeader('DATA SOURCES');
 
   const sources = [
-    ['CMS Provider Information', '14,713 facilities', 'Star ratings, beds, ownership, location'],
+    ['CMS Provider Information', '14,699 facilities', 'Star ratings, beds, ownership, location'],
     ['CMS Health Deficiencies', '417,293 citations', 'Standard surveys, complaint investigations'],
     ['CMS Penalties Data', '18,060 actions', 'Fines and payment denials'],
     ['CMS Ownership Data', '157,839 records', 'Tracks 5%+ ownership interests'],

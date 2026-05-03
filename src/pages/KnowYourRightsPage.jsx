@@ -208,7 +208,7 @@ export default function KnowYourRightsPage() {
             <p>Look up your facility's federal inspection history. If they've been cited for discharge violations, staffing problems, or safety issues before — that's ammunition for your appeal and any complaint you file.</p>
             <Link to="/" className="kyr-cta-button">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              Search 14,713 Nursing Homes
+              Search 14,699 Nursing Homes
             </Link>
             <p className="kyr-cta-subtext">Free. No login required. Data sourced from CMS federal records.</p>
           </div>

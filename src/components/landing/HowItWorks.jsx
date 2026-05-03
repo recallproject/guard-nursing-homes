@@ -12,7 +12,7 @@ const CHECK_ITEMS = [
   { name: 'Health inspection records', desc: 'Deficiency citations from federal and state surveys', count: '417,293' },
   { name: 'Payroll-verified staffing', desc: 'Daily nurse hours from CMS Payroll-Based Journal', count: '1,332,804' },
   { name: 'Federal penalties & fines', desc: 'Civil monetary penalties, payment denials', count: '18,060' },
-  { name: 'Ownership & chain networks', desc: 'Corporate affiliations, ownership changes', count: '14,713' },
+  { name: 'Ownership & chain networks', desc: 'Corporate affiliations, ownership changes', count: '14,699' },
   { name: 'Cost report financials', desc: 'Revenue, expenses, related-party transactions', count: '13,324' },
 ];
 
@@ -197,7 +197,7 @@ export default function HowItWorks({ onSearchFacility }) {
                       Search any nursing home in America.
                     </div>
                     <div className={`hiw-s1-sub ${s1In.sub ? 'in' : ''}`}>
-                      Inspections, staffing, fines, and ownership for all 14,713 Medicare-certified facilities.
+                      Inspections, staffing, fines, and ownership for all 14,699 Medicare-certified facilities.
                     </div>
                     <div className={`hiw-search-pill ${s1In.pill ? 'in' : ''} ${searchFocused ? 'focused' : ''}`}>
                       <svg className="hiw-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -307,7 +307,7 @@ export default function HowItWorks({ onSearchFacility }) {
                 {/* SCENE 4: CTA */}
                 <div className={`hiw-scene ${activeScene === 3 ? 'active' : ''}`}>
                   <div className="hiw-cta-page">
-                    <div className={`hiw-cta-num ${ctaIn.num ? 'in' : ''}`}>14,713</div>
+                    <div className={`hiw-cta-num ${ctaIn.num ? 'in' : ''}`}>14,699</div>
                     <div className={`hiw-cta-sub ${ctaIn.sub ? 'in' : ''}`}>Every Medicare nursing home in America</div>
                     <div className={`hiw-cta-head ${ctaIn.head ? 'in' : ''}`}>We ran this analysis for every facility in the country.</div>
                     <button className={`hiw-cta-btn ${ctaIn.btn ? 'in' : ''}`} onClick={() => {

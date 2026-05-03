@@ -222,7 +222,7 @@ export default function TwoReportsSection({ onSearch }) {
             </a>
           </div>
         </div>
-        <p className="two-reports-search-cta">Search any of 14,713 facilities to get your personalized reports — free Family Report on every facility page.</p>
+        <p className="two-reports-search-cta">Search any of 14,699 facilities to get your personalized reports — free Family Report on every facility page.</p>
       </div>
     </section>
   );

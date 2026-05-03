@@ -140,7 +140,7 @@ export default function PostAcuteHomePage() {
         {/* TRUST STRIP */}
         <section className="pa-trust-strip">
           <div className="pa-trust-inner">
-            <div className="pa-trust-cell"><div className="pa-trust-num">$492M</div><div className="pa-trust-lbl">Federal fines tracked (3 yr)</div></div>
+            <div className="pa-trust-cell"><div className="pa-trust-num">$467M</div><div className="pa-trust-lbl">Federal fines tracked (3 yr)</div></div>
             <div className="pa-trust-cell"><div className="pa-trust-num">$3.04B</div><div className="pa-trust-lbl">Related-party costs (HCRIS)</div></div>
             <div className="pa-trust-cell"><div className="pa-trust-num">14.5M</div><div className="pa-trust-lbl">Daily staffing records (PBJ)</div></div>
             <div className="pa-trust-cell"><div className="pa-trust-num">18</div><div className="pa-trust-lbl">Federal databases · sourced</div></div>

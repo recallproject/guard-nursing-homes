@@ -11,7 +11,7 @@ export const POST_ACUTE_SETTINGS = [
     sub: 'Skilled nursing facilities (SNFs)',
     iconCode: 'SN',
     desc: 'Inpatient rehab and long-term care after a hospital stay.',
-    count: '14,713',
+    count: '14,699',
     countUnit: 'facilities',
     hook: '34% had a zero-RN day in Q3 2025',
     route: '/skilled-nursing',

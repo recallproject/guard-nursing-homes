@@ -14,7 +14,7 @@ export default function HospitalsPage() {
     <div className="hospitals-page">
       <Helmet>
         <title>For Hospitals &amp; Discharge Planners | The Oversight Report</title>
-        <meta name="description" content="Staffing discrepancy index, state screening reports, and chain rankings to support safe nursing home discharge planning. Federal CMS data on 14,713 facilities." />
+        <meta name="description" content="Staffing discrepancy index, state screening reports, and chain rankings to support safe nursing home discharge planning. Federal CMS data on 14,699 facilities." />
         <meta property="og:title" content="Nursing Home Tools for Discharge Planners & Case Managers" />
         <meta property="og:description" content="State screening reports, staffing discrepancy data, and chain rankings to support safe discharge planning." />
         <meta property="og:url" content="https://www.oversightreports.com/hospitals" />
@@ -31,7 +31,7 @@ export default function HospitalsPage() {
           <h1>Data-backed nursing home<br />placement support</h1>
           <p className="hospitals-hero-subtitle">
             Screen facilities before discharge. Staffing discrepancy index, state-level safety reports,
-            and chain ownership data — all from federal CMS sources, covering 14,713 facilities.
+            and chain ownership data — all from federal CMS sources, covering 14,699 facilities.
           </p>
           <div className="hospitals-hero-actions">
             <Link to="/professionals" className="hospitals-cta-primary">View Professional Tools</Link>

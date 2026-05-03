@@ -192,7 +192,7 @@ export default function EvidenceSamplePage() {
         {/* CTA */}
         <div className="ev-sample-cta">
           <h2>Ready to Pull a Report?</h2>
-          <p>Search any of 14,713 Medicare-certified nursing facilities and download a Family Report and Facility Brief — both free.</p>
+          <p>Search any of 14,699 Medicare-certified nursing facilities and download a Family Report and Facility Brief — both free.</p>
           <div className="ev-sample-cta-buttons">
             <Link to="/" className="ev-sample-cta-btn-primary">Search Facilities</Link>
             <Link to="/ask-a-clinician" className="ev-sample-cta-btn-secondary">Ask a Clinician — $49</Link>

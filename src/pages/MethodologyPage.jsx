@@ -268,7 +268,7 @@ export function MethodologyPage() {
                 <div className="methodology-source-item">
                   <div className="methodology-source-icon s-icon-red"><IconInfo /></div>
                   <h4>Special Focus Facility (SFF)</h4>
-                  <p>CMS designation for approximately 88 of 14,713 facilities with persistent serious quality issues.</p>
+                  <p>CMS designation for approximately 88 of 14,699 facilities with persistent serious quality issues.</p>
                 </div>
               </div>
             </div>
@@ -289,7 +289,7 @@ export function MethodologyPage() {
               <div className="methodology-source-item">
                 <div className="methodology-source-icon s-icon-purple"><IconServer /></div>
                 <h4>Report Generation (AI-Assisted)</h4>
-                <p>AI-assisted code assembles reports for all 14,713 facilities — calculating comparative metrics (national averages, percentiles) and generating consistent layouts.</p>
+                <p>AI-assisted code assembles reports for all 14,699 facilities — calculating comparative metrics (national averages, percentiles) and generating consistent layouts.</p>
               </div>
               <div className="methodology-source-item">
                 <div className="methodology-source-icon s-icon-purple"><IconHeart /></div>
@@ -416,7 +416,7 @@ export function MethodologyPage() {
             </div>
 
             <div className="methodology-note-box">
-              <strong>High-Risk threshold:</strong> Facilities scoring &ge; 60 on the composite scale are classified as high-risk. Currently 1,180 of 14,713 facilities meet this threshold.
+              <strong>High-Risk threshold:</strong> Facilities scoring &ge; 60 on the composite scale are classified as high-risk. Currently 1,180 of 14,699 facilities meet this threshold.
             </div>
           </section>
 
@@ -425,7 +425,7 @@ export function MethodologyPage() {
             <h2>Key Metrics Explained</h2>
             <p className="methodology-section-intro">Every number on the site has a precise definition. Click to expand.</p>
 
-            <AccordionSection title="Facilities Analyzed (14,713)">
+            <AccordionSection title="Facilities Analyzed (14,699)">
               <p>Every Medicare/Medicaid-certified nursing home in the United States. Source: CMS Provider Information dataset.</p>
               <div className="methodology-formula-box">
                 <span className="methodology-formula-label">Count</span>
@@ -498,7 +498,7 @@ export function MethodologyPage() {
             <p className="methodology-section-intro">
               We tested whether facilities flagged by our risk algorithm actually receive
               more CMS enforcement actions than non-flagged facilities. This study was
-              conducted on all 14,713 Medicare-certified nursing homes using publicly
+              conducted on all 14,699 Medicare-certified nursing homes using publicly
               available CMS data.
             </p>
 
@@ -737,7 +737,7 @@ export function MethodologyPage() {
                 <tr>
                   <td>CMS Provider Information</td>
                   <td>Jan 1, 2026 snapshot</td>
-                  <td><span className="val-muted">14,713 facilities</span></td>
+                  <td><span className="val-muted">14,699 facilities</span></td>
                 </tr>
                 <tr>
                   <td>CMS Penalties</td>

@@ -5,9 +5,15 @@ import '../styles/post-acute-home.css';
 const REFRESH_HISTORY = [
   {
     date: 'May 3, 2026',
+    title: 'CMS data refreshed to April 2026 release',
+    notes: 'Provider Info, health deficiencies, and penalties refreshed to the April 2026 CMS Care Compare release. Penalty coverage now runs through March 2026; deficiency surveys through March 2026. Facility roster updated (25 closures, 11 newly certified). Also corrected a calculation that under-reported serious deficiency counts on some facility pages — counts now reflect the full CMS-published harm/jeopardy citation history.',
+    source: 'CMS Provider Info · Health Citations · Penalties',
+  },
+  {
+    date: 'May 3, 2026',
     title: 'Hospice section expansion',
-    notes: 'Added 55 hospice state-detail pages, 1,076 hospice chain rollups (covering 2,159 of 6,943 hospices), and the /hospice/high-risk investigation hub applying the California State Auditor framework nationally. Wired CourtListener federal court records and rebuilt the State AG MFCU pipeline with HTML scrapers across CA/TX/NY/FL/IL/PA. 20 new Plausible analytics events. All hospice PDFs are now free.',
-    source: 'CMS Hospice · CourtListener · State AGs',
+    notes: 'Added per-state hospice directories, chain rollups, and a national investigation hub applying the California State Auditor framework nationally. All hospice downloads remain free.',
+    source: 'CMS Hospice',
   },
   {
     date: 'April 29, 2026',
@@ -36,7 +42,7 @@ const REFRESH_HISTORY = [
   {
     date: 'February 24, 2026',
     title: 'Site launch',
-    notes: '14,713 nursing-home report cards. The Oversight Report goes live, free, with no operator funding. 18 federal datasets integrated.',
+    notes: '14,699 nursing-home report cards. The Oversight Report goes live, free, with no operator funding. 18 federal datasets integrated.',
     source: 'Site',
   },
 ];

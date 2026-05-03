@@ -30,7 +30,7 @@ export default function FamiliesPage() {
           </div>
           <h1>Make an informed choice<br />for your loved one</h1>
           <p className="families-hero-subtitle">
-            Free access to federal safety data on 14,713 Medicare-certified nursing homes.
+            Free access to federal safety data on 14,699 Medicare-certified nursing homes.
             Check staffing levels, citations, fines, and inspection history before you visit.
           </p>
           <div className="families-hero-actions">
@@ -48,7 +48,7 @@ export default function FamiliesPage() {
             </span>
             <span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-              14,713 facilities covered
+              14,699 facilities covered
             </span>
           </div>
         </div>
@@ -153,7 +153,7 @@ export default function FamiliesPage() {
               <h2>Free Safety Report for Any Facility</h2>
               <p>
                 Download a complete safety profile — star ratings, staffing data, inspection history,
-                penalties, and ownership — for any of the 14,713 facilities in our database.
+                penalties, and ownership — for any of the 14,699 facilities in our database.
                 No account required.
               </p>
               <ul className="families-report-features">

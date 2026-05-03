@@ -1009,7 +1009,7 @@ export function FacilityPage() {
               <span className="sff-dot" />
               <div className="sff-content">
                 <span className="sff-label">CMS Special Focus Facility (SFF)</span>
-                <span className="sff-explain">Designated by CMS as one of approximately 88 nursing homes (out of 14,713) with a persistent pattern of serious quality issues. SFF facilities receive twice the normal inspection frequency. This is an official federal designation — not our assessment.</span>
+                <span className="sff-explain">Designated by CMS as one of approximately 88 nursing homes (out of 14,699) with a persistent pattern of serious quality issues. SFF facilities receive twice the normal inspection frequency. This is an official federal designation — not our assessment.</span>
               </div>
             </div>
           )}
@@ -1708,7 +1708,7 @@ export function FacilityPage() {
                 <div className="qm-disclaimer">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                   <div>
-                    <strong>Data sources:</strong> MDS Quality Measures (assessment-based), Claims-Based Quality Measures (Medicare claims), SNF Quality Reporting Program (including COVID-19 vaccination data), SNF Value-Based Purchasing. National averages calculated from all 14,713 Medicare-certified nursing homes. Antipsychotic rates exclude residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation &mdash; no single metric above average automatically indicates poor care. <Link to="/methodology">Methodology</Link> &middot; <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">Verify on CMS.gov &rarr;</a>
+                    <strong>Data sources:</strong> MDS Quality Measures (assessment-based), Claims-Based Quality Measures (Medicare claims), SNF Quality Reporting Program (including COVID-19 vaccination data), SNF Value-Based Purchasing. National averages calculated from all 14,699 Medicare-certified nursing homes. Antipsychotic rates exclude residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation &mdash; no single metric above average automatically indicates poor care. <Link to="/methodology">Methodology</Link> &middot; <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">Verify on CMS.gov &rarr;</a>
                   </div>
                 </div>
 
@@ -2227,7 +2227,7 @@ export function FacilityPage() {
         <div className="section">
           <div className="section-title">Data Sources</div>
           <div className="data-sources-grid">
-            <div className="data-source-item"><h4>CMS Provider Information Data</h4><p>14,713 Medicare/Medicaid certified nursing homes. Includes star ratings, beds, ownership, location.</p></div>
+            <div className="data-source-item"><h4>CMS Provider Information Data</h4><p>14,699 Medicare/Medicaid certified nursing homes. Includes star ratings, beds, ownership, location.</p></div>
             <div className="data-source-item"><h4>CMS Penalties Data</h4><p>18,060 enforcement actions. Fines and payment denials.</p></div>
             <div className="data-source-item"><h4>CMS Ownership Data</h4><p>157,839 ownership records. Tracks 5%+ ownership interests and management.</p></div>
             <div className="data-source-item"><h4>Payroll-Based Journal (PBJ)</h4><p>1,332,804 daily staffing records (CY2025 Q3). Mandatory payroll data showing actual hours worked by RNs, LPNs, and CNAs per day.</p></div>

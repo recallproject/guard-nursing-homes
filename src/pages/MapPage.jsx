@@ -146,7 +146,7 @@ export function MapPage() {
           <div className="map-loading-spinner"></div>
           <div className="map-loading-text">Loading facility data...</div>
           <p className="text-muted" style={{ fontSize: '0.9rem', marginTop: '1rem' }}>
-            This may take a moment. We're loading data for 14,713 facilities.
+            This may take a moment. We're loading data for 14,699 facilities.
           </p>
         </div>
       </div>
@@ -184,7 +184,7 @@ export function MapPage() {
     <div className="map-page">
       <Helmet>
         <title>The Oversight Report — Nursing Home Safety Data</title>
-        <meta name="description" content="Search 14,713 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />
+        <meta name="description" content="Search 14,699 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />
         <link rel="canonical" href="https://www.oversightreports.com/" />
       </Helmet>
       {/* V4 Landing Page */}

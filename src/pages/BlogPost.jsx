@@ -258,7 +258,7 @@ export default function BlogPost() {
               <h3 className="blog-author-fullname">Robert Benard</h3>
               <p className="blog-author-credentials">MS, RN, CNS, AGACNP-BC, PMHNP-BC</p>
               <p className="blog-author-bio">
-                Practicing psychiatric-mental health nurse practitioner with a background in ER, ICU, neuro, and addiction medicine. Founder of DataLink Clinical LLC and creator of OversightReports.com — a public transparency platform covering all 14,713 Medicare-certified nursing homes built from 18 federal data sources.
+                Practicing psychiatric-mental health nurse practitioner with a background in ER, ICU, neuro, and addiction medicine. Founder of DataLink Clinical LLC and creator of OversightReports.com — a public transparency platform covering all 14,699 Medicare-certified nursing homes built from 18 federal data sources.
               </p>
             </div>
           </div>

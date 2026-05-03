@@ -47,7 +47,9 @@ def load_health_citations_from_csv(csv_path):
                 complaint_counts[ccn] += 1
 
             # Count serious deficiencies (scope/severity codes G-L indicate immediate jeopardy or actual harm)
-            scope_severity = row.get('Scope and Severity Code', '').strip().upper()
+            # CMS column has been "Scope Severity Code" (no "and") in 2025-2026 refreshes; keep both for safety
+            scope_severity = (row.get('Scope Severity Code', '') or
+                              row.get('Scope and Severity Code', '')).strip().upper()
             if scope_severity in ['G', 'H', 'I', 'J', 'K', 'L']:
                 serious_counts[ccn] += 1
             # Split: G/H/I = actual harm, J/K/L = immediate jeopardy

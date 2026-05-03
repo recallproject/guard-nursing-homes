@@ -69,7 +69,7 @@ export default function AboutPage() {
         {/* WHAT IT DOES */}
         <div className="about-section">
           <h2>What The Oversight Report Does</h2>
-          <p>The platform integrates multiple federal datasets from the Centers for Medicare & Medicaid Services to provide a complete safety picture of every Medicare-certified nursing facility in the country — 14,713 and counting. That includes staffing verified against actual payroll records, inspection deficiency histories, federal penalties, ownership network mapping, and financial transparency data that no other consumer tool surfaces.</p>
+          <p>The platform integrates multiple federal datasets from the Centers for Medicare & Medicaid Services to provide a complete safety picture of every Medicare-certified nursing facility in the country — 14,699 and counting. That includes staffing verified against actual payroll records, inspection deficiency histories, federal penalties, ownership network mapping, and financial transparency data that no other consumer tool surfaces.</p>
           <p>Every data point is sourced from public federal records. No industry funding. No facility sponsorship. No advertising. The data says what it says.</p>
         </div>
 

@@ -21,7 +21,7 @@ const tiers = [
     features: [
       'Family Report — plain-language safety summary',
       'Facility Brief — full inspection + regulatory data',
-      'All 14,713 Medicare-certified facilities covered',
+      'All 14,699 Medicare-certified facilities covered',
       'Downloadable PDFs, no login, no email gate',
       'Computed from public CMS federal data',
     ],
