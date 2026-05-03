@@ -8,8 +8,6 @@ const NEWS_FEED_URL = '/data/hospice/news-feed.json';
 const DOJ_ACTIONS_URL = '/data/hospice/doj-actions.json';
 const OIG_EXCLUSIONS_URL = '/data/hospice/oig-exclusions.json';
 
-const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
-
 const SOURCE_FILTERS = [
   { key: 'all',   label: 'All' },
   { key: 'doj',   label: 'DOJ' },
@@ -177,7 +175,6 @@ export default function HospiceNewsPage() {
   const [loading, setLoading] = useState(true);
   const [errored, setErrored] = useState(false);
   const [now, setNow] = useState(() => new Date());
-  const intervalRef = useRef(null);
   const tickRef = useRef(null);
 
   const fetchAll = useCallback(async () => {
@@ -220,21 +217,23 @@ export default function HospiceNewsPage() {
     }
   }, []);
 
-  // Initial fetch + interval polling
+  // Fetch on mount + on tab refocus. Backend pipelines run daily, so polling
+  // mid-session is wasted bandwidth.
   useEffect(() => {
     fetchAll();
 
-    const tick = () => {
-      if (typeof document !== 'undefined' && document.visibilityState === 'hidden') return;
-      fetchAll();
+    const onVis = () => {
+      if (typeof document !== 'undefined' && document.visibilityState === 'visible') {
+        fetchAll();
+      }
     };
-    intervalRef.current = setInterval(tick, POLL_INTERVAL_MS);
+    document.addEventListener('visibilitychange', onVis);
 
-    // Update "ago" text every 30s
-    tickRef.current = setInterval(() => setNow(new Date()), 30 * 1000);
+    // Update "ago" text every 60s so the freshness label doesn't go stale visually.
+    tickRef.current = setInterval(() => setNow(new Date()), 60 * 1000);
 
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      document.removeEventListener('visibilitychange', onVis);
       if (tickRef.current) clearInterval(tickRef.current);
     };
   }, [fetchAll]);
@@ -350,13 +349,13 @@ export default function HospiceNewsPage() {
               <span className="hn-ticker-muted">last update</span>
               &nbsp;<span className="hn-ticker-strong">{lastUpdateAgo || (loading ? 'loading...' : 'n/a')}</span>
               <span className="hn-ticker-sep">·</span>
-              <span className="hn-ticker-muted">browser refresh</span>
-              &nbsp;<span className="hn-ticker-strong">every 5 min</span>
+              <span className="hn-ticker-muted">refresh</span>
+              &nbsp;<span className="hn-ticker-strong">on tab focus</span>
             </div>
             <span className="hn-ticker-note">
               {errored
                 ? 'feed temporarily unavailable . retrying'
-                : 'live feed . ' + items.length + ' item' + (items.length === 1 ? '' : 's') + ' . auto-refresh on'}
+                : 'rebuilt daily . ' + items.length + ' item' + (items.length === 1 ? '' : 's')}
             </span>
           </div>
         </section>

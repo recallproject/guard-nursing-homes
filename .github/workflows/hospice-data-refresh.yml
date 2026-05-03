@@ -1,0 +1,46 @@
+name: Hospice data refresh
+
+on:
+  schedule:
+    # 13:13 UTC daily ≈ 6:13 AM PT / 9:13 AM ET. Off-hour minute on purpose.
+    - cron: '13 13 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Run news + DOJ pipelines
+        run: |
+          set -e
+          node scripts/build-hospice-news-feed.js || echo "news pipeline failed (continuing)"
+          node scripts/build-doj-actions.js      || echo "doj pipeline failed (continuing)"
+
+      - name: Commit if data changed
+        run: |
+          git config user.name  "oversight-bot"
+          git config user.email "bot@oversightreports.com"
+          git add public/data/hospice/news-feed.json public/data/hospice/doj-actions.json
+          if git diff --cached --quiet; then
+            echo "No data changes; nothing to commit."
+            exit 0
+          fi
+          NEWS_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/news-feed.json')).feed_items?.length ?? 0)")
+          DOJ_COUNT=$(node  -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/doj-actions.json')).actions?.length ?? 0)")
+          git commit -m "Daily hospice feed refresh: ${NEWS_COUNT} news + ${DOJ_COUNT} DOJ items"
+          git push origin HEAD:main

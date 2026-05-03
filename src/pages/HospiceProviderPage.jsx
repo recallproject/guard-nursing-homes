@@ -148,7 +148,7 @@ export default function HospiceProviderPage() {
   const [error, setError] = useState(null);
 
   // Public-record feeds (OIG / news / DOJ). Loaded once on mount and re-fetched
-  // every 5 minutes so this section stays current without page refreshes.
+  // when the tab regains focus.
   const [pubRec, setPubRec] = useState({
     oig: pubRecCache.oig?.data ?? null,
     news: pubRecCache.news?.data ?? null,
@@ -227,12 +227,12 @@ export default function HospiceProviderPage() {
   }, [ccn]);
 
   // Public-record feeds: load once on mount (or read from module-level cache),
-  // then re-fetch every 5 minutes. Only the public-record section re-renders.
+  // then re-fetch when the tab regains focus. Backend pipelines run daily, so
+  // continuous polling is wasted bandwidth.
   useEffect(() => {
     let cancelled = false;
 
     async function loadFeeds() {
-      // Use cache if fresh enough (treat any cached value as instantly usable).
       if (pubRecCache.oig && pubRecCache.news && pubRecCache.doj) {
         if (!cancelled) {
           setPubRec({
@@ -246,17 +246,19 @@ export default function HospiceProviderPage() {
         const fresh = await fetchPubRecFeeds();
         if (!cancelled) setPubRec(fresh);
       } catch (e) {
-        // Swallow — public-record section will fall back to whatever is cached.
         // eslint-disable-next-line no-console
         console.warn('Public-record feed fetch failed', e);
       }
     }
 
     loadFeeds();
-    const interval = setInterval(loadFeeds, 300000); // 5 minutes
+    const onFocus = () => {
+      if (document.visibilityState === 'visible') loadFeeds();
+    };
+    document.addEventListener('visibilitychange', onFocus);
     return () => {
       cancelled = true;
-      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onFocus);
     };
   }, []);
 
@@ -956,7 +958,7 @@ export default function HospiceProviderPage() {
               <div className="hp-pubrec-feeds-head">
                 <span>
                   <span className="hp-live-dot"></span>
-                  8 sources monitored · refreshing every 5 minutes
+                  8 sources monitored · refreshed daily
                 </span>
                 <span>
                   {totalPubRec} item{totalPubRec === 1 ? '' : 's'} found for this hospice
