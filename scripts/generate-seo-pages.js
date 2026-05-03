@@ -675,5 +675,34 @@ for (const chain of chainData) {
 }
 console.log(`  ✓ ${chainCount} chain pages (with static HTML content)`);
 
-console.log(`\nSEO pages generated: ${pageCount} total (${staticPages.length} static + ${utilityPages.length} utility + ${blogCount} blog + ${facilityCount} facilities + ${chainCount} chains)`);
+// ── Hospice pages — one per Medicare-certified hospice ──
+let hospiceCount = 0;
+const hospiceStatesDir = join(publicDir, 'data', 'hospice', 'states');
+try {
+  const hospiceFiles = readdirSync(hospiceStatesDir).filter(f => f.endsWith('.json'));
+  for (const file of hospiceFiles) {
+    const stateCode = file.replace('.json', '');
+    const stateData = JSON.parse(readFileSync(join(hospiceStatesDir, file), 'utf8'));
+    if (Array.isArray(stateData.providers)) {
+      for (const p of stateData.providers) {
+        if (!p.ccn || !p.name) continue;
+        const flagged = p.flags && p.flags.flagged_count ? p.flags.flagged_count : 0;
+        const flagText = flagged > 0 ? `${flagged} pattern${flagged === 1 ? '' : 's'} flagged for review.` : 'No patterns flagged for review.';
+        const desc = `${p.name} in ${p.city || ''}, ${p.state || stateCode}. CMS hospice safety data: family-experience scores, ownership, ${flagText} Sourced from CMS. Free.`;
+        createPage(
+          `hospice/${p.ccn}`,
+          `${p.name} — Hospice Safety Report | The Oversight Report`,
+          desc,
+          `/hospice/${p.ccn}`
+        );
+        hospiceCount++;
+      }
+    }
+  }
+} catch (err) {
+  console.log(`  ⚠ hospice pages skipped: ${err.message}`);
+}
+console.log(`  ✓ ${hospiceCount} hospice pages (SEO stubs · client-rendered detail)`);
+
+console.log(`\nSEO pages generated: ${pageCount} total (${staticPages.length} static + ${utilityPages.length} utility + ${blogCount} blog + ${facilityCount} facilities + ${chainCount} chains + ${hospiceCount} hospices)`);
 console.log('✅ Indexable SEO pages now include a single canonical and static HTML for crawlers.');
