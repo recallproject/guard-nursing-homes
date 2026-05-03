@@ -1,0 +1,950 @@
+/* hospice-provider.css — per-hospice report card.
+   All rules scoped under .hospice-provider so we don't bleed into the
+   global theme. Uses the same Source Serif 4 / Plus Jakarta Sans / JetBrains
+   Mono stack as the rest of the post-acute light theme. */
+
+.hospice-provider {
+  --hp-navy: #1D3557;
+  --hp-primary: #2B6CB0;
+  --hp-primary-dark: #1D4E7E;
+  --hp-amber: #D97706;
+  --hp-teal: #0D9488;
+  --hp-green: #059669;
+  --hp-red: #DC2626;
+  --hp-orange: #EA580C;
+  --hp-purple: #7C3AED;
+  --hp-bg: #EDF1F7;
+  --hp-bg-light: #F8FAFC;
+  --hp-bg-card: #FFFFFF;
+  --hp-bg-footer: #1D3557;
+  --hp-bg-elevated: #F0F4F8;
+  --hp-text: #334155;
+  --hp-muted: #64748B;
+  --hp-light-muted: #94A3B8;
+  --hp-border: #D7E0EA;
+  --hp-border-subtle: #E8EDF2;
+  --hp-radius: 8px;
+  --hp-radius-lg: 12px;
+  --hp-shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 2px 6px rgba(29,53,87,.04);
+  --hp-shadow-md: 0 1px 3px rgba(0,0,0,.05), 0 6px 16px rgba(29,53,87,.07);
+  --hp-shadow-lg: 0 2px 6px rgba(0,0,0,.06), 0 12px 28px rgba(29,53,87,.09);
+
+  background: var(--hp-bg);
+  color: var(--hp-text);
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+.hospice-provider * { box-sizing: border-box; }
+.hospice-provider a { color: inherit; text-decoration: none; }
+
+/* loading + error */
+.hospice-provider .hp-state {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: var(--hp-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hospice-provider .hp-state h2 {
+  font-family: "Source Serif 4", serif;
+  font-size: 28px;
+  color: var(--hp-navy);
+  margin: 0 0 12px;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+.hospice-provider .hp-state p {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--hp-text);
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0 0 18px;
+}
+.hospice-provider .hp-state .hp-state-cta {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background: var(--hp-primary);
+  color: #fff;
+  border-radius: var(--hp-radius);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* breadcrumb */
+.hospice-provider .hp-crumb {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 14px 32px 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--hp-muted);
+  letter-spacing: 0.04em;
+}
+.hospice-provider .hp-crumb a { color: var(--hp-primary); }
+.hospice-provider .hp-crumb a:hover { color: var(--hp-primary-dark); }
+.hospice-provider .hp-crumb .sep { color: var(--hp-light-muted); margin: 0 8px; }
+
+/* page head */
+.hospice-provider .hp-page-head {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px 12px;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 1000px) {
+  .hospice-provider .hp-page-head { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--hp-primary);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.hospice-provider .hp-title {
+  font-family: "Source Serif 4", serif;
+  font-size: 42px;
+  line-height: 1.1;
+  color: var(--hp-navy);
+  margin: 0 0 8px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.hospice-provider .hp-loc {
+  font-size: 16px;
+  color: var(--hp-text);
+  margin: 0 0 6px;
+}
+.hospice-provider .hp-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--hp-muted);
+  letter-spacing: 0.04em;
+}
+.hospice-provider .hp-flags {
+  margin-top: 10px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.hospice-provider .hp-flag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.hospice-provider .hp-flag-fp { background: rgba(217,119,6,.10); color: var(--hp-amber); border: 1px solid rgba(217,119,6,.3); }
+.hospice-provider .hp-flag-np { background: rgba(13,148,136,.10); color: var(--hp-teal); border: 1px solid rgba(13,148,136,.3); }
+.hospice-provider .hp-flag-chain { background: rgba(124,58,237,.10); color: var(--hp-purple); border: 1px solid rgba(124,58,237,.3); }
+.hospice-provider .hp-flag-pe { background: rgba(124,58,237,.10); color: var(--hp-purple); border: 1px solid rgba(124,58,237,.3); }
+.hospice-provider .hp-flag-reit { background: rgba(220,38,38,.10); color: var(--hp-red); border: 1px solid rgba(220,38,38,.3); }
+
+/* quick info card */
+.hospice-provider .hp-qi {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-lg);
+  padding: 18px 22px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-qi-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hp-border-subtle);
+  font-size: 13.5px;
+}
+.hospice-provider .hp-qi-row:last-child { border-bottom: 0; }
+.hospice-provider .hp-qi-row .k { color: var(--hp-muted); }
+.hospice-provider .hp-qi-row .v {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--hp-navy);
+  font-weight: 700;
+}
+.hospice-provider .hp-qi-row .v.amber { color: var(--hp-amber); }
+
+/* rating block */
+.hospice-provider .hp-rating-block {
+  max-width: 1400px;
+  margin: 16px auto 0;
+  padding: 0 32px;
+}
+.hospice-provider .hp-rating-card {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--hp-shadow-md);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+@media (max-width: 800px) {
+  .hospice-provider .hp-rating-card { grid-template-columns: 1fr; gap: 16px; }
+}
+.hospice-provider .hp-star-block { text-align: center; }
+.hospice-provider .hp-star-num {
+  font-family: "Source Serif 4", serif;
+  font-size: 64px;
+  color: var(--hp-navy);
+  font-weight: 700;
+  line-height: 1;
+}
+.hospice-provider .hp-star-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: var(--hp-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 6px;
+}
+.hospice-provider .hp-star-symbols {
+  font-size: 22px;
+  color: var(--hp-amber);
+  margin-top: 4px;
+  letter-spacing: 2px;
+}
+.hospice-provider .hp-summary h2 {
+  font-family: "Source Serif 4", serif;
+  font-size: 22px;
+  color: var(--hp-navy);
+  margin: 0 0 8px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.hospice-provider .hp-summary p {
+  color: var(--hp-text);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0 0 8px;
+}
+.hospice-provider .hp-summary strong { color: var(--hp-navy); }
+
+/* sections */
+.hospice-provider .hp-section { padding: 36px 32px; }
+.hospice-provider .hp-section-light {
+  background: var(--hp-bg-card);
+  border-top: 1px solid var(--hp-border);
+  border-bottom: 1px solid var(--hp-border);
+}
+.hospice-provider .hp-section-inner { max-width: 1400px; margin: 0 auto; }
+.hospice-provider .hp-section-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--hp-primary);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hospice-provider .hp-section-title {
+  font-family: "Source Serif 4", serif;
+  font-size: 24px;
+  color: var(--hp-navy);
+  margin: 0 0 6px;
+  font-weight: 700;
+}
+.hospice-provider .hp-section-desc {
+  color: var(--hp-muted);
+  max-width: 70ch;
+  margin: 0 0 22px;
+  line-height: 1.55;
+  font-size: 14px;
+}
+.hospice-provider .hp-section-desc strong { color: var(--hp-navy); }
+
+/* CAHPS */
+.hospice-provider .hp-cahps-headline {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-left: 4px solid var(--hp-amber);
+  border-radius: var(--hp-radius);
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-cahps-headline.good {
+  border-left-color: var(--hp-teal);
+}
+.hospice-provider .hp-cahps-headline .h1 {
+  font-family: "Source Serif 4", serif;
+  font-size: 22px;
+  color: var(--hp-navy);
+  margin: 0 0 4px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.hospice-provider .hp-cahps-headline .h2 {
+  color: var(--hp-text);
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+.hospice-provider .hp-cahps-headline .h2 strong { color: var(--hp-navy); }
+
+.hospice-provider .hp-cahps-highlights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+@media (max-width: 800px) {
+  .hospice-provider .hp-cahps-highlights { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-cahps-card {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-lg);
+  padding: 22px 26px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-cahps-card.good { border-top: 3px solid var(--hp-teal); }
+.hospice-provider .hp-cahps-card.bad { border-top: 3px solid var(--hp-red); }
+.hospice-provider .hp-cahps-pill {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.hospice-provider .hp-cahps-pill.good { background: rgba(13,148,136,.10); color: var(--hp-teal); border: 1px solid rgba(13,148,136,.3); }
+.hospice-provider .hp-cahps-pill.bad { background: rgba(220,38,38,.10); color: var(--hp-red); border: 1px solid rgba(220,38,38,.3); }
+.hospice-provider .hp-cahps-card h3 {
+  font-family: "Source Serif 4", serif;
+  font-size: 18px;
+  color: var(--hp-navy);
+  margin: 0 0 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.hospice-provider .hp-cahps-list { list-style: none; padding: 0; margin: 0; }
+.hospice-provider .hp-cahps-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hp-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  font-size: 14px;
+}
+.hospice-provider .hp-cahps-list li:last-child { border-bottom: 0; }
+.hospice-provider .hp-cahps-list .measure { color: var(--hp-navy); font-weight: 600; }
+.hospice-provider .hp-cahps-list .delta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--hp-muted);
+  white-space: nowrap;
+}
+.hospice-provider .hp-cahps-list .delta.bad { color: var(--hp-red); font-weight: 700; }
+.hospice-provider .hp-cahps-list .delta.good { color: var(--hp-teal); font-weight: 700; }
+
+.hospice-provider .hp-cahps-table {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius);
+  overflow: hidden;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-cahps-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 22px;
+  cursor: pointer;
+  background: var(--hp-bg-light);
+  border: 0;
+  width: 100%;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--hp-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hospice-provider .hp-cahps-toggle:hover { color: var(--hp-primary); }
+.hospice-provider .hp-cahps-content { padding: 4px 0; }
+.hospice-provider .hp-cahps-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.hospice-provider .hp-cahps-content th {
+  text-align: left;
+  padding: 10px 22px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--hp-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 1px solid var(--hp-border);
+}
+.hospice-provider .hp-cahps-content th.right,
+.hospice-provider .hp-cahps-content td.right { text-align: right; }
+.hospice-provider .hp-cahps-content tbody tr { border-bottom: 1px solid var(--hp-border-subtle); }
+.hospice-provider .hp-cahps-content tbody tr:last-child { border-bottom: 0; }
+.hospice-provider .hp-cahps-content td { padding: 10px 22px; vertical-align: middle; }
+.hospice-provider .hp-cahps-content td.measure { color: var(--hp-navy); font-weight: 600; }
+.hospice-provider .hp-cahps-content td.num {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--hp-navy);
+  font-weight: 700;
+}
+.hospice-provider .hp-cahps-content td.num.bad { color: var(--hp-red); }
+.hospice-provider .hp-cahps-content td.num.muted { color: var(--hp-muted); font-weight: 500; }
+.hospice-provider .hp-cahps-foot {
+  font-size: 12px;
+  color: var(--hp-muted);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* pattern flags */
+.hospice-provider .hp-pattern-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+@media (max-width: 800px) {
+  .hospice-provider .hp-pattern-cards { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-pattern-card {
+  background: var(--hp-bg-card);
+  border: 2px solid var(--hp-amber);
+  border-radius: var(--hp-radius-lg);
+  padding: 22px 26px;
+  box-shadow: var(--hp-shadow-md);
+}
+.hospice-provider .hp-pattern-card.ok {
+  border-color: var(--hp-border);
+  border-width: 1px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-pattern-pill {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.hospice-provider .hp-pattern-pill.flagged {
+  background: rgba(217,119,6,.10);
+  color: var(--hp-amber);
+  border: 1px solid rgba(217,119,6,.4);
+}
+.hospice-provider .hp-pattern-pill.ok {
+  background: rgba(13,148,136,.10);
+  color: var(--hp-teal);
+  border: 1px solid rgba(13,148,136,.3);
+}
+.hospice-provider .hp-pattern-card h3 {
+  font-family: "Source Serif 4", serif;
+  font-size: 19px;
+  color: var(--hp-navy);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.hospice-provider .hp-pattern-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hp-border-subtle);
+}
+.hospice-provider .hp-pattern-row:last-of-type { border-bottom: 0; }
+.hospice-provider .hp-pattern-row .lbl {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--hp-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hospice-provider .hp-pattern-row .val {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  color: var(--hp-navy);
+  font-weight: 700;
+}
+.hospice-provider .hp-pattern-row .val.flagged { color: var(--hp-amber); }
+.hospice-provider .hp-pattern-explainer {
+  font-size: 13px;
+  color: var(--hp-text);
+  line-height: 1.5;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--hp-bg-light);
+  border-left: 3px solid var(--hp-amber);
+  border-radius: 4px;
+}
+.hospice-provider .hp-pattern-card.ok .hp-pattern-explainer {
+  border-left-color: var(--hp-teal);
+}
+
+/* care locations */
+.hospice-provider .hp-care-locs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+@media (max-width: 800px) {
+  .hospice-provider .hp-care-locs { grid-template-columns: repeat(2, 1fr); }
+}
+.hospice-provider .hp-care-loc {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius);
+  padding: 16px 20px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-care-loc .pct {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 24px;
+  color: var(--hp-navy);
+  font-weight: 700;
+}
+.hospice-provider .hp-care-loc .lbl {
+  font-size: 12.5px;
+  color: var(--hp-muted);
+  margin-top: 4px;
+}
+
+/* public record */
+.hospice-provider .hp-pubrec {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-pubrec-disclaimer {
+  background: var(--hp-bg-light);
+  border-left: 3px solid var(--hp-primary);
+  padding: 12px 16px;
+  font-size: 12.5px;
+  color: var(--hp-text);
+  line-height: 1.55;
+  margin-bottom: 18px;
+  border-radius: 4px;
+}
+.hospice-provider .hp-pubrec-disclaimer strong { color: var(--hp-navy); }
+.hospice-provider .hp-pubrec-feeds {
+  background: var(--hp-bg-light);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius);
+  padding: 14px 16px 12px;
+  margin-bottom: 18px;
+}
+.hospice-provider .hp-pubrec-feeds-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: var(--hp-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.hospice-provider .hp-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--hp-teal);
+  margin-right: 6px;
+  box-shadow: 0 0 4px rgba(13,148,136,.5);
+  animation: hp-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hp-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.hospice-provider .hp-pubrec-feeds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px 14px;
+}
+.hospice-provider .hp-pubrec-feed-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  font-size: 12px;
+  border-bottom: 1px dashed var(--hp-border-subtle);
+}
+.hospice-provider .hp-pubrec-feed-item:last-child { border-bottom: 0; }
+.hospice-provider .hp-pubrec-feed-name { color: var(--hp-navy); font-weight: 600; }
+.hospice-provider .hp-pubrec-feed-name.pending { color: var(--hp-muted); font-style: italic; }
+.hospice-provider .hp-pubrec-feed-time {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: var(--hp-muted);
+}
+.hospice-provider .hp-pubrec-feed-time.pending { color: var(--hp-amber); }
+
+.hospice-provider .hp-pubrec-list { list-style: none; padding: 0; margin: 0; }
+.hospice-provider .hp-pubrec-item {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--hp-border-subtle);
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 18px;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .hospice-provider .hp-pubrec-item { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-pubrec-item:last-child { border-bottom: 0; padding-bottom: 0; }
+.hospice-provider .hp-pubrec-date {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--hp-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding-top: 2px;
+}
+.hospice-provider .hp-pubrec-content h4 {
+  font-family: "Source Serif 4", serif;
+  font-size: 16px;
+  color: var(--hp-navy);
+  margin: 0 0 4px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.hospice-provider .hp-pubrec-content p {
+  color: var(--hp-text);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+.hospice-provider .hp-pubrec-source {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: var(--hp-primary);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 6px;
+  display: inline-block;
+}
+.hospice-provider .hp-pubrec-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  padding: 4px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  align-self: start;
+}
+.hospice-provider .hp-tag-oig { background: rgba(124,58,237,.10); color: var(--hp-purple); border: 1px solid rgba(124,58,237,.3); }
+.hospice-provider .hp-tag-cms { background: rgba(43,108,176,.10); color: var(--hp-primary); border: 1px solid rgba(43,108,176,.3); }
+.hospice-provider .hp-pubrec-empty {
+  margin-top: 22px;
+  padding: 14px 18px;
+  background: var(--hp-bg-light);
+  border-radius: var(--hp-radius);
+  font-size: 13px;
+  color: var(--hp-muted);
+  line-height: 1.55;
+}
+.hospice-provider .hp-pubrec-empty strong { color: var(--hp-navy); }
+
+/* ownership */
+.hospice-provider .hp-owner {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-lg);
+  padding: 22px 28px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-owner-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--hp-border-subtle);
+  font-size: 13.5px;
+}
+.hospice-provider .hp-owner-row:last-child { border-bottom: 0; }
+.hospice-provider .hp-owner-row .k { color: var(--hp-muted); }
+.hospice-provider .hp-owner-row .v {
+  font-family: "Source Serif 4", serif;
+  font-size: 14.5px;
+  color: var(--hp-navy);
+  font-weight: 700;
+}
+.hospice-provider .hp-owner-row .v.purple { color: var(--hp-purple); }
+.hospice-provider .hp-owner-row .v.amber { color: var(--hp-amber); }
+.hospice-provider .hp-owner-row .v.teal { color: var(--hp-teal); }
+
+/* ask card */
+.hospice-provider .hp-ask {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius-lg);
+  padding: 26px 30px;
+  box-shadow: var(--hp-shadow-sm);
+}
+.hospice-provider .hp-ask-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 800px) {
+  .hospice-provider .hp-ask-list { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-ask-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 6px 0;
+}
+.hospice-provider .hp-ask-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--hp-primary);
+  background: rgba(43,108,176,.08);
+  border-radius: 4px;
+  padding: 3px 7px;
+  letter-spacing: 0.06em;
+  min-width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.hospice-provider .hp-ask-q {
+  font-size: 13.5px;
+  color: var(--hp-text);
+  line-height: 1.5;
+}
+
+/* complaint routing */
+.hospice-provider .hp-help {
+  background: var(--hp-navy);
+  color: #fff;
+  padding: 36px 32px;
+}
+.hospice-provider .hp-help-inner { max-width: 1400px; margin: 0 auto; }
+.hospice-provider .hp-help-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--hp-amber);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.hospice-provider .hp-help-title {
+  font-family: "Source Serif 4", serif;
+  font-size: 24px;
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+.hospice-provider .hp-help-sub {
+  color: rgba(255,255,255,0.78);
+  max-width: 70ch;
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.hospice-provider .hp-help-channels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+@media (max-width: 900px) {
+  .hospice-provider .hp-help-channels { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .hospice-provider .hp-help-channels { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-help-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--hp-radius);
+  padding: 14px 16px;
+  transition: 120ms ease;
+}
+.hospice-provider .hp-help-card:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: var(--hp-amber);
+}
+.hospice-provider .hp-help-card .lbl {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  color: var(--hp-amber);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hospice-provider .hp-help-card .ttl {
+  font-family: "Source Serif 4", serif;
+  font-size: 15px;
+  color: #fff;
+  margin-top: 6px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.hospice-provider .hp-help-card .desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 6px;
+  line-height: 1.45;
+}
+
+/* action bar */
+.hospice-provider .hp-action {
+  padding: 28px 32px;
+  background: var(--hp-bg-light);
+  border-top: 1px solid var(--hp-border);
+  border-bottom: 1px solid var(--hp-border);
+}
+.hospice-provider .hp-action-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.hospice-provider .hp-action .label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--hp-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.hospice-provider .hp-action .actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hospice-provider .hp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--hp-radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 120ms ease;
+  border: 1px solid var(--hp-border);
+  background: var(--hp-bg-card);
+  color: var(--hp-text);
+  font-family: inherit;
+  text-decoration: none;
+}
+.hospice-provider .hp-btn:hover {
+  border-color: var(--hp-primary);
+  color: var(--hp-primary);
+}
+.hospice-provider .hp-btn-primary {
+  background: var(--hp-primary);
+  color: #fff;
+  border-color: var(--hp-primary);
+}
+.hospice-provider .hp-btn-primary:hover {
+  background: var(--hp-primary-dark);
+  color: #fff;
+  border-color: var(--hp-primary-dark);
+}
+
+/* nearby */
+.hospice-provider .hp-nearby-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+@media (max-width: 800px) {
+  .hospice-provider .hp-nearby-grid { grid-template-columns: 1fr; }
+}
+.hospice-provider .hp-nearby-card {
+  background: var(--hp-bg-card);
+  border: 1px solid var(--hp-border);
+  border-radius: var(--hp-radius);
+  padding: 16px 18px;
+  box-shadow: var(--hp-shadow-sm);
+  display: block;
+  transition: 120ms ease;
+}
+.hospice-provider .hp-nearby-card:hover {
+  border-color: var(--hp-primary);
+  box-shadow: var(--hp-shadow-md);
+}
+.hospice-provider .hp-nearby-card .name {
+  font-family: "Source Serif 4", serif;
+  font-size: 16px;
+  color: var(--hp-navy);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.hospice-provider .hp-nearby-card .loc {
+  font-size: 12.5px;
+  color: var(--hp-muted);
+  margin-top: 4px;
+}
+.hospice-provider .hp-nearby-card .quick {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hp-border-subtle);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+}
+.hospice-provider .hp-nearby-card .quick .stars {
+  color: var(--hp-amber);
+  font-weight: 700;
+}
+.hospice-provider .hp-nearby-card .quick .flag { color: var(--hp-muted); }
+.hospice-provider .hp-nearby-card .quick .flag.amber { color: var(--hp-amber); }
+
+/* footer note */
+.hospice-provider .hp-footnote {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 22px 32px 40px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--hp-muted);
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+}
+.hospice-provider .hp-footnote strong { color: var(--hp-navy); }

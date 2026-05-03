@@ -535,8 +535,18 @@ const staticPages = [
   },
   {
     route: 'hospice',
-    title: 'Hospice Care Safety Data — Launching May 2026 | The Oversight Report',
-    description: 'Hospice care intelligence platform launching May 2026. Every Medicare-certified hospice in America, screened with a state-auditor methodology validated against prosecuted cases.'
+    title: 'Hospice Safety Data | The Oversight Report',
+    description: 'Verify a hospice referral or compare hospices in your area. Free CMS-sourced quality scores, family-experience ratings, and patterns flagged for review for every Medicare-certified hospice in America.'
+  },
+  {
+    route: 'hospice/compare',
+    title: 'Compare Hospices Side by Side | The Oversight Report',
+    description: 'Compare Medicare-certified hospices in your ZIP code or city head-to-head. Quality scores, family experience, ownership, and patterns flagged for review — built for hospital case managers and discharge planners.'
+  },
+  {
+    route: 'hospice/news',
+    title: 'Hospice Public Record · Live Feed | The Oversight Report',
+    description: 'Every public-record event involving a Medicare-certified hospice — DOJ settlements, state AG actions, OIG exclusions, CMS deficiencies, news coverage — aggregated and dated.'
   },
   {
     route: 'refresh-log',

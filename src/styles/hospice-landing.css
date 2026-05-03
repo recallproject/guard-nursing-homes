@@ -1,0 +1,517 @@
+/* Hospice landing page — scoped under .hospice-landing.
+   Palette + fonts mirror v8 mockup. Fonts (Plus Jakarta Sans, Source Serif 4,
+   JetBrains Mono, DM Serif Display) are loaded globally. */
+
+.hospice-landing {
+  --hl-navy: #1D3557;
+  --hl-primary: #2B6CB0;
+  --hl-primary-dark: #1D4E7E;
+  --hl-blue: #2B6CB0;
+  --hl-amber: #D97706;
+  --hl-teal: #0D9488;
+  --hl-green: #059669;
+  --hl-red: #DC2626;
+  --hl-bg: #EDF1F7;
+  --hl-bg-light: #F8FAFC;
+  --hl-bg-card: #FFFFFF;
+  --hl-bg-footer: #1D3557;
+  --hl-bg-elevated: #F0F4F8;
+  --hl-text: #334155;
+  --hl-muted: #64748B;
+  --hl-light-muted: #94A3B8;
+  --hl-border: #D7E0EA;
+  --hl-border-subtle: #E8EDF2;
+  --hl-radius: 8px;
+  --hl-radius-lg: 12px;
+  --hl-shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 2px 6px rgba(29,53,87,.04);
+  --hl-shadow-md: 0 1px 3px rgba(0,0,0,.05), 0 6px 16px rgba(29,53,87,.07);
+  --hl-shadow-lg: 0 2px 6px rgba(0,0,0,.06), 0 12px 28px rgba(29,53,87,.09);
+
+  background: var(--hl-bg);
+  color: var(--hl-text);
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.hospice-landing *,
+.hospice-landing *::before,
+.hospice-landing *::after { box-sizing: border-box; }
+.hospice-landing a { color: inherit; text-decoration: none; }
+
+.hospice-landing .hl-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: var(--hl-radius);
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  transition: 120ms ease;
+  border: 1px solid var(--hl-border);
+  background: var(--hl-bg-card); color: var(--hl-text);
+  font-family: inherit;
+}
+.hospice-landing .hl-btn:hover { border-color: var(--hl-primary); color: var(--hl-primary); }
+.hospice-landing .hl-btn-primary { background: var(--hl-primary); color: #fff; border-color: var(--hl-primary); }
+.hospice-landing .hl-btn-primary:hover { background: var(--hl-primary-dark); color: #fff; }
+
+/* hero */
+.hospice-landing .hl-hero {
+  text-align: center; padding: 64px 40px 40px;
+  background: linear-gradient(180deg, #edf1f7, #fff);
+  border-bottom: 1px solid var(--hl-border);
+}
+.hospice-landing .hl-hero-tagline {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2.4px; color: var(--hl-blue);
+  margin: 0 auto 18px; display: inline-block;
+  padding: 0 18px; position: relative;
+}
+.hospice-landing .hl-hero-tagline::before,
+.hospice-landing .hl-hero-tagline::after {
+  content: ''; position: absolute; top: 50%;
+  width: 32px; height: 1px; background: var(--hl-border);
+}
+.hospice-landing .hl-hero-tagline::before { right: 100%; }
+.hospice-landing .hl-hero-tagline::after { left: 100%; }
+.hospice-landing .hl-masthead {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(48px, 8vw, 88px);
+  font-weight: 700; line-height: 1.0;
+  color: var(--hl-navy); letter-spacing: -0.015em;
+  margin: 0 auto 8px; max-width: 1100px;
+}
+.hospice-landing .hl-masthead-accent { color: var(--hl-primary); }
+.hospice-landing .hl-masthead-sub {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-style: italic; font-weight: 500;
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: var(--hl-navy); margin: 0 auto 24px;
+  letter-spacing: 0.005em;
+}
+.hospice-landing .hl-masthead-rule {
+  border: 0; border-top: 1px solid var(--hl-border);
+  max-width: 720px; margin: 0 auto 28px;
+}
+.hospice-landing .hl-hero-sub {
+  font-size: 17px; color: var(--hl-text);
+  max-width: 660px; margin: 0 auto 14px;
+  line-height: 1.6; text-wrap: pretty;
+}
+.hospice-landing .hl-hero-sub strong { color: var(--hl-navy); font-weight: 600; }
+
+/* ticker */
+.hospice-landing .hl-ticker { max-width: 760px; margin: 24px auto 0; text-align: center; }
+.hospice-landing .hl-ticker-row {
+  display: inline-flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; justify-content: center; font-size: 14px;
+}
+.hospice-landing .hl-ticker-pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--hl-teal); display: inline-block;
+  box-shadow: 0 0 8px rgba(13,148,136,.5);
+  animation: hl-pulse 2.4s ease-in-out infinite;
+}
+@keyframes hl-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.hospice-landing .hl-ticker-live { font-weight: 700; color: var(--hl-teal); }
+.hospice-landing .hl-ticker-sep { color: var(--hl-light-muted); }
+.hospice-landing .hl-ticker-muted { color: var(--hl-muted); }
+.hospice-landing .hl-ticker-strong { color: var(--hl-navy); font-weight: 700; }
+
+/* two-lane */
+.hospice-landing .hl-two-lane { padding: 48px 32px 24px; }
+.hospice-landing .hl-two-lane-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+@media (max-width: 880px) {
+  .hospice-landing .hl-two-lane-inner { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-lane-card {
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius-lg);
+  padding: 32px 36px;
+  box-shadow: var(--hl-shadow-md);
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.hospice-landing .hl-lane-verify { border-top: 4px solid var(--hl-teal); }
+.hospice-landing .hl-lane-compare { border-top: 4px solid var(--hl-amber); }
+.hospice-landing .hl-lane-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px; letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 700;
+  margin-bottom: 12px;
+}
+.hospice-landing .hl-lane-verify .hl-lane-eyebrow { color: var(--hl-teal); }
+.hospice-landing .hl-lane-compare .hl-lane-eyebrow { color: var(--hl-amber); }
+.hospice-landing .hl-lane-title {
+  font-family: "Source Serif 4", serif;
+  font-size: 26px; line-height: 1.18;
+  color: var(--hl-navy); font-weight: 700;
+  margin: 0 0 10px;
+}
+.hospice-landing .hl-lane-title em { color: var(--hl-primary); font-style: italic; }
+.hospice-landing .hl-lane-sub {
+  color: var(--hl-text); font-size: 14.5px;
+  line-height: 1.55; margin: 0 0 22px;
+}
+.hospice-landing .hl-lane-search {
+  display: flex; border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  background: var(--hl-bg-card); overflow: hidden;
+  box-shadow: var(--hl-shadow-sm); margin-bottom: 14px;
+}
+.hospice-landing .hl-lane-search:focus-within { border-color: var(--hl-primary); }
+.hospice-landing .hl-lane-search input {
+  flex: 1; border: 0; outline: 0; background: transparent;
+  padding: 14px 16px; font-size: 15px;
+  color: var(--hl-navy); font-family: inherit; min-width: 0;
+}
+.hospice-landing .hl-lane-search input::placeholder { color: var(--hl-light-muted); }
+.hospice-landing .hl-lane-search button {
+  padding: 0 22px; border: 0; color: #fff;
+  font-weight: 700; font-size: 14px; cursor: pointer;
+  font-family: inherit;
+}
+.hospice-landing .hl-lane-verify .hl-lane-search button { background: var(--hl-teal); }
+.hospice-landing .hl-lane-verify .hl-lane-search button:hover { background: #0a7a72; }
+.hospice-landing .hl-lane-compare .hl-lane-search button { background: var(--hl-amber); }
+.hospice-landing .hl-lane-compare .hl-lane-search button:hover { background: #b86308; }
+.hospice-landing .hl-lane-helper {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px; color: var(--hl-muted); letter-spacing: 0.04em;
+}
+.hospice-landing .hl-lane-bullets { list-style: none; padding: 0; margin: 18px 0 0; }
+.hospice-landing .hl-lane-bullets li {
+  font-size: 13.5px; color: var(--hl-text);
+  padding: 6px 0 6px 22px; position: relative; line-height: 1.5;
+}
+.hospice-landing .hl-lane-bullets li::before {
+  content: '\203A'; position: absolute; left: 4px;
+  color: var(--hl-primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px; font-weight: 700;
+}
+.hospice-landing .hl-lane-foot {
+  margin-top: auto; padding-top: 18px;
+  border-top: 1px solid var(--hl-border-subtle);
+  font-size: 12.5px; color: var(--hl-muted);
+  font-family: "JetBrains Mono", monospace; letter-spacing: 0.02em;
+}
+
+/* feed preview */
+.hospice-landing .hl-feed-section { padding: 48px 32px 32px; }
+.hospice-landing .hl-feed-inner { max-width: 1400px; margin: 0 auto; }
+.hospice-landing .hl-feed-head {
+  display: flex; align-items: end; justify-content: space-between;
+  margin-bottom: 16px; gap: 16px; flex-wrap: wrap;
+}
+.hospice-landing .hl-feed-eyebrow {
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  color: var(--hl-primary); letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 6px;
+}
+.hospice-landing .hl-feed-head h2 {
+  font-family: "Source Serif 4", serif; font-size: 26px;
+  color: var(--hl-navy); margin: 0; font-weight: 700;
+}
+.hospice-landing .hl-feed-meta {
+  font-family: "JetBrains Mono", monospace; font-size: 11.5px;
+  color: var(--hl-muted); letter-spacing: 0.04em;
+}
+.hospice-landing .hl-feed-meta .hl-pulse {
+  display: inline-block; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--hl-teal);
+  margin-right: 6px; box-shadow: 0 0 6px rgba(13,148,136,.5);
+  animation: hl-pulse 2.4s ease-in-out infinite;
+  vertical-align: middle;
+}
+.hospice-landing .hl-feed-list {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+@media (max-width: 900px) {
+  .hospice-landing .hl-feed-list { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-feed-card {
+  background: var(--hl-bg-card); border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius-lg); padding: 18px 22px;
+  box-shadow: var(--hl-shadow-sm); cursor: pointer;
+  transition: 120ms ease; display: flex; flex-direction: column;
+}
+.hospice-landing .hl-feed-card:hover {
+  border-color: var(--hl-primary);
+  box-shadow: var(--hl-shadow-md); transform: translateY(-1px);
+}
+.hospice-landing .hl-feed-card-head {
+  display: flex; justify-content: space-between;
+  align-items: baseline; margin-bottom: 8px;
+}
+.hospice-landing .hl-feed-card-date {
+  font-family: "JetBrains Mono", monospace; font-size: 10.5px;
+  color: var(--hl-muted); letter-spacing: 0.04em; font-weight: 700;
+}
+.hospice-landing .hl-feed-card-tag {
+  font-family: "JetBrains Mono", monospace; font-size: 9.5px;
+  padding: 3px 7px; border-radius: 3px; letter-spacing: 0.08em;
+  font-weight: 700; text-transform: uppercase;
+}
+.hospice-landing .hl-feed-tag-doj {
+  background: rgba(220,38,38,.10); color: var(--hl-red);
+  border: 1px solid rgba(220,38,38,.3);
+}
+.hospice-landing .hl-feed-tag-ag {
+  background: rgba(217,119,6,.10); color: var(--hl-amber);
+  border: 1px solid rgba(217,119,6,.3);
+}
+.hospice-landing .hl-feed-tag-news {
+  background: var(--hl-bg-elevated); color: var(--hl-muted);
+  border: 1px solid var(--hl-border);
+}
+.hospice-landing .hl-feed-card h3 {
+  font-family: "Source Serif 4", serif; font-size: 16px;
+  color: var(--hl-navy); margin: 0 0 8px;
+  font-weight: 700; line-height: 1.3;
+}
+.hospice-landing .hl-feed-card p {
+  color: var(--hl-text); font-size: 13px;
+  line-height: 1.5; margin: 0; flex: 1;
+}
+.hospice-landing .hl-feed-cta {
+  display: block; margin-top: 18px; text-align: center;
+  font-family: "JetBrains Mono", monospace; font-size: 12px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 700; color: var(--hl-primary);
+}
+.hospice-landing .hl-feed-cta:hover { color: var(--hl-primary-dark); }
+
+/* sections */
+.hospice-landing .hl-section { padding: 48px 32px; }
+.hospice-landing .hl-section-light {
+  background: var(--hl-bg-card);
+  border-top: 1px solid var(--hl-border);
+  border-bottom: 1px solid var(--hl-border);
+}
+.hospice-landing .hl-section-inner { max-width: 1400px; margin: 0 auto; }
+.hospice-landing .hl-section-eyebrow {
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  color: var(--hl-primary); letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 10px;
+}
+.hospice-landing .hl-section-title {
+  font-family: "Source Serif 4", serif; font-size: 28px;
+  color: var(--hl-navy); margin: 0 0 8px; font-weight: 700;
+}
+.hospice-landing .hl-section-desc {
+  color: var(--hl-muted); max-width: 70ch;
+  margin: 0 0 24px; line-height: 1.55;
+}
+.hospice-landing .hl-why-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+@media (max-width: 900px) {
+  .hospice-landing .hl-why-cards { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-why-card {
+  background: var(--hl-bg-card); border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius-lg); padding: 24px 26px;
+  box-shadow: var(--hl-shadow-sm);
+}
+.hospice-landing .hl-why-card h3 {
+  font-family: "Source Serif 4", serif; font-size: 20px;
+  color: var(--hl-navy); margin: 0 0 8px;
+  font-weight: 700; line-height: 1.2;
+}
+.hospice-landing .hl-why-card p {
+  color: var(--hl-text); font-size: 14px;
+  line-height: 1.55; margin: 0;
+}
+
+/* ask block */
+.hospice-landing .hl-ask-block {
+  background: var(--hl-bg-card); border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius-lg); padding: 28px 32px;
+  box-shadow: var(--hl-shadow-sm);
+}
+.hospice-landing .hl-ask-block h3 {
+  font-family: "Source Serif 4", serif; font-size: 22px;
+  color: var(--hl-navy); margin: 0 0 6px; font-weight: 700;
+}
+.hospice-landing .hl-ask-block .hl-ask-sub {
+  color: var(--hl-muted); margin: 0 0 18px; font-size: 14px;
+}
+.hospice-landing .hl-ask-list {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px 24px; margin: 0; padding: 0; list-style: none;
+}
+@media (max-width: 800px) {
+  .hospice-landing .hl-ask-list { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-ask-item {
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.hospice-landing .hl-ask-num {
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  font-weight: 700; color: var(--hl-primary);
+  background: rgba(43,108,176,.08); border-radius: 4px;
+  padding: 3px 7px; letter-spacing: 0.06em;
+  min-width: 24px; text-align: center;
+}
+.hospice-landing .hl-ask-q {
+  font-size: 13.5px; color: var(--hl-text); line-height: 1.5;
+}
+.hospice-landing .hl-ask-print { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* help block */
+.hospice-landing .hl-help-block {
+  background: var(--hl-navy); color: #fff;
+  padding: 40px 32px;
+}
+.hospice-landing .hl-help-inner { max-width: 1100px; margin: 0 auto; }
+.hospice-landing .hl-help-eyebrow {
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  color: var(--hl-amber); letter-spacing: 0.18em;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 8px;
+}
+.hospice-landing .hl-help-title {
+  font-family: "Source Serif 4", serif; font-size: 26px;
+  margin: 0 0 10px; font-weight: 700;
+}
+.hospice-landing .hl-help-sub {
+  color: rgba(255,255,255,0.78); max-width: 70ch;
+  margin: 0 0 22px; font-size: 14.5px; line-height: 1.55;
+}
+.hospice-landing .hl-help-channels {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+}
+@media (max-width: 900px) {
+  .hospice-landing .hl-help-channels { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .hospice-landing .hl-help-channels { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-help-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--hl-radius); padding: 16px 18px;
+  cursor: pointer; transition: 120ms ease;
+}
+.hospice-landing .hl-help-card:hover {
+  background: rgba(255,255,255,0.12); border-color: var(--hl-amber);
+}
+.hospice-landing .hl-help-card .hl-help-lbl {
+  font-family: "JetBrains Mono", monospace; font-size: 10px;
+  color: var(--hl-amber); letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 700;
+}
+.hospice-landing .hl-help-card .hl-help-ttl {
+  font-family: "Source Serif 4", serif; font-size: 16px;
+  color: #fff; margin-top: 6px; font-weight: 700; line-height: 1.25;
+}
+.hospice-landing .hl-help-card .hl-help-desc {
+  font-size: 12px; color: rgba(255,255,255,0.7);
+  margin-top: 6px; line-height: 1.4;
+}
+
+/* national overview */
+.hospice-landing .hl-national { padding: 40px 32px; }
+.hospice-landing .hl-national-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 24px; align-items: start;
+}
+@media (max-width: 900px) {
+  .hospice-landing .hl-national-inner { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-map-canvas {
+  background: var(--hl-bg-light);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius-lg);
+  padding: 32px; min-height: 280px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hospice-landing .hl-map-canvas .hl-ph {
+  text-align: center; color: var(--hl-muted);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px; letter-spacing: 0.06em;
+}
+.hospice-landing .hl-map-canvas .hl-ph .hl-big {
+  display: block; font-family: "Source Serif 4", serif;
+  font-size: 20px; color: var(--hl-navy);
+  margin-bottom: 4px; letter-spacing: 0;
+}
+.hospice-landing .hl-national-side h4 {
+  font-family: "Source Serif 4", serif; font-size: 16px;
+  color: var(--hl-navy); margin: 0 0 4px; font-weight: 700;
+}
+.hospice-landing .hl-national-side .hl-helper {
+  font-size: 12.5px; color: var(--hl-muted);
+  margin-bottom: 14px; line-height: 1.5;
+}
+.hospice-landing .hl-ts-row {
+  display: flex; justify-content: space-between;
+  padding: 7px 0; border-bottom: 1px solid var(--hl-border-subtle);
+  font-size: 13px;
+}
+.hospice-landing .hl-ts-row .hl-st { color: var(--hl-navy); font-weight: 600; }
+.hospice-landing .hl-ts-row .hl-pct {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--hl-amber); font-weight: 700;
+}
+
+/* analyst link */
+.hospice-landing .hl-analyst-link {
+  background: var(--hl-bg-light); padding: 24px 28px;
+  border: 1px dashed var(--hl-border-subtle);
+  border-radius: var(--hl-radius-lg);
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 20px; align-items: center;
+}
+@media (max-width: 720px) {
+  .hospice-landing .hl-analyst-link { grid-template-columns: 1fr; }
+}
+.hospice-landing .hl-analyst-link h4 {
+  font-family: "Source Serif 4", serif; font-size: 17px;
+  color: var(--hl-navy); margin: 0 0 4px; font-weight: 700;
+}
+.hospice-landing .hl-analyst-link p {
+  color: var(--hl-muted); margin: 0;
+  font-size: 13.5px; line-height: 1.5;
+}
+
+/* methodology */
+.hospice-landing .hl-method { padding: 40px 32px; }
+.hospice-landing .hl-method-inner { max-width: 900px; margin: 0 auto; }
+.hospice-landing .hl-method h3 {
+  font-family: "Source Serif 4", serif; font-size: 20px;
+  color: var(--hl-navy); margin: 0 0 10px; font-weight: 700;
+}
+.hospice-landing .hl-method p {
+  color: var(--hl-text); line-height: 1.65;
+  margin: 0 0 10px; font-size: 14px;
+}
+.hospice-landing .hl-method .hl-src {
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  color: var(--hl-muted); letter-spacing: 0.04em; margin-top: 12px;
+}
+.hospice-landing .hl-method-sig {
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--hl-border);
+}
+.hospice-landing .hl-method-sig .hl-name {
+  font-family: "Source Serif 4", serif; font-size: 16px;
+  color: var(--hl-navy); font-weight: 700;
+}
+.hospice-landing .hl-method-sig .hl-creds {
+  font-family: "JetBrains Mono", monospace; font-size: 11px;
+  color: var(--hl-muted);
+}
+
+/* footer */
+.hospice-landing .hl-footer {
+  background: var(--hl-bg-footer); color: rgba(255,255,255,0.7);
+  font-size: 13px;
+}
+.hospice-landing .hl-footer-inner {
+  max-width: 1400px; margin: 0 auto;
+  padding: 28px 32px;
+  display: flex; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+}
