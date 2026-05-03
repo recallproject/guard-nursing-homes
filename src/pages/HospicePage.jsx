@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import HospiceSearchDropdown from '../components/HospiceSearchDropdown';
 import '../styles/hospice-landing.css';
 
 // State abbreviation → display name (covers all 50 + DC + territories used in data).
@@ -207,18 +208,9 @@ export default function HospicePage() {
                 family-experience ratings, and any patterns worth asking about — before you sign the admission form.
               </p>
 
-              <form className="hl-lane-search" onSubmit={handleVerifySubmit}>
-                <input
-                  type="text"
-                  value={verifyQuery}
-                  onChange={(e) => setVerifyQuery(e.target.value)}
-                  placeholder='Hospice name — like "Compassus" or "VITAS"'
-                  aria-label="Search by hospice name or CCN"
-                />
-                <button type="submit">Look it up</button>
-              </form>
+              <HospiceSearchDropdown />
               <div className="hl-lane-helper">
-                // {formatNumber(totalProviders)} hospices · all 50 states + DC · auto-complete on type
+                // {formatNumber(totalProviders)} hospices · all 50 states + DC · fuzzy match handles spelling · ZIP routes to compare
               </div>
 
               <ul className="hl-lane-bullets">
