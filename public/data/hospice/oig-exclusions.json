@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-05-03T02:02:43.814Z",
+  "generated_at": "2026-05-03T18:41:48.808Z",
   "source": "OIG LEIE",
   "source_url": "https://oig.hhs.gov/exclusions/downloadables/UPDATED.csv",
-  "source_last_modified": "2026-05-03T01:59:19.000Z",
+  "source_last_modified": "Fri, 10 Apr 2026 11:00:39 GMT",
   "total_leie_records": 83001,
   "hospice_relevant_records": 101,
   "matched_to_ccn": 0,
