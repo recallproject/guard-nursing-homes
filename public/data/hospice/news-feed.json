@@ -1,0 +1,194 @@
+{
+  "generated_at": "2026-05-03T02:03:10.750Z",
+  "sources": [
+    {
+      "name": "Hospice News",
+      "url": "https://hospicenews.com/feed/",
+      "items_pulled": 10,
+      "last_pubdate": "2026-05-01T20:28:34.000Z",
+      "error": null
+    },
+    {
+      "name": "KFF Health News",
+      "url": "https://kffhealthnews.org/feed/",
+      "items_pulled": 10,
+      "last_pubdate": "2026-05-02T09:00:00.000Z",
+      "error": null
+    },
+    {
+      "name": "ProPublica",
+      "url": "https://www.propublica.org/feeds/propublica/main",
+      "items_pulled": 20,
+      "last_pubdate": "2026-05-02T09:00:00.000Z",
+      "error": null
+    }
+  ],
+  "total_items_pulled": 40,
+  "hospice_filtered": 10,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 4,
+  "confidence_breakdown": {
+    "high": 2,
+    "medium": 0
+  },
+  "feed_items": [
+    {
+      "id": "hospice-news-x7jcy2",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-01T20:28:34.000Z",
+      "headline": "DOJ Forms Health Care Fraud Strike Force",
+      "summary": "The U.S. Department of Justice’s (DOJ) National Fraud Enforcement Division has established a new task force spanning several federal agencies to join the battle against hospice fraud. The DOJ has launched the West Coast Health Care Fraud Strike Force, which is a multi-district...",
+      "url": "https://hospicenews.com/2026/05/01/doj-forms-health-care-fraud-strike-force/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-23lqc2",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-01T18:49:40.000Z",
+      "headline": "AI Innovation Series — Agnes Pittman, Director of Clinical Services, Guiding Light Hospice",
+      "summary": "This article is sponsored by MatrixCare. In hospice care, conversations around AI are quickly moving beyond theory and into practical questions about care quality, workforce support and the patient experience. For providers, the real challenge is figuring out where these tools...",
+      "url": "https://hospicenews.com/2026/05/01/ai-innovation-series-agnes-pittman-director-of-clinical-services-guiding-light-hospice/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-73dsdr",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-01T15:52:20.000Z",
+      "headline": "BrightSpring Aims for Organic Growth Following Amedisys Location Acquisitions",
+      "summary": "After a banner first quarter, BrightSpring Health Services (Nasdaq: BTSG) is focused on performance improvement and continued organic growth. The company’s hospice operations are housed within its home health care business, part of its provider services segment. BrightSpring...",
+      "url": "https://hospicenews.com/2026/05/01/brightspring-aims-for-organic-growth-following-amedisys-location-acquisitions/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-dhqeij",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-30T21:05:26.000Z",
+      "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
+      "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and...",
+      "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
+      "matched_ccns": [
+        "671597",
+        "971681",
+        "151641"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-jfc7ed",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-30T13:31:48.000Z",
+      "headline": "Hospice Scammer Receives 2-Year Prison Sentence",
+      "summary": "Alex Alexsanian, 48, received a federal prison sentence for defrauding Medicare of more than $14 million for hospice services and diagnostic imaging that was never provided. Alexsanian also pleaded guilty in January to one count of conspiracy to commit money laundering. He was...",
+      "url": "https://hospicenews.com/2026/04/30/hospice-scammer-receives-2-year-prison-sentence/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-yyffh6",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-29T21:16:26.000Z",
+      "headline": "Federal Court Mulls Psychedelics Access for Homebound, Terminally Ill",
+      "summary": "A federal district court in Oregon has allowed a lawsuit to proceed related to home-based psilocybin therapies for terminally ill, homebound individuals. Psilocybin facilitators sued the Oregon Health Authority to allow for “reasonable accommodations” for individuals who cannot...",
+      "url": "https://hospicenews.com/2026/04/29/federal-court-mulls-psychedelics-access-for-homebound-terminally-ill/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-sru6yz",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-29T19:38:04.000Z",
+      "headline": "WTWH Healthcare Now Accepting Nominations For the Inaugural Product of the Year Awards",
+      "summary": "WTWH Healthcare is proud to introduce the inaugural Hospice News (HSPN) Product of the Year (POY) Awards program. The inaugural HSPN POY Awards recognize innovative, evidence-informed products, solutions and technologies that deliver real-world impact by improving quality of...",
+      "url": "https://hospicenews.com/2026/04/29/wtwh-healthcare-now-accepting-nominations-for-the-inaugural-product-of-the-year-awards/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-w0dzsi",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-29T15:35:49.000Z",
+      "headline": "1520ai Acquires Hospice Analytics",
+      "summary": "The health care AI company 1520ai has acquired the data firm Hospice Analytics. 1520ai is a provider of hospice-native artificial intelligence systems. The startup is self-funded with no private equity or venture capital backing, though the tech firm simPAL Solutions owns a...",
+      "url": "https://hospicenews.com/2026/04/29/1520ai-acquires-hospice-analytics/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-em0kkp",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-28T20:38:36.000Z",
+      "headline": "NPHI Execs: Quality Is Hospices’ Differentiator",
+      "summary": "True quality care transcends government-required metrics and is key to shaping the future of hospice care. This is according to Tom Koutsoumpas, founder and CEO of the National Partnership for Healthcare & Hospice Innovation (NPHI), and Carole Fisher, the organization’s...",
+      "url": "https://hospicenews.com/2026/04/28/nphi-execs-quality-is-hospices-differentiator/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-55n444",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-04-28T16:43:37.000Z",
+      "headline": "Superior Health Holdings Acquires Chant Healthcare",
+      "summary": "Superior Health Holdings has acquired Chant Healthcare, a hospice and home care provider in Oklahoma. The acquisition marks the company’s entry into the state. Financial terms of the deal were undisclosed. Chant Healthcare provides hospice, home health and home care across 11...",
+      "url": "https://hospicenews.com/2026/04/28/superior-health-holdings-acquires-chant-healthcare/",
+      "matched_ccns": [
+        "371706"
+      ],
+      "match_confidence": "high"
+    }
+  ],
+  "items_by_ccn": {
+    "151641": [
+      {
+        "id": "hospice-news-dhqeij",
+        "date": "2026-04-30T21:05:26.000Z",
+        "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
+        "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
+      }
+    ],
+    "371706": [
+      {
+        "id": "hospice-news-55n444",
+        "date": "2026-04-28T16:43:37.000Z",
+        "headline": "Superior Health Holdings Acquires Chant Healthcare",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/04/28/superior-health-holdings-acquires-chant-healthcare/",
+        "summary": "Superior Health Holdings has acquired Chant Healthcare, a hospice and home care provider in Oklahoma. The acquisition marks the company’s entry into the state. Financial terms of the deal were undisclosed. Chant Healthcare provides hospice, home health and home care across 11..."
+      }
+    ],
+    "671597": [
+      {
+        "id": "hospice-news-dhqeij",
+        "date": "2026-04-30T21:05:26.000Z",
+        "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
+        "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
+      }
+    ],
+    "971681": [
+      {
+        "id": "hospice-news-dhqeij",
+        "date": "2026-04-30T21:05:26.000Z",
+        "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
+        "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
+      }
+    ]
+  }
+}

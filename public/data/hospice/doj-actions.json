@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-05-03T01:59:57.681Z",
+  "source": "DOJ RSS + press release pages",
+  "source_url": "https://www.justice.gov/news/rss",
+  "coverage_note": "DOJ RSS exposes only the ~25 most-recent press releases. There is no machine-readable historical archive. To build history, run this pipeline on a daily cron and merge outputs.",
+  "total_rss_items_pulled": 25,
+  "rss_window_start": "2026-05-01T12:00:00.000Z",
+  "rss_window_end": "2026-05-01T12:00:00.000Z",
+  "hospice_filtered": 0,
+  "matched_to_ccn": 0,
+  "matched_high_confidence": 0,
+  "matched_medium_confidence": 0,
+  "actions": [],
+  "items_by_ccn": {}
+}

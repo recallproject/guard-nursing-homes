@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T02:42:38.864Z",
+  "generated_at": "2026-05-03T02:01:10.451Z",
   "source_window": "CMS Hospice Care Compare · most recent provider data",
   "total_providers": 6943,
   "total_states": 55,
@@ -10,6 +10,14 @@
     "live_discharge_median": 6.5,
     "gip_p90": 1.3,
     "gip_median": 0
+  },
+  "coverage": {
+    "cms_overall_rating": 5520,
+    "cms_overall_rating_pct": 79.50453694368429,
+    "cahps_overall_rating": 3147,
+    "cahps_overall_rating_pct": 45.326227855393924,
+    "cahps_any_measure": 3147,
+    "cahps_any_measure_pct": 45.326227855393924
   },
   "by_state": [
     {

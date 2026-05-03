@@ -1057,7 +1057,7 @@ const HC_CSS = `
 .hospice-compare a { color: inherit; text-decoration: none; }
 
 .hospice-compare .hc-crumb {
-  max-width: 1400px; margin: 0 auto; padding: 12px 32px 0;
+  max-width: 1400px; margin: 0 auto; padding: 40px 32px 0;
   font-family: "JetBrains Mono", monospace; font-size: 11px;
   color: var(--hc-muted); letter-spacing: 0.04em;
 }

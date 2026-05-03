@@ -83,7 +83,7 @@
 .hospice-provider .hp-crumb {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 14px 32px 0;
+  padding: 40px 32px 0;
   font-family: "JetBrains Mono", monospace;
   font-size: 11.5px;
   color: var(--hp-muted);

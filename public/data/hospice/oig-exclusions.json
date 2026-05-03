@@ -1,0 +1,1842 @@
+{
+  "generated_at": "2026-05-03T02:02:43.814Z",
+  "source": "OIG LEIE",
+  "source_url": "https://oig.hhs.gov/exclusions/downloadables/UPDATED.csv",
+  "source_last_modified": "2026-05-03T01:59:19.000Z",
+  "total_leie_records": 83001,
+  "hospice_relevant_records": 101,
+  "matched_to_ccn": 0,
+  "matched_high_confidence": 0,
+  "matched_medium_confidence": 0,
+  "unmatched_hospice_relevant": 101,
+  "unique_ccns_matched": 0,
+  "items_by_ccn": {},
+  "unmatched_hospice_relevant_items": [
+    {
+      "exclusion_date": "2017-06-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "entity",
+      "individual_name": null,
+      "entity_name": "PASSAGES HOSPICE, LLC",
+      "provider_general": "OTHER BUSINESS",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ELGIN",
+        "state": "IL",
+        "zip": "60123"
+      },
+      "npi": "1386641298",
+      "leie_record_id": "leie_18skyx9",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2010-12-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b8",
+      "excluded_party_type": "entity",
+      "individual_name": null,
+      "entity_name": "WE CARE HOSPICE SERVICES, LLC",
+      "provider_general": "HOSPICE",
+      "provider_specialty": null,
+      "address": {
+        "city": "SHERMAN OAKS",
+        "state": "CA",
+        "zip": "91423"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_140fwgn",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "GAYK AKHSHARUMOV",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "LOMPOC",
+        "state": "CA",
+        "zip": "93436"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_zbekco",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PARUYR AKHVERDYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "GRANADA HILLS",
+        "state": "CA",
+        "zip": "91344"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1yalp5j",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JANE ANDALLO ALCAIN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ADELANTO",
+        "state": "CA",
+        "zip": "92301"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_s95sv1",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-11-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ANGELA ARMENTA",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "WHEELING",
+        "state": "IL",
+        "zip": "60090"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_4pbldg",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-01-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "KRISTINE ARUTYUNYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "TUJUNGA",
+        "state": "CA",
+        "zip": "91042"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_bbtv3j",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2020-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ROZANNA ROZY AVETYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "STEVENSON RANCH",
+        "state": "CA",
+        "zip": "91381"
+      },
+      "npi": "1710159843",
+      "leie_record_id": "leie_2mq3jh",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-04-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PEARLIE BAILEY",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "HOLLANDALE",
+        "state": "MS",
+        "zip": "38748"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_8fuitt",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2006-11-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "NANCY LEE BAKER",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "DENVER",
+        "state": "CO",
+        "zip": "80206"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1almwpc",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2005-12-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "DONNA BETH BARNES",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "ROCKPORT",
+        "state": "TX",
+        "zip": "78382"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_q6c2e3",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2002-08-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "MADELINE C BIZUB",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "BILOXI",
+        "state": "MS",
+        "zip": "39530"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_16mc16l",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "BILLY BOMBARDA",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "CARSON",
+        "state": "CA",
+        "zip": "90745"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1bg5ve5",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2020-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "CHARLINE BRANDON",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "NEWPORT",
+        "state": "AR",
+        "zip": "72112"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_4furkn",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2020-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "WENDELL STEPHEN BRANDON",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "YAZOO CITY",
+        "state": "MS",
+        "zip": "39194"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_ak7dzm",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2023-11-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "SLADE C BROWN",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "YAZOO CITY",
+        "state": "MS",
+        "zip": "39194"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1skbvbq",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2026-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ANGELA BUSHEY",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "SPRINGFIELD",
+        "state": "MO",
+        "zip": "65803"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_htvrx",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "1997-10-06",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "SARAH M BYRAM",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "GORDONSVILLE",
+        "state": "VA",
+        "zip": "22942"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_ij7701",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2018-08-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "EDWINA R CAILIPAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ADELANTO",
+        "state": "CA",
+        "zip": "92301"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_mw8b6k",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-02-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "SHERWIN BOBSON TANGHAL CANALES",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "CYPRESS",
+        "state": "CA",
+        "zip": "90630"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1swb8wm",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2015-09-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PATRICIA LEANN CARTER",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "TECUMSEH",
+        "state": "OK",
+        "zip": "74873"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_lxmlh1",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-02-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "MARIA ROSARIO CASTANEDA",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "VICTORVILLE",
+        "state": "CA",
+        "zip": "92392"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_yzlxsd",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "CYNTHIA CASTILLO",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "GLENDALE",
+        "state": "CA",
+        "zip": "91207"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_10mab6",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2003-02-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a2",
+      "excluded_party_type": "individual",
+      "individual_name": "PATRICK L CATANACH",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "CANON CITY",
+        "state": "CO",
+        "zip": "81212"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_6f8pkk",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2018-09-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JOCELYN CHAVEZ",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "LAS VEGAS",
+        "state": "NV",
+        "zip": "89147"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1nzo6yj",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "STEPHANIE ALEXA CHAVEZ",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "MIDLAND",
+        "state": "TX",
+        "zip": "79705"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1x4jszo",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-12-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "MAY FLORENCE Q COON",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "SAN MATEO",
+        "state": "CA",
+        "zip": "94403"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_19x1kqf",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "1996-10-29",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "ROBERT J COTREAU",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "MALDEN",
+        "state": "MA",
+        "zip": "02148"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_tfbf88",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2026-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "OGANES DOGANYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ANAHEIM",
+        "state": "CA",
+        "zip": "92808"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_15x0wb2",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "CONCEPCION DOMINGO",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ADELANTO",
+        "state": "CA",
+        "zip": "92301"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1knis6t",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "NESTOR DOMINGO",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "TUCSON",
+        "state": "AZ",
+        "zip": "85734"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_10v9sqf",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2000-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "JUDITH ANN ERNEST",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "BRADENTON",
+        "state": "FL",
+        "zip": "34205"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_pj18h",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2026-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JUAN CARLOS ESPARZA",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "YANKTON",
+        "state": "SD",
+        "zip": "57078"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_tpvhra",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2006-08-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "LANCE EVERS",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "OWNER/OPERATOR",
+      "address": {
+        "city": "MILILANI",
+        "state": "HI",
+        "zip": "96789"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_x3lape",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2026-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PETROS FICHIDZHYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "SHERIDAN",
+        "state": "OR",
+        "zip": "97378"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1nmdvaa",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2009-11-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "KENNETH C JR GERST",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "BUSINESS MANAGER",
+      "address": {
+        "city": "MORGANTOWN",
+        "state": "WV",
+        "zip": "26507"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1fqgqoj",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2003-02-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "CECILIA BARBER GETTMANN",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "MASSENA",
+        "state": "NY",
+        "zip": "13662"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_100kmob",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "SETH GILLMAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "LINCOLNWOOD",
+        "state": "IL",
+        "zip": "60712"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_17nj6zf",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2012-07-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JACKIE RANDOLPH GIST",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "TALLADEGA",
+        "state": "AL",
+        "zip": "35160"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_mbq2e",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2007-06-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "KATHIE L GREENWALT",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "FLAGSTAFF",
+        "state": "AZ",
+        "zip": "86002"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_nik2bc",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2006-09-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "SHARON KAY GRIFFIN",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "LAS VEGAS",
+        "state": "NV",
+        "zip": "89121"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1nhby4p",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-11-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "CORAZON HALILI GUEVARRA",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "THOUSAND OAKS",
+        "state": "CA",
+        "zip": "91362"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_h9h3ru",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2022-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "AMY LYNN HARRIS",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "BRYAN",
+        "state": "TX",
+        "zip": "77805"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_5b6bv",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2022-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "BRADLEY J HARRIS",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "FORT WORTH",
+        "state": "TX",
+        "zip": "76119"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_mzhn4b",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "1999-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "ELIZABETH A HART",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "ANKENY",
+        "state": "IA",
+        "zip": "50021"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1cylnl0",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2022-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a4",
+      "excluded_party_type": "individual",
+      "individual_name": "MARK EDISON ANGARA HAYWARD",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PHOENIX",
+        "state": "AZ",
+        "zip": "85037"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1ff7gtu",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-11-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "GWEN HILSABECK",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "GREENVILLE",
+        "state": "IL",
+        "zip": "62246"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_148mnyl",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2003-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "KAREN LEE HODGE",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "PLAINWELL",
+        "state": "MI",
+        "zip": "49080"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1jia9aw",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2023-06-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b1",
+      "excluded_party_type": "individual",
+      "individual_name": "GURGEN ISRAYELYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "CANOGA PARK",
+        "state": "CA",
+        "zip": "91304"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1nmraza",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-05-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "MARIA CRISTINA GOTOC JOSHI",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "CORONA",
+        "state": "CA",
+        "zip": "92880"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_bqafti",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ARUTYAN KARKOTSYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "YANKTON",
+        "state": "SD",
+        "zip": "57078"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1j1vbsx",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ANDRE KIRKLAND",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "CLEVELAND",
+        "state": "MS",
+        "zip": "38732"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_mclpzm",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2015-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PAULA KLUDING",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "NAVAL AIR STATION JR",
+        "state": "TX",
+        "zip": "76127"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1aie8ek",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a2",
+      "excluded_party_type": "individual",
+      "individual_name": "JASON HAROLD KNOX",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "FARMINGTON",
+        "state": "UT",
+        "zip": "84025"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_ecg014",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-12-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "LUCILLE ELAPE LAM",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PHOENIX",
+        "state": "AZ",
+        "zip": "85086"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1bltl89",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2006-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "JUDITH ANN LAROCK",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "ENGLEWOOD",
+        "state": "CO",
+        "zip": "80110"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1j4ic9r",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2016-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "SANDRA LIVINGSTON",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ALICEVILLE",
+        "state": "AL",
+        "zip": "35442"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_stgj3y",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2021-11-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ANNETTE BROWN LOFTON",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "FARRELL",
+        "state": "MS",
+        "zip": "38630"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_sjxkh7",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2020-03-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ALICIA WRANGHAM MARFORI",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "MORENO VALLEY",
+        "state": "CA",
+        "zip": "92555"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_qblf7s",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2002-12-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "KIMBERLY MICHELLE MCALISTER",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "SHAWNEE",
+        "state": "OK",
+        "zip": "74801"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1fkoolu",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2013-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "CARRIE MCCAIN",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PEARL",
+        "state": "MS",
+        "zip": "39288"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1yjo872",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2016-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PATRICIA MCGILL",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PHILADELPHIA",
+        "state": "PA",
+        "zip": "19105"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1omj7w7",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2005-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "MARTHA A MCKINNEY",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "GARLAND",
+        "state": "TX",
+        "zip": "75040"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_fqnnpd",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JULIET VIOLA MEER",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "RIVERSIDE",
+        "state": "CA",
+        "zip": "92509"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_4djkud",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2001-06-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "JANICE L MUNDT",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "LINDALE",
+        "state": "TX",
+        "zip": "75771"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_qfwi11",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2021-11-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ANTONIO QUITERIO OLIVERA",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "SAN PEDRO",
+        "state": "CA",
+        "zip": "90733"
+      },
+      "npi": "1386629038",
+      "leie_record_id": "leie_rerhta",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2019-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JCELSO CELESTINO OMBAO",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "NORCO",
+        "state": "CA",
+        "zip": "92860"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_11b62tp",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2003-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "TAMMY THERESE OVERMAN",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "COLORADO SPRINGS",
+        "state": "CO",
+        "zip": "80909"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1dwtfic",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "JULIE PARKER",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "WARRENVILLE",
+        "state": "IL",
+        "zip": "60555"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_9k2zhp",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2004-02-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "JOANNE L PARRISH",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "RANDLETT",
+        "state": "UT",
+        "zip": "84063"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_15g9e6o",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2022-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "MELANIE L PARSONS",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "BRYAN",
+        "state": "TX",
+        "zip": "77805"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_mlxe0s",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-12-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "GORDHAN PATEL",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "MAMMOTH LAKES",
+        "state": "CA",
+        "zip": "93546"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1i92cm4",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2020-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "RAUL GOMEZ PEREZ",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "NORWALK",
+        "state": "CA",
+        "zip": "90650"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_18ux9dz",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2006-08-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a2",
+      "excluded_party_type": "individual",
+      "individual_name": "JAMES ERNEST PHILPOTT",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "GOLDEN",
+        "state": "CO",
+        "zip": "80401"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_q8i6n8",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2006-08-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "ELVIRA PINEDA",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "EMPLOYEE",
+      "address": {
+        "city": "HONOLULU",
+        "state": "HI",
+        "zip": "96819"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1w6pl1q",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2014-12-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ALEX PUGMAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "CHURCHVILLE",
+        "state": "PA",
+        "zip": "18966"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_5zq1b7",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2015-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "CHRISTINE RAUL",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "COLEMAN",
+        "state": "FL",
+        "zip": "33521"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_xmmpv4",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2005-05-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a4",
+      "excluded_party_type": "individual",
+      "individual_name": "JEANETTE SUZANNE RENTERIA",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "BURLESON",
+        "state": "TX",
+        "zip": "76028"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_agjpwm",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2022-06-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "ALI RIZVI",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "TEXARKANA",
+        "state": "TX",
+        "zip": "75505"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1ig2tqe",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2005-12-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "GINA KAY ROSENDALE",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "MULVANE",
+        "state": "KS",
+        "zip": "67110"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_12jmnaa",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-09-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "KAREN SARKISYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "LOMPOC",
+        "state": "CA",
+        "zip": "93436"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_f7pabz",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2025-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "RIPSIME ANI SEVOIAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "TARZANA",
+        "state": "CA",
+        "zip": "91356"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_c25eh5",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2015-09-29",
+      "reinstated_date": null,
+      "exclusion_type": "1128b7",
+      "excluded_party_type": "individual",
+      "individual_name": "RUTH SIEGEL",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PARADISE VALLEY",
+        "state": "AZ",
+        "zip": "85253"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_17zgwje",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2012-12-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b7",
+      "excluded_party_type": "individual",
+      "individual_name": "NANCY SMITH",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "MESA",
+        "state": "AZ",
+        "zip": "85210"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1db7t2a",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2002-11-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "RITA MARLENE SODERSTROM",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "CLIFTON",
+        "state": "CO",
+        "zip": "81520"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_dj3wms",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2018-01-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "SHIRLEY SORIANO",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ADELANTO",
+        "state": "CA",
+        "zip": "92301"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_qxzsno",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2026-04-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "KARPIS SRAPYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "YANKTON",
+        "state": "SD",
+        "zip": "57078"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_vo48ta",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2000-05-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128b4",
+      "excluded_party_type": "individual",
+      "individual_name": "STEVEN WAYNE STREET",
+      "entity_name": null,
+      "provider_general": "HOSPICE",
+      "provider_specialty": "NURSE/NURSES AIDE",
+      "address": {
+        "city": "HUDSON",
+        "state": "FL",
+        "zip": "34669"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_13c9iqa",
+      "source_signal": "general_field_hospice"
+    },
+    {
+      "exclusion_date": "2015-10-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "REGINA MARIE SWIMS-KING",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ALICEVILLE",
+        "state": "AL",
+        "zip": "35442"
+      },
+      "npi": "1821311937",
+      "leie_record_id": "leie_f7izxc",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2020-07-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a2",
+      "excluded_party_type": "individual",
+      "individual_name": "KENNETH EUGENE TANKSLEY",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PEARL",
+        "state": "MS",
+        "zip": "39208"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_sdzcqr",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2016-08-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "LARA THOMPSON",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "GREENVILLE",
+        "state": "IL",
+        "zip": "62246"
+      },
+      "npi": "1255745964",
+      "leie_record_id": "leie_1vydoyq",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2023-03-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "NOUROLZAMAN K TUCKER",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ALPHARETTA",
+        "state": "GA",
+        "zip": "30022"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_b5jqi2",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2012-12-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128b7",
+      "excluded_party_type": "individual",
+      "individual_name": "NANCY TURNER",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "MESA",
+        "state": "AZ",
+        "zip": "85210"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_de0tjv",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-12-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "RAYMOND EARL VALLIER",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "COLLIERVILLE",
+        "state": "TN",
+        "zip": "38017"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_hhfehg",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-01-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "PRISCILLA VILLABROZA",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "ADELANTO",
+        "state": "CA",
+        "zip": "92301"
+      },
+      "npi": "1346481728",
+      "leie_record_id": "leie_1fxu80a",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2023-10-19",
+      "reinstated_date": null,
+      "exclusion_type": "1128b1",
+      "excluded_party_type": "individual",
+      "individual_name": "JAVED WAHAB",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PLEASANTON",
+        "state": "CA",
+        "zip": "94566"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_11fer1d",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2018-01-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a3",
+      "excluded_party_type": "individual",
+      "individual_name": "DEMAR CROZIER WATSON",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "FORT WORTH",
+        "state": "TX",
+        "zip": "76119"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1l1q98g",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2015-01-20",
+      "reinstated_date": null,
+      "exclusion_type": "1128a1",
+      "excluded_party_type": "individual",
+      "individual_name": "CECELIA WILEY",
+      "entity_name": null,
+      "provider_general": "EMPLOYEE - PRIVATE S",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "PHILADELPHIA",
+        "state": "PA",
+        "zip": "19136"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1wy5dmz",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2013-10-24",
+      "reinstated_date": null,
+      "exclusion_type": "1128b7",
+      "excluded_party_type": "individual",
+      "individual_name": "ROBERT GALEN WILSON",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "EUSTIS",
+        "state": "FL",
+        "zip": "32726"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_z6dbjr",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2017-07-06",
+      "reinstated_date": null,
+      "exclusion_type": "1128b7",
+      "excluded_party_type": "individual",
+      "individual_name": "MALVINA D YAKOBASHVILI",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "SOUTHAMPTON",
+        "state": "PA",
+        "zip": "18966"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_1qdrqz",
+      "source_signal": "specialty_field_hospice"
+    },
+    {
+      "exclusion_date": "2024-04-18",
+      "reinstated_date": null,
+      "exclusion_type": "1128a2",
+      "excluded_party_type": "individual",
+      "individual_name": "SERGEY YAZICHYAN",
+      "entity_name": null,
+      "provider_general": "BUS OWNER/EXEC",
+      "provider_specialty": "HOSPICE",
+      "address": {
+        "city": "VAN NUYS",
+        "state": "CA",
+        "zip": "91406"
+      },
+      "npi": "0000000000",
+      "leie_record_id": "leie_90xna2",
+      "source_signal": "specialty_field_hospice"
+    }
+  ],
+  "matching_notes": [
+    "Confidence ≥85 = high; 70–84 = medium; <70 dropped.",
+    "NPI exact match against CCN↔NPI table from CMS hospice enrollments file = highest confidence.",
+    "Entity name matching uses Levenshtein on stopword-stripped keys + state filter and REQUIRES ZIP or city corroboration (defamation guardrail — two CA hospices can share near-identical names).",
+    "Individual exclusions matched against disclosed owners (CMS ownership disclosure file) only — medical directors, nurses, and rank-and-file staff are not in CMS data and cannot be matched here.",
+    "94 of 99 hospice-relevant individuals in LEIE have NPI = 0000000000 (LEIE's null marker for individuals not in NPPES) and are matchable only via name+geo against disclosed owners.",
+    "Hospice-relevance filter requires hospice/palliative term in BUSNAME, GENERAL, or SPECIALTY, OR an NPI that hits our CCN↔NPI table."
+  ]
+}
