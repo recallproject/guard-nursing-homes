@@ -123,7 +123,7 @@ export default function HospicePage() {
         if (!cancelled && data) setSummary(data);
       })
       .catch(() => {});
-    return () => { cancelled = false; };
+    return () => { cancelled = true; };
   }, []);
 
   const totalProviders = summary?.total_providers ?? 6943;

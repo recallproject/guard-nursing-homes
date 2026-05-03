@@ -9,16 +9,26 @@
     <meta name="google-site-verification" content="tfuonV0EkiuJjWodgg4CwQXNCKAvTmcLD5sL2kYRDkg" />
 
     <!-- Privacy-friendly analytics by Plausible -->
-    <script async src="https://plausible.io/js/pa-2_DR6EjagoQ_Mk-ZRdCaL.js"></script>
     <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init();
-      document.addEventListener('click', function(e) {
-        var a = e.target.closest('a[href]');
-        if (a && a.hostname && a.hostname !== location.hostname) {
-          window.plausible('Outbound-Link', {props: {url: a.href.slice(0, 200)}});
+      (function() {
+        var isLocal = ['localhost', '127.0.0.1', '::1'].indexOf(location.hostname) !== -1;
+        if (isLocal) {
+          window.plausible = window.plausible || function(){};
+          return;
         }
-      });
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init();
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://plausible.io/js/pa-2_DR6EjagoQ_Mk-ZRdCaL.js';
+        document.head.appendChild(script);
+        document.addEventListener('click', function(e) {
+          var a = e.target.closest('a[href]');
+          if (a && a.hostname && a.hostname !== location.hostname) {
+            window.plausible('Outbound-Link', {props: {url: a.href.slice(0, 200)}});
+          }
+        });
+      })();
     </script>
 
     <!-- PostHog — session replays, funnels, heatmaps -->

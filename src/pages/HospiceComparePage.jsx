@@ -3,16 +3,42 @@ import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // HospiceComparePage — side-by-side hospice comparison.
-// Reads URL params (zip, city, state, ccns) and renders the v10 mockup.
+// Reads URL params (zip, city, state, ccns), resolves ZIP/city through the
+// hospice search index, then fetches full state records for real comparison data.
 
-// Static SC state averages used for "+X vs SC" delta hints when CAHPS data
-// isn't present in the per-provider record. These are display-only fallbacks.
-const STATE_CAHPS_AVG = {
+const DEFAULT_CAHPS_AVG = {
   overall: 81,
   recommend: 84,
   pain: 76,
   comm: 79,
 };
+
+const DEFAULT_THRESHOLDS = {
+  live_discharge_p90: 14.6,
+  gip_p90: 1.3,
+  burdensome_transitions_t1_p90: 15,
+};
+
+const STATE_NAMES = {
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
+  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia',
+  FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois',
+  IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana',
+  ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota',
+  MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada',
+  NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York',
+  NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma',
+  OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina',
+  SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont',
+  VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin',
+  WY: 'Wyoming', PR: 'Puerto Rico', VI: 'U.S. Virgin Islands',
+  GU: 'Guam', MP: 'Northern Mariana Is.',
+};
+
+const VALID_STATE_CODES = new Set(Object.keys(STATE_NAMES));
+let hospiceIndexPromise = null;
+let hospiceSummaryPromise = null;
+const hospiceStatePromises = new Map();
 
 const SAMPLE_PROVIDERS = [
   {
@@ -153,6 +179,117 @@ function titleCase(s) {
   return s.toString().toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()).trim();
 }
 
+function normalizeZip(s) {
+  return String(s || '').replace(/\D/g, '');
+}
+
+function normalizeText(s) {
+  return String(s || '').trim().toLowerCase().replace(/\s+/g, ' ');
+}
+
+function parseCityState(input) {
+  const raw = String(input || '').trim().replace(/\s+/g, ' ');
+  if (!raw) return { city: '', state: '' };
+
+  const commaMatch = raw.match(/^(.+?),\s*([A-Za-z]{2})$/);
+  if (commaMatch) {
+    const maybeState = commaMatch[2].toUpperCase();
+    if (VALID_STATE_CODES.has(maybeState)) {
+      return { city: commaMatch[1].trim(), state: maybeState };
+    }
+  }
+
+  const trailingStateMatch = raw.match(/^(.+?)\s+([A-Za-z]{2})$/);
+  if (trailingStateMatch) {
+    const maybeState = trailingStateMatch[2].toUpperCase();
+    if (VALID_STATE_CODES.has(maybeState)) {
+      return { city: trailingStateMatch[1].trim(), state: maybeState };
+    }
+  }
+
+  return { city: raw, state: '' };
+}
+
+async function loadHospiceIndex() {
+  if (!hospiceIndexPromise) {
+    hospiceIndexPromise = fetch('/data/hospice/index.json').then((res) => {
+      if (!res.ok) throw new Error(`Hospice index HTTP ${res.status}`);
+      return res.json();
+    });
+  }
+  return hospiceIndexPromise;
+}
+
+async function loadHospiceSummary() {
+  if (!hospiceSummaryPromise) {
+    hospiceSummaryPromise = fetch('/data/hospice/national-summary.json').then((res) => {
+      if (!res.ok) throw new Error(`Hospice summary HTTP ${res.status}`);
+      return res.json();
+    });
+  }
+  return hospiceSummaryPromise;
+}
+
+async function loadHospiceState(stateCode) {
+  const code = String(stateCode || '').toUpperCase();
+  if (!VALID_STATE_CODES.has(code)) {
+    throw new Error(`Invalid hospice state: ${stateCode}`);
+  }
+  if (!hospiceStatePromises.has(code)) {
+    hospiceStatePromises.set(
+      code,
+      fetch(`/data/hospice/states/${code}.json`).then((res) => {
+        if (!res.ok) throw new Error(`State ${code} HTTP ${res.status}`);
+        return res.json();
+      })
+    );
+  }
+  return hospiceStatePromises.get(code);
+}
+
+function mostCommonLocation(records) {
+  const counts = new Map();
+  for (const p of records) {
+    if (!p?.city || !p?.state) continue;
+    const key = `${normalizeText(p.city)}|${String(p.state).toUpperCase()}`;
+    const current = counts.get(key) || { city: p.city, state: p.state, count: 0 };
+    current.count += 1;
+    counts.set(key, current);
+  }
+  return [...counts.values()].sort((a, b) => b.count - a.count)[0] || null;
+}
+
+function locationLabelFromRecords(records, fallback) {
+  const loc = mostCommonLocation(records);
+  if (!loc) return fallback;
+  return `${titleCase(loc.city)}, ${String(loc.state).toUpperCase()}`;
+}
+
+function getFlagCount(p) {
+  return Number(p?.flags?.flagged_count ?? p?.flagged_count ?? 0);
+}
+
+function getProviderCcn(p) {
+  return String(p?.ccn || '').toUpperCase();
+}
+
+async function hydrateIndexMatches(indexMatches) {
+  const states = [...new Set(indexMatches.map((p) => String(p.state || '').toUpperCase()).filter(Boolean))];
+  const stateFiles = await Promise.all(states.map(loadHospiceState));
+  const fullByCcn = new Map();
+
+  for (const stateData of stateFiles) {
+    const providers = Array.isArray(stateData?.providers) ? stateData.providers : [];
+    for (const provider of providers) {
+      fullByCcn.set(getProviderCcn(provider), provider);
+    }
+  }
+
+  return indexMatches
+    .map((match) => fullByCcn.get(getProviderCcn(match)))
+    .filter(Boolean);
+}
+
 function getCertYear(d) {
   if (!d) return '—';
   const m = String(d).match(/(19|20)\d{2}/);
@@ -179,8 +316,7 @@ function starsBucket(v) {
 
 function starsString(v) {
   if (v == null) return '—';
-  const full = Math.round(v);
-  return '★'.repeat(full) + ` ${v.toFixed(1)}`;
+  return `${Number(v).toFixed(1)} / 5`;
 }
 
 function liveDischargeBucket(v) {
@@ -200,16 +336,16 @@ function gipBucket(v) {
 function cahpsCell(pct, stateAvg) {
   if (pct == null) return { cls: '', delta: '' };
   const diff = pct - stateAvg;
-  if (Math.abs(diff) < 1) return { cls: '', delta: 'at SC avg' };
-  if (diff > 0) return { cls: 'above', delta: `+${diff.toFixed(0)} vs SC` };
-  return { cls: 'below', delta: `${diff.toFixed(0)} vs SC` };
+  if (Math.abs(diff) < 1) return { cls: '', delta: 'at benchmark' };
+  if (diff > 0) return { cls: 'above', delta: `+${diff.toFixed(0)} vs benchmark` };
+  return { cls: 'below', delta: `${diff.toFixed(0)} vs benchmark` };
 }
 
 function recommendation(p) {
-  const fc = p.flags?.flagged_count ?? 0;
-  if (fc >= 2) return { cls: 'rec-avoid', label: '✕ Closer review' };
-  if (fc === 1) return { cls: 'rec-consider', label: '▲ Consider w/ caution' };
-  return { cls: 'rec-recommend', label: '✓ Recommend' };
+  const fc = getFlagCount(p);
+  if (fc >= 2) return { cls: 'rec-avoid', label: 'Closer review' };
+  if (fc === 1) return { cls: 'rec-consider', label: 'Consider with caution' };
+  return { cls: 'rec-recommend', label: 'No flagged patterns' };
 }
 
 function fmtPct(v, digits = 1) {
@@ -222,13 +358,22 @@ function fmtInt(v) {
   return Math.round(Number(v)).toString();
 }
 
-// rough sort: lower live-discharge + higher star = better
-function compositeRank(p) {
+function metricPenalty(value, threshold, multiplier) {
+  if (value == null || threshold == null || threshold <= 0) return 0;
+  return Math.max(0, Number(value) - Number(threshold)) * multiplier;
+}
+
+// rough sort: lower flag severity + lower discharge/GIP outlier rates + higher star = better
+function compositeRank(p, thresholds = DEFAULT_THRESHOLDS) {
   const m = p.metrics || {};
-  const ld = m.live_discharge_pct ?? 0;
-  const star = m.cms_star ?? 3;
-  const fc = p.flags?.flagged_count ?? 0;
-  return -(star * 10) + ld + fc * 20;
+  const star = m.cms_star ?? m.cms_rating ?? null;
+  const flagPenalty = getFlagCount(p) * 50;
+  const ldPenalty = metricPenalty(m.live_discharge_pct, thresholds.live_discharge_p90, 1.5);
+  const gipPenalty = metricPenalty(m.gip_pct, thresholds.gip_p90, 10);
+  const transitionP90 = thresholds.burdensome_transitions_t1_p90 ?? DEFAULT_THRESHOLDS.burdensome_transitions_t1_p90;
+  const transitionPenalty = metricPenalty(m.burdensome_transitions_t1_pct, transitionP90, 0.5);
+  const starBoost = star == null ? 0 : -Number(star) * 8;
+  return flagPenalty + ldPenalty + gipPenalty + transitionPenalty + starBoost;
 }
 
 // --- main component ---------------------------------------------------------
@@ -244,6 +389,15 @@ export default function HospiceComparePage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [usingSample, setUsingSample] = useState(false);
+  const [thresholds, setThresholds] = useState(DEFAULT_THRESHOLDS);
+  const [resolved, setResolved] = useState({
+    label: 'Compare hospices',
+    inputLabel: '',
+    scopeLabel: '',
+    summaryScope: '',
+    matchCount: 0,
+    hasQuery: false,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -253,54 +407,146 @@ export default function HospiceComparePage() {
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      if (!state) {
-        setProviders(SAMPLE_PROVIDERS);
-        setUsingSample(true);
+      const ccnList = ccnsParam
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean);
+      const hasQuery = Boolean(zip || city || state || ccnList.length > 0);
+
+      if (!hasQuery) {
+        setProviders([]);
+        setUsingSample(false);
+        setError(null);
+        setLoading(false);
+        setResolved({
+          label: 'Compare hospices',
+          inputLabel: '',
+          scopeLabel: '',
+          summaryScope: 'Enter a ZIP code or city to compare real hospices.',
+          matchCount: 0,
+          hasQuery: false,
+        });
         return;
       }
+
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch(`/data/hospice/states/${state}.json`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        const [index, nationalSummary] = await Promise.all([
+          loadHospiceIndex(),
+          loadHospiceSummary().catch(() => ({ thresholds: DEFAULT_THRESHOLDS })),
+        ]);
         if (cancelled) return;
-        let pool = Array.isArray(data?.providers) ? data.providers : [];
-
-        const ccnList = ccnsParam
-          .split(',')
-          .map((s) => s.trim())
-          .filter(Boolean);
+        const rankThresholds = nationalSummary?.thresholds || DEFAULT_THRESHOLDS;
+        setThresholds(rankThresholds);
 
         let filtered = [];
+        let label = 'Compare hospices';
+        let inputLabel = '';
+        let scopeLabel = '';
+        let summaryScope = '';
+
         if (ccnList.length >= 2 && ccnList.length <= 5) {
           const set = new Set(ccnList.map((c) => c.toUpperCase()));
-          filtered = pool.filter((p) => set.has(String(p.ccn).toUpperCase()));
+          const indexMatches = index.filter((p) => set.has(getProviderCcn(p)));
+          filtered = await hydrateIndexMatches(indexMatches);
+          label = locationLabelFromRecords(filtered, 'selected hospices');
+          inputLabel = `${ccnList.length} selected CCNs`;
+          scopeLabel = 'selected hospices';
+          summaryScope = `${filtered.length} selected hospice${filtered.length === 1 ? '' : 's'}`;
         } else if (zip) {
-          const prefix = zip.replace(/\D/g, '').slice(0, 3);
-          filtered = pool.filter(
-            (p) => (p.zip || '').replace(/\D/g, '').slice(0, 3) === prefix
-          );
+          const digits = normalizeZip(zip);
+          const zip3 = digits.slice(0, 3);
+          const zip2 = digits.slice(0, 2);
+          let indexMatches = index.filter((p) => normalizeZip(p.zip).startsWith(zip3));
+          let prefixUsed = zip3;
+          if (indexMatches.length === 0 && zip2) {
+            indexMatches = index.filter((p) => normalizeZip(p.zip).startsWith(zip2));
+            prefixUsed = zip2;
+          }
+          filtered = await hydrateIndexMatches(indexMatches);
+          label = locationLabelFromRecords(filtered, digits ? `ZIP ${digits}` : 'ZIP search');
+          inputLabel = digits;
+          scopeLabel = prefixUsed.length === 3 ? `ZIP-${prefixUsed}` : `ZIP-${prefixUsed} expanded`;
+          summaryScope = filtered.length
+            ? `${filtered.length} hospice${filtered.length === 1 ? '' : 's'} matched to ${scopeLabel}`
+            : `No hospices matched ZIP ${digits}`;
         } else if (city) {
-          const c = city.toLowerCase().trim();
-          filtered = pool.filter((p) => (p.city || '').toLowerCase().trim().includes(c));
+          const parsed = parseCityState(city);
+          const targetCity = normalizeText(parsed.city);
+          let indexMatches = index.filter((p) => normalizeText(p.city) === targetCity);
+
+          if (parsed.state) {
+            const stateMatches = indexMatches.filter((p) => String(p.state || '').toUpperCase() === parsed.state);
+            if (stateMatches.length > 0) indexMatches = stateMatches;
+          } else if (indexMatches.length > 0) {
+            const grouped = new Map();
+            for (const p of indexMatches) {
+              const code = String(p.state || '').toUpperCase();
+              grouped.set(code, (grouped.get(code) || 0) + 1);
+            }
+            const preferredState = [...grouped.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+            if (preferredState) {
+              indexMatches = indexMatches.filter((p) => String(p.state || '').toUpperCase() === preferredState);
+            }
+          }
+
+          filtered = await hydrateIndexMatches(indexMatches);
+          label = locationLabelFromRecords(filtered, parsed.state ? `${titleCase(parsed.city)}, ${parsed.state}` : titleCase(parsed.city));
+          inputLabel = parsed.state ? `${titleCase(parsed.city)}, ${parsed.state}` : titleCase(parsed.city);
+          scopeLabel = 'city match';
+          summaryScope = filtered.length
+            ? `${filtered.length} hospice${filtered.length === 1 ? '' : 's'} matched to ${inputLabel}`
+            : `No hospices matched ${inputLabel}`;
         } else {
-          filtered = pool;
+          const data = await loadHospiceState(state);
+          filtered = Array.isArray(data?.providers) ? data.providers : [];
+          label = STATE_NAMES[state] || state;
+          inputLabel = STATE_NAMES[state] || state;
+          scopeLabel = 'statewide';
+          summaryScope = `${filtered.length} hospice${filtered.length === 1 ? '' : 's'} statewide`;
         }
 
-        const top4 = filtered.slice(0, 4);
+        if (cancelled) return;
+        const top4 = [...filtered]
+          .sort((a, b) => compositeRank(a, rankThresholds) - compositeRank(b, rankThresholds))
+          .slice(0, 4);
         if (top4.length === 0) {
           setProviders(SAMPLE_PROVIDERS);
           setUsingSample(true);
+          setResolved({
+            label,
+            inputLabel,
+            scopeLabel,
+            summaryScope,
+            matchCount: 0,
+            hasQuery: true,
+          });
         } else {
           setProviders(top4);
           setUsingSample(false);
+          setResolved({
+            label,
+            inputLabel,
+            scopeLabel,
+            summaryScope,
+            matchCount: filtered.length,
+            hasQuery: true,
+          });
         }
       } catch (err) {
         if (!cancelled) {
           setError(err.message);
           setProviders(SAMPLE_PROVIDERS);
           setUsingSample(true);
+          setResolved({
+            label: zip ? `ZIP ${zip}` : city ? titleCase(city) : state || 'Compare hospices',
+            inputLabel: zip || city || state || '',
+            scopeLabel: 'sample fallback',
+            summaryScope: 'Real hospice data could not be loaded for this query.',
+            matchCount: 0,
+            hasQuery: true,
+          });
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -313,24 +559,22 @@ export default function HospiceComparePage() {
   }, [state, ccnsParam, zip, city]);
 
   const ranked = useMemo(() => {
-    return [...providers].sort((a, b) => compositeRank(a) - compositeRank(b));
-  }, [providers]);
+    return [...providers].sort((a, b) => compositeRank(a, thresholds) - compositeRank(b, thresholds));
+  }, [providers, thresholds]);
 
   // Summary strip counts
   const total = ranked.length;
-  const noFlags = ranked.filter((p) => (p.flags?.flagged_count ?? 0) === 0).length;
-  const oneFlag = ranked.filter((p) => (p.flags?.flagged_count ?? 0) === 1).length;
-  const multiFlag = ranked.filter((p) => (p.flags?.flagged_count ?? 0) >= 2).length;
+  const noFlags = ranked.filter((p) => getFlagCount(p) === 0).length;
+  const oneFlag = ranked.filter((p) => getFlagCount(p) === 1).length;
+  const multiFlag = ranked.filter((p) => getFlagCount(p) >= 2).length;
 
   // Display location
-  const locLabel = (() => {
-    if (city && state) return `${titleCase(city)}, ${state}`;
-    if (zip) return `ZIP ${zip}`;
-    if (state) return state;
-    return 'Charleston, SC';
-  })();
-  const subZip = zip || (ranked[0]?.zip || '29403');
-  const stateAbbr = state || ranked[0]?.state || 'SC';
+  const locLabel = resolved.label || 'Compare hospices';
+  const queryInputValue = resolved.inputLabel || zip || city || state || '';
+  const summaryScope = resolved.summaryScope || 'Enter a ZIP code or city to compare real hospices.';
+  const headerMatchCount = usingSample ? 0 : resolved.matchCount;
+  const hasRealResults = ranked.length > 0 && !usingSample;
+  const showEmptyState = !loading && !usingSample && ranked.length === 0;
 
   // Best-in-row helpers
   const bestIdx = (vals, dir = 'high') => {
@@ -380,10 +624,16 @@ export default function HospiceComparePage() {
 
       <div className="hc-page-head">
         <div className="hc-eyebrow">// for case managers, discharge planners, and families comparing options</div>
-        <h1 className="hc-title">Compare hospices · {locLabel} area.</h1>
+        <h1 className="hc-title">
+          {resolved.hasQuery ? `Compare hospices · ${locLabel} area.` : 'Compare hospices.'}
+        </h1>
         <p className="hc-sub">
-          {total} Medicare-certified hospice{total === 1 ? '' : 's'} serving ZIP {subZip} within 10 miles.
-          Data sourced from CMS, refreshed monthly. Print this and bring it to the discharge meeting.
+          {hasRealResults
+            ? `Showing the top ${total} of ${headerMatchCount} Medicare-certified hospice${headerMatchCount === 1 ? '' : 's'} for this search.`
+            : usingSample
+              ? 'No real hospice match was found for this search.'
+              : 'Enter a ZIP code or city to compare Medicare-certified hospices in that area.'}
+          {' '}Data sourced from CMS, refreshed monthly. Print this and bring it to the discharge meeting.
           {usingSample && <span className="hc-sample-tag"> · Sample data shown</span>}
         </p>
 
@@ -392,7 +642,7 @@ export default function HospiceComparePage() {
             <span className="hc-filter-label">ZIP / city</span>
             <input
               className="hc-filter-input"
-              defaultValue={city ? `${titleCase(city)}, ${stateAbbr} ${zip || ''}`.trim() : (zip ? `${stateAbbr} ${zip}` : `${stateAbbr || ''}`)}
+              value={queryInputValue}
               readOnly
             />
           </div>
@@ -425,11 +675,12 @@ export default function HospiceComparePage() {
           </div>
         </div>
 
+        {!showEmptyState && (
         <div className="hc-summary-strip">
           <div className="hc-summary-cell teal">
             <div className="lbl">Showing</div>
             <div className="val">{total} hospice{total === 1 ? '' : 's'}</div>
-            <div className="sub">within 10 miles of {subZip}</div>
+            <div className="sub">{summaryScope}</div>
           </div>
           <div className="hc-summary-cell">
             <div className="lbl">No patterns flagged</div>
@@ -447,6 +698,7 @@ export default function HospiceComparePage() {
             <div className="sub">closer review recommended</div>
           </div>
         </div>
+        )}
       </div>
 
       <section className="hc-compare-wrap">
@@ -455,6 +707,20 @@ export default function HospiceComparePage() {
           <div className="hc-error">Could not load state data ({error}). Showing sample comparison below.</div>
         )}
 
+        {showEmptyState && (
+          <div className="hc-empty-state">
+            <div className="hc-empty-eyebrow">// compare real hospices</div>
+            <h2>Start with a ZIP code or city.</h2>
+            <p>
+              Use the compare lane on the hospice page, or add <code>?zip=94608</code> or
+              {' '}<code>?city=Oakland</code> to this URL. We will resolve that location against the
+              national hospice index and load the matching state records.
+            </p>
+            <a className="hc-btn hc-btn-primary" href="/hospice">Go back to hospice search</a>
+          </div>
+        )}
+
+        {!showEmptyState && (
         <div className="hc-compare-table">
           {/* Header row */}
           <div className="hc-row">
@@ -477,7 +743,7 @@ export default function HospiceComparePage() {
                         <span key={idx} className={`hc-fac-flag flag-${f.cls}`}>{f.label}</span>
                       ))}
                     </div>
-                    <div className="hc-fac-remove">× remove</div>
+                    <div className="hc-fac-remove">remove</div>
                   </div>
                 </div>
               );
@@ -527,7 +793,7 @@ export default function HospiceComparePage() {
             label="Overall rating"
             cells={ranked.map((p) => {
               const v = p.metrics?.cahps_overall;
-              const c = cahpsCell(v, STATE_CAHPS_AVG.overall);
+              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.overall);
               return (
                 <span className={`hc-cahps ${c.cls}`}>
                   <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
@@ -541,7 +807,7 @@ export default function HospiceComparePage() {
             label="Would recommend"
             cells={ranked.map((p) => {
               const v = p.metrics?.cahps_recommend;
-              const c = cahpsCell(v, STATE_CAHPS_AVG.recommend);
+              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.recommend);
               return (
                 <span className={`hc-cahps ${c.cls}`}>
                   <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
@@ -555,7 +821,7 @@ export default function HospiceComparePage() {
             label="Help for pain & symptoms"
             cells={ranked.map((p) => {
               const v = p.metrics?.cahps_pain;
-              const c = cahpsCell(v, STATE_CAHPS_AVG.pain);
+              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.pain);
               return (
                 <span className={`hc-cahps ${c.cls}`}>
                   <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
@@ -569,7 +835,7 @@ export default function HospiceComparePage() {
             label="Communication with family"
             cells={ranked.map((p) => {
               const v = p.metrics?.cahps_comm;
-              const c = cahpsCell(v, STATE_CAHPS_AVG.comm);
+              const c = cahpsCell(v, DEFAULT_CAHPS_AVG.comm);
               return (
                 <span className={`hc-cahps ${c.cls}`}>
                   <span className="pct">{v == null ? '—' : `${Math.round(v)}%`}</span>
@@ -667,20 +933,23 @@ export default function HospiceComparePage() {
             return <span className={`hc-recommend ${r.cls}`}>{r.label}</span>;
           })} />
         </div>
+        )}
 
-        {/* Action bar */}
-        <div className="hc-action-bar">
-          <div className="hc-action-label">// take this with you</div>
-          <div className="hc-actions">
-            <button className="hc-btn hc-btn-primary" onClick={handlePrint} type="button">Print this comparison</button>
-            <button className="hc-btn" type="button">Download as PDF</button>
-            <button className="hc-btn" type="button">Export CSV</button>
-            <button className="hc-btn" type="button">Email to me</button>
-            <button className="hc-btn" type="button">Share link</button>
+        {!showEmptyState && (
+          <div className="hc-action-bar">
+            <div className="hc-action-label">// take this with you</div>
+            <div className="hc-actions">
+              <button className="hc-btn hc-btn-primary" onClick={handlePrint} type="button">Print this comparison</button>
+              <button className="hc-btn" type="button">Download as PDF</button>
+              <button className="hc-btn" type="button">Export CSV</button>
+              <button className="hc-btn" type="button">Email to me</button>
+              <button className="hc-btn" type="button">Share link</button>
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
+      {!showEmptyState && (
       <section className="hc-rec-summary">
         <div className="hc-rec-card">
           <div>
@@ -711,6 +980,7 @@ export default function HospiceComparePage() {
           </div>
         </div>
       </section>
+      )}
 
       <section className="hc-help-block">
         <div className="hc-help-inner">
@@ -878,6 +1148,31 @@ const HC_CSS = `
 }
 .hospice-compare .hc-error { color: var(--hc-amber); border-color: rgba(217,119,6,.3); background: rgba(217,119,6,.05); }
 
+.hospice-compare .hc-empty-state {
+  background: var(--hc-bg-card); border: 1px solid var(--hc-border);
+  border-radius: var(--hc-radius-lg); box-shadow: var(--hc-shadow-md);
+  padding: 36px; margin-bottom: 18px;
+}
+.hospice-compare .hc-empty-eyebrow {
+  font-family: "JetBrains Mono", monospace; font-size: 10px;
+  color: var(--hc-primary); letter-spacing: 0.14em;
+  text-transform: uppercase; font-weight: 700; margin-bottom: 8px;
+}
+.hospice-compare .hc-empty-state h2 {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 28px; line-height: 1.1; color: var(--hc-navy);
+  margin: 0 0 10px; font-weight: 700;
+}
+.hospice-compare .hc-empty-state p {
+  color: var(--hc-muted); line-height: 1.6; max-width: 720px;
+  margin: 0 0 18px;
+}
+.hospice-compare .hc-empty-state code {
+  background: var(--hc-bg-light); border: 1px solid var(--hc-border);
+  border-radius: 4px; padding: 2px 5px;
+  font-family: "JetBrains Mono", monospace; font-size: 12px;
+}
+
 /* Comparison table */
 .hospice-compare .hc-compare-wrap { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
 .hospice-compare .hc-compare-table {
@@ -979,7 +1274,7 @@ const HC_CSS = `
 /* Best highlight */
 .hospice-compare .hc-best { position: relative; }
 .hospice-compare .hc-best::before {
-  content: '★ best'; position: absolute; top: 4px; right: 6px;
+  content: 'best'; position: absolute; top: 4px; right: 6px;
   font-family: "JetBrains Mono", monospace; font-size: 8.5px;
   color: var(--hc-teal); font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
