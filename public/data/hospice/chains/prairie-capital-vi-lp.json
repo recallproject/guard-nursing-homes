@@ -1,0 +1,284 @@
+{
+  "chain_name": "PRAIRIE CAPITAL VI LP",
+  "chain_slug": "prairie-capital-vi-lp",
+  "norm_key": "prairie capital vi",
+  "facility_count": 13,
+  "state_count": 5,
+  "states": [
+    "AL",
+    "AR",
+    "MO",
+    "MS",
+    "TN"
+  ],
+  "avg_cms_rating": 4.69,
+  "avg_hci_composite": 9.08,
+  "avg_cahps_overall": 84.83,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2019-11-01",
+  "newest_association": "2024-04-01",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 14,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 12.04,
+  "member_count": 13,
+  "members": [
+    {
+      "ccn": "011604",
+      "name": "LEGACY HOSPICE OF THE EAST, LLC",
+      "city": "DEMOPOLIS",
+      "state": "AL",
+      "zip": "36732",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "041571",
+      "name": "LEGACY HOSPICE OF NORTH ARKANSAS",
+      "city": "SALEM",
+      "state": "AR",
+      "zip": "72576",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "041568",
+      "name": "LEGACY HOSPICE, INC",
+      "city": "OSCEOLA",
+      "state": "AR",
+      "zip": "72370",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261586",
+      "name": "LEGACY HOSPICE",
+      "city": "FREDERICKTOWN",
+      "state": "MO",
+      "zip": "63645",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261598",
+      "name": "LEGACY HOSPICE, LLC",
+      "city": "KENNETT",
+      "state": "MO",
+      "zip": "63857",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251682",
+      "name": "HOMECARE HOSPICE NORTH LLC DBA LEGACY HOSPICE OF T",
+      "city": "NEW ALBANY",
+      "state": "MS",
+      "zip": "38652",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251690",
+      "name": "HOMECARE HOSPICE SOUTH, LLC DBA LEGACY HOSPICE OF ",
+      "city": "HATTIESBURG",
+      "state": "MS",
+      "zip": "39401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251573",
+      "name": "HOMECARE HOSPICE, LLC DBA LEGACY HOSPICE OF THE SO",
+      "city": "JACKSON",
+      "state": "MS",
+      "zip": "39211",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251628",
+      "name": "LEGACY HOSPICE OF THE SOUTH - BATESVILLE",
+      "city": "BATESVILLE",
+      "state": "MS",
+      "zip": "38606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251592",
+      "name": "LEGACY HOSPICE OF THE SOUTH - GRENADA",
+      "city": "GRENADA",
+      "state": "MS",
+      "zip": "38901",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251638",
+      "name": "LEGACY HOSPICE OF THE SOUTH - STARKVILLE",
+      "city": "STARKVILLE",
+      "state": "MS",
+      "zip": "39759",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251552",
+      "name": "LEGACY HOSPICE OF THE SOUTH (* DEEMED )",
+      "city": "CORINTH",
+      "state": "MS",
+      "zip": "38834",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441607",
+      "name": "LEGACY HOSPICE OF THE SOUTH",
+      "city": "SELMER",
+      "state": "TN",
+      "zip": "38375",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "PRAIRIE CAPITAL VI LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.451Z"
+}

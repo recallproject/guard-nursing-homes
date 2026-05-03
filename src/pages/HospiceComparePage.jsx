@@ -569,8 +569,31 @@ export default function HospiceComparePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (window.plausible) window.plausible('Hospice-Compare-Page-View');
   }, []);
+
+  // Plausible: Hospice-Compare-View — fires once after resolution so that
+  // resultCount and query props are populated. Refires when the URL query
+  // changes (zip / city / state / ccns), since that's effectively a new view.
+  useEffect(() => {
+    if (loading) return;
+    if (!window.plausible) return;
+    const queryStr = zip
+      ? `zip:${zip}`
+      : city
+        ? `city:${city}`
+        : state
+          ? `state:${state}`
+          : ccnsParam
+            ? `ccns:${ccnsParam}`
+            : '';
+    window.plausible('Hospice-Compare-View', {
+      props: {
+        resultCount: resolved.matchCount ?? 0,
+        query: queryStr,
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, resolved.matchCount, zip, city, state, ccnsParam]);
 
   useEffect(() => {
     let cancelled = false;
@@ -830,7 +853,14 @@ export default function HospiceComparePage() {
     return map;
   }, [ranked, enforcement, oneYearAgoMs]);
 
-  const handlePrint = () => window.print();
+  const handlePrint = () => {
+    if (window.plausible) window.plausible('Hospice-Compare-Print-Click');
+    window.print();
+  };
+
+  const handleCsvDownload = () => {
+    if (window.plausible) window.plausible('Hospice-Compare-CSV-Download');
+  };
 
   return (
     <div className="hospice-compare">
@@ -892,7 +922,17 @@ export default function HospiceComparePage() {
           </div>
           <div className="hc-filter-group">
             <span className="hc-filter-label">Sort by</span>
-            <select className="hc-filter-select" defaultValue="Composite score">
+            <select
+              className="hc-filter-select"
+              defaultValue="Composite score"
+              onChange={(e) => {
+                if (window.plausible) {
+                  window.plausible('Hospice-Compare-Sort-Changed', {
+                    props: { column: e.target.value, direction: 'desc' },
+                  });
+                }
+              }}
+            >
               <option>Composite score</option>
               <option>Distance</option>
               <option>CMS rating</option>
@@ -957,8 +997,19 @@ export default function HospiceComparePage() {
             <div className="hc-rlabel hc-fac-hdr row-label">Hospice</div>
             {ranked.map((p, i) => {
               const flags = ownershipFlagPills(p);
+              const handleRowClick = () => {
+                if (window.plausible) {
+                  window.plausible('Hospice-Compare-Row-Click', {
+                    props: { ccn: String(p.ccn || '') },
+                  });
+                }
+              };
               return (
-                <div key={p.ccn || i} className="hc-cell hc-fac-hdr">
+                <div
+                  key={p.ccn || i}
+                  className="hc-cell hc-fac-hdr"
+                  onClick={handleRowClick}
+                >
                   <div>
                     <div className="hc-fac-rank">#{i + 1} by composite</div>
                     <div className="hc-fac-name">{titleCase(p.name)}</div>
@@ -1230,7 +1281,7 @@ export default function HospiceComparePage() {
             <div className="hc-actions">
               <button className="hc-btn hc-btn-primary" onClick={handlePrint} type="button">Print this comparison</button>
               <button className="hc-btn" type="button">Download as PDF</button>
-              <button className="hc-btn" type="button">Export CSV</button>
+              <button className="hc-btn" type="button" onClick={handleCsvDownload}>Export CSV</button>
               <button className="hc-btn" type="button">Email to me</button>
               <button className="hc-btn" type="button">Share link</button>
             </div>

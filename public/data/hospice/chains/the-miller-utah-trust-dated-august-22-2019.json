@@ -1,0 +1,289 @@
+{
+  "chain_name": "THE MILLER UTAH TRUST, DATED AUGUST 22, 2019",
+  "chain_slug": "the-miller-utah-trust-dated-august-22-2019",
+  "norm_key": "the miller utah trust dated august 22 2019",
+  "facility_count": 13,
+  "state_count": 10,
+  "states": [
+    "AZ",
+    "CO",
+    "ID",
+    "KS",
+    "MO",
+    "NM",
+    "NV",
+    "OH",
+    "PA",
+    "UT"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.55,
+  "avg_cahps_overall": 77.5,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 15.4,
+  "oldest_association": "2021-01-01",
+  "newest_association": "2023-09-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5,
+  "member_count": 13,
+  "members": [
+    {
+      "ccn": "031682",
+      "name": "AHC HOME HEALTH OF ARIZONA, LLC",
+      "city": "MESA",
+      "state": "AZ",
+      "zip": "85210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061606",
+      "name": "ADVANCED HOSPICE OF COLORADO",
+      "city": "AURORA",
+      "state": "CO",
+      "zip": "80012",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061624",
+      "name": "AHC HOME HEALTH AND HOSPICE OF COLORADO SPRINGS",
+      "city": "COLORAD SPRINGS",
+      "state": "CO",
+      "zip": "80910",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131582",
+      "name": "ADVANCED HOME CARE AND HOSPICE OF COEUR D'ALENE",
+      "city": "COEUR D'ALENE",
+      "state": "ID",
+      "zip": "83814",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131581",
+      "name": "ASPEN HOME CARE AND HOSPICE",
+      "city": "MERIDIAN",
+      "state": "ID",
+      "zip": "83642",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171609",
+      "name": "AHC HOME HEALTH OF KANSAS, LLC (HOSPICE)",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66207",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261695",
+      "name": "ADVANCED HOME HEALTH AND HOSPICE KANSAS CITY",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "zip": "64114",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321580",
+      "name": "ADVANCED HOME HEALTH OF NEW MEXICO",
+      "city": "ALBUQUERQUE",
+      "state": "NM",
+      "zip": "87107",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "291566",
+      "name": "ADVANCED HOME HEALTH AND HOSPICE OF RENO",
+      "city": "RENO",
+      "state": "NV",
+      "zip": "89521",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "291563",
+      "name": "AHC HOSPICE OF LAS VEGAS",
+      "city": "HENDERSON",
+      "state": "NV",
+      "zip": "89052",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361738",
+      "name": "AHC HOME HEALTH OF CLEVELAND LLC",
+      "city": "MAYFIELD HEIGHTS",
+      "state": "OH",
+      "zip": "44124",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "731513",
+      "name": "AHC HOME HEALTH AND HOSPICE OF LEHIGH VALLEY",
+      "city": "BETHLEHEM",
+      "state": "PA",
+      "zip": "18017",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461621",
+      "name": "ASPEN RIDGE HOSPICE",
+      "city": "MURRAY",
+      "state": "UT",
+      "zip": "84107",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THE MILLER UTAH TRUST, DATED AUGUST 22, 2019"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

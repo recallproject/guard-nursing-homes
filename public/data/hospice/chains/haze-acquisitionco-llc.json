@@ -1,0 +1,90 @@
+{
+  "chain_name": "HAZE ACQUISITIONCO LLC",
+  "chain_slug": "haze-acquisitionco-llc",
+  "norm_key": "haze acquisitionco",
+  "facility_count": 3,
+  "state_count": 1,
+  "states": [
+    "IN"
+  ],
+  "avg_cms_rating": 4.33,
+  "avg_hci_composite": 8.33,
+  "avg_cahps_overall": 85.67,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 66.7,
+  "oldest_association": "2022-08-01",
+  "newest_association": "2022-08-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 3,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "151623",
+      "name": "ST CROIX HOSPICE",
+      "city": "JEFFERSONVILLE",
+      "state": "IN",
+      "zip": "47130",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151637",
+      "name": "ST. CROIX HOSPICE",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46278",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151639",
+      "name": "ST. CROIX HOSPICE",
+      "city": "NEWBURGH",
+      "state": "IN",
+      "zip": "47630",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HAZE ACQUISITIONCO LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

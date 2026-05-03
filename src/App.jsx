@@ -52,6 +52,10 @@ const HospicePage = lazy(() => import('./pages/HospicePage'));
 const HospiceProviderPage = lazy(() => import('./pages/HospiceProviderPage'));
 const HospiceComparePage = lazy(() => import('./pages/HospiceComparePage'));
 const HospiceNewsPage = lazy(() => import('./pages/HospiceNewsPage'));
+const HospiceStatePage = lazy(() => import('./pages/HospiceStatePage'));
+const HospiceChainsPage = lazy(() => import('./pages/HospiceChainsPage'));
+const HospiceChainDetailPage = lazy(() => import('./pages/HospiceChainDetailPage'));
+const HospiceHighRiskPage = lazy(() => import('./pages/HospiceHighRiskPage'));
 const RefreshLogPage = lazy(() => import('./pages/RefreshLogPage'));
 
 // Feature flag: post-acute hub homepage is ON by default. To roll back, set
@@ -95,6 +99,10 @@ function App() {
           <Route path="/hospice" element={<HospicePage />} />
           <Route path="/hospice/compare" element={<HospiceComparePage />} />
           <Route path="/hospice/news" element={<HospiceNewsPage />} />
+          <Route path="/hospice/chains" element={<HospiceChainsPage />} />
+          <Route path="/hospice/chain/:slug" element={<HospiceChainDetailPage />} />
+          <Route path="/hospice/high-risk" element={<HospiceHighRiskPage />} />
+          <Route path="/hospice/state/:stateCode" element={<HospiceStatePage />} />
           <Route path="/hospice/:ccn" element={<HospiceProviderPage />} />
           <Route path="/refresh-log" element={<RefreshLogPage />} />
           <Route path="/facility/:ccn" element={<FacilityErrorBoundary><FacilityPage /></FacilityErrorBoundary>} />

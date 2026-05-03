@@ -1,0 +1,537 @@
+{
+  "chain_name": "FC COMPASSUS HOSPICE BLOCKER, LLC",
+  "chain_slug": "fc-compassus-hospice-blocker-llc",
+  "norm_key": "fc compassus hospice blocker",
+  "facility_count": 26,
+  "state_count": 11,
+  "states": [
+    "AL",
+    "GA",
+    "IL",
+    "IN",
+    "MI",
+    "MS",
+    "OK",
+    "PA",
+    "SC",
+    "TN",
+    "WI"
+  ],
+  "avg_cms_rating": 4.88,
+  "avg_hci_composite": 9.31,
+  "avg_cahps_overall": 79.42,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 7,
+  "flagged_pct": 19.2,
+  "oldest_association": "2015-10-07",
+  "newest_association": "2020-01-06",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 24,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 16.23,
+  "member_count": 26,
+  "members": [
+    {
+      "ccn": "011528",
+      "name": "COMPASSUS-AUBURN",
+      "city": "AUBURN",
+      "state": "AL",
+      "zip": "36830",
+      "ownership_type": "Combination Government & Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011678",
+      "name": "COMPASSUS-FLORENCE",
+      "city": "FLORENCE",
+      "state": "AL",
+      "zip": "35634",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011636",
+      "name": "COMPASSUS-TROY",
+      "city": "TROY",
+      "state": "AL",
+      "zip": "36081",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111651",
+      "name": "COMPASSUS-ATHENS",
+      "city": "ATHENS",
+      "state": "GA",
+      "zip": "30606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111648",
+      "name": "COMPASSUS-ATLANTA",
+      "city": "DULUTH",
+      "state": "GA",
+      "zip": "30096",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 57,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111649",
+      "name": "COMPASSUS-FAYETTEVILLE",
+      "city": "FAYETTEVILLE",
+      "state": "GA",
+      "zip": "30214",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111627",
+      "name": "COMPASSUS-KENNESAW",
+      "city": "KENNESAW",
+      "state": "GA",
+      "zip": "30144",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111682",
+      "name": "COMPASSUS-NORTH GEORGIA II",
+      "city": "ELLIJAY",
+      "state": "GA",
+      "zip": "30540",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141623",
+      "name": "COMPASSUS-CHICAGO",
+      "city": "DEKALB",
+      "state": "IL",
+      "zip": "60115",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151560",
+      "name": "COMPASSUS - INDIANAPOLIS",
+      "city": "MUNCIE",
+      "state": "IN",
+      "zip": "47304",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231605",
+      "name": "COMPASS - CASS CITY",
+      "city": "CASS CITY",
+      "state": "MI",
+      "zip": "48726",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231599",
+      "name": "COMPASS - LANSING",
+      "city": "LANSING",
+      "state": "MI",
+      "zip": "48917",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231596",
+      "name": "COMPASSUS - BAY CITY",
+      "city": "SAGINAW",
+      "state": "MI",
+      "zip": "48604",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231600",
+      "name": "COMPASSUS - NORTHERN MICHIGAN",
+      "city": "WEST BRANCH",
+      "state": "MI",
+      "zip": "48661",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251625",
+      "name": "COMPASSUS-HATTIESBURG",
+      "city": "HATTIESBURG",
+      "state": "MS",
+      "zip": "39401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251586",
+      "name": "COMPASSUS-JACKSON",
+      "city": "FLOWOOD",
+      "state": "MS",
+      "zip": "39232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251656",
+      "name": "COMPASSUS-MEMPHIS",
+      "city": "SOUTHAVEN",
+      "state": "MS",
+      "zip": "38672",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251637",
+      "name": "COMPASSUS-MID-MISSISSIPPI",
+      "city": "BROOKHAVEN",
+      "state": "MS",
+      "zip": "39601",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371678",
+      "name": "COMPASSUS - MUSKOGEE",
+      "city": "MUSKOGEE",
+      "state": "OK",
+      "zip": "74401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371677",
+      "name": "COMPASSUS - OWASSO",
+      "city": "TULSA",
+      "state": "OK",
+      "zip": "74135",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371603",
+      "name": "COMPASSUS - VINITA",
+      "city": "VINITA",
+      "state": "OK",
+      "zip": "74301",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391659",
+      "name": "COMPASSUS - ALLENTOWN",
+      "city": "ALLENTOWN",
+      "state": "PA",
+      "zip": "18195",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421593",
+      "name": "COMPASSUS-CHARLESTON",
+      "city": "RIDGELAND",
+      "state": "SC",
+      "zip": "29936",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441579",
+      "name": "COMPASSUS-MEMPHIS",
+      "city": "MEMPHIS",
+      "state": "TN",
+      "zip": "38119",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521595",
+      "name": "COMPASSUS GREEN BAY",
+      "city": "GREEN BAY",
+      "state": "WI",
+      "zip": "54304",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521576",
+      "name": "COMPASSUS MILWAUKEE",
+      "city": "SHEBOYGAN",
+      "state": "WI",
+      "zip": "53081",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "FC COMPASSUS HOSPICE BLOCKER, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.459Z"
+}

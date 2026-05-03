@@ -1,0 +1,167 @@
+{
+  "chain_name": "OSF HEALTHCARE MINISTRIES",
+  "chain_slug": "osf-healthcare-ministries",
+  "norm_key": "osf healthcare ministries",
+  "facility_count": 7,
+  "state_count": 2,
+  "states": [
+    "IL",
+    "MI"
+  ],
+  "avg_cms_rating": 4.71,
+  "avg_hci_composite": 9.29,
+  "avg_cahps_overall": 84.71,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 42.9,
+  "oldest_association": "2024-11-01",
+  "newest_association": "2024-11-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 7,
+  "avg_disclosed_ownership_pct": null,
+  "member_count": 7,
+  "members": [
+    {
+      "ccn": "141605",
+      "name": "OSF HOSPICE",
+      "city": "LOVES PARK",
+      "state": "IL",
+      "zip": "61111",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141546",
+      "name": "OSF HOSPICE",
+      "city": "PEORIA",
+      "state": "IL",
+      "zip": "61615",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141511",
+      "name": "OSF HOSPICE",
+      "city": "OAK LAWN",
+      "state": "IL",
+      "zip": "60453",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141601",
+      "name": "OSF HOSPICE - EASTERN REGION",
+      "city": "BLOOMINGTON",
+      "state": "IL",
+      "zip": "61704",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141700",
+      "name": "OSF HOSPICE - URBANA",
+      "city": "CHAMPAIGN",
+      "state": "IL",
+      "zip": "61822",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141573",
+      "name": "OSF SAINT ANTHONY'S HOSPICE",
+      "city": "ALTON",
+      "state": "IL",
+      "zip": "62002",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231563",
+      "name": "OSF BAY DE NOC HOSPICE",
+      "city": "ESCANABA",
+      "state": "MI",
+      "zip": "49829",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "OSF HEALTHCARE MINISTRIES"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

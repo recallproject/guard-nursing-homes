@@ -1,0 +1,72 @@
+{
+  "chain_name": "D&K HOLDINGS LLC",
+  "chain_slug": "d-and-k-holdings-llc",
+  "norm_key": "d and k",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "AZ",
+    "KS"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 83.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2013-07-15",
+  "newest_association": "2013-12-27",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 48.75,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "031622",
+      "name": "ACCORD HOSPICE OF THE WHITE MOUNTAINS, LLC",
+      "city": "SHOW LOW",
+      "state": "AZ",
+      "zip": "85901",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 93,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171593",
+      "name": "ACCORD HOSPICE OF MANHATTAN LLC",
+      "city": "MANHATTAN",
+      "state": "KS",
+      "zip": "66503",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "D&K HOLDINGS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

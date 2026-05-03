@@ -229,6 +229,21 @@ export default function HospiceProviderPage() {
     };
   }, [ccn]);
 
+  // Plausible: provider page view (fires once provider data is loaded so that
+  // we have ccn / state / flagged in the props).
+  useEffect(() => {
+    if (!provider) return;
+    if (window.plausible) {
+      window.plausible('Hospice-Provider-View', {
+        props: {
+          ccn: String(provider.ccn || ''),
+          state: provider.state || '',
+          flagged: provider.flags?.flagged_count ?? 0,
+        },
+      });
+    }
+  }, [provider]);
+
   // Public-record feeds: load once on mount (or read from module-level cache),
   // then re-fetch when the tab regains focus. Backend pipelines run daily, so
   // continuous polling is wasted bandwidth.
@@ -763,7 +778,12 @@ export default function HospiceProviderPage() {
                 <button
                   type="button"
                   className="hp-cahps-toggle"
-                  onClick={() => setShowCahpsTable((v) => !v)}
+                  onClick={() => setShowCahpsTable((v) => {
+                    if (!v && window.plausible) {
+                      window.plausible('Hospice-Provider-CAHPS-Expanded');
+                    }
+                    return !v;
+                  })}
                 >
                   <span>// All 8 family-experience scores · click to expand</span>
                   <span>{showCahpsTable ? '↑' : '↓'}</span>
@@ -817,7 +837,12 @@ export default function HospiceProviderPage() {
                 <button
                   type="button"
                   className="hp-cahps-toggle"
-                  onClick={() => setShowCahpsTable((v) => !v)}
+                  onClick={() => setShowCahpsTable((v) => {
+                    if (!v && window.plausible) {
+                      window.plausible('Hospice-Provider-CAHPS-Expanded');
+                    }
+                    return !v;
+                  })}
                 >
                   <span>// All 8 family-experience scores · click to expand</span>
                   <span>{showCahpsTable ? '↑' : '↓'}</span>
@@ -1070,8 +1095,28 @@ export default function HospiceProviderPage() {
                         : item.source === 'oig'
                           ? 'OIG'
                           : (item.sourceName || 'News');
+                    const handlePubRecItemClick = () => {
+                      if (window.plausible) {
+                        window.plausible('Hospice-Provider-PubRec-Item-Click', {
+                          props: { source: item.source, ccn: ccnKey },
+                        });
+                      }
+                    };
+                    const handleVerifyLinkClick = () => {
+                      if (window.plausible) {
+                        let destination = item.url || '';
+                        try { destination = new URL(item.url).hostname; } catch { /* keep raw */ }
+                        window.plausible('Hospice-Provider-Verify-Link-Click', {
+                          props: { destination },
+                        });
+                      }
+                    };
                     return (
-                      <li className="hp-pubrec-item" key={`${item.source}-${idx}-${item.headline}`}>
+                      <li
+                        className="hp-pubrec-item"
+                        key={`${item.source}-${idx}-${item.headline}`}
+                        onClick={handlePubRecItemClick}
+                      >
                         <div className="hp-pubrec-date">{fmtItemDate(item.date)}</div>
                         <div className="hp-pubrec-content">
                           <h4>{item.headline}</h4>
@@ -1082,6 +1127,7 @@ export default function HospiceProviderPage() {
                               href={item.url}
                               target="_blank"
                               rel="noopener noreferrer"
+                              onClick={handleVerifyLinkClick}
                             >
                               Read original →
                             </a>
@@ -1223,7 +1269,17 @@ export default function HospiceProviderPage() {
             <button type="button" className="hp-btn" onClick={() => window.print()}>
               Print this page
             </button>
-            <Link to={`/hospice/compare?ccns=${provider.ccn}`} className="hp-btn">
+            <Link
+              to={`/hospice/compare?ccns=${provider.ccn}`}
+              className="hp-btn"
+              onClick={() => {
+                if (window.plausible) {
+                  window.plausible('Hospice-Provider-Compare-Link-Click', {
+                    props: { ccn: ccnKey },
+                  });
+                }
+              }}
+            >
               Compare to nearby hospices
             </Link>
             <Link to="/methodology" className="hp-btn">

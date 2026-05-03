@@ -1,0 +1,72 @@
+{
+  "chain_name": "ALLIANCE HEALTH INC",
+  "chain_slug": "alliance-health-inc",
+  "norm_key": "alliance health",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "MA",
+    "OK"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 72,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2017-09-01",
+  "newest_association": "2022-08-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 1,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "221589",
+      "name": "SERENITY HOSPICE, LLC",
+      "city": "SOUTHBOROUGH",
+      "state": "MA",
+      "zip": "01772",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 60,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371671",
+      "name": "ELARA CARING VII",
+      "city": "ENID",
+      "state": "OK",
+      "zip": "73701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "ALLIANCE HEALTH INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

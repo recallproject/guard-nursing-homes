@@ -1,0 +1,187 @@
+{
+  "chain_name": "SHELLIE K GREINER REVOCABLE TRUST",
+  "chain_slug": "shellie-k-greiner-revocable-trust",
+  "norm_key": "shellie k greiner revocable trust",
+  "facility_count": 8,
+  "state_count": 3,
+  "states": [
+    "MO",
+    "OK",
+    "TX"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.38,
+  "avg_cahps_overall": 80.29,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 25,
+  "oldest_association": "2004-08-27",
+  "newest_association": "2021-03-25",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 75.66,
+  "member_count": 8,
+  "members": [
+    {
+      "ccn": "261638",
+      "name": "GOOD SHEPHERD HOSPICE OF SPRINGFIELD, LLC",
+      "city": "SPRINGFIELD",
+      "state": "MO",
+      "zip": "65807",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371726",
+      "name": "GOOD SHEPHERD HOSPICE OF ARDMORE, LLC",
+      "city": "ARDMORE",
+      "state": "OK",
+      "zip": "73401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371538",
+      "name": "GOOD SHEPHERD HOSPICE, INC.",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73108",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371574",
+      "name": "GOOD SHEPHERD HOSPICE, INC.",
+      "city": "GROVE",
+      "state": "OK",
+      "zip": "74344",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371575",
+      "name": "GOOD SHEPHERD HOSPICE, INC.",
+      "city": "TULSA",
+      "state": "OK",
+      "zip": "74133",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451799",
+      "name": "GOOD SHEPHERD HOSPICE OF DALLAS LLC",
+      "city": "DALLAS",
+      "state": "TX",
+      "zip": "75254",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671783",
+      "name": "GOOD SHEPHERD HOSPICE OF HOUSTON LLC",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77090",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671793",
+      "name": "GOOD SHEPHERD HOSPICE OF SAN ANTONIO, L.L.C.",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78249",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "SHELLIE K GREINER REVOCABLE TRUST"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.457Z"
+}

@@ -1,0 +1,148 @@
+{
+  "chain_name": "HALCYON HEALTHCARE LLC",
+  "chain_slug": "halcyon-healthcare-llc",
+  "norm_key": "halcyon healthcare",
+  "facility_count": 6,
+  "state_count": 2,
+  "states": [
+    "GA",
+    "MS"
+  ],
+  "avg_cms_rating": 4.33,
+  "avg_hci_composite": 8.83,
+  "avg_cahps_overall": 78,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2014-10-17",
+  "newest_association": "2015-10-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 5,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 95.88,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "111634",
+      "name": "HEART OF HOSPICE NORTH ATLANTA",
+      "city": "CUMMING",
+      "state": "GA",
+      "zip": "30040",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111632",
+      "name": "HEART OF HOSPICE VALDOSTA",
+      "city": "VALDOSTA",
+      "state": "GA",
+      "zip": "31601",
+      "ownership_type": "Other",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111700",
+      "name": "HEART OF HOSPICE WEST ATLANTA",
+      "city": "VILLA RICA",
+      "state": "GA",
+      "zip": "30180",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251676",
+      "name": "BAPTIST HOSPICE",
+      "city": "JACKSON",
+      "state": "MS",
+      "zip": "39202",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251595",
+      "name": "COMMUNITY HOSPICE",
+      "city": "TUPELO ",
+      "state": "MS",
+      "zip": "38801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251677",
+      "name": "HALCYON HOSPICE- PHILADELPHIA",
+      "city": "PHILADELPHIA",
+      "state": "MS",
+      "zip": "39350",
+      "ownership_type": "Other",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HALCYON HEALTHCARE LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

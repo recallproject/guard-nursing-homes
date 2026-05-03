@@ -1,0 +1,110 @@
+{
+  "chain_name": "BILL CREACH IRREVOCABLE TRUST FOR BILL E CREACH",
+  "chain_slug": "bill-creach-irrevocable-trust-for-bill-e-creach",
+  "norm_key": "bill creach irrevocable trust for bill e creach",
+  "facility_count": 4,
+  "state_count": 2,
+  "states": [
+    "KS",
+    "MO"
+  ],
+  "avg_cms_rating": 4.75,
+  "avg_hci_composite": 9.25,
+  "avg_cahps_overall": 82.67,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2024-08-22",
+  "newest_association": "2024-08-22",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5.9,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "171604",
+      "name": "FAITH HOSPICE",
+      "city": "WICHITA",
+      "state": "KS",
+      "zip": "67206",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171610",
+      "name": "FAITH HOSPICE CARE",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66210",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171607",
+      "name": "FAITH HOSPICE INC",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261685",
+      "name": "FAITH HOSPICE & PALLIATIVE CARE, LLC",
+      "city": "GLADSTONE",
+      "state": "MO",
+      "zip": "64119",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "BILL CREACH IRREVOCABLE TRUST FOR BILL E CREACH"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

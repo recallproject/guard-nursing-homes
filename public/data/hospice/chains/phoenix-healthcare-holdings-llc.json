@@ -1,0 +1,148 @@
+{
+  "chain_name": "PHOENIX HEALTHCARE HOLDINGS LLC",
+  "chain_slug": "phoenix-healthcare-holdings-llc",
+  "norm_key": "phoenix healthcare",
+  "facility_count": 6,
+  "state_count": 2,
+  "states": [
+    "KS",
+    "MO"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 9.17,
+  "avg_cahps_overall": 79.2,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 33.3,
+  "oldest_association": "2013-01-01",
+  "newest_association": "2021-10-20",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 3,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "171585",
+      "name": "PHOENIX HOME CARE & HOSPICE",
+      "city": "WICHITA",
+      "state": "KS",
+      "zip": "67226",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171601",
+      "name": "PHOENIX HOME CARE AND HOSPICE",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66202",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261670",
+      "name": "PHOENIX HOME CARE AND HOSPICE",
+      "city": "INDEPENDENCE",
+      "state": "MO",
+      "zip": "64055",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261667",
+      "name": "PHOENIX HOME CARE AND HOSPICE",
+      "city": "SPRINGFIELD",
+      "state": "MO",
+      "zip": "65804",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261691",
+      "name": "PHOENIX HOME CARE AND HOSPICE",
+      "city": "JEFFERSON CITY",
+      "state": "MO",
+      "zip": "65101",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261697",
+      "name": "PHOENIX HOME CARE AND HOSPICE",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63146",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "PHOENIX HEALTHCARE HOLDINGS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

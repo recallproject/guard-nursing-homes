@@ -1,0 +1,72 @@
+{
+  "chain_name": "SNJP TRUST",
+  "chain_slug": "snjp-trust",
+  "norm_key": "snjp trust",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "KS",
+    "MO"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 86,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2006-02-01",
+  "newest_association": "2015-12-31",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 19.45,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "171561",
+      "name": "GOOD SHEPHERD HOSPICE",
+      "city": "WICHITA",
+      "state": "KS",
+      "zip": "67206",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261638",
+      "name": "GOOD SHEPHERD HOSPICE OF SPRINGFIELD, LLC",
+      "city": "SPRINGFIELD",
+      "state": "MO",
+      "zip": "65807",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "SNJP TRUST"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

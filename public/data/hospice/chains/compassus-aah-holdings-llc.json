@@ -1,0 +1,226 @@
+{
+  "chain_name": "COMPASSUS AAH HOLDINGS LLC",
+  "chain_slug": "compassus-aah-holdings-llc",
+  "norm_key": "compassus aah",
+  "facility_count": 10,
+  "state_count": 4,
+  "states": [
+    "AL",
+    "IN",
+    "MI",
+    "WI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.7,
+  "avg_cahps_overall": 75.1,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 5,
+  "flagged_pct": 30,
+  "oldest_association": "2020-10-01",
+  "newest_association": "2020-10-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 9,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 10,
+  "members": [
+    {
+      "ccn": "011514",
+      "name": "COMPASSUS SOUTHERN ALABAMA",
+      "city": "PELL CITY",
+      "state": "AL",
+      "zip": "35128",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151516",
+      "name": "COMPASSUS-SOUTHERN INDIANA",
+      "city": "KOKOMO",
+      "state": "IN",
+      "zip": "46902",
+      "ownership_type": "Government",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231509",
+      "name": "COMPASSUS - GRAND BLANC",
+      "city": "GRAND BLANC",
+      "state": "MI",
+      "zip": "48439",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231548",
+      "name": "COMPASSUS - KALAMAZOO",
+      "city": "PORTAGE",
+      "state": "MI",
+      "zip": "49002",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231583",
+      "name": "COMPASSUS-NORTHERN DETROIT",
+      "city": "WARREN",
+      "state": "MI",
+      "zip": "48092",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521516",
+      "name": "COMPASSUS CENTRAL WISCONSIN",
+      "city": "MARSHFIELD",
+      "state": "WI",
+      "zip": "54449",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521561",
+      "name": "COMPASSUS MILWAUKEE METRO",
+      "city": "MILWAUKEE",
+      "state": "WI",
+      "zip": "53214",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521526",
+      "name": "COMPASSUS NEENAH",
+      "city": "NEENAH",
+      "state": "WI",
+      "zip": "54956",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521509",
+      "name": "COMPASSUS NORTHERN WISCONSIN",
+      "city": "ARBOR VITAE",
+      "state": "WI",
+      "zip": "54568",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521532",
+      "name": "COMPASSUS WAUSAU",
+      "city": "PLOVER",
+      "state": "WI",
+      "zip": "54467",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "COMPASSUS AAH HOLDINGS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

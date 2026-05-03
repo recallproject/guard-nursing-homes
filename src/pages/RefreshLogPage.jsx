@@ -4,9 +4,15 @@ import '../styles/post-acute-home.css';
 
 const REFRESH_HISTORY = [
   {
+    date: 'May 3, 2026',
+    title: 'Hospice section expansion',
+    notes: 'Added 55 hospice state-detail pages, 1,076 hospice chain rollups (covering 2,159 of 6,943 hospices), and the /hospice/high-risk investigation hub applying the California State Auditor framework nationally. Wired CourtListener federal court records and rebuilt the State AG MFCU pipeline with HTML scrapers across CA/TX/NY/FL/IL/PA. 20 new Plausible analytics events. All hospice PDFs are now free.',
+    source: 'CMS Hospice · CourtListener · State AGs',
+  },
+  {
     date: 'April 29, 2026',
-    title: 'Site refresh',
-    notes: 'Post-acute care hub launched. Five-setting navigation. Cross-setting ownership view in build.',
+    title: 'Post-acute care hub launched',
+    notes: 'Five-setting navigation (SNF · Hospice · Home Health · IRF · LTCH). Hospice section live with 6,943 provider report cards, side-by-side compare, rolling national feed, and the CA State Auditor framework applied nationally.',
     source: 'Site',
   },
   {
@@ -23,9 +29,15 @@ const REFRESH_HISTORY = [
   },
   {
     date: 'March 2, 2026',
-    title: 'Site launch',
-    notes: '14,713 facility report cards. CMS Provider Info Jan 1 2026 snapshot, deficiencies through Dec 2025, penalties through Dec 2025, HCRIS FY2024.',
+    title: 'First post-launch data refresh',
+    notes: 'CMS Provider Info Jan 1 2026 snapshot, deficiencies through Dec 2025, penalties through Dec 2025, HCRIS FY2024.',
     source: 'CMS Provider Info · Health Deficiencies · Penalties · HCRIS',
+  },
+  {
+    date: 'February 24, 2026',
+    title: 'Site launch',
+    notes: '14,713 nursing-home report cards. The Oversight Report goes live, free, with no operator funding. 18 federal datasets integrated.',
+    source: 'Site',
   },
 ];
 

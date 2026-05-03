@@ -1,0 +1,110 @@
+{
+  "chain_name": "HEALTH ESSENTIALS ACQUISITION CORP",
+  "chain_slug": "health-essentials-acquisition-corp",
+  "norm_key": "health essentials acquisition",
+  "facility_count": 4,
+  "state_count": 2,
+  "states": [
+    "AZ",
+    "CA"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 66.5,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 25,
+  "oldest_association": "2011-11-14",
+  "newest_association": "2020-04-07",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 4,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 87.5,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "031605",
+      "name": "BRISTOL HOSPICE - TUCSON",
+      "city": "TUCSON",
+      "state": "AZ",
+      "zip": "85711",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551502",
+      "name": "BRISTOL HOSPICE- GREATER LOS ANGELES",
+      "city": "LAKEWOOD",
+      "state": "CA",
+      "zip": "90712",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 66,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551546",
+      "name": "BRISTOL HOSPICE- NORTHERN LOS ANGELES",
+      "city": "GLENDALE",
+      "state": "CA",
+      "zip": "91203",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 50,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051757",
+      "name": "BRISTOL HOSPICE-ORANGE COUNTY",
+      "city": "COSTA MESA",
+      "state": "CA",
+      "zip": "92626",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HEALTH ESSENTIALS ACQUISITION CORP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.454Z"
+}

@@ -1,0 +1,867 @@
+{
+  "chain_name": "WEBSTER EQUITY PARTNERS IV BRISTOL CF LP",
+  "chain_slug": "webster-equity-partners-iv-bristol-cf-lp",
+  "norm_key": "webster equity partners iv bristol cf",
+  "facility_count": 43,
+  "state_count": 18,
+  "states": [
+    "AZ",
+    "CA",
+    "CO",
+    "FL",
+    "GA",
+    "HI",
+    "IL",
+    "LA",
+    "MA",
+    "MO",
+    "MS",
+    "OK",
+    "OR",
+    "TX",
+    "UT",
+    "VA",
+    "WA",
+    "WI"
+  ],
+  "avg_cms_rating": 4.81,
+  "avg_hci_composite": 9.31,
+  "avg_cahps_overall": 76.61,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 5,
+  "flagged_pct": 11.6,
+  "oldest_association": "2021-12-30",
+  "newest_association": "2024-08-13",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 24,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 8.02,
+  "member_count": 43,
+  "members": [
+    {
+      "ccn": "031605",
+      "name": "BRISTOL HOSPICE - TUCSON",
+      "city": "TUCSON",
+      "state": "AZ",
+      "zip": "85711",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051725",
+      "name": "BRISTOL HOSPICE - BAKERSFIELD",
+      "city": "BAKERSFIELD",
+      "state": "CA",
+      "zip": "93309",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "921543",
+      "name": "BRISTOL HOSPICE - EAST BAY",
+      "city": "PLEASANTON",
+      "state": "CA",
+      "zip": "94588",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751690",
+      "name": "BRISTOL HOSPICE - INLAND VALLEY LLC",
+      "city": "ONTARIO",
+      "state": "CA",
+      "zip": "91762",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751664",
+      "name": "BRISTOL HOSPICE - REDDING",
+      "city": "REDDING",
+      "state": "CA",
+      "zip": "96002",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551538",
+      "name": "BRISTOL HOSPICE - SACRAMENTO, LLC",
+      "city": "ROSEVILLE",
+      "state": "CA",
+      "zip": "95661",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751734",
+      "name": "BRISTOL HOSPICE - SAN DIEGO",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92123",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051769",
+      "name": "BRISTOL HOSPICE FRESNO",
+      "city": "FRESNO",
+      "state": "CA",
+      "zip": "93711",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A01582",
+      "name": "BRISTOL HOSPICE INLAND EMPIRE, LLC",
+      "city": "RIVERSIDE",
+      "state": "CA",
+      "zip": "92507",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551502",
+      "name": "BRISTOL HOSPICE- GREATER LOS ANGELES",
+      "city": "LAKEWOOD",
+      "state": "CA",
+      "zip": "90712",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 66,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A01526",
+      "name": "BRISTOL HOSPICE- LANCASTER",
+      "city": "LANCASTER",
+      "state": "CA",
+      "zip": "93534",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551546",
+      "name": "BRISTOL HOSPICE- NORTHERN LOS ANGELES",
+      "city": "GLENDALE",
+      "state": "CA",
+      "zip": "91203",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 50,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051793",
+      "name": "BRISTOL HOSPICE- STOCKTON",
+      "city": "STOCKTON",
+      "state": "CA",
+      "zip": "95219",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551501",
+      "name": "BRISTOL HOSPICE-CALIFORNIA, LLC",
+      "city": "MERCED",
+      "state": "CA",
+      "zip": "95340",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051757",
+      "name": "BRISTOL HOSPICE-ORANGE COUNTY",
+      "city": "COSTA MESA",
+      "state": "CA",
+      "zip": "92626",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061576",
+      "name": "BRISTOL HOSPICE - DENVER",
+      "city": "GREENWOOD VILLAGE",
+      "state": "CO",
+      "zip": "80111",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061561",
+      "name": "BRISTOL HOSPICE - NOCO",
+      "city": "FREDERICK",
+      "state": "CO",
+      "zip": "80516",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101558",
+      "name": "BRISTOL HOSPICE - MIAMI DADE, LLC",
+      "city": "MIAMI",
+      "state": "FL",
+      "zip": "33126",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111711",
+      "name": "BRISTOL HOSPICE GEORGIA, LLC",
+      "city": "ATLANTA",
+      "state": "GA",
+      "zip": "30339",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111782",
+      "name": "BRISTOL HOSPICE- EAST GEORGIA ",
+      "city": "WATKINSVILLE",
+      "state": "GA",
+      "zip": "30677",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "121508",
+      "name": "BRISTOL HOSPICE - HAWAII, LLC",
+      "city": "HONOLULU",
+      "state": "HI",
+      "zip": "96813",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141727",
+      "name": "BRISTOL HOSPICE - CHICAGO, LLC",
+      "city": "DES PLAINES",
+      "state": "IL",
+      "zip": "60016",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191616",
+      "name": "BRISTOL HOSPICE-NW LOUISIANA",
+      "city": "MINDEN",
+      "state": "LA",
+      "zip": "71055",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221612",
+      "name": "BRISTOL HOSPICE LLC",
+      "city": "FALL RIVER",
+      "state": "MA",
+      "zip": "02723",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261620",
+      "name": "BRISTOL HOSPICE - ST LOUIS",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63131",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251616",
+      "name": "MID DELTA HOSPICE SOUTH, INC DBA BRISTOL HOSPICE -",
+      "city": "BROOKHAVEN",
+      "state": "MS",
+      "zip": "39601",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371732",
+      "name": "BRISTOL HOSPICE-OKLAHOMA, L.L.C.",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73116",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381554",
+      "name": "BRISTOL HOSPICE ",
+      "city": "HOOD RIVER",
+      "state": "OR",
+      "zip": "97031",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381578",
+      "name": "BRISTOL HOSPICE - BEND, LLC",
+      "city": "BEND",
+      "state": "OR",
+      "zip": "97702",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381568",
+      "name": "BRISTOL HOSPICE - EUGENE LLC",
+      "city": "SPRINGFIELD",
+      "state": "OR",
+      "zip": "97477",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381551",
+      "name": "BRISTOL HOSPICE - KLAMATH FALLS",
+      "city": "KLAMATH FALLS",
+      "state": "OR",
+      "zip": "97601",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381559",
+      "name": "BRISTOL HOSPICE OREGON LLC",
+      "city": "CLACKAMAS",
+      "state": "OR",
+      "zip": "97015",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381572",
+      "name": "BRISTOL HOSPICE- ROGUE VALLEY, LLC",
+      "city": "GRANTS PASS",
+      "state": "OR",
+      "zip": "97527",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671622",
+      "name": "BRISTOL HOSPICE - DALLAS",
+      "city": "ADDISON",
+      "state": "TX",
+      "zip": "75001",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451743",
+      "name": "BRISTOL HOSPICE - NORTH CENTRAL TEXAS",
+      "city": "WAXAHACHIE",
+      "state": "TX",
+      "zip": "75165",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671708",
+      "name": "BRISTOL HOSPICE - TEXAS, LLC",
+      "city": "THE WOODLANDS",
+      "state": "TX",
+      "zip": "77380",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461595",
+      "name": "BRISTOL HOSPICE - UTAH II, LLC ",
+      "city": "MURRAY",
+      "state": "UT",
+      "zip": "84121",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461566",
+      "name": "BRISTOL HOSPICE - UTAH, LLC",
+      "city": "OGDEN",
+      "state": "UT",
+      "zip": "84404",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491655",
+      "name": "BRISTOL HOSPICE - RICHMOND, L.L.C.",
+      "city": "RICHMOND",
+      "state": "VA",
+      "zip": "23225",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491656",
+      "name": "BRISTOL HOSPICE - VIRGINIA BEACH LLC",
+      "city": "VIRGINIA BEACH",
+      "state": "VA",
+      "zip": "23452",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501559",
+      "name": "BRISTOL HOSPICE - SNOHOMISH COUNTY",
+      "city": "EVERETT",
+      "state": "WA",
+      "zip": "98204",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521610",
+      "name": "BRISTOL HOSPICE GREEN BAY",
+      "city": "GREEN BAY",
+      "state": "WI",
+      "zip": "54303",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521613",
+      "name": "BRISTOL HOSPICE MADISON",
+      "city": "MADISON",
+      "state": "WI",
+      "zip": "53713",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "WEBSTER EQUITY PARTNERS IV BRISTOL CF LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.454Z"
+}

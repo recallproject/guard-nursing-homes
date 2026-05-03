@@ -1,0 +1,680 @@
+{
+  "chain_name": "G&B NEWCO INC",
+  "chain_slug": "g-and-b-newco-inc",
+  "norm_key": "g and b newco",
+  "facility_count": 33,
+  "state_count": 21,
+  "states": [
+    "AZ",
+    "CA",
+    "CO",
+    "CT",
+    "IA",
+    "KS",
+    "MA",
+    "MI",
+    "MN",
+    "MO",
+    "NE",
+    "NJ",
+    "NV",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "TX",
+    "UT",
+    "VA",
+    "WI"
+  ],
+  "avg_cms_rating": 4.88,
+  "avg_hci_composite": 9.55,
+  "avg_cahps_overall": 79.62,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 3,
+  "oldest_association": "2024-01-03",
+  "newest_association": "2024-01-04",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 14,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 26.6,
+  "member_count": 33,
+  "members": [
+    {
+      "ccn": "031654",
+      "name": "SUNCREST HOSPICE PHOENIX, LLC",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "85040",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751500",
+      "name": "SUNCREST HOSPICE",
+      "city": "FREMONT",
+      "state": "CA",
+      "zip": "94539",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "B21618",
+      "name": "SUNCREST HOSPICE INLAND EMPIRE",
+      "city": "RIVERSIDE",
+      "state": "CA",
+      "zip": "92507",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "921751",
+      "name": "SUNCREST HOSPICE SACRAMENTO, LLC",
+      "city": "SACRAMENTO",
+      "state": "CA",
+      "zip": "95834",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A11660",
+      "name": "SUNCREST HOSPICE SAN DIEGO",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92123",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061613",
+      "name": "BRIGHTON HOSPICE COLORADO, LLC",
+      "city": "DENVER",
+      "state": "CO",
+      "zip": "80237",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071546",
+      "name": "BRIGHTON HOSPICE CONNECTICUT, LLC",
+      "city": "FARMINGTON",
+      "state": "CT",
+      "zip": "06032",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161608",
+      "name": "SUNCREST HOSPICE, LLC",
+      "city": "WEST DES MOINES",
+      "state": "IA",
+      "zip": "50266",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171621",
+      "name": "BRIGHTON HOSPICE KANSAS, LLC",
+      "city": "LEAWOOD",
+      "state": "KS",
+      "zip": "66206",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221616",
+      "name": "BRIGHTON HOSPICE MASSACHUSETTS, LLC",
+      "city": "NEWTON",
+      "state": "MA",
+      "zip": "02464",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231692",
+      "name": "BRIGHTON HOSPICE",
+      "city": "HUNTINGTON WOODS",
+      "state": "MI",
+      "zip": "48070",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "241594",
+      "name": "BRIGHTON HOSPICE",
+      "city": "SAINT LOUIS PARK",
+      "state": "MN",
+      "zip": "55416",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261696",
+      "name": "BRIGHTON HOSPICE MISSOURI, LLC",
+      "city": "INDEPENDENCE",
+      "state": "MO",
+      "zip": "64057",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281553",
+      "name": "SUNCREST HOSPICE",
+      "city": "OMAHA",
+      "state": "NE",
+      "zip": "68124",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311594",
+      "name": "SUNCREST HOSPICE",
+      "city": "MARLTON",
+      "state": "NJ",
+      "zip": "08053",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311595",
+      "name": "SUNCREST HOSPICE",
+      "city": "PARSIPPANY",
+      "state": "NJ",
+      "zip": "07054",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "291553",
+      "name": "BRIGHTON HOSPICE",
+      "city": "LAS VEGAS",
+      "state": "NV",
+      "zip": "89148",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361721",
+      "name": "SUNCREST HOSPICE ",
+      "city": "WEST CHESTER",
+      "state": "OH",
+      "zip": "45069",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361722",
+      "name": "SUNCREST HOSPICE ",
+      "city": "COLUMBUS",
+      "state": "OH",
+      "zip": "43235",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361726",
+      "name": "SUNCREST HOSPICE CLEVELAND LLC",
+      "city": "INDEPENDENCE",
+      "state": "OH",
+      "zip": "44131",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371722",
+      "name": "SUNCREST HOSPICE",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73118",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371729",
+      "name": "SUNCREST HOSPICE",
+      "city": "TULSA",
+      "state": "OK",
+      "zip": "74135",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381565",
+      "name": "BRIGHTON HOSPICE",
+      "city": "TUALATIN",
+      "state": "OR",
+      "zip": "97062",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381573",
+      "name": "BRIGHTON HOSPICE",
+      "city": "EUGENE",
+      "state": "OR",
+      "zip": "97401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "731507",
+      "name": "SUNCREST HOSPICE",
+      "city": "PLYMOUTH MEETING",
+      "state": "PA",
+      "zip": "19462",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391789",
+      "name": "SUNCREST HOSPICE PITTSBURGH, LLC",
+      "city": "PITTSBURGH",
+      "state": "PA",
+      "zip": "15235",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971604",
+      "name": "SUNCREST HOSPICE",
+      "city": "AUSTIN",
+      "state": "TX",
+      "zip": "78759",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971590",
+      "name": "SUNCREST HOSPICE SAN ANTONIO LLC",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461626",
+      "name": "SUNCREST HOSPICE",
+      "city": "SANDY",
+      "state": "UT",
+      "zip": "84070",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491639",
+      "name": "SUNCREST HOSPICE",
+      "city": "VIRGINIA BEACH",
+      "state": "VA",
+      "zip": "23452",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491650",
+      "name": "SUNCREST HOSPICE RICHMOND",
+      "city": "RICHMOND",
+      "state": "VA",
+      "zip": "23226",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521612",
+      "name": "BRIGHTON HOSPICE MADISON",
+      "city": "MIDDLETON",
+      "state": "WI",
+      "zip": "53562",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521603",
+      "name": "BRIGHTON HOSPICE WISCONSIN",
+      "city": "BROOKFIELD",
+      "state": "WI",
+      "zip": "53005",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "G&B NEWCO INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

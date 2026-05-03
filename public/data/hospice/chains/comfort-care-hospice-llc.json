@@ -1,0 +1,72 @@
+{
+  "chain_name": "COMFORT CARE HOSPICE LLC",
+  "chain_slug": "comfort-care-hospice-llc",
+  "norm_key": "comfort care hospice",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "AL",
+    "TN"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8.5,
+  "avg_cahps_overall": 81,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2015-11-17",
+  "newest_association": "2019-04-15",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "011502",
+      "name": "AVEANNA HOSPICE OF FAIRHOPE",
+      "city": "FAIRHOPE",
+      "state": "AL",
+      "zip": "36532",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441507",
+      "name": "AVEANNA HOSPICE",
+      "city": "SPRINGFIELD",
+      "state": "TN",
+      "zip": "37172",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "COMFORT CARE HOSPICE LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

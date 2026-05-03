@@ -1,0 +1,72 @@
+{
+  "chain_name": "RAMSA CONSULTING LLC",
+  "chain_slug": "ramsa-consulting-llc",
+  "norm_key": "ramsa consulting",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "NJ",
+    "PA"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 82,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2022-06-02",
+  "newest_association": "2022-06-02",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 24.17,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "311590",
+      "name": "DOVE HOSPICE SERVICES OF NEW JERSEY, LLC",
+      "city": "MANALAPAN",
+      "state": "NJ",
+      "zip": "07726",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391797",
+      "name": "DOVE HOSPICE SERVICES OF PENNSYLVANIA, LLC",
+      "city": "FORT WASHINGTON",
+      "state": "PA",
+      "zip": "19034",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "RAMSA CONSULTING LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

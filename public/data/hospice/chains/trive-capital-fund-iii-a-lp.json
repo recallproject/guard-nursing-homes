@@ -1,0 +1,187 @@
+{
+  "chain_name": "TRIVE CAPITAL FUND III-A LP",
+  "chain_slug": "trive-capital-fund-iii-a-lp",
+  "norm_key": "trive capital fund iii a",
+  "facility_count": 8,
+  "state_count": 3,
+  "states": [
+    "AZ",
+    "OK",
+    "TX"
+  ],
+  "avg_cms_rating": 4.63,
+  "avg_hci_composite": 9.13,
+  "avg_cahps_overall": 80,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 25,
+  "oldest_association": "2020-07-20",
+  "newest_association": "2022-08-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 3,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5,
+  "member_count": 8,
+  "members": [
+    {
+      "ccn": "031598",
+      "name": "CHOICE HOSPICE",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "85016",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371622",
+      "name": "CHOICE HEALTH AT HOME - WESTERN OKLAHOMA HOSPICE",
+      "city": "NORMAN",
+      "state": "OK",
+      "zip": "73069",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371591",
+      "name": "CHOICE HOSPICE OF OKLAHOMA LLC",
+      "city": "ENID",
+      "state": "OK",
+      "zip": "73701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 92,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451624",
+      "name": "CHOICE HEALTH AT HOME",
+      "city": "TEXAS CITY",
+      "state": "TX",
+      "zip": "77591",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671579",
+      "name": "CHOICE HEALTH AT HOME",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77090",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451727",
+      "name": "CHOICE HEALTH AT HOME",
+      "city": "CORPUS CHRISTI",
+      "state": "TX",
+      "zip": "78411",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451740",
+      "name": "CHOICE HOSPICE",
+      "city": "TYLER",
+      "state": "TX",
+      "zip": "75703",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741592",
+      "name": "CHOICE HOSPICE",
+      "city": "GRAPEVINE",
+      "state": "TX",
+      "zip": "76051",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "TRIVE CAPITAL FUND III-A LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

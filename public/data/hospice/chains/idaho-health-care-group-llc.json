@@ -1,0 +1,129 @@
+{
+  "chain_name": "IDAHO HEALTH CARE GROUP, LLC",
+  "chain_slug": "idaho-health-care-group-llc",
+  "norm_key": "idaho health care group",
+  "facility_count": 5,
+  "state_count": 2,
+  "states": [
+    "ID",
+    "OR"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.8,
+  "avg_cahps_overall": 81.8,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 20,
+  "oldest_association": "2010-07-01",
+  "newest_association": "2023-09-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "131528",
+      "name": "HEART 'N HOME HOSPICE",
+      "city": "LEWISTON",
+      "state": "ID",
+      "zip": "83501",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131545",
+      "name": "HEART N HOME HOSPICE & PALLIATIVE CARE",
+      "city": "FRUITLAND",
+      "state": "ID",
+      "zip": "83619",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131501",
+      "name": "IDAHO HOME HEALTH & HOSPICE",
+      "city": "TWIN FALLS",
+      "state": "ID",
+      "zip": "83301",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131558",
+      "name": "IDAHO HOME HEALTH & HOSPICE OF TREASURE VALLEY",
+      "city": "CALDWELL",
+      "state": "ID",
+      "zip": "83605",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381539",
+      "name": "HEART 'N HOME HOSPICE & PALLIATIVE CARE, LLC",
+      "city": "BEND",
+      "state": "OR",
+      "zip": "97701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "IDAHO HEALTH CARE GROUP, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.457Z"
+}

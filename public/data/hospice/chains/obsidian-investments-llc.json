@@ -1,0 +1,169 @@
+{
+  "chain_name": "OBSIDIAN INVESTMENTS LLC",
+  "chain_slug": "obsidian-investments-llc",
+  "norm_key": "obsidian investments",
+  "facility_count": 7,
+  "state_count": 4,
+  "states": [
+    "CO",
+    "KS",
+    "MO",
+    "OK"
+  ],
+  "avg_cms_rating": 4.29,
+  "avg_hci_composite": 8.43,
+  "avg_cahps_overall": 81,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2024-02-16",
+  "newest_association": "2024-02-16",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5.11,
+  "member_count": 7,
+  "members": [
+    {
+      "ccn": "061595",
+      "name": "COLORADO PALLIATIVE & HOSPICE CARE OF COLORADO SPR",
+      "city": "COLORADO SPRINGS",
+      "state": "CO",
+      "zip": "80919",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061620",
+      "name": "COLORADO PALLIATIVE & HOSPICE CARE OF THE FRONT RA",
+      "city": "ENGLEWOOD",
+      "state": "CO",
+      "zip": "80111",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061600",
+      "name": "COLORADO PALLIATIVE & HOSPICE CARE, LLC",
+      "city": "CENTENNIAL",
+      "state": "CO",
+      "zip": "80111",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171557",
+      "name": "KANSAS PALLIATIVE & HOSPICE CARE",
+      "city": "SHAWNEE",
+      "state": "KS",
+      "zip": "66226",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261678",
+      "name": "MISSOURI PALLIATIVE & HOSPICE CARE",
+      "city": "INDEPENDENCE",
+      "state": "MO",
+      "zip": "64055",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261694",
+      "name": "MISSOURI PALLIATIVE & HOSPICE CARE NORTHWEST, LLC",
+      "city": "INDEPENDENCE",
+      "state": "MO",
+      "zip": "64055",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371649",
+      "name": "OKLAHOMA PALLIATIVE & HOSPICE CARE",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73159",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "OBSIDIAN INVESTMENTS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.459Z"
+}

@@ -1,0 +1,363 @@
+{
+  "chain_name": "THE HUNTINGTON NATIONAL BANK",
+  "chain_slug": "the-huntington-national-bank",
+  "norm_key": "the huntington national bank",
+  "facility_count": 17,
+  "state_count": 8,
+  "states": [
+    "ID",
+    "IL",
+    "NM",
+    "OH",
+    "OR",
+    "TN",
+    "TX",
+    "WA"
+  ],
+  "avg_cms_rating": 4.76,
+  "avg_hci_composite": 9.18,
+  "avg_cahps_overall": 79.14,
+  "flagged_facility_count": 4,
+  "flagged_pattern_count": 4,
+  "flagged_pct": 23.5,
+  "oldest_association": "2018-05-01",
+  "newest_association": "2024-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 1,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 6.87,
+  "member_count": 17,
+  "members": [
+    {
+      "ccn": "131553",
+      "name": "HARRISON'S HOPE",
+      "city": "MERIDIAN",
+      "state": "ID",
+      "zip": "83642",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 66,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131564",
+      "name": "HARRISON'S HOPE TWIN FALLS",
+      "city": "TWIN FALLS",
+      "state": "ID",
+      "zip": "83301",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141525",
+      "name": "JOURNEYCARE - BARRINGTON",
+      "city": "BARRINGTON",
+      "state": "IL",
+      "zip": "60010",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141527",
+      "name": "JOURNEYCARE - DEERFIELD",
+      "city": "DEERFIELD",
+      "state": "IL",
+      "zip": "60015",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321564",
+      "name": "ALLIANCE HOME HEALTH CARE, LLC DBA AMBERCARE",
+      "city": "LAS CRUCES",
+      "state": "NM",
+      "zip": "88011",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321538",
+      "name": "AMBERCARE HOSPICE INC",
+      "city": "ALBUQUERQUE",
+      "state": "NM",
+      "zip": "87113",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361604",
+      "name": "MIRACLE CITY HOSPICE, LLC",
+      "city": "BROADVIEW HEIGHTS",
+      "state": "OH",
+      "zip": "44147",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361664",
+      "name": "QUEEN CITY HOSPICE ",
+      "city": "MASON",
+      "state": "OH",
+      "zip": "45040",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381555",
+      "name": "SERENITY HOSPICE",
+      "city": "TIGARD",
+      "state": "OR",
+      "zip": "97223",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381564",
+      "name": "SERENITY HOSPICE",
+      "city": "SALEM",
+      "state": "OR",
+      "zip": "97302",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381567",
+      "name": "SERENITY HOSPICE",
+      "city": "EUGENE",
+      "state": "OR",
+      "zip": "97408",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441582",
+      "name": "TENNESSEE QUALITY CARE - HOSPICE ",
+      "city": "JACKSON",
+      "state": "TN",
+      "zip": "38305",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671540",
+      "name": "ALAMO HOSPICE",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78230",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671750",
+      "name": "ALAMO HOSPICE",
+      "city": "BOERNE",
+      "state": "TX",
+      "zip": "78006",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671619",
+      "name": "ALAMO HOSPICE OF CONROE",
+      "city": "CONROE",
+      "state": "TX",
+      "zip": "77304",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671541",
+      "name": "ALAMO HOSPICE OF WACO",
+      "city": "WACO",
+      "state": "TX",
+      "zip": "76710",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501544",
+      "name": "ENVISION HOSPICE",
+      "city": "TACOMA",
+      "state": "WA",
+      "zip": "98405",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THE HUNTINGTON NATIONAL BANK"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

@@ -1,0 +1,168 @@
+{
+  "chain_name": "MH HOLDINGS MANAGEMENT HOLDCO LLC",
+  "chain_slug": "mh-holdings-management-holdco-llc",
+  "norm_key": "mh holdings management holdco",
+  "facility_count": 7,
+  "state_count": 3,
+  "states": [
+    "CA",
+    "ID",
+    "UT"
+  ],
+  "avg_cms_rating": 4.71,
+  "avg_hci_composite": 9.14,
+  "avg_cahps_overall": 81.86,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2021-07-01",
+  "newest_association": "2021-11-25",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 6,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 21.47,
+  "member_count": 7,
+  "members": [
+    {
+      "ccn": "551754",
+      "name": "MISSION HOSPICE OF VENTURA, LLC",
+      "city": "OXNARD",
+      "state": "CA",
+      "zip": "93036",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051786",
+      "name": "MISSION HOSPICE SERVICES OF LOS ANGELES LLC",
+      "city": "WESTLAKE VILLAGE",
+      "state": "CA",
+      "zip": "91361",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A01615",
+      "name": "MISSION HOSPICE SERVICES OF RANCHO MIRAGE, LLC",
+      "city": "RANCHO MIRAGE",
+      "state": "CA",
+      "zip": "92270",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551652",
+      "name": "MISSION HOSPICE SERVICES OF SAN DIEGO LLC",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92108",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131547",
+      "name": "HANDS OF HOPE HOSPICE",
+      "city": "IDAHO FALLS",
+      "state": "ID",
+      "zip": "83404",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461607",
+      "name": "MISSION HOSPICE SERVICES OF ST. GEORGE",
+      "city": "ST. GEORGE",
+      "state": "UT",
+      "zip": "84790",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461556",
+      "name": "TENDER CARE HOSPICE (MISSION HOSPICE SERVICES OF S",
+      "city": "WEST VALLEY CITY",
+      "state": "UT",
+      "zip": "84119",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "MH HOLDINGS MANAGEMENT HOLDCO LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

@@ -1,0 +1,2175 @@
+{
+  "chain_name": "AMEDISYS HOLDING LLC",
+  "chain_slug": "amedisys-holding-llc",
+  "norm_key": "amedisys",
+  "facility_count": 113,
+  "state_count": 31,
+  "states": [
+    "AL",
+    "AZ",
+    "CA",
+    "CT",
+    "DE",
+    "FL",
+    "GA",
+    "IA",
+    "IN",
+    "KS",
+    "LA",
+    "MA",
+    "MD",
+    "ME",
+    "MO",
+    "NC",
+    "NE",
+    "NH",
+    "NJ",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "RI",
+    "SC",
+    "SD",
+    "TN",
+    "TX",
+    "VA",
+    "WI",
+    "WV"
+  ],
+  "avg_cms_rating": 4.96,
+  "avg_hci_composite": 9.66,
+  "avg_cahps_overall": 81.06,
+  "flagged_facility_count": 7,
+  "flagged_pattern_count": 7,
+  "flagged_pct": 6.2,
+  "oldest_association": "2005-07-01",
+  "newest_association": "2022-08-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 101,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 99.53,
+  "member_count": 113,
+  "members": [
+    {
+      "ccn": "221544A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "511511A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "221504B",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "011527",
+      "name": "AMEDISYS HOSPICE OF BIRMINGHAM",
+      "city": "BIRMINGHAM",
+      "state": "AL",
+      "zip": "35209",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011566",
+      "name": "AMEDISYS HOSPICE OF DECATUR",
+      "city": "DECATUR",
+      "state": "AL",
+      "zip": "35601",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011669",
+      "name": "AMEDISYS HOSPICE OF FLORENCE",
+      "city": "FLORENCE",
+      "state": "AL",
+      "zip": "35630",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011586",
+      "name": "AMEDISYS HOSPICE OF HAMILTON",
+      "city": "HAMILTON",
+      "state": "AL",
+      "zip": "35470",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011567",
+      "name": "AMEDISYS HOSPICE OF MOBILE",
+      "city": "MOBILE",
+      "state": "AL",
+      "zip": "36602",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011623",
+      "name": "AMEDISYS HOSPICE OF MONTGOMERY",
+      "city": "MONTGOMERY",
+      "state": "AL",
+      "zip": "36117",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031501",
+      "name": "AMEDISYS HOSPICE",
+      "city": "TUCSON",
+      "state": "AZ",
+      "zip": "85718",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551540",
+      "name": "ASERACARE HOSPICE",
+      "city": "FRESNO",
+      "state": "CA",
+      "zip": "93720",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071537",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "EAST HARTFORD",
+      "state": "CT",
+      "zip": "06108",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "081504",
+      "name": "COMPASSIONATE CARE HOSPICE",
+      "city": "NEWPORT",
+      "state": "DE",
+      "zip": "19804",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "081509",
+      "name": "COMPASSIONATE CARE HOSPICE OF THE DELMAR PENINSULA",
+      "city": "GEORGETOWN",
+      "state": "DE",
+      "zip": "19947",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101554",
+      "name": "AMEDISYS HOSPICE",
+      "city": "HIALEAH",
+      "state": "FL",
+      "zip": "33012",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101570",
+      "name": "AMEDISYS HOSPICE OF BREVARD",
+      "city": "MELBOURNE",
+      "state": "FL",
+      "zip": "32901",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101553",
+      "name": "COMPASSIONATE CARE HOSPICE OF CENTRAL FLORIDA INC",
+      "city": "LAKELAND",
+      "state": "FL",
+      "zip": "33813",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101556",
+      "name": "COMPASSIONATE CARE HOSPICE OF LAKE AND SUMTER INC",
+      "city": "THE VILLAGES",
+      "state": "FL",
+      "zip": "32159",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111702",
+      "name": "AMEDISYS HOSPICE",
+      "city": "POOLER",
+      "state": "GA",
+      "zip": "31322",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111705",
+      "name": "AMEDISYS HOSPICE",
+      "city": "MACON",
+      "state": "GA",
+      "zip": "31204",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111708",
+      "name": "AMEDISYS HOSPICE",
+      "city": "ATHENS",
+      "state": "GA",
+      "zip": "30606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111718",
+      "name": "AMEDISYS HOSPICE",
+      "city": "TOCCOA",
+      "state": "GA",
+      "zip": "30577",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111687",
+      "name": "AMEDISYS HOSPICE CARE OF CARTERSVILLE",
+      "city": "CARTERSVILLE",
+      "state": "GA",
+      "zip": "30120",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111686",
+      "name": "AMEDISYS HOSPICE CARE OF KENNESAW",
+      "city": "KENNESAW",
+      "state": "GA",
+      "zip": "30144",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111685",
+      "name": "AMEDISYS HOSPICE CARE OF NEWNAN",
+      "city": "NEWNAN",
+      "state": "GA",
+      "zip": "30265",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111643",
+      "name": "AMEDISYS HOSPICE OF DALTON",
+      "city": "DALTON",
+      "state": "GA",
+      "zip": "30720",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111665",
+      "name": "AMEDISYS HOSPICE OF LAWRENCEVILLE",
+      "city": "LAWRENCEVILLE",
+      "state": "GA",
+      "zip": "30046",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161532",
+      "name": "ASERACARE HOSPICE",
+      "city": "COUNCIL BLUFFS",
+      "state": "IA",
+      "zip": "51501",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151605",
+      "name": "AMEDISYS HOSPICE",
+      "city": "JEFFERSONVILLE",
+      "state": "IN",
+      "zip": "47130",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151590",
+      "name": "ASERACARE HOSPICE",
+      "city": "EVANSVILLE",
+      "state": "IN",
+      "zip": "47715",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151537",
+      "name": "ASERACARE HOSPICE",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46268",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151595",
+      "name": "ASERACARE HOSPICE",
+      "city": "VALPARAISO",
+      "state": "IN",
+      "zip": "46383",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171574",
+      "name": "AMEDISYS HOSPICE",
+      "city": "LENEXA",
+      "state": "KS",
+      "zip": "66215",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191607",
+      "name": "AMEDISYS  HOSPICE",
+      "city": "BATON ROUGE",
+      "state": "LA",
+      "zip": "70816",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191674",
+      "name": "AMEDISYS HOSPICE",
+      "city": "LAFAYETTE",
+      "state": "LA",
+      "zip": "70503",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191534",
+      "name": "AMEDISYS HOSPICE",
+      "city": "LAKE CHARLES",
+      "state": "LA",
+      "zip": "70607",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191533",
+      "name": "AMEDISYS HOSPICE",
+      "city": "SHREVEPORT",
+      "state": "LA",
+      "zip": "71106",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191673",
+      "name": "COMPASSIONATE CARE HOSPICE",
+      "city": "ALEXANDRIA",
+      "state": "LA",
+      "zip": "71303",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221580",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "LEOMINSTER",
+      "state": "MA",
+      "zip": "01453",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221573",
+      "name": "BEACON HOSPICE, AN AMYEDISYS COMPANY",
+      "city": "SPRINGFIELD",
+      "state": "MA",
+      "zip": "01151",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221582",
+      "name": "COMPASSIONATE CARE HOSPICE",
+      "city": "WOBURN",
+      "state": "MA",
+      "zip": "01801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221593",
+      "name": "COMPASSIONATE CARE HOSPICE OF SOUTHEASTERN MASSACH",
+      "city": "BRIDGEWATER",
+      "state": "MA",
+      "zip": "02324",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "211544",
+      "name": "AMEDISYS HOSPICE",
+      "city": "LARGO",
+      "state": "MD",
+      "zip": "20774",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "211536",
+      "name": "AMEDISYS HOSPICE OF GREATER CHESAPEAKE",
+      "city": "ROSEDALE",
+      "state": "MD",
+      "zip": "21237",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201517",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "AUBURN",
+      "state": "ME",
+      "zip": "04210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201516",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "SO PORTLAND",
+      "state": "ME",
+      "zip": "04106",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201520",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "BANGOR",
+      "state": "ME",
+      "zip": "04401",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261649",
+      "name": "AMEDISYS HOSPICE",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "zip": "64133",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261555",
+      "name": "ASERACARE HOSPICE",
+      "city": "SAVANNAH",
+      "state": "MO",
+      "zip": "64485",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341560",
+      "name": "AMEDISYS HOSPICE",
+      "city": "BURLINGTON ",
+      "state": "NC",
+      "zip": "27215",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341512",
+      "name": "AMEDISYS HOSPICE",
+      "city": "GREENVILLE",
+      "state": "NC",
+      "zip": "27834",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341596",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "PEMBROKE",
+      "state": "NC",
+      "zip": "28372",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341598",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "PLYMOUTH",
+      "state": "NC",
+      "zip": "27962",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281514",
+      "name": "ASERACARE HOSPICE",
+      "city": "LINCOLN",
+      "state": "NE",
+      "zip": "68516",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281538",
+      "name": "ASERACARE HOSPICE",
+      "city": "NORFOLK",
+      "state": "NE",
+      "zip": "68701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281543",
+      "name": "ASERACARE HOSPICE",
+      "city": "KEARNEY",
+      "state": "NE",
+      "zip": "68847",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281544",
+      "name": "ASERACARE HOSPICE",
+      "city": "YORK",
+      "state": "NE",
+      "zip": "68467",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281526",
+      "name": "ASERACARE HOSPICE",
+      "city": "OMAHA",
+      "state": "NE",
+      "zip": "68137",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "301507",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "BEDFORD",
+      "state": "NH",
+      "zip": "03110",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "301526",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "PORTSMOUTH",
+      "state": "NH",
+      "zip": "03801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "301512",
+      "name": "WENTWORTH HOME CARE & HOSPICE, AN AMEDISYS PARTNER",
+      "city": "SOMERSWORTH",
+      "state": "NH",
+      "zip": "03878",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311537",
+      "name": "AMEDISYS HOSPICE",
+      "city": "BURLINGTON",
+      "state": "NJ",
+      "zip": "08016",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311542",
+      "name": "COMPASSIONATE CARE HOSPICE",
+      "city": "BLOOMFIELD",
+      "state": "NJ",
+      "zip": "07003",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311573",
+      "name": "COMPASSIONATE CARE HOSPICE OF NORTHERN NJ LLC",
+      "city": "ROCKAWAY",
+      "state": "NJ",
+      "zip": "07828",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311510",
+      "name": "HOSPICE CARE OF HACKENSACK, AN AMEDISYS COMPANY",
+      "city": "HACKENSACK",
+      "state": "NJ",
+      "zip": "07601",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361652",
+      "name": "AMEDISYS HOSPICE",
+      "city": "SAINT CLAIRSVILLE",
+      "state": "OH",
+      "zip": "43950",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361676",
+      "name": "AMEDISYS HOSPICE",
+      "city": "BEREA",
+      "state": "OH",
+      "zip": "44017",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361669",
+      "name": "COMPASSIONATE CARE HOSPICE OF OHIO LLC",
+      "city": "AKRON",
+      "state": "OH",
+      "zip": "44333",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361650",
+      "name": "MARIETTA HOME HEALTH & HOSPICE,AN AMEDISYS PARTNER",
+      "city": "MARIETTA",
+      "state": "OH",
+      "zip": "45750",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371645",
+      "name": "AMEDISYS HOSPICE",
+      "city": "TULSA",
+      "state": "OK",
+      "zip": "74105",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381518",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "ROSEBURG",
+      "state": "OR",
+      "zip": "97471",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391726",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "BUTLER",
+      "state": "PA",
+      "zip": "16001",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391597",
+      "name": "AMEDISYS HOSPICE OF GREATER PHILADELPHIA",
+      "city": "BENSALEM",
+      "state": "PA",
+      "zip": "19020",
+      "ownership_type": "Government",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391728",
+      "name": "AMEDISYS HOSPICE OF GREATER PITTSBURGH",
+      "city": "MONROEVILLE",
+      "state": "PA",
+      "zip": "15146",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391745",
+      "name": "AMEDISYS HOSPICE OF HARRISBURG WEST",
+      "city": "HARRISBURG",
+      "state": "PA",
+      "zip": "17110",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391662",
+      "name": "AMEDISYS HOSPICE OF LANCASTER",
+      "city": "LANCASTER",
+      "state": "PA",
+      "zip": "17602",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391544",
+      "name": "AMEDISYS HOSPICE OF PA",
+      "city": "UNIONTOWN",
+      "state": "PA",
+      "zip": "15401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391653",
+      "name": "AMEDISYS HOSPICE OF YORK",
+      "city": "YORK",
+      "state": "PA",
+      "zip": "17404",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391661",
+      "name": "ASERACARE HOSPICE",
+      "city": "WATERFORD",
+      "state": "PA",
+      "zip": "16441",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391651",
+      "name": "ASERACARE HOSPICE",
+      "city": "EXTON",
+      "state": "PA",
+      "zip": "19341",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391655",
+      "name": "ASERACARE HOSPICE",
+      "city": "ALTOONA",
+      "state": "PA",
+      "zip": "16602",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391712",
+      "name": "ASERACARE HOSPICE",
+      "city": "ALLENTOWN",
+      "state": "PA",
+      "zip": "18195",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391667",
+      "name": "COMPASSIONATE CARE HOSPICE OF NORTHWESTERN PENNSYL",
+      "city": "OLYPHANT",
+      "state": "PA",
+      "zip": "18447",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391678",
+      "name": "WILLOW TREE HOSPICE",
+      "city": "KENNETT SQUARE",
+      "state": "PA",
+      "zip": "19348",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "411510",
+      "name": "BEACON HOSPICE , AN AMEDISYS COMPANY",
+      "city": "EAST PROVIDENCE",
+      "state": "RI",
+      "zip": "02914",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421555",
+      "name": "AMEDISYS HOSPICE OF SOUTH CAROLINA",
+      "city": "FLORENCE",
+      "state": "SC",
+      "zip": "29501",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421606",
+      "name": "COMPASSIONATE CARE HOSPICE OF SOUTH CAROLINA, LLC",
+      "city": "WEST COLIMBIA",
+      "state": "SC",
+      "zip": "29169",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "431516",
+      "name": "ASERACARE HOSPICE",
+      "city": "SIOUX FALLS",
+      "state": "SD",
+      "zip": "57106",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441527",
+      "name": "AMEDISYS HOSPICE",
+      "city": "MURFREESBORO",
+      "state": "TN",
+      "zip": "37129",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441525",
+      "name": "AMEDISYS HOSPICE AN ADVENTA COMPANY",
+      "city": "KNOXVILLE",
+      "state": "TN",
+      "zip": "37918",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441506",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "BARTLETT",
+      "state": "TN",
+      "zip": "38134",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441602",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "HERMITAGE",
+      "state": "TN",
+      "zip": "37076",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441533",
+      "name": "AMEDISYS HOSPICE, AN ADVENTA COMPANY",
+      "city": "CHATTANOOGA",
+      "state": "TN",
+      "zip": "37421",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441534",
+      "name": "AMEDISYS HOSPICE, AN ADVENTA COMPANY",
+      "city": "ELIZABETHTON",
+      "state": "TN",
+      "zip": "37643",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441581",
+      "name": "ASERACARE HOSPICE - MCKENZIE",
+      "city": "MC KENZIE",
+      "state": "TN",
+      "zip": "38201",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451735",
+      "name": "AMEDISYS HOSPICE",
+      "city": "STAFFORD",
+      "state": "TX",
+      "zip": "77477",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 64,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671647",
+      "name": "AMEDISYS HOSPICE",
+      "city": "CONROE",
+      "state": "TX",
+      "zip": "77304",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671674",
+      "name": "AMEDISYS HOSPICE",
+      "city": "DALLAS",
+      "state": "TX",
+      "zip": "75244",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671679",
+      "name": "AMEDISYS HOSPICE",
+      "city": "BRENHAM",
+      "state": "TX",
+      "zip": "77833",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671753",
+      "name": "AMEDISYS HOSPICE",
+      "city": "AUSTIN",
+      "state": "TX",
+      "zip": "78759",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451700",
+      "name": "AMEDISYS HOSPICE",
+      "city": "FORT WORTH",
+      "state": "TX",
+      "zip": "76116",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971583",
+      "name": "AMEDISYS HOSPICE",
+      "city": "HARLINGEN",
+      "state": "TX",
+      "zip": "78550",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451738",
+      "name": "AMEDISYS HOSPICE OF SAN ANTONIO",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78229",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971631",
+      "name": "UMC HOME HEALTH AND HOSPICE, AN AMEDISYS PARTNER",
+      "city": "LUBBOCK",
+      "state": "TX",
+      "zip": "79416",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491513",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "ROANOKE",
+      "state": "VA",
+      "zip": "24019",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491600",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "CHESAPEAKE",
+      "state": "VA",
+      "zip": "23320",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491584",
+      "name": "AMEDISYS HOSPICE OF RICHMOND",
+      "city": "RICHMOND",
+      "state": "VA",
+      "zip": "23235",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491630",
+      "name": "AMEDISYS OF BLACKSTONE",
+      "city": "BLACKSTONE",
+      "state": "VA",
+      "zip": "23824",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521575",
+      "name": "AMEDISYS HOSPICE OF GREEN BAY",
+      "city": "BELLEVUE",
+      "state": "WI",
+      "zip": "54311",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521556",
+      "name": "AMEDISYS HOSPICE OF MILWAUKEE",
+      "city": "BROOKFIELD",
+      "state": "WI",
+      "zip": "53005",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "511523",
+      "name": "AMEDISYS HOSPICE CARE",
+      "city": "MORGANTOWN",
+      "state": "WV",
+      "zip": "26508",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "511524",
+      "name": "AMEDISYS HOSPICE OF BLUEFIELD",
+      "city": "BLUEFIELD",
+      "state": "WV",
+      "zip": "24701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "511525",
+      "name": "AMEDISYS HOSPICE OF VIENNA",
+      "city": "VIENNA",
+      "state": "WV",
+      "zip": "26105",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "AMEDISYS HOLDING LLC",
+    "AMEDISYS INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.453Z"
+}

@@ -1,0 +1,71 @@
+{
+  "chain_name": "FROEDTERT THEDACARE HEALTH, INC.",
+  "chain_slug": "froedtert-thedacare-health-inc",
+  "norm_key": "froedtert thedacare health",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "WI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 80,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 100,
+  "oldest_association": "2008-07-01",
+  "newest_association": "2024-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 50,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "521531",
+      "name": "HORIZON HOMECARE AND HOSPICE",
+      "city": "MILWAUKEE",
+      "state": "WI",
+      "zip": "53224",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521504",
+      "name": "THEDACARE AT HOME",
+      "city": "APPLETON",
+      "state": "WI",
+      "zip": "54915",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "FROEDTERT THEDACARE HEALTH, INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

@@ -1,0 +1,189 @@
+{
+  "chain_name": "CHAPTERS HEALTH SYSTEM INC",
+  "chain_slug": "chapters-health-system-inc",
+  "norm_key": "chapters health system",
+  "facility_count": 8,
+  "state_count": 5,
+  "states": [
+    "FL",
+    "GA",
+    "MD",
+    "OR",
+    "VA"
+  ],
+  "avg_cms_rating": 4.75,
+  "avg_hci_composite": 9.13,
+  "avg_cahps_overall": 77.57,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 6,
+  "flagged_pct": 62.5,
+  "oldest_association": "2008-05-01",
+  "newest_association": "2025-05-23",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": true,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 9,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 8,
+  "members": [
+    {
+      "ccn": "101550",
+      "name": "GOOD SHEPHERD HOSPICE",
+      "city": "LAKELAND",
+      "state": "FL",
+      "zip": "33805",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101527",
+      "name": "HOSPICE OF OKEECHOBEE INCORPORATED",
+      "city": "OKEECHOBEE",
+      "state": "FL",
+      "zip": "34974",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101507",
+      "name": "LIFEPATH HOSPICE",
+      "city": "TEMPLE TERR",
+      "state": "FL",
+      "zip": "33637",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101563",
+      "name": "MEDCARE HOSPICE",
+      "city": "MIAMI",
+      "state": "FL",
+      "zip": "33126",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851526",
+      "name": "CORNERSTONE HOSPICE & PALLIATIVE CARE OF GEORGIA ",
+      "city": "MARIETTA",
+      "state": "GA",
+      "zip": "30068",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "211541",
+      "name": "CAPITAL CARING ",
+      "city": "LANHAM",
+      "state": "MD",
+      "zip": "20706",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381516",
+      "name": "WILLAMETTE VITAL HEALTH",
+      "city": "SALEM",
+      "state": "OR",
+      "zip": "97304",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491500",
+      "name": "CAPITAL HOSPICE",
+      "city": "FALLS CHURCH",
+      "state": "VA",
+      "zip": "22042",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CHAPTERS HEALTH SYSTEM INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.453Z"
+}

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-05-03T14:14:32.621Z",
+  "generated_at": "2026-05-03T19:03:58.111Z",
   "source": "State AG MFCU",
-  "coverage_note": "Best-effort scrape of state AG press-release RSS feeds for the 6 highest-volume Medicaid fraud states (CA, TX, NY, FL, IL, PA). No unified MFCU feed exists. State-specific feeds may break or change format; failures are logged and skipped, not fatal. Defamation guardrail: only items with a high- or medium-confidence match to a hospice in the AG's own state are emitted.",
+  "coverage_note": "Best-effort HTML scrape of state AG press-release listing pages for the 6 highest-volume Medicaid fraud states (CA, TX, NY, FL, IL, PA). No unified MFCU feed exists and per-state RSS feeds are dead. We scrape the first listing page only (no pagination). State-specific HTML may change format; failures are logged and skipped, not fatal. Defamation guardrail: only items with a high- or medium-confidence match to a hospice in the AG's own state are emitted; every action links to the source URL with the disclaimer \"Inclusion does not constitute a finding by The Oversight Report.\"",
   "states_attempted": [
     "CA",
     "TX",
@@ -10,34 +10,24 @@
     "IL",
     "PA"
   ],
-  "states_succeeded": [],
-  "states_failed": [
-    {
-      "state": "CA",
-      "reason": "HTTP 404 for https://oag.ca.gov/news/press-releases/feed"
-    },
-    {
-      "state": "TX",
-      "reason": "HTTP 404 for https://www.texasattorneygeneral.gov/news/rss.xml"
-    },
-    {
-      "state": "NY",
-      "reason": "not RSS/Atom (content-type=text/html; charset=UTF-8)"
-    },
-    {
-      "state": "FL",
-      "reason": "HTTP 404 for https://www.myfloridalegal.com/__85257B7B0070E767.nsf?nsf=RSS/News&OpenAgent"
-    },
-    {
-      "state": "IL",
-      "reason": "HTTP 404 for https://illinoisattorneygeneral.gov/Press/news.rss"
-    },
-    {
-      "state": "PA",
-      "reason": "parsed 0 items"
-    }
+  "states_succeeded": [
+    "CA",
+    "TX",
+    "NY",
+    "FL",
+    "IL",
+    "PA"
   ],
-  "total_rss_items_pulled": 0,
+  "states_failed": [],
+  "total_rss_items_pulled": 125,
+  "per_state_items_scraped": {
+    "CA": 30,
+    "TX": 10,
+    "NY": 25,
+    "FL": 20,
+    "IL": 10,
+    "PA": 30
+  },
   "hospice_filtered": 0,
   "matched_to_ccn": 0,
   "matched_high_confidence": 0,

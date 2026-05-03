@@ -1,0 +1,71 @@
+{
+  "chain_name": "TRUSTBRIDGE INC.",
+  "chain_slug": "trustbridge-inc",
+  "norm_key": "trustbridge",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "FL"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 74.5,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 100,
+  "oldest_association": "2014-02-03",
+  "newest_association": "2014-02-04",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "101504",
+      "name": "HOSPICE BY THE SEA INC",
+      "city": "BOCA RATON",
+      "state": "FL",
+      "zip": "33486",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101512",
+      "name": "HOSPICE OF PALM BEACH COUNTY INC",
+      "city": "WEST PALM BEACH",
+      "state": "FL",
+      "zip": "33407",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "TRUSTBRIDGE INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

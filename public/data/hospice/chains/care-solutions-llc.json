@@ -1,0 +1,212 @@
+{
+  "chain_name": "CARE SOLUTIONS, LLC",
+  "chain_slug": "care-solutions-llc",
+  "norm_key": "care solutions",
+  "facility_count": 9,
+  "state_count": 8,
+  "states": [
+    "CA",
+    "KS",
+    "MA",
+    "MO",
+    "NJ",
+    "PA",
+    "PR",
+    "VA"
+  ],
+  "avg_cms_rating": 4.44,
+  "avg_hci_composite": 8.78,
+  "avg_cahps_overall": 78,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 22.2,
+  "oldest_association": "2003-06-10",
+  "newest_association": "2022-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 7,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 9,
+  "members": [
+    {
+      "ccn": "051792",
+      "name": "ASCEND HOSPICE",
+      "city": "SAN BERNARDINO",
+      "state": "CA",
+      "zip": "92408",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171566",
+      "name": "ASCEND HOSPICE",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66211",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221566",
+      "name": "ASCEND HOSPICE",
+      "city": "WORCESTER",
+      "state": "MA",
+      "zip": "01604",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261600",
+      "name": "ASCEND HOSPICE",
+      "city": "LEES SUMMIT",
+      "state": "MO",
+      "zip": "64064",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311541",
+      "name": "ASCEND HOSPICE",
+      "city": "CRANFORD",
+      "state": "NJ",
+      "zip": "07016",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391643",
+      "name": "ASCEND HOSPICE",
+      "city": "NORTH WALES",
+      "state": "PA",
+      "zip": "19454",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "401571",
+      "name": "ASCEND HOSPICE",
+      "city": "SAN JUAN",
+      "state": "PR",
+      "zip": "00927",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491595",
+      "name": "ASCEND HOSPICE",
+      "city": "GLEN ALLEN",
+      "state": "VA",
+      "zip": "23059",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491643",
+      "name": "ASCEND HOSPICE OF NORTHERN VIRGINIA",
+      "city": "WOODBRIDGE",
+      "state": "VA",
+      "zip": "22192",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CARE SOLUTIONS LLC",
+    "CARE SOLUTIONS, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.456Z"
+}

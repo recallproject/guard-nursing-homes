@@ -1,0 +1,829 @@
+{
+  "chain_name": "COMPASSUS HOLDINGS LP",
+  "chain_slug": "compassus-holdings-lp",
+  "norm_key": "compassus",
+  "facility_count": 41,
+  "state_count": 18,
+  "states": [
+    "AL",
+    "AZ",
+    "CO",
+    "GA",
+    "IN",
+    "KS",
+    "MI",
+    "MO",
+    "MS",
+    "NJ",
+    "NM",
+    "OH",
+    "OK",
+    "SC",
+    "TN",
+    "TX",
+    "VA",
+    "WI"
+  ],
+  "avg_cms_rating": 4.85,
+  "avg_hci_composite": 9.38,
+  "avg_cahps_overall": 77.42,
+  "flagged_facility_count": 9,
+  "flagged_pattern_count": 13,
+  "flagged_pct": 22,
+  "oldest_association": "2019-12-31",
+  "newest_association": "2024-05-01",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 40,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 95.12,
+  "member_count": 41,
+  "members": [
+    {
+      "ccn": "011664",
+      "name": "COMPASSUS HOSPICE AND PALLIATIVE CARE-BIRMINGHAM",
+      "city": "BIRMINGHAM",
+      "state": "AL",
+      "zip": "35243",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011514",
+      "name": "COMPASSUS SOUTHERN ALABAMA",
+      "city": "PELL CITY",
+      "state": "AL",
+      "zip": "35128",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011579",
+      "name": "COMPASSUS-GADSDEN",
+      "city": "SOUTHSIDE",
+      "state": "AL",
+      "zip": "35907",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031555",
+      "name": "COMPASSUS - PHOENIX",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "85014",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031581",
+      "name": "HOSPICE COMPASSUS - BULLHEAD CITY",
+      "city": "BULLHEAD CITY",
+      "state": "AZ",
+      "zip": "86442",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031560",
+      "name": "HOSPICE COMPASSUS - SEDONA/ FLAGSTAFF",
+      "city": "SEDONA",
+      "state": "AZ",
+      "zip": "86351",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031523",
+      "name": "HOSPICE COMPASSUS-PAYSON",
+      "city": "PAYSON",
+      "state": "AZ",
+      "zip": "85541",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061558",
+      "name": "COMPASSUS - GREATER DENVER",
+      "city": "DENVER",
+      "state": "CO",
+      "zip": "80212",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111651",
+      "name": "COMPASSUS-ATHENS",
+      "city": "ATHENS",
+      "state": "GA",
+      "zip": "30606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111648",
+      "name": "COMPASSUS-ATLANTA",
+      "city": "DULUTH",
+      "state": "GA",
+      "zip": "30096",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 57,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111682",
+      "name": "COMPASSUS-NORTH GEORGIA II",
+      "city": "ELLIJAY",
+      "state": "GA",
+      "zip": "30540",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151651",
+      "name": "COMPASSUS - SOUTHWESTERN INDIANA",
+      "city": "EVANSVILLE",
+      "state": "IN",
+      "zip": "47715",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151507",
+      "name": "COMPASSUS-INDIANAPOLIS METRO",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46278",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151516",
+      "name": "COMPASSUS-SOUTHERN INDIANA",
+      "city": "KOKOMO",
+      "state": "IN",
+      "zip": "46902",
+      "ownership_type": "Government",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171623",
+      "name": "COMPASSUS WICHITA",
+      "city": "WICHITA",
+      "state": "KS",
+      "zip": "67202",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231509",
+      "name": "COMPASSUS - GRAND BLANC",
+      "city": "GRAND BLANC",
+      "state": "MI",
+      "zip": "48439",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231548",
+      "name": "COMPASSUS - KALAMAZOO",
+      "city": "PORTAGE",
+      "state": "MI",
+      "zip": "49002",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231583",
+      "name": "COMPASSUS-NORTHERN DETROIT",
+      "city": "WARREN",
+      "state": "MI",
+      "zip": "48092",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261711",
+      "name": "COMPASSUS ST LOUIS",
+      "city": "CREVE COEUR",
+      "state": "MO",
+      "zip": "63141",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261547",
+      "name": "HOSPICE COMPASSUS-TRI LAKES MISSOURI",
+      "city": "BRANSON",
+      "state": "MO",
+      "zip": "65616",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251625",
+      "name": "COMPASSUS-HATTIESBURG",
+      "city": "HATTIESBURG",
+      "state": "MS",
+      "zip": "39401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251586",
+      "name": "COMPASSUS-JACKSON",
+      "city": "FLOWOOD",
+      "state": "MS",
+      "zip": "39232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251656",
+      "name": "COMPASSUS-MEMPHIS",
+      "city": "SOUTHAVEN",
+      "state": "MS",
+      "zip": "38672",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251637",
+      "name": "COMPASSUS-MID-MISSISSIPPI",
+      "city": "BROOKHAVEN",
+      "state": "MS",
+      "zip": "39601",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311571",
+      "name": "COMPASSUS-GREATER NEW JERSEY",
+      "city": "WILLINGBORO",
+      "state": "NJ",
+      "zip": "08046",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321556",
+      "name": "COMPASSUS HOSPICE ALBUQUERQUE SOUTH",
+      "city": "ALBUQUERQUE",
+      "state": "NM",
+      "zip": "87109",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361598",
+      "name": "COMPASSUS - GREATER OHIO",
+      "city": "SEVEN HILLS",
+      "state": "OH",
+      "zip": "44131",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371678",
+      "name": "COMPASSUS - MUSKOGEE",
+      "city": "MUSKOGEE",
+      "state": "OK",
+      "zip": "74401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371677",
+      "name": "COMPASSUS - OWASSO",
+      "city": "TULSA",
+      "state": "OK",
+      "zip": "74135",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371603",
+      "name": "COMPASSUS - VINITA",
+      "city": "VINITA",
+      "state": "OK",
+      "zip": "74301",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421593",
+      "name": "COMPASSUS-CHARLESTON",
+      "city": "RIDGELAND",
+      "state": "SC",
+      "zip": "29936",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421572",
+      "name": "HOSPICE COMPASSUS-GREENVILLE-SPARTANBURG",
+      "city": "GAFFNEY",
+      "state": "SC",
+      "zip": "29340",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441579",
+      "name": "COMPASSUS-MEMPHIS",
+      "city": "MEMPHIS",
+      "state": "TN",
+      "zip": "38119",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A91647",
+      "name": "COMPASSUS - CORPUS CHRISTI",
+      "city": "CORPUS CHRISTI",
+      "state": "TX",
+      "zip": "78405",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491514",
+      "name": "BON SECOURS HOSPICE AND PALLIATIVE CARE",
+      "city": "RICHMOND",
+      "state": "VA",
+      "zip": "23223",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491551",
+      "name": "COMPASSUS - RESTON",
+      "city": "CHANTILLY",
+      "state": "VA",
+      "zip": "20151",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521516",
+      "name": "COMPASSUS CENTRAL WISCONSIN",
+      "city": "MARSHFIELD",
+      "state": "WI",
+      "zip": "54449",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521561",
+      "name": "COMPASSUS MILWAUKEE METRO",
+      "city": "MILWAUKEE",
+      "state": "WI",
+      "zip": "53214",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521526",
+      "name": "COMPASSUS NEENAH",
+      "city": "NEENAH",
+      "state": "WI",
+      "zip": "54956",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521509",
+      "name": "COMPASSUS NORTHERN WISCONSIN",
+      "city": "ARBOR VITAE",
+      "state": "WI",
+      "zip": "54568",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521532",
+      "name": "COMPASSUS WAUSAU",
+      "city": "PLOVER",
+      "state": "WI",
+      "zip": "54467",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "COMPASSUS HOLDINGS LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

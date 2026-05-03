@@ -1,0 +1,299 @@
+{
+  "chain_name": "KAISER FOUNDATION HOSPITALS",
+  "chain_slug": "kaiser-foundation-hospitals",
+  "norm_key": "kaiser foundation hospitals",
+  "facility_count": 14,
+  "state_count": 1,
+  "states": [
+    "CA"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 78.29,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "1966-01-01",
+  "newest_association": "2011-12-12",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 14,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 14,
+  "members": [
+    {
+      "ccn": "051546",
+      "name": "KAISER FOUNDATION HOSPITAL - HOSPICE",
+      "city": "SACRAMENTO",
+      "state": "CA",
+      "zip": "95825",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551743",
+      "name": "KAISER FOUNDATION HOSPITAL - RIVERSIDE HOSPICE",
+      "city": "CORONA",
+      "state": "CA",
+      "zip": "92281",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551634",
+      "name": "KAISER FOUNDATION HOSPITAL ANAHEIM HOSPICE",
+      "city": "TUSTIN",
+      "state": "CA",
+      "zip": "92780",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051515",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE",
+      "city": "FONTANA",
+      "state": "CA",
+      "zip": "92337",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051552",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE - MARTINEZ",
+      "city": "MARTINEZ",
+      "state": "CA",
+      "zip": "94553",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051565",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE - VALLEJO",
+      "city": "VALLEJO",
+      "state": "CA",
+      "zip": "94589",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051504",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE PROGRAM",
+      "city": "DOWNEY",
+      "state": "CA",
+      "zip": "90242",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051556",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE-HAYWARD",
+      "city": "UNION CITY",
+      "state": "CA",
+      "zip": "94587",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051551",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE-OAKLAND",
+      "city": "OAKLAND",
+      "state": "CA",
+      "zip": "94611",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051582",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE-SAN FRANCISCO",
+      "city": "SAN FRANCISCO",
+      "state": "CA",
+      "zip": "94118",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051589",
+      "name": "KAISER FOUNDATION HOSPITAL HOSPICE-SANTA CLARA",
+      "city": "SANTA CLARA",
+      "state": "CA",
+      "zip": "95054",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051525",
+      "name": "KAISER FOUNDATION HOSPITAL LOS ANGELES - HOSPICE",
+      "city": "PASADENA",
+      "state": "CA",
+      "zip": "91103",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051522",
+      "name": "KAISER FOUNDATION HOSPITAL SAN DIEGO HOSPICE",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92108",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051521",
+      "name": "KAISER FOUNDATION HOSPITAL VALLEY CONTINUING CARE",
+      "city": "GRANADA HILLS",
+      "state": "CA",
+      "zip": "91344",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "KAISER FOUNDATION HOSPITALS"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

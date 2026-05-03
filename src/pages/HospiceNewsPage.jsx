@@ -251,6 +251,11 @@ export default function HospiceNewsPage() {
     }
   }, []);
 
+  // Plausible: page view (fires once on mount).
+  useEffect(() => {
+    if (window.plausible) window.plausible('Hospice-News-View');
+  }, []);
+
   // Fetch on mount + on tab refocus. Backend pipelines run daily, so polling
   // mid-session is wasted bandwidth.
   useEffect(() => {
@@ -428,7 +433,14 @@ export default function HospiceNewsPage() {
                   key={f.key}
                   type="button"
                   className={'hn-filter-chip' + (activeSource === f.key ? ' active' : '')}
-                  onClick={() => setActiveSource(f.key)}
+                  onClick={() => {
+                    if (window.plausible) {
+                      window.plausible('Hospice-News-Source-Filter', {
+                        props: { source: f.key },
+                      });
+                    }
+                    setActiveSource(f.key);
+                  }}
                 >
                   {f.label} <span className="count">{sourceCounts[f.key] ?? 0}</span>
                 </button>
@@ -498,8 +510,26 @@ export default function HospiceNewsPage() {
                 </div>
                 {bucket.items.map((item) => {
                   const d = parseDateSafe(item.date);
+                  const handleItemClick = (e) => {
+                    if (!window.plausible) return;
+                    // If the click landed on an internal link or non-anchor,
+                    // capture the item-click event with item url as the url
+                    // prop (or empty string when there's none).
+                    const target = e.target;
+                    const anchor = target && target.closest ? target.closest('a') : null;
+                    window.plausible('Hospice-News-Item-Click', {
+                      props: {
+                        source: item.source,
+                        url: anchor && anchor.href ? anchor.href : (item.url || ''),
+                      },
+                    });
+                  };
                   return (
-                    <article key={item.id} className="hn-feed-item">
+                    <article
+                      key={item.id}
+                      className="hn-feed-item"
+                      onClick={handleItemClick}
+                    >
                       <div className="hn-feed-meta">
                         <span className="date">{formatDate(d)}</span>
                         <span className="time">{formatTime(d)}</span>

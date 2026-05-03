@@ -1,0 +1,617 @@
+{
+  "chain_name": "CHEMED CORPORATION",
+  "chain_slug": "chemed-corporation",
+  "norm_key": "chemed",
+  "facility_count": 30,
+  "state_count": 15,
+  "states": [
+    "CA",
+    "CT",
+    "DC",
+    "DE",
+    "FL",
+    "GA",
+    "IL",
+    "KS",
+    "MO",
+    "NJ",
+    "OH",
+    "PA",
+    "TX",
+    "VA",
+    "WI"
+  ],
+  "avg_cms_rating": 4.9,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 75.67,
+  "flagged_facility_count": 18,
+  "flagged_pattern_count": 24,
+  "flagged_pct": 60,
+  "oldest_association": "2001-04-27",
+  "newest_association": "2021-04-27",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 30,
+  "members": [
+    {
+      "ccn": "051608",
+      "name": "VITAS HEALTHCARE CORP",
+      "city": "COVINA",
+      "state": "CA",
+      "zip": "91724",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051779",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "SACRAMENTO",
+      "state": "CA",
+      "zip": "95833",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051739",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "TORRANCE",
+      "state": "CA",
+      "zip": "90502",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 66,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051597",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92123",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051590",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "RIVERSIDE",
+      "state": "CA",
+      "zip": "92508",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051746",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "MILPITAS",
+      "state": "CA",
+      "zip": "95035",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 67,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051656",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "ENCINO",
+      "state": "CA",
+      "zip": "91436",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051770",
+      "name": "VITAS HEALTHCARE CORPORATION OF CALIFORNIA",
+      "city": "WALNUT CREEK",
+      "state": "CA",
+      "zip": "94598",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071533",
+      "name": "VITAS HEALTHCARE CORPORATION ATLANTIC",
+      "city": "MIDDLEBURY",
+      "state": "CT",
+      "zip": "06762",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "091505",
+      "name": "VITAS INNOVATIVE HOSPICE CARE OF GREATER WASH, DC",
+      "city": "WASHINGTON",
+      "state": "DC",
+      "zip": "20002",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "081507",
+      "name": "VITAS HEALTHCARE CORPORATION ATLANTIC",
+      "city": "NEWARK",
+      "state": "DE",
+      "zip": "19713",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101545",
+      "name": "VITAS HEALTHCARE CORPORATION OF FLORIDA",
+      "city": "MELBOURNE ",
+      "state": "FL",
+      "zip": "32934",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111553",
+      "name": "VITAS HEALTHCARE CORPORATION OF GEORGIA",
+      "city": "ATLANTA",
+      "state": "GA",
+      "zip": "30328",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141634",
+      "name": "VITAS HEALTHCARE CORPORATION MIDWEST",
+      "city": "FAIRVIEW HEIGHTS",
+      "state": "IL",
+      "zip": "62208",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141574",
+      "name": "VITAS HEALTHCARE CORPORATION OF ILLINOIS",
+      "city": "CHICAGO",
+      "state": "IL",
+      "zip": "60608",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 63,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141514",
+      "name": "VITAS HEALTHCARE CORPORATION OF ILLINOIS",
+      "city": "LOMBARD",
+      "state": "IL",
+      "zip": "60148",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141531",
+      "name": "VITAS HEALTHCARE CORPORATION OF ILLINOIS",
+      "city": "PERU",
+      "state": "IL",
+      "zip": "61354",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141541",
+      "name": "VITAS HEALTHCARE CORPORATION OF ILLINOIS",
+      "city": "TINLEY PARK",
+      "state": "IL",
+      "zip": "60487",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171564",
+      "name": "VITAS INNOVATIVE HOSPICE CARE",
+      "city": "LENEXA",
+      "state": "KS",
+      "zip": "66214",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261616",
+      "name": "VITAS HEALTHCARE CORPORATION MIDWEST",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63146",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311558",
+      "name": "VITAS HEALTHCARE CORPORATION ATLANTIC",
+      "city": "LIVINGSTON",
+      "state": "NJ",
+      "zip": "07039",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361562",
+      "name": "VITAS HEALTHCARE CORPORATION OF OHIO",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45249",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391632",
+      "name": "VITAS HEALTHCARE CORPORATION ATLANTIC",
+      "city": "CRANBERRY TOWNSHIP",
+      "state": "PA",
+      "zip": "16066",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391571",
+      "name": "VITAS HEALTHCARE CORPORATION ATLANTIC",
+      "city": "BLUE BELL",
+      "state": "PA",
+      "zip": "19422",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451536",
+      "name": "VITAS HEALTHCARE OF TEXAS L P",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77098",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451591",
+      "name": "VITAS HEALTHCARE OF TEXAS LP",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78249",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451504",
+      "name": "VITAS HEALTHCARE OF TEXAS LP",
+      "city": "DALLAS",
+      "state": "TX",
+      "zip": "75247",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451553",
+      "name": "VITAS HEALTHCARE OF TEXAS, L.P.",
+      "city": "FORT WORTH",
+      "state": "TX",
+      "zip": "76112",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491581",
+      "name": "VITAS HEALTHCARE CORPORATION ATLANTIC",
+      "city": "FAIRFAX",
+      "state": "VA",
+      "zip": "22030",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521553",
+      "name": "VITAS HEALTHCARE CORP MIDWEST",
+      "city": "MILWAUKEE",
+      "state": "WI",
+      "zip": "53224",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CHEMED CORPORATION"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.457Z"
+}

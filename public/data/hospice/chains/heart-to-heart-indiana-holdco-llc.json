@@ -1,0 +1,204 @@
+{
+  "chain_name": "HEART TO HEART INDIANA HOLDCO, LLC",
+  "chain_slug": "heart-to-heart-indiana-holdco-llc",
+  "norm_key": "heart to heart indiana holdco",
+  "facility_count": 9,
+  "state_count": 1,
+  "states": [
+    "IN"
+  ],
+  "avg_cms_rating": 4.89,
+  "avg_hci_composite": 9.78,
+  "avg_cahps_overall": 81.89,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 22.2,
+  "oldest_association": "2014-03-26",
+  "newest_association": "2021-10-27",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 9,
+  "members": [
+    {
+      "ccn": "151632",
+      "name": "HEART TO HEART  HOSPICE OF NORTHWEST INDIANA, LLC",
+      "city": "VALPARAISO",
+      "state": "IN",
+      "zip": "46383",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151587",
+      "name": "HEART TO HEART HOSPICE OF CENTRAL INDIANA LLC",
+      "city": "MARION",
+      "state": "IN",
+      "zip": "46952",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151561",
+      "name": "HEART TO HEART HOSPICE OF EASTERN INDIANA LLC",
+      "city": "ELKHART",
+      "state": "IN",
+      "zip": "46516",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151633",
+      "name": "HEART TO HEART HOSPICE OF EVANSVILLE, LLC",
+      "city": "EVANSVILLE",
+      "state": "IN",
+      "zip": "47713",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151597",
+      "name": "HEART TO HEART HOSPICE OF INDIANAPOLIS LLC",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46214",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151635",
+      "name": "HEART TO HEART HOSPICE OF NORTHEAST INDIANA, LLC",
+      "city": "FORT WAYNE",
+      "state": "IN",
+      "zip": "46804",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151608",
+      "name": "HEART TO HEART HOSPICE OF NORTHERN INDIANA LLC",
+      "city": "MISHAWAKA",
+      "state": "IN",
+      "zip": "46545",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151514",
+      "name": "HEART TO HEART HOSPICE OF SOUTHWEST INDIANA LLC",
+      "city": "JASPER",
+      "state": "IN",
+      "zip": "47546",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151612",
+      "name": "HEART TO HEART HOSPICE OF TERRE HAUTE, LLC",
+      "city": "TERRE HAUTE",
+      "state": "IN",
+      "zip": "47802",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HEART TO HEART INDIANA HOLDCO, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.457Z"
+}

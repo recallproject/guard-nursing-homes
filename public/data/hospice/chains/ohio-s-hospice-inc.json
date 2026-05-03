@@ -1,0 +1,109 @@
+{
+  "chain_name": "OHIO'S HOSPICE INC.",
+  "chain_slug": "ohio-s-hospice-inc",
+  "norm_key": "ohio s hospice",
+  "facility_count": 4,
+  "state_count": 1,
+  "states": [
+    "OH"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 85.75,
+  "flagged_facility_count": 4,
+  "flagged_pattern_count": 4,
+  "flagged_pct": 100,
+  "oldest_association": "2013-07-12",
+  "newest_association": "2017-11-17",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 4,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "361525",
+      "name": "HOSPICE OF CENTRAL OHIO",
+      "city": "NEWARK",
+      "state": "OH",
+      "zip": "43055",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361501",
+      "name": "HOSPICE OF DAYTON",
+      "city": "DAYTON",
+      "state": "OH",
+      "zip": "45420",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361553",
+      "name": "HOSPICE OF FAYETTE COUNTY INC",
+      "city": "WASHINGTON CH",
+      "state": "OH",
+      "zip": "43160",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361548",
+      "name": "HOSPICE OF MIAMI COUNTY INC",
+      "city": "TROY",
+      "state": "OH",
+      "zip": "45373",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "OHIO'S HOSPICE INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

@@ -1,0 +1,91 @@
+{
+  "chain_name": "CBKM INVESTMENTS",
+  "chain_slug": "cbkm-investments",
+  "norm_key": "cbkm investments",
+  "facility_count": 3,
+  "state_count": 2,
+  "states": [
+    "ID",
+    "UT"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.33,
+  "avg_cahps_overall": 87.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2014-11-01",
+  "newest_association": "2018-10-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 1,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "131559",
+      "name": "AUBURN CREST HOSPICE",
+      "city": "COEUR D'ALENE",
+      "state": "ID",
+      "zip": "83814",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131570",
+      "name": "AUBURN CREST HOSPICE TREASURE VALLEY, LLC",
+      "city": "BOISE",
+      "state": "ID",
+      "zip": "83713",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461620",
+      "name": "AUBURN CREST HOSPICE",
+      "city": "DRAPER",
+      "state": "UT",
+      "zip": "84020",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CBKM INVESTMENTS"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

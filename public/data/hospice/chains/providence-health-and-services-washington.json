@@ -1,0 +1,246 @@
+{
+  "chain_name": "PROVIDENCE HEALTH & SERVICES - WASHINGTON",
+  "chain_slug": "providence-health-and-services-washington",
+  "norm_key": "providence health and services washington",
+  "facility_count": 11,
+  "state_count": 5,
+  "states": [
+    "AK",
+    "CA",
+    "OR",
+    "TX",
+    "WA"
+  ],
+  "avg_cms_rating": 4.91,
+  "avg_hci_composite": 9.45,
+  "avg_cahps_overall": 82.82,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 18.2,
+  "oldest_association": "2008-12-31",
+  "newest_association": "2022-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 13,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 11,
+  "members": [
+    {
+      "ccn": "021506",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, AN",
+      "city": "ANCHORAGE",
+      "state": "AK",
+      "zip": "99508",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551658",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE ORA",
+      "city": "MISSION VIEJO",
+      "state": "CA",
+      "zip": "92691",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051557",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, SO",
+      "city": "PETALUMA",
+      "state": "CA",
+      "zip": "94952",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751625",
+      "name": "PROVIDENCE HOSPICE INLAND EMPIRE",
+      "city": "RANCHO CUCAMONGA",
+      "state": "CA",
+      "zip": "91730",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051512",
+      "name": "PROVIDENCE HOSPICE LA COUNTY",
+      "city": "TORRANCE",
+      "state": "CA",
+      "zip": "90503",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051537",
+      "name": "PROVIDENCE HOSPICE NAPA VALLEY",
+      "city": "NAPA",
+      "state": "CA",
+      "zip": "94559",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381500",
+      "name": "PROVIDENCE HOSPICE",
+      "city": "PORTLAND",
+      "state": "OR",
+      "zip": "97213",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381506",
+      "name": "PROVIDENCE MEDFORD HOSPICE",
+      "city": "MEDFORD",
+      "state": "OR",
+      "zip": "97501",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451519",
+      "name": "COVENANT HEALTH AT HOME WITH COMPASSUS, HOSPICE OF",
+      "city": "LUBBOCK",
+      "state": "TX",
+      "zip": "79410",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501515",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, PU",
+      "city": "TUKWILA",
+      "state": "WA",
+      "zip": "98168",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501554",
+      "name": "PROVIDENCE HOSPICE SPOKANE",
+      "city": "SPOKANE VALLEY",
+      "state": "WA",
+      "zip": "98212",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "PROVIDENCE HEALTH & SERVICES - WASHINGTON"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

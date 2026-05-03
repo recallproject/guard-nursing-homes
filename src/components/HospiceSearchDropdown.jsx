@@ -70,6 +70,21 @@ export default function HospiceSearchDropdown() {
 
   useEffect(() => { setActiveIndex(-1); }, [query]);
 
+  // Plausible: debounced "search returned ≥1 result" tracking. Fires once
+  // the user pauses typing and the current query has at least one match.
+  useEffect(() => {
+    const trimmed = query.trim();
+    if (!trimmed || !results || results.length === 0) return undefined;
+    const timer = setTimeout(() => {
+      if (window.plausible) {
+        window.plausible('Hospice-Search-Used', {
+          props: { resultCount: results.length, queryLength: trimmed.length },
+        });
+      }
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [query, results]);
+
   // Click-outside closes the dropdown.
   useEffect(() => {
     function handleClick(e) {
@@ -96,30 +111,47 @@ export default function HospiceSearchDropdown() {
     const q = query.trim();
     if (!q) return;
 
+    const resultCount = results ? results.length : 0;
+
     // If a result is highlighted, navigate to it.
     if (activeIndex >= 0 && results && results[activeIndex]) {
+      if (window.plausible) {
+        window.plausible('Hospice-Search-Submit', { props: { queryType: 'name', resultCount } });
+      }
       navigateToCcn(results[activeIndex].ccn);
       return;
     }
 
     // ZIP → compare page (the natural place for area-based searches).
     if (looksLikeZip(q)) {
+      if (window.plausible) {
+        window.plausible('Hospice-Search-Submit', { props: { queryType: 'zip', resultCount } });
+      }
       navigateToCompare(q);
       return;
     }
 
     // 6+ digit numeric → CCN.
     if (looksLikeCcn(q)) {
+      if (window.plausible) {
+        window.plausible('Hospice-Search-Submit', { props: { queryType: 'ccn', resultCount } });
+      }
       navigateToCcn(q);
       return;
     }
 
     // Otherwise: top fuzzy match if any, else fall through to compare-by-city.
     if (results && results.length > 0) {
+      if (window.plausible) {
+        window.plausible('Hospice-Search-Submit', { props: { queryType: 'name', resultCount } });
+      }
       navigateToCcn(results[0].ccn);
       return;
     }
 
+    if (window.plausible) {
+      window.plausible('Hospice-Search-Submit', { props: { queryType: 'name', resultCount: 0 } });
+    }
     navigate(`/hospice/compare?city=${encodeURIComponent(q)}`);
     setOpen(false);
   };

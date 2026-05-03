@@ -1,0 +1,147 @@
+{
+  "chain_name": "HCI PARENT HOLDINGS INC",
+  "chain_slug": "hci-parent-holdings-inc",
+  "norm_key": "hci parent",
+  "facility_count": 6,
+  "state_count": 1,
+  "states": [
+    "OK"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 80.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2013-09-30",
+  "newest_association": "2018-03-21",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "371671",
+      "name": "ELARA CARING VII",
+      "city": "ENID",
+      "state": "OK",
+      "zip": "73701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371560",
+      "name": "ELARA CARING XI",
+      "city": "SALLISAW",
+      "state": "OK",
+      "zip": "74955",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371638",
+      "name": "ELARA CARING XIV",
+      "city": "TULSA",
+      "state": "OK",
+      "zip": "74135",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371597",
+      "name": "ELARA CARING XXIII",
+      "city": "ADA",
+      "state": "OK",
+      "zip": "74820",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371619",
+      "name": "ELARA CARING XXIV",
+      "city": "CHICKASHA",
+      "state": "OK",
+      "zip": "73018",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371656",
+      "name": "ELARA CARING XXV",
+      "city": "HUGO",
+      "state": "OK",
+      "zip": "74743",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HCI PARENT HOLDINGS INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.455Z"
+}

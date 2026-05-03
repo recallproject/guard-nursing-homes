@@ -1,0 +1,71 @@
+{
+  "chain_name": "ENDEAVOR HEALTH",
+  "chain_slug": "endeavor-health",
+  "norm_key": "endeavor health",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "IL"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 70.5,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 100,
+  "oldest_association": "2022-03-01",
+  "newest_association": "2022-03-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 50,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "141522",
+      "name": "RESIDENTIAL HOSPICE",
+      "city": "NORTHBROOK",
+      "state": "IL",
+      "zip": "60062",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 67,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141655",
+      "name": "RESIDENTIAL HOSPICE LLC",
+      "city": "LISLE",
+      "state": "IL",
+      "zip": "60532",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "ENDEAVOR HEALTH"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

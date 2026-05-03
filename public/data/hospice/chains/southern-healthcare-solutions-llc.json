@@ -1,0 +1,71 @@
+{
+  "chain_name": "SOUTHERN HEALTHCARE SOLUTIONS, LLC",
+  "chain_slug": "southern-healthcare-solutions-llc",
+  "norm_key": "southern healthcare solutions",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "TN"
+  ],
+  "avg_cms_rating": 3.5,
+  "avg_hci_composite": 8,
+  "avg_cahps_overall": 80.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2019-02-01",
+  "newest_association": "2021-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": true,
+  "for_profit_disclosure_count": 1,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 25,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "441596",
+      "name": "ARDEN HOSPICE OF SOUTHERN TENNESSEE, LLC",
+      "city": "LINDEN",
+      "state": "TN",
+      "zip": "37096",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441604",
+      "name": "HOPE HOSPICE & PALLIATIVE CARE",
+      "city": "GERMANTOWN",
+      "state": "TN",
+      "zip": "38138",
+      "ownership_type": "Other",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "SOUTHERN HEALTHCARE SOLUTIONS, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

@@ -1,0 +1,593 @@
+{
+  "chain_name": "ARROW MANAGEMENT HOLDINGS LLC",
+  "chain_slug": "arrow-management-holdings-llc",
+  "norm_key": "arrow management",
+  "facility_count": 29,
+  "state_count": 10,
+  "states": [
+    "AL",
+    "GA",
+    "KS",
+    "LA",
+    "MO",
+    "MS",
+    "NC",
+    "OK",
+    "SC",
+    "VA"
+  ],
+  "avg_cms_rating": 4.85,
+  "avg_hci_composite": 9.33,
+  "avg_cahps_overall": 81.89,
+  "flagged_facility_count": 4,
+  "flagged_pattern_count": 4,
+  "flagged_pct": 13.8,
+  "oldest_association": "2021-06-23",
+  "newest_association": "2025-01-17",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 99.46,
+  "member_count": 29,
+  "members": [
+    {
+      "ccn": "011680",
+      "name": "ACG HOSPICE -DOTHAN ",
+      "city": "DOTHAN",
+      "state": "AL",
+      "zip": "36301",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011548",
+      "name": "ACG HOSPICE-BIRMINGHAM",
+      "city": "BIRMINGHAM",
+      "state": "AL",
+      "zip": "35243",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011656",
+      "name": "ACG HOSPICE-ENTERPRISE",
+      "city": "ENTERPRISE",
+      "state": "AL",
+      "zip": "36330",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "011591",
+      "name": "ACG HOSPICE-GARDENDALE",
+      "city": "GARDENDALE",
+      "state": "AL",
+      "zip": "35071",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111638",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "DUBLIN",
+      "state": "GA",
+      "zip": "31021",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111684",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "WARNER ROBINS",
+      "state": "GA",
+      "zip": "31088",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111736",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "GAINESVILLE",
+      "state": "GA",
+      "zip": "30501",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111760",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "JESUP",
+      "state": "GA",
+      "zip": "31545",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111773",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "ALBANY",
+      "state": "GA",
+      "zip": "31701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111738",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "AUGUSTA",
+      "state": "GA",
+      "zip": "30909",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111673",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "ACWORTH",
+      "state": "GA",
+      "zip": "30101",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851510",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "LAWRENCEVILLE",
+      "state": "GA",
+      "zip": "30043",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851525",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "SAVANNAH",
+      "state": "GA",
+      "zip": "31406",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851503",
+      "name": "GEORGIA HOSPICE CARE",
+      "city": "BRUNSWICK",
+      "state": "GA",
+      "zip": "31520",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171626",
+      "name": "ACG HOSPICE",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66213",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191577",
+      "name": "ACG HOSPICE",
+      "city": "JONESBORO",
+      "state": "LA",
+      "zip": "71251",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191657",
+      "name": "ACG HOSPICE ",
+      "city": "HOUMA",
+      "state": "LA",
+      "zip": "70360",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191639",
+      "name": "ACG HOSPICE , ",
+      "city": "HAMMOND",
+      "state": "LA",
+      "zip": "70403",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261704",
+      "name": "ACG HOSPICE",
+      "city": "COLUMBIA",
+      "state": "MO",
+      "zip": "65201",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261703",
+      "name": "ACG HOSPICE",
+      "city": "LEE'S SUMMIT",
+      "state": "MO",
+      "zip": "64086",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261708",
+      "name": "ACG HOSPICE",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63110",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251708",
+      "name": "INFINITY HOSPICE, LLC  DBA ACG HOSPICE - CARTHAGE",
+      "city": "CARTHAGE",
+      "state": "MS",
+      "zip": "39051",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341528",
+      "name": "HOSPICE OF THE CAROLINA FOOTHILLS",
+      "city": "SALUDA",
+      "state": "NC",
+      "zip": "28773",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371623",
+      "name": "ACG HOSPICE",
+      "city": "GROVE",
+      "state": "OK",
+      "zip": "74344",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371730",
+      "name": "ACG HOSPICE II",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73114",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421536",
+      "name": "AGAPE CARE SOUTH CAROLINA II",
+      "city": "SPARTANBURG  ",
+      "state": "SC",
+      "zip": "29302",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421592",
+      "name": "AGAPE HOSPICE OF THE LOWCOUNTRY",
+      "city": "NORTH CHARLESTON",
+      "state": "SC",
+      "zip": "29405",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421639",
+      "name": "HANDS OF HOPE",
+      "city": "COLUMBIA",
+      "state": "SC",
+      "zip": "29210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491646",
+      "name": "ACG HOSPICE",
+      "city": "CHESAPEAKE",
+      "state": "VA",
+      "zip": "23320",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "ARROW MANAGEMENT HOLDINGS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.455Z"
+}

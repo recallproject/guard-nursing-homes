@@ -2,27 +2,26 @@
 /**
  * build-mfcu-actions.js
  *
- * Pipeline that scrapes State Attorney General press release feeds for the
+ * Pipeline that scrapes State Attorney General press release pages for the
  * 6 highest-volume Medicaid Fraud Control Unit (MFCU) states and matches
- * hospice-related actions against the 6,943 Medicare-certified hospices in
- * our index.
+ * hospice-related actions against the Medicare-certified hospice index.
  *
- * Sources (per-state RSS feeds, best-effort URLs):
- *   - California:    https://oag.ca.gov/news/press-releases/feed
- *   - Texas:         https://www.texasattorneygeneral.gov/news/rss.xml
- *   - New York:      https://ag.ny.gov/press-releases/feed
- *   - Florida:       http://myfloridalegal.com/__85257B7B0070E767.nsf/RSS/News?OpenAgent
- *   - Illinois:      https://illinoisattorneygeneral.gov/Press/news.rss
- *   - Pennsylvania:  https://www.attorneygeneral.gov/feed/
+ * Sources (per-state HTML listing pages — RSS feeds don't exist or are dead):
+ *   - California:    https://oag.ca.gov/news                (Drupal views)
+ *   - Texas:         https://www.texasattorneygeneral.gov/news/releases
+ *   - New York:      https://ag.ny.gov/press-releases       (Drupal views)
+ *   - Florida:       https://www.myfloridalegal.com/newsreleases (Drupal table)
+ *   - Illinois:      https://illinoisattorneygeneral.gov/News-Room/ (sidebar)
+ *   - Pennsylvania:  https://www.attorneygeneral.gov/taking-action/ (WP table)
  *
- * COVERAGE NOTE: No unified federal MFCU RSS exists. Each state AG runs its
- * own feed with no consistent format. URLs above are best-effort — if any
- * return 404 or non-RSS content, this script logs a warning and skips that
- * state without failing the pipeline. Better to ship 4/6 states than 0/6.
+ * COVERAGE NOTE: Each state AG runs a different CMS / DOM. We scrape the
+ * first listing page only (no pagination — ~10–30 items per state) and use
+ * stdlib regex. If a state's HTML structure changes, that state logs a
+ * warning + is skipped; the pipeline does not fail.
  *
  * Output: public/data/hospice/mfcu-actions.json
  *
- * Stdlib only. No npm dependencies.
+ * Stdlib only. No npm dependencies (no cheerio, no jsdom).
  */
 
 import fs from 'node:fs';
@@ -47,12 +46,54 @@ const USER_AGENT =
 const REQUEST_TIMEOUT_MS = 10000;
 
 const STATE_FEEDS = [
-  { state: 'CA', name: 'California', url: 'https://oag.ca.gov/news/press-releases/feed' },
-  { state: 'TX', name: 'Texas', url: 'https://www.texasattorneygeneral.gov/news/rss.xml' },
-  { state: 'NY', name: 'New York', url: 'https://ag.ny.gov/press-releases/feed' },
-  { state: 'FL', name: 'Florida', url: 'http://myfloridalegal.com/__85257B7B0070E767.nsf/RSS/News?OpenAgent' },
-  { state: 'IL', name: 'Illinois', url: 'https://illinoisattorneygeneral.gov/Press/news.rss' },
-  { state: 'PA', name: 'Pennsylvania', url: 'https://www.attorneygeneral.gov/feed/' },
+  // CA: Drupal "views-row" rows. Listed page /news/press-releases 404s; /news works.
+  {
+    state: 'CA',
+    name: 'California',
+    url: 'https://oag.ca.gov/news',
+    base: 'https://oag.ca.gov',
+    parser: 'ca',
+  },
+  // TX: <div class="m-b-3"> blocks with <h4> + <p> excerpt + <p class="meta">.
+  {
+    state: 'TX',
+    name: 'Texas',
+    url: 'https://www.texasattorneygeneral.gov/news/releases',
+    base: 'https://www.texasattorneygeneral.gov',
+    parser: 'tx',
+  },
+  // NY: Drupal "views-row" with <time datetime> + anchor.
+  {
+    state: 'NY',
+    name: 'New York',
+    url: 'https://ag.ny.gov/press-releases',
+    base: 'https://ag.ny.gov',
+    parser: 'ny',
+  },
+  // FL: Drupal table /newsreleases (the documented /newsroom 404s).
+  {
+    state: 'FL',
+    name: 'Florida',
+    url: 'https://www.myfloridalegal.com/newsreleases',
+    base: 'https://www.myfloridalegal.com',
+    parser: 'fl',
+  },
+  // IL: News-Room sidebar list (about 10 most recent items).
+  {
+    state: 'IL',
+    name: 'Illinois',
+    url: 'https://illinoisattorneygeneral.gov/News-Room/',
+    base: 'https://illinoisattorneygeneral.gov',
+    parser: 'il',
+  },
+  // PA: WordPress /taking-action/ table with <td class="date"> + <td class="title">.
+  {
+    state: 'PA',
+    name: 'Pennsylvania',
+    url: 'https://www.attorneygeneral.gov/taking-action/',
+    base: 'https://www.attorneygeneral.gov',
+    parser: 'pa',
+  },
 ];
 
 if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
@@ -115,7 +156,7 @@ function fetchOnce(urlStr) {
         path: u.pathname + u.search,
         headers: {
           'User-Agent': USER_AGENT,
-          Accept: 'application/rss+xml, application/xml, text/xml, application/atom+xml, text/html;q=0.5, */*;q=0.3',
+          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
           'Accept-Language': 'en-US,en;q=0.9',
         },
       },
@@ -161,13 +202,13 @@ async function fetchWithRetry(urlStr) {
 }
 
 async function getCachedFeed(state, url) {
-  const cacheFile = path.join(CACHE_DIR, `mfcu_${state.toLowerCase()}.xml`);
+  const cacheFile = path.join(CACHE_DIR, `mfcu_${state.toLowerCase()}.html`);
   // Use cache if < 6h old.
   const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
   if (fs.existsSync(cacheFile)) {
     const stat = fs.statSync(cacheFile);
     if (Date.now() - stat.mtimeMs < CACHE_TTL_MS) {
-      console.log(`  [cache] ${state} using cached feed (age ${Math.round((Date.now() - stat.mtimeMs) / 60000)} min)`);
+      console.log(`  [cache] ${state} using cached page (age ${Math.round((Date.now() - stat.mtimeMs) / 60000)} min)`);
       return { body: fs.readFileSync(cacheFile, 'utf8'), contentType: 'cached', fromCache: true };
     }
   }
@@ -177,7 +218,7 @@ async function getCachedFeed(state, url) {
 }
 
 // ---------------------------------------------------------------------------
-// XML / HTML parsing
+// HTML parsing helpers (stdlib only)
 // ---------------------------------------------------------------------------
 
 function decodeEntities(s) {
@@ -195,67 +236,270 @@ function decodeEntities(s) {
     .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)));
 }
 
+// Soft hyphen (U+00AD) appears inside Texas AG titles for line-break hints.
+// Strip it everywhere — never display these to users and never use them in
+// keyword matches.
+function stripSoftHyphens(s) {
+  return s ? s.replace(/­/g, '') : '';
+}
+
 function stripHtml(s) {
   if (!s) return '';
-  return decodeEntities(s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim());
+  return stripSoftHyphens(
+    decodeEntities(s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim())
+  );
 }
 
-function extractTag(block, tag) {
-  const re = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`, 'i');
-  const m = block.match(re);
-  if (!m) return '';
-  let val = m[1];
-  const cd = val.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
-  if (cd) val = cd[1];
-  return val.trim();
-}
-
-/**
- * Best-effort RSS / Atom parser. Returns [] if the body is clearly not a feed.
- */
-function parseFeed(xml) {
-  if (!xml) return [];
-  // RSS 2.0 <item> blocks.
-  const items = [];
-  const itemRe = /<item[^>]*>([\s\S]*?)<\/item>/gi;
-  let m;
-  while ((m = itemRe.exec(xml)) !== null) {
-    const block = m[1];
-    items.push({
-      title: stripHtml(extractTag(block, 'title')),
-      link: stripHtml(extractTag(block, 'link')),
-      pubDate: stripHtml(extractTag(block, 'pubDate')) || stripHtml(extractTag(block, 'dc:date')),
-      description: extractTag(block, 'description'),
-      contentEncoded: extractTag(block, 'content:encoded'),
-      guid: stripHtml(extractTag(block, 'guid')),
-    });
+function absUrl(href, base) {
+  if (!href) return '';
+  if (/^https?:\/\//i.test(href)) return href;
+  try {
+    return new URL(href, base).toString();
+  } catch {
+    return href;
   }
-  if (items.length) return items;
+}
 
-  // Atom <entry> blocks fallback.
-  const entryRe = /<entry[^>]*>([\s\S]*?)<\/entry>/gi;
-  while ((m = entryRe.exec(xml)) !== null) {
-    const block = m[1];
-    // Atom <link href="..."/> is a self-closing tag.
-    let link = '';
-    const linkM = block.match(/<link[^>]*href="([^"]+)"/i);
-    if (linkM) link = linkM[1];
-    items.push({
-      title: stripHtml(extractTag(block, 'title')),
-      link,
-      pubDate: stripHtml(extractTag(block, 'updated')) || stripHtml(extractTag(block, 'published')),
-      description: extractTag(block, 'summary') || extractTag(block, 'content'),
-      contentEncoded: '',
-      guid: stripHtml(extractTag(block, 'id')),
-    });
+function looksLikeListingPage(body, parser) {
+  if (!body) return false;
+  // Each parser checks for its characteristic marker. If a state's CMS
+  // changes layout we get a clean skip rather than an empty result.
+  const head = body.slice(0, body.length); // can be large; we just substring search
+  switch (parser) {
+    case 'ca':
+      return head.includes('views-field-title') && head.includes('press-releases');
+    case 'tx':
+      return head.includes('class="m-b-3"') && head.includes('h4-sans');
+    case 'ny':
+      return head.includes('views-field-field-press-date') || head.includes('/press-release/');
+    case 'fl':
+      return head.includes('newsrelease') && head.includes('views-field-title');
+    case 'il':
+      return head.includes('class="news-item') && head.includes('/news/story/');
+    case 'pa':
+      return head.includes('/taking-action/') && head.includes('class="date"');
+    default:
+      return false;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Per-state HTML parsers. Each returns an array of:
+//   { title, link, pubDate, description, contentEncoded, guid }
+// matching the schema the rest of this file already assumes (carried over
+// from the prior RSS parser so the matching/output code stays unchanged).
+// ---------------------------------------------------------------------------
+
+// CA — oag.ca.gov/news
+//   <div class="views-row ...">
+//     <div class="views-field views-field-title">
+//       <span class="field-content"><a href="/news/press-releases/...">TITLE</a></span>
+//     </div>
+//     <div class="views-field views-field-field-release-date">
+//       <span ... content="2026-05-01T00:00:00-07:00" ...>May 1, 2026</span>
+//     </div>
+//   </div>
+function parseCA(html, base) {
+  const items = [];
+  // Walk row-by-row by anchoring on the views-row class. Use a greedy split
+  // rather than balancing braces (we only need the title anchor + the date
+  // span that immediately follows it — the next views-row is a hard boundary).
+  const segments = html.split(/<div[^>]*class="[^"]*views-row[^"]*"[^>]*>/i);
+  // First segment is the header before any row; skip it.
+  for (let i = 1; i < segments.length; i++) {
+    const block = segments[i];
+    // Stop the segment at the next views-row marker (already split) — but
+    // also clip at the closing of the view-content panel to avoid leaking
+    // pager/footer markup into the last item.
+    const cutAt = block.search(/<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/i);
+    const scope = cutAt > 0 ? block.slice(0, cutAt) : block;
+    const titleM = scope.match(/views-field-title[\s\S]*?<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!titleM) continue;
+    const link = absUrl(titleM[1], base);
+    const title = stripHtml(titleM[2]);
+    const dateM = scope.match(/property="dc:date"[^>]*content="([^"]+)"/i)
+      || scope.match(/<span[^>]*class="[^"]*date-display-single[^"]*"[^>]*>([^<]+)<\/span>/i);
+    const pubDate = dateM ? dateM[1] : '';
+    if (!title || !link) continue;
+    items.push({ title, link, pubDate, description: '', contentEncoded: '', guid: link });
   }
   return items;
 }
 
-function looksLikeFeed(body) {
-  if (!body) return false;
-  const head = body.slice(0, 4000).toLowerCase();
-  return head.includes('<rss') || head.includes('<feed') || head.includes('<channel') || /<item[\s>]/i.test(head);
+// TX — texasattorneygeneral.gov/news/releases
+//   <div class="m-b-3">
+//     <h4 class="m-b-1 h4-sans"><a href="/news/releases/...">TITLE (with soft-hyphens + caps spans)</a></h4>
+//     <p class="m-b-0">EXCERPT (sometimes empty)</p>
+//     <p class="meta m-b-0">May 01, 2026  | Press Release</p>
+//   </div>
+function parseTX(html, base) {
+  const items = [];
+  const blockRe = /<div class="m-b-3">([\s\S]*?)<\/div>/gi;
+  let m;
+  while ((m = blockRe.exec(html)) !== null) {
+    const block = m[1];
+    const titleM = block.match(/<h4[^>]*h4-sans[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!titleM) continue;
+    const link = absUrl(titleM[1], base);
+    const title = stripHtml(titleM[2]);
+    // First <p class="m-b-0"> after the h4 is the excerpt; <p class="meta m-b-0"> is the date.
+    const excerptM = block.match(/<p class="m-b-0">([\s\S]*?)<\/p>/i);
+    const description = excerptM ? stripHtml(excerptM[1]) : '';
+    const metaM = block.match(/<p class="meta m-b-0">([\s\S]*?)<\/p>/i);
+    let pubDate = '';
+    if (metaM) {
+      // "May 01, 2026  | Press Release" -> first chunk before the pipe.
+      const meta = stripHtml(metaM[1]);
+      pubDate = meta.split('|')[0].trim();
+    }
+    if (!title || !link) continue;
+    items.push({ title, link, pubDate, description, contentEncoded: '', guid: link });
+  }
+  return items;
+}
+
+// NY — ag.ny.gov/press-releases
+//   <div class="views-row">
+//     <div class="views-field views-field-field-press-date">
+//       <span class="field-content"><time datetime="2026-05-01T12:00:00Z">May 1, 2026</time></span>
+//     </div>
+//     <div class="views-field views-field-title">
+//       <span class="field-content"><a href="/press-release/...">TITLE</a></span>
+//     </div>
+//   </div>
+function parseNY(html, base) {
+  const items = [];
+  // Each row begins with <div class="views-row"> — split on that and read
+  // the title anchor + datetime within each segment.
+  const segments = html.split(/<div class="views-row">/);
+  for (let i = 1; i < segments.length; i++) {
+    const block = segments[i];
+    const titleM = block.match(/views-field-title[\s\S]*?<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!titleM) continue;
+    const href = titleM[1];
+    if (!/\/press-release\//i.test(href)) continue; // skip nav/template anchors
+    const link = absUrl(href, base);
+    const title = stripHtml(titleM[2]);
+    const dateM = block.match(/<time[^>]*datetime="([^"]+)"/i);
+    const pubDate = dateM ? dateM[1] : '';
+    if (!title || !link) continue;
+    items.push({ title, link, pubDate, description: '', contentEncoded: '', guid: link });
+  }
+  return items;
+}
+
+// FL — myfloridalegal.com/newsreleases
+//   <tr>
+//     <td class="... views-field-field-released"><time datetime="...">DATE</time></td>
+//     <td class="... views-field-title"><a href="/newsrelease/...">TITLE</a></td>
+//   </tr>
+function parseFL(html, base) {
+  const items = [];
+  const trRe = /<tr>([\s\S]*?)<\/tr>/gi;
+  let m;
+  while ((m = trRe.exec(html)) !== null) {
+    const block = m[1];
+    const titleM = block.match(/views-field-title[^>]*>\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!titleM) continue;
+    const href = titleM[1];
+    if (!/\/newsrelease\//i.test(href)) continue;
+    const link = absUrl(href, base);
+    const title = stripHtml(titleM[2]);
+    const dateM = block.match(/<time[^>]*datetime="([^"]+)"/i);
+    const pubDate = dateM ? dateM[1] : '';
+    if (!title || !link) continue;
+    items.push({ title, link, pubDate, description: '', contentEncoded: '', guid: link });
+  }
+  return items;
+}
+
+// IL — illinoisattorneygeneral.gov/News-Room/
+//   The page renders a sidebar "Recent Press Releases" (~10 most recent items)
+//   followed by a year-by-year accordion archive containing every release ever
+//   issued. We only want the sidebar — the accordion contains stale items
+//   from many years prior and would dominate the keyword filter.
+//
+//   Sidebar shape:
+//     <aside aria-label="Recent Press Releases">
+//       <a class="news-item" href="/news/story/...">
+//         <time datetime="2026-05-01 2:00 PM">May 01, 2026</time>
+//         <p>TITLE IN ALL CAPS</p>
+//       </a>
+//       ...
+//     </aside>
+function parseIL(html, base) {
+  const items = [];
+  // Scope to the Recent Press Releases <aside>. If we can't find it, fall
+  // back to the whole page but cap at the first 30 anchors so we don't
+  // ingest the entire historical archive.
+  const asideStart = html.search(/<aside[^>]*aria-label="Recent Press Releases"/i);
+  let scope;
+  if (asideStart >= 0) {
+    const tail = html.slice(asideStart);
+    const asideEnd = tail.search(/<\/aside>/i);
+    scope = asideEnd > 0 ? tail.slice(0, asideEnd) : tail;
+  } else {
+    console.warn('  ! IL: "Recent Press Releases" aside not found; falling back to first 30 anchors');
+    scope = html;
+  }
+  const aRe = /<a class="news-item[^"]*"[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let m;
+  while ((m = aRe.exec(scope)) !== null) {
+    const href = m[1];
+    if (!/\/news\/story\//i.test(href)) continue;
+    const inner = m[2];
+    const dateM = inner.match(/<time[^>]*datetime="([^"]+)"/i);
+    const titleM = inner.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+    if (!titleM) continue;
+    const link = absUrl(href, base);
+    const title = stripHtml(titleM[1]);
+    const pubDate = dateM ? dateM[1] : '';
+    if (!title || !link) continue;
+    items.push({ title, link, pubDate, description: '', contentEncoded: '', guid: link });
+    if (items.length >= 30) break;
+  }
+  return items;
+}
+
+// PA — attorneygeneral.gov/taking-action/
+//   <tr>
+//     <td class="date"><a href="..."><strong class="date">05/01/2026</strong></a></td>
+//     <td class="title"><a href="...">TITLE</a></td>
+//   </tr>
+function parsePA(html, base) {
+  const items = [];
+  const trRe = /<tr>([\s\S]*?)<\/tr>/gi;
+  let m;
+  while ((m = trRe.exec(html)) !== null) {
+    const block = m[1];
+    const titleM = block.match(/<td class="title">\s*<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/i);
+    if (!titleM) continue;
+    const link = absUrl(titleM[1], base);
+    const title = stripHtml(titleM[2]);
+    const dateM = block.match(/<strong class="date">([\s\S]*?)<\/strong>/i);
+    let pubDate = '';
+    if (dateM) {
+      const raw = stripHtml(dateM[1]); // e.g. "05/01/2026"
+      const parts = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+      pubDate = parts ? `${parts[3]}-${parts[1].padStart(2, '0')}-${parts[2].padStart(2, '0')}` : raw;
+    }
+    if (!title || !link) continue;
+    items.push({ title, link, pubDate, description: '', contentEncoded: '', guid: link });
+  }
+  return items;
+}
+
+const PARSERS = { ca: parseCA, tx: parseTX, ny: parseNY, fl: parseFL, il: parseIL, pa: parsePA };
+
+function parseStatePage(parser, html, base) {
+  const fn = PARSERS[parser];
+  if (!fn) return [];
+  try {
+    return fn(html, base);
+  } catch (err) {
+    console.warn(`  ! parser ${parser} threw: ${err.message}`);
+    return [];
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -468,13 +712,14 @@ async function main() {
   const statesAttempted = [];
   const statesSucceeded = [];
   const statesFailed = [];
-  let totalRssItems = 0;
+  let totalScrapedItems = 0;
   let hospiceFiltered = 0;
   let matchedCount = 0;
   let highCount = 0;
   let mediumCount = 0;
   const actions = [];
   const itemsByCcn = {};
+  const perStateCounts = {};
 
   for (const feed of STATE_FEEDS) {
     statesAttempted.push(feed.state);
@@ -488,20 +733,21 @@ async function main() {
       continue;
     }
 
-    if (!looksLikeFeed(res.body)) {
-      console.warn(`  ! ${feed.state} response is not RSS/Atom (content-type=${res.contentType}); skipping`);
-      statesFailed.push({ state: feed.state, reason: `not RSS/Atom (content-type=${res.contentType})` });
+    if (!looksLikeListingPage(res.body, feed.parser)) {
+      console.warn(`  ! ${feed.state} response is not a recognizable listing page (parser=${feed.parser}); HTML structure may have changed. Skipping.`);
+      statesFailed.push({ state: feed.state, reason: `not a listing page (parser=${feed.parser}, content-type=${res.contentType})` });
       continue;
     }
 
-    const items = parseFeed(res.body);
+    const items = parseStatePage(feed.parser, res.body, feed.base);
     if (!items.length) {
-      console.warn(`  ! ${feed.state} parsed 0 items from feed; skipping`);
+      console.warn(`  ! ${feed.state} parsed 0 items from page; HTML structure may have changed. Skipping.`);
       statesFailed.push({ state: feed.state, reason: 'parsed 0 items' });
       continue;
     }
-    console.log(`  pulled ${items.length} items from feed`);
-    totalRssItems += items.length;
+    console.log(`  pulled ${items.length} items from page`);
+    totalScrapedItems += items.length;
+    perStateCounts[feed.state] = items.length;
     statesSucceeded.push(feed.state);
 
     const stateHospiceItems = items.filter(isHospiceEnforcement);
@@ -566,11 +812,14 @@ async function main() {
     generated_at: new Date().toISOString(),
     source: 'State AG MFCU',
     coverage_note:
-      'Best-effort scrape of state AG press-release RSS feeds for the 6 highest-volume Medicaid fraud states (CA, TX, NY, FL, IL, PA). No unified MFCU feed exists. State-specific feeds may break or change format; failures are logged and skipped, not fatal. Defamation guardrail: only items with a high- or medium-confidence match to a hospice in the AG\'s own state are emitted.',
+      'Best-effort HTML scrape of state AG press-release listing pages for the 6 highest-volume Medicaid fraud states (CA, TX, NY, FL, IL, PA). No unified MFCU feed exists and per-state RSS feeds are dead. We scrape the first listing page only (no pagination). State-specific HTML may change format; failures are logged and skipped, not fatal. Defamation guardrail: only items with a high- or medium-confidence match to a hospice in the AG\'s own state are emitted; every action links to the source URL with the disclaimer "Inclusion does not constitute a finding by The Oversight Report."',
     states_attempted: statesAttempted,
     states_succeeded: statesSucceeded,
     states_failed: statesFailed,
-    total_rss_items_pulled: totalRssItems,
+    // Field name kept as total_rss_items_pulled for downstream-schema
+    // compatibility (the React UI / GitHub Action read this key).
+    total_rss_items_pulled: totalScrapedItems,
+    per_state_items_scraped: perStateCounts,
     hospice_filtered: hospiceFiltered,
     matched_to_ccn: matchedCount,
     matched_high_confidence: highCount,
@@ -586,7 +835,7 @@ async function main() {
   console.log(`  states attempted:     ${statesAttempted.join(', ')}`);
   console.log(`  states succeeded:     ${statesSucceeded.join(', ') || '(none)'}`);
   console.log(`  states failed:        ${statesFailed.map((s) => s.state).join(', ') || '(none)'}`);
-  console.log(`  RSS items pulled:     ${totalRssItems}`);
+  console.log(`  items scraped:        ${totalScrapedItems}`);
   console.log(`  hospice-filtered:     ${hospiceFiltered}`);
   console.log(`  matched to CCN:       ${matchedCount} (high=${highCount}, medium=${mediumCount})`);
   console.log(`  unique CCNs touched:  ${Object.keys(itemsByCcn).length}`);

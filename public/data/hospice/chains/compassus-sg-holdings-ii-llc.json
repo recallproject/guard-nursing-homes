@@ -1,0 +1,91 @@
+{
+  "chain_name": "COMPASSUS SG HOLDINGS II, LLC",
+  "chain_slug": "compassus-sg-holdings-ii-llc",
+  "norm_key": "compassus sg holdings ii",
+  "facility_count": 3,
+  "state_count": 2,
+  "states": [
+    "MT",
+    "NM"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.67,
+  "avg_cahps_overall": 74.33,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2016-05-01",
+  "newest_association": "2016-05-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 3,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "271528",
+      "name": "COMPASSUS HOSPICE BILLINGS",
+      "city": "BILLINGS",
+      "state": "MT",
+      "zip": "59101",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "271530",
+      "name": "COMPASSUS HOSPICE HELENA",
+      "city": "BUTTE",
+      "state": "MT",
+      "zip": "59701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321556",
+      "name": "COMPASSUS HOSPICE ALBUQUERQUE SOUTH",
+      "city": "ALBUQUERQUE",
+      "state": "NM",
+      "zip": "87109",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "COMPASSUS SG HOLDINGS II, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

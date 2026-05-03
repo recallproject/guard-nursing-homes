@@ -1,0 +1,324 @@
+{
+  "chain_name": "MARTIS PARTNERS IV PV, LP",
+  "chain_slug": "martis-partners-iv-pv-lp",
+  "norm_key": "martis partners iv pv",
+  "facility_count": 15,
+  "state_count": 7,
+  "states": [
+    "IL",
+    "KS",
+    "MI",
+    "MO",
+    "PA",
+    "SC",
+    "TX"
+  ],
+  "avg_cms_rating": 4.8,
+  "avg_hci_composite": 9.27,
+  "avg_cahps_overall": 72.31,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 13.3,
+  "oldest_association": "2024-10-22",
+  "newest_association": "2024-10-22",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 12.93,
+  "member_count": 15,
+  "members": [
+    {
+      "ccn": "141628",
+      "name": "THREE OAKS HOSPICE",
+      "city": "NAPERVILLE",
+      "state": "IL",
+      "zip": "60563",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171573",
+      "name": "THREE OAKS HOSPICE",
+      "city": "OVERLAND PARK",
+      "state": "KS",
+      "zip": "66212",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231667",
+      "name": "THREE OAKS HOSPICE ",
+      "city": "TROY",
+      "state": "MI",
+      "zip": "48084",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 60,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261660",
+      "name": "THREE OAKS HOSPICE",
+      "city": "CREVE COEUR",
+      "state": "MO",
+      "zip": "63141",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261521",
+      "name": "THREE OAKS HOSPICE ",
+      "city": "INDEPENDENCE",
+      "state": "MO",
+      "zip": "64055",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 66,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391641",
+      "name": "THREE OAKS HOSPICE PITTSBURGH",
+      "city": "BEAVER",
+      "state": "PA",
+      "zip": "15009",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421628",
+      "name": "THREE OAKS HOSPICE",
+      "city": "COLUMBIA",
+      "state": "SC",
+      "zip": "29210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671635",
+      "name": "THREE OAKS HOSPICE",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77084",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 60,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741681",
+      "name": "THREE OAKS HOSPICE",
+      "city": "BEAUMONT",
+      "state": "TX",
+      "zip": "77701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741611",
+      "name": "THREE OAKS HOSPICE",
+      "city": "THE WOODLANDS",
+      "state": "TX",
+      "zip": "77380",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741626",
+      "name": "THREE OAKS HOSPICE",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78230",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741669",
+      "name": "THREE OAKS HOSPICE",
+      "city": "HURST",
+      "state": "TX",
+      "zip": "76054",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741729",
+      "name": "THREE OAKS HOSPICE",
+      "city": "EL PASO",
+      "state": "TX",
+      "zip": "79936",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671762",
+      "name": "THREE OAKS HOSPICE",
+      "city": "RICHARDSON",
+      "state": "TX",
+      "zip": "75082",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451788",
+      "name": "THREE OAKS HOSPICE",
+      "city": "AUSTIN",
+      "state": "TX",
+      "zip": "78757",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "MARTIS PARTNERS IV PV, LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

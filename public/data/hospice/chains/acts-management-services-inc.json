@@ -1,0 +1,72 @@
+{
+  "chain_name": "ACTS MANAGEMENT SERVICES, INC.",
+  "chain_slug": "acts-management-services-inc",
+  "norm_key": "acts management services",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "DE",
+    "PA"
+  ],
+  "avg_cms_rating": 3.5,
+  "avg_hci_composite": 7.5,
+  "avg_cahps_overall": 82,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2015-01-01",
+  "newest_association": "2018-04-03",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": null,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "081511",
+      "name": "ACTS SIGNATURE HOSPICE DELAWARE",
+      "city": "HOCKESSIN",
+      "state": "DE",
+      "zip": "19707",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391688",
+      "name": "ACTS HOSPICE OF PENNSYLVANIA",
+      "city": "FORT WASHINGTON",
+      "state": "PA",
+      "zip": "19034",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "ACTS MANAGEMENT SERVICES, INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

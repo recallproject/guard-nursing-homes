@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import HospiceSearchDropdown from '../components/HospiceSearchDropdown';
 import '../styles/hospice-landing.css';
+import '../styles/hospice-state.css';
 
 // State abbreviation → display name (covers all 50 + DC + territories used in data).
 const STATE_NAME = {
@@ -116,6 +117,10 @@ export default function HospicePage() {
   const [compareQuery, setCompareQuery] = useState('');
 
   useEffect(() => {
+    if (window.plausible) window.plausible('Hospice-Landing-View');
+  }, []);
+
+  useEffect(() => {
     let cancelled = false;
     fetch('/data/hospice/national-summary.json')
       .then((r) => (r.ok ? r.json() : null))
@@ -136,6 +141,11 @@ export default function HospicePage() {
     e.preventDefault();
     const q = verifyQuery.trim();
     if (!q) return;
+    if (window.plausible) {
+      window.plausible('Hospice-Family-Card-Action', {
+        props: { queryType: looksLikeCcn(q) ? 'ccn' : 'name' },
+      });
+    }
     if (looksLikeCcn(q)) {
       navigate(`/hospice/${encodeURIComponent(q)}`);
     } else {
@@ -147,10 +157,44 @@ export default function HospicePage() {
     e.preventDefault();
     const q = compareQuery.trim();
     if (!q) return;
+    if (window.plausible) {
+      window.plausible('Hospice-Compare-Card-Action', {
+        props: { queryType: looksLikeZip(q) ? 'zip' : 'city' },
+      });
+    }
     if (looksLikeZip(q)) {
       navigate(`/hospice/compare?zip=${encodeURIComponent(q)}`);
     } else {
       navigate(`/hospice/compare?city=${encodeURIComponent(q)}`);
+    }
+  };
+
+  // Fire family-card-action when a submission happens inside the family card
+  // (the HospiceSearchDropdown is its own component, so we delegate via a
+  // bubbling click on the Look-it-up button or a result row).
+  const handleFamilyCardClick = (e) => {
+    const target = e.target;
+    if (!target || !target.closest) return;
+    const isSubmit = target.closest('button[type="submit"]');
+    const isResult = target.closest('.hsd-result, .hsd-zip-bar');
+    if (isSubmit || isResult) {
+      if (window.plausible) {
+        window.plausible('Hospice-Family-Card-Action', {
+          props: { queryType: isResult ? 'result-click' : 'submit' },
+        });
+      }
+    }
+  };
+
+  const handleQuestionClick = (idx) => {
+    if (window.plausible) {
+      window.plausible('Hospice-Question-Click', { props: { questionIndex: idx + 1 } });
+    }
+  };
+
+  const handleComplaintRouteClick = (destination) => {
+    if (window.plausible) {
+      window.plausible('Hospice-Complaint-Route-Click', { props: { destination } });
     }
   };
 
@@ -198,7 +242,7 @@ export default function HospicePage() {
         <section className="hl-two-lane">
           <div className="hl-two-lane-inner">
 
-            <div className="hl-lane-card hl-lane-verify">
+            <div className="hl-lane-card hl-lane-verify" onClick={handleFamilyCardClick}>
               <div className="hl-lane-eyebrow">// for families · just got a referral</div>
               <h2 className="hl-lane-title">
                 Did the hospital recommend a hospice? <em>Verify it.</em>
@@ -292,6 +336,27 @@ export default function HospicePage() {
           </div>
         </section>
 
+        {/* INVESTIGATION HUB CTA */}
+        <section className="hl-hub-tile">
+          <div className="hl-hub-tile-inner">
+            <div>
+              <div className="hl-hub-tile-eyebrow">// the investigation hub</div>
+              <h2 className="hl-hub-tile-title">200 hospices the data flags. Start there.</h2>
+              <p className="hl-hub-tile-sub">
+                A national watchlist for journalists, plaintiff attorneys, and family investigators —
+                ranked by the California State Auditor framework, applied to all 6,943 Medicare-certified hospices.
+              </p>
+            </div>
+            <Link
+              to="/hospice/high-risk"
+              className="hl-hub-tile-cta"
+              onClick={() => window.plausible && window.plausible('Hospice-HighRisk-CTA-Click', { props: { source: 'hospice-landing' } })}
+            >
+              Open the watchlist →
+            </Link>
+          </div>
+        </section>
+
         {/* WHAT WE TELL YOU */}
         <section className="hl-section">
           <div className="hl-section-inner">
@@ -330,7 +395,11 @@ export default function HospicePage() {
               <p className="hl-ask-sub">From clinical and patient-advocate guidance — not specific to any single hospice.</p>
               <ol className="hl-ask-list">
                 {TEN_QUESTIONS.map((q, i) => (
-                  <li key={i} className="hl-ask-item">
+                  <li
+                    key={i}
+                    className="hl-ask-item"
+                    onClick={() => handleQuestionClick(i)}
+                  >
                     <span className="hl-ask-num">{i + 1}</span>
                     <span className="hl-ask-q">{q}</span>
                   </li>
@@ -356,7 +425,11 @@ export default function HospicePage() {
 
             <div className="hl-help-channels">
               {HELP_CHANNELS.map((c) => (
-                <div key={c.n} className="hl-help-card">
+                <div
+                  key={c.n}
+                  className="hl-help-card"
+                  onClick={() => handleComplaintRouteClick(c.title)}
+                >
                   <div className="hl-help-lbl">// {c.n}</div>
                   <div className="hl-help-ttl">{c.title}</div>
                   <div className="hl-help-desc">{c.desc}</div>
@@ -403,6 +476,32 @@ export default function HospicePage() {
           </div>
         </section>
 
+        {/* BROWSE BY STATE — full directory grid */}
+        <section className="hospice-state-grid">
+          <div className="hsg-inner">
+            <div className="hsg-eyebrow">// browse the full directory</div>
+            <h2>Hospices by state.</h2>
+            <p className="hsg-sub">
+              Every Medicare-certified hospice in the country, indexed by state. Pick yours to see the full provider list with quality scores, family-experience ratings, and patterns flagged for review.
+            </p>
+            <div className="hsg-grid">
+              {(summary?.by_state || [])
+                .slice()
+                .sort((a, b) => (STATE_NAME[a.state] || a.state).localeCompare(STATE_NAME[b.state] || b.state))
+                .map((row) => (
+                  <Link
+                    key={row.state}
+                    to={`/hospice/state/${row.state}`}
+                    className="hsg-link"
+                  >
+                    <span>{STATE_NAME[row.state] || row.state}</span>
+                    <span className="hsg-link-count">{Number(row.count || 0).toLocaleString()}</span>
+                  </Link>
+                ))}
+            </div>
+          </div>
+        </section>
+
         {/* ANALYST LINK */}
         <section className="hl-section" style={{ paddingTop: 16 }}>
           <div className="hl-section-inner">
@@ -419,6 +518,28 @@ export default function HospicePage() {
               </div>
               <Link to="/hospice/news" className="hl-btn hl-btn-primary">
                 Open the national feed →
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* CHAIN ROLLUPS */}
+        <section className="hl-section" style={{ paddingTop: 8 }}>
+          <div className="hl-section-inner">
+            <div className="hl-analyst-link">
+              <div>
+                <div className="hl-section-eyebrow" style={{ marginBottom: 6 }}>
+                  // for investigators, AGs, journalists
+                </div>
+                <h4>Hospice chain rollups</h4>
+                <p>
+                  Operators with multiple Medicare-certified locations under common disclosed
+                  ownership. Aggregated CMS quality, family-experience, and pattern-flag metrics.
+                  Sourced from CMS hospice owners disclosure (Oct 2025).
+                </p>
+              </div>
+              <Link to="/hospice/chains" className="hl-btn hl-btn-primary">
+                View chain rollups →
               </Link>
             </div>
           </div>

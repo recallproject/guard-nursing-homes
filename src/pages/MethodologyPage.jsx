@@ -901,11 +901,11 @@ export function MethodologyPage() {
             <h2>Data Freshness</h2>
             <div className="methodology-freshness-row">
               <div className="methodology-freshness-card">
-                <div className="methodology-freshness-big">Feb 2026</div>
+                <div className="methodology-freshness-big">Apr 2026</div>
                 <div className="methodology-freshness-sub">Current data version</div>
               </div>
               <div className="methodology-freshness-card">
-                <div className="methodology-freshness-big">Mar 2</div>
+                <div className="methodology-freshness-big">May 3</div>
                 <div className="methodology-freshness-sub">Last downloaded</div>
               </div>
               <div className="methodology-freshness-card">
@@ -913,7 +913,7 @@ export function MethodologyPage() {
                 <div className="methodology-freshness-sub">CMS datasets integrated</div>
               </div>
               <div className="methodology-freshness-card">
-                <div className="methodology-freshness-big">~Apr 2026</div>
+                <div className="methodology-freshness-big">~Jul 2026</div>
                 <div className="methodology-freshness-sub">Next CMS refresh</div>
               </div>
             </div>

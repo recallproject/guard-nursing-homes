@@ -1,0 +1,71 @@
+{
+  "chain_name": "MARGARET MARY COMMUNITY HOSPITAL INC",
+  "chain_slug": "margaret-mary-community-hospital-inc",
+  "norm_key": "margaret mary community hospital",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "IN"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 89,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 50,
+  "oldest_association": "1995-08-11",
+  "newest_association": "2024-11-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 5.25,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "151551",
+      "name": "MARGARET MARY HEALTH HOSPICE",
+      "city": "BATESVILLE",
+      "state": "IN",
+      "zip": "47006",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151547",
+      "name": "SUBURBAN HOSPICE, INC",
+      "city": "NOBLESVILLE",
+      "state": "IN",
+      "zip": "46060",
+      "ownership_type": "Government",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "MARGARET MARY COMMUNITY HOSPITAL INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

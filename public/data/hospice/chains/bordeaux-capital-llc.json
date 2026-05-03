@@ -1,0 +1,91 @@
+{
+  "chain_name": "BORDEAUX CAPITAL, LLC",
+  "chain_slug": "bordeaux-capital-llc",
+  "norm_key": "bordeaux capital",
+  "facility_count": 3,
+  "state_count": 2,
+  "states": [
+    "AZ",
+    "TX"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8.33,
+  "avg_cahps_overall": 84.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2022-09-27",
+  "newest_association": "2025-02-14",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 1,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 49.17,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "031665",
+      "name": "AMERICAN PREMIER HOSPICE, LLC",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "85029",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671548",
+      "name": "BELLA HOSPICE OF TEXAS",
+      "city": "MESQUITE",
+      "state": "TX",
+      "zip": "75150",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971635",
+      "name": "SPARROW HOSPICE",
+      "city": " FARMERS BRANCH",
+      "state": "TX",
+      "zip": "75234",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "BORDEAUX CAPITAL, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

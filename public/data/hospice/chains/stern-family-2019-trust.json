@@ -1,0 +1,271 @@
+{
+  "chain_name": "STERN FAMILY 2019 TRUST",
+  "chain_slug": "stern-family-2019-trust",
+  "norm_key": "stern family 2019 trust",
+  "facility_count": 12,
+  "state_count": 11,
+  "states": [
+    "DC",
+    "IN",
+    "ME",
+    "MO",
+    "NJ",
+    "OH",
+    "OK",
+    "PA",
+    "TN",
+    "VA",
+    "WA"
+  ],
+  "avg_cms_rating": 4.58,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 75,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 25,
+  "oldest_association": "2020-10-13",
+  "newest_association": "2025-06-17",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 80.38,
+  "member_count": 12,
+  "members": [
+    {
+      "ccn": "091508",
+      "name": "AFFINITY CARE OF DC LLC",
+      "city": "WASHINGTON",
+      "state": "DC",
+      "zip": "20018",
+      "ownership_type": null,
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151645",
+      "name": "AFFINITY CARE OF INDIANA, LLC",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46254",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201524",
+      "name": "AFFINITY CARE OF MAINE, LLC",
+      "city": "SOUTH PORTLAND",
+      "state": "ME",
+      "zip": "04106",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261609",
+      "name": "ONE COMMUNITY HOSPICE",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "zip": "64139",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311591",
+      "name": "AFFINITY CARE OF NJ, LLC",
+      "city": "BRICK",
+      "state": "NJ",
+      "zip": "08723",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361725",
+      "name": "AFFINITY CARE OF NORTHERN OHIO LLC",
+      "city": "MUNROE FALLS",
+      "state": "OH",
+      "zip": "44262",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 61,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371733",
+      "name": "AFFINITY CARE OF OKLAHOMA LLC",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73118",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "731501",
+      "name": "AFFINITY CARE OF PENNSYLVANIA LLC",
+      "city": "TREVOSE",
+      "state": "PA",
+      "zip": "19053",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 62,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441606",
+      "name": "SHALOM HOSPICE, LLC",
+      "city": "BRENTWOOD",
+      "state": "TN",
+      "zip": "37207",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491637",
+      "name": "AFFINITY CARE OF VIRGINIA LLC",
+      "city": "NEWPORT NEWS",
+      "state": "VA",
+      "zip": "23606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501549",
+      "name": "CONTINUUM CARE OF KING LLC",
+      "city": "TUKWILA",
+      "state": "WA",
+      "zip": "98168",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501545",
+      "name": "CONTINUUM CARE OF SNOHOMISH, LLC",
+      "city": "LYNNWOOD",
+      "state": "WA",
+      "zip": "98036",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "STERN FAMILY 2019 TRUST"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

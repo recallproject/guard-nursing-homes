@@ -1,0 +1,71 @@
+{
+  "chain_name": "UNIVERSITY HEALTH SYSTEM, INC.",
+  "chain_slug": "university-health-system-inc",
+  "norm_key": "university health system",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "TN"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 85.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2007-05-01",
+  "newest_association": "2008-07-31",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 33,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "441547",
+      "name": "UNIVERSITY OF TN MEDICAL CENTER HOME CARE SERVICES",
+      "city": "KNOXVILLE",
+      "state": "TN",
+      "zip": "37917",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441578",
+      "name": "UNIVERSITY OF TN MEDICAL CENTER HOME CARE SERVICES",
+      "city": "MORRISTOWN",
+      "state": "TN",
+      "zip": "37814",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "UNIVERSITY HEALTH SYSTEM, INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

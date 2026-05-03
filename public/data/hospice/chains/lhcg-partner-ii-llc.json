@@ -1,0 +1,129 @@
+{
+  "chain_name": "LHCG PARTNER II LLC",
+  "chain_slug": "lhcg-partner-ii-llc",
+  "norm_key": "lhcg partner ii",
+  "facility_count": 5,
+  "state_count": 2,
+  "states": [
+    "LA",
+    "TX"
+  ],
+  "avg_cms_rating": 4.8,
+  "avg_hci_composite": 9.2,
+  "avg_cahps_overall": 72.4,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 60,
+  "oldest_association": "2017-09-01",
+  "newest_association": "2020-11-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 60,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "191504",
+      "name": "CHRISTUS HOSPICE SHREVEPORT-BOSSIER",
+      "city": "SHREVEPORT",
+      "state": "LA",
+      "zip": "71106",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 67,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191519",
+      "name": "CHRISTUS HOSPICE ST FRANCES CABRINI",
+      "city": "ALEXANDRIA",
+      "state": "LA",
+      "zip": "71303",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451548",
+      "name": "CHRISTUS HOSPICE -  CENTRAL TEXAS",
+      "city": "SAN MARCOS",
+      "state": "TX",
+      "zip": "78666",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451502",
+      "name": "CHRISTUS HOSPICE AND PALLIATIVE CARE SPOHN",
+      "city": "CORPUS CHRISTI",
+      "state": "TX",
+      "zip": "78411",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451514",
+      "name": "CHRISTUS VNA HOSPICE SAN ANTONIO",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78240",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "LHCG PARTNER II LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

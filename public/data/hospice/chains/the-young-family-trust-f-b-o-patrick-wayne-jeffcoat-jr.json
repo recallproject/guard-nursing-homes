@@ -1,0 +1,379 @@
+{
+  "chain_name": "THE YOUNG FAMILY TRUST F/B/O PATRICK WAYNE JEFFCOAT, JR.",
+  "chain_slug": "the-young-family-trust-f-b-o-patrick-wayne-jeffcoat-jr",
+  "norm_key": "the young family trust f b o patrick wayne jeffcoat jr",
+  "facility_count": 18,
+  "state_count": 5,
+  "states": [
+    "GA",
+    "NC",
+    "PA",
+    "SC",
+    "VA"
+  ],
+  "avg_cms_rating": 4.67,
+  "avg_hci_composite": 9.28,
+  "avg_cahps_overall": 77.87,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2020-12-07",
+  "newest_association": "2020-12-07",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 18,
+  "members": [
+    {
+      "ccn": "111626",
+      "name": "MEDICAL SERVICES OF AMERICA HOSPICE",
+      "city": "AUGUSTA",
+      "state": "GA",
+      "zip": "30909",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341559",
+      "name": "ALBEMARLE HOME CARE AND HOSPICE",
+      "city": "ELIZABETH CITY",
+      "state": "NC",
+      "zip": "27909",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341539",
+      "name": "MEDI HOME HEALTH AND HOSPICE",
+      "city": "BOONE",
+      "state": "NC",
+      "zip": "28607",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341563",
+      "name": "MEDI HOME HEALTH AND HOSPICE",
+      "city": "ROXBORO",
+      "state": "NC",
+      "zip": "27573",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 65,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341533",
+      "name": "MEDI HOME HOSPICE",
+      "city": "NEWLAND",
+      "state": "NC",
+      "zip": "28657",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341600",
+      "name": "MEDI HOME HOSPICE",
+      "city": "SAINT PAULS ",
+      "state": "NC",
+      "zip": "28384",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391634",
+      "name": "MEDI HOME HOSPICE",
+      "city": "PITTSBURGH",
+      "state": "PA",
+      "zip": "15235",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391696",
+      "name": "MEDI HOME HOSPICE",
+      "city": "STATE COLLEGE",
+      "state": "PA",
+      "zip": "16803",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421547",
+      "name": "MEDICAL SERVICES OF AMERICA  HOSPICE - COASTAL",
+      "city": "MYRTLE BEACH",
+      "state": "SC",
+      "zip": "29577",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421560",
+      "name": "MEDICAL SERVICES OF AMERICA HOSPICE OF THE LOWCOUN",
+      "city": "RIDGELAND",
+      "state": "SC",
+      "zip": "29936",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421554",
+      "name": "MEDICAL SERVICES OF AMERICA HOSPICE OF THE UPSTATE",
+      "city": "GREENVILLE",
+      "state": "SC",
+      "zip": "29615",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421531",
+      "name": "MEDICAL SERVICES OF AMERICA HOSPICE-COLUMBIA",
+      "city": "COLUMBIA",
+      "state": "SC",
+      "zip": "29201",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491571",
+      "name": "MEDI HOME HEALTH & HOSPICE",
+      "city": "FREDERICKSBURG",
+      "state": "VA",
+      "zip": "22407",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491586",
+      "name": "MEDI HOME HEALTH AND HOSPICE -  PULASKI",
+      "city": "PULASKI",
+      "state": "VA",
+      "zip": "24301",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491576",
+      "name": "MEDI HOME HEALTH AND HOSPICE - CHESAPEAKE",
+      "city": "CHESAPEAKE",
+      "state": "VA",
+      "zip": "23320",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491574",
+      "name": "MEDI HOME HEALTH AND HOSPICE - ROANOKE",
+      "city": "ROANOKE",
+      "state": "VA",
+      "zip": "24014",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491579",
+      "name": "MEDI HOME HOSPICE - RICHMOND",
+      "city": "GLEN ALLEN",
+      "state": "VA",
+      "zip": "23060",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491557",
+      "name": "MEDICAL SERVICES OF AMERICA HOME HEALTH & HOSPICE",
+      "city": "RICHLANDS",
+      "state": "VA",
+      "zip": "24641",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THE YOUNG FAMILY TRUST F/B/O PATRICK WAYNE JEFFCOAT, JR."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.453Z"
+}

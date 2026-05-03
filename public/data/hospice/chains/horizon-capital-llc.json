@@ -1,0 +1,109 @@
+{
+  "chain_name": "HORIZON CAPITAL LLC",
+  "chain_slug": "horizon-capital-llc",
+  "norm_key": "horizon capital",
+  "facility_count": 4,
+  "state_count": 1,
+  "states": [
+    "MO"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8.25,
+  "avg_cahps_overall": 80.33,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2004-03-08",
+  "newest_association": "2014-07-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 25,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "261603",
+      "name": "PREFERRED HOSPICE OF MISSOURI",
+      "city": "FARMINGTON",
+      "state": "MO",
+      "zip": "63640",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261610",
+      "name": "PREFERRED HOSPICE OF MISSOURI (NORTHEAST), LLC",
+      "city": "BALLWIN",
+      "state": "MO",
+      "zip": "63011",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261635",
+      "name": "PREFERRED HOSPICE OF MISSOURI (SOUTHWEST), LLC",
+      "city": "OZARK",
+      "state": "MO",
+      "zip": "65721",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261578",
+      "name": "REGIONAL HOSPICE",
+      "city": "SPRINGFIELD",
+      "state": "MO",
+      "zip": "65802",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HORIZON CAPITAL LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.453Z"
+}

@@ -1,0 +1,148 @@
+{
+  "chain_name": "EMPYREAN HOSPICE, LLC",
+  "chain_slug": "empyrean-hospice-llc",
+  "norm_key": "empyrean hospice",
+  "facility_count": 6,
+  "state_count": 2,
+  "states": [
+    "GA",
+    "SC"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8,
+  "avg_cahps_overall": 76,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 50,
+  "oldest_association": "2023-06-01",
+  "newest_association": "2023-06-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "851593",
+      "name": "EMPYREAN HOSPICE OF GEORGIA, LLC-(ADEL)",
+      "city": "ADEL",
+      "state": "GA",
+      "zip": "31620",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851584",
+      "name": "EMPYREAN HOSPICE OF GEORGIA, LLC-(ATHENS)",
+      "city": "ATHENS 706-229-6944",
+      "state": "GA",
+      "zip": "30606",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851586",
+      "name": "EMPYREAN HOSPICE OF GEORGIA, LLC-(AUGUSTA)",
+      "city": "AUGUSTA",
+      "state": "GA",
+      "zip": "30909",
+      "ownership_type": null,
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851589",
+      "name": "EMPYREAN HOSPICE OF GEORGIA, LLC-(COLUMBUS)",
+      "city": "COLUMBUS ",
+      "state": "GA",
+      "zip": "31904",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851590",
+      "name": "EMPYREAN HOSPICE OF GEORGIA, LLC-(NEWNAN)",
+      "city": "NEWNAN",
+      "state": "GA",
+      "zip": "30265",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421648",
+      "name": "EMPYREAN HOSPICE OF SOUTH CAROLINA",
+      "city": "AIKEN ",
+      "state": "SC",
+      "zip": "29803",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "EMPYREAN HOSPICE, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

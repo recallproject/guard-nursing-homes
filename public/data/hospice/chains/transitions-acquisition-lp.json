@@ -1,0 +1,227 @@
+{
+  "chain_name": "TRANSITIONS ACQUISITION LP",
+  "chain_slug": "transitions-acquisition-lp",
+  "norm_key": "transitions acquisition",
+  "facility_count": 10,
+  "state_count": 5,
+  "states": [
+    "IL",
+    "IN",
+    "MI",
+    "OH",
+    "PA"
+  ],
+  "avg_cms_rating": 4.6,
+  "avg_hci_composite": 8.9,
+  "avg_cahps_overall": 81.88,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 20,
+  "oldest_association": "2020-12-31",
+  "newest_association": "2022-12-10",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 57.48,
+  "member_count": 10,
+  "members": [
+    {
+      "ccn": "141704",
+      "name": "HAVEN HOSPICE IL, LLC",
+      "city": "CHRISMAN",
+      "state": "IL",
+      "zip": "61924",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141702",
+      "name": "TRANSITIONS HOSPICE CENTRAL ILLINOIS LLC",
+      "city": "CHAMPAIGN",
+      "state": "IL",
+      "zip": "61822",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141626",
+      "name": "TRANSITIONS HOSPICE, LLC",
+      "city": "ELK GROVE VILLAGE",
+      "state": "IL",
+      "zip": "60007",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151653",
+      "name": "TRANSITIONS CROWN POINT, LLC",
+      "city": "CROWN POINT",
+      "state": "IN",
+      "zip": "46307",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151652",
+      "name": "TRANSITIONS FORT WAYNE, LLC",
+      "city": "FORT WAYNE",
+      "state": "IN",
+      "zip": "46825",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151621",
+      "name": "TRANSITIONS INDIANA, LLC",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46240",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231652",
+      "name": "TRANSITIONS HOSPICE",
+      "city": "OXFORD",
+      "state": "MI",
+      "zip": "48371",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231672",
+      "name": "TRANSITIONS HOSPICE",
+      "city": "BAY CITY",
+      "state": "MI",
+      "zip": "48706",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361730",
+      "name": "TRANSITIONS OHIO II LLC",
+      "city": "WORTHINGTON",
+      "state": "OH",
+      "zip": "43085",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391769",
+      "name": "TRANSITIONS HOSPICE",
+      "city": "PITTSBURGH",
+      "state": "PA",
+      "zip": "15205",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "TRANSITIONS ACQUISITION LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

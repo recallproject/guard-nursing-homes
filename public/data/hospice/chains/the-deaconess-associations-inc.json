@@ -1,0 +1,72 @@
+{
+  "chain_name": "THE DEACONESS ASSOCIATIONS INC",
+  "chain_slug": "the-deaconess-associations-inc",
+  "norm_key": "the deaconess associations",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "OH",
+    "TX"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 92,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2020-06-27",
+  "newest_association": "2022-12-31",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 62.5,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "361689",
+      "name": "SUMMIT HOSPICE",
+      "city": "COLUMBUS",
+      "state": "OH",
+      "zip": "43219",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 92,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971650",
+      "name": "CALVERT HOSPICE LLC",
+      "city": "LUBBOCK",
+      "state": "TX",
+      "zip": "79424",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 92,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THE DEACONESS ASSOCIATIONS INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

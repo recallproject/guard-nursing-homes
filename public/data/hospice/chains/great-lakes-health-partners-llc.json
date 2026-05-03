@@ -1,0 +1,71 @@
+{
+  "chain_name": "GREAT LAKES HEALTH PARTNERS LLC",
+  "chain_slug": "great-lakes-health-partners-llc",
+  "norm_key": "great lakes health partners",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "WI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 76.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2020-03-16",
+  "newest_association": "2022-04-18",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "521597",
+      "name": "INTERIM HEALTHCARE HOSPICE OF WESTERN WISCONSIN",
+      "city": "EAU CLAIRE",
+      "state": "WI",
+      "zip": "54701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521594",
+      "name": "INTERIM HOSPICE AND PALLIATIVE CARE",
+      "city": "WAUSAU",
+      "state": "WI",
+      "zip": "54401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "GREAT LAKES HEALTH PARTNERS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

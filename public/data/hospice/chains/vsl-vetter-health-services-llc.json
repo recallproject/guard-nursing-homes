@@ -1,0 +1,90 @@
+{
+  "chain_name": "VSL VETTER HEALTH SERVICES LLC",
+  "chain_slug": "vsl-vetter-health-services-llc",
+  "norm_key": "vsl vetter health services",
+  "facility_count": 3,
+  "state_count": 1,
+  "states": [
+    "NE"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 83.67,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2022-05-12",
+  "newest_association": "2023-09-19",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": true,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 3,
+  "avg_disclosed_ownership_pct": null,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "281533",
+      "name": "BROOKESTONE HOME HEALTH & HOSPICE",
+      "city": "KEARNEY",
+      "state": "NE",
+      "zip": "68845",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281515",
+      "name": "BROOKESTONE HOME HEALTH & HOSPICE",
+      "city": "NORTH PLATTE",
+      "state": "NE",
+      "zip": "69101",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281506",
+      "name": "BROOKESTONE HOME HEALTH & HOSPICE",
+      "city": "GERING",
+      "state": "NE",
+      "zip": "69341",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "VSL VETTER HEALTH SERVICES LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

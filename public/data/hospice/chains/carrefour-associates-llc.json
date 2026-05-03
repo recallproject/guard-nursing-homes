@@ -1,0 +1,169 @@
+{
+  "chain_name": "CARREFOUR ASSOCIATES, LLC",
+  "chain_slug": "carrefour-associates-llc",
+  "norm_key": "carrefour associates",
+  "facility_count": 7,
+  "state_count": 4,
+  "states": [
+    "GA",
+    "KS",
+    "OH",
+    "TN"
+  ],
+  "avg_cms_rating": 4.86,
+  "avg_hci_composite": 9.14,
+  "avg_cahps_overall": 80,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 14.3,
+  "oldest_association": "1990-01-01",
+  "newest_association": "2010-10-26",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 7,
+  "members": [
+    {
+      "ccn": "111607",
+      "name": "CROSSROADS HOSPICE OF ATLANTA, LLC",
+      "city": "TUCKER",
+      "state": "GA",
+      "zip": "30084",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171578",
+      "name": "CROSSROADS HOSPICE",
+      "city": "LENEXA",
+      "state": "KS",
+      "zip": "66219",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361614",
+      "name": "CROSSROADS HOSPICE OF CINCINNATI, LLC",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45242",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361656",
+      "name": "CROSSROADS HOSPICE OF CLEVELAND, LLC",
+      "city": "VALLEY VIEW",
+      "state": "OH",
+      "zip": "44125",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361654",
+      "name": "CROSSROADS HOSPICE OF DAYTON, LLC",
+      "city": "DAYTON",
+      "state": "OH",
+      "zip": "45458",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361625",
+      "name": "CROSSROADS HOSPICE OF NORTHEAST OHIO, LLC",
+      "city": "UNIONTOWN",
+      "state": "OH",
+      "zip": "44685",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441573",
+      "name": "CROSSROADS HOSPICE OF TENNESSE",
+      "city": "MEMPHIS",
+      "state": "TN",
+      "zip": "38134",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CARREFOUR ASSOCIATES, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.455Z"
+}

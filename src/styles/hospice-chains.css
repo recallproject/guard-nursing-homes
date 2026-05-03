@@ -1,0 +1,386 @@
+/* Hospice chain rollups — list page (.hospice-chains) and detail (.hospice-chain-detail).
+   Same palette + fonts as the rest of the hospice section (light theme,
+   navy/blue/amber on #EDF1F7, Source Serif 4 + Plus Jakarta Sans + JetBrains Mono).
+*/
+
+.hospice-chains,
+.hospice-chain-detail {
+  --hl-navy: #1D3557;
+  --hl-primary: #2B6CB0;
+  --hl-primary-dark: #1D4E7E;
+  --hl-amber: #D97706;
+  --hl-teal: #0D9488;
+  --hl-green: #059669;
+  --hl-red: #DC2626;
+  --hl-bg: #EDF1F7;
+  --hl-bg-light: #F8FAFC;
+  --hl-bg-card: #FFFFFF;
+  --hl-bg-elevated: #F0F4F8;
+  --hl-text: #334155;
+  --hl-muted: #64748B;
+  --hl-light-muted: #94A3B8;
+  --hl-border: #D7E0EA;
+  --hl-border-subtle: #E8EDF2;
+  --hl-radius: 8px;
+  --hl-radius-lg: 12px;
+  --hl-shadow-sm: 0 1px 2px rgba(0,0,0,.04), 0 2px 6px rgba(29,53,87,.04);
+  --hl-shadow-md: 0 1px 3px rgba(0,0,0,.05), 0 6px 16px rgba(29,53,87,.07);
+
+  background: var(--hl-bg);
+  color: var(--hl-text);
+  font-family: "Plus Jakarta Sans", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 96px 24px 64px;
+}
+.hospice-chains *,
+.hospice-chain-detail *,
+.hospice-chains *::before,
+.hospice-chain-detail *::before,
+.hospice-chains *::after,
+.hospice-chain-detail *::after { box-sizing: border-box; }
+
+.hospice-chains a,
+.hospice-chain-detail a { color: var(--hl-primary); text-decoration: none; }
+.hospice-chains a:hover,
+.hospice-chain-detail a:hover { text-decoration: underline; }
+
+.hospice-chains .hc-inner,
+.hospice-chain-detail .hc-inner {
+  max-width: 1200px; margin: 0 auto;
+}
+
+/* breadcrumb */
+.hospice-chain-detail .hc-crumb {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--hl-muted);
+  margin-bottom: 18px; letter-spacing: 0.02em;
+}
+.hospice-chain-detail .hc-crumb a { color: var(--hl-muted); }
+.hospice-chain-detail .hc-crumb a:hover { color: var(--hl-primary); }
+.hospice-chain-detail .hc-crumb-sep { margin: 0 8px; color: var(--hl-light-muted); }
+
+/* hero / page header */
+.hospice-chains .hc-head,
+.hospice-chain-detail .hc-head {
+  margin-bottom: 24px;
+}
+.hospice-chains .hc-eyebrow,
+.hospice-chain-detail .hc-eyebrow {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.16em; color: var(--hl-primary);
+  margin-bottom: 10px;
+}
+.hospice-chains .hc-title,
+.hospice-chain-detail .hc-title {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: clamp(28px, 4.4vw, 44px);
+  font-weight: 700; color: var(--hl-navy);
+  letter-spacing: -0.01em; line-height: 1.1;
+  margin: 0 0 10px;
+}
+.hospice-chains .hc-sub,
+.hospice-chain-detail .hc-sub {
+  font-size: 16px; color: var(--hl-muted);
+  max-width: 760px; line-height: 1.5;
+  margin: 0 0 6px;
+}
+
+/* stats cards */
+.hospice-chains .hc-stats,
+.hospice-chain-detail .hc-stats {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin: 22px 0 28px;
+}
+.hospice-chains .hc-stat,
+.hospice-chain-detail .hc-stat {
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  padding: 16px 18px;
+  box-shadow: var(--hl-shadow-sm);
+}
+.hospice-chains .hc-stat-label,
+.hospice-chain-detail .hc-stat-label {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--hl-muted);
+  margin-bottom: 6px;
+}
+.hospice-chains .hc-stat-value,
+.hospice-chain-detail .hc-stat-value {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 26px; font-weight: 700; color: var(--hl-navy);
+}
+
+/* controls */
+.hospice-chains .hc-controls {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  align-items: center; margin: 18px 0 14px;
+}
+.hospice-chains .hc-search {
+  flex: 1 1 280px; min-width: 240px;
+}
+.hospice-chains .hc-search input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  color: var(--hl-text);
+  font-size: 14px; font-family: inherit;
+  transition: border-color 120ms ease;
+}
+.hospice-chains .hc-search input:focus {
+  outline: none; border-color: var(--hl-primary);
+  box-shadow: 0 0 0 3px rgba(43,108,176,0.12);
+}
+.hospice-chains .hc-sortgroup {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--hl-muted);
+}
+.hospice-chains .hc-sortgroup select {
+  padding: 8px 10px;
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  color: var(--hl-text); font-size: 13px;
+  font-family: inherit;
+}
+.hospice-chains .hc-count {
+  margin-left: auto;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--hl-muted);
+}
+
+/* table */
+.hospice-chains .hc-table-wrap {
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  overflow: hidden;
+  box-shadow: var(--hl-shadow-sm);
+}
+.hospice-chains .hc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.hospice-chains .hc-table thead th {
+  background: var(--hl-bg-elevated);
+  color: var(--hl-navy);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--hl-border);
+  white-space: nowrap;
+}
+.hospice-chains .hc-table tbody td {
+  padding: 12px 14px;
+  border-top: 1px solid var(--hl-border-subtle);
+  vertical-align: middle;
+}
+.hospice-chains .hc-row { transition: background 100ms ease; }
+.hospice-chains .hc-row:hover { background: var(--hl-bg-elevated); cursor: pointer; }
+.hospice-chains .hc-row .hc-name a {
+  font-weight: 600; color: var(--hl-navy);
+}
+.hospice-chains .hc-row .hc-name a:hover { color: var(--hl-primary); }
+.hospice-chains .hc-num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.hospice-chains .hc-rank {
+  width: 48px; color: var(--hl-light-muted);
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.hospice-chains .hc-flag-pill,
+.hospice-chain-detail .hc-flag-pill {
+  display: inline-block; padding: 2px 8px;
+  border-radius: 999px; font-size: 11px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  background: rgba(217, 119, 6, 0.10);
+  color: var(--hl-amber);
+  border: 1px solid rgba(217, 119, 6, 0.30);
+  margin-left: 6px;
+}
+.hospice-chains .hc-flag-pill.hc-pe,
+.hospice-chain-detail .hc-flag-pill.hc-pe { background: rgba(43,108,176,.08); color: var(--hl-primary); border-color: rgba(43,108,176,.24); }
+.hospice-chains .hc-flag-pill.hc-reit,
+.hospice-chain-detail .hc-flag-pill.hc-reit { background: rgba(13,148,136,.08); color: var(--hl-teal); border-color: rgba(13,148,136,.24); }
+
+/* loading / empty / error */
+.hospice-chains .hc-state,
+.hospice-chain-detail .hc-state {
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--hl-muted);
+}
+.hospice-chains .hc-state h2,
+.hospice-chain-detail .hc-state h2 {
+  color: var(--hl-navy);
+  font-family: "Source Serif 4", Georgia, serif;
+  margin: 0 0 8px;
+}
+
+/* pagination */
+.hospice-chains .hc-pager {
+  display: flex; gap: 12px; align-items: center;
+  justify-content: center;
+  margin: 18px 0;
+}
+.hospice-chains .hc-pager button {
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius);
+  padding: 8px 14px; cursor: pointer;
+  font-family: inherit; font-size: 13px;
+  color: var(--hl-text);
+}
+.hospice-chains .hc-pager button:hover:not(:disabled) {
+  border-color: var(--hl-primary); color: var(--hl-primary);
+}
+.hospice-chains .hc-pager button:disabled {
+  opacity: 0.4; cursor: not-allowed;
+}
+.hospice-chains .hc-pager-info {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 12px; color: var(--hl-muted);
+}
+
+/* detail page */
+.hospice-chain-detail .hc-pills {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.hospice-chain-detail .hc-section {
+  background: var(--hl-bg-card);
+  border: 1px solid var(--hl-border);
+  border-radius: var(--hl-radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--hl-shadow-sm);
+}
+.hospice-chain-detail .hc-section-title {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--hl-navy);
+  margin: 0 0 14px;
+}
+.hospice-chain-detail .hc-meta-grid {
+  display: grid; gap: 10px 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  font-size: 14px;
+}
+.hospice-chain-detail .hc-meta-row {
+  display: flex; justify-content: space-between;
+  padding: 6px 0; border-bottom: 1px solid var(--hl-border-subtle);
+}
+.hospice-chain-detail .hc-meta-row span:first-child { color: var(--hl-muted); }
+.hospice-chain-detail .hc-meta-row span:last-child {
+  color: var(--hl-navy); font-weight: 600;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.hospice-chain-detail .hc-state-list {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 8px;
+}
+.hospice-chain-detail .hc-state-chip {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px; padding: 3px 8px;
+  background: var(--hl-bg-elevated);
+  border: 1px solid var(--hl-border);
+  border-radius: 999px;
+  color: var(--hl-navy);
+  letter-spacing: 0.04em;
+}
+
+/* member list table */
+.hospice-chain-detail .hc-members-wrap {
+  overflow-x: auto;
+}
+.hospice-chain-detail .hc-members-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px;
+}
+.hospice-chain-detail .hc-members-table thead th {
+  background: var(--hl-bg-elevated);
+  color: var(--hl-navy);
+  font-weight: 600;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--hl-border);
+  cursor: pointer;
+  user-select: none;
+}
+.hospice-chain-detail .hc-members-table thead th:hover { color: var(--hl-primary); }
+.hospice-chain-detail .hc-members-table tbody td {
+  padding: 10px 12px;
+  border-top: 1px solid var(--hl-border-subtle);
+  vertical-align: middle;
+}
+.hospice-chain-detail .hc-members-table tbody tr:hover { background: var(--hl-bg-elevated); }
+.hospice-chain-detail .hc-members-table .hc-num {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  text-align: right; white-space: nowrap;
+}
+.hospice-chain-detail .hc-members-table .hc-name a { font-weight: 600; color: var(--hl-navy); }
+.hospice-chain-detail .hc-members-table .hc-name a:hover { color: var(--hl-primary); }
+
+.hospice-chain-detail .hc-source-foot {
+  margin-top: 18px;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--hl-muted);
+  line-height: 1.6;
+  text-align: left;
+  padding: 14px 16px;
+  background: var(--hl-bg-elevated);
+  border-radius: var(--hl-radius);
+  border: 1px solid var(--hl-border-subtle);
+}
+
+.hospice-chains .hc-source-foot {
+  margin: 22px 0;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--hl-muted);
+  line-height: 1.6;
+  padding: 14px 16px;
+  background: var(--hl-bg-elevated);
+  border-radius: var(--hl-radius);
+  border: 1px solid var(--hl-border-subtle);
+}
+
+/* responsive */
+@media (max-width: 720px) {
+  .hospice-chains,
+  .hospice-chain-detail {
+    padding: 80px 12px 48px;
+  }
+  .hospice-chains .hc-table thead .hc-hide-mobile,
+  .hospice-chains .hc-table tbody .hc-hide-mobile,
+  .hospice-chain-detail .hc-members-table .hc-hide-mobile {
+    display: none;
+  }
+}

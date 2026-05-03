@@ -1,0 +1,71 @@
+{
+  "chain_name": "AMERICAN LIFE HEALTH SERVICES, LLC",
+  "chain_slug": "american-life-health-services-llc",
+  "norm_key": "american life health services",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "AZ"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8,
+  "avg_cahps_overall": 86,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2021-01-25",
+  "newest_association": "2021-02-26",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 98.33,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "031723",
+      "name": "ARIZONA LIFE HOSPICE - MOHAVE",
+      "city": "FORT MOHAVE",
+      "state": "AZ",
+      "zip": "86426",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031724",
+      "name": "ARIZONA LIFE HOSPICE – YAVAPAI",
+      "city": "PRESCOTT",
+      "state": "AZ",
+      "zip": "86305",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "AMERICAN LIFE HEALTH SERVICES, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

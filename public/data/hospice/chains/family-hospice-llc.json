@@ -1,0 +1,110 @@
+{
+  "chain_name": "FAMILY HOSPICE LLC",
+  "chain_slug": "family-hospice-llc",
+  "norm_key": "family hospice",
+  "facility_count": 4,
+  "state_count": 2,
+  "states": [
+    "GA",
+    "SC"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.25,
+  "avg_cahps_overall": 83,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 25,
+  "oldest_association": "2022-01-04",
+  "newest_association": "2023-09-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 4,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 85,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "111764",
+      "name": "FAMILY HOSPICE",
+      "city": "VILLA RICA",
+      "state": "GA",
+      "zip": "30180",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851550",
+      "name": "FAMILY HOSPICE",
+      "city": "MACON",
+      "state": "GA",
+      "zip": "31210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851521",
+      "name": "FAMILY HOSPICE, LLC",
+      "city": "ATHENS",
+      "state": "GA",
+      "zip": "30605",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421586",
+      "name": "FAMILY HOSPICE OF GREENVILLE LLC",
+      "city": "GREENVILLE",
+      "state": "SC",
+      "zip": "29605",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "FAMILY HOSPICE LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

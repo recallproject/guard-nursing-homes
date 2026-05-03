@@ -1,0 +1,71 @@
+{
+  "chain_name": "UNIVERSITY HEALTH SYSTEMS OF EASTERN CAROLINA, INC.",
+  "chain_slug": "university-health-systems-of-eastern-carolina-inc",
+  "norm_key": "university health systems of eastern carolina",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "NC"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 89,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 100,
+  "oldest_association": "1983-08-18",
+  "newest_association": "1998-11-24",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 1,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "341538",
+      "name": "ECU HEALTH HOME HEALTH AND HOSPICE ",
+      "city": "KENANSVILLE",
+      "state": "NC",
+      "zip": "28349",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341518",
+      "name": "VIDANT HOME HEALTH AND HOSPICE",
+      "city": "AHOSKIE",
+      "state": "NC",
+      "zip": "27910",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "UNIVERSITY HEALTH SYSTEMS OF EASTERN CAROLINA, INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

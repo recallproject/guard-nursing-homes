@@ -1,0 +1,109 @@
+{
+  "chain_name": "MISSOURI HEALTH CARE GROUP, LLC",
+  "chain_slug": "missouri-health-care-group-llc",
+  "norm_key": "missouri health care group",
+  "facility_count": 4,
+  "state_count": 1,
+  "states": [
+    "MO"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8.25,
+  "avg_cahps_overall": 82,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2010-01-01",
+  "newest_association": "2025-09-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 95,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "261611",
+      "name": "ACCESS HOSPICE CARE",
+      "city": "OZARK",
+      "state": "MO",
+      "zip": "65721",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261553",
+      "name": "CENTRAL MISSOURI HOSPICE",
+      "city": "JEFFERSON CITY",
+      "state": "MO",
+      "zip": "65109",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261594",
+      "name": "COMMUNITY LOVING CARE HOSPICE",
+      "city": "WENTZVILLE",
+      "state": "MO",
+      "zip": "63385",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261636",
+      "name": "ELITE HOSPICE",
+      "city": "SIKESTON",
+      "state": "MO",
+      "zip": "63801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "MISSOURI HEALTH CARE GROUP, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

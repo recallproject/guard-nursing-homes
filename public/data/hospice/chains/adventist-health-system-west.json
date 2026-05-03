@@ -1,0 +1,167 @@
+{
+  "chain_name": "ADVENTIST HEALTH SYSTEM/WEST",
+  "chain_slug": "adventist-health-system-west",
+  "norm_key": "adventist health system west",
+  "facility_count": 7,
+  "state_count": 2,
+  "states": [
+    "CA",
+    "OR"
+  ],
+  "avg_cms_rating": 4.86,
+  "avg_hci_composite": 9.29,
+  "avg_cahps_overall": 80.6,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 28.6,
+  "oldest_association": "1983-05-06",
+  "newest_association": "2019-08-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 7,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 7,
+  "members": [
+    {
+      "ccn": "051649",
+      "name": "ADVENTIST HEALTH HOME CARE",
+      "city": "WILLITS",
+      "state": "CA",
+      "zip": "95490",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051670",
+      "name": "ADVENTIST HEALTH HOME CARE SERVICES",
+      "city": "HANFORD",
+      "state": "CA",
+      "zip": "93230",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A11719",
+      "name": "ADVENTIST HEALTH HOME CARE SERVICES",
+      "city": "BAKERSFIELD",
+      "state": "CA",
+      "zip": "93309",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051609",
+      "name": "ADVENTIST HEALTH HOME CARE SERVICES",
+      "city": "SONORA",
+      "state": "CA",
+      "zip": "95370",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 92,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "B51694",
+      "name": "ADVENTIST HEALTH HOME CARE SERVICES",
+      "city": "YUBA CITY",
+      "state": "CA",
+      "zip": "95991",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551635",
+      "name": "ADVENTIST HEALTH HOSPICE",
+      "city": "GLENDALE",
+      "state": "CA",
+      "zip": "91206",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381507",
+      "name": "ADVENTIST HEALTH HOSPICE",
+      "city": "PORTLAND",
+      "state": "OR",
+      "zip": "97230",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "ADVENTIST HEALTH SYSTEM/WEST"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

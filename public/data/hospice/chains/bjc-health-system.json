@@ -1,0 +1,111 @@
+{
+  "chain_name": "BJC HEALTH SYSTEM",
+  "chain_slug": "bjc-health-system",
+  "norm_key": "bjc health system",
+  "facility_count": 4,
+  "state_count": 3,
+  "states": [
+    "IL",
+    "KS",
+    "MO"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.75,
+  "avg_cahps_overall": 83.75,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 75,
+  "oldest_association": "1992-05-11",
+  "newest_association": "2024-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 3,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "141637",
+      "name": "BJC HOSPICE",
+      "city": "GLEN CARBON",
+      "state": "IL",
+      "zip": "62034",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "171509",
+      "name": "SAINT LUKE’S HOSPICE OF LEAVENWORTH, LLC",
+      "city": "LEAVENWORTH",
+      "state": "KS",
+      "zip": "66048",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261511",
+      "name": "BJC HOSPICE",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63141",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261506",
+      "name": "SAINT LUKE'S HOSPICE",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "zip": "64111",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "BJC HEALTH SYSTEM"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.454Z"
+}

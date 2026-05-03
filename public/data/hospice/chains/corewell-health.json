@@ -1,0 +1,90 @@
+{
+  "chain_name": "COREWELL HEALTH",
+  "chain_slug": "corewell-health",
+  "norm_key": "corewell health",
+  "facility_count": 3,
+  "state_count": 1,
+  "states": [
+    "MI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 80.5,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2006-10-10",
+  "newest_association": "2022-02-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 4,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "231685",
+      "name": "COREWELL HEALTH CHILDREN'S PATCH PROGRAM",
+      "city": "SOUTHFIELD",
+      "state": "MI",
+      "zip": "48033",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231544",
+      "name": "COREWELL HEALTH HOSPICE & PALLIATIVE CARE - WEST M",
+      "city": "GRAND RAPIDS ",
+      "state": "MI",
+      "zip": "49525",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231513",
+      "name": "HOSPICE AT HOME",
+      "city": "SAINT JOSEPH",
+      "state": "MI",
+      "zip": "49085",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "COREWELL HEALTH"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

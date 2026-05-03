@@ -1,0 +1,128 @@
+{
+  "chain_name": "HOSPICE OF MICHIGAN, INC.",
+  "chain_slug": "hospice-of-michigan-inc",
+  "norm_key": "hospice of michigan",
+  "facility_count": 5,
+  "state_count": 1,
+  "states": [
+    "MI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 82,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "1987-01-01",
+  "newest_association": "2024-02-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 5,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "231526",
+      "name": "ARBOR HOSPICE",
+      "city": "ANN ARBOR",
+      "state": "MI",
+      "zip": "48103",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231505",
+      "name": "CENTRICA CARE NAVIGATORS",
+      "city": "KALAMAZOO",
+      "state": "MI",
+      "zip": "49009",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231556",
+      "name": "HOSPICE OF MECOSTA COUNTY",
+      "city": "BIG RAPIDS",
+      "state": "MI",
+      "zip": "49307",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231501",
+      "name": "HOSPICE OF SOUTHEASTERN MICHIGAN",
+      "city": "SOUTHFIELD",
+      "state": "MI",
+      "zip": "48302",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231510",
+      "name": "HOSPICE OF WESTERN MICHIGAN",
+      "city": "ADA",
+      "state": "MI",
+      "zip": "49301",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HOSPICE OF MICHIGAN, INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

@@ -1,0 +1,148 @@
+{
+  "chain_name": "WELLS FARGO BANK",
+  "chain_slug": "wells-fargo-bank",
+  "norm_key": "wells fargo bank",
+  "facility_count": 6,
+  "state_count": 2,
+  "states": [
+    "IA",
+    "IL"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.67,
+  "avg_cahps_overall": 78,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 16.7,
+  "oldest_association": "1996-05-01",
+  "newest_association": "2022-02-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 5,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 17.35,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "161596",
+      "name": "CARE INITIATIVES HOSPICE - ALBIA",
+      "city": "ALBIA",
+      "state": "IA",
+      "zip": "52531",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161593",
+      "name": "CARE INITIATIVES HOSPICE - CEDAR FALLS",
+      "city": "CEDAR FALLS",
+      "state": "IA",
+      "zip": "50613",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161597",
+      "name": "CARE INITIATIVES HOSPICE - CEDAR RAPIDS",
+      "city": "CEDAR RAPIDS",
+      "state": "IA",
+      "zip": "52404",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161595",
+      "name": "CARE INITIATIVES HOSPICE - GREENFIELD",
+      "city": "GREENFIELD",
+      "state": "IA",
+      "zip": "50849",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161592",
+      "name": "CARE INITIATIVES HOSPICE - SIOUX CITY",
+      "city": "SIOUX CITY",
+      "state": "IA",
+      "zip": "51106",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141525",
+      "name": "JOURNEYCARE - BARRINGTON",
+      "city": "BARRINGTON",
+      "state": "IL",
+      "zip": "60010",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "WELLS FARGO BANK"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

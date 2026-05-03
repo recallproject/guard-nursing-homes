@@ -1,0 +1,71 @@
+{
+  "chain_name": "INTEGRIS HEALTH INC",
+  "chain_slug": "integris-health-inc",
+  "norm_key": "integris health",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "OK"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 86,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 50,
+  "oldest_association": "1994-07-01",
+  "newest_association": "2009-07-14",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "371549",
+      "name": "INTEGRIS HOSPICE HOUSE",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73134",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371586",
+      "name": "INTEGRIS HOSPICE NORTHEAST",
+      "city": "MIAMI",
+      "state": "OK",
+      "zip": "74355",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "INTEGRIS HEALTH INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

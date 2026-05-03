@@ -1,0 +1,147 @@
+{
+  "chain_name": "MICHIGAN MEDICAL COURIERS AND EXPRESS DELIVERY SERVICES, LLC",
+  "chain_slug": "michigan-medical-couriers-and-express-delivery-services-llc",
+  "norm_key": "michigan medical couriers and express delivery services",
+  "facility_count": 6,
+  "state_count": 1,
+  "states": [
+    "MI"
+  ],
+  "avg_cms_rating": 4.83,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 82.17,
+  "flagged_facility_count": 4,
+  "flagged_pattern_count": 5,
+  "flagged_pct": 66.7,
+  "oldest_association": "2020-03-06",
+  "newest_association": "2021-10-27",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "231678",
+      "name": "ALL AMERICAN HOSPICE CARE, LLC",
+      "city": "CHESTERFIELD TOWNSHIP",
+      "state": "MI",
+      "zip": "48047",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231625",
+      "name": "HEART TO HEART HOSPICE OF DETROIT, LLC",
+      "city": "BINGHAM FARMS",
+      "state": "MI",
+      "zip": "48025",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231617",
+      "name": "HEART TO HEART HOSPICE OF FLINT",
+      "city": "FLINT",
+      "state": "MI",
+      "zip": "48532",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231662",
+      "name": "HEART TO HEART HOSPICE OF LANSING, LLC",
+      "city": "EAST LANSING",
+      "state": "MI",
+      "zip": "48823",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231673",
+      "name": "HEART TO HEART HOSPICE OF MID MICHIGAN",
+      "city": "SAGINAW",
+      "state": "MI",
+      "zip": "48604",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231620",
+      "name": "HEART TO HEART HOSPICE OF SOUTHGATE, LLC",
+      "city": "SOUTHGATE",
+      "state": "MI",
+      "zip": "48195",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "MICHIGAN MEDICAL COURIERS AND EXPRESS DELIVERY SERVICES, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

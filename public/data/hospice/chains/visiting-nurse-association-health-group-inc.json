@@ -1,0 +1,110 @@
+{
+  "chain_name": "VISITING NURSE ASSOCIATION HEALTH GROUP INC",
+  "chain_slug": "visiting-nurse-association-health-group-inc",
+  "norm_key": "visiting nurse association health group",
+  "facility_count": 4,
+  "state_count": 2,
+  "states": [
+    "NJ",
+    "OH"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 75,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 50,
+  "oldest_association": "2011-10-21",
+  "newest_association": "2024-08-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 6,
+  "avg_disclosed_ownership_pct": 69.8,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "311507",
+      "name": "BARNABAS HEALTH HOME CARE AND HOSPICE",
+      "city": "WEST ORANGE",
+      "state": "NJ",
+      "zip": "07052",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311501",
+      "name": "ROBERT WOOD JOHNSON VISITING NURSE, INC",
+      "city": "NORTH BRUNSWICK",
+      "state": "NJ",
+      "zip": "08902",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311526",
+      "name": "VISITING NURSE ASSOCIATION OF ENGLEWOOD, INC",
+      "city": "ENGLEWOOD",
+      "state": "NJ",
+      "zip": "07631",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361547",
+      "name": "VISTING NURSE ASSOCIATION OF CLEVELAND HOSPICE",
+      "city": "BROOKLYN HEIGHTS",
+      "state": "OH",
+      "zip": "44131",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "VISITING NURSE ASSOCIATION HEALTH GROUP INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

@@ -1,0 +1,91 @@
+{
+  "chain_name": "WP RR GP, LLC",
+  "chain_slug": "wp-rr-gp-llc",
+  "norm_key": "wp rr gp",
+  "facility_count": 3,
+  "state_count": 2,
+  "states": [
+    "CA",
+    "TX"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 8.5,
+  "avg_cahps_overall": null,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 33.3,
+  "oldest_association": "2018-10-25",
+  "newest_association": "2021-04-30",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": null,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "551650",
+      "name": "ADVANCED HOME HEALTH AND HOSPICE, INC",
+      "city": "SACRAMENTO",
+      "state": "CA",
+      "zip": "95841",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971634",
+      "name": "ADVANCED HOSPICE OF TEXAS",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78230",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971660",
+      "name": "ADVANCED HOSPICE OF TEXAS",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78230",
+      "ownership_type": "Other",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "WP RR GP, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

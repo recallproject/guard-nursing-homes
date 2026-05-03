@@ -1,0 +1,129 @@
+{
+  "chain_name": "EAST ROCK GRANITE FUND, LP",
+  "chain_slug": "east-rock-granite-fund-lp",
+  "norm_key": "east rock granite fund",
+  "facility_count": 5,
+  "state_count": 2,
+  "states": [
+    "IN",
+    "UT"
+  ],
+  "avg_cms_rating": 4.6,
+  "avg_hci_composite": 8.6,
+  "avg_cahps_overall": 83.67,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 20,
+  "oldest_association": "2021-11-19",
+  "newest_association": "2023-12-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 5,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5.94,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "151615",
+      "name": "SELECT HOSPICE",
+      "city": "WEST LAFAYETTE",
+      "state": "IN",
+      "zip": "47906",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151659",
+      "name": "SELECT HOSPICE LLC",
+      "city": "CARMEL",
+      "state": "IN",
+      "zip": "46032",
+      "ownership_type": null,
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461541",
+      "name": "VALEO HOSPICE",
+      "city": "LAYTON",
+      "state": "UT",
+      "zip": "84041",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461604",
+      "name": "VALEO HOSPICE LLC",
+      "city": "MURRAY",
+      "state": "UT",
+      "zip": "84107",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461531",
+      "name": "VALEO HOSPICE OREM",
+      "city": "OREM",
+      "state": "UT",
+      "zip": "84058",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "EAST ROCK GRANITE FUND, LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.456Z"
+}

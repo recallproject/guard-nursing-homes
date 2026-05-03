@@ -1,0 +1,167 @@
+{
+  "chain_name": "CURO COMMUNITY HOSPICE, LLC",
+  "chain_slug": "curo-community-hospice-llc",
+  "norm_key": "curo community hospice",
+  "facility_count": 7,
+  "state_count": 2,
+  "states": [
+    "MO",
+    "NC"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.86,
+  "avg_cahps_overall": 81.67,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2012-03-22",
+  "newest_association": "2022-05-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 5,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 7,
+  "members": [
+    {
+      "ccn": "261701",
+      "name": "GENTIVA",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "zip": "64153",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341585",
+      "name": "COMMUNITY HOME CARE & HOSPICE",
+      "city": "ROANOKE RAPIDS",
+      "state": "NC",
+      "zip": "27870",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341589",
+      "name": "COMMUNITY HOME CARE OF VANCE COUNTY",
+      "city": "HENDERSON",
+      "state": "NC",
+      "zip": "27536",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341586",
+      "name": "COMMUNITY HOSPICE LLC",
+      "city": "NEW BERN",
+      "state": "NC",
+      "zip": "28562",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341576",
+      "name": "GENTIVA",
+      "city": "FAYETTEVILLE",
+      "state": "NC",
+      "zip": "28303",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341581",
+      "name": "KINDRED HOSPICE",
+      "city": "TARBORO",
+      "state": "NC",
+      "zip": "27886",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341506",
+      "name": "WAKE FOREST BAPTIST HEALTH CARE AT HOME HOSPICE-WI",
+      "city": "WILKESBORO",
+      "state": "NC",
+      "zip": "28697",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CURO COMMUNITY HOSPICE, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.455Z"
+}

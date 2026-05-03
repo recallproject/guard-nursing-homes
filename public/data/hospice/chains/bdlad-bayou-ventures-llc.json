@@ -1,0 +1,71 @@
+{
+  "chain_name": "BDLAD BAYOU VENTURES LLC",
+  "chain_slug": "bdlad-bayou-ventures-llc",
+  "norm_key": "bdlad bayou ventures",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "TX"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 84,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2021-02-26",
+  "newest_association": "2021-07-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 9.61,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "741716",
+      "name": "BAYOU CITY HOSPICE ",
+      "city": "SPRING",
+      "state": "TX",
+      "zip": "77379",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741697",
+      "name": "STAR CITY HOSPICE",
+      "city": "CARROLLTON",
+      "state": "TX",
+      "zip": "75007",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "BDLAD BAYOU VENTURES LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

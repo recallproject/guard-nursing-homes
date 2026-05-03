@@ -1,0 +1,325 @@
+{
+  "chain_name": "TENNESSEE HEALTH CARE GROUP LLC",
+  "chain_slug": "tennessee-health-care-group-llc",
+  "norm_key": "tennessee health care group",
+  "facility_count": 15,
+  "state_count": 8,
+  "states": [
+    "IL",
+    "MI",
+    "MN",
+    "MS",
+    "OH",
+    "OR",
+    "PA",
+    "TN"
+  ],
+  "avg_cms_rating": 4.73,
+  "avg_hci_composite": 9.27,
+  "avg_cahps_overall": 82.56,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 5,
+  "flagged_pct": 33.3,
+  "oldest_association": "2007-07-01",
+  "newest_association": "2021-11-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 84.6,
+  "member_count": 15,
+  "members": [
+    {
+      "ccn": "141665",
+      "name": "CARETENDERS HOSPICE",
+      "city": "ROLLING MDWS",
+      "state": "IL",
+      "zip": "60008",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231670",
+      "name": "CARETENDERS HOSPICE",
+      "city": "FARMINGTON HILLS",
+      "state": "MI",
+      "zip": "48334",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "241593",
+      "name": "CARETENDERS HOSPICE",
+      "city": "MINNEAPOLIS",
+      "state": "MN",
+      "zip": "55439",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251523",
+      "name": "BAPTIST HOME CARE & HOSPICE-NORTH MISSISSIPPI",
+      "city": "BATESVILLE",
+      "state": "MS",
+      "zip": "38606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251504",
+      "name": "BAPTIST HOSPICE-GOLDEN TRIANGLE",
+      "city": "COLUMBUS",
+      "state": "MS",
+      "zip": "39705",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361658",
+      "name": "CARETENDERS HOSPICE",
+      "city": "RICHFIELD",
+      "state": "OH",
+      "zip": "44286",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361681",
+      "name": "CARETENDERS HOSPICE",
+      "city": "COLUMBUS",
+      "state": "OH",
+      "zip": "43231",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361672",
+      "name": "CARETENDERS HOSPICE",
+      "city": "MORAINE",
+      "state": "OH",
+      "zip": "45439",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381569",
+      "name": "ASSURED HOSPICE",
+      "city": "PORTLAND",
+      "state": "OR",
+      "zip": "97219",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391716",
+      "name": "PATIENT CARE HOSPICE",
+      "city": "WAYNE",
+      "state": "PA",
+      "zip": "19087",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441577",
+      "name": "BAPTIST HOSPICE UNION CITY",
+      "city": "UNION CITY",
+      "state": "TN",
+      "zip": "38261",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 92,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441575",
+      "name": "BAPTIST MEMORIAL HOME CARE & HOSPICE",
+      "city": "HUNTINGDON",
+      "state": "TN",
+      "zip": "38344",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441536",
+      "name": "BAPTIST TRINITY HOME CARE AND HOSPICE",
+      "city": "CORDOVA",
+      "state": "TN",
+      "zip": "38018",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441547",
+      "name": "UNIVERSITY OF TN MEDICAL CENTER HOME CARE SERVICES",
+      "city": "KNOXVILLE",
+      "state": "TN",
+      "zip": "37917",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441578",
+      "name": "UNIVERSITY OF TN MEDICAL CENTER HOME CARE SERVICES",
+      "city": "MORRISTOWN",
+      "state": "TN",
+      "zip": "37814",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "TENNESSEE HEALTH CARE GROUP LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

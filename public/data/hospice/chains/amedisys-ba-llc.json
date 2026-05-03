@@ -1,0 +1,203 @@
+{
+  "chain_name": "AMEDISYS BA LLC",
+  "chain_slug": "amedisys-ba-llc",
+  "norm_key": "amedisys ba",
+  "facility_count": 10,
+  "state_count": 5,
+  "states": [
+    "CT",
+    "MA",
+    "ME",
+    "NH",
+    "RI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 80.38,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 10,
+  "oldest_association": "2011-06-07",
+  "newest_association": "2017-05-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 2,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 10,
+  "members": [
+    {
+      "ccn": "221544A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "221504B",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "071537",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "EAST HARTFORD",
+      "state": "CT",
+      "zip": "06108",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221580",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "LEOMINSTER",
+      "state": "MA",
+      "zip": "01453",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221573",
+      "name": "BEACON HOSPICE, AN AMYEDISYS COMPANY",
+      "city": "SPRINGFIELD",
+      "state": "MA",
+      "zip": "01151",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201517",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "AUBURN",
+      "state": "ME",
+      "zip": "04210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201516",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "SO PORTLAND",
+      "state": "ME",
+      "zip": "04106",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201520",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "BANGOR",
+      "state": "ME",
+      "zip": "04401",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "301526",
+      "name": "BEACON HOSPICE, AN AMEDISYS COMPANY",
+      "city": "PORTSMOUTH",
+      "state": "NH",
+      "zip": "03801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "411510",
+      "name": "BEACON HOSPICE , AN AMEDISYS COMPANY",
+      "city": "EAST PROVIDENCE",
+      "state": "RI",
+      "zip": "02914",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "AMEDISYS BA LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

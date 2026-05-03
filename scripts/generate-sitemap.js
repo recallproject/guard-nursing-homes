@@ -106,6 +106,64 @@ for (const chain of chainData) {
   }
 }
 
+// Hospice section landing pages
+urls.push({ loc: '/hospice', priority: '0.8', changefreq: 'weekly' });
+urls.push({ loc: '/hospice/compare', priority: '0.7', changefreq: 'monthly' });
+urls.push({ loc: '/hospice/news', priority: '0.7', changefreq: 'weekly' });
+urls.push({ loc: '/hospice/high-risk', priority: '0.8', changefreq: 'weekly' });
+
+// Hospice state directory pages — one per state JSON
+let hospiceStateCount = 0;
+const hospiceStatesDir = join(publicDir, 'data', 'hospice', 'states');
+try {
+  const hospiceStateFiles = readdirSync(hospiceStatesDir).filter(f => f.endsWith('.json'));
+  for (const file of hospiceStateFiles) {
+    const stateCode = file.replace('.json', '');
+    urls.push({
+      loc: `/hospice/state/${stateCode}`,
+      priority: '0.7',
+      changefreq: 'monthly',
+    });
+    hospiceStateCount++;
+  }
+} catch (err) {
+  console.warn('Hospice state files not found for sitemap:', err.message);
+}
+
+// Hospice provider pages — one per Medicare-certified hospice (CCN-keyed)
+let hospiceProviderCount = 0;
+try {
+  const hospiceStateFiles = readdirSync(hospiceStatesDir).filter(f => f.endsWith('.json'));
+  for (const file of hospiceStateFiles) {
+    const stateData = JSON.parse(readFileSync(join(hospiceStatesDir, file), 'utf8'));
+    if (Array.isArray(stateData.providers)) {
+      for (const p of stateData.providers) {
+        if (p && p.ccn) {
+          urls.push({ loc: `/hospice/${p.ccn}`, priority: '0.6', changefreq: 'monthly' });
+          hospiceProviderCount++;
+        }
+      }
+    }
+  }
+} catch (err) {
+  console.warn('Hospice provider sitemap entries skipped:', err.message);
+}
+
+// Hospice chain rollup index + per-chain detail pages
+urls.push({ loc: '/hospice/chains', priority: '0.7', changefreq: 'monthly' });
+let hospiceChainCount = 0;
+try {
+  const hospiceChainData = JSON.parse(readFileSync(join(publicDir, 'data', 'hospice', 'chains.json'), 'utf8'));
+  for (const c of hospiceChainData) {
+    if (c && c.chain_slug) {
+      urls.push({ loc: `/hospice/chain/${encodeURIComponent(c.chain_slug)}`, priority: '0.6', changefreq: 'monthly' });
+      hospiceChainCount++;
+    }
+  }
+} catch (err) {
+  console.warn('Hospice chain rollup sitemap entries skipped:', err.message);
+}
+
 // Generate sitemap XML
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -119,7 +177,7 @@ ${urls.map(u => `  <url>
 `;
 
 writeFileSync(join(publicDir, 'sitemap.xml'), xml);
-console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains, ${blogCount} blog posts)`);
+console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains, ${blogCount} blog posts, ${hospiceStateCount} hospice states, ${hospiceProviderCount} hospice providers, ${hospiceChainCount} hospice chains)`);
 
 // Generate robots.txt
 const robots = `# Block AI/LLM scraping bots

@@ -1,0 +1,793 @@
+{
+  "chain_name": "THL EQUITY FUND VIII INVESTORS (HOSPICE CARE), L.P.",
+  "chain_slug": "thl-equity-fund-viii-investors-hospice-care-l-p",
+  "norm_key": "thl equity fund viii investors hospice care l p",
+  "facility_count": 39,
+  "state_count": 20,
+  "states": [
+    "AL",
+    "AR",
+    "AZ",
+    "CA",
+    "FL",
+    "GA",
+    "IL",
+    "MA",
+    "NC",
+    "NH",
+    "NJ",
+    "NM",
+    "OH",
+    "OK",
+    "PA",
+    "RI",
+    "SC",
+    "TN",
+    "TX",
+    "VA"
+  ],
+  "avg_cms_rating": 4.85,
+  "avg_hci_composite": 9.49,
+  "avg_cahps_overall": 81.54,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 5.1,
+  "oldest_association": "2020-12-09",
+  "newest_association": "2021-12-10",
+  "is_pe_disclosed": true,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 38,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 32.03,
+  "member_count": 39,
+  "members": [
+    {
+      "ccn": "011626",
+      "name": "HOSPICE OF ALABAMA ",
+      "city": "RAINSVILLE",
+      "state": "AL",
+      "zip": "35986",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "041572",
+      "name": "DIERKSEN MEMORIAL HOSPICE",
+      "city": "TEXARKANA",
+      "state": "AR",
+      "zip": "71854",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "041575",
+      "name": "LESTER DIERKSEN MEMORIAL HOSPICE, LLC",
+      "city": "HOT SPRINGS V",
+      "state": "AR",
+      "zip": "71913",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031623",
+      "name": "HOSPICE AT HOME OF ARIZONA, LLC",
+      "city": "MESA",
+      "state": "AZ",
+      "zip": "85209",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031592",
+      "name": "HOSPICE OF THE WEST",
+      "city": "PHOENIX",
+      "state": "AZ",
+      "zip": "85027",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751626",
+      "name": "CONTINUUM CARE HOSPICE LLC",
+      "city": "CONCORD",
+      "state": "CA",
+      "zip": "94520",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751728",
+      "name": "HOSPICE OF THE SOUTH COAST LLC",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92121",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101572",
+      "name": "HOSPICE OF FLORIDA",
+      "city": "JACKSONVILLE",
+      "state": "FL",
+      "zip": "32202",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111631",
+      "name": "CRESCENT HOSPICE",
+      "city": "AUGUSTA",
+      "state": "GA",
+      "zip": "30907",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111513",
+      "name": "HEARTH HOSPICE",
+      "city": "FORT OGLETHORPE",
+      "state": "GA",
+      "zip": "30742",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851531",
+      "name": "HEARTH HOSPICE OF BRUNSWICK, LLC",
+      "city": "BRUNSWICK",
+      "state": "GA",
+      "zip": "31525",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141648",
+      "name": "SANCTUARY HOSPICE",
+      "city": "WESTCHESTER",
+      "state": "IL",
+      "zip": "60154",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221586",
+      "name": "BROOKHAVEN HOSPICE",
+      "city": "MARLBOROUGH",
+      "state": "MA",
+      "zip": "01752",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221609",
+      "name": "CONTINUUM CARE OF MASS, LLC",
+      "city": "FALL RIVER",
+      "state": "MA",
+      "zip": "02723",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341554",
+      "name": "HOSPICE OF NORTH CAROLINA",
+      "city": "MURPHY",
+      "state": "NC",
+      "zip": "28906",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "301532",
+      "name": "BROOKHAVEN HOSPICE OF NEW HAMPSHIRE LLC",
+      "city": "BEDFORD",
+      "state": "NH",
+      "zip": "03110",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311578",
+      "name": "HOLISTICARE HOSPICE OF NEW JERSEY, LLC",
+      "city": "TOMS RIVER",
+      "state": "NJ",
+      "zip": "08755",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321553",
+      "name": "HOSPICE OF NEW MEXICO, LLC",
+      "city": "ALBUQUERQUE",
+      "state": "NM",
+      "zip": "87110",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361662",
+      "name": "SANCTUARY HOSPICE",
+      "city": "CANFIELD",
+      "state": "OH",
+      "zip": "44406",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361706",
+      "name": "SANCTUARY HOSPICE",
+      "city": "MASON",
+      "state": "OH",
+      "zip": "45040",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371570",
+      "name": "FRONTIER HOSPICE",
+      "city": "NORMAN",
+      "state": "OK",
+      "zip": "73069",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391736",
+      "name": "HERITAGE HOSPICE, LLC",
+      "city": "NEW KENSINGTON",
+      "state": "PA",
+      "zip": "15068",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391751",
+      "name": "HOLISTICARE HOSPICE, LLC",
+      "city": "WAYNE",
+      "state": "PA",
+      "zip": "19087",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "411512",
+      "name": "CONTINUUM CARE HOSPICE",
+      "city": "WEST WARWICK",
+      "state": "RI",
+      "zip": "02893",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421574",
+      "name": "CRESCENT HOSPICE",
+      "city": "BLUFFTON",
+      "state": "SC",
+      "zip": "29910",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421609",
+      "name": "CRESCENT HOSPICE, INC",
+      "city": "COLUMBIA",
+      "state": "SC",
+      "zip": "29210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441600",
+      "name": "HEARTH HOSPICE",
+      "city": "CHATTANOOGA",
+      "state": "TN",
+      "zip": "37403",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441504",
+      "name": "HOSPICE OF CHATTANOOGA HOLDINGS, LLC ",
+      "city": "CHATTANOOGA",
+      "state": "TN",
+      "zip": "37421",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671712",
+      "name": "ALPHA OMEGA HOSPICE",
+      "city": "FORT WORTH",
+      "state": "TX",
+      "zip": "76104",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451778",
+      "name": "ALPHA OMEGA HOSPICE",
+      "city": "WEATHERFORD",
+      "state": "TX",
+      "zip": "76086",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671714",
+      "name": "ALTUS HOSPICE",
+      "city": "GEORGETOWN",
+      "state": "TX",
+      "zip": "78626",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671621",
+      "name": "ALTUS HOSPICE",
+      "city": "CORPUS CHRISTI",
+      "state": "TX",
+      "zip": "78401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671614",
+      "name": "ALTUS HOSPICE",
+      "city": "LAREDO",
+      "state": "TX",
+      "zip": "78041",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741642",
+      "name": "ALTUS HOSPICE",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78216",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451596",
+      "name": "ALTUS HOSPICE",
+      "city": "BEAUMONT",
+      "state": "TX",
+      "zip": "77702",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671649",
+      "name": "ALTUS HOSPICE",
+      "city": "KINGWOOD",
+      "state": "TX",
+      "zip": "77339",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671562",
+      "name": "ALTUS HOSPICE",
+      "city": "SUGAR LAND",
+      "state": "TX",
+      "zip": "77478",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671514",
+      "name": "DIERKSEN HOSPICE",
+      "city": "TEXARKANA",
+      "state": "TX",
+      "zip": "75503",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491593",
+      "name": "LEGACY HOSPICE",
+      "city": "CHARLOTTESVILLE",
+      "state": "VA",
+      "zip": "22903",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THL EQUITY FUND VIII INVESTORS (HOSPICE CARE), L.P."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

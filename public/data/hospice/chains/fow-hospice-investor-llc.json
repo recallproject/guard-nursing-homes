@@ -1,0 +1,131 @@
+{
+  "chain_name": "FOW HOSPICE INVESTOR, LLC",
+  "chain_slug": "fow-hospice-investor-llc",
+  "norm_key": "fow hospice investor",
+  "facility_count": 5,
+  "state_count": 4,
+  "states": [
+    "MI",
+    "OH",
+    "TX",
+    "WI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.8,
+  "avg_cahps_overall": 78.8,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2025-05-23",
+  "newest_association": "2025-05-23",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 96.5,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "231628",
+      "name": "CROSSBRIDGE HOSPICE ",
+      "city": "KENTWOOD ",
+      "state": "MI",
+      "zip": "49512",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361702",
+      "name": "GRACE HOSPICE",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45245",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361703",
+      "name": "GRACE HOSPICE",
+      "city": "YOUNGSTOWN",
+      "state": "OH",
+      "zip": "44512",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671633",
+      "name": "CROSSBRIDGE HOSPICE",
+      "city": "IRVING",
+      "state": "TX",
+      "zip": "75038",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521598",
+      "name": "CROSSBRIDGE HOSPICE",
+      "city": "WEST ALLIS",
+      "state": "WI",
+      "zip": "53227",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "FOW HOSPICE INVESTOR, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

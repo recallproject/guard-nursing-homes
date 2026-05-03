@@ -1,0 +1,85 @@
+{
+  "chain_name": "CONCORDIA CARE NETWORK",
+  "chain_slug": "concordia-care-network",
+  "norm_key": "concordia care network",
+  "facility_count": 4,
+  "state_count": 1,
+  "states": [
+    "PA"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8,
+  "avg_cahps_overall": 78.5,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 25,
+  "oldest_association": "2016-05-24",
+  "newest_association": "2023-04-03",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 3,
+  "avg_disclosed_ownership_pct": 71.75,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "391511A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "391519A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "391710",
+      "name": "CONCORDIA HOSPICE OF BETHLEN",
+      "city": "LIGONIER",
+      "state": "PA",
+      "zip": "15658",
+      "ownership_type": "Other",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391629",
+      "name": "GOOD SAMARITAN HOSPICE OF PITTSBURGH",
+      "city": "VALENCIA",
+      "state": "PA",
+      "zip": "16059",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CONCORDIA CARE NETWORK"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.457Z"
+}

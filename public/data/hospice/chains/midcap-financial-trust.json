@@ -1,0 +1,229 @@
+{
+  "chain_name": "MIDCAP FINANCIAL TRUST",
+  "chain_slug": "midcap-financial-trust",
+  "norm_key": "midcap financial trust",
+  "facility_count": 10,
+  "state_count": 7,
+  "states": [
+    "AZ",
+    "ID",
+    "MT",
+    "NV",
+    "OR",
+    "WA",
+    "WY"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 8.6,
+  "avg_cahps_overall": 81.83,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 20,
+  "oldest_association": "2016-02-08",
+  "newest_association": "2023-04-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 10,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 10,
+  "members": [
+    {
+      "ccn": "031522",
+      "name": "EDEN HOSPICE",
+      "city": "SAFFORD",
+      "state": "AZ",
+      "zip": "85546",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131584",
+      "name": "EDEN HOSPICE",
+      "city": "AMMON",
+      "state": "ID",
+      "zip": "83406",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131590",
+      "name": "EDEN HOSPICE AT THE INLAND NORTHWEST LLC",
+      "city": "PONDERAY",
+      "state": "ID",
+      "zip": "83852",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "271540",
+      "name": "EDEN HOSPICE",
+      "city": "BOZEMAN",
+      "state": "MT",
+      "zip": "59718",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "291515",
+      "name": "EDEN HOSPICE",
+      "city": "RENO",
+      "state": "NV",
+      "zip": "89503",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381579",
+      "name": "EDEN HOSPICE",
+      "city": "OREGON CITY",
+      "state": "OR",
+      "zip": "97045",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501553",
+      "name": "EDEN HOSPICE",
+      "city": "TUKWILA",
+      "state": "WA",
+      "zip": "98188",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501548",
+      "name": "EDEN HOSPICE",
+      "city": "BELLINGHAM",
+      "state": "WA",
+      "zip": "98226",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501556",
+      "name": "EDEN HOSPICE",
+      "city": "LYNNWOOD",
+      "state": "WA",
+      "zip": "98036",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "531531",
+      "name": "EDEN HOSPICE",
+      "city": "CHEYENNE",
+      "state": "WY",
+      "zip": "82009",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "MIDCAP FINANCIAL TRUST"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

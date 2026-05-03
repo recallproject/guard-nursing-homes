@@ -1,0 +1,328 @@
+{
+  "chain_name": "TRINITY HEALTH CORPORATION",
+  "chain_slug": "trinity-health-corporation",
+  "norm_key": "trinity health",
+  "facility_count": 15,
+  "state_count": 10,
+  "states": [
+    "CA",
+    "CT",
+    "GA",
+    "IA",
+    "IL",
+    "MD",
+    "MI",
+    "ND",
+    "NY",
+    "OH"
+  ],
+  "avg_cms_rating": 4.67,
+  "avg_hci_composite": 9.13,
+  "avg_cahps_overall": 81.6,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 6,
+  "flagged_pct": 33.3,
+  "oldest_association": "1997-07-01",
+  "newest_association": "2023-07-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 15,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 15,
+  "members": [
+    {
+      "ccn": "051538",
+      "name": "SAINT AGNES HOME HEALTH & HOSPICE",
+      "city": "FRESNO",
+      "state": "CA",
+      "zip": "93710",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071520",
+      "name": "TRINITY HEALTH OF NEW ENGLAND AT HOME",
+      "city": "HARTFORD",
+      "state": "CT",
+      "zip": "06112",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111525",
+      "name": "ST. MARY'S HOSPICE SERVICES",
+      "city": "WATKINSVILLE",
+      "state": "GA",
+      "zip": "30677",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161581",
+      "name": "ABOVE & BEYOND HOSPICE CARE",
+      "city": "MONTICELLO",
+      "state": "IA",
+      "zip": "52310",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161527",
+      "name": "MERCY HOME CARE AND HOSPICE-CLINTON",
+      "city": "CLINTON",
+      "state": "IA",
+      "zip": "52732",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161506",
+      "name": "MERCYONE DES MOINES HOSPICE",
+      "city": "DES MOINES",
+      "state": "IA",
+      "zip": "50319",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161520",
+      "name": "MERCYONE GENESIS",
+      "city": "BETTENDORF",
+      "state": "IA",
+      "zip": "52722",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161503",
+      "name": "MERCYONE NORTH IOWA HOSPICE",
+      "city": "MASON CITY",
+      "state": "IA",
+      "zip": "50401",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141566",
+      "name": "LOYOLA MEDICINE HOSPICE",
+      "city": "OAK BROOK",
+      "state": "IL",
+      "zip": "60523",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "211502",
+      "name": "HOLY CROSS HOME CARE AND HOSPICE",
+      "city": "SILVER SPRING",
+      "state": "MD",
+      "zip": "20901",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231534",
+      "name": "TRINITY HEALTH AT HOME - GRAND HAVEN",
+      "city": "GRAND HAVEN",
+      "state": "MI",
+      "zip": "49417",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231511",
+      "name": "TRINITY HEALTH AT HOME SOUTHEAST MICHIGAN ",
+      "city": "LIVONIA ",
+      "state": "MI",
+      "zip": "48152",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "351502",
+      "name": "TRINITY HOSPITALS - HOSPICE",
+      "city": "MINOT",
+      "state": "ND",
+      "zip": "58701",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "331501",
+      "name": "COMMUNITY HOSPICE, INC, THE",
+      "city": "ALBANY",
+      "state": "NY",
+      "zip": "12205",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361520",
+      "name": "MOUNT CARMEL HOSPICE",
+      "city": "COLUMBUS",
+      "state": "OH",
+      "zip": "43222",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "TRINITY HEALTH",
+    "TRINITY HEALTH CORPORATION"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.454Z"
+}

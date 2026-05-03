@@ -1,0 +1,954 @@
+{
+  "chain_name": "HORIZON ACQUISITION CO INC.",
+  "chain_slug": "horizon-acquisition-co-inc",
+  "norm_key": "horizon acquisition",
+  "facility_count": 48,
+  "state_count": 22,
+  "states": [
+    "CA",
+    "CO",
+    "CT",
+    "DC",
+    "DE",
+    "FL",
+    "GA",
+    "IL",
+    "IN",
+    "MA",
+    "MI",
+    "MN",
+    "MO",
+    "MS",
+    "NJ",
+    "OR",
+    "PA",
+    "RI",
+    "TN",
+    "TX",
+    "WA",
+    "WI"
+  ],
+  "avg_cms_rating": 4.84,
+  "avg_hci_composite": 9.42,
+  "avg_cahps_overall": 73.82,
+  "flagged_facility_count": 21,
+  "flagged_pattern_count": 28,
+  "flagged_pct": 43.8,
+  "oldest_association": "2019-06-20",
+  "newest_association": "2023-04-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 4,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 94.03,
+  "member_count": 48,
+  "members": [
+    {
+      "ccn": "211507A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "551550",
+      "name": "ACCENTCARE  HOSPICE & PALLIATIVE CARE OF CALIFORNI",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92127",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A01539",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF CA - OAKLA",
+      "city": "OAKLAND",
+      "state": "CA",
+      "zip": "94621",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "921743",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF CA- SACTO",
+      "city": "SACRAMENTO",
+      "state": "CA",
+      "zip": "95833",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051790",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF CALIFORNIA",
+      "city": "GLENDALE",
+      "state": "CA",
+      "zip": "91203",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051603",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF CALIFORNIA",
+      "city": "ORANGE",
+      "state": "CA",
+      "zip": "92868",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551621",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF CALIFORNIA",
+      "city": "ONTARIO",
+      "state": "CA",
+      "zip": "91761",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551750",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF NORTHERN C",
+      "city": "SAN JOSE",
+      "state": "CA",
+      "zip": "95126",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "921522",
+      "name": "ACCENTCARE HOSPICE OF CALIFORNIA INC",
+      "city": "EL CENTRO",
+      "state": "CA",
+      "zip": "92243",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061593",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF COLORADO",
+      "city": "WESTMINSTER",
+      "state": "CO",
+      "zip": "80031",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061560",
+      "name": "ACCENTCARE OF COLORADO",
+      "city": "LOVELAND",
+      "state": "CO",
+      "zip": "80538",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071539",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF CONECTICUT",
+      "city": "MIDDLEBURY",
+      "state": "CT",
+      "zip": "06762",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "091509",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF WASHINGTON",
+      "city": "WASHINGTON",
+      "state": "DC",
+      "zip": "20024",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "081508",
+      "name": "CHRISTIANACARE ACCENTCARE HOSP & PALLIATIVE CARE ",
+      "city": "NEWARK",
+      "state": "DE",
+      "zip": "19713",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101557",
+      "name": "ACCENT CARE HOSPICE & PALLIATIVE CARE OF HILLSBORO",
+      "city": "TAMPA",
+      "state": "FL",
+      "zip": "33607",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 63,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101555",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF BROWARD CO",
+      "city": "PLANTATION",
+      "state": "FL",
+      "zip": "33324",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101561",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF PASCO COUN",
+      "city": "WESLEY CHAPEL",
+      "state": "FL",
+      "zip": "33544",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101559",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF PINELLAS C",
+      "city": "CLEARWATER",
+      "state": "FL",
+      "zip": "33756",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101543",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF SOUTHERN F",
+      "city": "MIAMI",
+      "state": "FL",
+      "zip": "33137",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111640",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF GEORGIA",
+      "city": "ALPHARETTA",
+      "state": "GA",
+      "zip": "30022",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141582",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF ILLINOIS",
+      "city": "ROSEMONT",
+      "state": "IL",
+      "zip": "60018",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151603",
+      "name": "ACCENTCARE HOSPICE AND PALLIATIVE CARE OF INDIANA",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46278",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221578",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF MASSACHUSE",
+      "city": "NORWOOD",
+      "state": "MA",
+      "zip": "02062",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221518",
+      "name": "ACCENTCARE HOSPICE OF MASSACHUSETTS",
+      "city": "FALL RIVER",
+      "state": "MA",
+      "zip": "02723",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231601",
+      "name": "SEASONS HOSPICE & PALLIATIVE CARE OF MICHIGAN",
+      "city": "MADISON HEIGHTS",
+      "state": "MI",
+      "zip": "48071",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "241514",
+      "name": "ACCENTCARE FAIRVIEW HOSPICE - WEST, LLC",
+      "city": "SAINT PAUL",
+      "state": "MN",
+      "zip": "55114",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 67,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261641",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF MISSOURI",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63127",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251511",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF MS",
+      "city": "FLOWOOD",
+      "state": "MS",
+      "zip": "39232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311577",
+      "name": "SEASONS HOSPICE & PALLIATIVE CARE OF NEW JERSEY LL",
+      "city": "EDISON",
+      "state": "NJ",
+      "zip": "08817",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381561",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF OREGON",
+      "city": "PORTLAND",
+      "state": "OR",
+      "zip": "97239",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 67,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391709",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF PENNSYLVAN",
+      "city": "KING OF PRUSSIA",
+      "state": "PA",
+      "zip": "19406",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "411516",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF RHODE ISLA",
+      "city": "WARWICK",
+      "state": "RI",
+      "zip": "02886",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441591",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF NASHVILLE.",
+      "city": "FRANKLIN",
+      "state": "TN",
+      "zip": "37067",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441608",
+      "name": "ACCENTCARE HOSPICE AND PALLIATIVE CARE OF TENNESSE",
+      "city": "MEMPHIS",
+      "state": "TN",
+      "zip": "38120",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451774",
+      "name": "ACCENTCARE HEALTH",
+      "city": "LUBBOCK",
+      "state": "TX",
+      "zip": "79413",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671554",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE - AUSTIN",
+      "city": "AUSTIN",
+      "state": "TX",
+      "zip": "78731",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671559",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF HOUSTON - ",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77017",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 51,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671741",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF HOUSTON - ",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77070",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451562",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF HOUSTON - ",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77084",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671545",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF TEXAS",
+      "city": "LONGVIEW",
+      "state": "TX",
+      "zip": "75605",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671552",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF TEXAS",
+      "city": "WACO",
+      "state": "TX",
+      "zip": "76712",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671560",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF TEXAS",
+      "city": "BEAUMONT",
+      "state": "TX",
+      "zip": "77706",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741588",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF TEXAS",
+      "city": "COLLEGE STATION",
+      "state": "TX",
+      "zip": "77845",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741652",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF TEXAS",
+      "city": "DALLAS",
+      "state": "TX",
+      "zip": "75287",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671721",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF TEXAS -SAN",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78230",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501557",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF KING COUNT",
+      "city": "RENTON",
+      "state": "WA",
+      "zip": "98507",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501558",
+      "name": "ACCENTCARE HOSPICE & PALLIATIVE CARE OF SNOHOMISH ",
+      "city": "LYNNWOOD",
+      "state": "WA",
+      "zip": "98037",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521571",
+      "name": "ACCENT CARE HOSPICE AND PALLIATIVE CARE OF WI",
+      "city": "WEST ALLIS",
+      "state": "WI",
+      "zip": "53214",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 68,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HORIZON ACQUISITION CO INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.454Z"
+}

@@ -1,0 +1,261 @@
+{
+  "chain_name": "WEST TEXAS MEDICAL COURIERS AND EXPRESS DELIVERY SERVICES, LLC",
+  "chain_slug": "west-texas-medical-couriers-and-express-delivery-services-llc",
+  "norm_key": "west texas medical couriers and express delivery services",
+  "facility_count": 12,
+  "state_count": 1,
+  "states": [
+    "TX"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.25,
+  "avg_cahps_overall": 79.4,
+  "flagged_facility_count": 7,
+  "flagged_pattern_count": 8,
+  "flagged_pct": 58.3,
+  "oldest_association": "2016-08-08",
+  "newest_association": "2021-10-27",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 12,
+  "members": [
+    {
+      "ccn": "741794",
+      "name": "CARE PLUS PALLIATIVE AND HOSPICE CARE LLC",
+      "city": "FORT WORTH",
+      "state": "TX",
+      "zip": "76116",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671529",
+      "name": "HEART TO HEART HOSPICE OF AUSTIN LTD",
+      "city": "AUSTIN",
+      "state": "TX",
+      "zip": "78704",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741531",
+      "name": "HEART TO HEART HOSPICE OF DALLAS",
+      "city": "DALLAS",
+      "state": "TX",
+      "zip": "75232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671505",
+      "name": "HEART TO HEART HOSPICE OF FORT WORTH LLC",
+      "city": "FORT WORTH",
+      "state": "TX",
+      "zip": "76109",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741507",
+      "name": "HEART TO HEART HOSPICE OF MIDLOTHIAN",
+      "city": "MIDLOTHIAN",
+      "state": "TX",
+      "zip": "76065",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671730",
+      "name": "HEART TO HEART HOSPICE OF NORTH TEXAS LLC",
+      "city": "SHERMAN",
+      "state": "TX",
+      "zip": "75090",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671778",
+      "name": "HEART TO HEART HOSPICE OF PERMIAN BASIN",
+      "city": "MIDLAND",
+      "state": "TX",
+      "zip": "79703",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671533",
+      "name": "HEART TO HEART HOSPICE OF SAN ANTONIO LLC",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741661",
+      "name": "HEART TO HEART HOSPICE OF SAN MARCOS LLC",
+      "city": "SAN MARCOS",
+      "state": "TX",
+      "zip": "78666",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671789",
+      "name": "HEART TO HEART HOSPICE OF SOUTH TEXAS",
+      "city": "PEARSALL",
+      "state": "TX",
+      "zip": "78061",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451741",
+      "name": "HEART TO HEART HOSPICE OF TEXAS LTD",
+      "city": "CARROLLTON",
+      "state": "TX",
+      "zip": "75007",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741527",
+      "name": "HEART TO HEART HOSPICE OF THE BRAZOS, LLC",
+      "city": "CLEBURNE",
+      "state": "TX",
+      "zip": "76033",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "WEST TEXAS MEDICAL COURIERS AND EXPRESS DELIVERY SERVICES, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

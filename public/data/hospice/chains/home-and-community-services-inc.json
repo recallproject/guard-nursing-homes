@@ -1,0 +1,223 @@
+{
+  "chain_name": "HOME AND COMMUNITY SERVICES INC",
+  "chain_slug": "home-and-community-services-inc",
+  "norm_key": "home and community services",
+  "facility_count": 10,
+  "state_count": 1,
+  "states": [
+    "GA"
+  ],
+  "avg_cms_rating": 4.2,
+  "avg_hci_composite": 8.5,
+  "avg_cahps_overall": 80.4,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 10,
+  "oldest_association": "2021-01-01",
+  "newest_association": "2021-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 9,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 10,
+  "members": [
+    {
+      "ccn": "111672",
+      "name": "AFFINIS CARTERSVILLE",
+      "city": "CARTERSVILLE",
+      "state": "GA",
+      "zip": "30120",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111771",
+      "name": "AFFINIS HOSPICE",
+      "city": "POOLER",
+      "state": "GA",
+      "zip": "31322",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111781",
+      "name": "AFFINIS HOSPICE",
+      "city": "WAYCROSS",
+      "state": "GA",
+      "zip": "31501",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111746",
+      "name": "AFFINIS HOSPICE LLC",
+      "city": "VIDALIA",
+      "state": "GA",
+      "zip": "30474",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111728",
+      "name": "AFFINIS HOSPICE LLC- NEWNAN",
+      "city": "NEWNAN",
+      "state": "GA",
+      "zip": "30263",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111690",
+      "name": "AFFINIS HOSPICE, LLC",
+      "city": "ALBANY",
+      "state": "GA",
+      "zip": "31702",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111743",
+      "name": "AFFINIS HOSPICE, LLC",
+      "city": "ATHENS",
+      "state": "GA",
+      "zip": "30605",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111748",
+      "name": "AFFINIS HOSPICE, LLC",
+      "city": "AUGUSTA",
+      "state": "GA",
+      "zip": "30909",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851514",
+      "name": "AFFINIS HOSPICE, LLC",
+      "city": "GRAY",
+      "state": "GA",
+      "zip": "31032",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111719",
+      "name": "AFFINIS HOSPICE, LLC- GAINESVILLE",
+      "city": "GAINESVILLE",
+      "state": "GA",
+      "zip": "30501",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HOME AND COMMUNITY SERVICES INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.462Z"
+}

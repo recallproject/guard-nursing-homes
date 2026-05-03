@@ -1,0 +1,227 @@
+{
+  "chain_name": "HOSPICE PARTNERS OF AMERICA LLC",
+  "chain_slug": "hospice-partners-of-america-llc",
+  "norm_key": "hospice partners of america",
+  "facility_count": 10,
+  "state_count": 4,
+  "states": [
+    "ID",
+    "OR",
+    "TX",
+    "VA"
+  ],
+  "avg_cms_rating": 4.8,
+  "avg_hci_composite": 9.2,
+  "avg_cahps_overall": 77.57,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 10,
+  "oldest_association": "2010-10-15",
+  "newest_association": "2018-05-16",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 7,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 10,
+  "members": [
+    {
+      "ccn": "131553",
+      "name": "HARRISON'S HOPE",
+      "city": "MERIDIAN",
+      "state": "ID",
+      "zip": "83642",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 66,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131564",
+      "name": "HARRISON'S HOPE TWIN FALLS",
+      "city": "TWIN FALLS",
+      "state": "ID",
+      "zip": "83301",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381555",
+      "name": "SERENITY HOSPICE",
+      "city": "TIGARD",
+      "state": "OR",
+      "zip": "97223",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381564",
+      "name": "SERENITY HOSPICE",
+      "city": "SALEM",
+      "state": "OR",
+      "zip": "97302",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "381567",
+      "name": "SERENITY HOSPICE",
+      "city": "EUGENE",
+      "state": "OR",
+      "zip": "97408",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671540",
+      "name": "ALAMO HOSPICE",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78230",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671750",
+      "name": "ALAMO HOSPICE",
+      "city": "BOERNE",
+      "state": "TX",
+      "zip": "78006",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671619",
+      "name": "ALAMO HOSPICE OF CONROE",
+      "city": "CONROE",
+      "state": "TX",
+      "zip": "77304",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671541",
+      "name": "ALAMO HOSPICE OF WACO",
+      "city": "WACO",
+      "state": "TX",
+      "zip": "76710",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491537",
+      "name": "HOSPICE OF VIRGINIA",
+      "city": "RICHMOND",
+      "state": "VA",
+      "zip": "23230",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "HOSPICE PARTNERS OF AMERICA HOLDING LLC",
+    "HOSPICE PARTNERS OF AMERICA LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

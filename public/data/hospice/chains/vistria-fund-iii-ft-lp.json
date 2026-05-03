@@ -1,0 +1,285 @@
+{
+  "chain_name": "VISTRIA FUND III (FT) LP",
+  "chain_slug": "vistria-fund-iii-ft-lp",
+  "norm_key": "vistria fund iii ft",
+  "facility_count": 13,
+  "state_count": 6,
+  "states": [
+    "AL",
+    "CA",
+    "ID",
+    "LA",
+    "MS",
+    "UT"
+  ],
+  "avg_cms_rating": 4.62,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 81.77,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2020-11-25",
+  "newest_association": "2021-12-29",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 7,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 15.64,
+  "member_count": 13,
+  "members": [
+    {
+      "ccn": "011598",
+      "name": "VITALCARING GROUP ",
+      "city": "SARALAND",
+      "state": "AL",
+      "zip": "36571",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551754",
+      "name": "MISSION HOSPICE OF VENTURA, LLC",
+      "city": "OXNARD",
+      "state": "CA",
+      "zip": "93036",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051786",
+      "name": "MISSION HOSPICE SERVICES OF LOS ANGELES LLC",
+      "city": "WESTLAKE VILLAGE",
+      "state": "CA",
+      "zip": "91361",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A01615",
+      "name": "MISSION HOSPICE SERVICES OF RANCHO MIRAGE, LLC",
+      "city": "RANCHO MIRAGE",
+      "state": "CA",
+      "zip": "92270",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551652",
+      "name": "MISSION HOSPICE SERVICES OF SAN DIEGO LLC",
+      "city": "SAN DIEGO",
+      "state": "CA",
+      "zip": "92108",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131547",
+      "name": "HANDS OF HOPE HOSPICE",
+      "city": "IDAHO FALLS",
+      "state": "ID",
+      "zip": "83404",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191525",
+      "name": "VITALCARING GROUP",
+      "city": "HAMMOND",
+      "state": "LA",
+      "zip": "70403",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251684",
+      "name": "VITALCARING GROUP",
+      "city": "WIGGINS",
+      "state": "MS",
+      "zip": "39577",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251692",
+      "name": "VITALCARING GROUP",
+      "city": "FLOWOOD",
+      "state": "MS",
+      "zip": "39232",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251648",
+      "name": "VITALCARING GROUP",
+      "city": "TUPELO",
+      "state": "MS",
+      "zip": "38801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251521",
+      "name": "VITALCARING GROUP",
+      "city": "BATESVILLE",
+      "state": "MS",
+      "zip": "38606",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461607",
+      "name": "MISSION HOSPICE SERVICES OF ST. GEORGE",
+      "city": "ST. GEORGE",
+      "state": "UT",
+      "zip": "84790",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461556",
+      "name": "TENDER CARE HOSPICE (MISSION HOSPICE SERVICES OF S",
+      "city": "WEST VALLEY CITY",
+      "state": "UT",
+      "zip": "84119",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "VISTRIA FUND III (FT) LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.460Z"
+}

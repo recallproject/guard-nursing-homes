@@ -1,0 +1,150 @@
+{
+  "chain_name": "UNITY HOSPICE MANAGEMENT INC.",
+  "chain_slug": "unity-hospice-management-inc",
+  "norm_key": "unity hospice management",
+  "facility_count": 6,
+  "state_count": 4,
+  "states": [
+    "IL",
+    "IN",
+    "MO",
+    "TX"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 74.5,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 33.3,
+  "oldest_association": "2005-10-24",
+  "newest_association": "2022-12-09",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 6,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "141551",
+      "name": "UNITY HOSPICE OF CHICAGOLAND, LLC",
+      "city": "CHICAGO",
+      "state": "IL",
+      "zip": "60616",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141597",
+      "name": "UNITY HOSPICE OF GREATER ST LOUIS",
+      "city": "COLLINSVILLE",
+      "state": "IL",
+      "zip": "62234",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141614",
+      "name": "UNITY HOSPICE OF WESTERN ILLINOIS",
+      "city": "ROCHELLE",
+      "state": "IL",
+      "zip": "61068",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151583",
+      "name": "UNITY HOSPICE OF NORTHWEST INDIANA LLC",
+      "city": "MERRILLVILLE",
+      "state": "IN",
+      "zip": "46410",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261640",
+      "name": "UNITY HOSPICE GSL, LLC",
+      "city": "SAINT LOUIS",
+      "state": "MO",
+      "zip": "63139",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "971679",
+      "name": "UNITY HOSPICE",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77058",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 59,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "UNITY HOSPICE MANAGEMENT INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

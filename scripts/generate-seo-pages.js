@@ -554,6 +554,16 @@ const staticPages = [
     description: 'Every public-record event involving a Medicare-certified hospice — DOJ settlements, state AG actions, OIG exclusions, CMS deficiencies, news coverage — aggregated and dated.'
   },
   {
+    route: 'hospice/chains',
+    title: 'Hospice Chain Rollups — Common Disclosed Ownership | The Oversight Report',
+    description: 'Hospice operators with multiple Medicare-certified locations under common disclosed ownership. Aggregated CMS quality, family-experience, and pattern-flag metrics. Sourced from CMS hospice owners disclosure.'
+  },
+  {
+    route: 'hospice/high-risk',
+    title: 'Hospice Investigation Hub — National Watchlist | The Oversight Report',
+    description: '200 Medicare-certified hospices flagged on CMS-published outliers across live discharge, Hospice Care Index, care mix, family experience, and public record — applying the California State Auditor framework. Built for journalists, attorneys, and family investigators.'
+  },
+  {
     route: 'refresh-log',
     title: 'Refresh Log — Public Record of Data Updates | The Oversight Report',
     description: 'A dated, public record of every CMS data refresh, dataset addition, and methodology change on The Oversight Report. Independent. Sourced. Signed.'
@@ -709,5 +719,67 @@ try {
 }
 console.log(`  ✓ ${hospiceCount} hospice pages (SEO stubs · client-rendered detail)`);
 
-console.log(`\nSEO pages generated: ${pageCount} total (${staticPages.length} static + ${utilityPages.length} utility + ${blogCount} blog + ${facilityCount} facilities + ${chainCount} chains + ${hospiceCount} hospices)`);
+// ── Hospice state directory pages — one stub per CMS-region state file ──
+const HOSPICE_STATE_NAMES = {
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
+  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'District of Columbia',
+  FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois',
+  IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana',
+  ME: 'Maine', MD: 'Maryland', MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota',
+  MS: 'Mississippi', MO: 'Missouri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada',
+  NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York',
+  NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma',
+  OR: 'Oregon', PA: 'Pennsylvania', RI: 'Rhode Island', SC: 'South Carolina',
+  SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah', VT: 'Vermont',
+  VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin',
+  WY: 'Wyoming', PR: 'Puerto Rico', VI: 'U.S. Virgin Islands',
+  GU: 'Guam', MP: 'Northern Mariana Islands',
+};
+
+let hospiceStateCount = 0;
+try {
+  const hospiceStateFiles = readdirSync(hospiceStatesDir).filter(f => f.endsWith('.json'));
+  for (const file of hospiceStateFiles) {
+    const stateCode = file.replace('.json', '');
+    const stateData = JSON.parse(readFileSync(join(hospiceStatesDir, file), 'utf8'));
+    const stateName = HOSPICE_STATE_NAMES[stateCode] || stateCode;
+    const count = stateData.count != null ? stateData.count : (Array.isArray(stateData.providers) ? stateData.providers.length : 0);
+    const flagged = stateData.flagged_count != null ? stateData.flagged_count : 0;
+    const flagText = flagged > 0 ? ` ${flagged.toLocaleString()} flagged for review.` : '';
+    createPage(
+      `hospice/state/${stateCode}`,
+      `${stateName} Hospice Providers — The Oversight Report`,
+      `${count.toLocaleString()} Medicare-certified hospice providers in ${stateName}. CMS quality scores, family-experience ratings, and patterns flagged for review.${flagText} Sourced from CMS. Free.`,
+      `/hospice/state/${stateCode}`
+    );
+    hospiceStateCount++;
+  }
+} catch (err) {
+  console.log(`  ⚠ hospice state directory pages skipped: ${err.message}`);
+}
+console.log(`  ✓ ${hospiceStateCount} hospice state directory pages`);
+
+// ── Hospice chain rollup pages — one per chain in chains.json ──
+let hospiceChainCount = 0;
+try {
+  const hospiceChains = JSON.parse(readFileSync(join(publicDir, 'data', 'hospice', 'chains.json'), 'utf8'));
+  for (const c of hospiceChains) {
+    if (!c.chain_slug || !c.chain_name) continue;
+    const fc = c.facility_count || 0;
+    const sc = c.state_count || 0;
+    const desc = `${c.chain_name}: ${fc} Medicare-certified hospice locations across ${sc} state${sc === 1 ? '' : 's'} under common disclosed ownership. CMS quality, family-experience, and pattern-flag aggregates. Sourced from CMS hospice owners disclosure (Oct 2025).`;
+    createPage(
+      `hospice/chain/${encodeURIComponent(c.chain_slug)}`,
+      `${c.chain_name} — Hospice Chain Rollup | The Oversight Report`,
+      desc,
+      `/hospice/chain/${encodeURIComponent(c.chain_slug)}`
+    );
+    hospiceChainCount++;
+  }
+} catch (err) {
+  console.log(`  ⚠ hospice chain rollup pages skipped: ${err.message}`);
+}
+console.log(`  ✓ ${hospiceChainCount} hospice chain rollup pages (SEO stubs · client-rendered detail)`);
+
+console.log(`\nSEO pages generated: ${pageCount} total (${staticPages.length} static + ${utilityPages.length} utility + ${blogCount} blog + ${facilityCount} facilities + ${chainCount} chains + ${hospiceCount} hospices + ${hospiceStateCount} hospice states + ${hospiceChainCount} hospice chains)`);
 console.log('✅ Indexable SEO pages now include a single canonical and static HTML for crawlers.');

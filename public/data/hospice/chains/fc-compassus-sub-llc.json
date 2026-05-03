@@ -1,0 +1,276 @@
+{
+  "chain_name": "FC COMPASSUS SUB LLC",
+  "chain_slug": "fc-compassus-sub-llc",
+  "norm_key": "fc compassus sub",
+  "facility_count": 13,
+  "state_count": 9,
+  "states": [
+    "AL",
+    "CO",
+    "CT",
+    "MA",
+    "ME",
+    "NH",
+    "NJ",
+    "NM",
+    "PA"
+  ],
+  "avg_cms_rating": 4.92,
+  "avg_hci_composite": 9.67,
+  "avg_cahps_overall": 75.5,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 7.7,
+  "oldest_association": "2014-12-22",
+  "newest_association": "2015-03-31",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 13,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 13,
+  "members": [
+    {
+      "ccn": "111506A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "011579",
+      "name": "COMPASSUS-GADSDEN",
+      "city": "SOUTHSIDE",
+      "state": "AL",
+      "zip": "35907",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061553",
+      "name": "COMPASSUS - GREATER COLORADO SPRINGS",
+      "city": "COLORADO SPRINGS",
+      "state": "CO",
+      "zip": "80919",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061558",
+      "name": "COMPASSUS - GREATER DENVER",
+      "city": "DENVER",
+      "state": "CO",
+      "zip": "80212",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071536",
+      "name": "COMPASSUS - GREATER CONNECTICUT",
+      "city": "MILFORD",
+      "state": "CT",
+      "zip": "06461",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221568",
+      "name": "COMPASSUS - GREATER BOSTON",
+      "city": "NORTHAMPTON",
+      "state": "MA",
+      "zip": "01060",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221560",
+      "name": "COMPASSUS - GREATER WESTERN MASSACHUSETTS",
+      "city": "AUBURN",
+      "state": "MA",
+      "zip": "01501",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "221555",
+      "name": "COMPASSUS - SOUTHERN MASSACHUSETTS",
+      "city": "NORTH ANDOVER",
+      "state": "MA",
+      "zip": "01845",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201519",
+      "name": "COMPASSUS - GREATER MAINE",
+      "city": "SCARBOROUGH",
+      "state": "ME",
+      "zip": "04074",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "301528",
+      "name": "COMPASSUS - GREATER MANCHESTER",
+      "city": "BEDFORD",
+      "state": "NH",
+      "zip": "03110",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "311571",
+      "name": "COMPASSUS-GREATER NEW JERSEY",
+      "city": "WILLINGBORO",
+      "state": "NJ",
+      "zip": "08046",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321557",
+      "name": "COMPASSUS- SANTA FE",
+      "city": "SANTA FE",
+      "state": "NM",
+      "zip": "87505",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 63,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "391649",
+      "name": "COMPASSUS - GREATER PHILADELPHIA",
+      "city": "HAMBURG",
+      "state": "PA",
+      "zip": "19526",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "FC COMPASSUS SUB LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.456Z"
+}

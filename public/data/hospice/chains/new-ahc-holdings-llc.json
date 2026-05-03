@@ -1,0 +1,72 @@
+{
+  "chain_name": "NEW AHC HOLDINGS, LLC",
+  "chain_slug": "new-ahc-holdings-llc",
+  "norm_key": "new ahc",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "OH",
+    "PA"
+  ],
+  "avg_cms_rating": null,
+  "avg_hci_composite": null,
+  "avg_cahps_overall": null,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2023-09-01",
+  "newest_association": "2023-09-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 2,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "361738",
+      "name": "AHC HOME HEALTH OF CLEVELAND LLC",
+      "city": "MAYFIELD HEIGHTS",
+      "state": "OH",
+      "zip": "44124",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "731513",
+      "name": "AHC HOME HEALTH AND HOSPICE OF LEHIGH VALLEY",
+      "city": "BETHLEHEM",
+      "state": "PA",
+      "zip": "18017",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "NEW AHC HOLDINGS, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.464Z"
+}

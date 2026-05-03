@@ -1,0 +1,116 @@
+{
+  "chain_name": "EI HEALTH CARE INVESTMENTS LLC",
+  "chain_slug": "ei-health-care-investments-llc",
+  "norm_key": "ei health care investments",
+  "facility_count": 5,
+  "state_count": 1,
+  "states": [
+    "CA"
+  ],
+  "avg_cms_rating": 4.33,
+  "avg_hci_composite": 8.33,
+  "avg_cahps_overall": null,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 20,
+  "oldest_association": "2018-11-30",
+  "newest_association": "2021-10-12",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 20.8,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "A11605",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "921599",
+      "name": "GOOD HEART HOSPICE & PALLIATIVE CARE",
+      "city": "RANCHO CUCAMONGA",
+      "state": "CA",
+      "zip": "91730",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "921652",
+      "name": "GOOD HEART HOSPICE & PALLIATIVE CARE GARDEN GROVE",
+      "city": "GARDEN GROVE",
+      "state": "CA",
+      "zip": "92845",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "751673",
+      "name": "GOOD HEART HOSPICE & PALLIATIVE CARE SIMI VALLEY",
+      "city": "SIMI VALLEY",
+      "state": "CA",
+      "zip": "93063",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A01653",
+      "name": "GOOD HEART HOSPICE AND PALLIATIVE CARE",
+      "city": "TEMECULA",
+      "state": "CA",
+      "zip": "92590",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "EI HEALTH CARE INVESTMENTS LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}

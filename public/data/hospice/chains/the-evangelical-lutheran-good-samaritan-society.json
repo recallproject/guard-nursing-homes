@@ -1,0 +1,99 @@
+{
+  "chain_name": "THE EVANGELICAL LUTHERAN GOOD SAMARITAN SOCIETY",
+  "chain_slug": "the-evangelical-lutheran-good-samaritan-society",
+  "norm_key": "the evangelical lutheran good samaritan society",
+  "facility_count": 4,
+  "state_count": 3,
+  "states": [
+    "IA",
+    "MN",
+    "TX"
+  ],
+  "avg_cms_rating": 4.33,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 72,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2017-10-01",
+  "newest_association": "2019-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 4,
+  "members": [
+    {
+      "ccn": "671584",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "161591",
+      "name": "GOOD SAMARITAN SOCIETY HOME CARE AND HOSPICE",
+      "city": "OTTUMWA",
+      "state": "IA",
+      "zip": "52501",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "241581",
+      "name": "GOOD SAMARITAN SOCIETY HOSPICE",
+      "city": "NISSWA",
+      "state": "MN",
+      "zip": "56468",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671666",
+      "name": "NEW AGE HOSPICE - EL PASO",
+      "city": "EL PASO",
+      "state": "TX",
+      "zip": "79902",
+      "ownership_type": "Government",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THE EVANGELICAL LUTHERAN GOOD SAMARITAN SOCIETY"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.461Z"
+}

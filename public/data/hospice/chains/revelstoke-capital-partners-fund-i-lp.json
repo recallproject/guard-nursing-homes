@@ -1,0 +1,72 @@
+{
+  "chain_name": "REVELSTOKE CAPITAL PARTNERS FUND I LP",
+  "chain_slug": "revelstoke-capital-partners-fund-i-lp",
+  "norm_key": "revelstoke capital partners fund i",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "NM",
+    "TX"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": null,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 50,
+  "oldest_association": "2021-11-01",
+  "newest_association": "2021-11-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 58.3,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "321550",
+      "name": "STAR HOSPICE LLC",
+      "city": "HOBBS",
+      "state": "NM",
+      "zip": "88240",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451701",
+      "name": "STAR HOSPICE",
+      "city": "ODESSA",
+      "state": "TX",
+      "zip": "79761",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "REVELSTOKE CAPITAL PARTNERS FUND I LP"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-05-03T19:01:49.463Z"
+}
