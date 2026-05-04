@@ -299,7 +299,7 @@ export default function HospiceHighRiskPage() {
           <div className="hr-disclaimer">
             <strong>Inclusion does not constitute a finding by The Oversight Report</strong> or an allegation of misconduct.
             These are CMS-published outliers that, in the California State Auditor's framework, warrant additional
-            scrutiny. Always verify findings through CMS Care Compare, deficiency citations, and direct provider contact.
+            review. Always verify findings through CMS Care Compare, deficiency citations, and direct provider contact.
           </div>
 
           {/* result meta */}
@@ -384,7 +384,7 @@ export default function HospiceHighRiskPage() {
                           className="hr-score-cta"
                           onClick={() => handleRowClick(h.ccn)}
                         >
-                          INVESTIGATE →
+                          VIEW REPORT →
                         </Link>
                       </div>
                       <div className="hr-bar" aria-label={`Risk score ${h.risk_score} of 100`}>
