@@ -86,27 +86,31 @@ const HELP_CHANNELS = [
   },
 ];
 
+// Illustrative preview of feed item types. Real items appear on /hospice/news,
+// pulled live from DOJ, OIG, state AG, court, and CMS sources. These sample
+// rows describe the *categories* of items in the feed without naming any
+// hospice operator — to avoid attributing actions to any specific entity.
 const SAMPLE_FEED = [
   {
-    date: 'May 1, 2026',
+    date: 'Live feed',
     tag: 'DOJ · Settled',
     tagClass: 'hl-feed-tag-doj',
-    title: 'Florida hospice chain settles $14.2M False Claims Act case',
-    body: 'Sunlight Hospice Group of Tampa agreed to pay $14.2M to resolve allegations of billing Medicare for ineligible patients between 2019 and 2023.',
+    title: 'False Claims Act settlements',
+    body: 'DOJ-published civil settlements involving hospice billing — sourced from official DOJ press releases. Settlement language typically states that there is no admission of liability.',
   },
   {
-    date: 'Apr 30, 2026',
+    date: 'Live feed',
     tag: 'News · KFF',
     tagClass: 'hl-feed-tag-news',
-    title: 'Three California hospices flagged in CMS audit findings',
-    body: 'KFF Health News reported on a CMS audit identifying three Los Angeles-area hospices with billing patterns warranting further review.',
+    title: 'Audit findings & investigative coverage',
+    body: 'Independent reporting from KFF Health News, ProPublica, and Hospice News on CMS audit findings, billing-pattern analyses, and oversight stories.',
   },
   {
-    date: 'Apr 28, 2026',
-    tag: 'State AG · TX',
+    date: 'Live feed',
+    tag: 'State AG · MFCU',
     tagClass: 'hl-feed-tag-ag',
-    title: 'Texas AG announces $8.7M Medicaid fraud settlement',
-    body: 'Houston-based Lone Star Hospice agreed to pay $8.7M to resolve Medicaid fraud allegations related to hospice eligibility certifications.',
+    title: 'State Medicaid Fraud Control Unit actions',
+    body: 'State Attorney General Medicaid Fraud Control Unit actions involving hospice providers — sourced from official AG press releases and indictments.',
   },
 ];
 

@@ -22,7 +22,7 @@ export const FACILITY_TYPES = {
     name: 'Hospice',
     shortName: 'Hospice',
     accentColor: 'red',
-    description: 'End-of-life care. Highest fraud-risk segment in California — most flagged in Operation Never Say Die concentrated in LA County.',
+    description: 'End-of-life care. California has been a major hospice fraud-enforcement focus, with recent federal and state cases centered in Los Angeles County.',
     dataPoints: [
       { label: 'CAHPS', have: true },
       { label: 'Ownership', have: true },

@@ -582,7 +582,7 @@ function FeedLinks({ item }) {
   } else if (ccns.length > 1) {
     parts.push(
       <Link key="hospice" to={'/hospice/' + ccns[0]}>
-        View {ccns.length} affected hospices →
+        View {ccns.length} matched hospices →
       </Link>
     );
   }

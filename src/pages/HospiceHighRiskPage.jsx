@@ -407,11 +407,11 @@ export default function HospiceHighRiskPage() {
             <p>
               Every Medicare-certified hospice in CMS's Hospice Care Compare dataset is scored on six axes drawn from
               the <a
-                href="https://www.auditor.ca.gov/reports/2024-126/summary.html"
+                href="https://information.auditor.ca.gov/reports/2021-123/index.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleMethodologyClick}
-              >California State Auditor Report 2024-126 (Hospice Licensure)</a>:
+              >California State Auditor Report 2021-123 (California Hospice Licensure and Oversight)</a>:
               live-discharge / HVLDL, the CMS Hospice Care Index composite, care-mix completeness (zero general-inpatient
               and zero inpatient-hospice care), CAHPS family-experience outliers, public-record items in OIG/DOJ/court/MFCU/news
               feeds, and chain-membership risk. Scores are weighted on a 0–100 scale.

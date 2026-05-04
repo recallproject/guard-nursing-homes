@@ -1,22 +1,22 @@
 {
   "national": {
-    "total_hprd": 3.88,
+    "total_hprd": 3.87,
     "rn_hprd": 0.68,
     "lpn_hprd": 0.86,
     "cna_hprd": 2.34,
-    "zero_rn_pct": 5.59,
+    "zero_rn_pct": 5.58,
     "contractor_pct": 5.52,
-    "total_turnover": 46.24,
+    "total_turnover": 46.23,
     "rn_turnover": 44.6,
     "admin_turnover": 0.54,
     "stars": 3.01,
-    "composite": 30.73,
-    "total_fines": 31755.55,
+    "composite": 30.76,
+    "total_fines": 31794.33,
     "total_fines_median": 0,
-    "total_deficiencies": 28.42,
-    "fire_deficiency_count": 13.56,
+    "total_deficiencies": 28.44,
+    "fire_deficiency_count": 13.57,
     "complaint_investigations": 7,
-    "_computed_from": 14713,
+    "_computed_from": 14699,
     "_computed_on": "2026-05-03",
     "_note": "Computed from facility dataset. Some CMS-published averages may differ due to methodology."
   },
@@ -45,10 +45,10 @@
       "total_hprd": 4.09,
       "rn_hprd": 0.4,
       "stars": 3.44,
-      "composite": 30.7,
+      "composite": 30.84,
       "total_fines": 8597.93,
       "total_deficiencies": 19.73,
-      "total_turnover": 49.84,
+      "total_turnover": 49.83,
       "facility_count": 221
     },
     "AZ": {
@@ -65,11 +65,11 @@
       "total_hprd": 4.5,
       "rn_hprd": 0.66,
       "stars": 3.17,
-      "composite": 33.25,
-      "total_fines": 26315.34,
-      "total_deficiencies": 49.78,
+      "composite": 33.26,
+      "total_fines": 26337.99,
+      "total_deficiencies": 49.83,
       "total_turnover": 37.67,
-      "facility_count": 1163
+      "facility_count": 1162
     },
     "CO": {
       "total_hprd": 3.67,
@@ -82,14 +82,14 @@
       "facility_count": 210
     },
     "CT": {
-      "total_hprd": 3.83,
+      "total_hprd": 3.82,
       "rn_hprd": 0.7,
-      "stars": 3.1,
-      "composite": 27.38,
-      "total_fines": 21536.55,
-      "total_deficiencies": 34.58,
+      "stars": 3.09,
+      "composite": 27.43,
+      "total_fines": 21762.06,
+      "total_deficiencies": 34.94,
       "total_turnover": 37.6,
-      "facility_count": 193
+      "facility_count": 191
     },
     "DC": {
       "total_hprd": 5.09,
@@ -112,20 +112,20 @@
       "facility_count": 44
     },
     "FL": {
-      "total_hprd": 3.86,
+      "total_hprd": 3.85,
       "rn_hprd": 0.73,
       "stars": 3.27,
-      "composite": 24.95,
-      "total_fines": 28679.16,
-      "total_deficiencies": 19.6,
-      "total_turnover": 42.28,
-      "facility_count": 695
+      "composite": 24.98,
+      "total_fines": 28720.49,
+      "total_deficiencies": 19.63,
+      "total_turnover": 42.29,
+      "facility_count": 694
     },
     "GA": {
       "total_hprd": 3.58,
       "rn_hprd": 0.49,
       "stars": 2.67,
-      "composite": 27.56,
+      "composite": 27.55,
       "total_fines": 16327.29,
       "total_deficiencies": 16.6,
       "total_turnover": 46.46,
@@ -155,11 +155,11 @@
       "total_hprd": 3.79,
       "rn_hprd": 0.73,
       "stars": 3.14,
-      "composite": 25.95,
-      "total_fines": 20557.14,
-      "total_deficiencies": 20.71,
-      "total_turnover": 44.53,
-      "facility_count": 392
+      "composite": 25.92,
+      "total_fines": 20662.56,
+      "total_deficiencies": 20.82,
+      "total_turnover": 44.5,
+      "facility_count": 390
     },
     "ID": {
       "total_hprd": 4.07,
@@ -176,10 +176,10 @@
       "rn_hprd": 0.72,
       "stars": 2.56,
       "composite": 38.9,
-      "total_fines": 99055.44,
-      "total_deficiencies": 37.62,
-      "total_turnover": 45.34,
-      "facility_count": 669
+      "total_fines": 99352.46,
+      "total_deficiencies": 37.73,
+      "total_turnover": 45.26,
+      "facility_count": 667
     },
     "IN": {
       "total_hprd": 3.68,
@@ -202,14 +202,14 @@
       "facility_count": 297
     },
     "KY": {
-      "total_hprd": 3.98,
+      "total_hprd": 3.99,
       "rn_hprd": 0.77,
       "stars": 2.98,
       "composite": 25.66,
-      "total_fines": 19888.1,
-      "total_deficiencies": 13.19,
-      "total_turnover": 46.66,
-      "facility_count": 269
+      "total_fines": 19962.31,
+      "total_deficiencies": 13.24,
+      "total_turnover": 46.58,
+      "facility_count": 268
     },
     "LA": {
       "total_hprd": 3.81,
@@ -235,11 +235,11 @@
       "total_hprd": 3.88,
       "rn_hprd": 0.83,
       "stars": 3.14,
-      "composite": 32.32,
-      "total_fines": 22731.35,
-      "total_deficiencies": 51.0,
+      "composite": 32.4,
+      "total_fines": 22628.49,
+      "total_deficiencies": 50.76,
       "total_turnover": 40.2,
-      "facility_count": 220
+      "facility_count": 221
     },
     "ME": {
       "total_hprd": 4.33,
@@ -252,30 +252,30 @@
       "facility_count": 78
     },
     "MI": {
-      "total_hprd": 3.99,
-      "rn_hprd": 0.76,
-      "stars": 3.19,
+      "total_hprd": 3.98,
+      "rn_hprd": 0.77,
+      "stars": 3.18,
       "composite": 31.41,
-      "total_fines": 34882.01,
-      "total_deficiencies": 32.74,
-      "total_turnover": 44.21,
-      "facility_count": 424
+      "total_fines": 34964.48,
+      "total_deficiencies": 32.82,
+      "total_turnover": 44.22,
+      "facility_count": 423
     },
     "MN": {
       "total_hprd": 4.19,
       "rn_hprd": 1.06,
-      "stars": 3.16,
-      "composite": 24.36,
-      "total_fines": 19924.43,
-      "total_deficiencies": 23.17,
-      "total_turnover": 42.77,
-      "facility_count": 339
+      "stars": 3.17,
+      "composite": 24.3,
+      "total_fines": 19983.38,
+      "total_deficiencies": 23.23,
+      "total_turnover": 42.71,
+      "facility_count": 338
     },
     "MO": {
       "total_hprd": 3.44,
       "rn_hprd": 0.46,
       "stars": 2.49,
-      "composite": 38.78,
+      "composite": 38.96,
       "total_fines": 36463.84,
       "total_deficiencies": 35.66,
       "total_turnover": 56.44,
@@ -304,22 +304,22 @@
     "NC": {
       "total_hprd": 3.79,
       "rn_hprd": 0.6,
-      "stars": 2.93,
-      "composite": 32.84,
-      "total_fines": 41320.22,
-      "total_deficiencies": 19.89,
+      "stars": 2.94,
+      "composite": 32.79,
+      "total_fines": 41419.07,
+      "total_deficiencies": 19.93,
       "total_turnover": 49.63,
-      "facility_count": 419
+      "facility_count": 418
     },
     "ND": {
-      "total_hprd": 4.42,
-      "rn_hprd": 0.92,
-      "stars": 3.29,
-      "composite": 23.7,
-      "total_fines": 27902.82,
-      "total_deficiencies": 16.68,
-      "total_turnover": 49.03,
-      "facility_count": 73
+      "total_hprd": 4.41,
+      "rn_hprd": 0.93,
+      "stars": 3.27,
+      "composite": 23.91,
+      "total_fines": 28290.36,
+      "total_deficiencies": 16.92,
+      "total_turnover": 48.97,
+      "facility_count": 72
     },
     "NE": {
       "total_hprd": 4.08,
@@ -376,10 +376,10 @@
       "rn_hprd": 0.7,
       "stars": 3.05,
       "composite": 20.09,
-      "total_fines": 24417.99,
-      "total_deficiencies": 19.67,
+      "total_fines": 24458.96,
+      "total_deficiencies": 19.7,
       "total_turnover": 40.29,
-      "facility_count": 597
+      "facility_count": 596
     },
     "OH": {
       "total_hprd": 3.72,
@@ -394,12 +394,12 @@
     "OK": {
       "total_hprd": 3.82,
       "rn_hprd": 0.33,
-      "stars": 2.72,
-      "composite": 35.21,
-      "total_fines": 20756.2,
-      "total_deficiencies": 22.89,
+      "stars": 2.73,
+      "composite": 35.3,
+      "total_fines": 20829.54,
+      "total_deficiencies": 22.97,
       "total_turnover": 56.03,
-      "facility_count": 284
+      "facility_count": 283
     },
     "OR": {
       "total_hprd": 5.07,
@@ -415,10 +415,10 @@
       "total_hprd": 3.88,
       "rn_hprd": 0.78,
       "stars": 3.02,
-      "composite": 27.24,
+      "composite": 27.3,
       "total_fines": 26330.78,
       "total_deficiencies": 31.43,
-      "total_turnover": 45.76,
+      "total_turnover": 45.75,
       "facility_count": 657
     },
     "PR": {
@@ -454,19 +454,19 @@
     "SD": {
       "total_hprd": 3.85,
       "rn_hprd": 0.82,
-      "stars": 2.84,
-      "composite": 29.19,
+      "stars": 2.82,
+      "composite": 29.43,
       "total_fines": 27674.27,
       "total_deficiencies": 15.62,
-      "total_turnover": 49.09,
+      "total_turnover": 49.21,
       "facility_count": 96
     },
     "TN": {
       "total_hprd": 3.81,
       "rn_hprd": 0.6,
-      "stars": 2.97,
-      "composite": 26.41,
-      "total_fines": 28754.9,
+      "stars": 2.96,
+      "composite": 26.56,
+      "total_fines": 29169.12,
       "total_deficiencies": 14.87,
       "total_turnover": 48.49,
       "facility_count": 303
@@ -475,7 +475,7 @@
       "total_hprd": 3.38,
       "rn_hprd": 0.42,
       "stars": 2.7,
-      "composite": 44.42,
+      "composite": 44.47,
       "total_fines": 52674.5,
       "total_deficiencies": 26.7,
       "total_turnover": 53.71,

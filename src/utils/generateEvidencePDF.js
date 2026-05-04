@@ -318,7 +318,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       const zeroDays = Math.round((facility.zero_rn_pct / 100) * 92);
       parts.push(
         'It reported zero registered nurse hours on ' + zeroDays + ' days (' +
-        facility.zero_rn_pct.toFixed(1) + '% of Q3 2025), a potential violation of 42 CFR §483.35.'
+        facility.zero_rn_pct.toFixed(1) + '% of Q3 2025), which warrants review against 42 CFR §483.35 nursing-services requirements.'
       );
     }
     if (facility.jeopardy_count > 0 || facility.harm_count > 0) {
@@ -977,15 +977,15 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (facility.total_hprd && facility.total_hprd < 3.48)
       takeaways.push('Understaffing: Total staffing of ' + num(facility.total_hprd) + ' HPRD is ' + ((1 - facility.total_hprd / 3.48) * 100).toFixed(0) + '% below the 3.48 HPRD threshold cited by 18 state AGs as minimum safe staffing.');
     if (facility.zero_rn_pct > 0)
-      takeaways.push('Zero-RN Days: Facility reported zero registered nurse hours on ' + facility.zero_rn_pct.toFixed(1) + '% of days — potential violation of 42 CFR §483.35 (RN required 8 hrs/day, 7 days/week).');
+      takeaways.push('Zero-RN Days: Facility reported zero registered nurse hours on ' + facility.zero_rn_pct.toFixed(1) + '% of days — this warrants review against 42 CFR §483.35 nursing-services requirements.');
     if (facility.total_fines > 0)
-      takeaways.push('Financial Penalties: ' + fmt(facility.total_fines) + ' in federal civil monetary penalties across ' + (facility.fine_count || 0) + ' enforcement action' + ((facility.fine_count || 0) > 1 ? 's' : '') + ', establishing a pattern of regulatory noncompliance.');
+      takeaways.push('Financial Penalties: ' + fmt(facility.total_fines) + ' in federal civil monetary penalties across ' + (facility.fine_count || 0) + ' enforcement action' + ((facility.fine_count || 0) > 1 ? 's' : '') + ', documenting the facility enforcement history.');
     if (facility.denial_count > 0)
       takeaways.push('Payment Denials: ' + facility.denial_count + ' CMS payment denial' + (facility.denial_count > 1 ? 's' : '') + ' — the most severe enforcement action short of facility closure.');
     if (facility.worst_owner && facility.owner_portfolio_count > 5)
-      takeaways.push('Corporate Oversight: Operated by ' + facility.worst_owner + ' (' + facility.owner_portfolio_count + ' facilities). Portfolio-wide patterns may support corporate negligence theories.');
+      takeaways.push('Corporate Oversight: Operated by ' + facility.worst_owner + ' (' + facility.owner_portfolio_count + ' facilities). Portfolio-wide patterns may warrant review of corporate-level oversight.');
     if (facility.contractor_pct && facility.contractor_pct > 20)
-      takeaways.push('Contract Staffing Reliance: ' + facility.contractor_pct.toFixed(1) + '% contract RN staffing (national avg: ' + NATIONAL_AVG.contractor_pct + '%). High reliance on temporary staff disrupts continuity of care.');
+      takeaways.push('Contract Staffing Reliance: ' + facility.contractor_pct.toFixed(1) + '% contract RN staffing (national avg: ' + NATIONAL_AVG.contractor_pct + '%). High reliance on temporary staff can affect care continuity.');
 
     if (takeaways.length === 0)
       takeaways.push('No major red flags identified in available federal data. This does not preclude facility-specific concerns outside the scope of CMS datasets.');

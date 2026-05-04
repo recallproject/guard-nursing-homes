@@ -458,7 +458,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-stat-card v5-fade-in">
           <div className="v5-stat-accent"></div>
           <div className="v5-stat-body">
-            <div className="v5-stat-value" data-target="14713">0</div>
+            <div className="v5-stat-value" data-target="14699">0</div>
             <div className="v5-stat-label">Facilities analyzed with full safety reports</div>
           </div>
         </div>
@@ -472,8 +472,8 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-stat-card v5-fade-in">
           <div className="v5-stat-accent orange"></div>
           <div className="v5-stat-body">
-            <div className="v5-stat-value" data-target="492" data-prefix="$" data-suffix="M">$0M</div>
-            <div className="v5-stat-label">In federal fines exposed -- searchable by facility</div>
+            <div className="v5-stat-value" data-target="467" data-prefix="$" data-suffix="M">$0M</div>
+            <div className="v5-stat-label">In federal fines documented -- searchable by facility</div>
           </div>
         </div>
       </div>

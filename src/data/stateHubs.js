@@ -24,7 +24,7 @@ export const STATE_HUBS = {
       label: 'Why this matters now',
       title: 'The hospice fraud capital of the country',
       paragraphs: [
-        'Federal prosecutors charged operators in a $267 million Medi-Cal hospice fraud scheme centered on Los Angeles County. Operation "Never Say Die" flagged 1,400+ California hospices for further review.',
+        'Federal prosecutors charged Southern California hospice operators in Operation "Never Say Die," involving more than $50 million in alleged Medicare fraud. One week later, California announced Operation "Skip Trace," a state case alleging $267 million in Medi-Cal hospice fraud centered on Los Angeles County.',
         'CMS publishes only fragments of hospice oversight data publicly. We surface what is available — provider info, ownership, complaints, CAHPS surveys — and flag the gaps.',
       ],
     },

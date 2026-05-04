@@ -166,6 +166,9 @@ export function generatePDF(facility, options = {}) {
   const footer = () => {
     doc.setFontSize(7.5);
     doc.setTextColor(...C.muted);
+    if (isSample) {
+      doc.text('Sample PDF: all names and figures are fictional. Real reports use CMS data only.', pw / 2, ph - 12, { align: 'center' });
+    }
     doc.text(`The Oversight Report  |  oversightreports.com  |  Data: CMS Medicare.gov  |  Generated ${today}  |  Page ${page}`, pw / 2, ph - 8, { align: 'center' });
 
     // ── Invisible canary token (white-on-white, ~4pt) ──
@@ -1002,13 +1005,13 @@ export function generatePDF(facility, options = {}) {
     if (ownerBelowAvgPct > 50) {
       y += 2;
       calloutBox(
-        `SYSTEMIC CONCERN: ${ownerBelowAvgPct}% of facilities under this operator are rated below average (1-2 stars). This pattern suggests systemic issues with care quality across the organization -- not isolated problems at a single location.`,
+        `PORTFOLIO PATTERN: ${ownerBelowAvgPct}% of facilities under this operator are rated below average (1-2 stars). This pattern warrants review of quality metrics across the organization, not only at a single location.`,
         'danger'
       );
     } else if (ownerBelowAvgPct > 30) {
       y += 2;
       calloutBox(
-        `${ownerBelowAvgPct}% of this operator's facilities are rated below average. While not the worst pattern, it suggests the organization may have systemic challenges with maintaining consistent quality.`,
+        `${ownerBelowAvgPct}% of this operator's facilities are rated below average. This warrants review of whether quality patterns are isolated to this facility or present across the portfolio.`,
         'warning'
       );
     }
@@ -1369,7 +1372,7 @@ export function generatePDF(facility, options = {}) {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   const disc = doc.splitTextToSize(
-    'This analysis is for informational purposes only. Risk scores indicate areas warranting further investigation, not confirmed issues. All data sourced from publicly available CMS datasets. Always visit facilities in person and consult with healthcare professionals before making decisions. DataLink Clinical reserves provenance fingerprint dlc-prov-2026q2 for forensic verification of unauthorized reproduction.',
+    `${isSample ? 'This sample report uses fictional names and demonstration figures. Real reports use CMS data only. ' : ''}This analysis is for informational purposes only. Risk scores indicate areas warranting further investigation, not confirmed issues. All data sourced from publicly available CMS datasets. Always visit facilities in person and consult with healthcare professionals before making decisions. DataLink Clinical reserves provenance fingerprint dlc-prov-2026q2 for forensic verification of unauthorized reproduction.`,
     W - 12
   );
   // Dynamic box height: 5mm top padding (title) + line height * lines + 4mm bottom padding

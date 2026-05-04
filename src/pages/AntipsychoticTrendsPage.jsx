@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import '../styles/antipsychotic-trends.css';
 
-const OIG_REPORT_URL = 'https://oig.hhs.gov/reports-and-publications/workplan/summary/wp-summary-0000708.asp';
+const OIG_REPORT_URL = 'https://oig.hhs.gov/reports/all/2026/nursing-homes-inappropriately-diagnosed-residents-with-schizophrenia-to-mask-the-misuse-of-antipsychotic-drugs/';
 const NATIONAL_AVG_RATE = 14.6;
 
 function getRiskBadgeClass(level) {

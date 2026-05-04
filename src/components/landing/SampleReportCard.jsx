@@ -30,10 +30,10 @@ const SAMPLE_FACILITY = {
   pct_contract: 28,
   rn_gap_pct: 42,
   ownership_type: 'For Profit - Corporation',
-  worst_owner: 'Sample Holdings LLC',
+  worst_owner: '[Sample Holdings LLC - fictional]',
   owner_portfolio_count: 30,
   owner_avg_fines: 156000,
-  chain_name: 'Sample Holdings LLC',
+  chain_name: '[Sample Holdings LLC - fictional]',
   top_categories: [
     ['Infection Control', 6],
     ['Fall Prevention', 4],
@@ -57,45 +57,29 @@ const SAMPLE_PERCENTILES = {
 
 // ── Nearby facilities ──
 const SAMPLE_NEARBY = [
-  { name: 'Oakwood Care Center', city: 'Springfield', state: 'IL', distance: 2.3, composite: 22.1, stars: 4, beds: 95 },
-  { name: 'Lincoln Meadows Nursing', city: 'Springfield', state: 'IL', distance: 4.1, composite: 18.5, stars: 4, beds: 110 },
-  { name: 'Heritage Health Center', city: 'Chatham', state: 'IL', distance: 5.7, composite: 35.2, stars: 3, beds: 80 },
-  { name: 'Prairie View Senior Living', city: 'Rochester', state: 'IL', distance: 8.2, composite: 28.9, stars: 3, beds: 140 },
-  { name: 'Riverview Gardens', city: 'Sherman', state: 'IL', distance: 11.4, composite: 15.3, stars: 5, beds: 60 },
+  { name: '[Nearby Sample Facility A]', city: 'Sample City', state: 'IL', distance: 2.3, composite: 22.1, stars: 4, beds: 95 },
+  { name: '[Nearby Sample Facility B]', city: 'Sample City', state: 'IL', distance: 4.1, composite: 18.5, stars: 4, beds: 110 },
+  { name: '[Nearby Sample Facility C]', city: 'Sample City', state: 'IL', distance: 5.7, composite: 35.2, stars: 3, beds: 80 },
+  { name: '[Nearby Sample Facility D]', city: 'Sample City', state: 'IL', distance: 8.2, composite: 28.9, stars: 3, beds: 140 },
+  { name: '[Nearby Sample Facility E]', city: 'Sample City', state: 'IL', distance: 11.4, composite: 15.3, stars: 5, beds: 60 },
 ];
 
 // ── Owner portfolio siblings (29 facilities to make 30 total) ──
-const SAMPLE_OWNER_PORTFOLIO = [
-  { name: 'Lakeview Manor', state: 'IL', stars: 1, composite: 82.1, worst_owner: 'Sample Holdings LLC', ccn: '100001', total_fines: 195000 },
-  { name: 'Sunrise Care of Peoria', state: 'IL', stars: 1, composite: 78.5, worst_owner: 'Sample Holdings LLC', ccn: '100002', total_fines: 172000 },
-  { name: 'Valley Ridge Health', state: 'IN', stars: 2, composite: 71.3, worst_owner: 'Sample Holdings LLC', ccn: '100003', total_fines: 134000 },
-  { name: 'Meadowbrook Living', state: 'IN', stars: 1, composite: 85.9, worst_owner: 'Sample Holdings LLC', ccn: '100004', total_fines: 241000 },
-  { name: 'Pine Hills Nursing', state: 'OH', stars: 2, composite: 68.4, worst_owner: 'Sample Holdings LLC', ccn: '100005', total_fines: 89000 },
-  { name: 'Cedar Creek Care', state: 'OH', stars: 1, composite: 79.2, worst_owner: 'Sample Holdings LLC', ccn: '100006', total_fines: 201000 },
-  { name: 'Elm Street Health', state: 'MI', stars: 2, composite: 65.7, worst_owner: 'Sample Holdings LLC', ccn: '100007', total_fines: 78000 },
-  { name: 'Willowbrook Senior', state: 'MI', stars: 3, composite: 48.2, worst_owner: 'Sample Holdings LLC', ccn: '100008', total_fines: 45000 },
-  { name: 'Autumn Leaves Care', state: 'IL', stars: 1, composite: 91.3, worst_owner: 'Sample Holdings LLC', ccn: '100009', total_fines: 312000 },
-  { name: 'Grandview Nursing', state: 'IL', stars: 2, composite: 72.8, worst_owner: 'Sample Holdings LLC', ccn: '100010', total_fines: 128000 },
-  { name: 'Riverbend Health', state: 'IN', stars: 1, composite: 83.4, worst_owner: 'Sample Holdings LLC', ccn: '100011', total_fines: 189000 },
-  { name: 'Shady Oaks Manor', state: 'OH', stars: 2, composite: 69.1, worst_owner: 'Sample Holdings LLC', ccn: '100012', total_fines: 98000 },
-  { name: 'Hilltop Care Center', state: 'MI', stars: 1, composite: 88.7, worst_owner: 'Sample Holdings LLC', ccn: '100013', total_fines: 267000 },
-  { name: 'Brookside Living', state: 'IL', stars: 3, composite: 42.5, worst_owner: 'Sample Holdings LLC', ccn: '100014', total_fines: 32000 },
-  { name: 'Maplewood Health', state: 'IN', stars: 2, composite: 74.6, worst_owner: 'Sample Holdings LLC', ccn: '100015', total_fines: 145000 },
-  { name: 'Oakridge Nursing', state: 'OH', stars: 1, composite: 80.1, worst_owner: 'Sample Holdings LLC', ccn: '100016', total_fines: 178000 },
-  { name: 'Sunset Terrace', state: 'MI', stars: 2, composite: 66.9, worst_owner: 'Sample Holdings LLC', ccn: '100017', total_fines: 87000 },
-  { name: 'Greenfield Manor', state: 'IL', stars: 1, composite: 84.3, worst_owner: 'Sample Holdings LLC', ccn: '100018', total_fines: 223000 },
-  { name: 'Country Meadows', state: 'IN', stars: 3, composite: 45.1, worst_owner: 'Sample Holdings LLC', ccn: '100019', total_fines: 28000 },
-  { name: 'Birchwood Care', state: 'OH', stars: 2, composite: 70.5, worst_owner: 'Sample Holdings LLC', ccn: '100020', total_fines: 112000 },
-  { name: 'Lakewood Senior', state: 'MI', stars: 1, composite: 86.2, worst_owner: 'Sample Holdings LLC', ccn: '100021', total_fines: 245000 },
-  { name: 'Prairie Rose Health', state: 'IL', stars: 2, composite: 67.8, worst_owner: 'Sample Holdings LLC', ccn: '100022', total_fines: 91000 },
-  { name: 'Highland Park Nursing', state: 'IN', stars: 1, composite: 81.6, worst_owner: 'Sample Holdings LLC', ccn: '100023', total_fines: 198000 },
-  { name: 'Woodlands Care', state: 'OH', stars: 3, composite: 51.2, worst_owner: 'Sample Holdings LLC', ccn: '100024', total_fines: 42000 },
-  { name: 'Silver Springs', state: 'MI', stars: 2, composite: 73.4, worst_owner: 'Sample Holdings LLC', ccn: '100025', total_fines: 136000 },
-  { name: 'Cornerstone Living', state: 'IL', stars: 1, composite: 89.8, worst_owner: 'Sample Holdings LLC', ccn: '100026', total_fines: 278000 },
-  { name: 'Blueridge Health', state: 'IN', stars: 2, composite: 76.1, worst_owner: 'Sample Holdings LLC', ccn: '100027', total_fines: 154000 },
-  { name: 'Evergreen Manor', state: 'OH', stars: 1, composite: 82.7, worst_owner: 'Sample Holdings LLC', ccn: '100028', total_fines: 203000 },
-  { name: 'Whispering Pines', state: 'MI', stars: 4, composite: 28.3, worst_owner: 'Sample Holdings LLC', ccn: '100029', total_fines: 12000 },
-];
+const SAMPLE_OWNER_PORTFOLIO = Array.from({ length: 29 }, (_, index) => {
+  const states = ['IL', 'IN', 'OH', 'MI'];
+  const stars = [1, 1, 2, 1, 2, 1, 2, 3];
+  const composites = [82.1, 78.5, 71.3, 85.9, 68.4, 79.2, 65.7, 48.2];
+  const fines = [195000, 172000, 134000, 241000, 89000, 201000, 78000, 45000];
+  return {
+    name: `[Sample Facility ${index + 1}]`,
+    state: states[index % states.length],
+    stars: stars[index % stars.length],
+    composite: composites[index % composites.length],
+    worst_owner: '[Sample Holdings LLC - fictional]',
+    ccn: `SAMPLE-${String(index + 1).padStart(3, '0')}`,
+    total_fines: fines[index % fines.length],
+  };
+});
 
 export default function SampleReportCard({ onSearch }) {
   const sectionRef = useRef(null);
@@ -304,21 +288,21 @@ export default function SampleReportCard({ onSearch }) {
                   <div className="report-nearby-item">
                     <span className="report-nearby-badge report-nearby-badge--good">4.2</span>
                     <div className="report-nearby-info">
-                      <span className="report-nearby-name">Oakwood Care Center</span>
+                      <span className="report-nearby-name">[Nearby Sample Facility A]</span>
                       <span className="report-nearby-distance">2.3 mi away · Low Risk</span>
                     </div>
                   </div>
                   <div className="report-nearby-item">
                     <span className="report-nearby-badge report-nearby-badge--good">3.8</span>
                     <div className="report-nearby-info">
-                      <span className="report-nearby-name">Lincoln Meadows Nursing</span>
+                      <span className="report-nearby-name">[Nearby Sample Facility B]</span>
                       <span className="report-nearby-distance">4.1 mi away · Low Risk</span>
                     </div>
                   </div>
                   <div className="report-nearby-item">
                     <span className="report-nearby-badge report-nearby-badge--ok">3.1</span>
                     <div className="report-nearby-info">
-                      <span className="report-nearby-name">Heritage Health Center</span>
+                      <span className="report-nearby-name">[Nearby Sample Facility C]</span>
                       <span className="report-nearby-distance">5.7 mi away · Moderate Risk</span>
                     </div>
                   </div>

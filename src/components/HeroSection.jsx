@@ -185,7 +185,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
           <div className="hero-stat">
             <div
               className="hero-stat-value"
-              data-value={national ? national.total_facilities : 14713}
+              data-value={national ? national.total_facilities : 14699}
             >
               0
             </div>
@@ -204,7 +204,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
           <div className="hero-stat">
             <div
               className="hero-stat-value"
-              data-value="492"
+              data-value="467"
               data-format="currency"
             >
               $0M

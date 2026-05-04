@@ -295,7 +295,7 @@ function generateExecutiveSummary() {
         zeroDays +
         ' days (' +
         facility.zero_rn_pct.toFixed(1) +
-        '% of Q3 2025), a potential violation of 42 CFR \u00a7483.35.'
+        '% of Q3 2025), which warrants review against 42 CFR \u00a7483.35 nursing-services requirements.'
     );
   }
   if (facility.jeopardy_count > 0 || facility.harm_count > 0) {
@@ -317,7 +317,7 @@ function generateExecutiveSummary() {
     parts.push(
       'State inspectors documented ' +
         bits.join(' and ') +
-        ' — conditions posing serious danger to residents.'
+      ' — conditions CMS classifies as involving serious harm or likely serious harm.'
     );
   }
   if (facility.worst_owner && facility.owner_portfolio_count > 1) {
@@ -2449,7 +2449,7 @@ currentY += 5;
 
 const weights = [
   'Staffing Levels: 30% (verified payroll vs. self-reported, zero-RN days)',
-  'Inspection Results: 25% (deficiencies, serious danger, harm citations)',
+  'Inspection Results: 25% (deficiencies, immediate-jeopardy, harm citations)',
   'Financial Penalties: 20% (civil monetary penalties, payment denials)',
   'Ownership History: 15% (portfolio performance, ownership changes)',
   'Quality Measures: 10% (CMS star rating components)',

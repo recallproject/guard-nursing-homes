@@ -30,10 +30,10 @@ const SAMPLE_FACILITY = {
   pct_contract: 28,
   rn_gap_pct: 42,
   ownership_type: 'For Profit - Corporation',
-  worst_owner: 'Sample Holdings LLC',
+  worst_owner: '[Sample Holdings LLC - fictional]',
   owner_portfolio_count: 30,
   owner_avg_fines: 156000,
-  chain_name: 'Sample Holdings LLC',
+  chain_name: '[Sample Holdings LLC - fictional]',
   top_categories: [
     ['Infection Control', 6],
     ['Fall Prevention', 4],
@@ -49,15 +49,15 @@ const SAMPLE_PERCENTILES = {
 };
 
 const SAMPLE_NEARBY = [
-  { name: 'Oakwood Care Center', city: 'Springfield', state: 'IL', distance: 2.3, composite: 22.1, stars: 4, beds: 95 },
-  { name: 'Lincoln Meadows Nursing', city: 'Springfield', state: 'IL', distance: 4.1, composite: 18.5, stars: 4, beds: 110 },
-  { name: 'Heritage Health Center', city: 'Chatham', state: 'IL', distance: 5.7, composite: 35.2, stars: 3, beds: 80 },
+  { name: '[Nearby Sample Facility A]', city: 'Sample City', state: 'IL', distance: 2.3, composite: 22.1, stars: 4, beds: 95 },
+  { name: '[Nearby Sample Facility B]', city: 'Sample City', state: 'IL', distance: 4.1, composite: 18.5, stars: 4, beds: 110 },
+  { name: '[Nearby Sample Facility C]', city: 'Sample City', state: 'IL', distance: 5.7, composite: 35.2, stars: 3, beds: 80 },
 ];
 
 const SAMPLE_OWNER_PORTFOLIO = [
-  { name: 'Lakeview Manor', state: 'IL', stars: 1, composite: 82.1, worst_owner: 'Sample Holdings LLC', ccn: '100001', total_fines: 195000 },
-  { name: 'Sunrise Care of Peoria', state: 'IL', stars: 1, composite: 78.5, worst_owner: 'Sample Holdings LLC', ccn: '100002', total_fines: 172000 },
-  { name: 'Valley Ridge Health', state: 'IN', stars: 2, composite: 71.3, worst_owner: 'Sample Holdings LLC', ccn: '100003', total_fines: 134000 },
+  { name: '[Sample Facility A]', state: 'IL', stars: 1, composite: 82.1, worst_owner: '[Sample Holdings LLC - fictional]', ccn: 'SAMPLE-001', total_fines: 195000 },
+  { name: '[Sample Facility B]', state: 'IL', stars: 1, composite: 78.5, worst_owner: '[Sample Holdings LLC - fictional]', ccn: 'SAMPLE-002', total_fines: 172000 },
+  { name: '[Sample Facility C]', state: 'IN', stars: 2, composite: 71.3, worst_owner: '[Sample Holdings LLC - fictional]', ccn: 'SAMPLE-003', total_fines: 134000 },
 ];
 
 export default function TwoReportsSection({ onSearch }) {
@@ -203,9 +203,9 @@ export default function TwoReportsSection({ onSearch }) {
                       <span>Facility</span><span>State</span><span>Stars</span><span>Fines</span>
                     </div>
                     <div className="epm-table-row"><span>Sample Facility Name</span><span>IL</span><span>1</span><span>$284K</span></div>
-                    <div className="epm-table-row"><span>Autumn Leaves Care</span><span>IL</span><span>1</span><span>$312K</span></div>
-                    <div className="epm-table-row"><span>Cornerstone Living</span><span>IL</span><span>1</span><span>$278K</span></div>
-                    <div className="epm-table-row"><span>Lakeview Manor</span><span>IL</span><span>1</span><span>$195K</span></div>
+                    <div className="epm-table-row"><span>[Sample Facility A]</span><span>IL</span><span>1</span><span>$312K</span></div>
+                    <div className="epm-table-row"><span>[Sample Facility B]</span><span>IL</span><span>1</span><span>$278K</span></div>
+                    <div className="epm-table-row"><span>[Sample Facility C]</span><span>IL</span><span>1</span><span>$195K</span></div>
                     <div className="epm-table-row epm-table-more">+ 26 more facilities in portfolio</div>
                   </div>
                 </div>

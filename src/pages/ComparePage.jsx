@@ -170,15 +170,15 @@ export default function ComparePage() {
               <span className="compare-tool-badge compare-tool-badge--free">Free</span>
             </div>
             <p className="compare-tool-tagline">
-              A quarterly list published by CMS identifying the worst-performing nursing homes
-              in the country — facilities with persistent patterns of serious quality issues.
+              A quarterly list published by CMS identifying nursing homes with persistent
+              patterns of serious quality issues.
             </p>
 
             <div className="compare-does-grid">
               <div className="compare-does-col compare-does-col--yes">
                 <h4>What It Does</h4>
                 <ul>
-                  <li>Names the worst nursing homes in America</li>
+                  <li>Names nursing homes with persistent serious quality concerns</li>
                   <li>Tracks whether flagged facilities improve or get terminated</li>
                   <li>Updated quarterly</li>
                 </ul>
@@ -187,14 +187,14 @@ export default function ComparePage() {
                 <h4>What It Doesn't</h4>
                 <ul>
                   <li>Published as a PDF — not searchable, no database</li>
-                  <li>The "candidate" list (next tier of worst facilities) has 5x more facilities than the public list — most at-risk homes are invisible</li>
+                  <li>The "candidate" list has 5x more facilities than the public list — many at-risk homes are not in the active program</li>
                   <li>Families have to know it exists to find it</li>
                 </ul>
               </div>
             </div>
 
             <div className="compare-verdict">
-              <strong>If your facility is on this list, that's a serious red flag.</strong> But most
+              <strong>If your facility is on this list, it warrants closer review.</strong> But most
               problem facilities never make it onto this list because the program is severely capacity-limited.
             </div>
           </div>
@@ -645,7 +645,7 @@ export default function ComparePage() {
                 <h4>What It Doesn't</h4>
                 <ul>
                   <li>Only covers 25 states</li>
-                  <li>Only lists the "best" — tells you nothing about the worst</li>
+                  <li>Only lists the "best" — gives limited visibility into lower-performing facilities</li>
                   <li>Peer survey can be influenced by reputation rather than reality</li>
                   <li>No financial data, no ownership analysis</li>
                 </ul>

@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { value: 14713, label: 'Facilities Tracked', prefix: '', suffix: '' },
+  { value: 14699, label: 'Facilities Tracked', prefix: '', suffix: '' },
   { value: 50, label: 'States Covered', prefix: '', suffix: '' },
-  { value: 492, label: 'In Fines Exposed', prefix: '$', suffix: 'M' },
-  { value: 98, label: 'Data Accuracy', prefix: '', suffix: '%' },
+  { value: 467, label: 'In Fines Documented', prefix: '$', suffix: 'M' },
+  { value: 100, label: 'Sourced from CMS', prefix: '', suffix: '%' },
 ];
 
 export default function TheNumbers() {

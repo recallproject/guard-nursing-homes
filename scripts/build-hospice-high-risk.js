@@ -23,7 +23,7 @@ const hospiceDataDir = join(publicDir, 'data', 'hospice');
 const statesDir = join(hospiceDataDir, 'states');
 
 const METHODOLOGY_VERSION = '2026-05-02';
-const FRAMEWORK_LABEL = 'California State Auditor (Report 2024-126, Hospice Licensure)';
+const FRAMEWORK_LABEL = 'California State Auditor (Report 2021-123, California Hospice Licensure and Oversight)';
 const PUBLIC_RECORD_LOOKBACK_DAYS = 730; // 24 months
 
 // ── helpers ─────────────────────────────────────────────────────────────
@@ -327,7 +327,7 @@ const out = {
   generated_at: new Date().toISOString(),
   methodology_version: METHODOLOGY_VERSION,
   framework: FRAMEWORK_LABEL,
-  citation_url: 'https://www.auditor.ca.gov/reports/2024-126/summary.html',
+  citation_url: 'https://information.auditor.ca.gov/reports/2021-123/index.html',
   summary: {
     total_scored_with_any_flag: scored.length,
     total_in_list: top.length,

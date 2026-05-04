@@ -130,7 +130,7 @@ export default function HospitalsPage() {
               <p>
                 A curated national list of facilities meeting all five high-risk criteria simultaneously:
                 1-star rating, understaffing, zero-RN days, high fines, and excess deficiencies.
-                Avoid these placements when alternatives exist.
+                Review these placements closely when alternatives exist.
               </p>
               <Link to="/high-risk" className="hospitals-feature-link">
                 View High-Risk List →

@@ -748,7 +748,7 @@ export default function HospiceProviderPage() {
                   </div>
                   <div className={`hp-cahps-card ${cahpsHighlight.worst.delta >= 0 ? 'good' : 'bad'}`}>
                     <span className={`hp-cahps-pill ${cahpsHighlight.worst.delta >= 0 ? 'good' : 'bad'}`}>
-                      Worst vs state avg
+                      Largest gap vs state avg
                     </span>
                     <h3>{cahpsHighlight.worst.label}</h3>
                     <ul className="hp-cahps-list">

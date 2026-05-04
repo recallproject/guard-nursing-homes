@@ -19,7 +19,7 @@ export default function EvidenceSamplePage() {
           <h1 className="ev-sample-title">See Exactly What<br />You'll Get</h1>
           <p className="ev-sample-subtitle">
             This is a real Evidence Report generated for a 1-star North Carolina nursing home with $315K in federal fines
-            and 8 immediate jeopardy citations. Every report pulls live data from 16 federal databases — inspections, penalties,
+            and 8 immediate jeopardy citations. Every report pulls live data from 18 federal databases — inspections, penalties,
             staffing, ownership, quality measures, cost reports — and formats it into a professional document you can share with your family, your attorney, or your team.
           </p>
         </div>

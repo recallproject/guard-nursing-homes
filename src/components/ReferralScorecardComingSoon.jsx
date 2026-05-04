@@ -7,10 +7,10 @@ import { Helmet } from 'react-helmet-async';
 // centered overlay card explaining what's coming and capturing interest.
 
 const PREVIEW_FACILITIES = [
-  { rank: '#1', name: 'Bay Crest Care Center',          loc: 'Oakland, CA · CCN 555123', flag: 'NON-PROFIT', flagClass: 'np',    composite: 82, star: '4.0', starCls: 's-high', rn: '0.84', total: '4.21', zeroRn: '0',  defs: '8',  ij: '0', fines: '$0',     rehosp: '17.4%', turnover: '31%', anti: '8.1%',  rec: '✓ Recommend',          recCls: 'recommend' },
-  { rank: '#2', name: 'Oakmont Healthcare & Wellness',  loc: 'Oakland, CA · CCN 555456', flag: 'NON-PROFIT', flagClass: 'np',    composite: 76, star: '4.0', starCls: 's-high', rn: '0.71', total: '3.98', zeroRn: '2',  defs: '6',  ij: '0', fines: '$8.4K',  rehosp: '19.1%', turnover: '42%', anti: '9.4%',  rec: '✓ Recommend',          recCls: 'recommend' },
-  { rank: '#3', name: 'Bay Marina Post-Acute',          loc: 'Oakland, CA · CCN 555789', flag: 'PE · REIT',  flagClass: 'pe',    composite: 54, star: '3.0', starCls: 's-mid',  rn: '0.42', total: '3.42', zeroRn: '11', defs: '14', ij: '1', fines: '$92K',   rehosp: '26.8%', turnover: '58%', anti: '19.2%', rec: '▲ Consider w/ caution', recCls: 'consider' },
-  { rank: '#4', name: 'Lakeside Health Center',         loc: 'Oakland, CA · CCN 555321', flag: 'FOR-PROFIT', flagClass: 'fp',    composite: 31, star: '2.0', starCls: 's-low',  rn: '0.18', total: '2.61', zeroRn: '38', defs: '31', ij: '4', fines: '$418K',  rehosp: '34.2%', turnover: '76%', anti: '28.7%', rec: '✕ Avoid',               recCls: 'avoid' },
+  { rank: '#1', name: '[Sample Provider A]', loc: 'Sample metro · ID SAMPLE-001', flag: 'NON-PROFIT', flagClass: 'np', composite: 82, star: '4.0', starCls: 's-high', rn: '0.84', total: '4.21', zeroRn: '0', defs: '8', ij: '0', fines: '$0', rehosp: '17.4%', turnover: '31%', anti: '8.1%', rec: 'Strong fit', recCls: 'recommend' },
+  { rank: '#2', name: '[Sample Provider B]', loc: 'Sample metro · ID SAMPLE-002', flag: 'NON-PROFIT', flagClass: 'np', composite: 76, star: '4.0', starCls: 's-high', rn: '0.71', total: '3.98', zeroRn: '2', defs: '6', ij: '0', fines: '$8.4K', rehosp: '19.1%', turnover: '42%', anti: '9.4%', rec: 'Strong fit', recCls: 'recommend' },
+  { rank: '#3', name: '[Sample Provider C]', loc: 'Sample metro · ID SAMPLE-003', flag: 'PE · REIT', flagClass: 'pe', composite: 54, star: '3.0', starCls: 's-mid', rn: '0.42', total: '3.42', zeroRn: '11', defs: '14', ij: '1', fines: '$92K', rehosp: '26.8%', turnover: '58%', anti: '19.2%', rec: 'Review closely', recCls: 'consider' },
+  { rank: '#4', name: '[Sample Provider D]', loc: 'Sample metro · ID SAMPLE-004', flag: 'FOR-PROFIT', flagClass: 'fp', composite: 31, star: '2.0', starCls: 's-low', rn: '0.18', total: '2.61', zeroRn: '38', defs: '31', ij: '4', fines: '$418K', rehosp: '34.2%', turnover: '76%', anti: '28.7%', rec: 'Needs review', recCls: 'avoid' },
 ];
 
 const ROWS = [

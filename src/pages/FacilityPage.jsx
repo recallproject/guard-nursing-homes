@@ -639,7 +639,7 @@ export function FacilityPage() {
             return (
               <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
                 <div className={`data-cell-value ${val > 0 ? 'val-red' : 'val-green'}`}>{val}</div>
-                <div className="data-cell-label">Serious Harm <MetricTooltip title="'Immediate Jeopardy' — the worst finding" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>This is the most severe deficiency level. Inspectors concluded that conditions were so dangerous that residents faced risk of serious injury or death. Any number above zero is a red flag. Many facilities in the country have never received this citation.</MetricTooltip></div>
+                <div className="data-cell-label">Serious Harm <MetricTooltip title="'Immediate Jeopardy' - the most severe deficiency level" benchmark={`State avg: ${stateAvg?.toFixed(1) || 'N/A'} · National: ${natlAvg.toFixed(1)}`}>CMS uses this category when inspectors determine that noncompliance caused, or was likely to cause, serious injury, harm, impairment, or death. Many facilities in the country have never received this citation.</MetricTooltip></div>
                 <div className="data-cell-context">State avg: {stateAvg?.toFixed(1) || 'N/A'} · National: {natlAvg.toFixed(1)}</div>
                 <div className="data-cell-position">
                   <div className="position-track">
@@ -662,7 +662,7 @@ export function FacilityPage() {
             return (
               <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
                 <div className={`data-cell-value ${val > 50000 ? 'val-red' : val > 0 ? 'val-orange' : 'val-green'}`}>{fmt(val)}</div>
-                <div className="data-cell-label">Total Fines <MetricTooltip title="CMS monetary penalties" benchmark={`State avg: ${fmt(stateAvg)} · National: ${fmt(natlAvg)}`}>When CMS finds serious problems, they can fine a facility. Fines typically range from a few thousand dollars to hundreds of thousands. Some facilities treat fines as a cost of doing business. Compare this number to the state and national averages to see where this facility stands.</MetricTooltip></div>
+                <div className="data-cell-label">Total Fines <MetricTooltip title="CMS monetary penalties" benchmark={`State avg: ${fmt(stateAvg)} · National: ${fmt(natlAvg)}`}>When CMS finds serious problems, they can fine a facility. Fines typically range from a few thousand dollars to hundreds of thousands. Compare this number to the state and national averages to see where this facility stands relative to its peers.</MetricTooltip></div>
                 <div className="data-cell-context">State avg: {fmt(stateAvg)}</div>
                 <div className="data-cell-position">
                   <div className="position-track">
@@ -804,7 +804,7 @@ export function FacilityPage() {
                     )}
                     <div className="data-cell">
                       <div className={`data-cell-value ${repeatCount > 5 ? 'val-red' : repeatCount > 3 ? 'val-orange' : 'val-green'}`}>{repeatCount}</div>
-                      <div className="data-cell-label">Repeat Offender Citations</div>
+                      <div className="data-cell-label">Recurring Citations</div>
                       <div className="data-cell-context">Same F-tag cited again</div>
                     </div>
                   </div>
@@ -817,7 +817,7 @@ export function FacilityPage() {
                     </div>
                     <div className="verdict-text">
                       <h3 className="caution">
-                        {repeatCount > 3 ? 'Slow to Fix Problems & Repeat Offender' : 'Slow to Correct Deficiencies'}
+                        {repeatCount > 3 ? 'Slow to Correct Deficiencies & Recurring Citations' : 'Slow to Correct Deficiencies'}
                       </h3>
                       <p>
                         {avgDaysToCorrect > 32 && <>Takes <strong>{avgDaysToCorrect} days on average</strong> to correct problems — {Math.round((avgDaysToCorrect / 32 - 1) * 100)}% longer than the national average of 32 days. </>}
@@ -2247,7 +2247,7 @@ export function FacilityPage() {
               { term: 'CNA', meaning: 'Certified Nursing Assistant — provides daily personal care (bathing, feeding, dressing)' },
               { term: 'Hrs/res/day', meaning: 'Total nursing hours divided by number of residents, per day — the key staffing density metric' },
               { term: 'PBJ', meaning: 'Payroll-Based Journal — mandatory payroll records submitted to CMS (not self-reported)' },
-              { term: 'SFF', meaning: 'Special Focus Facility — CMS designation for the worst-performing ~1% of nursing homes' },
+              { term: 'SFF', meaning: 'Special Focus Facility — CMS designation for facilities with a persistent pattern of serious quality concerns' },
               { term: 'CCN', meaning: 'CMS Certification Number — unique federal ID for each Medicare-certified facility' },
               { term: 'F-tag', meaning: 'Federal regulation code (e.g., F689 = accident hazards). Each deficiency cites a specific F-tag.' },
               { term: 'K-tag', meaning: 'Fire safety regulation code — K-level citations are the most serious fire code violations' },
