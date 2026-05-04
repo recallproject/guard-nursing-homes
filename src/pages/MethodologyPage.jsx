@@ -472,7 +472,7 @@ export function MethodologyPage() {
                 <span className="methodology-formula-value">((Self-Reported RN HPRD - PBJ RN HPRD) &divide; Self-Reported RN HPRD) &times; 100</span>
               </div>
               <div className="methodology-note-box">
-                <strong>Thresholds:</strong> Gaps above 25% are significant. Gaps above 50% warrant serious scrutiny.
+                <strong>Thresholds:</strong> Gaps above 25% are significant. Gaps above 50% warrant additional review.
               </div>
             </AccordionSection>
 
