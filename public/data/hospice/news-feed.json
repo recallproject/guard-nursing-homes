@@ -1,37 +1,81 @@
 {
-  "generated_at": "2026-05-04T15:17:35.545Z",
+  "generated_at": "2026-05-06T15:31:31.667Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-01T20:28:34.000Z",
+      "last_pubdate": "2026-05-06T12:10:41.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-04T09:00:00.000Z",
+      "last_pubdate": "2026-05-06T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-04T09:00:00.000Z",
+      "last_pubdate": "2026-05-06T10:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 2,
-  "matched_unique_ccns": 4,
+  "matched_to_ccn": 1,
+  "matched_unique_ccns": 3,
   "confidence_breakdown": {
-    "high": 2,
+    "high": 1,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-o7jic1",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-06T12:10:41.000Z",
+      "headline": "Ohio’s Hospice CEO: Prepare for Value-Based Care",
+      "summary": "In time, value-based care will come to hospices, and they must be ready, according to Kent Anderson, CEO of Ohio’s Hospice. In this environment, scale will be key, as will a need to better understand the needs and objectives of referral partners, Anderson told Hospice News. He...",
+      "url": "https://hospicenews.com/2026/05/06/ohios-hospice-ceo-prepare-for-value-based-care/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-2z0u8r",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-05T20:48:39.000Z",
+      "headline": "Compliance, Co-Location: Addus’ Strategic Growth Levers",
+      "summary": "Addus Homecare (Nasdaq: ADUS) has seen sustainable hospice revenue growth, a trend in part due to the company’s investments in compliance. Fraudulent activity in the hospice space has brought tightened regulatory oversight in recent years. Hospices providing quality care have...",
+      "url": "https://hospicenews.com/2026/05/05/compliance-co-location-addus-strategic-growth-levers/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-vt9o7h",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-05T19:23:00.000Z",
+      "headline": "AI Innovation Series 2026 — Suzanne Paysinger, Executive Director, Hospice of Limestone County",
+      "summary": "This article is sponsored by MatrixCare. For hospice teams in the field, some of the most practical AI opportunities may have less to do with sweeping transformation and more to do with faster troubleshooting, clearer communication and better support in the moment. In this AI...",
+      "url": "https://hospicenews.com/2026/05/05/ai-innovation-series-2026-suzanne-paysinger-executive-director-hospice-of-limestone-county/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-7tekhg",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-04T20:33:00.000Z",
+      "headline": "Wearable Technology Impacts Hospice Staff Safety, Satisfaction",
+      "summary": "Wearable technologies have the potential to improve safety and communication among home-based hospice workers in the field. Hospice professionals navigate several unknown factors when providing care in the home, said Kenny Kelley, founder and CEO of Silent Beacon. Established in...",
+      "url": "https://hospicenews.com/2026/05/04/wearable-technology-impacts-hospice-staff-safety-satisfaction/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-x7jcy2",
       "source": "Hospice News",
@@ -101,52 +145,6 @@
       "url": "https://hospicenews.com/2026/04/29/federal-court-mulls-psychedelics-access-for-homebound-terminally-ill/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-sru6yz",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-29T19:38:04.000Z",
-      "headline": "WTWH Healthcare Now Accepting Nominations For the Inaugural Product of the Year Awards",
-      "summary": "WTWH Healthcare is proud to introduce the inaugural Hospice News (HSPN) Product of the Year (POY) Awards program. The inaugural HSPN POY Awards recognize innovative, evidence-informed products, solutions and technologies that deliver real-world impact by improving quality of...",
-      "url": "https://hospicenews.com/2026/04/29/wtwh-healthcare-now-accepting-nominations-for-the-inaugural-product-of-the-year-awards/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-w0dzsi",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-29T15:35:49.000Z",
-      "headline": "1520ai Acquires Hospice Analytics",
-      "summary": "The health care AI company 1520ai has acquired the data firm Hospice Analytics. 1520ai is a provider of hospice-native artificial intelligence systems. The startup is self-funded with no private equity or venture capital backing, though the tech firm simPAL Solutions owns a...",
-      "url": "https://hospicenews.com/2026/04/29/1520ai-acquires-hospice-analytics/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-em0kkp",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-28T20:38:36.000Z",
-      "headline": "NPHI Execs: Quality Is Hospices’ Differentiator",
-      "summary": "True quality care transcends government-required metrics and is key to shaping the future of hospice care. This is according to Tom Koutsoumpas, founder and CEO of the National Partnership for Healthcare & Hospice Innovation (NPHI), and Carole Fisher, the organization’s...",
-      "url": "https://hospicenews.com/2026/04/28/nphi-execs-quality-is-hospices-differentiator/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-55n444",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-28T16:43:37.000Z",
-      "headline": "Superior Health Holdings Acquires Chant Healthcare",
-      "summary": "Superior Health Holdings has acquired Chant Healthcare, a hospice and home care provider in Oklahoma. The acquisition marks the company’s entry into the state. Financial terms of the deal were undisclosed. Chant Healthcare provides hospice, home health and home care across 11...",
-      "url": "https://hospicenews.com/2026/04/28/superior-health-holdings-acquires-chant-healthcare/",
-      "matched_ccns": [
-        "371706"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
@@ -158,16 +156,6 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
         "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
-      }
-    ],
-    "371706": [
-      {
-        "id": "hospice-news-55n444",
-        "date": "2026-04-28T16:43:37.000Z",
-        "headline": "Superior Health Holdings Acquires Chant Healthcare",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/04/28/superior-health-holdings-acquires-chant-healthcare/",
-        "summary": "Superior Health Holdings has acquired Chant Healthcare, a hospice and home care provider in Oklahoma. The acquisition marks the company’s entry into the state. Financial terms of the deal were undisclosed. Chant Healthcare provides hospice, home health and home care across 11..."
       }
     ],
     "671597": [
