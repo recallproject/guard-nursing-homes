@@ -1,37 +1,64 @@
 {
-  "generated_at": "2026-05-06T15:31:31.667Z",
+  "generated_at": "2026-05-07T15:32:51.429Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-06T12:10:41.000Z",
+      "last_pubdate": "2026-05-06T20:43:44.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-06T09:00:00.000Z",
+      "last_pubdate": "2026-05-07T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-06T10:00:00.000Z",
+      "last_pubdate": "2026-05-07T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 1,
-  "matched_unique_ccns": 3,
+  "matched_to_ccn": 3,
+  "matched_unique_ccns": 6,
   "confidence_breakdown": {
-    "high": 1,
+    "high": 3,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-fgdarb",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-06T20:43:44.000Z",
+      "headline": "Technology, Collaboration Pivotal to Speedy Hospice Admissions",
+      "summary": "Rising demand and prolific workforce shortages have strained timely access to hospice among dying patients nationwide. Hospices moving the needle toward improvement have leveraged multifaceted approaches that blend interdisciplinary care support with technology integration....",
+      "url": "https://hospicenews.com/2026/05/06/technology-collaboration-pivotal-to-speedy-hospice-admissions/",
+      "matched_ccns": [
+        "101530"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-ddszmr",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-06T16:02:20.000Z",
+      "headline": "WTWH Healthcare Announces the Future Leaders Class of 2026",
+      "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of...",
+      "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
+      "matched_ccns": [
+        "751645",
+        "B51770"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "hospice-news-o7jic1",
       "source": "Hospice News",
@@ -123,31 +150,19 @@
         "151641"
       ],
       "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-jfc7ed",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-30T13:31:48.000Z",
-      "headline": "Hospice Scammer Receives 2-Year Prison Sentence",
-      "summary": "Alex Alexsanian, 48, received a federal prison sentence for defrauding Medicare of more than $14 million for hospice services and diagnostic imaging that was never provided. Alexsanian also pleaded guilty in January to one count of conspiracy to commit money laundering. He was...",
-      "url": "https://hospicenews.com/2026/04/30/hospice-scammer-receives-2-year-prison-sentence/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-yyffh6",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-29T21:16:26.000Z",
-      "headline": "Federal Court Mulls Psychedelics Access for Homebound, Terminally Ill",
-      "summary": "A federal district court in Oregon has allowed a lawsuit to proceed related to home-based psilocybin therapies for terminally ill, homebound individuals. Psilocybin facilitators sued the Oregon Health Authority to allow for “reasonable accommodations” for individuals who cannot...",
-      "url": "https://hospicenews.com/2026/04/29/federal-court-mulls-psychedelics-access-for-homebound-terminally-ill/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
+    "101530": [
+      {
+        "id": "hospice-news-fgdarb",
+        "date": "2026-05-06T20:43:44.000Z",
+        "headline": "Technology, Collaboration Pivotal to Speedy Hospice Admissions",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/06/technology-collaboration-pivotal-to-speedy-hospice-admissions/",
+        "summary": "Rising demand and prolific workforce shortages have strained timely access to hospice among dying patients nationwide. Hospices moving the needle toward improvement have leveraged multifaceted approaches that blend interdisciplinary care support with technology integration...."
+      }
+    ],
     "151641": [
       {
         "id": "hospice-news-dhqeij",
@@ -168,6 +183,16 @@
         "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
       }
     ],
+    "751645": [
+      {
+        "id": "hospice-news-ddszmr",
+        "date": "2026-05-06T16:02:20.000Z",
+        "headline": "WTWH Healthcare Announces the Future Leaders Class of 2026",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
+        "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of..."
+      }
+    ],
     "971681": [
       {
         "id": "hospice-news-dhqeij",
@@ -176,6 +201,16 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
         "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
+      }
+    ],
+    "B51770": [
+      {
+        "id": "hospice-news-ddszmr",
+        "date": "2026-05-06T16:02:20.000Z",
+        "headline": "WTWH Healthcare Announces the Future Leaders Class of 2026",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
+        "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of..."
       }
     ]
   }
