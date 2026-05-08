@@ -1,37 +1,59 @@
 {
-  "generated_at": "2026-05-07T15:32:51.429Z",
+  "generated_at": "2026-05-08T15:02:13.863Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-06T20:43:44.000Z",
+      "last_pubdate": "2026-05-07T20:48:16.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-07T09:00:00.000Z",
+      "last_pubdate": "2026-05-08T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-07T09:00:00.000Z",
+      "last_pubdate": "2026-05-08T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 3,
-  "matched_unique_ccns": 6,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 3,
   "confidence_breakdown": {
-    "high": 3,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-c2cpev",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-07T20:48:16.000Z",
+      "headline": "‘Moving the Mindset’ of Equitable Hospice Access",
+      "summary": "Hospices’ diversity and inclusion efforts have hit several barriers in recent years. Policy reform and more person-centered care integration represent two significant propellants toward improvement. Today’s providers often lack sufficient resources to improve health equity in...",
+      "url": "https://hospicenews.com/2026/05/07/moving-the-mindset-of-equitable-hospice-access/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-zbfs3s",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-07T20:36:37.000Z",
+      "headline": "The Pennant Group Seeks Deals Amid Amedisys-UnitedHealth Group Asset Integration",
+      "summary": "The Pennant Group (Nasdaq: PNTG) is proceeding apace with its integration of recently acquired former assets of Amedisys and UnitedHealth Group (NYSE: UNH), and may have more acquisitions on the way. In October 2025, The Pennant Group finalized its acquisition of former Amedisys...",
+      "url": "https://hospicenews.com/2026/05/07/the-pennant-group-seeks-deals-amid-amedisys-unitedhealth-group-asset-integration/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-fgdarb",
       "source": "Hospice News",
@@ -124,32 +146,6 @@
       "url": "https://hospicenews.com/2026/05/01/ai-innovation-series-agnes-pittman-director-of-clinical-services-guiding-light-hospice/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-73dsdr",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-01T15:52:20.000Z",
-      "headline": "BrightSpring Aims for Organic Growth Following Amedisys Location Acquisitions",
-      "summary": "After a banner first quarter, BrightSpring Health Services (Nasdaq: BTSG) is focused on performance improvement and continued organic growth. The company’s hospice operations are housed within its home health care business, part of its provider services segment. BrightSpring...",
-      "url": "https://hospicenews.com/2026/05/01/brightspring-aims-for-organic-growth-following-amedisys-location-acquisitions/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-dhqeij",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-04-30T21:05:26.000Z",
-      "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
-      "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and...",
-      "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
-      "matched_ccns": [
-        "671597",
-        "971681",
-        "151641"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
@@ -163,26 +159,6 @@
         "summary": "Rising demand and prolific workforce shortages have strained timely access to hospice among dying patients nationwide. Hospices moving the needle toward improvement have leveraged multifaceted approaches that blend interdisciplinary care support with technology integration...."
       }
     ],
-    "151641": [
-      {
-        "id": "hospice-news-dhqeij",
-        "date": "2026-04-30T21:05:26.000Z",
-        "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
-        "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
-      }
-    ],
-    "671597": [
-      {
-        "id": "hospice-news-dhqeij",
-        "date": "2026-04-30T21:05:26.000Z",
-        "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
-        "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
-      }
-    ],
     "751645": [
       {
         "id": "hospice-news-ddszmr",
@@ -191,16 +167,6 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
         "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of..."
-      }
-    ],
-    "971681": [
-      {
-        "id": "hospice-news-dhqeij",
-        "date": "2026-04-30T21:05:26.000Z",
-        "headline": "Volunteer Compliance Supports Hospices' Sustainable Growth",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/04/30/volunteer-compliance-supports-hospices-sustainable-growth/",
-        "summary": "Hospice volunteerism is not only a core requirement for providers, but it is also a significant part of their ability to grow amid rising demand. Volunteer recruitment and retention can be a challenging obstacle in the hospice space, said Jennifer Scurry, co-founder and..."
       }
     ],
     "B51770": [
