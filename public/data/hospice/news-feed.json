@@ -1,37 +1,76 @@
 {
-  "generated_at": "2026-05-08T15:02:13.863Z",
+  "generated_at": "2026-05-09T14:19:48.059Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-07T20:48:16.000Z",
+      "last_pubdate": "2026-05-08T21:01:05.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-08T09:00:00.000Z",
+      "last_pubdate": "2026-05-09T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-08T09:00:00.000Z",
+      "last_pubdate": "2026-05-08T17:25:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 2,
-  "matched_unique_ccns": 3,
+  "matched_to_ccn": 4,
+  "matched_unique_ccns": 7,
   "confidence_breakdown": {
-    "high": 2,
+    "high": 4,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-nppvyr",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-08T21:01:05.000Z",
+      "headline": "‘Demographics Are Destiny’ in Palliative Care",
+      "summary": "Rising costs and swelling aging populations are factors propelling the future of palliative care delivery into home-based settings. The nation’s silver tsunami of seniors are living longer with serious illnesses and comorbidities. The trend has strained health care systems and...",
+      "url": "https://hospicenews.com/2026/05/08/demographics-are-destiny-in-palliative-care/",
+      "matched_ccns": [
+        "341554"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-5tmpcu",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-08T17:13:23.000Z",
+      "headline": "Trauma-Informed Spiritual Care Vital for Dying Veterans",
+      "summary": "Hospices need a trauma-informed spiritual care model to improve veterans’ end-of-life outcomes. This is according to Darrell Robinson, clinical director of SpirituWell, which provides virtual spiritual care and telehealth chaplain staffing support. Robinson is also the...",
+      "url": "https://hospicenews.com/2026/05/08/trauma-informed-spiritual-care-vital-for-dying-veterans/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-78tmgg",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-08T16:27:02.000Z",
+      "headline": "Stillwater to Acquire Campbell County Health Hospice",
+      "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional...",
+      "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
+      "matched_ccns": [
+        "271503",
+        "271536",
+        "271539"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "hospice-news-c2cpev",
       "source": "Hospice News",
@@ -113,39 +152,6 @@
       "url": "https://hospicenews.com/2026/05/05/ai-innovation-series-2026-suzanne-paysinger-executive-director-hospice-of-limestone-county/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-7tekhg",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-04T20:33:00.000Z",
-      "headline": "Wearable Technology Impacts Hospice Staff Safety, Satisfaction",
-      "summary": "Wearable technologies have the potential to improve safety and communication among home-based hospice workers in the field. Hospice professionals navigate several unknown factors when providing care in the home, said Kenny Kelley, founder and CEO of Silent Beacon. Established in...",
-      "url": "https://hospicenews.com/2026/05/04/wearable-technology-impacts-hospice-staff-safety-satisfaction/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-x7jcy2",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-01T20:28:34.000Z",
-      "headline": "DOJ Forms Health Care Fraud Strike Force",
-      "summary": "The U.S. Department of Justice’s (DOJ) National Fraud Enforcement Division has established a new task force spanning several federal agencies to join the battle against hospice fraud. The DOJ has launched the West Coast Health Care Fraud Strike Force, which is a multi-district...",
-      "url": "https://hospicenews.com/2026/05/01/doj-forms-health-care-fraud-strike-force/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-23lqc2",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-01T18:49:40.000Z",
-      "headline": "AI Innovation Series — Agnes Pittman, Director of Clinical Services, Guiding Light Hospice",
-      "summary": "This article is sponsored by MatrixCare. In hospice care, conversations around AI are quickly moving beyond theory and into practical questions about care quality, workforce support and the patient experience. For providers, the real challenge is figuring out where these tools...",
-      "url": "https://hospicenews.com/2026/05/01/ai-innovation-series-agnes-pittman-director-of-clinical-services-guiding-light-hospice/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
@@ -157,6 +163,46 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/05/06/technology-collaboration-pivotal-to-speedy-hospice-admissions/",
         "summary": "Rising demand and prolific workforce shortages have strained timely access to hospice among dying patients nationwide. Hospices moving the needle toward improvement have leveraged multifaceted approaches that blend interdisciplinary care support with technology integration...."
+      }
+    ],
+    "271503": [
+      {
+        "id": "hospice-news-78tmgg",
+        "date": "2026-05-08T16:27:02.000Z",
+        "headline": "Stillwater to Acquire Campbell County Health Hospice",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
+        "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional..."
+      }
+    ],
+    "271536": [
+      {
+        "id": "hospice-news-78tmgg",
+        "date": "2026-05-08T16:27:02.000Z",
+        "headline": "Stillwater to Acquire Campbell County Health Hospice",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
+        "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional..."
+      }
+    ],
+    "271539": [
+      {
+        "id": "hospice-news-78tmgg",
+        "date": "2026-05-08T16:27:02.000Z",
+        "headline": "Stillwater to Acquire Campbell County Health Hospice",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
+        "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional..."
+      }
+    ],
+    "341554": [
+      {
+        "id": "hospice-news-nppvyr",
+        "date": "2026-05-08T21:01:05.000Z",
+        "headline": "‘Demographics Are Destiny’ in Palliative Care",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/08/demographics-are-destiny-in-palliative-care/",
+        "summary": "Rising costs and swelling aging populations are factors propelling the future of palliative care delivery into home-based settings. The nation’s silver tsunami of seniors are living longer with serious illnesses and comorbidities. The trend has strained health care systems and..."
       }
     ],
     "751645": [
