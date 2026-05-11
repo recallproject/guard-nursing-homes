@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-10T14:22:13.547Z",
+  "generated_at": "2026-05-11T16:10:49.364Z",
   "sources": [
     {
       "name": "Hospice News",
@@ -12,14 +12,14 @@
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-09T09:00:00.000Z",
+      "last_pubdate": "2026-05-11T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-08T17:25:00.000Z",
+      "last_pubdate": "2026-05-11T10:00:00.000Z",
       "error": null
     }
   ],
