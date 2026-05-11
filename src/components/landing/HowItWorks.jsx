@@ -9,7 +9,7 @@ const STEPS = [
 ];
 
 const CHECK_ITEMS = [
-  { name: 'Health inspection records', desc: 'Deficiency citations from federal and state surveys', count: '417,293' },
+  { name: 'Health inspection records', desc: 'Deficiency citations from federal and state surveys', count: '418,107' },
   { name: 'Payroll-verified staffing', desc: 'Daily nurse hours from CMS Payroll-Based Journal', count: '1,332,804' },
   { name: 'Federal penalties & fines', desc: 'Civil monetary penalties, payment denials', count: '18,060' },
   { name: 'Ownership & chain networks', desc: 'Corporate affiliations, ownership changes', count: '14,699' },

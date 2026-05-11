@@ -416,13 +416,13 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (facility.jeopardy_count > 0)
       findings.push('State inspectors found conditions serious enough to be classified as "immediate jeopardy" — the most severe type of inspection finding — on ' + facility.jeopardy_count + ' occasion' + (facility.jeopardy_count > 1 ? 's' : '') + '.');
     if (facility.harm_count > 0)
-      findings.push('Inspectors confirmed that residents were directly harmed by facility conditions on ' + facility.harm_count + ' occasion' + (facility.harm_count > 1 ? 's' : '') + '.');
+      findings.push('CMS cited actual-harm-level deficiencies for this facility on ' + facility.harm_count + ' occasion' + (facility.harm_count > 1 ? 's' : '') + '.');
     if (facility.total_hprd && facility.total_hprd < 3.48)
       findings.push('Staffing levels (' + num(facility.total_hprd) + ' total nursing hours per resident per day) are below the level that many experts consider a minimum safe threshold.');
     if (facility.zero_rn_pct > 10)
       findings.push('The facility reported no registered nurse on duty for ' + facility.zero_rn_pct.toFixed(0) + '% of days in the reporting period, which may affect the quality of care.');
     if (facility.total_fines > 50000)
-      findings.push('The facility has been fined ' + fmt(facility.total_fines) + ' by the federal government for regulatory violations.');
+      findings.push('CMS penalty records show ' + fmt(facility.total_fines) + ' in civil monetary penalties for this facility.');
     if (facility.contractor_pct && facility.contractor_pct > 20)
       findings.push('A higher-than-average share of nursing staff (' + facility.contractor_pct.toFixed(0) + '%) comes from temporary agencies, which may affect continuity of care.');
     if (facility.worst_owner && facility.owner_portfolio_count > 10) {
@@ -973,7 +973,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (facility.jeopardy_count > 0)
       takeaways.push('Immediate Jeopardy: ' + facility.jeopardy_count + ' IJ citation' + (facility.jeopardy_count > 1 ? 's' : '') + ' documented by state surveyors — the highest severity level under 42 CFR §488.301, indicating conditions likely to cause serious harm or death.');
     if (facility.harm_count > 0)
-      takeaways.push('Actual Harm: ' + facility.harm_count + ' actual-harm citation' + (facility.harm_count > 1 ? 's' : '') + ' — inspectors confirmed residents were directly harmed by facility conditions or practices.');
+      takeaways.push('Actual Harm: ' + facility.harm_count + ' actual-harm-level citation' + (facility.harm_count > 1 ? 's' : '') + ' in CMS inspection records.');
     if (facility.total_hprd && facility.total_hprd < 3.48)
       takeaways.push('Understaffing: Total staffing of ' + num(facility.total_hprd) + ' HPRD is ' + ((1 - facility.total_hprd / 3.48) * 100).toFixed(0) + '% below the 3.48 HPRD threshold cited by 18 state AGs as minimum safe staffing.');
     if (facility.zero_rn_pct > 0)
@@ -1357,7 +1357,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       if (facility.contractor_pct > 20) {
         addAlertBox(
           'High Contract Staffing: ' + pct(facility.contractor_pct) + ' of RN hours are provided by temporary contract staff — ' +
-          'above the 20% threshold associated with continuity-of-care concerns in Health Affairs research. ' +
+          'above this report\'s 20% review threshold for continuity-of-care concerns. ' +
           'National average is ' + NATIONAL_AVG.contractor_pct + '%. Contract staff lack familiarity with individual residents\' care plans.',
           'warning'
         );
@@ -1511,8 +1511,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (facility.rn_turnover !== null && facility.rn_turnover !== undefined && facility.rn_turnover > 60) {
       addAlertBox(
         'High RN Turnover: At ' + pct(facility.rn_turnover) + ', this facility\'s RN turnover exceeds 60% — ' +
-        'a threshold associated with significantly higher rates of adverse events in peer-reviewed literature. ' +
-        'High RN turnover disrupts care continuity and institutional knowledge, directly affecting resident safety.',
+        'above this report\'s review threshold for workforce instability. ' +
+        'High RN turnover can disrupt care continuity and institutional knowledge.',
         'warning'
       );
     }
@@ -1521,7 +1521,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
         'Administrator Turnover: ' + facility.admin_turnover + ' administrator' +
         (facility.admin_turnover > 1 ? 's have' : ' has') +
         ' left this facility — above the national average of ' + NATIONAL_AVG.admin_turnover +
-        '. Frequent leadership changes signal management dysfunction and can impair regulatory compliance.',
+        '. Frequent leadership changes can signal leadership instability and complicate regulatory compliance.',
         'warning'
       );
     }
@@ -2045,7 +2045,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       addAlertBox(
         'Above-Average Complaint Activity: ' + complaintCount + ' complaint investigations exceed the national average of ' +
         NATIONAL_AVG.complaint_investigations + ' over a 3-year period. ' +
-        'Elevated complaint activity can indicate systemic care deficiencies not captured by routine inspections alone.',
+        'Elevated complaint activity can indicate recurring concerns that may not be captured by routine inspections alone.',
         'warning'
       );
     }
@@ -2067,10 +2067,10 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       doc.setTextColor(...BODY);
       const yieldNote =
         'When complaint investigations produce ' + yieldRate + ' citation' + (parseFloat(yieldRate) !== 1 ? 's' : '') +
-        ' per investigation on average, it indicates that formal complaints filed against this facility are ' +
-        (parseFloat(yieldRate) >= 2.0 ? 'highly substantiated — inspectors consistently find multiple violations per visit.' :
-         parseFloat(yieldRate) >= 1.0 ? 'substantiated — inspectors typically confirm at least one violation per investigation.' :
-         'partially substantiated — some investigations do not result in citations.');
+        ' per investigation on average, it means complaint-driven inspections for this facility resulted in ' +
+        (parseFloat(yieldRate) >= 2.0 ? 'multiple CMS citations per visit.' :
+         parseFloat(yieldRate) >= 1.0 ? 'at least one CMS citation per investigation on average.' :
+         'some investigations with no resulting citations.');
       const ylLines = doc.splitTextToSize(yieldNote, contentWidth);
       doc.text(ylLines, margin, currentY);
       currentY += ylLines.length * 4.5 + 3;
@@ -2078,8 +2078,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       if (parseFloat(yieldRate) >= 2.0) {
         addAlertBox(
           'High Complaint Investigation Yield: ' + yieldRate + ' citations per complaint investigation. ' +
-          'When inspectors consistently find multiple violations per complaint visit, it suggests the concerns ' +
-          'driving complaints reflect real, systemic care deficiencies — not isolated incidents.',
+          'When complaint visits repeatedly produce multiple citations, the pattern warrants closer review. ' +
+          'It does not establish cause, intent, or a finding beyond the cited CMS deficiencies.',
           'warning'
         );
       }
@@ -2457,9 +2457,9 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setTextColor(...BODY);
     const apIntro = isAttorney
       ? 'Antipsychotic medications (e.g., haloperidol, quetiapine, risperidone) are powerful sedating drugs that carry FDA black-box warnings ' +
-        'when used in elderly patients. Their use as "chemical restraints" — to sedate residents rather than treat a documented psychiatric condition — is a ' +
-        'federally recognized patient rights violation (42 CFR §483.12). The March 2026 OIG report "Nursing Home Use of Antipsychotic Drugs" identified ' +
-        'widespread overuse and flagged facilities with rates significantly exceeding national norms as priorities for federal investigation.'
+        'when used in elderly patients. Federal resident-rights rules prohibit chemical restraints — sedating residents for staff convenience rather than clinical need — ' +
+        'under 42 CFR §483.12. The March 2026 OIG reports documented concerns about inappropriate antipsychotic use and schizophrenia-diagnosis patterns. ' +
+        'High facility-level rates are a reason to ask clinical follow-up questions, not proof of improper prescribing.'
       : 'Antipsychotic medications are powerful sedating drugs that carry FDA warnings when used in elderly patients. ' +
         'These drugs are sometimes used appropriately for psychiatric conditions, but overuse can be a sign of "chemical restraint" — ' +
         'sedating residents for convenience rather than medical need.';
@@ -2492,7 +2492,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     // Risk level callout
     checkPageBreak(20);
     const riskText = ap.risk_level === 'critical'
-      ? 'CRITICAL RISK: This facility\'s antipsychotic prescribing rate is severely elevated and meets federal criteria for priority investigation.'
+      ? 'CRITICAL RISK: This facility\'s antipsychotic prescribing rate is severely elevated relative to national norms and may warrant clinical or regulatory review.'
       : ap.risk_level === 'high'
       ? 'HIGH RISK: This facility\'s antipsychotic prescribing rate significantly exceeds national norms and warrants clinical scrutiny.'
       : 'ELEVATED RISK: This facility\'s antipsychotic prescribing rate is above expected levels.';
@@ -2515,10 +2515,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (ap.chemical_restraint_flag) {
       checkPageBreak(20);
       addAlertBox(
-        'CHEMICAL RESTRAINT FLAG: This facility meets criteria for potential chemical restraint use — ' +
-        'a combination of low RN staffing and high antipsychotic prescribing. Chemical restraint (sedating residents ' +
-        'for staff convenience rather than clinical need) is prohibited under 42 CFR §483.12(a)(2) and constitutes ' +
-        'a violation of residents\' right to be free from unnecessary restraint.',
+        'POTENTIAL CHEMICAL-RESTRAINT REVIEW: This facility has a data pattern combining low RN staffing and high antipsychotic prescribing. ' +
+        'The pattern does not establish improper prescribing; it identifies a question for chart-level clinical review under resident-rights protections in 42 CFR §483.12(a)(2).',
         'critical'
       );
     }
@@ -2574,8 +2572,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...STEEL);
-    const apNote = 'Antipsychotic medications carry FDA black-box warnings in elderly patients and are a known tool of chemical restraint ' +
-      '(42 CFR §483.12). The March 2026 OIG report identified facilities with rates exceeding national norms as enforcement priorities. ' +
+    const apNote = 'Antipsychotic medications carry FDA black-box warnings in elderly patients and can be misused as chemical restraints ' +
+      '(42 CFR §483.12). The March 2026 OIG reports documented concerns about inappropriate antipsychotic use and diagnosis patterns. ' +
       'This facility\'s antipsychotic prescribing rate did not reach the elevated threshold (risk score >= 3) that triggers inclusion ' +
       'in our alert dataset, suggesting prescribing patterns are within expected ranges. This finding should be verified directly ' +
       'with CMS Part D data for the most current information.';
@@ -2610,7 +2608,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   if (facility.rn_gap_pct > 30)
     redFlags.push({ metric: 'Staffing Verification Gap: ' + pct(facility.rn_gap_pct), detail: 'Large discrepancies between self-reported and payroll-verified staffing may warrant investigation.', type: 'warning' });
   if (facility.total_fines > 100000)
-    redFlags.push({ metric: 'High Financial Penalties: ' + fmt(facility.total_fines), detail: 'Repeated or severe violations resulted in substantial civil monetary penalties.', type: 'warning' });
+    redFlags.push({ metric: 'High Financial Penalties: ' + fmt(facility.total_fines), detail: 'CMS records show substantial civil monetary penalties for this facility.', type: 'warning' });
   if (facility.contractor_pct && facility.contractor_pct > 30)
     redFlags.push({ metric: 'High Contract Staffing: ' + pct(facility.contractor_pct), detail: 'Research links high contract staffing rates to continuity of care concerns.', type: 'info' });
 

@@ -21,7 +21,7 @@ const actions = [
   {
     icon: BarChartIcon,
     label: 'Explore Your State',
-    description: 'Rankings and violations in your state',
+    description: 'Rankings and deficiencies in your state',
     actionKey: 'explore',
   },
   {

@@ -2231,7 +2231,7 @@ export function FacilityPage() {
             <div className="data-source-item"><h4>CMS Penalties Data</h4><p>18,060 enforcement actions. Fines and payment denials.</p></div>
             <div className="data-source-item"><h4>CMS Ownership Data</h4><p>157,839 ownership records. Tracks 5%+ ownership interests and management.</p></div>
             <div className="data-source-item"><h4>Payroll-Based Journal (PBJ)</h4><p>1,332,804 daily staffing records (CY2025 Q3). Mandatory payroll data showing actual hours worked by RNs, LPNs, and CNAs per day.</p></div>
-            <div className="data-source-item"><h4>CMS Health Deficiencies Data</h4><p>417,293 deficiency citations. Standard surveys, complaint investigations, infection control.</p></div>
+            <div className="data-source-item"><h4>CMS Health Deficiencies Data</h4><p>418,107 deficiency citations. Standard surveys, complaint investigations, infection control.</p></div>
             <div className="data-source-item"><h4>CMS HCRIS Cost Reports</h4><p>Facility financial data including related-party transactions, revenue, and expenses.</p></div>
           </div>
         </div>

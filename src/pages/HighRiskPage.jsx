@@ -394,8 +394,8 @@ export default function HighRiskPage() {
             </p>
             <ul>
               <li><strong>1-star overall quality rating</strong> — The lowest rating CMS assigns</li>
-              <li><strong>Total fines exceeding $100,000</strong> — Indicates serious violations with financial penalties</li>
-              <li><strong>Total staffing below 3.5 hours per resident per day (HPRD)</strong> — Below CMS staffing thresholds</li>
+              <li><strong>Total fines exceeding $100,000</strong> — Indicates a substantial CMS penalty history</li>
+              <li><strong>Total staffing below 3.5 hours per resident per day (HPRD)</strong> — Below this site's low-staffing review threshold</li>
               <li><strong>Days with zero registered nurses on site</strong> — Federal law requires an RN 8 hours daily, 7 days a week</li>
               <li><strong>15 or more total deficiencies</strong> — Multiple regulatory citations</li>
             </ul>

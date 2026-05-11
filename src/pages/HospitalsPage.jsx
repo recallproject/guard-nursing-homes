@@ -144,8 +144,8 @@ export default function HospitalsPage() {
               <h3>Trends &amp; Antipsychotic Data</h3>
               <p>
                 Quarterly staffing trends and antipsychotic prescribing rates. Facilities with
-                unexplained spikes in antipsychotic use — a known chemical restraint concern —
-                are flagged for clinical review.
+                unexplained spikes in antipsychotic use are flagged for clinical review alongside
+                staffing and diagnosis context.
               </p>
               <Link to="/antipsychotic-trends" className="hospitals-feature-link">
                 View Antipsychotic Trends →

@@ -135,7 +135,7 @@ export default function EvidenceSamplePage() {
               <div className="ev-sample-item-number">7</div>
               <div className="ev-sample-item-content">
                 <h3>Red Flags</h3>
-                <p>Accountability indicators highlighting staffing crises, repeat violations, financial extraction, and fire safety.</p>
+                <p>Accountability indicators highlighting staffing pressure, recurring citations, related-party costs, and fire safety.</p>
               </div>
             </div>
             <div className="ev-sample-item">

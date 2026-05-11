@@ -313,7 +313,7 @@ The Oversight Report identifies patterns and discrepancies in publicly available
     return (
       <ComingSoonPage
         title="Ownership Network Explorer"
-        description="Trace who owns what across the nursing home industry. See how corporate chains perform across their entire portfolio — and which owners have patterns of violations, fines, and low staffing."
+        description="Trace who owns what across the nursing home industry. See how corporate chains perform across their entire portfolio — including citation patterns, fines, and staffing levels."
         tier="professional"
         features={[
           'Search any owner or management company',

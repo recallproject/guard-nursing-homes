@@ -521,7 +521,7 @@ const staticPages = [
   {
     route: 'antipsychotic-trends',
     title: 'Antipsychotic Prescribing Trends — Nursing Home Medication Data | The Oversight Report',
-    description: 'National trends in antipsychotic prescribing across nursing homes. Facility-level data on chemical restraint use and CMS quality measures.'
+    description: 'National trends in antipsychotic prescribing across nursing homes. Facility-level prescribing patterns, staffing context, and CMS quality measures.'
   },
   {
     route: 'states/california',

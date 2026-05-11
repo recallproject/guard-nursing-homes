@@ -152,7 +152,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
               <p>Payment denials: {facility.denial_count} (CMS temporarily stopped paying for new admissions)</p>
             )}
             {facility.total_fines > 100000 && (
-              <p className="flag-alert">-- Fines exceeding $100,000 suggest serious or repeated violations.</p>
+              <p className="flag-alert">Fines exceeding $100,000 indicate a substantial CMS penalty history.</p>
             )}
             <p className="flag-source">Source: CMS Penalty data</p>
           </div>

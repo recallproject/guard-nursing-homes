@@ -89,7 +89,7 @@ export default function FacilityCard({ facility }) {
           )}
           {facility.fine_count > 0 && !facility.total_fines && (
             <span className="facility-card-stat stat-neutral">
-              {facility.fine_count} violations
+              {facility.fine_count} penalty record{facility.fine_count === 1 ? '' : 's'}
             </span>
           )}
           {facility.total_deficiencies > 0 && (

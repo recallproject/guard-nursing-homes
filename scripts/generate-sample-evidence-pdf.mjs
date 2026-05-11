@@ -1201,7 +1201,7 @@ if (facility.contractor_pct !== null && facility.contractor_pct !== undefined) {
       'High Contract Staffing: ' +
         pct(facility.contractor_pct) +
         ' of RN hours are provided by temporary contract staff \u2014 ' +
-        'above the 20% threshold associated with continuity-of-care concerns in Health Affairs research. ' +
+        'above this report\'s 20% review threshold for continuity-of-care concerns. ' +
         'National average is ' +
         NATIONAL_AVG.contractor_pct +
         '%. Contract staff lack familiarity with individual residents\u2019 care plans.',
@@ -1225,7 +1225,7 @@ if (facility.zero_rn_pct > 0) {
     'Regulatory Context (42 CFR \u00a7483.35): Federal law requires a registered nurse on site for at least ' +
       '8 consecutive hours per day, 7 days per week. This facility reported zero RN hours on ' +
       facility.zero_rn_pct.toFixed(1) +
-      '% of days, which may indicate a violation of this federal requirement.',
+      '% of days, which may indicate a reporting or compliance issue.',
     'info'
   );
 }
@@ -1346,8 +1346,8 @@ if (
       'High RN Turnover: At ' +
         pct(facility.rn_turnover) +
         ", this facility's RN turnover exceeds 60% \u2014 " +
-        'a threshold associated with significantly higher rates of adverse events in peer-reviewed literature. ' +
-        'High RN turnover disrupts care continuity and institutional knowledge, directly affecting resident safety.',
+        'above this report\'s review threshold for workforce instability. ' +
+        'High RN turnover can disrupt care continuity and institutional knowledge.',
       'warning'
     );
   }
@@ -1363,7 +1363,7 @@ if (
         (facility.admin_turnover > 1 ? 's have' : ' has') +
         ' left this facility \u2014 above the national average of ' +
         NATIONAL_AVG.admin_turnover +
-        '. Frequent leadership changes signal management dysfunction and can impair regulatory compliance.',
+        '. Frequent leadership changes can signal leadership instability and complicate regulatory compliance.',
       'warning'
     );
   }
@@ -1629,7 +1629,7 @@ if (facility.jeopardy_count > 0) {
         ' complaint investigations exceed the national average of ' +
         NATIONAL_AVG.complaint_investigations +
         ' over a 3-year period. ' +
-        'Elevated complaint activity can indicate systemic care deficiencies not captured by routine inspections alone.',
+        'Elevated complaint activity can indicate recurring concerns that may not be captured by routine inspections alone.',
       'warning'
     );
   }
@@ -2047,7 +2047,7 @@ if (facility.harm_count > 0)
     metric:
       'Actual Harm: ' + facility.harm_count + ' citation' + (facility.harm_count > 1 ? 's' : ''),
     detail:
-      'Actual harm citations indicate residents were directly and negatively affected by facility practices or conditions.',
+      'Actual harm citations are CMS inspection findings at the actual-harm severity level.',
     type: 'critical',
   });
 if (facility.total_hprd && facility.total_hprd < 3.48)
@@ -2077,7 +2077,7 @@ if (facility.rn_gap_pct > 30)
 if (facility.total_fines > 100000)
   redFlags.push({
     metric: 'High Financial Penalties: ' + fmt(facility.total_fines),
-    detail: 'Repeated or severe violations resulted in substantial civil monetary penalties.',
+    detail: 'CMS records show substantial civil monetary penalties for this facility.',
     type: 'warning',
   });
 if (facility.contractor_pct && facility.contractor_pct > 30)

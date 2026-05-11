@@ -106,7 +106,7 @@ export default function FamiliesPage() {
         <div className="families-container">
           <h2 className="families-section-title">Warning signs to look for</h2>
           <p className="families-section-subtitle">
-            These data points are associated with higher rates of adverse events and regulatory violations.
+            These data points are associated with higher rates of adverse events and regulatory findings.
           </p>
           <div className="families-warning-grid">
             <div className="families-warning-card families-warning-red">
@@ -114,7 +114,7 @@ export default function FamiliesPage() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               </div>
               <h3>Low Staffing Hours</h3>
-              <p>Below 3.5 total hours per resident per day (HPRD) means residents spend less time with care staff. Look for facilities at or above the federal minimum.</p>
+              <p>Below 3.5 total hours per resident per day (HPRD) means residents spend less time with care staff. Use this as a review threshold, not a standalone verdict.</p>
               <div className="families-warning-threshold">Watch: &lt; 3.5 HPRD</div>
             </div>
             <div className="families-warning-card families-warning-orange">
@@ -122,7 +122,7 @@ export default function FamiliesPage() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
               </div>
               <h3>Zero-RN Days</h3>
-              <p>Days where no registered nurse was on site. Federal law requires an RN for at least 8 hours daily. Facilities with zero-RN days have violated this requirement.</p>
+              <p>Days where payroll data shows no registered nurse hours. Federal law requires an RN for at least 8 hours daily; zero-RN days may indicate a reporting or compliance issue.</p>
               <div className="families-warning-threshold">Watch: Any zero-RN days</div>
             </div>
             <div className="families-warning-card families-warning-yellow">
@@ -130,7 +130,7 @@ export default function FamiliesPage() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8l5 5-5 5"/></svg>
               </div>
               <h3>High Penalty Amounts</h3>
-              <p>Large fines from CMS often indicate serious care violations. A single fine over $50,000 typically corresponds to a jeopardy-level citation affecting resident safety.</p>
+              <p>Large CMS fines indicate a substantial penalty history. Review the cited deficiency details to understand what regulators found.</p>
               <div className="families-warning-threshold">Watch: &gt; $50,000 in fines</div>
             </div>
             <div className="families-warning-card families-warning-purple">

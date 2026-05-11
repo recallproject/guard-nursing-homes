@@ -233,7 +233,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
     redFlags.push({ metric: `Staffing Verification Gap: ${pct(facility.rn_gap_pct)}`, detail: 'Large discrepancies between self-reported and payroll-verified staffing may warrant investigation.', type: 'warning' });
   }
   if (facility.total_fines > 100000) {
-    redFlags.push({ metric: `High Financial Penalties: ${fmt(facility.total_fines)}`, detail: 'Repeated or severe violations resulted in substantial civil monetary penalties.', type: 'warning' });
+    redFlags.push({ metric: `High Financial Penalties: ${fmt(facility.total_fines)}`, detail: 'CMS records show substantial civil monetary penalties for this facility.', type: 'warning' });
   }
   if (facility.contractor_pct && facility.contractor_pct > 30) {
     redFlags.push({ metric: `High Contract Staffing: ${pct(facility.contractor_pct)}`, detail: 'Research links high contract staffing rates to continuity of care concerns.', type: 'info' });
@@ -649,7 +649,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
               </div>
               {facility.contractor_pct > 20 && (
                 <div className="ev-alert">
-                  <strong>High Contract Staffing:</strong> {pct(facility.contractor_pct)} of RN hours are provided by temporary contract staff — above the 20% threshold associated with continuity-of-care concerns in Health Affairs research. National average is {NATIONAL_AVG.contractor_pct}%.
+                  <strong>High Contract Staffing:</strong> {pct(facility.contractor_pct)} of RN hours are provided by temporary contract staff — above this report's 20% review threshold for continuity-of-care concerns. National average is {NATIONAL_AVG.contractor_pct}%.
                 </div>
               )}
             </>
@@ -975,7 +975,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
                 </div>
                 {complaintCount > NATIONAL_AVG.complaint_investigations && (
                   <div className="ev-alert">
-                    <strong>Above-Average Complaint Activity:</strong> This facility has had {complaintCount} complaint-driven investigations, exceeding the national average of {NATIONAL_AVG.complaint_investigations}. Elevated complaint activity can indicate systemic care deficiencies not captured by routine inspections alone.
+                    <strong>Above-Average Complaint Activity:</strong> This facility has had {complaintCount} complaint-driven investigations, exceeding the national average of {NATIONAL_AVG.complaint_investigations}. Elevated complaint activity can indicate recurring concerns that may not be captured by routine inspections alone.
                   </div>
                 )}
               </>
@@ -992,7 +992,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
               </div>
               <div className="ev-text-block">
                 <p>
-                  Fire safety deficiencies are cited during separate Life Safety Code (NFPA 101) inspections. K-level fire violations indicate conditions that could endanger residents in an emergency.
+                  Fire safety deficiencies are cited during separate Life Safety Code (NFPA 101) inspections. K-level fire citations identify conditions regulators determined could affect emergency safety.
                 </p>
               </div>
               {facility.fire_deficiency_count > NATIONAL_AVG.fire_deficiency_count * 1.5 && (

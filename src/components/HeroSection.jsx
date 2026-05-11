@@ -209,7 +209,7 @@ export default function HeroSection({ national, onExploreClick, onSearch }) {
             >
               $0M
             </div>
-            <div className="hero-stat-label">In federal fines for violations</div>
+            <div className="hero-stat-label">In federal penalties documented</div>
           </div>
         </div>
 

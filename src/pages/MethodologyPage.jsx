@@ -416,7 +416,7 @@ export function MethodologyPage() {
             </div>
 
             <div className="methodology-note-box">
-              <strong>High-Risk threshold:</strong> Facilities scoring &ge; 60 on the composite scale are classified as high-risk. Currently 1,180 of 14,699 facilities meet this threshold.
+              <strong>High-Risk list:</strong> Composite scores run from 0-100. The public high-risk list uses a stricter all-five screen: 1-star overall rating, fines above $100,000, total staffing below 3.5 HPRD, at least one zero-RN day, and 15 or more deficiencies. Currently 225 of 14,699 facilities meet all five criteria.
             </div>
           </section>
 
@@ -747,7 +747,7 @@ export function MethodologyPage() {
                 <tr>
                   <td>CMS Health Deficiencies</td>
                   <td>2017 &ndash; Dec 2025</td>
-                  <td><span className="val-muted">417,293 records</span></td>
+                  <td><span className="val-muted">418,107 records</span></td>
                 </tr>
                 <tr>
                   <td>CMS PBJ Staffing (Q3 2025)</td>

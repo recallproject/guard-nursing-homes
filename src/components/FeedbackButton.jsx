@@ -18,7 +18,7 @@ export default function FeedbackButton() {
         title="Share feedback"
         onClick={() => { window.plausible && window.plausible('Feedback-Form-Click'); }}
       >
-        <span className="feedback-fab-icon">💬</span>
+        <span className="feedback-fab-icon">?</span>
         <span className="feedback-fab-text">Feedback</span>
       </a>
       <button

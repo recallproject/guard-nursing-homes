@@ -119,7 +119,7 @@ export default function AttorneysPage() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               </div>
               <h3>Antipsychotic Prescribing Flags</h3>
-              <p>Facilities flagged for prescribing patterns above the 14.6% national average — the same chemical restraint indicators identified in HHS OIG reports. Cross-referenced with schizophrenia diagnosis rates.</p>
+              <p>Facilities flagged for prescribing patterns above the 14.6% national average, cross-referenced with schizophrenia diagnosis rates and staffing context identified in HHS OIG reports.</p>
               <span className="attorneys-feature-cite">Source: CMS Quality Measures, LTCFocus</span>
             </div>
 

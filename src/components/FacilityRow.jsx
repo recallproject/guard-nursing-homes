@@ -126,7 +126,7 @@ export default function FacilityRow({ facility }) {
             <span className="facility-card-stat stat-fines">{formatFines(facility.total_fines)} fines</span>
           )}
           {facility.total_deficiencies > 0 && (
-            <span className="facility-card-stat stat-neutral">{facility.total_deficiencies} violations</span>
+            <span className="facility-card-stat stat-neutral">{facility.total_deficiencies} deficiencies</span>
           )}
         </div>
       </div>

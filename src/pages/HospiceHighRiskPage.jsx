@@ -18,7 +18,6 @@ const FILTERS = [
   { id: 'care_mix', label: 'Care-mix red flag', axis: 'care_mix' },
   { id: 'cahps', label: 'CAHPS outlier', axis: 'cahps' },
   { id: 'public_record', label: 'Public-record items', axis: 'public_record' },
-  { id: 'chain', label: 'Chain-flagged', axis: 'chain' },
 ];
 
 const SORTS = [
@@ -49,10 +48,6 @@ const AXIS_COPY = {
   public_record: {
     title: 'Public-record items',
     desc: 'Indexed in OIG, DOJ, court, MFCU, or news data. Recency boosts severity (last 24 months).',
-  },
-  chain: {
-    title: 'Chain risk',
-    desc: 'Belongs to a chain where a majority of members are independently flagged on CMS data.',
   },
 };
 
@@ -87,7 +82,6 @@ function pillLabel(axisKey) {
     case 'care_mix': return 'Care-mix · zero GIP/INP';
     case 'cahps': return 'CAHPS · state outlier';
     case 'public_record': return 'Public record';
-    case 'chain': return 'Chain risk';
     default: return axisKey;
   }
 }
@@ -413,8 +407,8 @@ export default function HospiceHighRiskPage() {
                 onClick={handleMethodologyClick}
               >California State Auditor Report 2021-123 (California Hospice Licensure and Oversight)</a>:
               live-discharge / HVLDL, the CMS Hospice Care Index composite, care-mix completeness (zero general-inpatient
-              and zero inpatient-hospice care), CAHPS family-experience outliers, public-record items in OIG/DOJ/court/MFCU/news
-              feeds, and chain-membership risk. Scores are weighted on a 0–100 scale.
+              and zero inpatient-hospice care), CAHPS family-experience outliers, and public-record items in OIG/DOJ/court/MFCU/news
+              feeds. Chain-risk scoring is held out until provider-chain data is available. Scores are weighted on a 0–100 scale.
             </p>
             <p>
               The top 200 by composite score are listed here. National benchmarks (10th-percentile cutoffs and

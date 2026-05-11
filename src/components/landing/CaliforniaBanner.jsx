@@ -42,7 +42,7 @@ export default function CaliforniaBanner() {
       <Link to="/states/california" className="ca-banner-link" onClick={handleClick}>
         <span className="ca-banner-flag">CA</span>
         <span className="ca-banner-text">
-          <strong>California:</strong> $267M Medi-Cal hospice fraud uncovered.
+          <strong>California:</strong> CA AG announced alleged $267M Medi-Cal hospice fraud case.
         </span>
         <span className="ca-banner-cta">See every CA facility →</span>
       </Link>

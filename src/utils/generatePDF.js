@@ -561,12 +561,12 @@ export function generatePDF(facility, options = {}) {
       'and are associated with increased risk of stroke, falls, and death. ';
 
     if (ap.chemical_restraint_flag) {
-      apText += 'This facility has been flagged for potential chemical restraint — using sedating medications to manage behavior ' +
-        'rather than to treat a diagnosed psychiatric condition. This practice violates residents\' rights under 42 CFR §483.12. ';
+      apText += 'This facility has been flagged for a potential chemical-restraint concern — a data pattern combining elevated antipsychotic prescribing with low RN coverage. ' +
+        'This does not establish improper prescribing; it warrants chart-level review under resident-rights protections in 42 CFR §483.12. ';
     }
 
     if (ap.yoy_trend === 'increasing') {
-      apText += 'Prescribing rates are increasing year-over-year, which regulators flag as a concern. ';
+      apText += 'Prescribing rates are increasing year-over-year, which may warrant clinical review. ';
     }
 
     apText += 'The March 2026 OIG report on nursing home antipsychotic use identified this facility\'s prescribing patterns ' +
@@ -1317,7 +1317,7 @@ export function generatePDF(facility, options = {}) {
 
   const sources = [
     ['CMS Provider Information', '14,699 facilities', 'Star ratings, beds, ownership, location'],
-    ['CMS Health Deficiencies', '417,293 citations', 'Standard surveys, complaint investigations'],
+    ['CMS Health Deficiencies', '418,107 citations', 'Standard surveys, complaint investigations'],
     ['CMS Penalties Data', '18,060 actions', 'Fines and payment denials'],
     ['CMS Ownership Data', '157,839 records', 'Tracks 5%+ ownership interests'],
     ['Payroll-Based Journal (PBJ)', '1.3M+ daily records', 'Mandatory payroll staffing data by shift'],

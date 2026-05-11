@@ -223,7 +223,7 @@ export default function PricingPage() {
                 rel="noopener noreferrer"
                 className="pricing-support-link"
               >
-                Support on Ko-fi ☕ →
+                Support on Ko-fi →
               </a>
             </div>
           </div>
