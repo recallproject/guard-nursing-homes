@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-05-11T16:10:49.364Z",
+  "generated_at": "2026-05-12T15:45:08.014Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-08T21:01:05.000Z",
+      "last_pubdate": "2026-05-12T15:27:31.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-11T09:00:00.000Z",
+      "last_pubdate": "2026-05-12T14:00:03.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-11T10:00:00.000Z",
+      "last_pubdate": "2026-05-12T09:00:00.000Z",
       "error": null
     }
   ],
@@ -32,6 +32,28 @@
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-80a190",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-12T15:27:31.000Z",
+      "headline": "Key Elements of Effective Hospice Admissions",
+      "summary": "Hospices can rely on six key elements to speed their referral-to-admissions processes and ensure timely initiation of care, according to a new report from Transcend Strategy Group. Recent research from Transcend shows that careful referral management and intake, smooth...",
+      "url": "https://hospicenews.com/2026/05/12/key-elements-of-effective-hospice-admissions/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-dat64u",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-11T19:52:31.000Z",
+      "headline": "AI Ethical Minefields in Clinical Decision-Making",
+      "summary": "Hospices are exploring the multiple ways they can use artificial intelligence (AI) by carefully considering the technology’s potentially unknown and unintended impacts. Some providers have used AI tools to reduce errors in clinical and billing documentation. Others have used AI...",
+      "url": "https://hospicenews.com/2026/05/11/ai-ethical-minefields-in-clinical-decision-making/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-nppvyr",
       "source": "Hospice News",
@@ -128,28 +150,6 @@
       "headline": "Ohio’s Hospice CEO: Prepare for Value-Based Care",
       "summary": "In time, value-based care will come to hospices, and they must be ready, according to Kent Anderson, CEO of Ohio’s Hospice. In this environment, scale will be key, as will a need to better understand the needs and objectives of referral partners, Anderson told Hospice News. He...",
       "url": "https://hospicenews.com/2026/05/06/ohios-hospice-ceo-prepare-for-value-based-care/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-2z0u8r",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-05T20:48:39.000Z",
-      "headline": "Compliance, Co-Location: Addus’ Strategic Growth Levers",
-      "summary": "Addus Homecare (Nasdaq: ADUS) has seen sustainable hospice revenue growth, a trend in part due to the company’s investments in compliance. Fraudulent activity in the hospice space has brought tightened regulatory oversight in recent years. Hospices providing quality care have...",
-      "url": "https://hospicenews.com/2026/05/05/compliance-co-location-addus-strategic-growth-levers/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-vt9o7h",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-05T19:23:00.000Z",
-      "headline": "AI Innovation Series 2026 — Suzanne Paysinger, Executive Director, Hospice of Limestone County",
-      "summary": "This article is sponsored by MatrixCare. For hospice teams in the field, some of the most practical AI opportunities may have less to do with sweeping transformation and more to do with faster troubleshooting, clearer communication and better support in the moment. In this AI...",
-      "url": "https://hospicenews.com/2026/05/05/ai-innovation-series-2026-suzanne-paysinger-executive-director-hospice-of-limestone-county/",
       "matched_ccns": [],
       "match_confidence": "none"
     }
