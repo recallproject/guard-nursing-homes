@@ -1,37 +1,72 @@
 {
-  "generated_at": "2026-05-12T15:45:08.014Z",
+  "generated_at": "2026-05-13T15:48:40.885Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-12T15:27:31.000Z",
+      "last_pubdate": "2026-05-13T13:14:57.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-12T14:00:03.000Z",
+      "last_pubdate": "2026-05-13T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-12T09:00:00.000Z",
+      "last_pubdate": "2026-05-13T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 4,
-  "matched_unique_ccns": 7,
+  "matched_to_ccn": 3,
+  "matched_unique_ccns": 5,
   "confidence_breakdown": {
-    "high": 4,
+    "high": 3,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-n97lp",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-13T13:14:57.000Z",
+      "headline": "[UPDATED] CMS Launches National Hospice, Home Health Enrollment Moratorium",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) has announced a national moratorium on hospice and home health provider enrollment in Medicare. The agency announced the implementation of the six-month moratoria on Wednesday to temporarily pause an influx of new providers...",
+      "url": "https://hospicenews.com/2026/05/13/cms-launches-national-hospice-home-health-enrollment-moratorium/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-kutf82",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-13T12:03:02.000Z",
+      "headline": "Hospice M&A Valuations Ticking Upward",
+      "summary": "Valuations and multiples for hospice assets in the M&A market are slowly crawling upwards as deal volume rebounds. An anticipated resurgence in M&A activity materialized in late 2025, setting the stage for stronger momentum this year and signaling a reversal of the industry’s...",
+      "url": "https://hospicenews.com/2026/05/13/hospice-ma-valuations-ticking-upward/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-wgmq24",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-12T18:54:42.000Z",
+      "headline": "Blue Ridge Care Unveils New Hospice Nursing Scholarship",
+      "summary": "Blue Ridge Care has launched a new scholarship for prospective nurses at a local community college. The Helen Zebarth Nursing Scholarship was established in partnership with Laurel Ridge Community College to expand financial educational support and experience in hospice,...",
+      "url": "https://hospicenews.com/2026/05/12/blue-ridge-care-unveils-new-hospice-nursing-scholarship/",
+      "matched_ccns": [
+        "491508"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "hospice-news-80a190",
       "source": "Hospice News",
@@ -114,57 +149,9 @@
       "url": "https://hospicenews.com/2026/05/07/the-pennant-group-seeks-deals-amid-amedisys-unitedhealth-group-asset-integration/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-fgdarb",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-06T20:43:44.000Z",
-      "headline": "Technology, Collaboration Pivotal to Speedy Hospice Admissions",
-      "summary": "Rising demand and prolific workforce shortages have strained timely access to hospice among dying patients nationwide. Hospices moving the needle toward improvement have leveraged multifaceted approaches that blend interdisciplinary care support with technology integration....",
-      "url": "https://hospicenews.com/2026/05/06/technology-collaboration-pivotal-to-speedy-hospice-admissions/",
-      "matched_ccns": [
-        "101530"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-ddszmr",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-06T16:02:20.000Z",
-      "headline": "WTWH Healthcare Announces the Future Leaders Class of 2026",
-      "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of...",
-      "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
-      "matched_ccns": [
-        "751645",
-        "B51770"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-o7jic1",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-06T12:10:41.000Z",
-      "headline": "Ohio’s Hospice CEO: Prepare for Value-Based Care",
-      "summary": "In time, value-based care will come to hospices, and they must be ready, according to Kent Anderson, CEO of Ohio’s Hospice. In this environment, scale will be key, as will a need to better understand the needs and objectives of referral partners, Anderson told Hospice News. He...",
-      "url": "https://hospicenews.com/2026/05/06/ohios-hospice-ceo-prepare-for-value-based-care/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
-    "101530": [
-      {
-        "id": "hospice-news-fgdarb",
-        "date": "2026-05-06T20:43:44.000Z",
-        "headline": "Technology, Collaboration Pivotal to Speedy Hospice Admissions",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/06/technology-collaboration-pivotal-to-speedy-hospice-admissions/",
-        "summary": "Rising demand and prolific workforce shortages have strained timely access to hospice among dying patients nationwide. Hospices moving the needle toward improvement have leveraged multifaceted approaches that blend interdisciplinary care support with technology integration...."
-      }
-    ],
     "271503": [
       {
         "id": "hospice-news-78tmgg",
@@ -205,24 +192,14 @@
         "summary": "Rising costs and swelling aging populations are factors propelling the future of palliative care delivery into home-based settings. The nation’s silver tsunami of seniors are living longer with serious illnesses and comorbidities. The trend has strained health care systems and..."
       }
     ],
-    "751645": [
+    "491508": [
       {
-        "id": "hospice-news-ddszmr",
-        "date": "2026-05-06T16:02:20.000Z",
-        "headline": "WTWH Healthcare Announces the Future Leaders Class of 2026",
+        "id": "hospice-news-wgmq24",
+        "date": "2026-05-12T18:54:42.000Z",
+        "headline": "Blue Ridge Care Unveils New Hospice Nursing Scholarship",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
-        "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of..."
-      }
-    ],
-    "B51770": [
-      {
-        "id": "hospice-news-ddszmr",
-        "date": "2026-05-06T16:02:20.000Z",
-        "headline": "WTWH Healthcare Announces the Future Leaders Class of 2026",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/06/wtwh-healthcare-announces-the-future-leaders-class-of-2026/",
-        "summary": "WTWH Healthcare, a WTWH Media, LLC company, is pleased to announce the Future Leaders Class of 2026. The Future Leaders Awards program honors exceptional professionals aged 40 and under who are shaping the future of aging and healthcare. Honorees represent a wide range of..."
+        "url": "https://hospicenews.com/2026/05/12/blue-ridge-care-unveils-new-hospice-nursing-scholarship/",
+        "summary": "Blue Ridge Care has launched a new scholarship for prospective nurses at a local community college. The Helen Zebarth Nursing Scholarship was established in partnership with Laurel Ridge Community College to expand financial educational support and experience in hospice,..."
       }
     ]
   }
