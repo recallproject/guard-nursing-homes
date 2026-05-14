@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-05-13T15:48:40.885Z",
+  "generated_at": "2026-05-14T15:29:15.891Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-13T13:14:57.000Z",
+      "last_pubdate": "2026-05-13T17:52:49.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-13T09:00:00.000Z",
+      "last_pubdate": "2026-05-14T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-13T09:00:00.000Z",
+      "last_pubdate": "2026-05-14T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 10,
+  "hospice_filtered": 11,
   "matched_to_ccn": 3,
   "matched_unique_ccns": 5,
   "confidence_breakdown": {
@@ -32,6 +32,28 @@
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "propublica-rt8igf",
+      "source": "ProPublica",
+      "source_url": "https://www.propublica.org/feeds/propublica/main",
+      "date": "2026-05-14T09:00:00.000Z",
+      "headline": "A Unique Oregon Law Allows It to Block Healthcare Deals. In Five Years, the State Hasn’t Done So Once.",
+      "summary": "The post A Unique Oregon Law Allows It to Block Healthcare Deals. In Five Years, the State Hasn’t Done So Once. appeared first on ProPublica .",
+      "url": "https://www.propublica.org/article/oregon-healthcare-mergers-oversight-law",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-hr0rez",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-13T17:52:49.000Z",
+      "headline": "Virtual Innovations Take Flight in Palliative Spiritual Care Delivery",
+      "summary": "A team of health care chaplains has recently developed a new virtual palliative spiritual care model to better support seriously ill patients and their families. The new telehealth platform, SpirituWell, connects individuals with spiritual care and chaplain professionals through...",
+      "url": "https://hospicenews.com/2026/05/13/virtual-innovations-take-flight-in-palliative-spiritual-care-delivery/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-n97lp",
       "source": "Hospice News",
@@ -136,17 +158,6 @@
       "headline": "‘Moving the Mindset’ of Equitable Hospice Access",
       "summary": "Hospices’ diversity and inclusion efforts have hit several barriers in recent years. Policy reform and more person-centered care integration represent two significant propellants toward improvement. Today’s providers often lack sufficient resources to improve health equity in...",
       "url": "https://hospicenews.com/2026/05/07/moving-the-mindset-of-equitable-hospice-access/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-zbfs3s",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-07T20:36:37.000Z",
-      "headline": "The Pennant Group Seeks Deals Amid Amedisys-UnitedHealth Group Asset Integration",
-      "summary": "The Pennant Group (Nasdaq: PNTG) is proceeding apace with its integration of recently acquired former assets of Amedisys and UnitedHealth Group (NYSE: UNH), and may have more acquisitions on the way. In October 2025, The Pennant Group finalized its acquisition of former Amedisys...",
-      "url": "https://hospicenews.com/2026/05/07/the-pennant-group-seeks-deals-amid-amedisys-unitedhealth-group-asset-integration/",
       "matched_ccns": [],
       "match_confidence": "none"
     }
