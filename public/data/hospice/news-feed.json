@@ -1,37 +1,72 @@
 {
-  "generated_at": "2026-05-14T15:29:15.891Z",
+  "generated_at": "2026-05-15T15:26:56.652Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-13T17:52:49.000Z",
+      "last_pubdate": "2026-05-15T15:22:28.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-14T09:00:00.000Z",
+      "last_pubdate": "2026-05-15T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-14T09:00:00.000Z",
+      "last_pubdate": "2026-05-15T11:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 11,
   "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "matched_unique_ccns": 2,
   "confidence_breakdown": {
     "high": 3,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-pr27ka",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-15T15:22:28.000Z",
+      "headline": "The 2026 SHN Architecture & Design Awards Are Now Accepting Nominations",
+      "summary": "The 2026 SHN Architecture & Design Awards program is designed to showcase the best buildings, campuses, communities, and renovation/repositioning projects across the following industries: Owners, operators, architecture and/or interior design firms with projects completed...",
+      "url": "https://hospicenews.com/2026/05/15/the-2026-shn-architecture-design-awards-are-now-accepting-nominations/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-2w84kx",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-15T13:18:18.000Z",
+      "headline": "Preferred Payers the Crux of Aveanna’s Growth Plans",
+      "summary": "Aveanna Healthcare (Nasdaq: AVAH) is leaning hard into its preferred payer and government affairs strategies to foster growth in its home health and hospice segment and other businesses. The company’s preferred payer strategy is focused largely on Medicare Advantage and Medicaid...",
+      "url": "https://hospicenews.com/2026/05/15/preferred-payers-the-crux-of-aveannas-growth-plans/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-or3bf2",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-14T21:29:42.000Z",
+      "headline": "Moratorium a ‘Sledgehammer’ Approach in Hospice Fraud Forcefield",
+      "summary": "A temporary national moratorium has halted new hospice and home health enrollment in an effort to curb fraudulent activity in these industries. The hospice community has come forward in droves to examine the scope of potential benefits, and risks, to future access and quality....",
+      "url": "https://hospicenews.com/2026/05/14/moratorium-a-sledgehammer-approach-in-hospice-fraud-forcefield/",
+      "matched_ccns": [
+        "341554"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "propublica-rt8igf",
       "source": "ProPublica",
@@ -123,77 +158,18 @@
         "341554"
       ],
       "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-5tmpcu",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-08T17:13:23.000Z",
-      "headline": "Trauma-Informed Spiritual Care Vital for Dying Veterans",
-      "summary": "Hospices need a trauma-informed spiritual care model to improve veterans’ end-of-life outcomes. This is according to Darrell Robinson, clinical director of SpirituWell, which provides virtual spiritual care and telehealth chaplain staffing support. Robinson is also the...",
-      "url": "https://hospicenews.com/2026/05/08/trauma-informed-spiritual-care-vital-for-dying-veterans/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-78tmgg",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-08T16:27:02.000Z",
-      "headline": "Stillwater to Acquire Campbell County Health Hospice",
-      "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional...",
-      "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
-      "matched_ccns": [
-        "271503",
-        "271536",
-        "271539"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-c2cpev",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-07T20:48:16.000Z",
-      "headline": "‘Moving the Mindset’ of Equitable Hospice Access",
-      "summary": "Hospices’ diversity and inclusion efforts have hit several barriers in recent years. Policy reform and more person-centered care integration represent two significant propellants toward improvement. Today’s providers often lack sufficient resources to improve health equity in...",
-      "url": "https://hospicenews.com/2026/05/07/moving-the-mindset-of-equitable-hospice-access/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
-    "271503": [
-      {
-        "id": "hospice-news-78tmgg",
-        "date": "2026-05-08T16:27:02.000Z",
-        "headline": "Stillwater to Acquire Campbell County Health Hospice",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
-        "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional..."
-      }
-    ],
-    "271536": [
-      {
-        "id": "hospice-news-78tmgg",
-        "date": "2026-05-08T16:27:02.000Z",
-        "headline": "Stillwater to Acquire Campbell County Health Hospice",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
-        "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional..."
-      }
-    ],
-    "271539": [
-      {
-        "id": "hospice-news-78tmgg",
-        "date": "2026-05-08T16:27:02.000Z",
-        "headline": "Stillwater to Acquire Campbell County Health Hospice",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/08/stillwater-to-acquire-campbell-county-health-hospice/",
-        "summary": "Montana-headquartered Stillwater Hospice will acquire Campbell County Health Hospice (CCH) in Wyoming for an undisclosed sum. The transaction will be effective June 1. It will give CCH access to expanded clinical resources, enhanced support services and a broader regional..."
-      }
-    ],
     "341554": [
+      {
+        "id": "hospice-news-or3bf2",
+        "date": "2026-05-14T21:29:42.000Z",
+        "headline": "Moratorium a ‘Sledgehammer’ Approach in Hospice Fraud Forcefield",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/14/moratorium-a-sledgehammer-approach-in-hospice-fraud-forcefield/",
+        "summary": "A temporary national moratorium has halted new hospice and home health enrollment in an effort to curb fraudulent activity in these industries. The hospice community has come forward in droves to examine the scope of potential benefits, and risks, to future access and quality...."
+      },
       {
         "id": "hospice-news-nppvyr",
         "date": "2026-05-08T21:01:05.000Z",
