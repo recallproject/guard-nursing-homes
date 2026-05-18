@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-05-17T14:38:56.774Z",
+  "generated_at": "2026-05-18T16:32:42.366Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-15T19:02:56.000Z",
+      "last_pubdate": "2026-05-18T14:48:47.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-16T09:00:00.000Z",
+      "last_pubdate": "2026-05-18T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-15T11:00:00.000Z",
+      "last_pubdate": "2026-05-18T10:00:00.000Z",
       "error": null
     }
   ],
@@ -32,6 +32,17 @@
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-l06n6o",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-18T14:48:47.000Z",
+      "headline": "Compassus-Providence JV to Move Forward in Oregon",
+      "summary": "The Oregon Health Authority (OHA) has cleared the way for a Compassus-Providence Health System joint venture to operate in the state. The home-based care provider Compassus has established a joint venture with the health system Providence in 2024 and expanded it last year....",
+      "url": "https://hospicenews.com/2026/05/18/compassus-providence-jv-to-move-forward-in-oregon/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-b6cx0m",
       "source": "Hospice News",
@@ -145,17 +156,6 @@
         "491508"
       ],
       "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-80a190",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-12T15:27:31.000Z",
-      "headline": "Key Elements of Effective Hospice Admissions",
-      "summary": "Hospices can rely on six key elements to speed their referral-to-admissions processes and ensure timely initiation of care, according to a new report from Transcend Strategy Group. Recent research from Transcend shows that careful referral management and intake, smooth...",
-      "url": "https://hospicenews.com/2026/05/12/key-elements-of-effective-hospice-admissions/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
