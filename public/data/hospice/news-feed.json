@@ -1,37 +1,59 @@
 {
-  "generated_at": "2026-05-18T16:32:42.366Z",
+  "generated_at": "2026-05-19T16:30:39.322Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-18T14:48:47.000Z",
+      "last_pubdate": "2026-05-18T21:08:29.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-18T09:00:00.000Z",
+      "last_pubdate": "2026-05-19T14:00:15.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-18T10:00:00.000Z",
+      "last_pubdate": "2026-05-19T10:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 11,
-  "matched_to_ccn": 2,
-  "matched_unique_ccns": 2,
+  "matched_to_ccn": 1,
+  "matched_unique_ccns": 1,
   "confidence_breakdown": {
-    "high": 2,
+    "high": 1,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-ujt017",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-18T21:08:29.000Z",
+      "headline": "The Debate Over End-of-Life Doula Standardization",
+      "summary": "The scope of end-of-life doula services has swelled and diversified over the past several years. Questions have mounted around the need for state or federal policy changes that could establish more standardized doula training, skill requirements, best practices and quality...",
+      "url": "https://hospicenews.com/2026/05/18/the-debate-over-end-of-life-doula-standardization/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-3omrfx",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-18T20:52:11.000Z",
+      "headline": "Dale Clift Named New Enhabit CEO Post-Kinderhook Transaction",
+      "summary": "Enhabit Inc. has named Dale Clift as its new CEO, succeeding Barbara Jacobsmeyer. The announcement follows closure on Friday of Enhabit’s $1.1 billion acquisition by the private equity firm Kinderhook. The deal took Enhabit off of the New York Stock Exchange as a publicly traded...",
+      "url": "https://hospicenews.com/2026/05/18/dale-clift-named-new-enhabit-ceo-post-kinderhook-transaction/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-l06n6o",
       "source": "Hospice News",
@@ -132,30 +154,6 @@
       "url": "https://hospicenews.com/2026/05/13/cms-launches-national-hospice-home-health-enrollment-moratorium/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-kutf82",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-13T12:03:02.000Z",
-      "headline": "Hospice M&A Valuations Ticking Upward",
-      "summary": "Valuations and multiples for hospice assets in the M&A market are slowly crawling upwards as deal volume rebounds. An anticipated resurgence in M&A activity materialized in late 2025, setting the stage for stronger momentum this year and signaling a reversal of the industry’s...",
-      "url": "https://hospicenews.com/2026/05/13/hospice-ma-valuations-ticking-upward/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-wgmq24",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-12T18:54:42.000Z",
-      "headline": "Blue Ridge Care Unveils New Hospice Nursing Scholarship",
-      "summary": "Blue Ridge Care has launched a new scholarship for prospective nurses at a local community college. The Helen Zebarth Nursing Scholarship was established in partnership with Laurel Ridge Community College to expand financial educational support and experience in hospice,...",
-      "url": "https://hospicenews.com/2026/05/12/blue-ridge-care-unveils-new-hospice-nursing-scholarship/",
-      "matched_ccns": [
-        "491508"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
@@ -167,16 +165,6 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/05/14/moratorium-a-sledgehammer-approach-in-hospice-fraud-forcefield/",
         "summary": "A temporary national moratorium has halted new hospice and home health enrollment in an effort to curb fraudulent activity in these industries. The hospice community has come forward in droves to examine the scope of potential benefits, and risks, to future access and quality...."
-      }
-    ],
-    "491508": [
-      {
-        "id": "hospice-news-wgmq24",
-        "date": "2026-05-12T18:54:42.000Z",
-        "headline": "Blue Ridge Care Unveils New Hospice Nursing Scholarship",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/12/blue-ridge-care-unveils-new-hospice-nursing-scholarship/",
-        "summary": "Blue Ridge Care has launched a new scholarship for prospective nurses at a local community college. The Helen Zebarth Nursing Scholarship was established in partnership with Laurel Ridge Community College to expand financial educational support and experience in hospice,..."
       }
     ]
   }
