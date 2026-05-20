@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-05-19T16:30:39.322Z",
+  "generated_at": "2026-05-20T16:32:46.696Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-18T21:08:29.000Z",
+      "last_pubdate": "2026-05-19T17:08:59.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-19T14:00:15.000Z",
+      "last_pubdate": "2026-05-20T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-19T10:00:00.000Z",
+      "last_pubdate": "2026-05-20T11:00:00.000Z",
       "error": null
     }
   ],
@@ -32,6 +32,17 @@
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-tupr3y",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-19T17:08:59.000Z",
+      "headline": "HopeHealth’s New Academic Partnership a ‘Nexus’ of Hospice Leader Development",
+      "summary": "HopeHealth and The University of Rhode Island’s (URI) College of Nursing recently formed a new academic practice partnership to expand employment opportunities in hospice and palliative care. Through the partnership, HopeHealth will provide nursing students with advanced...",
+      "url": "https://hospicenews.com/2026/05/19/hopehealth-unveils-new-hospice-palliative-care-academic-partnership/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-ujt017",
       "source": "Hospice News",
@@ -141,17 +152,6 @@
       "headline": "Virtual Innovations Take Flight in Palliative Spiritual Care Delivery",
       "summary": "A team of health care chaplains has recently developed a new virtual palliative spiritual care model to better support seriously ill patients and their families. The new telehealth platform, SpirituWell, connects individuals with spiritual care and chaplain professionals through...",
       "url": "https://hospicenews.com/2026/05/13/virtual-innovations-take-flight-in-palliative-spiritual-care-delivery/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-n97lp",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-13T13:14:57.000Z",
-      "headline": "[UPDATED] CMS Launches National Hospice, Home Health Enrollment Moratorium",
-      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) has announced a national moratorium on hospice and home health provider enrollment in Medicare. The agency announced the implementation of the six-month moratoria on Wednesday to temporarily pause an influx of new providers...",
-      "url": "https://hospicenews.com/2026/05/13/cms-launches-national-hospice-home-health-enrollment-moratorium/",
       "matched_ccns": [],
       "match_confidence": "none"
     }
