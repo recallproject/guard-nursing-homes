@@ -356,7 +356,7 @@ export function MethodologyPage() {
               </div>
             </div>
             <div className="methodology-framework-note">
-              <strong>Our framework:</strong> Guided by principles from Harvard's Data Science Initiative for responsible AI governance: transparency, accountability, human oversight of high-stakes decisions, and verifiability of results. The clinician whose name is on every report is always accountable.
+              <strong>Our framework:</strong> Aligned with the NIST AI Risk Management Framework (AI RMF 1.0): transparency, accountability, human oversight of high-stakes decisions, and verifiability of results. The clinician whose name is on every report is always accountable.
             </div>
           </section>
 
