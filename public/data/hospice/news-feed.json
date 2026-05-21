@@ -1,37 +1,85 @@
 {
-  "generated_at": "2026-05-20T16:32:46.696Z",
+  "generated_at": "2026-05-21T16:22:41.909Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-19T17:08:59.000Z",
+      "last_pubdate": "2026-05-21T14:15:45.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-20T09:00:00.000Z",
+      "last_pubdate": "2026-05-21T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-20T11:00:00.000Z",
+      "last_pubdate": "2026-05-21T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 11,
-  "matched_to_ccn": 1,
-  "matched_unique_ccns": 1,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 2,
   "confidence_breakdown": {
-    "high": 1,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-tlkjc6",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-21T14:15:45.000Z",
+      "headline": "Palliative Care Extending Across Health Care Continuum",
+      "summary": "Palliative care providers are expanding their reach across the health care continuum in an effort to better support unmet needs among seriously ill patient populations. Patients with longer serious illness trajectories face myriad challenges related to their emotional, spiritual...",
+      "url": "https://hospicenews.com/2026/05/21/palliative-care-extending-across-health-care-continuum/",
+      "matched_ccns": [
+        "341576"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-5sazzh",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-21T11:39:22.000Z",
+      "headline": "CMS Clarifies Telehealth Policy During Enrollment Moratorium",
+      "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS) CMS implemented the six-month moratorium on April 13. The...",
+      "url": "https://hospicenews.com/2026/05/21/cms-clarifies-telehealth-policy-during-enrollment-moratorium/",
+      "matched_ccns": [
+        "341554"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-zdr0pl",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-20T20:10:49.000Z",
+      "headline": "Pennant Group COO: Moratorium Throws Wrench in Access Challenges",
+      "summary": "A new national hospice and home health moratorium may come with unintended consequences for the ability for legitimate providers to grow in underserved markets, according to John Gochnour, president and COO of The Pennant Group Inc. [Nasdaq: PNTG]. Regulatory action is needed in...",
+      "url": "https://hospicenews.com/2026/05/20/pennant-group-coo-moratorium-throws-wrench-in-access-challenges/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-v5uyik",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-20T18:35:16.000Z",
+      "headline": "Congress Takes Up Hospice Home Health Fraud Bill",
+      "summary": "Rep. Beth Van Duyne (R-Texas) has introduced a bill intended to fight the ongoing plague of hospice and home health fraud. The Protecting Seniors and Stopping Fraudsters Act is designed to bolster Medicare oversight, crack down on scammers, protect seniors from fraudulent...",
+      "url": "https://hospicenews.com/2026/05/20/congress-takes-up-hospice-home-health-fraud-bill/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-tupr3y",
       "source": "Hospice News",
@@ -99,41 +147,6 @@
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-pr27ka",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-15T15:22:28.000Z",
-      "headline": "The 2026 SHN Architecture & Design Awards Are Now Accepting Nominations",
-      "summary": "The 2026 SHN Architecture & Design Awards program is designed to showcase the best buildings, campuses, communities, and renovation/repositioning projects across the following industries: Owners, operators, architecture and/or interior design firms with projects completed...",
-      "url": "https://hospicenews.com/2026/05/15/the-2026-shn-architecture-design-awards-are-now-accepting-nominations/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-2w84kx",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-15T13:18:18.000Z",
-      "headline": "Preferred Payers the Crux of Aveanna’s Growth Plans",
-      "summary": "Aveanna Healthcare (Nasdaq: AVAH) is leaning hard into its preferred payer and government affairs strategies to foster growth in its home health and hospice segment and other businesses. The company’s preferred payer strategy is focused largely on Medicare Advantage and Medicaid...",
-      "url": "https://hospicenews.com/2026/05/15/preferred-payers-the-crux-of-aveannas-growth-plans/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-or3bf2",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-14T21:29:42.000Z",
-      "headline": "Moratorium a ‘Sledgehammer’ Approach in Hospice Fraud Forcefield",
-      "summary": "A temporary national moratorium has halted new hospice and home health enrollment in an effort to curb fraudulent activity in these industries. The hospice community has come forward in droves to examine the scope of potential benefits, and risks, to future access and quality....",
-      "url": "https://hospicenews.com/2026/05/14/moratorium-a-sledgehammer-approach-in-hospice-fraud-forcefield/",
-      "matched_ccns": [
-        "341554"
-      ],
-      "match_confidence": "high"
-    },
-    {
       "id": "propublica-rt8igf",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
@@ -143,28 +156,27 @@
       "url": "https://www.propublica.org/article/oregon-healthcare-mergers-oversight-law",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-hr0rez",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-13T17:52:49.000Z",
-      "headline": "Virtual Innovations Take Flight in Palliative Spiritual Care Delivery",
-      "summary": "A team of health care chaplains has recently developed a new virtual palliative spiritual care model to better support seriously ill patients and their families. The new telehealth platform, SpirituWell, connects individuals with spiritual care and chaplain professionals through...",
-      "url": "https://hospicenews.com/2026/05/13/virtual-innovations-take-flight-in-palliative-spiritual-care-delivery/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
     "341554": [
       {
-        "id": "hospice-news-or3bf2",
-        "date": "2026-05-14T21:29:42.000Z",
-        "headline": "Moratorium a ‘Sledgehammer’ Approach in Hospice Fraud Forcefield",
+        "id": "hospice-news-5sazzh",
+        "date": "2026-05-21T11:39:22.000Z",
+        "headline": "CMS Clarifies Telehealth Policy During Enrollment Moratorium",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/14/moratorium-a-sledgehammer-approach-in-hospice-fraud-forcefield/",
-        "summary": "A temporary national moratorium has halted new hospice and home health enrollment in an effort to curb fraudulent activity in these industries. The hospice community has come forward in droves to examine the scope of potential benefits, and risks, to future access and quality...."
+        "url": "https://hospicenews.com/2026/05/21/cms-clarifies-telehealth-policy-during-enrollment-moratorium/",
+        "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS) CMS implemented the six-month moratorium on April 13. The..."
+      }
+    ],
+    "341576": [
+      {
+        "id": "hospice-news-tlkjc6",
+        "date": "2026-05-21T14:15:45.000Z",
+        "headline": "Palliative Care Extending Across Health Care Continuum",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/21/palliative-care-extending-across-health-care-continuum/",
+        "summary": "Palliative care providers are expanding their reach across the health care continuum in an effort to better support unmet needs among seriously ill patient populations. Patients with longer serious illness trajectories face myriad challenges related to their emotional, spiritual..."
       }
     ]
   }
