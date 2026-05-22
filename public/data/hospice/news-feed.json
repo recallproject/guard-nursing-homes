@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-05-21T16:22:41.909Z",
+  "generated_at": "2026-05-22T15:52:24.008Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-21T14:15:45.000Z",
+      "last_pubdate": "2026-05-21T20:51:50.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-21T09:00:00.000Z",
+      "last_pubdate": "2026-05-22T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-21T09:00:00.000Z",
+      "last_pubdate": "2026-05-22T10:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 11,
+  "hospice_filtered": 12,
   "matched_to_ccn": 2,
   "matched_unique_ccns": 2,
   "confidence_breakdown": {
@@ -32,6 +32,28 @@
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "propublica-chka47",
+      "source": "ProPublica",
+      "source_url": "https://www.propublica.org/feeds/propublica/main",
+      "date": "2026-05-22T09:00:00.000Z",
+      "headline": "Louisiana’s Tough-on-Crime Policies Stand to Cost Taxpayers Millions More for Years to Come",
+      "summary": "The post Louisiana’s Tough-on-Crime Policies Stand to Cost Taxpayers Millions More for Years to Come appeared first on ProPublica .",
+      "url": "https://www.propublica.org/article/louisiana-jeff-landry-prison-budget-increase",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-an3uax",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-21T20:51:50.000Z",
+      "headline": "Hospices Build Digitally Innovative Referral Streams",
+      "summary": "Hospices are employing multifaceted referral management strategies to improve timely access. Providers’ innovative efforts center around wider technology utilization, digital storytelling and leveraging their quality data. Many patients are not referred to hospice until their...",
+      "url": "https://hospicenews.com/2026/05/21/hospices-build-digitally-innovative-referral-streams/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-tlkjc6",
       "source": "Hospice News",
@@ -51,7 +73,7 @@
       "source_url": "https://hospicenews.com/feed/",
       "date": "2026-05-21T11:39:22.000Z",
       "headline": "CMS Clarifies Telehealth Policy During Enrollment Moratorium",
-      "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS) CMS implemented the six-month moratorium on April 13. The...",
+      "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS). CMS implemented the six-month moratorium on May 13. The...",
       "url": "https://hospicenews.com/2026/05/21/cms-clarifies-telehealth-policy-during-enrollment-moratorium/",
       "matched_ccns": [
         "341554"
@@ -74,7 +96,7 @@
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
       "date": "2026-05-20T18:35:16.000Z",
-      "headline": "Congress Takes Up Hospice Home Health Fraud Bill",
+      "headline": "Congress Takes Up Hospice, Home Health Fraud Bill",
       "summary": "Rep. Beth Van Duyne (R-Texas) has introduced a bill intended to fight the ongoing plague of hospice and home health fraud. The Protecting Seniors and Stopping Fraudsters Act is designed to bolster Medicare oversight, crack down on scammers, protect seniors from fraudulent...",
       "url": "https://hospicenews.com/2026/05/20/congress-takes-up-hospice-home-health-fraud-bill/",
       "matched_ccns": [],
@@ -136,17 +158,6 @@
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-qx6ar4",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-15T17:53:42.000Z",
-      "headline": "Precious Hospice CEO: The Future of Health Equity in Hospice",
-      "summary": "Hospice patients and providers have faced difficult situations amid shifts in immigration and foreign policy enforcement in recent years. This Hospice News Elevate podcast features a discussion with Precious Hospice CEO and Founder Henry Mason Jr. about how hospices are...",
-      "url": "https://hospicenews.com/2026/05/15/precious-hospice-ceo-the-future-of-health-equity-in-hospice/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
       "id": "propublica-rt8igf",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
@@ -166,7 +177,7 @@
         "headline": "CMS Clarifies Telehealth Policy During Enrollment Moratorium",
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/05/21/cms-clarifies-telehealth-policy-during-enrollment-moratorium/",
-        "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS) CMS implemented the six-month moratorium on April 13. The..."
+        "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS). CMS implemented the six-month moratorium on May 13. The..."
       }
     ],
     "341576": [
