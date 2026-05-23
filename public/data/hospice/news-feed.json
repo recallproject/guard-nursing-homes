@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-05-22T15:52:24.008Z",
+  "generated_at": "2026-05-23T14:42:53.855Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-21T20:51:50.000Z",
+      "last_pubdate": "2026-05-22T20:28:00.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-22T09:00:00.000Z",
+      "last_pubdate": "2026-05-23T09:00:00.000Z",
       "error": null
     },
     {
@@ -25,13 +25,68 @@
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 12,
-  "matched_to_ccn": 2,
-  "matched_unique_ccns": 2,
+  "matched_to_ccn": 4,
+  "matched_unique_ccns": 11,
   "confidence_breakdown": {
-    "high": 2,
+    "high": 4,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-yqhww1",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-22T20:28:00.000Z",
+      "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
+      "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new...",
+      "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
+      "matched_ccns": [
+        "361501",
+        "111508",
+        "851594"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-5gveou",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-22T19:17:35.000Z",
+      "headline": "Hospice Executive Evolutions Take Shape",
+      "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role...",
+      "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+      "matched_ccns": [
+        "031675",
+        "741529",
+        "A91613",
+        "311509",
+        "391704",
+        "741672"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-lghfqu",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-22T19:04:56.000Z",
+      "headline": "Proposed Community-Based Palliative Care Model Aims to Expand Access to Care",
+      "summary": "The National Partnership for Healthcare and Hospice Innovation (NPHI) has teamed up with the Coalition to Transform Advance Care (C-TAC) to work on building a federal fee-for-service, community-based palliative care model that would provide broader access and earlier support for...",
+      "url": "https://hospicenews.com/2026/05/22/proposed-community-based-palliative-care-model-aims-to-expand-access-to-care/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-bwfr8u",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-05-22T18:39:52.000Z",
+      "headline": "Cotiviti VP: Patients Need Education to Combat Hospice Fraud",
+      "summary": "Efforts to battle hospice fraud could be strengthened by education for patients and families on how to spot it. This is according to Erin Rutzler, vice president of fraud, waste and abuse at the health care data analytics firm Cotiviti. Fraud impacts not only the Medicare and...",
+      "url": "https://hospicenews.com/2026/05/22/cotiviti-vp-patients-need-education-to-combat-hospice-fraud/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "propublica-chka47",
       "source": "ProPublica",
@@ -114,50 +169,6 @@
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-ujt017",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-18T21:08:29.000Z",
-      "headline": "The Debate Over End-of-Life Doula Standardization",
-      "summary": "The scope of end-of-life doula services has swelled and diversified over the past several years. Questions have mounted around the need for state or federal policy changes that could establish more standardized doula training, skill requirements, best practices and quality...",
-      "url": "https://hospicenews.com/2026/05/18/the-debate-over-end-of-life-doula-standardization/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-3omrfx",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-18T20:52:11.000Z",
-      "headline": "Dale Clift Named New Enhabit CEO Post-Kinderhook Transaction",
-      "summary": "Enhabit Inc. has named Dale Clift as its new CEO, succeeding Barbara Jacobsmeyer. The announcement follows closure on Friday of Enhabit’s $1.1 billion acquisition by the private equity firm Kinderhook. The deal took Enhabit off of the New York Stock Exchange as a publicly traded...",
-      "url": "https://hospicenews.com/2026/05/18/dale-clift-named-new-enhabit-ceo-post-kinderhook-transaction/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-l06n6o",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-18T14:48:47.000Z",
-      "headline": "Compassus-Providence JV to Move Forward in Oregon",
-      "summary": "The Oregon Health Authority (OHA) has cleared the way for a Compassus-Providence Health System joint venture to operate in the state. The home-based care provider Compassus has established a joint venture with the health system Providence in 2024 and expanded it last year....",
-      "url": "https://hospicenews.com/2026/05/18/compassus-providence-jv-to-move-forward-in-oregon/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-b6cx0m",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-15T19:02:56.000Z",
-      "headline": "Caught in Fraud Dragnet: Hospices Raise Alarm Over Suspended Payments, Cite Increasing Closures",
-      "summary": "Legitimate hospice providers are likely being caught up in the U.S. Centers for Medicare & Medicaid Services’ (CMS) crackdown on fraud, including through payment suspensions that are leading to some agency closures. That’s according to several provider executives and industry...",
-      "url": "https://hospicenews.com/2026/05/15/caught-in-fraud-dragnet-hospices-raise-alarm-over-suspended-payments-cite-increasing-closures/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
       "id": "propublica-rt8igf",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
@@ -170,6 +181,26 @@
     }
   ],
   "items_by_ccn": {
+    "111508": [
+      {
+        "id": "hospice-news-yqhww1",
+        "date": "2026-05-22T20:28:00.000Z",
+        "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
+        "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new..."
+      }
+    ],
+    "311509": [
+      {
+        "id": "hospice-news-5gveou",
+        "date": "2026-05-22T19:17:35.000Z",
+        "headline": "Hospice Executive Evolutions Take Shape",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
+      }
+    ],
     "341554": [
       {
         "id": "hospice-news-5sazzh",
@@ -188,6 +219,76 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/05/21/palliative-care-extending-across-health-care-continuum/",
         "summary": "Palliative care providers are expanding their reach across the health care continuum in an effort to better support unmet needs among seriously ill patient populations. Patients with longer serious illness trajectories face myriad challenges related to their emotional, spiritual..."
+      }
+    ],
+    "361501": [
+      {
+        "id": "hospice-news-yqhww1",
+        "date": "2026-05-22T20:28:00.000Z",
+        "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
+        "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new..."
+      }
+    ],
+    "391704": [
+      {
+        "id": "hospice-news-5gveou",
+        "date": "2026-05-22T19:17:35.000Z",
+        "headline": "Hospice Executive Evolutions Take Shape",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
+      }
+    ],
+    "741529": [
+      {
+        "id": "hospice-news-5gveou",
+        "date": "2026-05-22T19:17:35.000Z",
+        "headline": "Hospice Executive Evolutions Take Shape",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
+      }
+    ],
+    "741672": [
+      {
+        "id": "hospice-news-5gveou",
+        "date": "2026-05-22T19:17:35.000Z",
+        "headline": "Hospice Executive Evolutions Take Shape",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
+      }
+    ],
+    "851594": [
+      {
+        "id": "hospice-news-yqhww1",
+        "date": "2026-05-22T20:28:00.000Z",
+        "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
+        "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new..."
+      }
+    ],
+    "031675": [
+      {
+        "id": "hospice-news-5gveou",
+        "date": "2026-05-22T19:17:35.000Z",
+        "headline": "Hospice Executive Evolutions Take Shape",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
+      }
+    ],
+    "A91613": [
+      {
+        "id": "hospice-news-5gveou",
+        "date": "2026-05-22T19:17:35.000Z",
+        "headline": "Hospice Executive Evolutions Take Shape",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
+        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
       }
     ]
   }

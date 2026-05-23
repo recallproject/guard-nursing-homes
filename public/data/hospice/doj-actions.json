@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T15:52:24.115Z",
+  "generated_at": "2026-05-23T14:42:54.057Z",
   "source": "DOJ RSS + press release pages",
   "source_url": "https://www.justice.gov/news/rss",
   "coverage_note": "DOJ RSS exposes only the ~25 most-recent press releases. There is no machine-readable historical archive. To build history, run this pipeline on a daily cron and merge outputs.",
