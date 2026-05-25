@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-24T14:42:37.007Z",
+  "generated_at": "2026-05-25T16:01:57.671Z",
   "source": "State AG MFCU",
   "coverage_note": "Best-effort HTML scrape of state AG press-release listing pages for the 6 highest-volume Medicaid fraud states (CA, TX, NY, FL, IL, PA). No unified MFCU feed exists and per-state RSS feeds are dead. We scrape the first listing page only (no pagination). State-specific HTML may change format; failures are logged and skipped, not fatal. Defamation guardrail: only items with a high- or medium-confidence match to a hospice in the AG's own state are emitted; every action links to the source URL with the disclaimer \"Inclusion does not constitute a finding by The Oversight Report.\"",
   "states_attempted": [
