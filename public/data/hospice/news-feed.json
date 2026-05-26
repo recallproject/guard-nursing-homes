@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-25T16:01:43.364Z",
+  "generated_at": "2026-05-26T16:51:10.930Z",
   "sources": [
     {
       "name": "Hospice News",
@@ -12,19 +12,19 @@
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-23T09:00:00.000Z",
+      "last_pubdate": "2026-05-26T14:00:10.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-22T10:00:00.000Z",
+      "last_pubdate": "2026-05-26T11:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 12,
+  "hospice_filtered": 11,
   "matched_to_ccn": 4,
   "matched_unique_ccns": 11,
   "confidence_breakdown": {
@@ -165,17 +165,6 @@
       "headline": "HopeHealth’s New Academic Partnership a ‘Nexus’ of Hospice Leader Development",
       "summary": "HopeHealth and The University of Rhode Island’s (URI) College of Nursing recently formed a new academic practice partnership to expand employment opportunities in hospice and palliative care. Through the partnership, HopeHealth will provide nursing students with advanced...",
       "url": "https://hospicenews.com/2026/05/19/hopehealth-unveils-new-hospice-palliative-care-academic-partnership/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "propublica-rt8igf",
-      "source": "ProPublica",
-      "source_url": "https://www.propublica.org/feeds/propublica/main",
-      "date": "2026-05-14T09:00:00.000Z",
-      "headline": "A Unique Oregon Law Allows It to Block Healthcare Deals. In Five Years, the State Hasn’t Done So Once.",
-      "summary": "The post A Unique Oregon Law Allows It to Block Healthcare Deals. In Five Years, the State Hasn’t Done So Once. appeared first on ProPublica .",
-      "url": "https://www.propublica.org/article/oregon-healthcare-mergers-oversight-law",
       "matched_ccns": [],
       "match_confidence": "none"
     }
