@@ -95,6 +95,11 @@
       "source": "/evidence/:ccn",
       "destination": "/facility/:ccn",
       "statusCode": 301
+    },
+    {
+      "source": "/contact",
+      "destination": "/ask-a-clinician",
+      "statusCode": 301
     }
   ],
   "rewrites": [
