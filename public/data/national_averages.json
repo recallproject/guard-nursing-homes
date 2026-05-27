@@ -13,11 +13,11 @@
     "composite": 30.76,
     "total_fines": 31794.33,
     "total_fines_median": 0,
-    "total_deficiencies": 28.44,
-    "fire_deficiency_count": 13.57,
+    "total_deficiencies": 28.45,
+    "fire_deficiency_count": 13.58,
     "complaint_investigations": 7,
     "_computed_from": 14699,
-    "_computed_on": "2026-05-03",
+    "_computed_on": "2026-05-27",
     "_note": "Computed from facility dataset. Some CMS-published averages may differ due to methodology."
   },
   "by_state": {
@@ -47,7 +47,7 @@
       "stars": 3.44,
       "composite": 30.84,
       "total_fines": 8597.93,
-      "total_deficiencies": 19.73,
+      "total_deficiencies": 19.8,
       "total_turnover": 49.83,
       "facility_count": 221
     },
@@ -127,7 +127,7 @@
       "stars": 2.67,
       "composite": 27.55,
       "total_fines": 16327.29,
-      "total_deficiencies": 16.6,
+      "total_deficiencies": 16.61,
       "total_turnover": 46.46,
       "facility_count": 356
     },
@@ -277,7 +277,7 @@
       "stars": 2.49,
       "composite": 38.96,
       "total_fines": 36463.84,
-      "total_deficiencies": 35.66,
+      "total_deficiencies": 35.67,
       "total_turnover": 56.44,
       "facility_count": 487
     },
@@ -417,7 +417,7 @@
       "stars": 3.02,
       "composite": 27.3,
       "total_fines": 26330.78,
-      "total_deficiencies": 31.43,
+      "total_deficiencies": 31.44,
       "total_turnover": 45.75,
       "facility_count": 657
     },
@@ -467,7 +467,7 @@
       "stars": 2.96,
       "composite": 26.56,
       "total_fines": 29169.12,
-      "total_deficiencies": 14.87,
+      "total_deficiencies": 14.88,
       "total_turnover": 48.49,
       "facility_count": 303
     },
