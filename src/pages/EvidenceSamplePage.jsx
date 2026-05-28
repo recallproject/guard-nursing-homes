@@ -73,7 +73,7 @@ export default function EvidenceSamplePage() {
               <a
                 href="/samples/OversightReport_Sample_Evidence_Report.pdf"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="ev-sample-download-btn"
               >
                 Download Full Sample Report (PDF)

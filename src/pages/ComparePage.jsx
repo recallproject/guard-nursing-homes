@@ -331,7 +331,7 @@ export default function ComparePage() {
               Commissions are typically 85–100% of the resident's first month's rent and care costs.
               Higher rent = higher commission. The family is told the service is "free."
               <br/>
-              <a className="compare-source-link" href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer">
+              <a className="compare-source-link" href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer nofollow">
                 Source: U.S. Senate Special Committee on Aging
               </a>
             </p>
@@ -390,11 +390,11 @@ export default function ComparePage() {
                   the company of marketing practices that may not fully disclose its commission-based model while presenting itself as
                   "unbiased and no-cost" while exclusively recommending commission-paying facilities.
                   <br/><br/>
-                  <a className="compare-source-link" href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer nofollow">
                     U.S. Senate Committee on Aging — Official Release
                   </a>
                   &nbsp;&middot;&nbsp;
-                  <a className="compare-source-link" href="https://www.nbcnews.com/news/us-news/senate-announces-probe-place-for-mom-referral-service-rcna157282" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.nbcnews.com/news/us-news/senate-announces-probe-place-for-mom-referral-service-rcna157282" target="_blank" rel="noopener noreferrer nofollow">
                     NBC News Coverage
                   </a>
                 </p>
@@ -412,11 +412,11 @@ export default function ComparePage() {
                   chains described routine review manipulation — facilities selectively soliciting
                   positive reviews to meet internal "quotas."
                   <br/><br/>
-                  <a className="compare-source-link" href="https://seniorhousingnews.com/2024/05/16/washington-post-analysis-links-a-place-for-mom-reviews-awards-with-care-citations/" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://seniorhousingnews.com/2024/05/16/washington-post-analysis-links-a-place-for-mom-reviews-awards-with-care-citations/" target="_blank" rel="noopener noreferrer nofollow">
                     Senior Housing News Analysis
                   </a>
                   &nbsp;&middot;&nbsp;
-                  <a className="compare-source-link" href="https://www.mcknightsseniorliving.com/news/senior-living-referral-site-accused-of-using-manipulated-reviews-listing-communities-providing-substandard-care/" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.mcknightsseniorliving.com/news/senior-living-referral-site-accused-of-using-manipulated-reviews-listing-communities-providing-substandard-care/" target="_blank" rel="noopener noreferrer nofollow">
                     McKnight's Senior Living Coverage
                   </a>
                 </p>
@@ -433,11 +433,11 @@ export default function ComparePage() {
                   filed alleging the company's consent language changes after the first suit were
                   still inadequate.
                   <br/><br/>
-                  <a className="compare-source-link" href="https://www.mcknightsseniorliving.com/news/a-place-for-mom-agrees-to-settle-lawsuit-for-6-million/" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.mcknightsseniorliving.com/news/a-place-for-mom-agrees-to-settle-lawsuit-for-6-million/" target="_blank" rel="noopener noreferrer nofollow">
                     McKnight's Senior Living — Settlement Coverage
                   </a>
                   &nbsp;&middot;&nbsp;
-                  <a className="compare-source-link" href="https://topclassactions.com/lawsuit-settlements/tcpa/a-place-for-mom-to-settle-auto-dialer-class-action-for-6-million/" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://topclassactions.com/lawsuit-settlements/tcpa/a-place-for-mom-to-settle-auto-dialer-class-action-for-6-million/" target="_blank" rel="noopener noreferrer nofollow">
                     Top Class Actions
                   </a>
                 </p>
@@ -454,11 +454,11 @@ export default function ComparePage() {
                   The investigation directly led to Washington State passing the first comprehensive
                   law regulating elder-care referral companies in the country (RCW 18.330).
                   <br/><br/>
-                  <a className="compare-source-link" href="https://www.seattletimes.com/seattle-news/special-reports/hundreds-of-adult-homes-conceal-abuse-neglect/" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.seattletimes.com/seattle-news/special-reports/hundreds-of-adult-homes-conceal-abuse-neglect/" target="_blank" rel="noopener noreferrer nofollow">
                     Seattle Times — "Seniors for Sale"
                   </a>
                   &nbsp;&middot;&nbsp;
-                  <a className="compare-source-link" href="https://www.seattletimes.com/seattle-news/state-gets-tough-on-referrals-for-elder-care/" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.seattletimes.com/seattle-news/state-gets-tough-on-referrals-for-elder-care/" target="_blank" rel="noopener noreferrer nofollow">
                     Seattle Times — Regulatory Response
                   </a>
                 </p>
@@ -474,11 +474,11 @@ export default function ComparePage() {
                   requiring senior care referral companies to disclose their commission structures
                   and conflicts of interest upfront.
                   <br/><br/>
-                  <a className="compare-source-link" href="https://captimes.com/news/government/a-place-for-mom-assisted-living-referrals-draw-wisconsin-scrutiny/article_c6ff34f7-326f-4e60-802b-cb27e516d63c.html" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://captimes.com/news/government/a-place-for-mom-assisted-living-referrals-draw-wisconsin-scrutiny/article_c6ff34f7-326f-4e60-802b-cb27e516d63c.html" target="_blank" rel="noopener noreferrer nofollow">
                     Capital Times
                   </a>
                   &nbsp;&middot;&nbsp;
-                  <a className="compare-source-link" href="https://www.fox6now.com/news/wisconsin-bill-seeks-transparency-from-senior-care-referral-companies" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.fox6now.com/news/wisconsin-bill-seeks-transparency-from-senior-care-referral-companies" target="_blank" rel="noopener noreferrer nofollow">
                     FOX6 Milwaukee
                   </a>
                 </p>
@@ -514,11 +514,11 @@ export default function ComparePage() {
                   referral services — creating unacceptable market concentration. The FTC forced
                   the divestiture of Caring.com as a condition of the merger.
                   <br/><br/>
-                  <a className="compare-source-link" href="https://www.ftc.gov/news-events/news/press-releases/2017/11/parties-agree-divestiture-senior-living-facilities-referral-service-caringcom-condition-red-ventures" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.ftc.gov/news-events/news/press-releases/2017/11/parties-agree-divestiture-senior-living-facilities-referral-service-caringcom-condition-red-ventures" target="_blank" rel="noopener noreferrer nofollow">
                     FTC Press Release — Divestiture Order
                   </a>
                   &nbsp;&middot;&nbsp;
-                  <a className="compare-source-link" href="https://www.ftc.gov/news-events/news/press-releases/2018/03/ftc-approves-final-order-requiring-divestiture-senior-living-facilities-referral-service-caringcom" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.ftc.gov/news-events/news/press-releases/2018/03/ftc-approves-final-order-requiring-divestiture-senior-living-facilities-referral-service-caringcom" target="_blank" rel="noopener noreferrer nofollow">
                     FTC Final Order
                   </a>
                 </p>
@@ -533,7 +533,7 @@ export default function ComparePage() {
                   if the facility objects — with limited verification mechanisms. This policy is documented in consumer forums
                   and feedback sites.
                   <br/><br/>
-                  <a className="compare-source-link" href="https://www.reviewopedia.com/caring-com-reviews" target="_blank" rel="noopener noreferrer">
+                  <a className="compare-source-link" href="https://www.reviewopedia.com/caring-com-reviews" target="_blank" rel="noopener noreferrer nofollow">
                     Reviewopedia — Consumer Analysis
                   </a>
                 </p>
@@ -556,7 +556,7 @@ export default function ComparePage() {
             <p className="compare-tool-tagline">
               SeniorAdvisor.com is a <strong>wholly-owned subsidiary of A Place for Mom</strong>,
               launched in March 2013.{' '}
-              <a className="compare-source-link" href="https://www.prnewswire.com/news-releases/a-place-for-mom-launches-senioradvisorcom-199855711.html" target="_blank" rel="noopener noreferrer">
+              <a className="compare-source-link" href="https://www.prnewswire.com/news-releases/a-place-for-mom-launches-senioradvisorcom-199855711.html" target="_blank" rel="noopener noreferrer nofollow">
                 (Source: APFM Press Release)
               </a>
             </p>
@@ -865,77 +865,77 @@ export default function ComparePage() {
               U.S. Senate Special Committee on Aging, "Casey Demands Major Assisted Living Facility
               Referral Service A Place for Mom Address Concerns About Deceptive Marketing Practices,"
               June 19, 2024.{' '}
-              <a href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.casey.senate.gov/news/releases/casey-demands-major-assisted-living-facility-referral-service-a-place-for-mom-address-concerns-about-deceptive-marketing-practices" target="_blank" rel="noopener noreferrer nofollow">
                 casey.senate.gov
               </a>
             </li>
             <li>
               NBC News, "Senate probes A Place for Mom, referral service accused of putting seniors
               at risk," June 2024.{' '}
-              <a href="https://www.nbcnews.com/news/us-news/senate-announces-probe-place-for-mom-referral-service-rcna157282" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.nbcnews.com/news/us-news/senate-announces-probe-place-for-mom-referral-service-rcna157282" target="_blank" rel="noopener noreferrer nofollow">
                 nbcnews.com
               </a>
             </li>
             <li>
               The Washington Post, "Popular assisted living referral 'A Place for Mom' glosses over
               neglect," May 16, 2024. Analysis:{' '}
-              <a href="https://seniorhousingnews.com/2024/05/16/washington-post-analysis-links-a-place-for-mom-reviews-awards-with-care-citations/" target="_blank" rel="noopener noreferrer">
+              <a href="https://seniorhousingnews.com/2024/05/16/washington-post-analysis-links-a-place-for-mom-reviews-awards-with-care-citations/" target="_blank" rel="noopener noreferrer nofollow">
                 seniorhousingnews.com
               </a>
             </li>
             <li>
               McKnight's Senior Living, "A Place for Mom agrees to settle lawsuit for $6 million."{' '}
-              <a href="https://www.mcknightsseniorliving.com/news/a-place-for-mom-agrees-to-settle-lawsuit-for-6-million/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.mcknightsseniorliving.com/news/a-place-for-mom-agrees-to-settle-lawsuit-for-6-million/" target="_blank" rel="noopener noreferrer nofollow">
                 mcknightsseniorliving.com
               </a>
             </li>
             <li>
               Top Class Actions, "A Place for Mom to Settle Auto-Dialer Class Action for $6 Million."{' '}
-              <a href="https://topclassactions.com/lawsuit-settlements/tcpa/a-place-for-mom-to-settle-auto-dialer-class-action-for-6-million/" target="_blank" rel="noopener noreferrer">
+              <a href="https://topclassactions.com/lawsuit-settlements/tcpa/a-place-for-mom-to-settle-auto-dialer-class-action-for-6-million/" target="_blank" rel="noopener noreferrer nofollow">
                 topclassactions.com
               </a>
             </li>
             <li>
               The Seattle Times, "Seniors for Sale" investigative series, 2010.{' '}
-              <a href="https://www.seattletimes.com/seattle-news/special-reports/hundreds-of-adult-homes-conceal-abuse-neglect/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.seattletimes.com/seattle-news/special-reports/hundreds-of-adult-homes-conceal-abuse-neglect/" target="_blank" rel="noopener noreferrer nofollow">
                 seattletimes.com
               </a>
             </li>
             <li>
               The Seattle Times, "State gets tough on referrals for elder care," 2011.{' '}
-              <a href="https://www.seattletimes.com/seattle-news/state-gets-tough-on-referrals-for-elder-care/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.seattletimes.com/seattle-news/state-gets-tough-on-referrals-for-elder-care/" target="_blank" rel="noopener noreferrer nofollow">
                 seattletimes.com
               </a>
             </li>
             <li>
               FTC, "Parties Agree to Divestiture of Senior Living Facilities Referral Service
               Caring.com," November 2017.{' '}
-              <a href="https://www.ftc.gov/news-events/news/press-releases/2017/11/parties-agree-divestiture-senior-living-facilities-referral-service-caringcom-condition-red-ventures" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.ftc.gov/news-events/news/press-releases/2017/11/parties-agree-divestiture-senior-living-facilities-referral-service-caringcom-condition-red-ventures" target="_blank" rel="noopener noreferrer nofollow">
                 ftc.gov
               </a>
             </li>
             <li>
               FTC, "FTC Approves Final Order Requiring Divestiture of Caring.com," March 2018.{' '}
-              <a href="https://www.ftc.gov/news-events/news/press-releases/2018/03/ftc-approves-final-order-requiring-divestiture-senior-living-facilities-referral-service-caringcom" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.ftc.gov/news-events/news/press-releases/2018/03/ftc-approves-final-order-requiring-divestiture-senior-living-facilities-referral-service-caringcom" target="_blank" rel="noopener noreferrer nofollow">
                 ftc.gov
               </a>
             </li>
             <li>
               Wisconsin Capital Times, "A Place for Mom assisted living referrals draw Wisconsin
               scrutiny," 2024.{' '}
-              <a href="https://captimes.com/news/government/a-place-for-mom-assisted-living-referrals-draw-wisconsin-scrutiny/article_c6ff34f7-326f-4e60-802b-cb27e516d63c.html" target="_blank" rel="noopener noreferrer">
+              <a href="https://captimes.com/news/government/a-place-for-mom-assisted-living-referrals-draw-wisconsin-scrutiny/article_c6ff34f7-326f-4e60-802b-cb27e516d63c.html" target="_blank" rel="noopener noreferrer nofollow">
                 captimes.com
               </a>
             </li>
             <li>
               A Place for Mom, "A Place for Mom Launches SeniorAdvisor.com," March 2013.{' '}
-              <a href="https://www.prnewswire.com/news-releases/a-place-for-mom-launches-senioradvisorcom-199855711.html" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.prnewswire.com/news-releases/a-place-for-mom-launches-senioradvisorcom-199855711.html" target="_blank" rel="noopener noreferrer nofollow">
                 prnewswire.com
               </a>
             </li>
             <li>
               CMS Medicare Care Compare.{' '}
-              <a href="https://www.medicare.gov/care-compare/" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.medicare.gov/care-compare/" target="_blank" rel="noopener noreferrer nofollow">
                 medicare.gov/care-compare
               </a>
             </li>

@@ -21,7 +21,7 @@ export function ActionPaths({ facility }) {
           <div className="resource-card-desc">
             Contact your state's Department of Health survey and certification division to report concerns.
           </div>
-          <a href="https://www.medicare.gov/care-compare/resources/nursing-home/file-a-complaint" target="_blank" rel="noopener noreferrer" className="resource-link">
+          <a href="https://www.medicare.gov/care-compare/resources/nursing-home/file-a-complaint" target="_blank" rel="noopener noreferrer nofollow" className="resource-link">
             How to File a Complaint →
           </a>
         </div>
@@ -30,7 +30,7 @@ export function ActionPaths({ facility }) {
           <div className="resource-card-desc">
             Free, confidential advocacy for nursing home residents. Available in every state.
           </div>
-          <a href="https://eldercare.acl.gov/Public/About/Aging_Network/LTCO.aspx" target="_blank" rel="noopener noreferrer" className="resource-link">
+          <a href="https://eldercare.acl.gov/Public/About/Aging_Network/LTCO.aspx" target="_blank" rel="noopener noreferrer nofollow" className="resource-link">
             Find Your Ombudsman →
           </a>
         </div>
@@ -71,7 +71,7 @@ export function ActionPaths({ facility }) {
           {resources.survey_agency}<br />
           {resources.survey_phone}
         </div>
-        <a href={resources.complaint_url} target="_blank" rel="noopener noreferrer" className="resource-link">
+        <a href={resources.complaint_url} target="_blank" rel="noopener noreferrer nofollow" className="resource-link">
           File Online Complaint →
         </a>
       </div>
@@ -83,7 +83,7 @@ export function ActionPaths({ facility }) {
           Free, confidential advocacy for residents<br />
           {resources.ombudsman_phone}
         </div>
-        <a href={resources.ombudsman_url} target="_blank" rel="noopener noreferrer" className="resource-link">
+        <a href={resources.ombudsman_url} target="_blank" rel="noopener noreferrer nofollow" className="resource-link">
           Visit Ombudsman Website →
         </a>
       </div>

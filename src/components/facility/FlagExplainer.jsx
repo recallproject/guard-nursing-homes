@@ -93,11 +93,11 @@ export default function FlagExplainer({ facility }) {
           <div className="flag-explainer-footer">
             <span className="flag-explainer-source">
               Sources:{' '}
-              <a href="https://www.medicare.gov/care-compare/" target="_blank" rel="noopener noreferrer">CMS Care Compare</a>
+              <a href="https://www.medicare.gov/care-compare/" target="_blank" rel="noopener noreferrer nofollow">CMS Care Compare</a>
               {' · '}
-              <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">CMS Provider Data</a>
+              <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer nofollow">CMS Provider Data</a>
               {' · '}
-              <a href="https://data.cms.gov/provider-data/dataset/xcdc-v8bm" target="_blank" rel="noopener noreferrer">PBJ Staffing</a>
+              <a href="https://data.cms.gov/provider-data/dataset/xcdc-v8bm" target="_blank" rel="noopener noreferrer nofollow">PBJ Staffing</a>
             </span>
           </div>
         </div>

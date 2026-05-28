@@ -79,7 +79,7 @@ export default function AboutPage() {
           <div className="about-featured-item">
             <div className="about-featured-icon">HDSR</div>
             <div className="about-featured-text">
-              <strong>Harvard Data Science Review</strong> — Quoted in <a href="https://hdsr.mitpress.mit.edu/pub/m4mz70zp/release/5" target="_blank" rel="noopener noreferrer">"Navigating the AI Safari"</a> (Issue 8.1, Winter 2026)
+              <strong>Harvard Data Science Review</strong> — Quoted in <a href="https://hdsr.mitpress.mit.edu/pub/m4mz70zp/release/5" target="_blank" rel="noopener noreferrer nofollow">"Navigating the AI Safari"</a> (Issue 8.1, Winter 2026)
               <br /><span style={{ fontSize: '13px', color: 'var(--text-muted)' }}>Endorsement cited by Editor-in-Chief Prof. Xiao-Li Meng · MIT Press</span>
             </div>
           </div>

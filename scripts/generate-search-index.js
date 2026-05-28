@@ -13,8 +13,13 @@ const PUBLIC_DATA = join(__dirname, '..', 'public', 'data');
 // Load all state files and merge facilities.
 const stateFiles = readdirSync(join(PUBLIC_DATA, 'states')).filter(f => f.endsWith('.json'));
 const facilities = [];
+const cmsDataDates = new Set();
 for (const file of stateFiles) {
   const stateData = JSON.parse(readFileSync(join(PUBLIC_DATA, 'states', file), 'utf-8'));
+  const dataAsOf = stateData?._metadata?.data_as_of;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dataAsOf)) {
+    cmsDataDates.add(dataAsOf);
+  }
   if (Array.isArray(stateData.facilities)) {
     for (const f of stateData.facilities) {
       facilities.push({
@@ -80,8 +85,12 @@ const states = Array.from(stateCounts.entries())
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
+const generatedAt = cmsDataDates.size > 0
+  ? `${[...cmsDataDates].sort().at(-1)}T00:00:00.000Z`
+  : new Date().toISOString();
+
 const out = {
-  generated: new Date().toISOString(),
+  generated: generatedAt,
   counts: {
     facilities: facilities.length,
     cities: cities.length,

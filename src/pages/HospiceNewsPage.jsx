@@ -589,7 +589,7 @@ function FeedLinks({ item }) {
 
   if (item.url) {
     parts.push(
-      <a key="source" href={item.url} target="_blank" rel="noopener noreferrer">
+      <a key="source" href={item.url} target="_blank" rel="noopener noreferrer nofollow">
         Source →
       </a>
     );

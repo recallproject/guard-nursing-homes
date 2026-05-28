@@ -165,7 +165,7 @@ export function TermsPage() {
             site. The Oversight Report is not responsible for actions taken, or not taken, in
             reliance on information provided here. If you have concerns about a facility, contact
             your state survey agency or the HHS Office of Inspector General
-            at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
+            at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer nofollow">tips.hhs.gov</a>.
           </p>
         </div>
 

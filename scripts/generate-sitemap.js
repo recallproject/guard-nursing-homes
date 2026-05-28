@@ -7,17 +7,25 @@ const __dirname = dirname(__filename);
 const publicDir = join(__dirname, '..', 'public');
 
 const BASE_URL = 'https://www.oversightreports.com';
-const today = new Date().toISOString().split('T')[0];
+const generatedDate = new Date().toISOString().split('T')[0];
 
 // Load facility data from split state files (public/data/states/*.json)
 const statesDir = join(publicDir, 'data', 'states');
 const facilityData = { states: {} };
+const cmsDataDates = new Set();
 for (const file of readdirSync(statesDir).filter(f => f.endsWith('.json'))) {
   const stateCode = file.replace('.json', '');
   const stateData = JSON.parse(readFileSync(join(statesDir, file), 'utf8'));
   facilityData.states[stateCode] = stateData;
+  const dataAsOf = stateData?._metadata?.data_as_of;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dataAsOf)) {
+    cmsDataDates.add(dataAsOf);
+  }
 }
 const chainData = JSON.parse(readFileSync(join(publicDir, 'data', 'chain_performance.json'), 'utf8'));
+const defaultLastmod = cmsDataDates.size > 0
+  ? [...cmsDataDates].sort().at(-1)
+  : generatedDate;
 
 // Load blog posts index (optional)
 let blogPosts = [];
@@ -169,7 +177,7 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url>
     <loc>${BASE_URL}${u.loc}</loc>
-    <lastmod>${u.lastmod || today}</lastmod>
+    <lastmod>${u.lastmod || defaultLastmod}</lastmod>
     <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join('\n')}

@@ -166,9 +166,9 @@ export function PrivacyPage() {
           </div>
           <p>
             This site is hosted on Vercel. Please refer
-            to <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel's privacy policy</a> for
+            to <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer nofollow">Vercel's privacy policy</a> for
             information about their data practices. We load fonts from Google Fonts, which
-            is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.
+            is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer nofollow">Google's privacy policy</a>.
           </p>
         </div>
 

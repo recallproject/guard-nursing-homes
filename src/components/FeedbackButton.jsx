@@ -13,7 +13,7 @@ export default function FeedbackButton() {
       <a
         href={FEEDBACK_FORM_URL}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className="feedback-fab"
         title="Share feedback"
         onClick={() => { window.plausible && window.plausible('Feedback-Form-Click'); }}

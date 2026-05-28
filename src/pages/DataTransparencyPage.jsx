@@ -93,31 +93,31 @@ export default function DataTransparencyPage() {
               <h3>Sources</h3>
               <ul>
                 <li>
-                  <a href="https://www.cms.gov/files/document/qssam-26-01-nh.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.cms.gov/files/document/qssam-26-01-nh.pdf" target="_blank" rel="noopener noreferrer nofollow">
                     CMS Quality &amp; Safety Special Alert Memo (QSSAM 26-01-NH)
                   </a>
                   <span className="dt-source-type">Official CMS memo</span>
                 </li>
                 <li>
-                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/policy-memos/policy-memos-states-and-cms-locations/updates-nursing-home-care-compare" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/policy-memos/policy-memos-states-and-cms-locations/updates-nursing-home-care-compare" target="_blank" rel="noopener noreferrer nofollow">
                     Updates to Nursing Home Care Compare — CMS Policy Memo
                   </a>
                   <span className="dt-source-type">CMS.gov</span>
                 </li>
                 <li>
-                  <a href="https://www.mcknights.com/news/cms-to-remove-complaint-allegations-from-nursing-home-compare/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.mcknights.com/news/cms-to-remove-complaint-allegations-from-nursing-home-compare/" target="_blank" rel="noopener noreferrer nofollow">
                     CMS to remove complaint allegations from Nursing Home Compare
                   </a>
                   <span className="dt-source-type">McKnight's Long-Term Care News</span>
                 </li>
                 <li>
-                  <a href="https://cmscompliancegroup.com/nursing-homes-skilled-nursing/cms-iqies-transition-what-nursing-homes-need-to-know-about-the-latest-data-shake-up-qssam-alert/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://cmscompliancegroup.com/nursing-homes-skilled-nursing/cms-iqies-transition-what-nursing-homes-need-to-know-about-the-latest-data-shake-up-qssam-alert/" target="_blank" rel="noopener noreferrer nofollow">
                     CMS iQIES Transition: What Nursing Homes Need to Know
                   </a>
                   <span className="dt-source-type">CMS Compliance Group</span>
                 </li>
                 <li>
-                  <a href="https://www.ahcancal.org/News-and-Communications/Blog/Pages/CMS-Releases-Memo-on-Data-Discrepancies-and-Other-Care-Compare-Updates.aspx" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.ahcancal.org/News-and-Communications/Blog/Pages/CMS-Releases-Memo-on-Data-Discrepancies-and-Other-Care-Compare-Updates.aspx" target="_blank" rel="noopener noreferrer nofollow">
                     CMS Releases Memo on Data Discrepancies and Other Care Compare Updates
                   </a>
                   <span className="dt-source-type">AHCA/NCAL</span>
@@ -156,19 +156,19 @@ export default function DataTransparencyPage() {
               <h3>Sources</h3>
               <ul>
                 <li>
-                  <a href="https://www.mcknights.com/news/behind-cmss-freeze-of-all-nursing-home-care-compare-data/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.mcknights.com/news/behind-cmss-freeze-of-all-nursing-home-care-compare-data/" target="_blank" rel="noopener noreferrer nofollow">
                     Behind CMS's freeze of all Nursing Home Care Compare data
                   </a>
                   <span className="dt-source-type">McKnight's Long-Term Care News</span>
                 </li>
                 <li>
-                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/quality-and-safety-special-alerts/temporary-pause-nursing-home-care-compare-updates-revised" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/quality-and-safety-special-alerts/temporary-pause-nursing-home-care-compare-updates-revised" target="_blank" rel="noopener noreferrer nofollow">
                     Temporary Pause in Nursing Home Care Compare Updates (Revised)
                   </a>
                   <span className="dt-source-type">CMS.gov</span>
                 </li>
                 <li>
-                  <a href="https://skillednursingnews.com/2025/08/cms-pauses-nursing-home-care-compare-updates-leaving-5-star-ratings-static/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://skillednursingnews.com/2025/08/cms-pauses-nursing-home-care-compare-updates-leaving-5-star-ratings-static/" target="_blank" rel="noopener noreferrer nofollow">
                     CMS Pauses Nursing Home Care Compare Updates, Leaving 5-Star Ratings Static
                   </a>
                   <span className="dt-source-type">Skilled Nursing News</span>
@@ -207,13 +207,13 @@ export default function DataTransparencyPage() {
               <h3>Sources</h3>
               <ul>
                 <li>
-                  <a href="https://www.mcknights.com/news/breaking-cms-dropping-third-cycle-inspections-from-care-compare-ratings-adding-more-chain-info/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.mcknights.com/news/breaking-cms-dropping-third-cycle-inspections-from-care-compare-ratings-adding-more-chain-info/" target="_blank" rel="noopener noreferrer nofollow">
                     CMS dropping third-cycle inspections from Care Compare ratings
                   </a>
                   <span className="dt-source-type">McKnight's Long-Term Care News</span>
                 </li>
                 <li>
-                  <a href="https://skillednursingnews.com/2025/06/breaking-cms-revamps-care-compare-to-drop-third-cycle-nursing-home-inspections-add-greater-transparency-for-chains/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://skillednursingnews.com/2025/06/breaking-cms-revamps-care-compare-to-drop-third-cycle-nursing-home-inspections-add-greater-transparency-for-chains/" target="_blank" rel="noopener noreferrer nofollow">
                     CMS Revamps Care Compare to Drop Third-Cycle Nursing Home Inspections
                   </a>
                   <span className="dt-source-type">Skilled Nursing News</span>
