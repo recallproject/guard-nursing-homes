@@ -824,7 +824,7 @@ export function MethodologyPage() {
               <div className="methodology-formula-box">
                 <span className="methodology-formula-label">Source</span>
                 <span className="methodology-formula-value">
-                  <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-B/section-483.35" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483/subpart-B/section-483.35" target="_blank" rel="noopener noreferrer nofollow">
                     42 CFR §483.35 (Code of Federal Regulations)
                   </a>
                 </span>
@@ -845,14 +845,14 @@ export function MethodologyPage() {
                 <div className="methodology-tl-item tl-red">
                   <div className="methodology-tl-date">July 4, 2025</div>
                   <div className="methodology-tl-text">
-                    <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer">One Big Beautiful Bill Act</a> (§71111) blocks enforcement through September 2034
+                    <a href="https://www.congress.gov/bill/119th-congress/house-bill/1/text" target="_blank" rel="noopener noreferrer nofollow">One Big Beautiful Bill Act</a> (§71111) blocks enforcement through September 2034
                   </div>
                 </div>
                 <div className="methodology-tl-item tl-red">
                   <div className="methodology-tl-date">December 2, 2025</div>
                   <div className="methodology-tl-text">
                     CMS formally{' '}
-                    <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.federalregister.gov/documents/2025/12/03/2025-21792/medicare-and-medicaid-programs-repeal-of-minimum-staffing-standards-for-long-term-care-facilities" target="_blank" rel="noopener noreferrer nofollow">
                       repeals the 2024 standards
                     </a>{' '}
                     via interim final rule (effective February 2, 2026)
@@ -861,7 +861,7 @@ export function MethodologyPage() {
                 <div className="methodology-tl-item">
                   <div className="methodology-tl-date">February 2, 2026</div>
                   <div className="methodology-tl-text">
-                    <a href="https://oag.ca.gov/system/files/attachments/press-docs/Repeal%20of%20Minimum%20Staffing%20Standards%20for%20LTC%20Facilities%20Comment%20Letter%202026.02.02.pdf" target="_blank" rel="noopener noreferrer">
+                    <a href="https://oag.ca.gov/system/files/attachments/press-docs/Repeal%20of%20Minimum%20Staffing%20Standards%20for%20LTC%20Facilities%20Comment%20Letter%202026.02.02.pdf" target="_blank" rel="noopener noreferrer nofollow">
                       18 state attorneys general
                     </a>{' '}
                     (led by CA, MA, NY) ask CMS for targeted 3.48 HPRD standard for high-risk for-profit operators
@@ -1001,11 +1001,11 @@ export function MethodologyPage() {
               <div className="methodology-formula-box">
                 <span className="methodology-formula-label">Sources</span>
                 <span className="methodology-formula-value">
-                  <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-483" target="_blank" rel="noopener noreferrer nofollow">
                     42 CFR Part 483 (Code of Federal Regulations)
                   </a>
                   {' · '}
-                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/nursing-home-quality/deficiency-tag-number-category-change-log" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/nursing-home-quality/deficiency-tag-number-category-change-log" target="_blank" rel="noopener noreferrer nofollow">
                     CMS F-Tag Reference
                   </a>
                 </span>

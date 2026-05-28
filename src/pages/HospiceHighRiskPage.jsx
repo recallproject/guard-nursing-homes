@@ -403,7 +403,7 @@ export default function HospiceHighRiskPage() {
               the <a
                 href="https://information.auditor.ca.gov/reports/2021-123/index.html"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 onClick={handleMethodologyClick}
               >California State Auditor Report 2021-123 (California Hospice Licensure and Oversight)</a>:
               live-discharge / HVLDL, the CMS Hospice Care Index composite, care-mix completeness (zero general-inpatient

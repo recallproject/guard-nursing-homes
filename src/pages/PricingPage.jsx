@@ -220,7 +220,7 @@ export default function PricingPage() {
               <a
                 href="https://ko-fi.com/oversightreports"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="pricing-support-link"
               >
                 Support on Ko-fi →

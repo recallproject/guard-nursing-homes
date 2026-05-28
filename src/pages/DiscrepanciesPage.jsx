@@ -436,7 +436,7 @@ export default function DiscrepanciesPage() {
         <div className="disc-disclaimer">
           <strong>The Oversight Report identifies patterns and discrepancies in publicly available federal data.</strong> These
           indicators do not constitute evidence of wrongdoing. If you have concerns, contact your state survey
-          agency or HHS OIG at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
+          agency or HHS OIG at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer nofollow">tips.hhs.gov</a>.
         </div>
 
         <div className="disc-footer">

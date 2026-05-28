@@ -378,9 +378,9 @@ export function ChainDetailPage() {
           </div>
           <p className="ahca-callout-source">
             Sources: {ahcaInfo.source} ·{' '}
-            <a href="https://www.opensecrets.org/federal-lobbying/clients/summary?id=D000074188" target="_blank" rel="noopener noreferrer">OpenSecrets.org</a> ·{' '}
-            <a href="https://www.fec.gov/data/committee/C00040998/" target="_blank" rel="noopener noreferrer">FEC.gov PAC records</a> ·{' '}
-            <a href="https://data.cms.gov/provider-data/topics/nursing-homes/payroll-based-journal-daily-nurse-staffing" target="_blank" rel="noopener noreferrer">CMS PBJ staffing data</a>
+            <a href="https://www.opensecrets.org/federal-lobbying/clients/summary?id=D000074188" target="_blank" rel="noopener noreferrer nofollow">OpenSecrets.org</a> ·{' '}
+            <a href="https://www.fec.gov/data/committee/C00040998/" target="_blank" rel="noopener noreferrer nofollow">FEC.gov PAC records</a> ·{' '}
+            <a href="https://data.cms.gov/provider-data/topics/nursing-homes/payroll-based-journal-daily-nurse-staffing" target="_blank" rel="noopener noreferrer nofollow">CMS PBJ staffing data</a>
           </p>
         </div>
       )}
@@ -611,14 +611,14 @@ export function ChainDetailPage() {
         <p className="chain-disclaimer-title">Data Sources</p>
         <p>
           Chain-level data from{' '}
-          <a href="https://data.cms.gov/provider-data/dataset/4pq5-n9py" target="_blank" rel="noopener noreferrer">CMS Affiliated Entity Performance Measures</a> (February 2025).{' '}
+          <a href="https://data.cms.gov/provider-data/dataset/4pq5-n9py" target="_blank" rel="noopener noreferrer nofollow">CMS Affiliated Entity Performance Measures</a> (February 2025).{' '}
           Facility-level staffing from{' '}
-          <a href="https://data.cms.gov/provider-data/topics/nursing-homes/payroll-based-journal-daily-nurse-staffing" target="_blank" rel="noopener noreferrer">CMS Payroll-Based Journal</a>.{' '}
+          <a href="https://data.cms.gov/provider-data/topics/nursing-homes/payroll-based-journal-daily-nurse-staffing" target="_blank" rel="noopener noreferrer nofollow">CMS Payroll-Based Journal</a>.{' '}
           Inspection and enforcement data from{' '}
-          <a href="https://data.cms.gov/provider-data/topics/nursing-homes/health-deficiencies" target="_blank" rel="noopener noreferrer">CMS Health Deficiencies</a> and{' '}
-          <a href="https://data.cms.gov/provider-data/topics/nursing-homes/penalties" target="_blank" rel="noopener noreferrer">CMS Penalties</a>.{' '}
+          <a href="https://data.cms.gov/provider-data/topics/nursing-homes/health-deficiencies" target="_blank" rel="noopener noreferrer nofollow">CMS Health Deficiencies</a> and{' '}
+          <a href="https://data.cms.gov/provider-data/topics/nursing-homes/penalties" target="_blank" rel="noopener noreferrer nofollow">CMS Penalties</a>.{' '}
           Star ratings from{' '}
-          <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">CMS Care Compare</a>.{' '}
+          <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer nofollow">CMS Care Compare</a>.{' '}
           Individual facility quality may vary significantly within a chain.
         </p>
       </div>

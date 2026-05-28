@@ -1126,7 +1126,7 @@ export default function HospiceProviderPage() {
                               className="hp-pubrec-link"
                               href={item.url}
                               target="_blank"
-                              rel="noopener noreferrer"
+                              rel="noopener noreferrer nofollow"
                               onClick={handleVerifyLinkClick}
                             >
                               Read original →

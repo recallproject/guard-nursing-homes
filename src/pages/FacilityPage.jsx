@@ -497,9 +497,9 @@ export function FacilityPage() {
           <p className="fp-meta">
             {facility.city}, {facility.state} | {facility.beds || '—'} beds
             {' · '}
-            <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica Report</a>
+            <a href={propublica} target="_blank" rel="noopener noreferrer nofollow">ProPublica Report</a>
             {' · '}
-            <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Compare</a>
+            <a href={medicare} target="_blank" rel="noopener noreferrer nofollow">Medicare Compare</a>
           </p>
           <p className="fp-ccn">CMS CCN: {ccn}</p>
         </div>
@@ -553,7 +553,7 @@ export function FacilityPage() {
             <div className="bottom-line-label">Bottom Line</div>
             <div className="bottom-line-text">{getBottomLine()}</div>
             <div className="bottom-line-source">
-              Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>
+              Source: CMS Provider Data, Health Deficiencies, Penalties, Ownership · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer nofollow">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer nofollow">Medicare Care Compare</a>
             </div>
           </div>
         </div>
@@ -972,7 +972,7 @@ export function FacilityPage() {
               )}
             </div>
           )}
-          <div className="source-line">Source: CMS Health Deficiencies Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a></div>
+          <div className="source-line">Source: CMS Health Deficiencies Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer nofollow">ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer nofollow">Medicare Care Compare</a></div>
 
           <WhatDoesThisMean question="How do nursing home inspections work?">
             <p>
@@ -1161,7 +1161,7 @@ export function FacilityPage() {
             );
           })()}
 
-          <div className="source-line" style={{ marginTop: '16px' }}>Source: CMS Health Deficiencies &amp; Inspection Records · <a href="https://data.cms.gov" target="_blank" rel="noopener noreferrer">data.cms.gov</a></div>
+          <div className="source-line" style={{ marginTop: '16px' }}>Source: CMS Health Deficiencies &amp; Inspection Records · <a href="https://data.cms.gov" target="_blank" rel="noopener noreferrer nofollow">data.cms.gov</a></div>
           <WhatDoesThisMean question="What are complaint investigations?">
             <p>
               Anyone can file a complaint about a nursing home — a resident, family member, staff member, or visitor. When CMS or a state survey agency receives a complaint, they investigate it separately from the regular annual survey.
@@ -1708,7 +1708,7 @@ export function FacilityPage() {
                 <div className="qm-disclaimer">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                   <div>
-                    <strong>Data sources:</strong> MDS Quality Measures (assessment-based), Claims-Based Quality Measures (Medicare claims), SNF Quality Reporting Program (including COVID-19 vaccination data), SNF Value-Based Purchasing. National averages calculated from all 14,699 Medicare-certified nursing homes. Antipsychotic rates exclude residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation &mdash; no single metric above average automatically indicates poor care. <Link to="/methodology">Methodology</Link> &middot; <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">Verify on CMS.gov &rarr;</a>
+                    <strong>Data sources:</strong> MDS Quality Measures (assessment-based), Claims-Based Quality Measures (Medicare claims), SNF Quality Reporting Program (including COVID-19 vaccination data), SNF Value-Based Purchasing. National averages calculated from all 14,699 Medicare-certified nursing homes. Antipsychotic rates exclude residents with schizophrenia, Huntington&rsquo;s, and Tourette syndrome per CMS methodology. Elevated indicators highlight patterns that warrant investigation &mdash; no single metric above average automatically indicates poor care. <Link to="/methodology">Methodology</Link> &middot; <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer nofollow">Verify on CMS.gov &rarr;</a>
                   </div>
                 </div>
 
@@ -1776,7 +1776,7 @@ export function FacilityPage() {
               <div className="data-cell-context">No CMS penalties in recent records</div>
             </div>
           )}
-          <p className="source">Source: CMS Penalties Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer">ProPublica</a></p>
+          <p className="source">Source: CMS Penalties Data · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer nofollow">ProPublica</a></p>
 
           <WhatDoesThisMean question="What do these fines actually mean?">
             <p>
@@ -1813,7 +1813,7 @@ export function FacilityPage() {
                 </div>
               )}
               <div className="source-line" style={{ marginTop: '12px', fontSize: '12px', color: 'var(--text-muted)' }}>
-                Source: <a href={hcris} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>CMS HCRIS Cost Reports</a>, FY2024 (Worksheet A-8) · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>Medicare Care Compare</a>
+                Source: <a href={hcris} target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>CMS HCRIS Cost Reports</a>, FY2024 (Worksheet A-8) · Verify: <a href={propublica} target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>ProPublica</a> · <a href={medicare} target="_blank" rel="noopener noreferrer nofollow" style={{ color: 'var(--accent-blue, #7c8aff)', textDecoration: 'none' }}>Medicare Care Compare</a>
               </div>
             </div>
 
@@ -2271,7 +2271,7 @@ export function FacilityPage() {
 
         {/* Disclaimer */}
         <div className="disclaimer-box">
-          <strong>About This Data:</strong> The Oversight Report identifies patterns and discrepancies in publicly available federal data. These indicators do not constitute evidence of wrongdoing. If you have concerns about a facility, contact your state survey agency or the HHS Office of Inspector General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
+          <strong>About This Data:</strong> The Oversight Report identifies patterns and discrepancies in publicly available federal data. These indicators do not constitute evidence of wrongdoing. If you have concerns about a facility, contact your state survey agency or the HHS Office of Inspector General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer nofollow">tips.hhs.gov</a>.
         </div>
 
         {/* Evidence Preview Modal + bottom ClinicianCTA removed — both replaced by FacilityDownloads section */}

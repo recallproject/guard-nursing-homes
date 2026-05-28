@@ -100,6 +100,8 @@ function createPage(route, title, description, canonical, bodyContent = '', opti
     );
   }
 
+  html = addNoFollowToBlankTargets(html);
+
   // Write to dist/{route}/index.html
   const dir = join(distDir, route);
   mkdirSync(dir, { recursive: true });
@@ -120,6 +122,25 @@ function escapeJsonForHtml(json) {
     .replace(/</g, '\\u003c')
     .replace(/>/g, '\\u003e')
     .replace(/&/g, '\\u0026');
+}
+
+function jsonLdScript(jsonLd) {
+  return `  <script type="application/ld+json">${escapeJsonForHtml(JSON.stringify(jsonLd))}</script>`;
+}
+
+function addNoFollowToBlankTargets(html) {
+  return html.replace(/<a\b(?=[^>]*\btarget="_blank")[^>]*>/gi, (anchor) => {
+    if (/\brel="/i.test(anchor)) {
+      return anchor.replace(/\brel="([^"]*)"/i, (_match, relValue) => {
+        const rels = relValue.split(/\s+/).filter(Boolean);
+        return rels.includes('nofollow')
+          ? `rel="${rels.join(' ')}"`
+          : `rel="${[...rels, 'nofollow'].join(' ')}"`;
+      });
+    }
+
+    return anchor.replace(/>$/, ' rel="noopener noreferrer nofollow">');
+  });
 }
 
 function formatDisplayDate(iso) {
@@ -225,7 +246,7 @@ function blogPostExtraHead(post, canonicalUrl, metaDescription) {
     articleSection: post.category || undefined,
     keywords: Array.isArray(post.tags) ? post.tags.join(', ') : undefined,
   };
-  tags.push(`  <script type="application/ld+json">${escapeJsonForHtml(JSON.stringify(jsonLd))}</script>`);
+  tags.push(jsonLdScript(jsonLd));
   return tags.join('\n');
 }
 
@@ -257,6 +278,70 @@ function starDisplay(stars) {
   if (stars == null) return 'Unrated';
   const full = Math.floor(stars);
   return '★'.repeat(full) + '☆'.repeat(5 - full) + ` ${stars}/5`;
+}
+
+function facilityExtraHead(f, stateCode) {
+  const city = f.city || '';
+  const state = f.state || stateCode;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalOrganization',
+    name: f.name,
+    url: `${BASE_URL}/facility/${encodeURIComponent(f.ccn)}`,
+    address: {
+      '@type': 'PostalAddress',
+      ...(f.address ? { streetAddress: f.address } : {}),
+      ...(city ? { addressLocality: city } : {}),
+      ...(state ? { addressRegion: state } : {}),
+      ...(f.zip ? { postalCode: f.zip } : {}),
+      addressCountry: 'US',
+    },
+    ...(f.phone ? { telephone: f.phone } : {}),
+    ...(f.stars != null ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: f.stars,
+        bestRating: 5,
+        worstRating: 1,
+        ratingCount: 1,
+      },
+    } : {}),
+  };
+
+  return jsonLdScript(jsonLd);
+}
+
+function hospiceProviderExtraHead(p, stateCode) {
+  const city = p.city || '';
+  const state = p.state || stateCode;
+  const rating = p.cms_overall_rating ?? p.cahps?.summary_star_rating;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalOrganization',
+    name: p.name,
+    description: 'Medicare-certified hospice provider',
+    url: `${BASE_URL}/hospice/${encodeURIComponent(p.ccn)}`,
+    address: {
+      '@type': 'PostalAddress',
+      ...(p.address ? { streetAddress: p.address } : {}),
+      ...(city ? { addressLocality: city } : {}),
+      ...(state ? { addressRegion: state } : {}),
+      ...(p.zip ? { postalCode: p.zip } : {}),
+      addressCountry: 'US',
+    },
+    ...(p.phone ? { telephone: p.phone } : {}),
+    ...(rating != null ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: rating,
+        bestRating: 5,
+        worstRating: 1,
+        ratingCount: 1,
+      },
+    } : {}),
+  };
+
+  return jsonLdScript(jsonLd);
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -378,6 +463,33 @@ function facilityBodyContent(f, stateCode) {
         <p>© ${new Date().getFullYear()} The Oversight Report — Independent nursing home safety data.</p>
       </footer>
     </div>`;
+}
+
+function postAcuteHomeBodyContent() {
+  return `
+    <main style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:980px;margin:0 auto;padding:32px 24px;color:#1D3557;background:#EDF1F7;">
+      <section style="padding:32px 0;border-bottom:1px solid #CBD5E1;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2B6CB0;margin:0 0 12px 0;">Free · Clinician-built · CMS-sourced</p>
+        <h1 style="font-size:44px;line-height:1.05;margin:0 0 14px 0;font-weight:900;">The Oversight Report</h1>
+        <p style="font-size:22px;line-height:1.35;margin:0 0 18px 0;color:#334155;">Post-acute care safety data for nursing homes, hospice, home health, inpatient rehab, and LTACH providers.</p>
+        <p style="font-size:16px;line-height:1.65;margin:0;color:#475569;">Search free, sourced reports on Medicare-certified providers across the United States. Compare staffing, inspections, ownership, penalties, quality measures, and public-record signals before a referral or placement decision.</p>
+      </section>
+
+      <section style="padding:28px 0;border-bottom:1px solid #CBD5E1;">
+        <h2 style="font-size:26px;margin:0 0 12px 0;">Search every Medicare-certified provider</h2>
+        <p style="font-size:16px;line-height:1.65;margin:0;color:#475569;">The site includes facility-level pages, state directories, chain rollups, high-risk watchlists, and comparison tools designed for families, clinicians, attorneys, journalists, and public agencies.</p>
+      </section>
+
+      <section style="padding:28px 0;">
+        <h2 style="font-size:26px;margin:0 0 12px 0;">What each report covers</h2>
+        <ul style="font-size:16px;line-height:1.75;margin:0;padding-left:22px;color:#475569;">
+          <li>Inspection deficiencies and immediate-jeopardy history</li>
+          <li>Staffing levels and payroll-based nurse staffing signals</li>
+          <li>Penalties, ownership networks, and chain-level performance</li>
+          <li>Quality measures and practical next-step resources</li>
+        </ul>
+      </section>
+    </main>`;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -572,8 +684,22 @@ const staticPages = [
 
 console.log('Generating SEO pages with static HTML content...');
 
+createPage(
+  '',
+  'The Oversight Report — Post-Acute Care Safety Data',
+  'Free, sourced reports on every Medicare-certified post-acute care provider in America — nursing homes, hospice, home health, inpatient rehab, and LTACH. Built by a clinician. Refreshed from CMS.',
+  '/',
+  postAcuteHomeBodyContent()
+);
+
 for (const page of staticPages) {
-  createPage(page.route, page.title, page.description, `/${page.route}`);
+  createPage(
+    page.route,
+    page.title,
+    page.description,
+    `/${page.route}`,
+    page.route === 'post-acute' ? postAcuteHomeBodyContent() : ''
+  );
 }
 console.log(`  ✓ ${staticPages.length} static pages`);
 
@@ -659,7 +785,8 @@ for (const [stateCode, stateData] of Object.entries(facilityData.states)) {
         `${f.name} — Safety Report | The Oversight Report`,
         `${f.name} in ${city}, ${state}. ${stars}. ${defCount} inspection deficiencies. See staffing levels, fines, ownership, and safety data.`,
         `/facility/${f.ccn}`,
-        body
+        body,
+        { extraHead: facilityExtraHead(f, stateCode) }
       );
       facilityCount++;
     }
@@ -708,7 +835,9 @@ try {
           `hospice/${p.ccn}`,
           `${p.name} — Hospice Safety Report | The Oversight Report`,
           desc,
-          `/hospice/${p.ccn}`
+          `/hospice/${p.ccn}`,
+          '',
+          { extraHead: hospiceProviderExtraHead(p, stateCode) }
         );
         hospiceCount++;
       }

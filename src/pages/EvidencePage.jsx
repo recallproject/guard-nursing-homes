@@ -561,7 +561,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           )}
 
           <div className="ev-verify">
-            <a href={`https://www.medicare.gov/care-compare/details/nursing-home/${ccn}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://www.medicare.gov/care-compare/details/nursing-home/${ccn}`} target="_blank" rel="noopener noreferrer nofollow">
               Verify ownership data on Medicare Care Compare
             </a>
           </div>
@@ -739,7 +739,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           )}
 
           <div className="ev-verify">
-            <a href={`https://www.medicare.gov/care-compare/details/nursing-home/${ccn}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://www.medicare.gov/care-compare/details/nursing-home/${ccn}`} target="_blank" rel="noopener noreferrer nofollow">
               Verify staffing data on Medicare Care Compare
             </a>
           </div>
@@ -1004,7 +1004,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           )}
 
           <div className="ev-verify">
-            <a href={`https://projects.propublica.org/nursing-homes/homes/h-${ccn}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://projects.propublica.org/nursing-homes/homes/h-${ccn}`} target="_blank" rel="noopener noreferrer nofollow">
               Verify inspection history on ProPublica Nursing Home Inspect
             </a>
           </div>
@@ -1114,7 +1114,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           )}
 
           <div className="ev-verify">
-            <a href={`https://projects.propublica.org/nursing-homes/homes/h-${ccn}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://projects.propublica.org/nursing-homes/homes/h-${ccn}`} target="_blank" rel="noopener noreferrer nofollow">
               Verify penalties on ProPublica Nursing Home Inspect
             </a>
           </div>
@@ -1308,7 +1308,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           )}
 
           <div className="ev-verify">
-            <a href={`https://www.medicare.gov/care-compare/details/nursing-home/${ccn}?id=${ccn}&measures=quality`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://www.medicare.gov/care-compare/details/nursing-home/${ccn}?id=${ccn}&measures=quality`} target="_blank" rel="noopener noreferrer nofollow">
               Verify quality measures on Medicare Care Compare
             </a>
           </div>
@@ -1467,7 +1467,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           <p>If you have concerns about a nursing home, contact:</p>
           <ul className="ev-list">
             <li>Your state survey agency (health department)</li>
-            <li>HHS Office of Inspector General: <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a></li>
+            <li>HHS Office of Inspector General: <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer nofollow">tips.hhs.gov</a></li>
             <li>National Eldercare Locator: 1-800-677-1116</li>
           </ul>
         </section>

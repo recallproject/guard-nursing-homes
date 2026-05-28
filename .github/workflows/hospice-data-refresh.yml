@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   refresh:
@@ -33,21 +34,37 @@ jobs:
           node scripts/build-courtlistener-actions.js || echo "courtlistener pipeline failed (continuing)"
           node scripts/build-mfcu-actions.js          || echo "mfcu pipeline failed (continuing)"
 
-      - name: Commit if data changed
+      - name: Count refreshed items
+        id: counts
         run: |
-          git config user.name  "oversight-bot"
-          git config user.email "bot@oversightreports.com"
-          git add public/data/hospice/news-feed.json \
-                  public/data/hospice/doj-actions.json \
-                  public/data/hospice/courtlistener-actions.json \
-                  public/data/hospice/mfcu-actions.json
-          if git diff --cached --quiet; then
-            echo "No data changes; nothing to commit."
-            exit 0
-          fi
           NEWS_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/news-feed.json')).feed_items?.length ?? 0)")
           DOJ_COUNT=$(node  -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/doj-actions.json')).actions?.length ?? 0)")
           COURT_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/courtlistener-actions.json')).actions?.length ?? 0)")
           MFCU_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/mfcu-actions.json')).actions?.length ?? 0)")
-          git commit -m "Daily hospice feed refresh: ${NEWS_COUNT} news + ${DOJ_COUNT} DOJ + ${COURT_COUNT} court + ${MFCU_COUNT} MFCU items"
-          git push origin HEAD:main
+          echo "news_count=${NEWS_COUNT}" >> "$GITHUB_OUTPUT"
+          echo "doj_count=${DOJ_COUNT}" >> "$GITHUB_OUTPUT"
+          echo "court_count=${COURT_COUNT}" >> "$GITHUB_OUTPUT"
+          echo "mfcu_count=${MFCU_COUNT}" >> "$GITHUB_OUTPUT"
+
+      - name: Create refresh pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automated/hospice-data-refresh
+          base: main
+          delete-branch: true
+          commit-message: Daily hospice feed refresh: ${{ steps.counts.outputs.news_count }} news + ${{ steps.counts.outputs.doj_count }} DOJ + ${{ steps.counts.outputs.court_count }} court + ${{ steps.counts.outputs.mfcu_count }} MFCU items
+          title: Daily hospice feed refresh
+          body: |
+            Automated hospice feed refresh from the scheduled workflow.
+
+            Counts:
+            - News: ${{ steps.counts.outputs.news_count }}
+            - DOJ: ${{ steps.counts.outputs.doj_count }}
+            - CourtListener: ${{ steps.counts.outputs.court_count }}
+            - MFCU: ${{ steps.counts.outputs.mfcu_count }}
+          add-paths: |
+            public/data/hospice/news-feed.json
+            public/data/hospice/doj-actions.json
+            public/data/hospice/courtlistener-actions.json
+            public/data/hospice/mfcu-actions.json

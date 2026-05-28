@@ -265,7 +265,7 @@ export function AntipsychoticTrendsPage() {
           </p>
           <p className="ap-trends-hero__source">
             Source: CMS Nursing Home Compare &amp; HHS OIG —{' '}
-            <a href={OIG_REPORT_URL} target="_blank" rel="noopener noreferrer">
+            <a href={OIG_REPORT_URL} target="_blank" rel="noopener noreferrer nofollow">
               View OIG Report
             </a>
           </p>
@@ -494,7 +494,7 @@ export function AntipsychoticTrendsPage() {
             <h3>OIG Report</h3>
             <p>
               The full OIG report and work plan are available at{' '}
-              <a href={OIG_REPORT_URL} target="_blank" rel="noopener noreferrer">
+              <a href={OIG_REPORT_URL} target="_blank" rel="noopener noreferrer nofollow">
                 oig.hhs.gov
               </a>. The OIG has recommended increased oversight and enforcement to reduce
               inappropriate antipsychotic use in nursing facilities.
