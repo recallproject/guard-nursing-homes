@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   refresh:
@@ -50,4 +51,12 @@ jobs:
           COURT_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/courtlistener-actions.json')).actions?.length ?? 0)")
           MFCU_COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('public/data/hospice/mfcu-actions.json')).actions?.length ?? 0)")
           git commit -m "Daily hospice feed refresh: ${NEWS_COUNT} news + ${DOJ_COUNT} DOJ + ${COURT_COUNT} court + ${MFCU_COUNT} MFCU items"
-          git push origin HEAD:main
+          BRANCH="data/hospice-refresh-${GITHUB_RUN_ID}"
+          git push origin "HEAD:${BRANCH}"
+          gh pr create \
+            --base main \
+            --head "${BRANCH}" \
+            --title "Daily hospice feed refresh" \
+            --body "Automated hospice feed refresh from workflow run ${GITHUB_RUN_ID}."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
