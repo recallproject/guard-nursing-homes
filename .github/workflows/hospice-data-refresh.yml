@@ -53,10 +53,12 @@ jobs:
           git commit -m "Daily hospice feed refresh: ${NEWS_COUNT} news + ${DOJ_COUNT} DOJ + ${COURT_COUNT} court + ${MFCU_COUNT} MFCU items"
           BRANCH="data/hospice-refresh-${GITHUB_RUN_ID}"
           git push origin "HEAD:${BRANCH}"
-          gh pr create \
+          PR_URL=$(gh pr create \
             --base main \
             --head "${BRANCH}" \
             --title "Daily hospice feed refresh" \
-            --body "Automated hospice feed refresh from workflow run ${GITHUB_RUN_ID}."
+            --body "Automated hospice feed refresh from workflow run ${GITHUB_RUN_ID}.")
+          # No required reviews on data PRs: merge immediately so the refresh goes live hands-free.
+          gh pr merge --squash --delete-branch "${PR_URL}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
