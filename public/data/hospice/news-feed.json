@@ -1,283 +1,193 @@
 {
-  "generated_at": "2026-05-26T16:51:10.930Z",
+  "generated_at": "2026-09-10T16:58:37.522Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-22T20:28:00.000Z",
+      "last_pubdate": "2026-09-10T15:42:14.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-05-26T14:00:10.000Z",
+      "last_pubdate": "2026-09-10T09:00:28.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-05-26T11:00:00.000Z",
+      "last_pubdate": "2026-09-10T11:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 11,
-  "matched_to_ccn": 4,
-  "matched_unique_ccns": 11,
+  "hospice_filtered": 12,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 2,
   "confidence_breakdown": {
-    "high": 4,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-yqhww1",
+      "id": "hospice-news-yoksdp",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-22T20:28:00.000Z",
-      "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
-      "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new...",
-      "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
-      "matched_ccns": [
-        "361501",
-        "111508",
-        "851594"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-5gveou",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-22T19:17:35.000Z",
-      "headline": "Hospice Executive Evolutions Take Shape",
-      "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role...",
-      "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-      "matched_ccns": [
-        "031675",
-        "741529",
-        "A91613",
-        "311509",
-        "391704",
-        "741672"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-lghfqu",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-22T19:04:56.000Z",
-      "headline": "Proposed Community-Based Palliative Care Model Aims to Expand Access to Care",
-      "summary": "The National Partnership for Healthcare and Hospice Innovation (NPHI) has teamed up with the Coalition to Transform Advance Care (C-TAC) to work on building a federal fee-for-service, community-based palliative care model that would provide broader access and earlier support for...",
-      "url": "https://hospicenews.com/2026/05/22/proposed-community-based-palliative-care-model-aims-to-expand-access-to-care/",
+      "date": "2026-09-10T15:42:14.000Z",
+      "headline": "Future Leader: Yvette Vega, Clinical Manager, THEMA Health Services - Hospice",
+      "summary": "Yvette Vega, Clinical Manager at THEMA Health Services - Hospice, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of...",
+      "url": "https://hospicenews.com/2026/09/10/future-leader-yvette-vega-clinical-manager-thema-health-services-hospice/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-bwfr8u",
+      "id": "hospice-news-k42u20",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-22T18:39:52.000Z",
-      "headline": "Cotiviti VP: Patients Need Education to Combat Hospice Fraud",
-      "summary": "Efforts to battle hospice fraud could be strengthened by education for patients and families on how to spot it. This is according to Erin Rutzler, vice president of fraud, waste and abuse at the health care data analytics firm Cotiviti. Fraud impacts not only the Medicare and...",
-      "url": "https://hospicenews.com/2026/05/22/cotiviti-vp-patients-need-education-to-combat-hospice-fraud/",
+      "date": "2026-09-10T14:12:30.000Z",
+      "headline": "Hospice Savannah Forms Larger Parent Company Georgia Care Innovators",
+      "summary": "Hospice Savannah has created a new, larger parent company to reflect and coordinate its growing scope of services — Georgia Care Innovators. The hospice itself will remain intact as a subsidiary of the new organization, along with seven other entities. These include the Edel...",
+      "url": "https://hospicenews.com/2026/09/10/hospice-savannah-forms-larger-parent-company-georgia-care-innovators/",
+      "matched_ccns": [
+        "111504"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-jyr1y6",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-09T18:50:27.000Z",
+      "headline": "Compassus Exec: Hospice a ‘Huge Opportunity’ for Growth",
+      "summary": "Hospices have untapped potential to grow their patient reach, according to Compassus Senior Vice President and Chief Growth Officer Chris Core. Demand for end-of-life care is swelling, but these services remain vastly underutilized nationwide, Core said. Technology is playing an...",
+      "url": "https://hospicenews.com/2026/09/09/compassus-exec-hospice-a-huge-opportunity-for-growth/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "propublica-chka47",
+      "id": "hospice-news-gxbirm",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-09T12:06:58.000Z",
+      "headline": "National Alliance: Hospice, Home Health Moratoria Curbing Access to Care",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services’ (CMS) six-month moratoria on home health and hospice Medicare enrollment are adversely affecting access to care, as well as providers’ financial positions. This is according to the National Alliance for Care at Home, which...",
+      "url": "https://hospicenews.com/2026/09/09/national-alliance-hospice-home-health-moratoria-curbing-access-to-care/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "propublica-z4khpx",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
-      "date": "2026-05-22T09:00:00.000Z",
-      "headline": "Louisiana’s Tough-on-Crime Policies Stand to Cost Taxpayers Millions More for Years to Come",
-      "summary": "The post Louisiana’s Tough-on-Crime Policies Stand to Cost Taxpayers Millions More for Years to Come appeared first on ProPublica .",
-      "url": "https://www.propublica.org/article/louisiana-jeff-landry-prison-budget-increase",
+      "date": "2026-09-09T09:00:00.000Z",
+      "headline": "I Wrote About His Wrongful Conviction. He Got Only 13 Years of Freedom Before Cancer Took His Life.",
+      "summary": "The post I Wrote About His Wrongful Conviction. He Got Only 13 Years of Freedom Before Cancer Took His Life. appeared first on ProPublica .",
+      "url": "https://www.propublica.org/article/wrongful-conviction-cancer-death",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-an3uax",
+      "id": "hospice-news-26zb0f",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-21T20:51:50.000Z",
-      "headline": "Hospices Build Digitally Innovative Referral Streams",
-      "summary": "Hospices are employing multifaceted referral management strategies to improve timely access. Providers’ innovative efforts center around wider technology utilization, digital storytelling and leveraging their quality data. Many patients are not referred to hospice until their...",
-      "url": "https://hospicenews.com/2026/05/21/hospices-build-digitally-innovative-referral-streams/",
+      "date": "2026-09-08T21:39:12.000Z",
+      "headline": "Family Caregivers Turn to Tech as Burden Soars",
+      "summary": "Family caregivers are using technology to address their most significant concerns amid rising demand for end-of-life support. Hospices are paying attention to these and other trends as they develop strategies to curb increasingly complex caregiver burden. Improving family...",
+      "url": "https://hospicenews.com/2026/09/08/family-caregivers-turn-to-tech-as-burden-soars/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-tlkjc6",
+      "id": "hospice-news-n3qv24",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-21T14:15:45.000Z",
-      "headline": "Palliative Care Extending Across Health Care Continuum",
-      "summary": "Palliative care providers are expanding their reach across the health care continuum in an effort to better support unmet needs among seriously ill patient populations. Patients with longer serious illness trajectories face myriad challenges related to their emotional, spiritual...",
-      "url": "https://hospicenews.com/2026/05/21/palliative-care-extending-across-health-care-continuum/",
+      "date": "2026-09-08T17:08:50.000Z",
+      "headline": "Future Leader: Haven Banks, Director of Marketing & Outreach, MiraSol Health",
+      "summary": "Haven Banks, Director of Marketing & Outreach at MiraSol Health, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of...",
+      "url": "https://hospicenews.com/2026/09/08/future-leader-haven-banks-director-of-marketing-outreach-mirasol-health/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-95ar02",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-08T12:12:16.000Z",
+      "headline": "CMS Recalculating 2027 Hospice Payment Rates Due to Error",
+      "summary": "The 2027 hospice payment rates likely will change based on a technical error by the U.S. Centers for Medicare & Medicaid Services (CMS). The agency made a mistake that affected the Fiscal Year 2027 hospice wage index and has recalculated those numbers. CMS is in the process of...",
+      "url": "https://hospicenews.com/2026/09/08/cms-recalculating-2027-hospice-payment-rates-due-to-error/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "kff-health-news-7dt1i5",
+      "source": "KFF Health News",
+      "source_url": "https://kffhealthnews.org/feed/",
+      "date": "2026-09-08T09:00:00.000Z",
+      "headline": "The Market Forces Quietly Adding Thousands to Patient Bills",
+      "summary": "The true cost of “vertical integration”: patients directed to a higher-priced location for procedures. Or forced to buy from their insurer’s wholly owned pharmacy, which may not stock the drug prescribed or provide it at the lowest price.",
+      "url": "https://kffhealthnews.org/news/vertical-integration-high-health-costs-prices-hospital-mergers-pharmacies-pbms/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-ya02gf",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-04T16:30:47.000Z",
+      "headline": "Bloom Healthcare Acquires Christian Care House Calls",
+      "summary": "Colorado-based Bloom Healthcare has acquired Christian Care House Calls, which provides home-based senior primary care in Texas. The deal expands the company’s existing presence in the state. Bloom Healthcare has locations in Colorado, Missouri and Texas. The company provides...",
+      "url": "https://hospicenews.com/2026/09/04/bloom-healthcare-acquires-christian-care-house-calls/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-wu1p1g",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-04T16:29:46.000Z",
+      "headline": "Future Leader: Marisa Hernandez, Director of Operations, HealthView Hospice & Palliative Care",
+      "summary": "Marisa Hernandez, Director of Operations at HealthView Hospice & Palliative Care, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who...",
+      "url": "https://hospicenews.com/2026/09/04/future-leader-marisa-hernandez-director-of-operations-healthview-hospice-palliative-care/",
       "matched_ccns": [
-        "341576"
+        "A11670"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-5sazzh",
+      "id": "hospice-news-dwpryn",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-21T11:39:22.000Z",
-      "headline": "CMS Clarifies Telehealth Policy During Enrollment Moratorium",
-      "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS). CMS implemented the six-month moratorium on May 13. The...",
-      "url": "https://hospicenews.com/2026/05/21/cms-clarifies-telehealth-policy-during-enrollment-moratorium/",
-      "matched_ccns": [
-        "341554"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-zdr0pl",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-20T20:10:49.000Z",
-      "headline": "Pennant Group COO: Moratorium Throws Wrench in Access Challenges",
-      "summary": "A new national hospice and home health moratorium may come with unintended consequences for the ability for legitimate providers to grow in underserved markets, according to John Gochnour, president and COO of The Pennant Group Inc. [Nasdaq: PNTG]. Regulatory action is needed in...",
-      "url": "https://hospicenews.com/2026/05/20/pennant-group-coo-moratorium-throws-wrench-in-access-challenges/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-v5uyik",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-20T18:35:16.000Z",
-      "headline": "Congress Takes Up Hospice, Home Health Fraud Bill",
-      "summary": "Rep. Beth Van Duyne (R-Texas) has introduced a bill intended to fight the ongoing plague of hospice and home health fraud. The Protecting Seniors and Stopping Fraudsters Act is designed to bolster Medicare oversight, crack down on scammers, protect seniors from fraudulent...",
-      "url": "https://hospicenews.com/2026/05/20/congress-takes-up-hospice-home-health-fraud-bill/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-tupr3y",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-05-19T17:08:59.000Z",
-      "headline": "HopeHealth’s New Academic Partnership a ‘Nexus’ of Hospice Leader Development",
-      "summary": "HopeHealth and The University of Rhode Island’s (URI) College of Nursing recently formed a new academic practice partnership to expand employment opportunities in hospice and palliative care. Through the partnership, HopeHealth will provide nursing students with advanced...",
-      "url": "https://hospicenews.com/2026/05/19/hopehealth-unveils-new-hospice-palliative-care-academic-partnership/",
+      "date": "2026-09-04T13:49:40.000Z",
+      "headline": "Hospice Has ‘Strong’ 2026 M&A Outlook",
+      "summary": "Hospice merger and acquisition volume has regained momentum and is rapidly approaching pre-pandemic levels. For hospice, 48 deals took place in 2019, according to the M&A advisory firm The Braff Group. This was followed by the record-breaking years of 2020 through 2022, in which...",
+      "url": "https://hospicenews.com/2026/09/04/hospice-has-strong-2026-ma-outlook/",
       "matched_ccns": [],
       "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
-    "111508": [
+    "111504": [
       {
-        "id": "hospice-news-yqhww1",
-        "date": "2026-05-22T20:28:00.000Z",
-        "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
+        "id": "hospice-news-k42u20",
+        "date": "2026-09-10T14:12:30.000Z",
+        "headline": "Hospice Savannah Forms Larger Parent Company Georgia Care Innovators",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
-        "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new..."
+        "url": "https://hospicenews.com/2026/09/10/hospice-savannah-forms-larger-parent-company-georgia-care-innovators/",
+        "summary": "Hospice Savannah has created a new, larger parent company to reflect and coordinate its growing scope of services — Georgia Care Innovators. The hospice itself will remain intact as a subsidiary of the new organization, along with seven other entities. These include the Edel..."
       }
     ],
-    "311509": [
+    "A11670": [
       {
-        "id": "hospice-news-5gveou",
-        "date": "2026-05-22T19:17:35.000Z",
-        "headline": "Hospice Executive Evolutions Take Shape",
+        "id": "hospice-news-wu1p1g",
+        "date": "2026-09-04T16:29:46.000Z",
+        "headline": "Future Leader: Marisa Hernandez, Director of Operations, HealthView Hospice & Palliative Care",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
-      }
-    ],
-    "341554": [
-      {
-        "id": "hospice-news-5sazzh",
-        "date": "2026-05-21T11:39:22.000Z",
-        "headline": "CMS Clarifies Telehealth Policy During Enrollment Moratorium",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/21/cms-clarifies-telehealth-policy-during-enrollment-moratorium/",
-        "summary": "Hospices will continue to be able to use telehealth for face-to-face recertifications during the hospice and home health enrollment moratorium, according to the U.S. Centers for Medicare & Medicaid Services’ (CMS). CMS implemented the six-month moratorium on May 13. The..."
-      }
-    ],
-    "341576": [
-      {
-        "id": "hospice-news-tlkjc6",
-        "date": "2026-05-21T14:15:45.000Z",
-        "headline": "Palliative Care Extending Across Health Care Continuum",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/21/palliative-care-extending-across-health-care-continuum/",
-        "summary": "Palliative care providers are expanding their reach across the health care continuum in an effort to better support unmet needs among seriously ill patient populations. Patients with longer serious illness trajectories face myriad challenges related to their emotional, spiritual..."
-      }
-    ],
-    "361501": [
-      {
-        "id": "hospice-news-yqhww1",
-        "date": "2026-05-22T20:28:00.000Z",
-        "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
-        "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new..."
-      }
-    ],
-    "391704": [
-      {
-        "id": "hospice-news-5gveou",
-        "date": "2026-05-22T19:17:35.000Z",
-        "headline": "Hospice Executive Evolutions Take Shape",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
-      }
-    ],
-    "741529": [
-      {
-        "id": "hospice-news-5gveou",
-        "date": "2026-05-22T19:17:35.000Z",
-        "headline": "Hospice Executive Evolutions Take Shape",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
-      }
-    ],
-    "741672": [
-      {
-        "id": "hospice-news-5gveou",
-        "date": "2026-05-22T19:17:35.000Z",
-        "headline": "Hospice Executive Evolutions Take Shape",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
-      }
-    ],
-    "851594": [
-      {
-        "id": "hospice-news-yqhww1",
-        "date": "2026-05-22T20:28:00.000Z",
-        "headline": "CMS Targeting Georgia, Ohio in Fraud Fight",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/cms-targeting-georgia-ohio-in-fraud-fight/",
-        "summary": "Ohio and Georgia are seeing a large influx of new hospice operators, leading some to suspect that fraud is becoming more prevalent in those states. The four states that historically have been hotbeds for fraud — California, Arizona, Nevada and Texas — also saw hosts of new..."
-      }
-    ],
-    "031675": [
-      {
-        "id": "hospice-news-5gveou",
-        "date": "2026-05-22T19:17:35.000Z",
-        "headline": "Hospice Executive Evolutions Take Shape",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
-      }
-    ],
-    "A91613": [
-      {
-        "id": "hospice-news-5gveou",
-        "date": "2026-05-22T19:17:35.000Z",
-        "headline": "Hospice Executive Evolutions Take Shape",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/05/22/hospice-executive-evolutions-take-shape/",
-        "summary": "Some hospice providers have recently undergone leadership changes at executive levels. FrontPoint Health Appoints New CEO Brent Korte has stepped down as CEO of Dallas-based Frontpoint Health. The company appointed Jay Wendt to succeed him. Korte now serves in an advisory role..."
+        "url": "https://hospicenews.com/2026/09/04/future-leader-marisa-hernandez-director-of-operations-healthview-hospice-palliative-care/",
+        "summary": "Marisa Hernandez, Director of Operations at HealthView Hospice & Palliative Care, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who..."
       }
     ]
   }
