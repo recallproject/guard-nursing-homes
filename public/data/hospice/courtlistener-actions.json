@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-26T16:51:22.608Z",
+  "generated_at": "2026-09-11T17:00:20.778Z",
   "source": "CourtListener",
   "source_url": "https://www.courtlistener.com",
   "coverage_note": "CourtListener RECAP archive coverage depends on RECAP user uploads. Snapshot, not a backfill.",
@@ -12,20 +12,67 @@
     {
       "query": "hospice qui tam",
       "label": "qui-tam",
-      "pulled": 10
+      "pulled": 12
     },
     {
       "query": "hospice fraud settlement",
       "label": "fraud-settlement",
-      "pulled": 17
+      "pulled": 16
     }
   ],
   "api_soft_failures": 0,
-  "total_search_results": 47,
-  "hospice_filtered": 2,
-  "matched_to_ccn": 0,
-  "matched_high_confidence": 0,
+  "total_search_results": 48,
+  "hospice_filtered": 3,
+  "matched_to_ccn": 1,
+  "matched_high_confidence": 1,
   "matched_medium_confidence": 0,
-  "actions": [],
-  "items_by_ccn": {}
+  "actions": [
+    {
+      "id": "cl-fca-74673891",
+      "ccn": "551755",
+      "hospice_name": "SUPPORTIVE HOSPICE CARE INC",
+      "state": "CA",
+      "case_caption": "The United States v. ElderCare Watch, LLC",
+      "court": "District Court, C.D. California",
+      "court_id": "cacd",
+      "docket_number": "2:25-cv-11218",
+      "date_filed": "2025-11-21",
+      "date_terminated": null,
+      "docket_url": "https://www.courtlistener.com/docket/74673891/the-united-states-v-eldercare-watch-llc/",
+      "summary": "District Court, C.D. California. No. 2:25-cv-11218. Cause: 31:3730 Qui Tam False Claims Act. Nature: 376 Qui Tam (31 U.S.C. § 3729(a)). Latest entry: COMPLAINT against All Defendants. Case assigned to Judge Fernando M. Olguin for all further proceedings. Discovery referred to Magistrate Judge Charles E. Eick.(Filing fee $ 405 PAID) Jury Demanded, filed by plaintiff ElderCare Watch, LLC. ",
+      "status": "filing",
+      "confidence": "high",
+      "basis": "exact-name",
+      "defendant_extracted": "ElderCare Watch, LLC",
+      "query": "fca",
+      "matched_ccns": [
+        "551755"
+      ],
+      "match_details": [
+        {
+          "ccn": "551755",
+          "name": "SUPPORTIVE HOSPICE CARE INC",
+          "state": "CA",
+          "confidence": "high",
+          "score": 1,
+          "basis": "exact-name"
+        }
+      ]
+    }
+  ],
+  "items_by_ccn": {
+    "551755": [
+      {
+        "date": "2025-11-21",
+        "case_caption": "The United States v. ElderCare Watch, LLC",
+        "court": "District Court, C.D. California",
+        "docket_number": "2:25-cv-11218",
+        "docket_url": "https://www.courtlistener.com/docket/74673891/the-united-states-v-eldercare-watch-llc/",
+        "summary": "District Court, C.D. California. No. 2:25-cv-11218. Cause: 31:3730 Qui Tam False Claims Act. Nature: 376 Qui Tam (31 U.S.C. § 3729(a)). Latest entry: COMPLAINT against All Defendants. Case assigned to Judge Fernando M. Olguin for all further proceedings. Discovery referred to Magistrate Judge Charles E. Eick.(Filing fee $ 405 PAID) Jury Demanded, filed by plaintiff ElderCare Watch, LLC. ",
+        "status": "filing",
+        "confidence": "high",
+        "basis": "exact-name"
+      }
+    ]
+  }
 }
