@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "dev": "vite",
     "build:postacute": "node scripts/build-postacute-data.js",
     "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.js && vite build && node scripts/generate-seo-pages.js",
     "lint": "eslint .",
