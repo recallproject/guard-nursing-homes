@@ -8,11 +8,14 @@ const DISMISS_KEY = 'ca_banner_dismissed_v1';
 // nationally; the CA banner conflicts with the "framework applies to all 50
 // states" framing.
 const HIDE_ON_PREFIXES = ['/hospice'];
+const HIDE_EXACT = ['/', '/post-acute'];
 
 export default function CaliforniaBanner() {
   const [dismissed, setDismissed] = useState(false);
   const location = useLocation();
-  const isHidden = HIDE_ON_PREFIXES.some(p => location.pathname.startsWith(p));
+  const isHidden =
+    HIDE_ON_PREFIXES.some(p => location.pathname.startsWith(p)) ||
+    HIDE_EXACT.includes(location.pathname);
 
   useEffect(() => {
     try {

@@ -1,71 +1,44 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { POST_ACUTE_SETTINGS, liveProviderTotal } from '../data/postAcuteSettings';
 import HeroSearchDropdown from '../components/HeroSearchDropdown';
+import HeroReportPreview from '../components/HeroReportPreview';
 import '../styles/post-acute-home.css';
 
-// ISO 8601 UTC timestamp of the most recent CMS data refresh. Update when you pull new data.
-const LAST_REFRESH_ISO = '2026-09-14T17:56:44Z';
 const LIVE_PROVIDER_TOTAL = liveProviderTotal();
 const LIVE_PROVIDER_LABEL = LIVE_PROVIDER_TOTAL.toLocaleString('en-US');
 
-function formatAgo(iso) {
-  const last = new Date(iso);
-  if (Number.isNaN(last.getTime())) return 'recently';
-  const diffMs = Date.now() - last.getTime();
-  if (diffMs < 0) return 'just now';
-  const mins = Math.floor(diffMs / 60000);
-  const hrs = Math.floor(mins / 60);
-  const days = Math.floor(hrs / 24);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return `${mins} min ago`;
-  if (hrs < 24) return `${hrs} hr ago`;
-  if (days < 7) return `${days} day${days === 1 ? '' : 's'} ago`;
-  return last.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const SETTING_CHIP_LABEL = {
+  snf: 'Nursing homes',
+  hospice: 'Hospice',
+  'home-health': 'Home health',
+  irf: 'IRF',
+  ltach: 'LTACH',
+};
+
+function settingLabel(setting) {
+  return SETTING_CHIP_LABEL[setting.id] || setting.label;
 }
 
-function Tile({ setting }) {
-  const isClickable = setting.status === 'live' || setting.status === 'next';
-  const tileClass = [
-    'pa-tile',
-    isClickable ? 'pa-tile-clickable' : '',
-    setting.status === 'live' ? 'pa-tile-live' : '',
-    setting.status === 'next' ? 'pa-tile-next' : '',
-    setting.status === 'coming' ? 'pa-tile-coming' : '',
-  ].filter(Boolean).join(' ');
-
-  const inner = (
-    <>
-      {setting.status === 'live' && <span className="pa-status-badge pa-status-live">{setting.statusLabel}</span>}
-      {setting.status === 'next' && <span className="pa-status-badge pa-status-next">{setting.statusLabel}</span>}
-      {setting.status === 'coming' && <span className="pa-status-badge pa-status-coming">{setting.statusLabel}</span>}
-      {isClickable && <span className="pa-tile-arrow" aria-hidden="true">›</span>}
-      <span className="pa-tile-icon" aria-hidden="true">{setting.iconCode}</span>
-      <h3>{setting.label}</h3>
-      <div className="pa-tile-sub">{setting.sub}</div>
-      <p className="pa-tile-desc">{setting.desc}</p>
-      <div className="pa-tile-stat">
-        <span className="pa-tile-count">{setting.count}</span>
-        <span className="pa-tile-unit">{setting.countUnit}</span>
-        <div className="pa-tile-hook">{setting.hook}</div>
-      </div>
-    </>
-  );
-
-  if (isClickable && setting.route) {
-    return <Link to={setting.route} className={tileClass}>{inner}</Link>;
+function browseMeta(setting) {
+  if (setting.id === 'snf') {
+    const n = parseInt(String(setting.count).replace(/[^0-9]/g, ''), 10);
+    if (Number.isFinite(n) && n > 0) return `~${Math.round(n / 1000)}k SNFs`;
   }
-  return <div className={tileClass}>{inner}</div>;
+  return setting.statusLabel || 'Live';
+}
+
+function BrowseCard({ setting }) {
+  if (!setting.route) return null;
+  return (
+    <Link to={setting.route} className="pa-browse-card">
+      <span className="pa-browse-card-title">{settingLabel(setting)}</span>
+      <span className="pa-browse-card-meta">{browseMeta(setting)}</span>
+    </Link>
+  );
 }
 
 export default function PostAcuteHomePage() {
-  // Compute "X ago" once on mount.
-  useEffect(() => {
-    const el = document.getElementById('pa-ticker-ago');
-    if (el) el.textContent = formatAgo(LAST_REFRESH_ISO);
-  }, []);
-
   return (
     <>
       <Helmet>
@@ -74,63 +47,52 @@ export default function PostAcuteHomePage() {
       </Helmet>
 
       <div className="pa-home">
-        {/* HERO — newspaper masthead structure */}
-        <section className="pa-hero">
-          <div className="pa-hero-tagline">Free · Clinician-built · Sourced from CMS</div>
-          <h1 className="pa-masthead">The <span className="pa-masthead-accent">Oversight</span> Report</h1>
-          <div className="pa-masthead-sub">Post-acute care safety data.</div>
-          <hr className="pa-masthead-rule" />
-          <p className="pa-hero-sub">
-            Free, sourced, clinician-built reports on every Medicare-certified post-acute provider in America —{' '}
-            <strong>nursing homes, hospice, home health, inpatient rehab, and{' '}LTACH.</strong>
-          </p>
+        <section className="pa-hero pa-hero-v3" aria-labelledby="pa-hero-heading">
+          <div className="pa-hero-v3-inner">
+            <div className="pa-hero-v3-copy">
+              <p className="pa-hero-v3-eyebrow">CMS data · Updated daily</p>
+              <h1 id="pa-hero-heading" className="pa-hero-v3-title">
+                Look up any facility.
+                <em>Get the facts.</em>
+              </h1>
+              <p className="pa-hero-v3-sub">
+                Check before you choose — scores, staffing, deficiencies, and ownership from public CMS records.
+              </p>
 
-          <HeroSearchDropdown />
+              <HeroSearchDropdown />
 
-          {/* Live ticker + receipts row */}
-          <div className="pa-ticker">
-            <div className="pa-ticker-row">
-              <span className="pa-ticker-pulse" aria-hidden="true"></span>
-              <span className="pa-ticker-live">Live</span>
-              <span className="pa-ticker-sep">·</span>
-              <span className="pa-ticker-muted">data refreshed</span>{' '}
-              <span className="pa-ticker-strong" id="pa-ticker-ago" data-iso={LAST_REFRESH_ISO}>recently</span>
-              <span className="pa-ticker-sep">·</span>
-              <span className="pa-ticker-strong">{LIVE_PROVIDER_LABEL}</span>{' '}
-              <span className="pa-ticker-muted">providers</span>
-              <span className="pa-ticker-sep">·</span>
-              <span className="pa-ticker-strong">50</span>{' '}
-              <span className="pa-ticker-muted">states</span>
+              <p className="pa-hero-v3-chip-label">Or browse a care setting</p>
+              <nav className="pa-hero-chips" aria-label="Browse a care setting">
+                {POST_ACUTE_SETTINGS.filter((setting) => setting.route).map((setting) => (
+                  <Link key={setting.id} to={setting.route} className="pa-hero-chip">
+                    {settingLabel(setting)}
+                  </Link>
+                ))}
+              </nav>
+
+              <ul className="pa-hero-v3-trust">
+                <li><strong>CMS</strong> public data</li>
+                <li><strong>Independent</strong> — not a facility site</li>
+                <li><strong>Free</strong> to look up</li>
+              </ul>
             </div>
-            <div className="pa-ticker-secondary">no operator funding</div>
-            <div className="pa-ticker-links">
-              <Link to="/methodology">METHODOLOGY <span className="pa-ticker-arrow" aria-hidden="true">↗</span></Link>
-              <span className="pa-ticker-sep-thin">·</span>
-              <Link to="/data-transparency">DATA SOURCES <span className="pa-ticker-arrow" aria-hidden="true">↗</span></Link>
-              <span className="pa-ticker-sep-thin">·</span>
-              <Link to="/refresh-log">REFRESH LOG <span className="pa-ticker-arrow" aria-hidden="true">↗</span></Link>
-            </div>
+
+            <HeroReportPreview />
           </div>
         </section>
 
-        {/* TILES */}
-        <section className="pa-tiles-section">
-          <div className="pa-tiles-header">
-            <div>
-              <div className="pa-section-eyebrow">// the post-acute continuum</div>
-              <h2>Pick a care setting.</h2>
-            </div>
-            <div className="pa-tiles-meta">5 settings · {LIVE_PROVIDER_LABEL} providers · all live</div>
+        <section className="pa-browse-section" aria-labelledby="pa-browse-heading">
+          <div className="pa-browse-header">
+            <h2 id="pa-browse-heading">Browse by setting</h2>
+            <p>Nursing homes, hospice, home health, inpatient rehab, and LTACH.</p>
           </div>
-
-          <div className="pa-tiles">
+          <div className="pa-browse-cards">
             {POST_ACUTE_SETTINGS.map((setting) => (
-              <Tile key={setting.id} setting={setting} />
+              <BrowseCard key={setting.id} setting={setting} />
             ))}
           </div>
         </section>
 
-        {/* TRUST STRIP */}
         <section className="pa-trust-strip">
           <div className="pa-trust-inner">
             <div className="pa-trust-cell"><div className="pa-trust-num">$467M</div><div className="pa-trust-lbl">Federal fines tracked (3 yr)</div></div>
@@ -140,7 +102,6 @@ export default function PostAcuteHomePage() {
           </div>
         </section>
 
-        {/* AUTHOR — mission only; bio + credentials live on /about */}
         <section className="pa-author">
           <div className="pa-author-inner pa-author-inner--single">
             <h2>Why this exists.</h2>
@@ -149,7 +110,6 @@ export default function PostAcuteHomePage() {
           </div>
         </section>
 
-        {/* FOOTER */}
         <footer className="pa-footer">
           <div className="pa-footer-inner">
             <span>© 2026 DataLink Clinical LLC · oversightreports.com</span>
