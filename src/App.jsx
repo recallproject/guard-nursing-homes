@@ -56,6 +56,9 @@ const HospiceStatePage = lazy(() => import('./pages/HospiceStatePage'));
 const HospiceChainsPage = lazy(() => import('./pages/HospiceChainsPage'));
 const HospiceChainDetailPage = lazy(() => import('./pages/HospiceChainDetailPage'));
 const HospiceHighRiskPage = lazy(() => import('./pages/HospiceHighRiskPage'));
+const PostAcuteHubPage = lazy(() => import('./pages/PostAcuteHubPage'));
+const PostAcuteStatePage = lazy(() => import('./pages/PostAcuteStatePage'));
+const PostAcuteProviderPage = lazy(() => import('./pages/PostAcuteProviderPage'));
 const RefreshLogPage = lazy(() => import('./pages/RefreshLogPage'));
 
 // Feature flag: post-acute hub homepage is ON by default. To roll back, set
@@ -104,6 +107,15 @@ function App() {
           <Route path="/hospice/high-risk" element={<HospiceHighRiskPage />} />
           <Route path="/hospice/state/:stateCode" element={<HospiceStatePage />} />
           <Route path="/hospice/:ccn" element={<HospiceProviderPage />} />
+          <Route path="/home-health" element={<PostAcuteHubPage settingId="home-health" />} />
+          <Route path="/home-health/state/:stateCode" element={<PostAcuteStatePage settingId="home-health" />} />
+          <Route path="/home-health/:ccn" element={<PostAcuteProviderPage settingId="home-health" />} />
+          <Route path="/irf" element={<PostAcuteHubPage settingId="irf" />} />
+          <Route path="/irf/state/:stateCode" element={<PostAcuteStatePage settingId="irf" />} />
+          <Route path="/irf/:ccn" element={<PostAcuteProviderPage settingId="irf" />} />
+          <Route path="/ltach" element={<PostAcuteHubPage settingId="ltach" />} />
+          <Route path="/ltach/state/:stateCode" element={<PostAcuteStatePage settingId="ltach" />} />
+          <Route path="/ltach/:ccn" element={<PostAcuteProviderPage settingId="ltach" />} />
           <Route path="/refresh-log" element={<RefreshLogPage />} />
           <Route path="/facility/:ccn" element={<FacilityErrorBoundary><FacilityPage /></FacilityErrorBoundary>} />
           <Route path="/professionals" element={<ProfessionalsPage />} />

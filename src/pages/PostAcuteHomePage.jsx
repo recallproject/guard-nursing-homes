@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { POST_ACUTE_SETTINGS } from '../data/postAcuteSettings';
+import { POST_ACUTE_SETTINGS, liveProviderTotal } from '../data/postAcuteSettings';
 import HeroSearchDropdown from '../components/HeroSearchDropdown';
 import '../styles/post-acute-home.css';
 
 // ISO 8601 UTC timestamp of the most recent CMS data refresh. Update when you pull new data.
-const LAST_REFRESH_ISO = '2026-04-29T02:00:00Z';
+const LAST_REFRESH_ISO = '2026-09-14T17:56:44Z';
+const LIVE_PROVIDER_TOTAL = liveProviderTotal();
+const LIVE_PROVIDER_LABEL = LIVE_PROVIDER_TOTAL.toLocaleString('en-US');
 
 function formatAgo(iso) {
   const last = new Date(iso);
@@ -58,15 +60,6 @@ function Tile({ setting }) {
 }
 
 export default function PostAcuteHomePage() {
-  const navigate = useNavigate();
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    // Search lives on /skilled-nursing for now (where the real SearchOverlay exists).
-    // When cross-setting search ships, swap this to a multi-setting search route.
-    navigate('/skilled-nursing');
-  };
-
   // Compute "X ago" once on mount.
   useEffect(() => {
     const el = document.getElementById('pa-ticker-ago');
@@ -103,7 +96,7 @@ export default function PostAcuteHomePage() {
               <span className="pa-ticker-muted">data refreshed</span>{' '}
               <span className="pa-ticker-strong" id="pa-ticker-ago" data-iso={LAST_REFRESH_ISO}>recently</span>
               <span className="pa-ticker-sep">·</span>
-              <span className="pa-ticker-strong">33,800</span>{' '}
+              <span className="pa-ticker-strong">{LIVE_PROVIDER_LABEL}</span>{' '}
               <span className="pa-ticker-muted">providers</span>
               <span className="pa-ticker-sep">·</span>
               <span className="pa-ticker-strong">50</span>{' '}
@@ -127,7 +120,7 @@ export default function PostAcuteHomePage() {
               <div className="pa-section-eyebrow">// the post-acute continuum</div>
               <h2>Pick a care setting.</h2>
             </div>
-            <div className="pa-tiles-meta">5 settings · 33,800+ providers · phased rollout</div>
+            <div className="pa-tiles-meta">5 settings · {LIVE_PROVIDER_LABEL} providers · all live</div>
           </div>
 
           <div className="pa-tiles">
@@ -151,7 +144,7 @@ export default function PostAcuteHomePage() {
         <section className="pa-author">
           <div className="pa-author-inner pa-author-inner--single">
             <h2>Why this exists.</h2>
-            <p>33,800 Medicare-certified post-acute providers sit at the center of one of the country's largest hidden cost drivers and most chronic patient-safety failures. CMS publishes the data; almost nobody connects it.</p>
+            <p>{LIVE_PROVIDER_LABEL} Medicare-certified post-acute providers sit at the center of one of the country's largest hidden cost drivers and most chronic patient-safety failures. CMS publishes the data; almost nobody connects it.</p>
             <p>The Oversight Report is the integration: clinical interpretation, ownership networks, related-party financial flows, and federal enforcement history — sourced, signed, and free for families.</p>
           </div>
         </section>

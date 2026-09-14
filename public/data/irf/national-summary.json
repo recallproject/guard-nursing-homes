@@ -1,0 +1,261 @@
+{
+  "generated_at": "2026-09-14T17:56:44.188Z",
+  "source": {
+    "window": "CMS Inpatient Rehabilitation Facility Compare",
+    "datasets": [
+      {
+        "id": "7t8x-u3ir",
+        "title": "Inpatient Rehabilitation Facility - General Information"
+      },
+      {
+        "id": "v9e4-nwhh",
+        "title": "Inpatient Rehabilitation Facility - Provider Data"
+      },
+      {
+        "id": "nasn-k89k",
+        "title": "Inpatient Rehabilitation Facility - National Data"
+      }
+    ]
+  },
+  "total_providers": 1222,
+  "total_states": 52,
+  "by_state": [
+    {
+      "state": "AK",
+      "count": 2
+    },
+    {
+      "state": "AL",
+      "count": 18
+    },
+    {
+      "state": "AR",
+      "count": 26
+    },
+    {
+      "state": "AZ",
+      "count": 25
+    },
+    {
+      "state": "CA",
+      "count": 83
+    },
+    {
+      "state": "CO",
+      "count": 22
+    },
+    {
+      "state": "CT",
+      "count": 7
+    },
+    {
+      "state": "DC",
+      "count": 2
+    },
+    {
+      "state": "DE",
+      "count": 4
+    },
+    {
+      "state": "FL",
+      "count": 87
+    },
+    {
+      "state": "GA",
+      "count": 34
+    },
+    {
+      "state": "HI",
+      "count": 1
+    },
+    {
+      "state": "IA",
+      "count": 14
+    },
+    {
+      "state": "ID",
+      "count": 8
+    },
+    {
+      "state": "IL",
+      "count": 42
+    },
+    {
+      "state": "IN",
+      "count": 33
+    },
+    {
+      "state": "KS",
+      "count": 22
+    },
+    {
+      "state": "KY",
+      "count": 19
+    },
+    {
+      "state": "LA",
+      "count": 55
+    },
+    {
+      "state": "MA",
+      "count": 13
+    },
+    {
+      "state": "MD",
+      "count": 3
+    },
+    {
+      "state": "ME",
+      "count": 3
+    },
+    {
+      "state": "MI",
+      "count": 41
+    },
+    {
+      "state": "MN",
+      "count": 11
+    },
+    {
+      "state": "MO",
+      "count": 29
+    },
+    {
+      "state": "MS",
+      "count": 11
+    },
+    {
+      "state": "MT",
+      "count": 4
+    },
+    {
+      "state": "NC",
+      "count": 27
+    },
+    {
+      "state": "ND",
+      "count": 4
+    },
+    {
+      "state": "NE",
+      "count": 9
+    },
+    {
+      "state": "NH",
+      "count": 5
+    },
+    {
+      "state": "NJ",
+      "count": 13
+    },
+    {
+      "state": "NM",
+      "count": 11
+    },
+    {
+      "state": "NV",
+      "count": 12
+    },
+    {
+      "state": "NY",
+      "count": 42
+    },
+    {
+      "state": "OH",
+      "count": 53
+    },
+    {
+      "state": "OK",
+      "count": 23
+    },
+    {
+      "state": "OR",
+      "count": 7
+    },
+    {
+      "state": "PA",
+      "count": 65
+    },
+    {
+      "state": "PR",
+      "count": 9
+    },
+    {
+      "state": "RI",
+      "count": 5
+    },
+    {
+      "state": "SC",
+      "count": 29
+    },
+    {
+      "state": "SD",
+      "count": 5
+    },
+    {
+      "state": "TN",
+      "count": 32
+    },
+    {
+      "state": "TX",
+      "count": 157
+    },
+    {
+      "state": "UT",
+      "count": 11
+    },
+    {
+      "state": "VA",
+      "count": 27
+    },
+    {
+      "state": "VT",
+      "count": 2
+    },
+    {
+      "state": "WA",
+      "count": 18
+    },
+    {
+      "state": "WI",
+      "count": 25
+    },
+    {
+      "state": "WV",
+      "count": 10
+    },
+    {
+      "state": "WY",
+      "count": 2
+    }
+  ],
+  "national": {
+    "I_006_01_NATL_SIR": 1.005,
+    "I_011_05_NATL_OBS_RATE": 64.84,
+    "I_012_06_NATL_OBS_RATE": 62.03,
+    "I_013_01_NATL_OBS_RATE": 0.14,
+    "I_015_01_NATL_SIR": 0.331,
+    "I_016_01_NATL_OBS_RATE": 77.1,
+    "I_017_01_PPR_PD_NATL_OBS_RATE": 9.21,
+    "I_017_01_PPR_PD_N_BETTER_NATL": 19,
+    "I_017_01_PPR_PD_N_NO_DIFF_NATL": 1101,
+    "I_017_01_PPR_PD_N_TOO_SMALL": 19,
+    "I_017_01_PPR_PD_N_WORSE_NATL": 55,
+    "I_018_01_PPR_WI_NATL_OBS_RATE": 4.74,
+    "I_018_01_PPR_WI_N_BETTER_NATL": 41,
+    "I_018_01_PPR_WI_N_NO_DIFF_NATL": 1050,
+    "I_018_01_PPR_WI_N_TOO_SMALL": 16,
+    "I_018_01_PPR_WI_N_WORSE_NATL": 87,
+    "I_019_02_DTC_NATL_OBS_RATE": 67.39,
+    "I_019_02_DTC_N_BETTER_NATL": 244,
+    "I_019_02_DTC_N_NO_DIFF_NATL": 733,
+    "I_019_02_DTC_N_TOO_SMALL": 19,
+    "I_019_02_DTC_N_WORSE_NATL": 198,
+    "I_020_01_NATL_MSPB_SCORE": 1,
+    "I_021_01_NATL_OBS_RATE": 98.37,
+    "I_022_01_NATL_OBS_RATE": 0.87,
+    "I_024_01_NATL_OBS_RATE": 97.33,
+    "I_025_02_NATL_OBS_RATE": 98.57,
+    "I_026_01_NATL_OBS_RATE": 66.02
+  }
+}

@@ -564,6 +564,21 @@ const staticPages = [
     description: '200 Medicare-certified hospices flagged on CMS-published outliers across live discharge, Hospice Care Index, care mix, family experience, and public record — applying the California State Auditor framework. Built for journalists, attorneys, and family investigators.'
   },
   {
+    route: 'home-health',
+    title: 'Home Health Agency Data | The Oversight Report',
+    description: 'Search every Medicare-certified home health agency. CMS quality-of-care stars, HHCAHPS family survey scores, and services offered. Free, sourced from Home Health Care Compare.'
+  },
+  {
+    route: 'irf',
+    title: 'Inpatient Rehab Facility Data | The Oversight Report',
+    description: 'Search Medicare-certified inpatient rehabilitation facilities. CMS IRF Compare measures including discharge to community, readmissions, and safety. Free.'
+  },
+  {
+    route: 'ltach',
+    title: 'LTACH / LTCH Hospital Data | The Oversight Report',
+    description: 'Search Medicare-certified long-term acute care hospitals. CMS LTCH Compare measures including infections, readmissions, and discharge to community. Free.'
+  },
+  {
     route: 'refresh-log',
     title: 'Refresh Log — Public Record of Data Updates | The Oversight Report',
     description: 'A dated, public record of every CMS data refresh, dataset addition, and methodology change on The Oversight Report. Independent. Sourced. Signed.'
@@ -718,6 +733,10 @@ try {
   console.log(`  ⚠ hospice pages skipped: ${err.message}`);
 }
 console.log(`  ✓ ${hospiceCount} hospice pages (SEO stubs · client-rendered detail)`);
+
+// Intentionally skip per-provider HTML for Home Health / IRF / LTACH.
+// Those settings use SPA routes + compact JSON. Generating ~14k extra HTML
+// files would bloat Vercel Hobby deployment storage the way SNF SEO pages did.
 
 // ── Hospice state directory pages — one stub per CMS-region state file ──
 const HOSPICE_STATE_NAMES = {

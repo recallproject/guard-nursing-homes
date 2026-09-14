@@ -72,9 +72,14 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
   const navGroups = [
     {
       label: 'Families',
-      paths: ['/', '/facility', '/watchlist'],
+      paths: ['/', '/facility', '/watchlist', '/skilled-nursing', '/hospice', '/home-health', '/irf', '/ltach'],
       items: [
         { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes', state: { jumpToMap: true } },
+        { to: '/skilled-nursing', label: 'Nursing Homes', desc: 'Every Medicare-certified SNF' },
+        { to: '/hospice', label: 'Hospice', desc: 'Verify a referral · national directory' },
+        { to: '/home-health', label: 'Home Health', desc: 'Agencies with CMS stars + HHCAHPS' },
+        { to: '/irf', label: 'Inpatient Rehab', desc: 'IRF Compare quality measures' },
+        { to: '/ltach', label: 'LTACH', desc: 'Long-term acute care hospitals' },
         { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
         { to: '/ask-a-clinician', label: 'Ask a Clinician', desc: 'Facility report from an NP — $49' },
         { to: '/know-your-rights', label: 'Know Your Rights', desc: 'Discharge appeals & safety resources' },

@@ -3,6 +3,10 @@
 //   - 'live'   : clickable, links to its route
 //   - 'next'   : clickable, links to a "coming soon" page (lead capture)
 //   - 'coming' : not clickable, badge only
+//
+// Home Health / IRF / LTACH counts come from scripts/build-postacute-data.js.
+
+import { formatSettingCount } from './postAcuteCatalog';
 
 export const POST_ACUTE_SETTINGS = [
   {
@@ -37,12 +41,12 @@ export const POST_ACUTE_SETTINGS = [
     sub: 'Home health agencies (HHA)',
     iconCode: 'HH',
     desc: 'Nurses and therapists who come to the home.',
-    count: '12,251',
+    count: formatSettingCount('home-health'),
     countUnit: 'agencies',
     hook: 'CMS Star + OASIS outcomes',
-    route: null,
-    status: 'coming',
-    statusLabel: 'Coming June',
+    route: '/home-health',
+    status: 'live',
+    statusLabel: 'Live',
   },
   {
     id: 'irf',
@@ -50,12 +54,12 @@ export const POST_ACUTE_SETTINGS = [
     sub: 'IRFs · 3-hr/day intensive rehab',
     iconCode: 'IR',
     desc: 'Recovery after stroke, hip, or major surgery.',
-    count: '~1,200',
+    count: formatSettingCount('irf'),
     countUnit: 'facilities',
     hook: 'IRF Compare data',
-    route: null,
-    status: 'coming',
-    statusLabel: 'Q3 2026',
+    route: '/irf',
+    status: 'live',
+    statusLabel: 'Live',
   },
   {
     id: 'ltach',
@@ -63,11 +67,20 @@ export const POST_ACUTE_SETTINGS = [
     sub: 'Long-term acute care hospitals',
     iconCode: 'LT',
     desc: 'Long-stay hospital care for medically complex patients.',
-    count: '~370',
+    count: formatSettingCount('ltach'),
     countUnit: 'hospitals',
     hook: 'LTCH Compare data',
-    route: null,
-    status: 'coming',
-    statusLabel: 'Q3 2026',
+    route: '/ltach',
+    status: 'live',
+    statusLabel: 'Live',
   },
 ];
+
+function countNumber(count) {
+  const n = parseInt(String(count).replace(/[^0-9]/g, ''), 10);
+  return Number.isFinite(n) ? n : 0;
+}
+
+export function liveProviderTotal() {
+  return POST_ACUTE_SETTINGS.reduce((sum, s) => sum + countNumber(s.count), 0);
+}
