@@ -1,6 +1,6 @@
 /* ===================================================================
-   Facility Downloads section — two free reports + Ask a Clinician
-   Used on FacilityPage at section 10 (#s-downloads)
+   Facility Downloads — Family Report (free) + Facility Brief ($29)
+   Sticky CTA rail + section 10 (#s-downloads)
    =================================================================== */
 
 .section#s-downloads {
@@ -245,6 +245,28 @@
   height: 17px;
 }
 
+.fd-btn--paid {
+  background: var(--primary-dark, #1D4E7E);
+}
+
+.fd-attorney-link {
+  font-size: 13px;
+  color: var(--text-secondary, #475569);
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.fd-attorney-link a {
+  color: var(--primary, #2B6CB0);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fd-attorney-link a:hover {
+  color: var(--primary-dark, #1D4E7E);
+}
+
 /* Pills */
 .fd-pills {
   display: flex;
@@ -403,38 +425,198 @@
 }
 
 /* ===================================================================
-   Top-of-page "free reports below" pill (replaces old DownloadButton)
+   Sticky Downloads CTA rail (above-the-fold)
    =================================================================== */
 
-.fd-topbar-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
+.fp-fold {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-areas:
+    "identity rail"
+    "rest rail";
+  gap: 20px;
+  align-items: start;
+}
+
+.fp-fold-identity { grid-area: identity; }
+.fp-fold-rest { grid-area: rest; display: flex; flex-direction: column; gap: 20px; }
+.fp-cta-rail { grid-area: rail; position: sticky; top: 20px; align-self: start; }
+
+.fp-cta-rail-card {
   background: var(--bg-card, #FFFFFF);
   border: 1px solid var(--border, #D7E0EA);
-  border-radius: 100px;
-  color: var(--primary, #2B6CB0);
+  border-radius: 16px;
+  padding: 20px 18px 16px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 20px -8px rgba(15, 23, 42, 0.12);
+}
+
+.fp-cta-rail-title {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary, #0F172A);
+  margin: 0 0 8px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary, #2B6CB0);
+}
+
+.fp-cta-rail-note {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--text-secondary, #475569);
+  margin: 0 0 14px;
+}
+
+.fp-cta-item {
+  padding: 12px 0 14px;
+  border-top: 1px solid var(--border-subtle, #E8EDF2);
+}
+
+.fp-cta-item:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.fp-cta-item--paid {
+  background: linear-gradient(180deg, rgba(43, 108, 176, 0.07) 0%, rgba(43, 108, 176, 0.02) 100%);
+  border: 1px solid rgba(43, 108, 176, 0.22);
+  border-radius: 12px;
+  padding: 14px 12px 12px;
+  margin-top: 4px;
+}
+
+.fp-cta-item-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--primary, #2B6CB0);
+  margin-bottom: 6px;
+}
+
+.fp-cta-item-desc {
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary, #475569);
+  margin: 0 0 10px;
+}
+
+.fp-cta-item-bullets {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+}
+
+.fp-cta-item-bullets li {
+  position: relative;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--text-primary, #0F172A);
+  padding: 3px 0 3px 16px;
+}
+
+.fp-cta-item-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary, #2B6CB0);
+}
+
+.fp-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 12px;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
   font-size: 13.5px;
-  text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
-.fd-topbar-pill:hover {
+.fp-cta-btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.fp-cta-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.fp-cta-btn--free {
   background: var(--primary, #2B6CB0);
-  color: white;
-  border-color: var(--primary, #2B6CB0);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px -2px rgba(43, 108, 176, 0.25);
+  color: #fff;
+  box-shadow: 0 4px 12px -2px rgba(43, 108, 176, 0.28);
 }
 
-.fd-topbar-pill svg {
-  width: 14px;
-  height: 14px;
+.fp-cta-btn--free:hover:not(:disabled) {
+  background: var(--primary-dark, #1D4E7E);
+}
+
+.fp-cta-btn--paid {
+  background: var(--primary-dark, #1D4E7E);
+  color: #fff;
+  box-shadow: 0 4px 12px -2px rgba(29, 78, 126, 0.35);
+}
+
+.fp-cta-btn--paid:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.fp-cta-attorney {
+  margin: 12px 0 8px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.fp-cta-attorney a {
+  color: var(--text-muted, #64748B);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+}
+
+.fp-cta-attorney a:hover {
+  color: var(--primary, #2B6CB0);
+}
+
+.fp-cta-disclaimer {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-muted, #64748B);
+  margin: 0;
+}
+
+.fp-cta-disclaimer a {
+  color: var(--primary, #2B6CB0);
+}
+
+@media (max-width: 960px) {
+  .fp-fold {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "identity"
+      "rail"
+      "rest";
+    gap: 16px;
+  }
+  .fp-cta-rail {
+    position: relative;
+    top: 0;
+  }
 }
 
 /* ===================================================================

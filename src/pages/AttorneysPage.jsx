@@ -197,22 +197,22 @@ export default function AttorneysPage() {
         </div>
       </section>
 
-      {/* PRICING — replaced with free-for-attorneys callout */}
+      {/* PRICING — facility page has two family CTAs; attorneys use sample + facility brief */}
       <section className="attorneys-section attorneys-pricing" id="pricing">
         <div className="attorneys-container">
           <div className="attorneys-trust-card" style={{ textAlign: 'center' }}>
-            <h2 className="attorneys-section-title" style={{ marginBottom: '0.75rem' }}>Free for Attorneys. Always.</h2>
+            <h2 className="attorneys-section-title" style={{ marginBottom: '0.75rem' }}>Start from any facility page</h2>
             <p className="attorneys-section-subtitle" style={{ marginBottom: '1.5rem' }}>
-              Every Facility Brief is downloadable for free from any facility page. No paywall, no login,
-              no email gate. Numbered CMS source citations on every claim.
+              All facility data is free to browse. Families can download a free Family Report.
+              The Facility Brief is $29. Preview a sample evidence report below, then open any facility page.
             </p>
             <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', maxWidth: '640px', margin: '0 auto 1.5rem' }}>
-              We charge for human work, not for data. If you have an active case and need a clinician-signed
-              evidence memo, that&apos;s a separate paid service handled directly with Robert Benard, NP.
+              If you have an active case and need a clinician-signed evidence memo, that&apos;s a separate
+              paid service handled directly with Robert Benard, NP.
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link to="/" className="attorneys-cta-primary">Find a Facility →</Link>
-              <Link to="/ask-a-clinician" className="attorneys-cta-secondary">Ask a Clinician — $49</Link>
+              <Link to="/evidence-sample" className="attorneys-cta-primary">Preview Sample Brief</Link>
+              <Link to="/" className="attorneys-cta-secondary">Find a Facility →</Link>
             </div>
           </div>
         </div>

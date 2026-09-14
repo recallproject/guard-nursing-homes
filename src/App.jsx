@@ -65,7 +65,7 @@ const RefreshLogPage = lazy(() => import('./pages/RefreshLogPage'));
 // VITE_POST_ACUTE_HOME_ENABLED=false in Vercel project env vars and redeploy.
 const POST_ACUTE_HOME_ENABLED = import.meta.env.VITE_POST_ACUTE_HOME_ENABLED !== 'false';
 
-// Redirect /evidence/:ccn -> /facility/:ccn (Facility Brief is now free on every facility page)
+// Redirect /evidence/:ccn -> /facility/:ccn (Facility Brief checkout lives on the facility page)
 function EvidenceRedirect() {
   const { ccn } = useParams();
   return <Navigate to={`/facility/${ccn}`} replace />;
@@ -124,7 +124,7 @@ function App() {
           <Route path="/discrepancies" element={<DiscrepanciesPage />} />
           <Route path="/ownership" element={<OwnershipPage />} />
           <Route path="/referral-scorecard" element={<ReferralScorecardPage />} />
-          {/* /evidence/:ccn redirects to /facility/:ccn — Facility Brief is now free on every facility page */}
+          {/* /evidence/:ccn redirects to /facility/:ccn — Facility Brief is $29 checkout on the facility page */}
           <Route path="/evidence/:ccn" element={<EvidenceRedirect />} />
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/trends" element={<TrendsPage />} />
