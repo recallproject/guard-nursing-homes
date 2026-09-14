@@ -88,38 +88,29 @@ function StarRow({ filled }) {
 
 function RiskGauge({ score }) {
   const cx = 120;
-  const cy = 112;
-  const r = 86;
-  const stroke = 16;
-  const circumference = 2 * Math.PI * r;
-  const trackLen = circumference * 0.75;
-  const filled = (score / 100) * trackLen;
+  const cy = 108;
+  const r = 82;
+  const start = (135 * Math.PI) / 180;
+  const end = (45 * Math.PI) / 180;
+  const sx = cx + r * Math.cos(start);
+  const sy = cy + r * Math.sin(start);
+  const ex = cx + r * Math.cos(end);
+  const ey = cy + r * Math.sin(end);
+  const d = `M ${sx} ${sy} A ${r} ${r} 0 1 1 ${ex} ${ey}`;
 
   return (
     <div className="pa-preview-gauge" aria-label={`Risk score ${score} out of 100, moderate risk`}>
-      <svg viewBox="0 0 240 186" width="240" height="186" aria-hidden="true">
-        <g transform={`rotate(135 ${cx} ${cy})`}>
-          <circle
-            cx={cx}
-            cy={cy}
-            r={r}
-            fill="none"
-            stroke="#E8EDF4"
-            strokeWidth={stroke}
-            strokeLinecap="round"
-            strokeDasharray={`${trackLen} ${circumference}`}
-          />
-          <circle
-            cx={cx}
-            cy={cy}
-            r={r}
-            fill="none"
-            stroke="#E8A317"
-            strokeWidth={stroke}
-            strokeLinecap="round"
-            strokeDasharray={`${filled} ${circumference}`}
-          />
-        </g>
+      <svg viewBox="0 0 240 200" width="240" height="200" aria-hidden="true">
+        <path d={d} fill="none" stroke="#D5DCE6" strokeWidth="18" strokeLinecap="round" />
+        <path
+          d={d}
+          fill="none"
+          stroke="#E8A317"
+          strokeWidth="18"
+          strokeLinecap="round"
+          pathLength="100"
+          strokeDasharray={`${score} 100`}
+        />
       </svg>
       <div className="pa-preview-gauge-label">
         <span className="pa-preview-gauge-score">{score}</span>
