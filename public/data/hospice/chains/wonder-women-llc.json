@@ -2,7 +2,7 @@
   "chain_name": "WONDER WOMEN LLC",
   "chain_slug": "wonder-women-llc",
   "norm_key": "wonder women",
-  "facility_count": 3,
+  "facility_count": 2,
   "state_count": 2,
   "states": [
     "CA",
@@ -13,7 +13,7 @@
   "avg_cahps_overall": null,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 33.3,
+  "flagged_pct": 50,
   "oldest_association": "2018-10-25",
   "newest_association": "2021-04-30",
   "is_pe_disclosed": false,
@@ -22,8 +22,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 9.24,
-  "member_count": 3,
+  "avg_disclosed_ownership_pct": 10,
+  "member_count": 2,
   "members": [
     {
       "ccn": "551650",
@@ -62,30 +62,11 @@
         "nonProfit": false,
         "chain": false
       }
-    },
-    {
-      "ccn": "971660",
-      "name": "ADVANCED HOSPICE OF TEXAS",
-      "city": "SAN ANTONIO",
-      "state": "TX",
-      "zip": "78230",
-      "ownership_type": "Other",
-      "cms_overall_rating": null,
-      "hci_composite": null,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "WONDER WOMEN LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.704Z"
 }

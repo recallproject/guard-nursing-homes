@@ -5,16 +5,16 @@
   "facility_count": 2,
   "state_count": 2,
   "states": [
-    "IN",
-    "MI"
+    "MI",
+    "PA"
   ],
-  "avg_cms_rating": 4.5,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 73,
+  "avg_cms_rating": 3,
+  "avg_hci_composite": 7,
+  "avg_cahps_overall": 75.5,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
   "flagged_pct": 50,
-  "oldest_association": "2022-11-18",
+  "oldest_association": "2021-11-04",
   "newest_association": "2022-12-31",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
@@ -22,20 +22,20 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 36.9,
+  "avg_disclosed_ownership_pct": 22.9,
   "member_count": 2,
   "members": [
     {
-      "ccn": "151620",
+      "ccn": "231659",
       "name": "THE CARE TEAM HOSPICE",
-      "city": "CARMEL",
-      "state": "IN",
-      "zip": "46032",
+      "city": "GAYLORD",
+      "state": "MI",
+      "zip": "49735",
       "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
-      "flagged_count": 0,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -45,16 +45,16 @@
       }
     },
     {
-      "ccn": "231659",
+      "ccn": "391722",
       "name": "THE CARE TEAM HOSPICE",
-      "city": "GAYLORD",
-      "state": "MI",
-      "zip": "49735",
-      "ownership_type": "Other",
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": 76,
-      "flagged_count": 1,
+      "city": "BETHLEHEM",
+      "state": "PA",
+      "zip": "18017",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 2,
+      "hci_composite": 6,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -68,5 +68,5 @@
     "JASON LAING REVOCABLE TRUST"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.708Z"
 }

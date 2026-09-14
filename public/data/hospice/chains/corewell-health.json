@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 80.5,
+  "avg_cahps_overall": 83,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -45,14 +45,14 @@
     },
     {
       "ccn": "231544",
-      "name": "COREWELL HEALTH HOSPICE & PALLIATIVE CARE - WEST M",
-      "city": "GRAND RAPIDS ",
+      "name": "COREWELL HEALTH HOSPICE & PALLIATIVE CARE - WEST MICHIGAN",
+      "city": "GRAND RAPIDS",
       "state": "MI",
       "zip": "49525",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -64,14 +64,14 @@
     },
     {
       "ccn": "231513",
-      "name": "HOSPICE AT HOME",
+      "name": "COREWELL HEALTH HOSPICE & PALLIATIVE CARE SOUTHWEST MICHIGAN",
       "city": "SAINT JOSEPH",
       "state": "MI",
       "zip": "49085",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -86,5 +86,5 @@
     "COREWELL HEALTH"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.693Z"
 }

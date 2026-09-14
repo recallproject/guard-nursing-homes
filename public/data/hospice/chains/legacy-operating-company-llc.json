@@ -13,7 +13,7 @@
   ],
   "avg_cms_rating": 4.69,
   "avg_hci_composite": 9.08,
-  "avg_cahps_overall": 84.83,
+  "avg_cahps_overall": 84.17,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -37,7 +37,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -56,7 +56,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -75,7 +75,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -94,7 +94,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -113,7 +113,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -125,14 +125,14 @@
     },
     {
       "ccn": "251682",
-      "name": "HOMECARE HOSPICE NORTH LLC DBA LEGACY HOSPICE OF T",
+      "name": "HOMECARE HOSPICE NORTH LLC DBA LEGACY HOSPICE OF THE SOUTH",
       "city": "NEW ALBANY",
       "state": "MS",
       "zip": "38652",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -144,14 +144,14 @@
     },
     {
       "ccn": "251690",
-      "name": "HOMECARE HOSPICE SOUTH, LLC DBA LEGACY HOSPICE OF ",
+      "name": "HOMECARE HOSPICE SOUTH, LLC DBA LEGACY HOSPICE OF THE SOUTH",
       "city": "HATTIESBURG",
       "state": "MS",
       "zip": "39401",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -163,13 +163,32 @@
     },
     {
       "ccn": "251573",
-      "name": "HOMECARE HOSPICE, LLC DBA LEGACY HOSPICE OF THE SO",
+      "name": "HOMECARE HOSPICE, LLC DBA LEGACY HOSPICE OF THE SOUTH",
       "city": "JACKSON",
       "state": "MS",
       "zip": "39211",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251638",
+      "name": "LEGACY HOSPICE OF THE SOUTH",
+      "city": "STARKVILLE",
+      "state": "MS",
+      "zip": "39759",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
       "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
@@ -189,7 +208,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -219,25 +238,6 @@
       }
     },
     {
-      "ccn": "251638",
-      "name": "LEGACY HOSPICE OF THE SOUTH - STARKVILLE",
-      "city": "STARKVILLE",
-      "state": "MS",
-      "zip": "39759",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
       "ccn": "251552",
       "name": "LEGACY HOSPICE OF THE SOUTH (* DEEMED )",
       "city": "CORINTH",
@@ -246,7 +246,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -262,10 +262,10 @@
       "city": "SELMER",
       "state": "TN",
       "zip": "38375",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -280,5 +280,5 @@
     "LEGACY OPERATING COMPANY LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.451Z"
+  "generated_at": "2026-09-14T15:56:26.665Z"
 }

@@ -49,7 +49,7 @@
       "city": "WACO",
       "state": "TX",
       "zip": "76710",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -67,5 +67,5 @@
     "KINGFISHER HEALTH HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

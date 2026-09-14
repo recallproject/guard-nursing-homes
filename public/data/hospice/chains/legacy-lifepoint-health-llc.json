@@ -2,22 +2,21 @@
   "chain_name": "LEGACY LIFEPOINT HEALTH LLC",
   "chain_slug": "legacy-lifepoint-health-llc",
   "norm_key": "legacy lifepoint health",
-  "facility_count": 7,
-  "state_count": 6,
+  "facility_count": 6,
+  "state_count": 5,
   "states": [
     "AR",
-    "AZ",
     "NC",
     "PA",
     "TN",
     "VA"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.71,
-  "avg_cahps_overall": 86.29,
+  "avg_hci_composite": 9.67,
+  "avg_cahps_overall": 85.33,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 14.3,
+  "flagged_pct": 16.7,
   "oldest_association": "2017-04-01",
   "newest_association": "2020-01-01",
   "is_pe_disclosed": false,
@@ -27,37 +26,18 @@
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 20,
-  "member_count": 7,
+  "member_count": 6,
   "members": [
     {
       "ccn": "041550",
-      "name": "ELITE  HOSPICE",
+      "name": "ELITE HOSPICE",
       "city": "BRYANT",
       "state": "AR",
       "zip": "72022",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 89,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "031529",
-      "name": "CASA DE LA PAZ HOSPICE",
-      "city": "SIERRA VISTA",
-      "state": "AZ",
-      "zip": "85635",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -95,7 +75,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -111,10 +91,10 @@
       "city": "GALLATIN",
       "state": "TN",
       "zip": "37066",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -133,7 +113,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -152,7 +132,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -167,5 +147,5 @@
     "LEGACY LIFEPOINT HEALTH LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.709Z"
 }

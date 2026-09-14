@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.83,
-  "avg_cahps_overall": 81.67,
+  "avg_cahps_overall": 84.17,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -28,14 +28,14 @@
   "members": [
     {
       "ccn": "011598",
-      "name": "VITALCARING GROUP ",
-      "city": "SARALAND",
+      "name": "VITALCARING GROUP",
+      "city": "MOBILE",
       "state": "AL",
       "zip": "36571",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 94,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -54,7 +54,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +73,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -92,7 +92,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -111,7 +111,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -127,10 +127,10 @@
       "city": "BATESVILLE",
       "state": "MS",
       "zip": "38606",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -145,5 +145,5 @@
     "TVG NP HOMECARE TOPCO, GP, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.703Z"
 }

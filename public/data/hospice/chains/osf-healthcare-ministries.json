@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 4.71,
   "avg_hci_composite": 9.29,
-  "avg_cahps_overall": 84.71,
+  "avg_cahps_overall": 85.71,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
   "flagged_pct": 42.9,
@@ -34,7 +34,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,10 +50,10 @@
       "city": "PEORIA",
       "state": "IL",
       "zip": "61615",
-      "ownership_type": "Other",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -69,10 +69,10 @@
       "city": "OAK LAWN",
       "state": "IL",
       "zip": "60453",
-      "ownership_type": "Other",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 91,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -91,7 +91,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -110,7 +110,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -148,7 +148,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -163,5 +163,5 @@
     "OSF HEALTHCARE MINISTRIES"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.702Z"
 }

@@ -2,20 +2,21 @@
   "chain_name": "AFFINITY HOSPICE ULTIMATE HOLDINGS LLC",
   "chain_slug": "affinity-hospice-ultimate-holdings-llc",
   "norm_key": "affinity hospice ultimate",
-  "facility_count": 10,
-  "state_count": 4,
+  "facility_count": 11,
+  "state_count": 5,
   "states": [
     "AL",
+    "AR",
     "GA",
     "SC",
     "VA"
   ],
-  "avg_cms_rating": 4.9,
-  "avg_hci_composite": 9.2,
-  "avg_cahps_overall": 73.25,
+  "avg_cms_rating": 4.91,
+  "avg_hci_composite": 9.27,
+  "avg_cahps_overall": 79.38,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 2,
-  "flagged_pct": 10,
+  "flagged_pct": 9.1,
   "oldest_association": "2021-12-17",
   "newest_association": "2023-02-23",
   "is_pe_disclosed": false,
@@ -25,7 +26,7 @@
   "for_profit_disclosure_count": 2,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 10,
+  "member_count": 11,
   "members": [
     {
       "ccn": "011624",
@@ -36,7 +37,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "041560",
+      "name": "AFFINITY HOSPICE",
+      "city": "WHITE HALL",
+      "state": "AR",
+      "zip": "71602",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -55,7 +75,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -87,13 +107,13 @@
     {
       "ccn": "111717",
       "name": "AFFINITY HOSPICE",
-      "city": "CANTON              ",
+      "city": "CANTON",
       "state": "GA",
       "zip": "30115",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -112,7 +132,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -150,7 +170,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 64,
+      "cahps_overall_rating_pct": 68,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -162,14 +182,14 @@
     },
     {
       "ccn": "111762",
-      "name": "AFFINITY HOSPICE ",
+      "name": "AFFINITY HOSPICE",
       "city": "MARIETTA",
       "state": "GA",
       "zip": "30067",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 58,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -207,7 +227,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -222,5 +242,5 @@
     "AFFINITY HOSPICE ULTIMATE HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.700Z"
 }

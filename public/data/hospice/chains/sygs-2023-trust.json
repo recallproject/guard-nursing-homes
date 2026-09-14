@@ -1,0 +1,178 @@
+{
+  "chain_name": "SYGS 2023 TRUST",
+  "chain_slug": "sygs-2023-trust",
+  "norm_key": "sygs 2023 trust",
+  "facility_count": 8,
+  "state_count": 6,
+  "states": [
+    "CT",
+    "FL",
+    "IA",
+    "OH",
+    "TN",
+    "WA"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.33,
+  "avg_cahps_overall": 80,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 12.5,
+  "oldest_association": "2021-02-03",
+  "newest_association": "2026-05-17",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 83.75,
+  "member_count": 8,
+  "members": [
+    {
+      "ccn": "501565",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "071547",
+      "name": "AFFINITY CARE OF CONNECTICUT LLC",
+      "city": "HAMDEN",
+      "state": "CT",
+      "zip": "06518",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101574",
+      "name": "AFFINITY CARE OF CHARLOTTE AND DESOTO LLC",
+      "city": "PORT CHARLOTTE",
+      "state": "FL",
+      "zip": "33948",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101571",
+      "name": "AFFINITY CARE OF MANATEE COUNTY LLC",
+      "city": "BRADENTON",
+      "state": "FL",
+      "zip": "34205",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "161621",
+      "name": "AFFINITY CARE OF IOWA LLC",
+      "city": "WEST DES MOINES",
+      "state": "IA",
+      "zip": "50266",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361725",
+      "name": "AFFINITY CARE OF NORTHERN OHIO LLC",
+      "city": "MUNROE FALLS",
+      "state": "OH",
+      "zip": "44262",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441609",
+      "name": "SHALOM HOSPICE OF GREATER KNOXVILLE LLC",
+      "city": "KNOXVILLE",
+      "state": "TN",
+      "zip": "37923",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 98,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501561",
+      "name": "SHALOM HOSPICE OF PUGET SOUND LLC",
+      "city": "POULSBO",
+      "state": "WA",
+      "zip": "98370",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "SYGS 2023 TRUST"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.712Z"
+}

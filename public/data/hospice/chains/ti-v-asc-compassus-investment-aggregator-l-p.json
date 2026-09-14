@@ -2,9 +2,10 @@
   "chain_name": "TI V ASC COMPASSUS INVESTMENT AGGREGATOR, L.P.",
   "chain_slug": "ti-v-asc-compassus-investment-aggregator-l-p",
   "norm_key": "ti v asc compassus investment aggregator l p",
-  "facility_count": 33,
-  "state_count": 19,
+  "facility_count": 35,
+  "state_count": 22,
   "states": [
+    "AK",
     "AL",
     "IL",
     "IN",
@@ -21,26 +22,28 @@
     "OH",
     "OK",
     "PA",
+    "SC",
     "TX",
+    "WA",
     "WI",
     "WV"
   ],
   "avg_cms_rating": 4.91,
-  "avg_hci_composite": 9.56,
-  "avg_cahps_overall": 78.21,
+  "avg_hci_composite": 9.59,
+  "avg_cahps_overall": 80.63,
   "flagged_facility_count": 5,
   "flagged_pattern_count": 6,
-  "flagged_pct": 15.2,
+  "flagged_pct": 14.3,
   "oldest_association": "2019-12-31",
-  "newest_association": "2021-11-17",
+  "newest_association": "2025-03-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
-  "is_holding_co_disclosed": false,
+  "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 32,
   "non_profit_disclosure_count": 1,
-  "avg_disclosed_ownership_pct": 94.88,
-  "member_count": 33,
+  "avg_disclosed_ownership_pct": 90.42,
+  "member_count": 35,
   "members": [
     {
       "ccn": "111506A",
@@ -48,6 +51,25 @@
       "city": null,
       "state": null,
       "missing": true
+    },
+    {
+      "ccn": "021506",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, ANCHORAGE",
+      "city": "ANCHORAGE",
+      "state": "AK",
+      "zip": "99508",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
     },
     {
       "ccn": "011528",
@@ -58,7 +80,7 @@
       "ownership_type": "Combination Government & Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -77,7 +99,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -96,7 +118,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -112,10 +134,10 @@
       "city": "EVANSVILLE",
       "state": "IN",
       "zip": "47715",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -134,7 +156,7 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -191,7 +213,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -210,7 +232,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -229,7 +251,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -248,7 +270,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -267,27 +289,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "231562",
-      "name": "HOSPICE COMPASSUS-DETROIT",
-      "city": "FARMINGTON",
-      "state": "MI",
-      "zip": "48334",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -305,7 +308,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -324,7 +327,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -343,7 +346,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -362,7 +365,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -381,7 +384,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -400,7 +403,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -419,7 +422,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -438,7 +441,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -457,7 +460,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 63,
+      "cahps_overall_rating_pct": 64,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -476,7 +479,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 69,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -492,10 +495,10 @@
       "city": "TULSA",
       "state": "OK",
       "zip": "74135",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -514,7 +517,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -526,14 +529,14 @@
     },
     {
       "ccn": "391695",
-      "name": "COMPASSUS HOSPICE AND PALLIATIVE CARE - PHILADELPH",
+      "name": "COMPASSUS HOSPICE AND PALLIATIVE CARE - PHILADELPHIA",
       "city": "LANCASTER",
       "state": "PA",
       "zip": "17601",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -552,8 +555,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "421513",
+      "name": "OPEN ARMS HOSPICE",
+      "city": "SIMPSONVILLE",
+      "state": "SC",
+      "zip": "29680",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -571,7 +593,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -590,7 +612,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -610,6 +632,25 @@
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501515",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, PUGET SOUND",
+      "city": "TUKWILA",
+      "state": "WA",
+      "zip": "98168",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -647,7 +688,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -662,5 +703,5 @@
     "TI V ASC COMPASSUS INVESTMENT AGGREGATOR, L.P."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.456Z"
+  "generated_at": "2026-09-14T15:56:26.682Z"
 }

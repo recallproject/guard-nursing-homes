@@ -2,31 +2,81 @@
   "chain_name": "STARCO MANAGEMENT LLC",
   "chain_slug": "starco-management-llc",
   "norm_key": "starco management",
-  "facility_count": 5,
-  "state_count": 4,
+  "facility_count": 11,
+  "state_count": 9,
   "states": [
+    "IN",
+    "ME",
     "MO",
     "NJ",
+    "OK",
     "PA",
+    "TN",
+    "VA",
     "WA"
   ],
-  "avg_cms_rating": 4.8,
-  "avg_hci_composite": 9.2,
-  "avg_cahps_overall": 73,
-  "flagged_facility_count": 1,
-  "flagged_pattern_count": 1,
-  "flagged_pct": 20,
-  "oldest_association": "2021-10-19",
-  "newest_association": "2025-06-17",
+  "avg_cms_rating": 4.7,
+  "avg_hci_composite": 9.1,
+  "avg_cahps_overall": 77.9,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 18.2,
+  "oldest_association": "2020-10-13",
+  "newest_association": "2026-02-08",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
-  "is_holding_co_disclosed": false,
+  "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 0,
+  "for_profit_disclosure_count": 1,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 90,
-  "member_count": 5,
+  "avg_disclosed_ownership_pct": 90.45,
+  "member_count": 11,
   "members": [
+    {
+      "ccn": "121513",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "151645",
+      "name": "AFFINITY CARE OF INDIANA, LLC",
+      "city": "INDIANAPOLIS",
+      "state": "IN",
+      "zip": "46202",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "201524",
+      "name": "AFFINITY CARE OF MAINE, LLC",
+      "city": "SOUTH PORTLAND",
+      "state": "ME",
+      "zip": "04106",
+      "ownership_type": null,
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
     {
       "ccn": "261609",
       "name": "ONE COMMUNITY HOSPICE",
@@ -36,7 +86,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -66,6 +116,25 @@
       }
     },
     {
+      "ccn": "371733",
+      "name": "AFFINITY CARE OF OKLAHOMA LLC",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73118",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "731501",
       "name": "AFFINITY CARE OF PENNSYLVANIA LLC",
       "city": "TREVOSE",
@@ -74,8 +143,46 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 62,
+      "cahps_overall_rating_pct": 69,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "441606",
+      "name": "SHALOM HOSPICE, LLC",
+      "city": "BRENTWOOD",
+      "state": "TN",
+      "zip": "37207",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491637",
+      "name": "AFFINITY CARE OF VIRGINIA LLC",
+      "city": "NEWPORT NEWS",
+      "state": "VA",
+      "zip": "23606",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -93,7 +200,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -112,7 +219,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -127,5 +234,5 @@
     "STARCO MANAGEMENT LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

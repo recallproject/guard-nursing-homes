@@ -1,0 +1,72 @@
+{
+  "chain_name": "COMPASSUS BSMH KENTUCKY LLC",
+  "chain_slug": "compassus-bsmh-kentucky-llc",
+  "norm_key": "compassus bsmh kentucky",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "IL",
+    "KY"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 81,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 100,
+  "oldest_association": "2024-04-23",
+  "newest_association": "2024-04-23",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "141548",
+      "name": "MERCY HEALTH HOSPICE METROPOLIS",
+      "city": "METROPOLIS",
+      "state": "IL",
+      "zip": "62960",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "181507",
+      "name": "MERCY HEALTH - HOSPICE, PADUCAH",
+      "city": "PADUCAH",
+      "state": "KY",
+      "zip": "42003",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "COMPASSUS BSMH KENTUCKY LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.713Z"
+}

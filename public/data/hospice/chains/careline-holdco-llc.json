@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.5,
-  "avg_cahps_overall": 75,
+  "avg_cahps_overall": 78.25,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -46,25 +46,6 @@
       }
     },
     {
-      "ccn": "231698",
-      "name": "CARELINE HOSPICE",
-      "city": "BINGHAM FARMS",
-      "state": "MI",
-      "zip": "48025",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
       "ccn": "231669",
       "name": "OPTIMAL CARE HOSPICE",
       "city": "JACKSON",
@@ -73,7 +54,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -89,10 +70,10 @@
       "city": "SAGINAW",
       "state": "MI",
       "zip": "48604",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -111,7 +92,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 64,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231698",
+      "name": "OPTIMAL CARE HOSPICE",
+      "city": "BINGHAM FARMS",
+      "state": "MI",
+      "zip": "48025",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -127,7 +127,7 @@
       "city": "MAUMEE",
       "state": "OH",
       "zip": "43537",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
@@ -145,5 +145,5 @@
     "CARELINE HOLDCO, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

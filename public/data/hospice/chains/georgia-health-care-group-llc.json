@@ -2,29 +2,28 @@
   "chain_name": "GEORGIA HEALTH CARE GROUP LLC",
   "chain_slug": "georgia-health-care-group-llc",
   "norm_key": "georgia health care group",
-  "facility_count": 9,
-  "state_count": 3,
+  "facility_count": 7,
+  "state_count": 2,
   "states": [
     "GA",
-    "MS",
-    "SC"
+    "MS"
   ],
-  "avg_cms_rating": 4.44,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 81.67,
+  "avg_cms_rating": 4.29,
+  "avg_hci_composite": 8.71,
+  "avg_cahps_overall": 81.5,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
   "oldest_association": "2015-10-01",
-  "newest_association": "2020-10-01",
+  "newest_association": "2017-06-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 90.78,
-  "member_count": 9,
+  "avg_disclosed_ownership_pct": 95.29,
+  "member_count": 7,
   "members": [
     {
       "ccn": "111634",
@@ -32,7 +31,7 @@
       "city": "CUMMING",
       "state": "GA",
       "zip": "30040",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": null,
@@ -51,7 +50,7 @@
       "city": "VALDOSTA",
       "state": "GA",
       "zip": "31601",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
       "cahps_overall_rating_pct": null,
@@ -70,7 +69,7 @@
       "city": "VILLA RICA",
       "state": "GA",
       "zip": "30180",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
@@ -92,26 +91,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "111515",
-      "name": "TRINITY HOSPICE",
-      "city": "MARTINEZ",
-      "state": "GA",
-      "zip": "30907",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -130,7 +110,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -143,13 +123,13 @@
     {
       "ccn": "251595",
       "name": "COMMUNITY HOSPICE",
-      "city": "TUPELO ",
+      "city": "TUPELO",
       "state": "MS",
       "zip": "38801",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -165,29 +145,10 @@
       "city": "PHILADELPHIA",
       "state": "MS",
       "zip": "39350",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 75,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "421595",
-      "name": "TRINITY  HOSPICE  OF AIKEN",
-      "city": "AIKEN",
-      "state": "SC",
-      "zip": "29803",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -202,5 +163,5 @@
     "GEORGIA HEALTH CARE GROUP LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.690Z"
 }

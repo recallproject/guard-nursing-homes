@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.5,
-  "avg_cahps_overall": 73,
+  "avg_cahps_overall": 75,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
   "flagged_pct": 33.3,
@@ -27,11 +27,11 @@
   "members": [
     {
       "ccn": "B41627",
-      "name": "ATLAS HOSPICE CARE, INC",
+      "name": "LORIAN HEALTH",
       "city": "ELK GROVE",
       "state": "CA",
       "zip": "95758",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
       "cahps_overall_rating_pct": null,
@@ -53,7 +53,7 @@
       "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -87,5 +87,5 @@
     "AHUMADA HEALTHCARE HOLDINGS INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.711Z"
 }

@@ -2,7 +2,7 @@
   "chain_name": "GOOD HEART HOSPICE LLC",
   "chain_slug": "good-heart-hospice-llc",
   "norm_key": "good heart hospice",
-  "facility_count": 5,
+  "facility_count": 4,
   "state_count": 1,
   "states": [
     "CA"
@@ -12,9 +12,9 @@
   "avg_cahps_overall": null,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 20,
+  "flagged_pct": 25,
   "oldest_association": "2018-11-30",
-  "newest_association": "2021-10-12",
+  "newest_association": "2021-01-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
@@ -22,34 +22,8 @@
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 5,
+  "member_count": 4,
   "members": [
-    {
-      "ccn": "A11605",
-      "name": null,
-      "city": null,
-      "state": null,
-      "missing": true
-    },
-    {
-      "ccn": "921599",
-      "name": "GOOD HEART HOSPICE & PALLIATIVE CARE",
-      "city": "RANCHO CUCAMONGA",
-      "state": "CA",
-      "zip": "91730",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
     {
       "ccn": "921652",
       "name": "GOOD HEART HOSPICE & PALLIATIVE CARE GARDEN GROVE",
@@ -89,6 +63,25 @@
       }
     },
     {
+      "ccn": "921599",
+      "name": "GOOD HEART HOSPICE & PALLIATIVE CARE, INC.",
+      "city": "RANCHO CUCAMONGA",
+      "state": "CA",
+      "zip": "91730",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "A01653",
       "name": "GOOD HEART HOSPICE AND PALLIATIVE CARE",
       "city": "TEMECULA",
@@ -112,5 +105,5 @@
     "GOOD HEART HOSPICE LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.706Z"
 }

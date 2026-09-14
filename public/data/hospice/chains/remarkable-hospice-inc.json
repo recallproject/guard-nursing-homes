@@ -2,7 +2,7 @@
   "chain_name": "REMARKABLE HOSPICE INC",
   "chain_slug": "remarkable-hospice-inc",
   "norm_key": "remarkable hospice",
-  "facility_count": 6,
+  "facility_count": 7,
   "state_count": 2,
   "states": [
     "GA",
@@ -10,10 +10,10 @@
   ],
   "avg_cms_rating": 4.4,
   "avg_hci_composite": 8.8,
-  "avg_cahps_overall": 79.25,
+  "avg_cahps_overall": 81.75,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 16.7,
+  "flagged_pct": 14.3,
   "oldest_association": "2020-01-28",
   "newest_association": "2023-09-21",
   "is_pe_disclosed": false,
@@ -22,8 +22,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 2,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 88.7,
-  "member_count": 6,
+  "avg_disclosed_ownership_pct": 86.19,
+  "member_count": 7,
   "members": [
     {
       "ccn": "851542",
@@ -34,7 +34,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,7 +50,7 @@
       "city": "DUBLIN",
       "state": "GA",
       "zip": "31021",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 2,
       "hci_composite": 6,
       "cahps_overall_rating_pct": null,
@@ -72,7 +72,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -88,10 +88,10 @@
       "city": "PFLUGERVILLE",
       "state": "TX",
       "zip": "78660",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -110,7 +110,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -138,11 +138,30 @@
         "nonProfit": false,
         "chain": false
       }
+    },
+    {
+      "ccn": "A91740",
+      "name": "REMARKABLE HOSPICE",
+      "city": "COLLEGE STATION",
+      "state": "TX",
+      "zip": "77845",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "REMARKABLE HOSPICE INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.708Z"
 }

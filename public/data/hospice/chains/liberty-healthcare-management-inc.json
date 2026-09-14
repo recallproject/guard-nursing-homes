@@ -1,5 +1,5 @@
 {
-  "chain_name": "LIBERTY HEALTHCARE MANAGEMENT, INC",
+  "chain_name": "LIBERTY HEALTHCARE MANAGEMENT INC",
   "chain_slug": "liberty-healthcare-management-inc",
   "norm_key": "liberty healthcare management",
   "facility_count": 2,
@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 72,
+  "avg_cahps_overall": 73,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -33,7 +33,7 @@
       "ownership_type": "Government",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -64,8 +64,8 @@
     }
   ],
   "raw_owner_names_in_disclosure": [
-    "LIBERTY HEALTHCARE MANAGEMENT, INC"
+    "LIBERTY HEALTHCARE MANAGEMENT INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

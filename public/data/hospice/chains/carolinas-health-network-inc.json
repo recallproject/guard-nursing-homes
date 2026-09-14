@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.5,
-  "avg_cahps_overall": 87.5,
+  "avg_cahps_overall": 88.5,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 3,
   "flagged_pct": 100,
@@ -25,16 +25,16 @@
   "member_count": 2,
   "members": [
     {
-      "ccn": "341508",
-      "name": "HOSPICE AND PALLIATIVE CARE OF CABARRUS COUNTY",
-      "city": "KANNAPOLIS",
+      "ccn": "341513",
+      "name": "ATRIUM HEALTH HOSPICE UNION",
+      "city": "MONROE",
       "state": "NC",
-      "zip": "28081",
-      "ownership_type": "For-Profit",
+      "zip": "28110",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 89,
-      "flagged_count": 1,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -44,16 +44,16 @@
       }
     },
     {
-      "ccn": "341513",
-      "name": "HOSPICE OF UNION COUNTY",
-      "city": "MONROE",
+      "ccn": "341508",
+      "name": "HOSPICE AND PALLIATIVE CARE OF CABARRUS COUNTY",
+      "city": "KANNAPOLIS",
       "state": "NC",
-      "zip": "28110",
-      "ownership_type": "For-Profit",
+      "zip": "28081",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
-      "flagged_count": 2,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -67,5 +67,5 @@
     "CAROLINAS HEALTH NETWORK, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.693Z"
 }

@@ -2,18 +2,21 @@
   "chain_name": "HOSPICE OF THE VALLEY, INC.",
   "chain_slug": "hospice-of-the-valley-inc",
   "norm_key": "hospice of the valley",
-  "facility_count": 2,
-  "state_count": 2,
+  "facility_count": 6,
+  "state_count": 5,
   "states": [
     "AL",
+    "IL",
+    "KY",
+    "OH",
     "VA"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 89.5,
-  "flagged_facility_count": 1,
-  "flagged_pattern_count": 2,
-  "flagged_pct": 50,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 84.67,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 6,
+  "flagged_pct": 83.3,
   "oldest_association": "2010-03-11",
   "newest_association": "2024-05-01",
   "is_pe_disclosed": false,
@@ -22,8 +25,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 1,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 14.24,
-  "member_count": 2,
+  "avg_disclosed_ownership_pct": 14.66,
+  "member_count": 6,
   "members": [
     {
       "ccn": "011511",
@@ -34,8 +37,84 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 93,
+      "cahps_overall_rating_pct": 94,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141548",
+      "name": "MERCY HEALTH HOSPICE METROPOLIS",
+      "city": "METROPOLIS",
+      "state": "IL",
+      "zip": "62960",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "181507",
+      "name": "MERCY HEALTH - HOSPICE, PADUCAH",
+      "city": "PADUCAH",
+      "state": "KY",
+      "zip": "42003",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361543",
+      "name": "MERCY HEALTH - HOSPICE LIMA",
+      "city": "LIMA",
+      "state": "OH",
+      "zip": "45801",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361563",
+      "name": "MERCY HEALTH-NEW LIFE HOSPICE",
+      "city": "LORAIN",
+      "state": "OH",
+      "zip": "44053",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -53,7 +132,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +147,5 @@
     "HOSPICE OF THE VALLEY, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.692Z"
 }

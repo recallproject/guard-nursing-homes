@@ -10,11 +10,11 @@
   ],
   "avg_cms_rating": 3.67,
   "avg_hci_composite": 7.67,
-  "avg_cahps_overall": 79,
+  "avg_cahps_overall": 88,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
-  "oldest_association": "2020-04-28",
+  "oldest_association": "2020-09-03",
   "newest_association": "2024-07-08",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
@@ -22,7 +22,7 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 35.67,
+  "avg_disclosed_ownership_pct": 37.33,
   "member_count": 3,
   "members": [
     {
@@ -34,7 +34,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -46,7 +46,7 @@
     },
     {
       "ccn": "971656",
-      "name": "TRUE HEART HOSPICE AND PALLIATIVE CARE OF TEXAS LL",
+      "name": "TRUE HEART HOSPICE AND PALLIATIVE CARE OF TEXAS LLC",
       "city": "TEMPLE",
       "state": "TX",
       "zip": "76502",
@@ -87,5 +87,5 @@
     "CRANAGE LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.709Z"
 }

@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 4.75,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 79.2,
+  "avg_cahps_overall": 80,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -21,21 +21,21 @@
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": true,
-  "for_profit_disclosure_count": 4,
+  "for_profit_disclosure_count": 6,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
   "member_count": 8,
   "members": [
     {
       "ccn": "151644",
-      "name": "INTERIM HEALTHCARE HOSPICE OF INDIANA, INC",
-      "city": "JEFFERSONVILLE",
+      "name": "INTERIM HEALTHCARE HOSPICE OF LAWRENCEBURG",
+      "city": "NEW ALBANY",
       "state": "IN",
-      "zip": "47130",
+      "zip": "47150",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +73,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -130,7 +130,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -161,14 +161,14 @@
     },
     {
       "ccn": "391786",
-      "name": "INTERIM HEALTHCARE HOSPICE OF NORTHWEST PENNSYLVAN",
+      "name": "INTERIM HEALTHCARE HOSPICE OF ERIE",
       "city": "ERIE",
       "state": "PA",
       "zip": "16505",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -183,5 +183,5 @@
     "SALO INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.702Z"
 }

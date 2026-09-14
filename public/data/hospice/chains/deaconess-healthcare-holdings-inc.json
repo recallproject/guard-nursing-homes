@@ -2,16 +2,16 @@
   "chain_name": "DEACONESS HEALTHCARE HOLDINGS, INC.",
   "chain_slug": "deaconess-healthcare-holdings-inc",
   "norm_key": "deaconess healthcare",
-  "facility_count": 4,
+  "facility_count": 6,
   "state_count": 3,
   "states": [
     "OH",
     "OK",
     "TX"
   ],
-  "avg_cms_rating": 4.75,
-  "avg_hci_composite": 9.5,
-  "avg_cahps_overall": 86.75,
+  "avg_cms_rating": 4.8,
+  "avg_hci_composite": 9.4,
+  "avg_cahps_overall": 85,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -23,19 +23,57 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 1,
-  "avg_disclosed_ownership_pct": 93.75,
-  "member_count": 4,
+  "avg_disclosed_ownership_pct": 96.67,
+  "member_count": 6,
   "members": [
     {
       "ccn": "361689",
       "name": "SUMMIT HOSPICE",
-      "city": "COLUMBUS",
+      "city": "GRANDVIEW HEIGHTS",
       "state": "OH",
-      "zip": "43219",
+      "zip": "43212",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 92,
+      "cahps_overall_rating_pct": 93,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371545",
+      "name": "HEALTH WATCH HOSPICE OF GUYMON, LLC",
+      "city": "GUYMON",
+      "state": "OK",
+      "zip": "73942",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371744",
+      "name": "LIFECARE HOSPICE, LLC",
+      "city": "EDMOND",
+      "state": "OK",
+      "zip": "73013",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -54,7 +92,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +111,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 92,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -92,7 +130,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -107,5 +145,5 @@
     "DEACONESS HEALTHCARE HOLDINGS, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.702Z"
 }

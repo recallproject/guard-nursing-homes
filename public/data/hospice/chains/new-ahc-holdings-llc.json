@@ -2,7 +2,7 @@
   "chain_name": "NEW AHC HOLDINGS, LLC",
   "chain_slug": "new-ahc-holdings-llc",
   "norm_key": "new ahc",
-  "facility_count": 2,
+  "facility_count": 3,
   "state_count": 2,
   "states": [
     "OH",
@@ -20,18 +20,37 @@
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 2,
+  "for_profit_disclosure_count": 3,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 2,
+  "member_count": 3,
   "members": [
+    {
+      "ccn": "361742",
+      "name": "AHC HOME HEALTH OF CINCINNATI LLC",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45246",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
     {
       "ccn": "361738",
       "name": "AHC HOME HEALTH OF CLEVELAND LLC",
       "city": "MAYFIELD HEIGHTS",
       "state": "OH",
       "zip": "44124",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
       "cahps_overall_rating_pct": null,
@@ -50,7 +69,7 @@
       "city": "BETHLEHEM",
       "state": "PA",
       "zip": "18017",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
       "cahps_overall_rating_pct": null,
@@ -68,5 +87,5 @@
     "NEW AHC HOLDINGS, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.713Z"
 }

@@ -2,17 +2,17 @@
   "chain_name": "CIMA HOLDINGS INC",
   "chain_slug": "cima-holdings-inc",
   "norm_key": "cima",
-  "facility_count": 9,
+  "facility_count": 8,
   "state_count": 1,
   "states": [
     "TX"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.44,
-  "avg_cahps_overall": 78.8,
-  "flagged_facility_count": 3,
-  "flagged_pattern_count": 3,
-  "flagged_pct": 33.3,
+  "avg_hci_composite": 9.38,
+  "avg_cahps_overall": 80,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 25,
   "oldest_association": "2011-10-14",
   "newest_association": "2017-01-01",
   "is_pe_disclosed": false,
@@ -21,38 +21,19 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 78.18,
-  "member_count": 9,
+  "avg_disclosed_ownership_pct": 80.94,
+  "member_count": 8,
   "members": [
-    {
-      "ccn": "671650",
-      "name": "CIMA HOSPICE",
-      "city": "NEW BRAUNFELS",
-      "state": "TX",
-      "zip": "78130",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
     {
       "ccn": "451748",
       "name": "ELARA CARING",
-      "city": "IRVING",
+      "city": "DALLAS",
       "state": "TX",
-      "zip": "75038",
+      "zip": "75234",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -71,7 +52,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -90,7 +71,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671650",
+      "name": "ELARA CARING",
+      "city": "NEW BRAUNFELS",
+      "state": "TX",
+      "zip": "78130",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -106,7 +106,7 @@
       "city": "GREENVILLE",
       "state": "TX",
       "zip": "75401",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
@@ -128,7 +128,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -144,11 +144,11 @@
       "city": "PARIS",
       "state": "TX",
       "zip": "75462",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
-      "flagged_count": 1,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -175,30 +175,11 @@
         "nonProfit": false,
         "chain": false
       }
-    },
-    {
-      "ccn": "671558",
-      "name": "ELARA CARING ",
-      "city": "EDINBURG",
-      "state": "TX",
-      "zip": "78539",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "CIMA HOLDINGS INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.689Z"
 }

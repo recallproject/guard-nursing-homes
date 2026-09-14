@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.33,
-  "avg_cahps_overall": 82.67,
+  "avg_cahps_overall": 84,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 3,
   "flagged_pct": 50,
@@ -22,8 +22,8 @@
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
-  "non_profit_disclosure_count": 3,
-  "avg_disclosed_ownership_pct": 81.67,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 89,
   "member_count": 4,
   "members": [
     {
@@ -35,7 +35,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +73,7 @@
       "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -92,7 +92,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -107,5 +107,5 @@
     "ASPIRUS, INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.700Z"
 }

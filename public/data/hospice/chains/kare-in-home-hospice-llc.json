@@ -1,0 +1,71 @@
+{
+  "chain_name": "KARE-IN-HOME HOSPICE LLC",
+  "chain_slug": "kare-in-home-hospice-llc",
+  "norm_key": "kare in home hospice",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "MS"
+  ],
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 8.5,
+  "avg_cahps_overall": 87,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2025-12-03",
+  "newest_association": "2025-12-03",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "251701",
+      "name": "TRADITIONS HEALTH",
+      "city": "RIDGELAND",
+      "state": "MS",
+      "zip": "39157",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251679",
+      "name": "TRADITIONS HEALTH",
+      "city": "OCEAN SPRINGS",
+      "state": "MS",
+      "zip": "39564",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "KARE-IN-HOME HOSPICE LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.711Z"
+}

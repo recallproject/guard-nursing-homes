@@ -15,7 +15,7 @@
   ],
   "avg_cms_rating": 4.56,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 78,
+  "avg_cahps_overall": 80,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
   "flagged_pct": 33.3,
@@ -77,7 +77,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -90,10 +90,10 @@
     {
       "ccn": "361658",
       "name": "CARETENDERS HOSPICE",
-      "city": "RICHFIELD",
+      "city": "SEVEN HILLS",
       "state": "OH",
-      "zip": "44286",
-      "ownership_type": "Other",
+      "zip": "44131",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -169,10 +169,10 @@
       "city": "WAYNE",
       "state": "PA",
       "zip": "19087",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -191,7 +191,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -207,5 +207,5 @@
     "HEALTH AT HOME LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.706Z"
 }

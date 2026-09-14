@@ -1,0 +1,119 @@
+{
+  "chain_name": "CADRE HOSPICE OPERATIONS, LLC",
+  "chain_slug": "cadre-hospice-operations-llc",
+  "norm_key": "cadre hospice operations",
+  "facility_count": 5,
+  "state_count": 4,
+  "states": [
+    "GA",
+    "IL",
+    "OH",
+    "TX"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 82,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2024-04-19",
+  "newest_association": "2025-12-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 5,
+  "members": [
+    {
+      "ccn": "151672",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "851512",
+      "name": "INSPIRE HOSPICE AND PALLIATIVE CARE, INC",
+      "city": "DULUTH",
+      "state": "GA",
+      "zip": "30097",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141741",
+      "name": "CADRE HOSPICE - CHICAGO LLC",
+      "city": "WARRENVILLE",
+      "state": "IL",
+      "zip": "60555",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361744",
+      "name": "CADRE HOSPICE - OHIO LLC",
+      "city": "SEVEN HILLS",
+      "state": "OH",
+      "zip": "44131",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A91756",
+      "name": "CADRE HOSPICE - TEXAS LLC",
+      "city": "PLANO",
+      "state": "TX",
+      "zip": "75074",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "CADRE HOSPICE OPERATIONS, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.710Z"
+}

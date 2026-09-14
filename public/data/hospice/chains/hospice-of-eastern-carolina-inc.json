@@ -2,18 +2,18 @@
   "chain_name": "HOSPICE OF EASTERN CAROLINA, INC.",
   "chain_slug": "hospice-of-eastern-carolina-inc",
   "norm_key": "hospice of eastern carolina",
-  "facility_count": 5,
+  "facility_count": 4,
   "state_count": 2,
   "states": [
     "AL",
     "TN"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.4,
-  "avg_cahps_overall": 83.4,
-  "flagged_facility_count": 1,
-  "flagged_pattern_count": 1,
-  "flagged_pct": 20,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 84.25,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
   "oldest_association": "2020-06-01",
   "newest_association": "2020-06-01",
   "is_pe_disclosed": false,
@@ -23,7 +23,7 @@
   "for_profit_disclosure_count": 1,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 5,
+  "member_count": 4,
   "members": [
     {
       "ccn": "011566",
@@ -45,15 +45,15 @@
       }
     },
     {
-      "ccn": "011586",
-      "name": "AMEDISYS HOSPICE OF HAMILTON",
-      "city": "HAMILTON",
+      "ccn": "011567",
+      "name": "AMEDISYS HOSPICE OF MOBILE",
+      "city": "MOBILE",
       "state": "AL",
-      "zip": "35470",
+      "zip": "36602",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -64,15 +64,15 @@
       }
     },
     {
-      "ccn": "011567",
-      "name": "AMEDISYS HOSPICE OF MOBILE",
-      "city": "MOBILE",
+      "ccn": "011586",
+      "name": "ASERCARE HOSPICE - HAMILTON",
+      "city": "HAMILTON",
       "state": "AL",
-      "zip": "36602",
+      "zip": "35470",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -91,27 +91,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "441581",
-      "name": "ASERACARE HOSPICE - MCKENZIE",
-      "city": "MC KENZIE",
-      "state": "TN",
-      "zip": "38201",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -125,5 +106,5 @@
     "HOSPICE OF EASTERN CAROLINA, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.459Z"
+  "generated_at": "2026-09-14T15:56:26.687Z"
 }

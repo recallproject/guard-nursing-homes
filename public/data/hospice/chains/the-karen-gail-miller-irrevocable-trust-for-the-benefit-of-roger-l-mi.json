@@ -1,0 +1,152 @@
+{
+  "chain_name": "THE KAREN GAIL MILLER IRREVOCABLE TRUST FOR THE BENEFIT OF ROGER L. MI",
+  "chain_slug": "the-karen-gail-miller-irrevocable-trust-for-the-benefit-of-roger-l-mi",
+  "norm_key": "the karen gail miller irrevocable trust for the benefit of roger l mi",
+  "facility_count": 6,
+  "state_count": 6,
+  "states": [
+    "AZ",
+    "ID",
+    "MO",
+    "NM",
+    "NV",
+    "UT"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9.33,
+  "avg_cahps_overall": 77.75,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 33.3,
+  "oldest_association": "2024-01-01",
+  "newest_association": "2024-01-01",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 5.1,
+  "member_count": 6,
+  "members": [
+    {
+      "ccn": "031682",
+      "name": "AHC HOME HEALTH OF ARIZONA, LLC",
+      "city": "MESA",
+      "state": "AZ",
+      "zip": "85210",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "131581",
+      "name": "ASPEN HOME CARE AND HOSPICE",
+      "city": "MERIDIAN",
+      "state": "ID",
+      "zip": "83642",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261695",
+      "name": "ADVANCED HOME HEALTH AND HOSPICE KANSAS CITY",
+      "city": "KANSAS CITY",
+      "state": "MO",
+      "zip": "64114",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "321580",
+      "name": "ADVANCED HOME HEALTH OF NEW MEXICO",
+      "city": "ALBUQUERQUE",
+      "state": "NM",
+      "zip": "87107",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "291566",
+      "name": "ADVANCED HOME HEALTH AND HOSPICE OF RENO",
+      "city": "RENO",
+      "state": "NV",
+      "zip": "89521",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "461625",
+      "name": "ADVANCED HOSPICE OF ST. GEORGE",
+      "city": "ST GEORGE",
+      "state": "UT",
+      "zip": "84790",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "THE KAREN GAIL MILLER IRREVOCABLE TRUST FOR THE BENEFIT OF ROGER L. MI"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.708Z"
+}

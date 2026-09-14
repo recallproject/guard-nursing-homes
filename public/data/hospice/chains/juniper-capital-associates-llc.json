@@ -2,7 +2,7 @@
   "chain_name": "JUNIPER CAPITAL ASSOCIATES LLC",
   "chain_slug": "juniper-capital-associates-llc",
   "norm_key": "juniper capital associates",
-  "facility_count": 3,
+  "facility_count": 4,
   "state_count": 3,
   "states": [
     "OH",
@@ -14,7 +14,7 @@
   "avg_cahps_overall": null,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 33.3,
+  "flagged_pct": 25,
   "oldest_association": "2019-07-01",
   "newest_association": "2023-12-29",
   "is_pe_disclosed": false,
@@ -23,8 +23,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 27.67,
-  "member_count": 3,
+  "avg_disclosed_ownership_pct": 26.38,
+  "member_count": 4,
   "members": [
     {
       "ccn": "361714",
@@ -46,11 +46,30 @@
       }
     },
     {
+      "ccn": "361747",
+      "name": "CONSTELLATION HOSPICE",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45206",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "391770",
       "name": "CONSTELLATION HOSPICE PA, LLC",
-      "city": "PHILADELPHIA",
+      "city": "NEWTOWN",
       "state": "PA",
-      "zip": "19116",
+      "zip": "18940",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
@@ -70,7 +89,7 @@
       "city": "HOUSTON",
       "state": "TX",
       "zip": "77063",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 2,
       "hci_composite": 6,
       "cahps_overall_rating_pct": null,
@@ -88,5 +107,5 @@
     "JUNIPER CAPITAL ASSOCIATES LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

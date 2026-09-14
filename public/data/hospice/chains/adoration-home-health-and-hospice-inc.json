@@ -2,8 +2,8 @@
   "chain_name": "ADORATION HOME HEALTH & HOSPICE INC",
   "chain_slug": "adoration-home-health-and-hospice-inc",
   "norm_key": "adoration home health and hospice",
-  "facility_count": 13,
-  "state_count": 8,
+  "facility_count": 15,
+  "state_count": 9,
   "states": [
     "AL",
     "GA",
@@ -12,73 +12,43 @@
     "NC",
     "OH",
     "TN",
-    "TX"
+    "TX",
+    "WV"
   ],
-  "avg_cms_rating": 4.67,
-  "avg_hci_composite": 9.25,
-  "avg_cahps_overall": 81.91,
+  "avg_cms_rating": 4.69,
+  "avg_hci_composite": 9.23,
+  "avg_cahps_overall": 82.08,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
   "oldest_association": "2018-09-01",
-  "newest_association": "2023-08-20",
+  "newest_association": "2025-12-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
-  "is_holding_co_disclosed": false,
+  "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 9,
+  "for_profit_disclosure_count": 11,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 13,
+  "member_count": 15,
   "members": [
+    {
+      "ccn": "511509A",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
     {
       "ccn": "011629",
       "name": "ADORATION HOSPICE",
-      "city": "OXFORD ",
+      "city": "OXFORD",
       "state": "AL",
       "zip": "35203",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 68,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "851509",
-      "name": "SACRED JOURNEY HOSPICE-GWINNETT",
-      "city": "LAWRENCEVILLE",
-      "state": "GA",
-      "zip": "30046",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "851562",
-      "name": "SACRED JOURNEY HOSPICE, DALTON",
-      "city": "DALTON",
-      "state": "GA",
-      "zip": "30721",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -90,14 +60,14 @@
     },
     {
       "ccn": "111599",
-      "name": "SACRED JOURNEY HOSPICE, INC",
+      "name": "ADORATION HOSPICE",
       "city": "MCDONOUGH",
       "state": "GA",
       "zip": "30253",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -109,14 +79,52 @@
     },
     {
       "ccn": "111799",
-      "name": "SACRED JOURNEY HOSPICE, LLC",
+      "name": "ADORATION HOSPICE",
       "city": "NEWNAN",
       "state": "GA",
       "zip": "30265",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851509",
+      "name": "ADORATION HOSPICE",
+      "city": "LAWRENCEVILLE",
+      "state": "GA",
+      "zip": "30046",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 65,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851562",
+      "name": "ADORATION HOSPICE",
+      "city": "DALTON",
+      "state": "GA",
+      "zip": "30721",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -173,7 +181,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 93,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -185,14 +193,14 @@
     },
     {
       "ccn": "341584",
-      "name": "ADORATION HOME HEALTH AND HOSPICE ",
+      "name": "ADORATION HOME HEALTH AND HOSPICE",
       "city": "NAGS HEAD",
       "state": "NC",
       "zip": "27959",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Government",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -211,7 +219,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -230,7 +238,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -268,7 +276,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "511516",
+      "name": "ADORATION HOSPICE",
+      "city": "BUCKHANNON",
+      "state": "WV",
+      "zip": "26201",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -283,5 +310,5 @@
     "ADORATION HOME HEALTH & HOSPICE INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.689Z"
 }

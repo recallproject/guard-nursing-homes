@@ -1,0 +1,72 @@
+{
+  "chain_name": "FRANCISCAN SISTERS OF CHRISTIAN CHARITY SPONSORED MINISTRIES INC",
+  "chain_slug": "franciscan-sisters-of-christian-charity-sponsored-ministries-inc",
+  "norm_key": "franciscan sisters of christian charity sponsored ministries",
+  "facility_count": 2,
+  "state_count": 2,
+  "states": [
+    "NE",
+    "WI"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 91,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "1995-05-01",
+  "newest_association": "2010-01-24",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": null,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "281525",
+      "name": "FRANCISCAN HEALTHCARE HOSPICE",
+      "city": "WEST POINT",
+      "state": "NE",
+      "zip": "68788",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521586",
+      "name": "ST PAUL HOSPICE SERVICES",
+      "city": "KAUKAUNA",
+      "state": "WI",
+      "zip": "54130",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "FRANCISCAN SISTERS OF CHRISTIAN CHARITY SPONSORED MINISTRIES INC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.700Z"
+}

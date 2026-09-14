@@ -2,7 +2,7 @@
   "chain_name": "STERN FAMILY 2019 TRUST",
   "chain_slug": "stern-family-2019-trust",
   "norm_key": "stern family 2019 trust",
-  "facility_count": 12,
+  "facility_count": 13,
   "state_count": 11,
   "states": [
     "DC",
@@ -19,27 +19,34 @@
   ],
   "avg_cms_rating": 4.58,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 75,
+  "avg_cahps_overall": 77.55,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
-  "flagged_pct": 25,
-  "oldest_association": "2020-10-13",
-  "newest_association": "2025-06-17",
+  "flagged_pct": 23.1,
+  "oldest_association": "2020-09-22",
+  "newest_association": "2026-02-08",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 80.38,
-  "member_count": 12,
+  "avg_disclosed_ownership_pct": 76.75,
+  "member_count": 13,
   "members": [
+    {
+      "ccn": "121513",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
     {
       "ccn": "091508",
       "name": "AFFINITY CARE OF DC LLC",
       "city": "WASHINGTON",
       "state": "DC",
-      "zip": "20018",
+      "zip": "20017",
       "ownership_type": null,
       "cms_overall_rating": 3,
       "hci_composite": 7,
@@ -58,11 +65,11 @@
       "name": "AFFINITY CARE OF INDIANA, LLC",
       "city": "INDIANAPOLIS",
       "state": "IN",
-      "zip": "46254",
+      "zip": "46202",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -100,7 +107,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -130,15 +137,15 @@
       }
     },
     {
-      "ccn": "361725",
-      "name": "AFFINITY CARE OF NORTHERN OHIO LLC",
-      "city": "MUNROE FALLS",
+      "ccn": "361713",
+      "name": "AFFINITY CARE OF OHIO LLC",
+      "city": "CINCINNATI",
       "state": "OH",
-      "zip": "44262",
+      "zip": "45249",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 61,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -157,7 +164,7 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -176,7 +183,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 62,
+      "cahps_overall_rating_pct": 69,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -195,7 +202,7 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -214,7 +221,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -233,7 +240,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -252,7 +259,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -267,5 +274,5 @@
     "STERN FAMILY 2019 TRUST"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

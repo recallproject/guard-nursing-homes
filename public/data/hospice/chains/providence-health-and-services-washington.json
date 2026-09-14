@@ -2,7 +2,7 @@
   "chain_name": "PROVIDENCE HEALTH & SERVICES - WASHINGTON",
   "chain_slug": "providence-health-and-services-washington",
   "norm_key": "providence health and services washington",
-  "facility_count": 11,
+  "facility_count": 13,
   "state_count": 5,
   "states": [
     "AK",
@@ -11,30 +11,30 @@
     "TX",
     "WA"
   ],
-  "avg_cms_rating": 4.91,
-  "avg_hci_composite": 9.45,
-  "avg_cahps_overall": 82.82,
+  "avg_cms_rating": 4.92,
+  "avg_hci_composite": 9.54,
+  "avg_cahps_overall": 83.31,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
-  "flagged_pct": 18.2,
-  "oldest_association": "2008-12-31",
-  "newest_association": "2022-01-01",
+  "flagged_pct": 15.4,
+  "oldest_association": "2010-01-01",
+  "newest_association": "2025-02-27",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
-  "non_profit_disclosure_count": 13,
-  "avg_disclosed_ownership_pct": 100,
-  "member_count": 11,
+  "non_profit_disclosure_count": 9,
+  "avg_disclosed_ownership_pct": 74.4,
+  "member_count": 13,
   "members": [
     {
       "ccn": "021506",
-      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, AN",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, ANCHORAGE",
       "city": "ANCHORAGE",
       "state": "AK",
       "zip": "99508",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 87,
@@ -48,15 +48,53 @@
       }
     },
     {
+      "ccn": "051537",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE AND PALLIATIVE CARE NAPA VALLEY",
+      "city": "NAPA",
+      "state": "CA",
+      "zip": "94559",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "051512",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE LA COUNTY",
+      "city": "TORRANCE",
+      "state": "CA",
+      "zip": "90503",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "551658",
-      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE ORA",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE ORANGE COUNTY SOUTH",
       "city": "MISSION VIEJO",
       "state": "CA",
       "zip": "92691",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -68,14 +106,14 @@
     },
     {
       "ccn": "051557",
-      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, SO",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, SONOMA COUNTY",
       "city": "PETALUMA",
       "state": "CA",
       "zip": "94952",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -94,46 +132,8 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "051512",
-      "name": "PROVIDENCE HOSPICE LA COUNTY",
-      "city": "TORRANCE",
-      "state": "CA",
-      "zip": "90503",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
-      "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "051537",
-      "name": "PROVIDENCE HOSPICE NAPA VALLEY",
-      "city": "NAPA",
-      "state": "CA",
-      "zip": "94559",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -151,7 +151,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -182,7 +182,7 @@
     },
     {
       "ccn": "451519",
-      "name": "COVENANT HEALTH AT HOME WITH COMPASSUS, HOSPICE OF",
+      "name": "COVENANT HEALTH AT HOME WITH COMPASSUS, HOSPICE OF LUBBOCK",
       "city": "LUBBOCK",
       "state": "TX",
       "zip": "79410",
@@ -201,7 +201,7 @@
     },
     {
       "ccn": "501515",
-      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, PU",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, PUGET SOUND",
       "city": "TUKWILA",
       "state": "WA",
       "zip": "98168",
@@ -209,6 +209,44 @@
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": 78,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501511",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS, PUGET SOUND SOUTH",
+      "city": "LACEY",
+      "state": "WA",
+      "zip": "98503",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501514",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS, SNOHOMISH COUNTY",
+      "city": "EVERETT",
+      "state": "WA",
+      "zip": "98203",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -227,7 +265,7 @@
       "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -242,5 +280,5 @@
     "PROVIDENCE HEALTH & SERVICES - WASHINGTON"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.688Z"
 }

@@ -1,5 +1,5 @@
 {
-  "chain_name": "ADVOCATE HEALTH, INC.",
+  "chain_name": "ADVOCATE HEALTH INC",
   "chain_slug": "advocate-health-inc",
   "norm_key": "advocate health",
   "facility_count": 7,
@@ -12,7 +12,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.57,
-  "avg_cahps_overall": 85.29,
+  "avg_cahps_overall": 86.14,
   "flagged_facility_count": 6,
   "flagged_pattern_count": 8,
   "flagged_pct": 85.7,
@@ -29,7 +29,7 @@
   "members": [
     {
       "ccn": "111524",
-      "name": "ATRIUM HEALTH FLOYD MEDICAL CENTER HEYMAN HOSPICE ",
+      "name": "ATRIUM HEALTH FLOYD MEDICAL CENTER HEYMAN HOSPICE CARE",
       "city": "ROME",
       "state": "GA",
       "zip": "30161",
@@ -48,11 +48,11 @@
     },
     {
       "ccn": "111519",
-      "name": "ATRIUM HEALTH NAVICENT HOSPICE PINE POINTE ",
+      "name": "ATRIUM HEALTH NAVICENT HOSPICE PINE POINTE",
       "city": "MACON",
       "state": "GA",
       "zip": "31210",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 92,
@@ -74,8 +74,27 @@
       "ownership_type": "Combination Government & Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "341513",
+      "name": "ATRIUM HEALTH HOSPICE UNION",
+      "city": "MONROE",
+      "state": "NC",
+      "zip": "28110",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -90,30 +109,11 @@
       "city": "KANNAPOLIS",
       "state": "NC",
       "zip": "28081",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "341513",
-      "name": "HOSPICE OF UNION COUNTY",
-      "city": "MONROE",
-      "state": "NC",
-      "zip": "28110",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
-      "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -131,7 +131,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -162,8 +162,8 @@
     }
   ],
   "raw_owner_names_in_disclosure": [
-    "ADVOCATE HEALTH, INC."
+    "ADVOCATE HEALTH INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.689Z"
 }

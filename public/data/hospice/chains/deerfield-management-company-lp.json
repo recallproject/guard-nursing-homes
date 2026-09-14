@@ -2,14 +2,15 @@
   "chain_name": "DEERFIELD MANAGEMENT COMPANY LP",
   "chain_slug": "deerfield-management-company-lp",
   "norm_key": "deerfield management",
-  "facility_count": 58,
-  "state_count": 23,
+  "facility_count": 53,
+  "state_count": 24,
   "states": [
     "AK",
     "AL",
     "AR",
     "AZ",
     "CO",
+    "CT",
     "GA",
     "ID",
     "IL",
@@ -29,22 +30,22 @@
     "WA",
     "WY"
   ],
-  "avg_cms_rating": 4.77,
-  "avg_hci_composite": 9.21,
-  "avg_cahps_overall": 81.09,
+  "avg_cms_rating": 4.78,
+  "avg_hci_composite": 9.18,
+  "avg_cahps_overall": 83.14,
   "flagged_facility_count": 9,
   "flagged_pattern_count": 9,
-  "flagged_pct": 15.5,
+  "flagged_pct": 17,
   "oldest_association": "2022-12-31",
-  "newest_association": "2023-12-31",
+  "newest_association": "2025-05-07",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 54,
+  "for_profit_disclosure_count": 46,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 9.7,
-  "member_count": 58,
+  "avg_disclosed_ownership_pct": 9.75,
+  "member_count": 53,
   "members": [
     {
       "ccn": "531507A",
@@ -81,7 +82,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -100,7 +101,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -119,7 +120,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -138,7 +139,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 94,
+      "cahps_overall_rating_pct": 95,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -157,7 +158,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 67,
+      "cahps_overall_rating_pct": 70,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -176,7 +177,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -188,7 +189,7 @@
     },
     {
       "ccn": "031628",
-      "name": "ENHABIT HOSPICE ",
+      "name": "ENHABIT HOSPICE",
       "city": "MESA",
       "state": "AZ",
       "zip": "85205",
@@ -214,7 +215,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -230,9 +231,28 @@
       "city": "COLORADO SPRINGS",
       "state": "CO",
       "zip": "80907",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "071549",
+      "name": "ENHABIT HOSPICE",
+      "city": "ROCKY HILL",
+      "state": "CT",
+      "zip": "06067",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
       "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
@@ -252,7 +272,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111763",
+      "name": "ENHABIT HOSPICE",
+      "city": "MACON",
+      "state": "GA",
+      "zip": "31210",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -271,7 +310,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 67,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -282,15 +321,15 @@
       }
     },
     {
-      "ccn": "111763",
-      "name": "ENHABIT HOSPICE ",
-      "city": "MACON",
+      "ccn": "851612",
+      "name": "ENHABIT HOSPICE",
+      "city": "FORTSON",
       "state": "GA",
-      "zip": "31210",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 69,
+      "zip": "31808",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -309,7 +348,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -347,7 +386,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -363,7 +402,7 @@
       "city": "SPRINGFIELD",
       "state": "IL",
       "zip": "62703",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -439,10 +478,10 @@
       "city": "VIDALIA",
       "state": "LA",
       "zip": "71373",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 94,
+      "cahps_overall_rating_pct": 97,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -477,10 +516,10 @@
       "city": "FLOWOOD",
       "state": "MS",
       "zip": "39232",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -492,14 +531,14 @@
     },
     {
       "ccn": "251591",
-      "name": "ENHABIT HOSPICE OF NORTH MISSISSIPPI ",
+      "name": "ENHABIT HOSPICE OF NORTH MISSISSIPPI",
       "city": "OXFORD",
       "state": "MS",
       "zip": "38655",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -511,14 +550,14 @@
     },
     {
       "ccn": "251618",
-      "name": "ENHABIT HOSPICE OF NORTHEAST MISSISSIPPI ",
+      "name": "ENHABIT HOSPICE OF NORTHEAST MISSISSIPPI",
       "city": "TUPELO",
       "state": "MS",
       "zip": "38801",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -530,11 +569,11 @@
     },
     {
       "ccn": "251653",
-      "name": "ENHABIT HOSPICE OF SOUTHWEST MISSISSIPPI ",
+      "name": "ENHABIT HOSPICE OF SOUTHWEST MISSISSIPPI",
       "city": "MCCOMB",
       "state": "MS",
       "zip": "39648",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -553,10 +592,10 @@
       "city": "BILOXI",
       "state": "MS",
       "zip": "39503",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -572,7 +611,7 @@
       "city": "HELENA",
       "state": "MT",
       "zip": "59601",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 79,
@@ -591,10 +630,10 @@
       "city": "BOZEMAN",
       "state": "MT",
       "zip": "59718",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -613,7 +652,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -632,7 +671,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -670,7 +709,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -700,6 +739,25 @@
       }
     },
     {
+      "ccn": "371642",
+      "name": "ENHABIT HOSPICE",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73116",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "421623",
       "name": "ENHABIT HOSPICE",
       "city": "AIKEN",
@@ -708,7 +766,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -724,105 +782,10 @@
       "city": "NASHVILLE",
       "state": "TN",
       "zip": "37214",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "671746",
-      "name": "ENHABIT HOSPICE",
-      "city": "SAN ANTONIO",
-      "state": "TX",
-      "zip": "78232",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 65,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "671733",
-      "name": "ENHABIT HOSPICE",
-      "city": "FORT WORTH",
-      "state": "TX",
-      "zip": "76116",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 72,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "671703",
-      "name": "ENHABIT HOSPICE",
-      "city": "PASADENA",
-      "state": "TX",
-      "zip": "77505",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "671738",
-      "name": "ENHABIT HOSPICE",
-      "city": "COLLEGE STATION",
-      "state": "TX",
-      "zip": "77840",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 92,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "741638",
-      "name": "ENHABIT HOSPICE",
-      "city": "AUSTIN",
-      "state": "TX",
-      "zip": "78744",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -841,26 +804,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "451785",
-      "name": "ENHABIT HOSPICE",
-      "city": "TEXARKANA",
-      "state": "TX",
-      "zip": "75503",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -876,30 +820,11 @@
       "city": "EL PASO",
       "state": "TX",
       "zip": "79922",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Government",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "971668",
-      "name": "ENHABIT HOSPICE",
-      "city": "TYLER",
-      "state": "TX",
-      "zip": "75701",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
-      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -917,7 +842,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -936,26 +861,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 96,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "A91501",
-      "name": "ENHABIT HOSPICE",
-      "city": "TEMPLE",
-      "state": "TX",
-      "zip": "76502",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 97,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -968,32 +874,13 @@
     {
       "ccn": "451793",
       "name": "ENHABIT HOSPICE",
-      "city": "GUN BARREL CITY",
+      "city": "KEMP",
       "state": "TX",
-      "zip": "75156",
+      "zip": "75143",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 91,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "A91615",
-      "name": "ENHABIT HOSPICE",
-      "city": "LUBBOCK",
-      "state": "TX",
-      "zip": "79423",
-      "ownership_type": null,
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1031,7 +918,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1050,7 +937,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -1061,15 +948,34 @@
       }
     },
     {
+      "ccn": "491663",
+      "name": "ENHABIT HOSPICE",
+      "city": "VIRGINIA BEACH",
+      "state": "VA",
+      "zip": "23462",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "491613",
-      "name": "ENHABIT  HOSPICE (RICHMOND)",
+      "name": "ENHABIT HOSPICE (RICHMOND)",
       "city": "RICHMOND",
       "state": "VA",
       "zip": "23235",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1088,7 +994,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1107,7 +1013,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -1126,7 +1032,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 95,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1141,5 +1047,5 @@
     "DEERFIELD MANAGEMENT COMPANY LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.456Z"
+  "generated_at": "2026-09-14T15:56:26.682Z"
 }

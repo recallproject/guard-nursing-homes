@@ -2,28 +2,28 @@
   "chain_name": "GENERAL ATLANTIC (AS) COLLECTIONS LP",
   "chain_slug": "general-atlantic-as-collections-lp",
   "norm_key": "general atlantic as collections",
-  "facility_count": 2,
+  "facility_count": 3,
   "state_count": 2,
   "states": [
     "MI",
     "OH"
   ],
-  "avg_cms_rating": 5,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 78.5,
-  "flagged_facility_count": 2,
-  "flagged_pattern_count": 4,
+  "avg_cms_rating": 4.67,
+  "avg_hci_composite": 8.67,
+  "avg_cahps_overall": 82.33,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 5,
   "flagged_pct": 100,
   "oldest_association": "2018-02-06",
-  "newest_association": "2019-01-01",
+  "newest_association": "2026-02-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 25.9,
-  "member_count": 2,
+  "avg_disclosed_ownership_pct": 24.9,
+  "member_count": 3,
   "members": [
     {
       "ccn": "231574",
@@ -34,8 +34,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361591",
+      "name": "ADENA HOSPICE",
+      "city": "CHILLICOTHE",
+      "state": "OH",
+      "zip": "45601",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -53,7 +72,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +87,5 @@
     "GENERAL ATLANTIC (AS) COLLECTIONS LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.704Z"
 }

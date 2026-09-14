@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 80,
+  "avg_cahps_overall": 82,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
   "flagged_pct": 100,
@@ -52,7 +52,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "FROEDTERT THEDACARE HEALTH, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.691Z"
 }

@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.75,
-  "avg_cahps_overall": 83,
+  "avg_cahps_overall": 84.67,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -27,10 +27,10 @@
   "members": [
     {
       "ccn": "171612",
-      "name": "KINDFUL HOSPICE",
-      "city": "WICHITA",
+      "name": "CHOICE HOSPICE",
+      "city": "OVERLAND PARK",
       "state": "KS",
-      "zip": "67211",
+      "zip": "66210",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
@@ -53,7 +53,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -72,7 +72,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -84,14 +84,14 @@
     },
     {
       "ccn": "371629",
-      "name": "CHOICE HEALTH AT HOME - SOUTHEASTERN OKLAHOMA HOSP",
+      "name": "CHOICE HEALTH AT HOME - SOUTHEASTERN OKLAHOMA HOSPICE",
       "city": "ADA",
       "state": "OK",
       "zip": "74820",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -106,5 +106,5 @@
     "CHOICE HOSPICE OF OKLAHOMA LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

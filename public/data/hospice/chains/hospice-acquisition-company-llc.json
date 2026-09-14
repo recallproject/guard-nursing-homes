@@ -3,16 +3,15 @@
   "chain_slug": "hospice-acquisition-company-llc",
   "norm_key": "hospice acquisition",
   "facility_count": 5,
-  "state_count": 4,
+  "state_count": 3,
   "states": [
     "MI",
     "OH",
-    "TX",
-    "WI"
+    "TX"
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.8,
-  "avg_cahps_overall": 78.8,
+  "avg_cahps_overall": 85,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -28,15 +27,34 @@
   "member_count": 5,
   "members": [
     {
+      "ccn": "231611",
+      "name": "CROSSBRIDGE HOSPICE",
+      "city": "TROY",
+      "state": "MI",
+      "zip": "48084",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "231628",
-      "name": "CROSSBRIDGE HOSPICE ",
-      "city": "KENTWOOD ",
+      "name": "CROSSBRIDGE HOSPICE",
+      "city": "KENTWOOD",
       "state": "MI",
       "zip": "49512",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -48,14 +66,14 @@
     },
     {
       "ccn": "361702",
-      "name": "GRACE HOSPICE",
+      "name": "CROSSBRIDGE HOSPICE",
       "city": "CINCINNATI",
       "state": "OH",
       "zip": "45245",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -67,14 +85,14 @@
     },
     {
       "ccn": "361703",
-      "name": "GRACE HOSPICE",
+      "name": "CROSSBRIDGE HOSPICE",
       "city": "YOUNGSTOWN",
       "state": "OH",
       "zip": "44512",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -93,26 +111,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "521598",
-      "name": "CROSSBRIDGE HOSPICE",
-      "city": "WEST ALLIS",
-      "state": "WI",
-      "zip": "53227",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -127,5 +126,5 @@
     "HOSPICE ACQUISITION COMPANY, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.699Z"
 }

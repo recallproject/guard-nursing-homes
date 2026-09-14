@@ -26,7 +26,7 @@
   "members": [
     {
       "ccn": "111524",
-      "name": "ATRIUM HEALTH FLOYD MEDICAL CENTER HEYMAN HOSPICE ",
+      "name": "ATRIUM HEALTH FLOYD MEDICAL CENTER HEYMAN HOSPICE CARE",
       "city": "ROME",
       "state": "GA",
       "zip": "30161",
@@ -45,11 +45,11 @@
     },
     {
       "ccn": "111519",
-      "name": "ATRIUM HEALTH NAVICENT HOSPICE PINE POINTE ",
+      "name": "ATRIUM HEALTH NAVICENT HOSPICE PINE POINTE",
       "city": "MACON",
       "state": "GA",
       "zip": "31210",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 92,
@@ -67,5 +67,5 @@
     "AH GEORGIA INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.701Z"
 }

@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 3.5,
   "avg_hci_composite": 8,
-  "avg_cahps_overall": 90.5,
+  "avg_cahps_overall": 95,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
   "flagged_pct": 100,
@@ -34,7 +34,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -53,7 +53,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 2,
       "hci_composite": 6,
-      "cahps_overall_rating_pct": 91,
+      "cahps_overall_rating_pct": 98,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +68,5 @@
     "SAAD ENTERPRISES, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.705Z"
 }

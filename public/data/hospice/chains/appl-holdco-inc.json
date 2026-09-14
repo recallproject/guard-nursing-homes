@@ -2,17 +2,17 @@
   "chain_name": "APPL HOLDCO, INC.",
   "chain_slug": "appl-holdco-inc",
   "norm_key": "appl holdco",
-  "facility_count": 2,
+  "facility_count": 3,
   "state_count": 2,
   "states": [
     "KS",
     "MO"
   ],
-  "avg_cms_rating": 4.5,
-  "avg_hci_composite": 8.5,
+  "avg_cms_rating": 4.33,
+  "avg_hci_composite": 8.33,
   "avg_cahps_overall": 83,
-  "flagged_facility_count": 2,
-  "flagged_pattern_count": 2,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 4,
   "flagged_pct": 100,
   "oldest_association": "2025-06-01",
   "newest_association": "2025-06-01",
@@ -23,7 +23,7 @@
   "for_profit_disclosure_count": 2,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 70,
-  "member_count": 2,
+  "member_count": 3,
   "members": [
     {
       "ccn": "171606",
@@ -45,8 +45,27 @@
       }
     },
     {
+      "ccn": "171512",
+      "name": "GOLDEN BELT HOSPICE",
+      "city": "GREAT BEND",
+      "state": "KS",
+      "zip": "67530",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 2,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "261683",
-      "name": "APPL ORCHARD HOSPICE OF MISSOURI, INC",
+      "name": "AQUINAS HOSPICE OF MISSOURI",
       "city": "KANSAS CITY",
       "state": "MO",
       "zip": "64102",
@@ -68,5 +87,5 @@
     "APPL HOLDCO, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.710Z"
 }

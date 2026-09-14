@@ -10,11 +10,11 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.75,
-  "avg_cahps_overall": 79.25,
+  "avg_cahps_overall": 79.75,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
-  "oldest_association": "2006-01-01",
+  "oldest_association": "2013-01-28",
   "newest_association": "2024-01-03",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
@@ -22,12 +22,12 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 2,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 89.75,
+  "avg_disclosed_ownership_pct": 96,
   "member_count": 4,
   "members": [
     {
       "ccn": "321568",
-      "name": "INTERIM HOSPICE",
+      "name": "EXCELACARE HOSPICE",
       "city": "CLOVIS",
       "state": "NM",
       "zip": "88101",
@@ -45,14 +45,14 @@
       }
     },
     {
-      "ccn": "671795",
-      "name": "INTERIM HOSPICE OF GRANBURY",
-      "city": "WACO",
+      "ccn": "671561",
+      "name": "EXCELACARE HOSPICE",
+      "city": "LUBBOCK",
       "state": "TX",
-      "zip": "76710",
+      "zip": "79423",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 10,
+      "hci_composite": 9,
       "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
@@ -65,14 +65,14 @@
     },
     {
       "ccn": "671669",
-      "name": "INTERIM HOSPICE OF PERMIAN BASIN",
+      "name": "EXCELACARE HOSPICE",
       "city": "SAN ANTONIO",
       "state": "TX",
       "zip": "78213",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -83,14 +83,14 @@
       }
     },
     {
-      "ccn": "671561",
-      "name": "INTERIM HOSPICE OF WEST TEXAS",
-      "city": "LUBBOCK",
+      "ccn": "671795",
+      "name": "MAGNOLIA HOSPICE",
+      "city": "WACO",
       "state": "TX",
-      "zip": "79423",
+      "zip": "76710",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 9,
+      "hci_composite": 10,
       "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
@@ -106,5 +106,5 @@
     "FALCON HEALTHCARE INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.693Z"
 }

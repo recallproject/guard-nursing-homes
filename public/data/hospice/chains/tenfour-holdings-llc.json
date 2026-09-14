@@ -2,7 +2,7 @@
   "chain_name": "TENFOUR HOLDINGS LLC",
   "chain_slug": "tenfour-holdings-llc",
   "norm_key": "tenfour",
-  "facility_count": 4,
+  "facility_count": 5,
   "state_count": 2,
   "states": [
     "GA",
@@ -10,10 +10,10 @@
   ],
   "avg_cms_rating": 4,
   "avg_hci_composite": 8.67,
-  "avg_cahps_overall": 76.5,
+  "avg_cahps_overall": 79,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 25,
+  "flagged_pct": 20,
   "oldest_association": "2020-02-28",
   "newest_association": "2023-09-21",
   "is_pe_disclosed": false,
@@ -22,8 +22,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 42.79,
-  "member_count": 4,
+  "avg_disclosed_ownership_pct": 41.34,
+  "member_count": 5,
   "members": [
     {
       "ccn": "851542",
@@ -34,7 +34,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,7 +50,7 @@
       "city": "DUBLIN",
       "state": "GA",
       "zip": "31021",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 2,
       "hci_composite": 6,
       "cahps_overall_rating_pct": null,
@@ -72,7 +72,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -100,11 +100,30 @@
         "nonProfit": false,
         "chain": false
       }
+    },
+    {
+      "ccn": "A91740",
+      "name": "REMARKABLE HOSPICE",
+      "city": "COLLEGE STATION",
+      "state": "TX",
+      "zip": "77845",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "TENFOUR HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.708Z"
 }

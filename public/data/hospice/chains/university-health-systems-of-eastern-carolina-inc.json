@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 89,
+  "avg_cahps_overall": 90,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 3,
   "flagged_pct": 100,
@@ -26,14 +26,14 @@
   "members": [
     {
       "ccn": "341538",
-      "name": "ECU HEALTH HOME HEALTH AND HOSPICE ",
+      "name": "ECU HEALTH HOME HEALTH AND HOSPICE",
       "city": "KENANSVILLE",
       "state": "NC",
       "zip": "28349",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "UNIVERSITY HEALTH SYSTEMS OF EASTERN CAROLINA, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.692Z"
 }

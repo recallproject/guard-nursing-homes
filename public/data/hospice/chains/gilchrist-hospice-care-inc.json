@@ -2,18 +2,17 @@
   "chain_name": "GILCHRIST HOSPICE CARE INC",
   "chain_slug": "gilchrist-hospice-care-inc",
   "norm_key": "gilchrist hospice care",
-  "facility_count": 3,
-  "state_count": 2,
+  "facility_count": 2,
+  "state_count": 1,
   "states": [
-    "MD",
-    "PA"
+    "MD"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.67,
-  "avg_cahps_overall": 80.67,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 77.5,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 33.3,
+  "flagged_pct": 50,
   "oldest_association": "2022-01-01",
   "newest_association": "2024-09-01",
   "is_pe_disclosed": false,
@@ -22,8 +21,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 1,
-  "avg_disclosed_ownership_pct": 83.33,
-  "member_count": 3,
+  "avg_disclosed_ownership_pct": 75,
+  "member_count": 2,
   "members": [
     {
       "ccn": "211511",
@@ -46,33 +45,14 @@
     },
     {
       "ccn": "211546",
-      "name": "LUMINIS HEALTH GILCHRIST LIFE CARE INSTITUTE ",
+      "name": "LUMINIS HEALTH GILCHRIST LIFE CARE INSTITUTE",
       "city": "ANNAPOLIS",
       "state": "MD",
       "zip": "21401",
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 65,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "391793",
-      "name": "FRANKLIN HOSPICE LLC",
-      "city": "CHAMBERSBURG",
-      "state": "PA",
-      "zip": "17201",
-      "ownership_type": "Non-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 92,
+      "cahps_overall_rating_pct": 70,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -87,5 +67,5 @@
     "GILCHRIST HOSPICE CARE INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.453Z"
+  "generated_at": "2026-09-14T15:56:26.671Z"
 }

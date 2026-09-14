@@ -2,14 +2,14 @@
   "chain_name": "GREG & KELLY SEALES FAMILY, LP",
   "chain_slug": "greg-and-kelly-seales-family-lp",
   "norm_key": "greg and kelly seales family",
-  "facility_count": 4,
+  "facility_count": 3,
   "state_count": 1,
   "states": [
     "TX"
   ],
-  "avg_cms_rating": 4.75,
-  "avg_hci_composite": 8.75,
-  "avg_cahps_overall": 85.5,
+  "avg_cms_rating": 4.67,
+  "avg_hci_composite": 8.67,
+  "avg_cahps_overall": 84.67,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -21,8 +21,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 46.5,
-  "member_count": 4,
+  "avg_disclosed_ownership_pct": 48.13,
+  "member_count": 3,
   "members": [
     {
       "ccn": "671777",
@@ -33,7 +33,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,26 +52,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "741656",
-      "name": "BEYONDFAITH HOSPICE OF WICHITA FALLS LLC",
-      "city": "WICHITA FALLS",
-      "state": "TX",
-      "zip": "76301",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -90,7 +71,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -105,5 +86,5 @@
     "GREG & KELLY SEALES FAMILY, LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.705Z"
 }

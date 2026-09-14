@@ -2,7 +2,7 @@
   "chain_name": "IG TRUST",
   "chain_slug": "ig-trust",
   "norm_key": "ig trust",
-  "facility_count": 2,
+  "facility_count": 3,
   "state_count": 2,
   "states": [
     "OH",
@@ -13,7 +13,7 @@
   "avg_cahps_overall": null,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 50,
+  "flagged_pct": 33.3,
   "oldest_association": "2023-10-04",
   "newest_association": "2023-12-29",
   "is_pe_disclosed": false,
@@ -22,8 +22,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 5,
-  "member_count": 2,
+  "avg_disclosed_ownership_pct": 4,
+  "member_count": 3,
   "members": [
     {
       "ccn": "361714",
@@ -45,12 +45,31 @@
       }
     },
     {
+      "ccn": "361747",
+      "name": "CONSTELLATION HOSPICE",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45206",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "A91506",
       "name": "CONSTELLATION HOSPICE TX",
       "city": "HOUSTON",
       "state": "TX",
       "zip": "77063",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 2,
       "hci_composite": 6,
       "cahps_overall_rating_pct": null,
@@ -68,5 +87,5 @@
     "IG TRUST"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.711Z"
 }

@@ -2,33 +2,34 @@
   "chain_name": "BLACK ROCK INSTITUTIONAL TRUST COMPANY N.A.",
   "chain_slug": "black-rock-institutional-trust-company-n-a",
   "norm_key": "black rock institutional trust company n a",
-  "facility_count": 15,
-  "state_count": 7,
+  "facility_count": 16,
+  "state_count": 8,
   "states": [
     "ID",
     "NM",
     "OH",
     "OR",
+    "PA",
     "TN",
     "TX",
     "VA"
   ],
-  "avg_cms_rating": 4.87,
-  "avg_hci_composite": 9.33,
-  "avg_cahps_overall": 78.67,
-  "flagged_facility_count": 1,
-  "flagged_pattern_count": 1,
-  "flagged_pct": 6.7,
+  "avg_cms_rating": 4.88,
+  "avg_hci_composite": 9.31,
+  "avg_cahps_overall": 81.92,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 12.5,
   "oldest_association": "2018-05-01",
-  "newest_association": "2024-01-01",
+  "newest_association": "2025-08-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 14.84,
-  "member_count": 15,
+  "avg_disclosed_ownership_pct": 15.51,
+  "member_count": 16,
   "members": [
     {
       "ccn": "131553",
@@ -39,7 +40,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 66,
+      "cahps_overall_rating_pct": 67,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -77,7 +78,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -96,7 +97,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -115,7 +116,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -127,14 +128,14 @@
     },
     {
       "ccn": "361664",
-      "name": "QUEEN CITY HOSPICE ",
+      "name": "QUEEN CITY HOSPICE",
       "city": "MASON",
       "state": "OH",
       "zip": "45040",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -153,7 +154,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -172,7 +173,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -191,7 +192,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -202,15 +203,34 @@
       }
     },
     {
+      "ccn": "731508",
+      "name": "STEEL CITY HOSPICE",
+      "city": "HERMITAGE",
+      "state": "PA",
+      "zip": "16148",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 93,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "441582",
-      "name": "TENNESSEE QUALITY CARE - HOSPICE ",
+      "name": "TENNESSEE QUALITY CARE - HOSPICE",
       "city": "JACKSON",
       "state": "TN",
       "zip": "38305",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -229,7 +249,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -248,7 +268,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -263,7 +283,7 @@
       "name": "ALAMO HOSPICE OF CONROE",
       "city": "CONROE",
       "state": "TX",
-      "zip": "77304",
+      "zip": "77302",
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
@@ -299,13 +319,13 @@
     {
       "ccn": "491537",
       "name": "HOSPICE OF VIRGINIA",
-      "city": "RICHMOND",
+      "city": "TAPPAHANNOCK",
       "state": "VA",
-      "zip": "23230",
+      "zip": "22560",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -320,5 +340,5 @@
     "BLACK ROCK INSTITUTIONAL TRUST COMPANY N.A."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.692Z"
 }

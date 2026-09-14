@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 81,
+  "avg_cahps_overall": 84.5,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 4,
   "flagged_pct": 100,
@@ -33,7 +33,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -45,14 +45,14 @@
     },
     {
       "ccn": "341575",
-      "name": "NOVANT HEALTH HOSPICE AND PALLIATIVE CARE A DEPART",
+      "name": "NOVANT HEALTH HOSPICE AND PALLIATIVE CARE A DEPARTMENT OF NOVANT HEALTH",
       "city": "CHARLOTTE",
       "state": "NC",
       "zip": "28204",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "NOVANT HEALTH, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.705Z"
 }

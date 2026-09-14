@@ -17,7 +17,7 @@
   ],
   "avg_cms_rating": 4.91,
   "avg_hci_composite": 9.64,
-  "avg_cahps_overall": 80,
+  "avg_cahps_overall": 81.8,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
   "flagged_pct": 25,
@@ -29,7 +29,7 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 3,
   "non_profit_disclosure_count": 11,
-  "avg_disclosed_ownership_pct": 81.11,
+  "avg_disclosed_ownership_pct": 83,
   "member_count": 12,
   "members": [
     {
@@ -48,7 +48,7 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -67,7 +67,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -79,14 +79,14 @@
     },
     {
       "ccn": "261646",
-      "name": "INTEGRITY HOME CARE + HOSPICE ",
+      "name": "INTEGRITY HOME CARE + HOSPICE",
       "city": "SPRINGFIELD",
       "state": "MO",
       "zip": "65804",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -124,7 +124,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -143,7 +143,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -162,7 +162,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -181,7 +181,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -200,7 +200,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -219,7 +219,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -232,13 +232,13 @@
     {
       "ccn": "471510",
       "name": "BAYADA HOSPICE",
-      "city": "NORWICH",
+      "city": "RUTLAND",
       "state": "VT",
-      "zip": "05055",
+      "zip": "05701",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -253,5 +253,5 @@
     "BAYADA HOME HEALTH CARE, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.703Z"
 }

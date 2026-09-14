@@ -2,28 +2,29 @@
   "chain_name": "TRINITY HOME HEALTH SERVICES",
   "chain_slug": "trinity-home-health-services",
   "norm_key": "trinity home health services",
-  "facility_count": 3,
-  "state_count": 2,
+  "facility_count": 4,
+  "state_count": 3,
   "states": [
     "CT",
-    "MI"
+    "MI",
+    "PA"
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.67,
-  "avg_cahps_overall": 83.67,
+  "avg_cahps_overall": 84,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
   "oldest_association": "2017-01-29",
-  "newest_association": "2022-10-01",
+  "newest_association": "2024-10-24",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
-  "non_profit_disclosure_count": 3,
-  "avg_disclosed_ownership_pct": 73.33,
-  "member_count": 3,
+  "non_profit_disclosure_count": 4,
+  "avg_disclosed_ownership_pct": 80,
+  "member_count": 4,
   "members": [
     {
       "ccn": "071520",
@@ -31,10 +32,10 @@
       "city": "HARTFORD",
       "state": "CT",
       "zip": "06112",
-      "ownership_type": "Other",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -53,7 +54,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -72,7 +73,26 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "731519",
+      "name": "ST. MARY HOSPICE",
+      "city": "NEWTOWN",
+      "state": "PA",
+      "zip": "18940",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -87,5 +107,5 @@
     "TRINITY HOME HEALTH SERVICES"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.456Z"
+  "generated_at": "2026-09-14T15:56:26.683Z"
 }

@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.5,
-  "avg_cahps_overall": 79,
+  "avg_cahps_overall": 82,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -30,10 +30,10 @@
       "city": "ESCONDIDO",
       "state": "CA",
       "zip": "92025",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,7 +52,7 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "VISTARIVER"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.711Z"
 }

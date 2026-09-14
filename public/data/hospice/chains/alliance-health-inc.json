@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 72,
+  "avg_cahps_overall": 74,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -34,7 +34,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 60,
+      "cahps_overall_rating_pct": 63,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -49,11 +49,11 @@
       "name": "ELARA CARING VII",
       "city": "ENID",
       "state": "OK",
-      "zip": "73701",
+      "zip": "73703",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +68,5 @@
     "ALLIANCE HEALTH INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.693Z"
 }

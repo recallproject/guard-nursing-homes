@@ -2,7 +2,7 @@
   "chain_name": "HEALTH ESSENTIALS ACQUISITION CORP",
   "chain_slug": "health-essentials-acquisition-corp",
   "norm_key": "health essentials acquisition",
-  "facility_count": 4,
+  "facility_count": 5,
   "state_count": 2,
   "states": [
     "AZ",
@@ -10,21 +10,28 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.5,
-  "avg_cahps_overall": 66.5,
+  "avg_cahps_overall": 68.25,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 25,
+  "flagged_pct": 20,
   "oldest_association": "2011-11-14",
-  "newest_association": "2020-04-07",
+  "newest_association": "2025-02-26",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 4,
+  "for_profit_disclosure_count": 3,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 87.5,
-  "member_count": 4,
+  "avg_disclosed_ownership_pct": 80,
+  "member_count": 5,
   "members": [
+    {
+      "ccn": "001586",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
     {
       "ccn": "031605",
       "name": "BRISTOL HOSPICE - TUCSON",
@@ -53,7 +60,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 66,
+      "cahps_overall_rating_pct": 69,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -72,7 +79,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 50,
+      "cahps_overall_rating_pct": 63,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -91,7 +98,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 61,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -106,5 +113,5 @@
     "HEALTH ESSENTIALS ACQUISITION CORP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.454Z"
+  "generated_at": "2026-09-14T15:56:26.672Z"
 }

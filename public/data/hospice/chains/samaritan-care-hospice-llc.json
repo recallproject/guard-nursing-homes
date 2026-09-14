@@ -2,19 +2,18 @@
   "chain_name": "SAMARITAN CARE HOSPICE, LLC",
   "chain_slug": "samaritan-care-hospice-llc",
   "norm_key": "samaritan care hospice",
-  "facility_count": 5,
-  "state_count": 3,
+  "facility_count": 4,
+  "state_count": 2,
   "states": [
-    "MI",
     "PA",
     "TX"
   ],
-  "avg_cms_rating": 4.8,
-  "avg_hci_composite": 9.2,
-  "avg_cahps_overall": 72.25,
-  "flagged_facility_count": 2,
-  "flagged_pattern_count": 2,
-  "flagged_pct": 40,
+  "avg_cms_rating": 4.75,
+  "avg_hci_composite": 9.25,
+  "avg_cahps_overall": 73,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 25,
   "oldest_association": "2006-09-29",
   "newest_association": "2009-05-20",
   "is_pe_disclosed": false,
@@ -24,27 +23,8 @@
   "for_profit_disclosure_count": 1,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 5,
+  "member_count": 4,
   "members": [
-    {
-      "ccn": "231562",
-      "name": "HOSPICE COMPASSUS-DETROIT",
-      "city": "FARMINGTON",
-      "state": "MI",
-      "zip": "48334",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
-      "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
     {
       "ccn": "391604",
       "name": "HOSPICE COMPASSUS - PHILADELPHIA",
@@ -54,7 +34,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +53,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 64,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -85,7 +65,7 @@
     },
     {
       "ccn": "A91647",
-      "name": "COMPASSUS - CORPUS CHRISTI",
+      "name": "COMPASSUS- CORPUS CHRISTI",
       "city": "CORPUS CHRISTI",
       "state": "TX",
       "zip": "78405",
@@ -111,7 +91,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -126,5 +106,5 @@
     "SAMARITAN CARE HOSPICE, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.456Z"
+  "generated_at": "2026-09-14T15:56:26.682Z"
 }

@@ -2,15 +2,16 @@
   "chain_name": "WALNUT COURT UNFUNDED LLC",
   "chain_slug": "walnut-court-unfunded-llc",
   "norm_key": "walnut court unfunded",
-  "facility_count": 2,
-  "state_count": 2,
+  "facility_count": 3,
+  "state_count": 3,
   "states": [
+    "FL",
     "PA",
     "TX"
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 87.5,
+  "avg_cahps_overall": 87,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -22,9 +23,28 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 8,
-  "member_count": 2,
+  "avg_disclosed_ownership_pct": 8.67,
+  "member_count": 3,
   "members": [
+    {
+      "ccn": "101575",
+      "name": "ARC HOSPICE OF FLORIDA LLC",
+      "city": "LEESBURG",
+      "state": "FL",
+      "zip": "34748",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
     {
       "ccn": "391792",
       "name": "COMMONWEALTH HOSPICE, LLC",
@@ -34,7 +54,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +88,5 @@
     "WALNUT COURT UNFUNDED LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.689Z"
 }
