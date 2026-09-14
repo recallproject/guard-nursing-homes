@@ -83,17 +83,17 @@ function App() {
   const location = useLocation();
   // Landing-page treatment (transparent header) applies to / and to the SNF page when the
   // post-acute hub is enabled — /skilled-nursing renders MapPage and needs the same header style.
-  const isLandingPage =
+  const isHomePage =
     location.pathname === '/' ||
     location.pathname === '' ||
-    location.pathname === '/post-acute' ||
-    location.pathname === '/skilled-nursing';
+    location.pathname === '/post-acute';
+  const isLandingPage = isHomePage || location.pathname === '/skilled-nursing';
   const { lastAdded, clearLastAdded } = useWatchlist();
 
   return (
     <>
       <CaliforniaBanner />
-      <Header transparent={isLandingPage} lightMode={isLandingPage} />
+      <Header transparent={isLandingPage} lightMode={isLandingPage} simple={isHomePage} />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/" element={POST_ACUTE_HOME_ENABLED ? <PostAcuteHomePage /> : <MapPage />} />

@@ -8,7 +8,7 @@ import '../styles/header.css';
  * Families / Professionals / Hospitals
  * Mobile hamburger menu
  */
-export function Header({ onSearchOpen, transparent = false, lightMode = false }) {
+export function Header({ onSearchOpen, transparent = false, lightMode = false, simple = false }) {
   const [isCompact, setIsCompact] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -69,6 +69,18 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
   const isActive = (path) => location.pathname === path;
   const isInGroup = (paths) => paths.some(p => location.pathname.startsWith(p));
 
+  const simpleLinks = [
+    { to: '/skilled-nursing', label: 'Nursing homes' },
+    { to: '/hospice', label: 'Hospice' },
+    { to: '/about', label: 'About' },
+  ];
+  const simpleMobileLinks = [
+    ...simpleLinks,
+    { to: '/home-health', label: 'Home health' },
+    { to: '/irf', label: 'Inpatient rehab' },
+    { to: '/ltach', label: 'LTACH' },
+  ];
+
   const navGroups = [
     {
       label: 'Families',
@@ -123,8 +135,8 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
 
   return (
     <>
-      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''}`} ref={navRef}>
-        <div className="site-header__inner">
+      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''} ${simple ? 'site-header--simple' : ''}`} ref={navRef}>
+        <div className={`site-header__inner ${simple ? 'site-header__inner--simple' : ''}`}>
           {/* Brand — onClick forces MapPage view reset when already on / */}
           <Link to="/" className="site-header__brand" onClick={(e) => {
             if (location.pathname === '/') {
@@ -136,8 +148,22 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
             <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
           </Link>
 
+          {simple && (
+            <nav className="site-header__simple-nav" aria-label="Main navigation">
+              {simpleLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={`site-header__simple-link ${isActive(link.to) ? 'site-header__simple-link--active' : ''}`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          )}
+
           {/* Desktop Nav */}
-          <nav className="site-header__nav" aria-label="Main navigation">
+          <nav className="site-header__nav" aria-label="Main navigation" hidden={simple}>
             {/* Top-level Compare link (no dropdown) */}
             <Link
               to="/compare"
@@ -202,6 +228,11 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
 
           {/* Actions */}
           <div className="site-header__actions">
+            {simple && (
+              <Link to="/ask-a-clinician" className="site-header__cta">
+                Ask a clinician
+              </Link>
+            )}
             <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Favorites (${watchlistCount})`}>
               <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
                 {watchlistCount > 0 ? '★' : '☆'}
@@ -265,6 +296,28 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
               </button>
             </div>
 
+            {simple ? (
+              <>
+                {simpleMobileLinks.map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`mobile-menu__standalone-link ${isActive(link.to) ? 'mobile-menu__standalone-link--active' : ''}`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+                <Link
+                  to="/ask-a-clinician"
+                  className="mobile-menu__search"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  Ask a clinician
+                </Link>
+              </>
+            ) : (
+            <>
             {/* Top-level Compare link */}
             <Link
               to="/compare"
@@ -311,6 +364,8 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false })
               >
                 Search Facilities
               </button>
+            )}
+            </>
             )}
           </nav>
         </div>

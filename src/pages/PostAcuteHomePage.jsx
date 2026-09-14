@@ -28,6 +28,14 @@ function browseMeta(setting) {
   return setting.statusLabel || 'Live';
 }
 
+function snfTrustLabel() {
+  const snf = POST_ACUTE_SETTINGS.find((s) => s.id === 'snf');
+  const n = parseInt(String(snf?.count || '').replace(/[^0-9]/g, ''), 10);
+  if (!Number.isFinite(n) || n <= 0) return '15,000+ nursing homes';
+  const rounded = Math.round(n / 1000) * 1000;
+  return `${rounded.toLocaleString('en-US')}+ nursing homes`;
+}
+
 function BrowseCard({ setting }) {
   if (!setting.route) return null;
   return (
@@ -35,6 +43,42 @@ function BrowseCard({ setting }) {
       <span className="pa-browse-card-title">{settingLabel(setting)}</span>
       <span className="pa-browse-card-meta">{browseMeta(setting)}</span>
     </Link>
+  );
+}
+
+function TrustIcon({ name }) {
+  const common = {
+    width: 16,
+    height: 16,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 1.8,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    'aria-hidden': true,
+  };
+  if (name === 'building') {
+    return (
+      <svg {...common}>
+        <path d="M4 21V7l8-4 8 4v14" />
+        <path d="M9 21V12h6v9M9 9h.01M12 9h.01M15 9h.01M9 16h.01M15 16h.01" />
+      </svg>
+    );
+  }
+  if (name === 'database') {
+    return (
+      <svg {...common}>
+        <ellipse cx="12" cy="6" rx="7" ry="3" />
+        <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
+      </svg>
+    );
+  }
+  return (
+    <svg {...common}>
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+    </svg>
   );
 }
 
@@ -56,28 +100,24 @@ export default function PostAcuteHomePage() {
                 <em>See the risk.</em>
               </h1>
               <p className="pa-hero-v3-sub">
-                One search. Risk, staffing, deficiencies, and ownership from public CMS records — not the facility’s marketing page.
+                Composite scores and key metrics from official CMS records. Search any nursing home to see star ratings, staffing, deficiencies, ownership, and more.
               </p>
 
               <HeroSearchDropdown />
 
-              <p className="pa-hero-v3-chip-label">Or browse a care setting</p>
-              <nav className="pa-hero-chips" aria-label="Browse a care setting">
-                {POST_ACUTE_SETTINGS.filter((setting) => setting.route).map((setting) => (
-                  <Link
-                    key={setting.id}
-                    to={setting.route}
-                    className="pa-hero-chip"
-                  >
-                    {settingLabel(setting)}
-                  </Link>
-                ))}
-              </nav>
-
               <ul className="pa-hero-v3-trust">
-                <li><strong>CMS</strong> public data</li>
-                <li><strong>Independent</strong> — not a facility site</li>
-                <li><strong>Free</strong> to look up</li>
+                <li>
+                  <TrustIcon name="building" />
+                  {snfTrustLabel()}
+                </li>
+                <li>
+                  <TrustIcon name="database" />
+                  CMS source data
+                </li>
+                <li>
+                  <TrustIcon name="lock" />
+                  Free to look up
+                </li>
               </ul>
             </div>
 
@@ -88,7 +128,7 @@ export default function PostAcuteHomePage() {
         <section className="pa-browse-section" aria-labelledby="pa-browse-heading">
           <div className="pa-browse-header">
             <h2 id="pa-browse-heading">Browse by setting</h2>
-            <p>Same five hubs — nursing homes through LTACH.</p>
+            <p>Nursing homes, hospice, home health, inpatient rehab, and LTACH.</p>
           </div>
           <div className="pa-browse-cards">
             {POST_ACUTE_SETTINGS.map((setting) => (
