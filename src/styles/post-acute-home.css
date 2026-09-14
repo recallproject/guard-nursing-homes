@@ -361,12 +361,12 @@
   overflow: visible;
 }
 .pa-home .pa-hero-v3-inner {
-  max-width: 1200px;
+  max-width: 1240px;
   width: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(480px, 540px);
-  gap: 40px 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(520px, 580px);
+  gap: 40px 56px;
   align-items: center;
 }
 .pa-home .pa-hero-v3-copy {
@@ -495,47 +495,51 @@
   font-weight: 700;
 }
 
-/* Sample facility preview card */
+/* Sample facility preview card — match preferred mock (stacked gauge + metric rows) */
 .pa-home .pa-preview {
   position: relative;
   justify-self: stretch;
   width: 100%;
+  z-index: 1;
 }
 .pa-home .pa-preview-card {
   background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 18px 50px rgba(29, 53, 87, 0.12), 0 2px 8px rgba(29, 53, 87, 0.05);
+  border-radius: 22px;
+  box-shadow: 0 22px 56px rgba(29, 53, 87, 0.14), 0 4px 12px rgba(29, 53, 87, 0.06);
   overflow: hidden;
-  border: 1px solid rgba(215, 224, 234, 0.7);
+  border: 1px solid rgba(215, 224, 234, 0.55);
 }
 .pa-home .pa-preview-header {
-  background: var(--pa-navy);
+  background: #1B365D;
   color: #fff;
-  font-size: 16px;
+  font-size: 16.5px;
   font-weight: 700;
-  padding: 14px 20px;
+  letter-spacing: -0.01em;
+  padding: 15px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
 }
 .pa-home .pa-preview-sample {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--pa-navy);
-  background: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.78);
   border-radius: 999px;
-  padding: 4px 10px;
+  padding: 3px 11px;
+  line-height: 1.3;
 }
 .pa-home .pa-preview-body {
-  padding: 22px 22px 20px;
+  padding: 24px 24px 22px;
 }
 .pa-home .pa-preview-name {
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 800;
   color: var(--pa-navy);
   margin: 0 0 6px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 .pa-home .pa-preview-meta {
   display: flex;
@@ -544,7 +548,7 @@
   gap: 6px;
   font-size: 13.5px;
   color: var(--pa-muted);
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 .pa-home .pa-preview-meta svg {
   color: var(--pa-muted);
@@ -554,8 +558,8 @@
 }
 .pa-home .pa-preview-gauge {
   position: relative;
-  width: 220px;
-  margin: 4px auto 8px;
+  width: 240px;
+  margin: 8px auto 10px;
 }
 .pa-home .pa-preview-gauge svg {
   display: block;
@@ -566,33 +570,34 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 42px;
+  top: 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
   pointer-events: none;
 }
 .pa-home .pa-preview-gauge-score {
-  font-size: 44px;
+  font-size: 52px;
   font-weight: 800;
   color: var(--pa-navy);
-  line-height: 1;
-  letter-spacing: -0.03em;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 .pa-home .pa-preview-gauge-caption {
-  font-size: 12px;
-  color: #94a3b8;
-  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e8a317;
+  margin-top: 4px;
 }
 .pa-home .pa-preview-gauge-level {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #e8a317;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 .pa-home .pa-preview-rows {
   list-style: none;
-  margin: 8px 0 18px;
+  margin: 4px 0 20px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -600,20 +605,20 @@
 }
 .pa-home .pa-preview-rows li {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
-  gap: 10px;
-  background: #f7f9fc;
-  border: 1px solid #eef2f7;
+  gap: 12px;
+  background: #f6f8fb;
+  border: 0;
   border-radius: 10px;
-  padding: 10px 12px;
+  padding: 11px 14px;
   font-size: 13.5px;
   color: var(--pa-muted);
 }
 .pa-home .pa-preview-row-label {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   color: var(--pa-navy);
   font-weight: 600;
   min-width: 0;
@@ -624,20 +629,23 @@
 }
 .pa-home .pa-preview-row-value {
   color: #64748b;
-  font-size: 13px;
+  font-size: 13.5px;
   white-space: nowrap;
+  justify-self: end;
 }
 .pa-home .pa-preview-stars {
   display: inline-flex;
   align-items: center;
-  gap: 1px;
+  gap: 2px;
+  justify-self: end;
 }
 .pa-home .pa-preview-tag {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   border-radius: 999px;
-  padding: 3px 8px;
+  padding: 4px 9px;
   white-space: nowrap;
+  justify-self: end;
 }
 .pa-home .pa-preview-tag--danger {
   background: #fee2e2;
@@ -645,7 +653,7 @@
 }
 .pa-home .pa-preview-tag--warn {
   background: #fef3c7;
-  color: #b45309;
+  color: #d97706;
 }
 .pa-home .pa-preview-tag--ok {
   background: #d1fae5;
@@ -661,18 +669,26 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 46px;
-  padding: 10px 16px;
+  min-height: 48px;
+  padding: 12px 18px;
   border-radius: 10px;
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
   text-align: center;
   transition: 120ms ease;
   width: 100%;
 }
 .pa-home .pa-preview-btn--primary {
-  background: var(--pa-navy);
+  position: relative;
+  background: #1B365D;
   color: #fff;
+  justify-content: center;
+}
+.pa-home .pa-preview-btn--primary svg {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .pa-home .pa-preview-btn--primary:hover {
   background: #152942;
@@ -681,7 +697,7 @@
 .pa-home .pa-preview-btn--ghost {
   background: #fff;
   color: var(--pa-navy);
-  border: 1px solid #dbe3ec;
+  border: 1.5px solid #d5dee8;
 }
 .pa-home .pa-preview-btn--ghost:hover {
   border-color: var(--pa-primary);
@@ -693,25 +709,27 @@
 }
 .pa-home .pa-preview-float {
   position: absolute;
-  right: -112px;
-  bottom: 28px;
+  right: -78px;
+  bottom: 38px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   z-index: 2;
+  pointer-events: none;
 }
 .pa-home .pa-preview-chip {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(29, 53, 87, 0.12);
-  padding: 10px 12px;
-  font-size: 13px;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(29, 53, 87, 0.14);
+  padding: 11px 14px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--pa-navy);
   white-space: nowrap;
+  border: 1px solid rgba(215, 224, 234, 0.6);
 }
 .pa-home .pa-preview-chip svg {
   color: #64748b;
@@ -791,7 +809,7 @@
     min-height: 0;
   }
   .pa-home .pa-preview {
-    max-width: 540px;
+    max-width: 580px;
     margin: 0 auto;
   }
   .pa-home .pa-browse-cards {

@@ -30,14 +30,6 @@ function Icon({ name }) {
       </svg>
     );
   }
-  if (name === 'staff') {
-    return (
-      <svg {...common}>
-        <circle cx="12" cy="8" r="3" />
-        <path d="M5 19a7 7 0 0 1 14 0" />
-      </svg>
-    );
-  }
   if (name === 'alert') {
     return (
       <svg {...common}>
@@ -83,7 +75,7 @@ function StarRow({ filled }) {
   return (
     <span className="pa-preview-stars" aria-hidden="true">
       {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} width="13" height="13" viewBox="0 0 20 20">
+        <svg key={i} width="14" height="14" viewBox="0 0 20 20">
           <path
             d="M10 1.8l2.3 4.7 5.2.8-3.8 3.6.9 5.2L10 13.7 5.4 16.1l.9-5.2L2.5 7.3l5.2-.8L10 1.8z"
             fill={i < filled ? '#1D3557' : '#D7DEE8'}
@@ -95,25 +87,39 @@ function StarRow({ filled }) {
 }
 
 function RiskGauge({ score }) {
-  const r = 78;
-  const cx = 110;
-  const cy = 104;
-  const arcLen = Math.PI * r;
-  const filled = (score / 100) * arcLen;
-  const d = `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`;
+  const cx = 120;
+  const cy = 112;
+  const r = 86;
+  const stroke = 16;
+  const circumference = 2 * Math.PI * r;
+  const trackLen = circumference * 0.75;
+  const filled = (score / 100) * trackLen;
 
   return (
     <div className="pa-preview-gauge" aria-label={`Risk score ${score} out of 100, moderate risk`}>
-      <svg viewBox="0 0 220 138" width="220" height="138" aria-hidden="true">
-        <path d={d} fill="none" stroke="#E6EBF2" strokeWidth="14" strokeLinecap="round" />
-        <path
-          d={d}
-          fill="none"
-          stroke="#E8A317"
-          strokeWidth="14"
-          strokeLinecap="round"
-          strokeDasharray={`${filled} ${arcLen}`}
-        />
+      <svg viewBox="0 0 240 186" width="240" height="186" aria-hidden="true">
+        <g transform={`rotate(135 ${cx} ${cy})`}>
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke="#E8EDF4"
+            strokeWidth={stroke}
+            strokeLinecap="round"
+            strokeDasharray={`${trackLen} ${circumference}`}
+          />
+          <circle
+            cx={cx}
+            cy={cy}
+            r={r}
+            fill="none"
+            stroke="#E8A317"
+            strokeWidth={stroke}
+            strokeLinecap="round"
+            strokeDasharray={`${filled} ${circumference}`}
+          />
+        </g>
       </svg>
       <div className="pa-preview-gauge-label">
         <span className="pa-preview-gauge-score">{score}</span>
@@ -159,7 +165,7 @@ export default function HeroReportPreview() {
             </li>
             <li>
               <span className="pa-preview-row-label">
-                <Icon name="staff" />
+                <Icon name="pin" />
                 Staffing
               </span>
               <span className="pa-preview-row-value">Below avg</span>
@@ -185,7 +191,7 @@ export default function HeroReportPreview() {
 
           <div className="pa-preview-actions">
             <Link to="/evidence-sample" className="pa-preview-btn pa-preview-btn--primary">
-              View full report
+              <span>View full report</span>
               <Icon name="arrow" />
             </Link>
             <a
