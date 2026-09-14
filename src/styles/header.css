@@ -592,18 +592,10 @@
 }
 
 .site-header--light .site-header__logo-text {
-  color: #FFFFFF;
+  color: #1D3557;
 }
 
 .site-header--light .site-header__logo-text .logo-accent {
-  color: #5BA8E8;
-}
-
-.site-header--light.site-header--compact .site-header__logo-text {
-  color: #0F172A;
-}
-
-.site-header--light.site-header--compact .site-header__logo-text .logo-accent {
   color: #2B6CB0;
 }
 

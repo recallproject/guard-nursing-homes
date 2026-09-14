@@ -5,7 +5,9 @@ import { SETTING_LABEL, SETTING_ROUTE } from '../utils/postAcute';
 
 const POPULAR_CITIES = ['Houston', 'Los Angeles', 'Chicago', 'Phoenix', 'Brooklyn'];
 
-export default function HeroSearchDropdown() {
+export default function HeroSearchDropdown({
+  placeholder = 'Search facility, city, or ZIP...',
+}) {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const containerRef = useRef(null);
@@ -187,8 +189,8 @@ export default function HeroSearchDropdown() {
           ref={inputRef}
           type="text"
           className="pa-hero-search-input"
-          placeholder="Nursing home, home health, hospice, city, or ZIP"
-          aria-label="Search for a city or post-acute facility"
+          placeholder={placeholder}
+          aria-label="Search facility, city, or ZIP"
           value={query}
           onFocus={() => { loadIndex(); setOpen(true); }}
           onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
