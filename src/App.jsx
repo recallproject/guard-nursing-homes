@@ -161,7 +161,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-      <FeedbackButton />
+      {!isHomePage && <FeedbackButton />}
       <SaveToast
         visible={!!lastAdded}
         facilityName={lastAdded?.name}

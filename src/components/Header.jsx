@@ -163,7 +163,8 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
           )}
 
           {/* Desktop Nav */}
-          <nav className="site-header__nav" aria-label="Main navigation" hidden={simple}>
+          {!simple && (
+          <nav className="site-header__nav" aria-label="Main navigation">
             {/* Top-level Compare link (no dropdown) */}
             <Link
               to="/compare"
@@ -225,14 +226,10 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
               </div>
             ))}
           </nav>
+          )}
 
           {/* Actions */}
           <div className="site-header__actions">
-            {simple && (
-              <Link to="/ask-a-clinician" className="site-header__cta">
-                Ask a clinician
-              </Link>
-            )}
             <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Favorites (${watchlistCount})`}>
               <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
                 {watchlistCount > 0 ? '★' : '☆'}
