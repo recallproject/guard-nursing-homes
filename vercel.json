@@ -103,7 +103,9 @@
     }
   ],
   "rewrites": [
-    { "source": "/state/:code", "destination": "/index.html" },
-    { "source": "/states/:stateCode/:typeSlug", "destination": "/index.html" }
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
   ]
 }

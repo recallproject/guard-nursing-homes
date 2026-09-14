@@ -737,6 +737,8 @@ console.log(`  ✓ ${hospiceCount} hospice pages (SEO stubs · client-rendered d
 // Intentionally skip per-provider HTML for Home Health / IRF / LTACH.
 // Those settings use SPA routes + compact JSON. Generating ~14k extra HTML
 // files would bloat Vercel Hobby deployment storage the way SNF SEO pages did.
+// Deep links such as /home-health/:ccn are served by the vercel.json SPA
+// rewrite to /index.html when no static file exists.
 
 // ── Hospice state directory pages — one stub per CMS-region state file ──
 const HOSPICE_STATE_NAMES = {
