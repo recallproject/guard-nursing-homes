@@ -53,10 +53,10 @@ export default function PostAcuteHomePage() {
               <p className="pa-hero-v3-eyebrow">CMS data · Updated daily</p>
               <h1 id="pa-hero-heading" className="pa-hero-v3-title">
                 Look up any facility.
-                <em>See the risk.</em>
+                <em>Get the facts.</em>
               </h1>
               <p className="pa-hero-v3-sub">
-                One search. Risk, staffing, deficiencies, and ownership from public CMS records — not the facility’s marketing page.
+                Check before you choose — scores, staffing, deficiencies, and ownership from public CMS records.
               </p>
 
               <HeroSearchDropdown />
