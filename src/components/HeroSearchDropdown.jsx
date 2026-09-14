@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Fuse from 'fuse.js';
+import { SETTING_LABEL, SETTING_ROUTE } from '../utils/postAcute';
 
 const POPULAR_CITIES = ['Houston', 'Los Angeles', 'Chicago', 'Phoenix', 'Brooklyn'];
 
@@ -54,6 +55,12 @@ export default function HeroSearchDropdown() {
         ignoreLocation: true,
         minMatchCharLength: 2,
       }),
+      postacute: new Fuse(index.postacute || [], {
+        keys: ['name', 'city', 'state', 'zip'],
+        threshold: 0.32,
+        ignoreLocation: true,
+        minMatchCharLength: 2,
+      }),
     };
   }, [index]);
 
@@ -67,8 +74,9 @@ export default function HeroSearchDropdown() {
     const facilities = fuses.facilities.search(q).slice(0, 6).map(r => r.item);
     const chains = fuses.chains.search(q).slice(0, 4).map(r => r.item);
     const states = fuses.states.search(q).slice(0, 3).map(r => r.item);
+    const postacute = fuses.postacute ? fuses.postacute.search(q).slice(0, 5).map(r => r.item) : [];
 
-    return { places, facilities, chains, states };
+    return { places, facilities, chains, states, postacute };
   }, [query, index, fuses]);
 
   // Flatten the rendered list for keyboard navigation.
@@ -78,6 +86,7 @@ export default function HeroSearchDropdown() {
       return [
         ...results.places.map(c => ({ type: 'city', data: c })),
         ...results.facilities.map(f => ({ type: 'facility', data: f })),
+        ...(results.postacute || []).map(p => ({ type: 'postacute', data: p })),
         ...results.chains.map(c => ({ type: 'chain', data: c })),
         ...results.states.map(s => ({ type: 'state', data: s })),
       ];
@@ -111,6 +120,10 @@ export default function HeroSearchDropdown() {
     if (!item) return;
     setOpen(false);
     if (item.type === 'facility') navigate(`/facility/${item.data.ccn}`);
+    else if (item.type === 'postacute') {
+      const to = SETTING_ROUTE[item.data.setting];
+      if (to) navigate(to(item.data.ccn));
+    }
     else if (item.type === 'chain') navigate(`/chain/${encodeURIComponent(item.data.slug || item.data.name)}`);
     else if (item.type === 'state') navigate(`/states/${item.data.name.toLowerCase().replace(/\s+/g, '-')}`);
     else if (item.type === 'city') {
@@ -161,6 +174,8 @@ export default function HeroSearchDropdown() {
   cursor += results?.places.length || 0;
   const facilityStart = cursor;
   cursor += results?.facilities.length || 0;
+  const postacuteStart = cursor;
+  cursor += results?.postacute?.length || 0;
   const chainStart = cursor;
   cursor += results?.chains.length || 0;
   const stateStart = cursor;
@@ -172,7 +187,7 @@ export default function HeroSearchDropdown() {
           ref={inputRef}
           type="text"
           className="pa-hero-search-input"
-          placeholder="Address, city, ZIP, or facility name"
+          placeholder="Nursing home, home health, hospice, city, or ZIP"
           aria-label="Search for a city or post-acute facility"
           value={query}
           onFocus={() => { loadIndex(); setOpen(true); }}
@@ -257,7 +272,28 @@ export default function HeroSearchDropdown() {
                     onClick={() => handlePick({ type: 'facility', data: f })}
                   >
                     <span className="pa-search-result-main">{f.name}</span>
-                    <span className="pa-search-result-meta">{f.city}, {f.state}</span>
+                    <span className="pa-search-result-meta">{f.city}, {f.state} · Nursing home</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {results && results.postacute && results.postacute.length > 0 && (
+            <div className="pa-search-group">
+              <div className="pa-search-group-label">Home health, rehab & hospice</div>
+              {results.postacute.map((p, i) => {
+                const idx = postacuteStart + i;
+                return (
+                  <button
+                    key={`pa-${p.setting}-${p.ccn}`}
+                    type="button"
+                    className={`pa-search-result ${itemIsActive(idx) ? 'pa-search-result--active' : ''}`}
+                    onMouseEnter={() => setActiveIndex(idx)}
+                    onClick={() => handlePick({ type: 'postacute', data: p })}
+                  >
+                    <span className="pa-search-result-main">{p.name}</span>
+                    <span className="pa-search-result-meta">{p.city}, {p.state} · {SETTING_LABEL[p.setting] || p.setting}</span>
                   </button>
                 );
               })}

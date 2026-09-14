@@ -4,6 +4,12 @@ import '../styles/post-acute-home.css';
 
 const REFRESH_HISTORY = [
   {
+    date: 'September 14, 2026',
+    title: 'Home Health, IRF, and LTACH directories go live',
+    notes: 'Searchable national directories and CMS-sourced provider detail pages for Home Health Care Compare (6jpm-sxkc + HHCAHPS), IRF Compare (7t8x-u3ir + v9e4-nwhh), and LTCH Compare (azum-44iv + fp6g-2gsn). SPA routes only — no per-provider static HTML. Rebuild with node scripts/build-postacute-data.js.',
+    source: 'CMS Home Health · IRF · LTCH Compare',
+  },
+  {
     date: 'May 3, 2026',
     title: 'CMS data refreshed to April 2026 release',
     notes: 'Provider Info, health deficiencies, and penalties refreshed to the April 2026 CMS Care Compare release. Penalty coverage now runs through March 2026; deficiency surveys through March 2026. Facility roster updated (25 closures, 11 newly certified). Also corrected a calculation that under-reported serious deficiency counts on some facility pages — counts now reflect the full CMS-published harm/jeopardy citation history.',

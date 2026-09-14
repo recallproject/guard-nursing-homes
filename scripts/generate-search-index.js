@@ -80,6 +80,35 @@ const states = Array.from(stateCounts.entries())
   }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Post-acute providers (home health, IRF, LTACH, hospice) — homepage search
+// routes these to their SPA detail pages instead of /facility/:ccn.
+const POSTACUTE_SOURCES = [
+  { setting: 'home-health', file: 'home-health/index.json' },
+  { setting: 'irf', file: 'irf/index.json' },
+  { setting: 'ltach', file: 'ltach/index.json' },
+  { setting: 'hospice', file: 'hospice/index.json' },
+];
+const postacute = [];
+for (const src of POSTACUTE_SOURCES) {
+  try {
+    const rows = JSON.parse(readFileSync(join(PUBLIC_DATA, src.file), 'utf-8'));
+    if (!Array.isArray(rows)) continue;
+    for (const p of rows) {
+      if (!p?.ccn || !p?.name) continue;
+      postacute.push({
+        ccn: p.ccn,
+        name: p.name,
+        city: p.city,
+        state: p.state,
+        zip: p.zip,
+        setting: src.setting,
+      });
+    }
+  } catch (err) {
+    console.warn(`  ⚠ postacute index skipped (${src.setting}): ${err.message}`);
+  }
+}
+
 const out = {
   generated: new Date().toISOString(),
   counts: {
@@ -87,14 +116,16 @@ const out = {
     cities: cities.length,
     chains: chains.length,
     states: states.length,
+    postacute: postacute.length,
   },
   facilities,
   cities,
   chains,
   states,
+  postacute,
 };
 
 const outPath = join(PUBLIC_DATA, 'search-index.json');
 writeFileSync(outPath, JSON.stringify(out));
 const bytes = readFileSync(outPath).length;
-console.log(`  ✓ search-index.json: ${facilities.length.toLocaleString()} facilities · ${cities.length.toLocaleString()} cities · ${chains.length} chains · ${states.length} states · ${(bytes / 1024).toFixed(0)}KB`);
+console.log(`  ✓ search-index.json: ${facilities.length.toLocaleString()} SNF · ${postacute.length.toLocaleString()} post-acute · ${cities.length.toLocaleString()} cities · ${chains.length} chains · ${states.length} states · ${(bytes / 1024).toFixed(0)}KB`);

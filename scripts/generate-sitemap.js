@@ -164,6 +164,40 @@ try {
   console.warn('Hospice chain rollup sitemap entries skipped:', err.message);
 }
 
+// Home Health / IRF / LTACH — hub + state directory + provider URLs (XML only; no per-provider HTML)
+const POSTACUTE_SITEMAP = [
+  { dir: 'home-health', route: '/home-health' },
+  { dir: 'irf', route: '/irf' },
+  { dir: 'ltach', route: '/ltach' },
+];
+let postacuteHubCount = 0;
+let postacuteStateCount = 0;
+let postacuteProviderCount = 0;
+for (const src of POSTACUTE_SITEMAP) {
+  urls.push({ loc: src.route, priority: '0.8', changefreq: 'weekly' });
+  postacuteHubCount++;
+  const statesDir = join(publicDir, 'data', src.dir, 'states');
+  try {
+    const files = readdirSync(statesDir).filter(f => f.endsWith('.json'));
+    for (const file of files) {
+      const stateCode = file.replace('.json', '');
+      urls.push({ loc: `${src.route}/state/${stateCode}`, priority: '0.6', changefreq: 'monthly' });
+      postacuteStateCount++;
+      const stateData = JSON.parse(readFileSync(join(statesDir, file), 'utf8'));
+      if (Array.isArray(stateData.providers)) {
+        for (const p of stateData.providers) {
+          if (p && p.ccn) {
+            urls.push({ loc: `${src.route}/${p.ccn}`, priority: '0.5', changefreq: 'monthly' });
+            postacuteProviderCount++;
+          }
+        }
+      }
+    }
+  } catch (err) {
+    console.warn(`${src.dir} sitemap entries skipped:`, err.message);
+  }
+}
+
 // Generate sitemap XML
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -177,7 +211,7 @@ ${urls.map(u => `  <url>
 `;
 
 writeFileSync(join(publicDir, 'sitemap.xml'), xml);
-console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains, ${blogCount} blog posts, ${hospiceStateCount} hospice states, ${hospiceProviderCount} hospice providers, ${hospiceChainCount} hospice chains)`);
+console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains, ${blogCount} blog posts, ${hospiceStateCount} hospice states, ${hospiceProviderCount} hospice providers, ${hospiceChainCount} hospice chains, ${postacuteHubCount} post-acute hubs, ${postacuteStateCount} post-acute states, ${postacuteProviderCount} post-acute providers)`);
 
 // Generate robots.txt
 const robots = `# Block AI/LLM scraping bots

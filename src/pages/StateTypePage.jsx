@@ -35,6 +35,18 @@ export default function StateTypePage() {
 
   const count = hub.counts[typeSlug] || 0;
   const unit = typeSlug === 'rehab-ltach' ? 'facilities' : 'agencies';
+  const liveLinks = {
+    hospice: [
+      { to: `/hospice/state/${hub.code}`, label: `Browse ${hub.name} hospice providers` },
+    ],
+    'home-health': [
+      { to: `/home-health/state/${hub.code}`, label: `Browse ${hub.name} home health agencies` },
+    ],
+    'rehab-ltach': [
+      { to: `/irf/state/${hub.code}`, label: `Browse ${hub.name} inpatient rehab facilities` },
+      { to: `/ltach/state/${hub.code}`, label: `Browse ${hub.name} LTACH hospitals` },
+    ],
+  }[typeSlug];
 
   return (
     <div className="state-hub-page">
@@ -69,22 +81,41 @@ export default function StateTypePage() {
       </section>
 
       <div className="state-hub-container">
-        <div
-          className="state-hub-gap"
-          style={{ marginTop: 48 }}
-        >
-          <h3 className="state-hub-gap-title">Listings rolling out next</h3>
-          <p className="state-hub-gap-intro">
-            We have all {count.toLocaleString()} {hub.name} {type.name.toLowerCase()} {unit} in our dataset. The browsable, sortable directory for {type.name.toLowerCase()} ships next as part of the California rollout.
-          </p>
-          <p className="state-hub-gap-intro" style={{ marginBottom: 0 }}>
-            In the meantime, see the data sources below or return to the{' '}
-            <Link to={`/states/${hub.slug}`} style={{ color: 'var(--primary)', fontWeight: 600 }}>
-              California hub
-            </Link>
-            {' '}for context on the entire post-acute landscape.
-          </p>
-        </div>
+        {liveLinks ? (
+          <div className="state-hub-gap" style={{ marginTop: 48 }}>
+            <h3 className="state-hub-gap-title">National directory is live</h3>
+            <p className="state-hub-gap-intro">
+              Search and open CMS-sourced report cards for {hub.name} {type.name.toLowerCase()} {unit}.
+            </p>
+            <p className="state-hub-gap-intro" style={{ marginBottom: 0 }}>
+              {liveLinks.map((link, i) => (
+                <span key={link.to}>
+                  {i > 0 ? ' · ' : ''}
+                  <Link to={link.to} style={{ color: 'var(--primary)', fontWeight: 600 }}>
+                    {link.label} →
+                  </Link>
+                </span>
+              ))}
+            </p>
+          </div>
+        ) : (
+          <div
+            className="state-hub-gap"
+            style={{ marginTop: 48 }}
+          >
+            <h3 className="state-hub-gap-title">Listings rolling out next</h3>
+            <p className="state-hub-gap-intro">
+              We have all {count.toLocaleString()} {hub.name} {type.name.toLowerCase()} {unit} in our dataset. The browsable, sortable directory for {type.name.toLowerCase()} ships next as part of the California rollout.
+            </p>
+            <p className="state-hub-gap-intro" style={{ marginBottom: 0 }}>
+              In the meantime, see the data sources below or return to the{' '}
+              <Link to={`/states/${hub.slug}`} style={{ color: 'var(--primary)', fontWeight: 600 }}>
+                California hub
+              </Link>
+              {' '}for context on the entire post-acute landscape.
+            </p>
+          </div>
+        )}
 
         <div className="state-hub-methodology">
           <h3 className="state-hub-methodology-title">Data sources for {type.name.toLowerCase()} {unit}</h3>

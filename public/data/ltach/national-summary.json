@@ -1,0 +1,241 @@
+{
+  "generated_at": "2026-09-14T17:56:44.190Z",
+  "source": {
+    "window": "CMS Long-Term Care Hospital Compare",
+    "datasets": [
+      {
+        "id": "azum-44iv",
+        "title": "Long-Term Care Hospital - General Information"
+      },
+      {
+        "id": "fp6g-2gsn",
+        "title": "Long-Term Care Hospital - Provider Data"
+      },
+      {
+        "id": "5zdx-ny2x",
+        "title": "Long-Term Care Hospital - National Data"
+      }
+    ]
+  },
+  "total_providers": 311,
+  "total_states": 47,
+  "by_state": [
+    {
+      "state": "AK",
+      "count": 1
+    },
+    {
+      "state": "AL",
+      "count": 7
+    },
+    {
+      "state": "AR",
+      "count": 6
+    },
+    {
+      "state": "AZ",
+      "count": 5
+    },
+    {
+      "state": "CA",
+      "count": 20
+    },
+    {
+      "state": "CO",
+      "count": 6
+    },
+    {
+      "state": "CT",
+      "count": 2
+    },
+    {
+      "state": "DC",
+      "count": 2
+    },
+    {
+      "state": "DE",
+      "count": 1
+    },
+    {
+      "state": "FL",
+      "count": 22
+    },
+    {
+      "state": "GA",
+      "count": 10
+    },
+    {
+      "state": "HI",
+      "count": 1
+    },
+    {
+      "state": "IA",
+      "count": 2
+    },
+    {
+      "state": "ID",
+      "count": 2
+    },
+    {
+      "state": "IL",
+      "count": 5
+    },
+    {
+      "state": "IN",
+      "count": 7
+    },
+    {
+      "state": "KS",
+      "count": 3
+    },
+    {
+      "state": "KY",
+      "count": 10
+    },
+    {
+      "state": "LA",
+      "count": 21
+    },
+    {
+      "state": "MA",
+      "count": 10
+    },
+    {
+      "state": "MD",
+      "count": 2
+    },
+    {
+      "state": "MI",
+      "count": 11
+    },
+    {
+      "state": "MN",
+      "count": 2
+    },
+    {
+      "state": "MO",
+      "count": 7
+    },
+    {
+      "state": "MS",
+      "count": 7
+    },
+    {
+      "state": "MT",
+      "count": 1
+    },
+    {
+      "state": "NC",
+      "count": 6
+    },
+    {
+      "state": "ND",
+      "count": 2
+    },
+    {
+      "state": "NE",
+      "count": 3
+    },
+    {
+      "state": "NJ",
+      "count": 9
+    },
+    {
+      "state": "NM",
+      "count": 3
+    },
+    {
+      "state": "NV",
+      "count": 6
+    },
+    {
+      "state": "NY",
+      "count": 1
+    },
+    {
+      "state": "OH",
+      "count": 15
+    },
+    {
+      "state": "OK",
+      "count": 8
+    },
+    {
+      "state": "OR",
+      "count": 1
+    },
+    {
+      "state": "PA",
+      "count": 12
+    },
+    {
+      "state": "RI",
+      "count": 1
+    },
+    {
+      "state": "SC",
+      "count": 6
+    },
+    {
+      "state": "SD",
+      "count": 2
+    },
+    {
+      "state": "TN",
+      "count": 8
+    },
+    {
+      "state": "TX",
+      "count": 39
+    },
+    {
+      "state": "UT",
+      "count": 2
+    },
+    {
+      "state": "VA",
+      "count": 6
+    },
+    {
+      "state": "WA",
+      "count": 1
+    },
+    {
+      "state": "WI",
+      "count": 3
+    },
+    {
+      "state": "WV",
+      "count": 4
+    }
+  ],
+  "national": {
+    "L_006_01_NATL_SIR": 0.729,
+    "L_007_01_NATL_SIR": 0.703,
+    "L_011_05_NATL_OBS_RATE": 6.37,
+    "L_012_01_NATL_OBS_RATE": 0.1,
+    "L_014_01_NATL_SIR": 0.253,
+    "L_015_01_NATL_OBS_RATE": 69.4,
+    "L_017_01_PPR_PD_NATL_OBS_RATE": 21.26,
+    "L_017_01_PPR_PD_N_BETTER_NATL": 3,
+    "L_017_01_PPR_PD_N_NO_DIFF_NATL": 314,
+    "L_017_01_PPR_PD_N_TOO_SMALL": 17,
+    "L_017_01_PPR_PD_N_WORSE_NATL": 6,
+    "L_018_02_DTC_NATL_OBS_RATE": 17.01,
+    "L_018_02_DTC_N_BETTER_NATL": 43,
+    "L_018_02_DTC_N_NO_DIFF_NATL": 226,
+    "L_018_02_DTC_N_TOO_SMALL": 16,
+    "L_018_02_DTC_N_WORSE_NATL": 56,
+    "L_019_01_NATL_MSPB_SCORE": 1,
+    "L_020_01_NATL_OBS_RATE": 95.55,
+    "L_021_01_NATL_OBS_RATE": 2.38,
+    "L_022_02_NATL_OBS_RATE_C1": 95.77,
+    "L_022_02_NATL_OBS_RATE_C2": 97.49,
+    "L_023_02_NATL_OBS_RATE": 54.66,
+    "L_024_02_NATL_OBS_RATE": 5.2,
+    "L_025_01_NATL_OBS_RATE": 83.85,
+    "L_026_02_NATL_OBS_RATE": 88.61,
+    "L_027_01_NATL_OBS_RATE": 49.05,
+    "L_028_02_NATL_OBS_RATE": 12.29
+  }
+}

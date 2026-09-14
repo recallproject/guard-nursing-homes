@@ -1,0 +1,244 @@
+{
+  "generated_at": "2026-09-14T17:56:44.183Z",
+  "source": {
+    "window": "CMS Home Health Care Compare",
+    "datasets": [
+      {
+        "id": "6jpm-sxkc",
+        "title": "Home Health Care Agencies"
+      },
+      {
+        "id": "ccn4-8vby",
+        "title": "Home Health Care - Patient Survey (HHCAHPS)"
+      }
+    ]
+  },
+  "total_providers": 12460,
+  "total_states": 55,
+  "by_state": [
+    {
+      "state": "AK",
+      "count": 14
+    },
+    {
+      "state": "AL",
+      "count": 116
+    },
+    {
+      "state": "AR",
+      "count": 92
+    },
+    {
+      "state": "AZ",
+      "count": 177
+    },
+    {
+      "state": "CA",
+      "count": 3213
+    },
+    {
+      "state": "CO",
+      "count": 222
+    },
+    {
+      "state": "CT",
+      "count": 72
+    },
+    {
+      "state": "DC",
+      "count": 35
+    },
+    {
+      "state": "DE",
+      "count": 22
+    },
+    {
+      "state": "FL",
+      "count": 1146
+    },
+    {
+      "state": "GA",
+      "count": 105
+    },
+    {
+      "state": "GU",
+      "count": 3
+    },
+    {
+      "state": "HI",
+      "count": 18
+    },
+    {
+      "state": "IA",
+      "count": 125
+    },
+    {
+      "state": "ID",
+      "count": 48
+    },
+    {
+      "state": "IL",
+      "count": 530
+    },
+    {
+      "state": "IN",
+      "count": 173
+    },
+    {
+      "state": "KS",
+      "count": 108
+    },
+    {
+      "state": "KY",
+      "count": 88
+    },
+    {
+      "state": "LA",
+      "count": 176
+    },
+    {
+      "state": "MA",
+      "count": 287
+    },
+    {
+      "state": "MD",
+      "count": 51
+    },
+    {
+      "state": "ME",
+      "count": 19
+    },
+    {
+      "state": "MI",
+      "count": 371
+    },
+    {
+      "state": "MN",
+      "count": 138
+    },
+    {
+      "state": "MO",
+      "count": 120
+    },
+    {
+      "state": "MP",
+      "count": 3
+    },
+    {
+      "state": "MS",
+      "count": 42
+    },
+    {
+      "state": "MT",
+      "count": 21
+    },
+    {
+      "state": "NC",
+      "count": 166
+    },
+    {
+      "state": "ND",
+      "count": 20
+    },
+    {
+      "state": "NE",
+      "count": 62
+    },
+    {
+      "state": "NH",
+      "count": 27
+    },
+    {
+      "state": "NJ",
+      "count": 38
+    },
+    {
+      "state": "NM",
+      "count": 70
+    },
+    {
+      "state": "NV",
+      "count": 228
+    },
+    {
+      "state": "NY",
+      "count": 100
+    },
+    {
+      "state": "OH",
+      "count": 835
+    },
+    {
+      "state": "OK",
+      "count": 212
+    },
+    {
+      "state": "OR",
+      "count": 51
+    },
+    {
+      "state": "PA",
+      "count": 415
+    },
+    {
+      "state": "PR",
+      "count": 39
+    },
+    {
+      "state": "RI",
+      "count": 22
+    },
+    {
+      "state": "SC",
+      "count": 68
+    },
+    {
+      "state": "SD",
+      "count": 23
+    },
+    {
+      "state": "TN",
+      "count": 128
+    },
+    {
+      "state": "TX",
+      "count": 1854
+    },
+    {
+      "state": "UT",
+      "count": 82
+    },
+    {
+      "state": "VA",
+      "count": 237
+    },
+    {
+      "state": "VI",
+      "count": 3
+    },
+    {
+      "state": "VT",
+      "count": 9
+    },
+    {
+      "state": "WA",
+      "count": 74
+    },
+    {
+      "state": "WI",
+      "count": 87
+    },
+    {
+      "state": "WV",
+      "count": 43
+    },
+    {
+      "state": "WY",
+      "count": 32
+    }
+  ],
+  "coverage": {
+    "patient_care_star": 8050,
+    "survey_summary_star": 4570
+  }
+}

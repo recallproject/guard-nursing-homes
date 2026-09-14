@@ -1,0 +1,31 @@
+{
+  "counts": {
+    "generated_at": "2026-09-14T17:56:44.190Z",
+    "home-health": 12460,
+    "irf": 1222,
+    "ltach": 311
+  },
+  "samples": [
+    {
+      "setting": "home-health",
+      "ccn": "027001",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HH ANCHORAGE",
+      "city": "ANCHORAGE",
+      "state": "AK"
+    },
+    {
+      "setting": "irf",
+      "ccn": "013025",
+      "name": "ENCOMPASS HEALTH LAKESHORE REHABILITATION HOSPITAL",
+      "city": "BIRMINGHAM",
+      "state": "AL"
+    },
+    {
+      "setting": "ltach",
+      "ccn": "012006",
+      "name": "INFIRMARY LTAC HOSPITAL",
+      "city": "MOBILE",
+      "state": "AL"
+    }
+  ]
+}
