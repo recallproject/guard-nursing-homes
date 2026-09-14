@@ -1,0 +1,91 @@
+{
+  "chain_name": "DOVER HOSPICE, LLC",
+  "chain_slug": "dover-hospice-llc",
+  "norm_key": "dover hospice",
+  "facility_count": 3,
+  "state_count": 2,
+  "states": [
+    "IL",
+    "MO"
+  ],
+  "avg_cms_rating": 4,
+  "avg_hci_composite": 8,
+  "avg_cahps_overall": null,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 33.3,
+  "oldest_association": "2023-10-23",
+  "newest_association": "2024-06-06",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": false,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 0,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 100,
+  "member_count": 3,
+  "members": [
+    {
+      "ccn": "141705",
+      "name": "DOVER HOSPICE IL CHICAGO METRO, LLC",
+      "city": "WOODRIDGE",
+      "state": "IL",
+      "zip": "60517",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141745",
+      "name": "DOVER HOSPICE IL STL METRO, LLC",
+      "city": "GLEN CARBON",
+      "state": "IL",
+      "zip": "62034",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261709",
+      "name": "DOVER HOSPICE MO STL METRO, LLC",
+      "city": "ST LOUIS",
+      "state": "MO",
+      "zip": "63124",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "DOVER HOSPICE, LLC"
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.713Z"
+}

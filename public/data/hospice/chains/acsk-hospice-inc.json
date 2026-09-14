@@ -2,7 +2,7 @@
   "chain_name": "ACSK HOSPICE INC",
   "chain_slug": "acsk-hospice-inc",
   "norm_key": "acsk hospice",
-  "facility_count": 7,
+  "facility_count": 6,
   "state_count": 4,
   "states": [
     "AZ",
@@ -10,12 +10,12 @@
     "OK",
     "TX"
   ],
-  "avg_cms_rating": 4.57,
-  "avg_hci_composite": 8.86,
-  "avg_cahps_overall": 85.5,
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 8.83,
+  "avg_cahps_overall": 86,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 14.3,
+  "flagged_pct": 16.7,
   "oldest_association": "2020-06-11",
   "newest_association": "2021-03-29",
   "is_pe_disclosed": false,
@@ -25,7 +25,7 @@
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 7,
+  "member_count": 6,
   "members": [
     {
       "ccn": "031758",
@@ -36,7 +36,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -55,7 +55,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -93,7 +93,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -112,27 +112,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 92,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "971544",
-      "name": "ANGELS CARE HOSPICE",
-      "city": "SAN ANGELO",
-      "state": "TX",
-      "zip": "76904",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -150,7 +131,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -165,5 +146,5 @@
     "ACSK HOSPICE INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.709Z"
 }

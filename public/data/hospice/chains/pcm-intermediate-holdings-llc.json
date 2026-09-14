@@ -2,19 +2,19 @@
   "chain_name": "PCM INTERMEDIATE HOLDINGS LLC",
   "chain_slug": "pcm-intermediate-holdings-llc",
   "norm_key": "pcm intermediate",
-  "facility_count": 9,
+  "facility_count": 12,
   "state_count": 3,
   "states": [
     "LA",
     "MS",
     "TX"
   ],
-  "avg_cms_rating": 4.78,
-  "avg_hci_composite": 9.11,
-  "avg_cahps_overall": 84.75,
-  "flagged_facility_count": 5,
-  "flagged_pattern_count": 5,
-  "flagged_pct": 55.6,
+  "avg_cms_rating": 4.67,
+  "avg_hci_composite": 9,
+  "avg_cahps_overall": 87.36,
+  "flagged_facility_count": 6,
+  "flagged_pattern_count": 6,
+  "flagged_pct": 50,
   "oldest_association": "2025-07-18",
   "newest_association": "2025-07-18",
   "is_pe_disclosed": false,
@@ -23,8 +23,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 98.3,
-  "member_count": 9,
+  "avg_disclosed_ownership_pct": 98.72,
+  "member_count": 12,
   "members": [
     {
       "ccn": "191560",
@@ -32,10 +32,10 @@
       "city": "RIVER RIDGE",
       "state": "LA",
       "zip": "70123",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -65,6 +65,25 @@
       }
     },
     {
+      "ccn": "191620",
+      "name": "ST JOSEPH HOSPICE & PALLIATIVE CARE OF MONROE, LLC",
+      "city": "MONROE",
+      "state": "LA",
+      "zip": "71201",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 92,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "191635",
       "name": "ST JOSEPH HOSPICE AND PALLIATIVE CARE NORTHSHORE,",
       "city": "COVINGTON",
@@ -73,8 +92,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191654",
+      "name": "ST JOSEPH HOSPICE OF ACADIANA, LLC",
+      "city": "LAFAYETTE",
+      "state": "LA",
+      "zip": "70503",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -92,8 +130,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191531",
+      "name": "ST JOSEPH HOSPICE OF CENLA, LLC",
+      "city": "ALEXANDRIA",
+      "state": "LA",
+      "zip": "71303",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 91,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -123,14 +180,14 @@
     },
     {
       "ccn": "191568",
-      "name": "ST JOSEPH HOSPICE, LLC",
+      "name": "ST. JOSEPH HOSPICE OF ACADIANA, LLC",
       "city": "BATON ROUGE",
       "state": "LA",
       "zip": "70809",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -146,10 +203,10 @@
       "city": "SIBLEY",
       "state": "LA",
       "zip": "71073",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -187,7 +244,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -202,5 +259,5 @@
     "PCM INTERMEDIATE HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.456Z"
+  "generated_at": "2026-09-14T15:56:26.682Z"
 }

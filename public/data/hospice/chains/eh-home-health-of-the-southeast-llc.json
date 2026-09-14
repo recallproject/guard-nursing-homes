@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 4.55,
   "avg_hci_composite": 8.73,
-  "avg_cahps_overall": 85.67,
+  "avg_cahps_overall": 87,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -35,7 +35,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -54,7 +54,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +73,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 94,
+      "cahps_overall_rating_pct": 95,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -108,10 +108,10 @@
       "city": "VIDALIA",
       "state": "LA",
       "zip": "71373",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 94,
+      "cahps_overall_rating_pct": 97,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -123,14 +123,14 @@
     },
     {
       "ccn": "251585",
-      "name": "ENHABIT HOSPICE ",
+      "name": "ENHABIT HOSPICE",
       "city": "HATTIESBURG",
       "state": "MS",
       "zip": "39402",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -146,10 +146,10 @@
       "city": "FLOWOOD",
       "state": "MS",
       "zip": "39232",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -161,14 +161,14 @@
     },
     {
       "ccn": "251591",
-      "name": "ENHABIT HOSPICE OF NORTH MISSISSIPPI ",
+      "name": "ENHABIT HOSPICE OF NORTH MISSISSIPPI",
       "city": "OXFORD",
       "state": "MS",
       "zip": "38655",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -180,14 +180,14 @@
     },
     {
       "ccn": "251618",
-      "name": "ENHABIT HOSPICE OF NORTHEAST MISSISSIPPI ",
+      "name": "ENHABIT HOSPICE OF NORTHEAST MISSISSIPPI",
       "city": "TUPELO",
       "state": "MS",
       "zip": "38801",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -199,11 +199,11 @@
     },
     {
       "ccn": "251653",
-      "name": "ENHABIT HOSPICE OF SOUTHWEST MISSISSIPPI ",
+      "name": "ENHABIT HOSPICE OF SOUTHWEST MISSISSIPPI",
       "city": "MCCOMB",
       "state": "MS",
       "zip": "39648",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -222,10 +222,10 @@
       "city": "BILOXI",
       "state": "MS",
       "zip": "39503",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -240,5 +240,5 @@
     "EH HOME HEALTH OF THE SOUTHEAST, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.456Z"
+  "generated_at": "2026-09-14T15:56:26.683Z"
 }

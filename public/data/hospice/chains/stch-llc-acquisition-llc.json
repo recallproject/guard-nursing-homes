@@ -9,12 +9,12 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 84,
+  "avg_cahps_overall": 86.67,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
-  "oldest_association": "2021-08-01",
-  "newest_association": "2021-09-01",
+  "oldest_association": "2021-07-09",
+  "newest_association": "2021-08-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
@@ -30,10 +30,10 @@
       "city": "SAINT PETERS",
       "state": "MO",
       "zip": "63376",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,7 +52,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -64,14 +64,14 @@
     },
     {
       "ccn": "261570",
-      "name": "ST CROIX HOSPICE",
+      "name": "ST. CROIX HOSPICE",
       "city": "MOBERLY",
       "state": "MO",
       "zip": "65270",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -86,5 +86,5 @@
     "STCH LLC ACQUISITION LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.699Z"
 }

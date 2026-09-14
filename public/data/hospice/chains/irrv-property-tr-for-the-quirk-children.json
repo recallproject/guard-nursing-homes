@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.5,
-  "avg_cahps_overall": 85.75,
+  "avg_cahps_overall": 87,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
   "flagged_pct": 25,
@@ -33,7 +33,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -49,10 +49,10 @@
       "city": "BATON ROUGE",
       "state": "LA",
       "zip": "70816",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -105,5 +105,5 @@
     "IRRV PROPERTY TR FOR THE QUIRK CHILDREN"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.459Z"
+  "generated_at": "2026-09-14T15:56:26.686Z"
 }

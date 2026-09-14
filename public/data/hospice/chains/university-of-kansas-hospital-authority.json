@@ -10,11 +10,11 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.75,
-  "avg_cahps_overall": 85.5,
+  "avg_cahps_overall": 87,
   "flagged_facility_count": 4,
   "flagged_pattern_count": 5,
   "flagged_pct": 100,
-  "oldest_association": "2019-08-01",
+  "oldest_association": "2023-07-31",
   "newest_association": "2025-06-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
@@ -22,7 +22,7 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 3,
-  "avg_disclosed_ownership_pct": 64.6,
+  "avg_disclosed_ownership_pct": 47.27,
   "member_count": 4,
   "members": [
     {
@@ -50,7 +50,7 @@
       "city": "GREAT BEND",
       "state": "KS",
       "zip": "67530",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -69,10 +69,10 @@
       "city": "OLATHE",
       "state": "KS",
       "zip": "66061",
-      "ownership_type": "Combination Government & Non-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -84,7 +84,7 @@
     },
     {
       "ccn": "261683",
-      "name": "APPL ORCHARD HOSPICE OF MISSOURI, INC",
+      "name": "AQUINAS HOSPICE OF MISSOURI",
       "city": "KANSAS CITY",
       "state": "MO",
       "zip": "64102",
@@ -106,5 +106,5 @@
     "UNIVERSITY OF KANSAS HOSPITAL AUTHORITY"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.457Z"
+  "generated_at": "2026-09-14T15:56:26.685Z"
 }

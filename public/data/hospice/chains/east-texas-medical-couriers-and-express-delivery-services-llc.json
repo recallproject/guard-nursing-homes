@@ -2,19 +2,20 @@
   "chain_name": "EAST TEXAS MEDICAL COURIERS AND EXPRESS DELIVERY SERVICES, LLC",
   "chain_slug": "east-texas-medical-couriers-and-express-delivery-services-llc",
   "norm_key": "east texas medical couriers and express delivery services",
-  "facility_count": 9,
-  "state_count": 1,
+  "facility_count": 11,
+  "state_count": 2,
   "states": [
+    "OK",
     "TX"
   ],
-  "avg_cms_rating": 4.75,
-  "avg_hci_composite": 9.25,
-  "avg_cahps_overall": 82.57,
+  "avg_cms_rating": 4.78,
+  "avg_hci_composite": 9.22,
+  "avg_cahps_overall": 84.88,
   "flagged_facility_count": 4,
   "flagged_pattern_count": 5,
-  "flagged_pct": 44.4,
+  "flagged_pct": 36.4,
   "oldest_association": "2012-12-28",
-  "newest_association": "2021-10-28",
+  "newest_association": "2025-12-10",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
@@ -22,8 +23,46 @@
   "for_profit_disclosure_count": 1,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 9,
+  "member_count": 11,
   "members": [
+    {
+      "ccn": "371728",
+      "name": "CURA-HPC EDMOND",
+      "city": "OKLAHOMA CITY",
+      "state": "OK",
+      "zip": "73131",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371746",
+      "name": "HEART TO HEART HOSPICE OF SOUTHEAST OKLAHOMA, LLC",
+      "city": "DURANT",
+      "state": "OK",
+      "zip": "74701",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
     {
       "ccn": "671591",
       "name": "HEART TO HEART HOSPICE OF EAST TEXAS LLC",
@@ -33,7 +72,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,7 +91,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -64,14 +103,14 @@
     },
     {
       "ccn": "671660",
-      "name": "HEART TO HEART HOSPICE OF HOUSTON, LLC.",
+      "name": "HEART TO HEART HOSPICE OF HOUSTON",
       "city": "CONROE",
       "state": "TX",
       "zip": "77301",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -90,7 +129,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -124,11 +163,11 @@
       "name": "HEART TO HEART HOSPICE OF THE GULF COAST",
       "city": "BEAUMONT",
       "state": "TX",
-      "zip": "77701",
+      "zip": "77706",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 91,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -166,7 +205,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -185,7 +224,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -200,5 +239,5 @@
     "EAST TEXAS MEDICAL COURIERS AND EXPRESS DELIVERY SERVICES, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.459Z"
+  "generated_at": "2026-09-14T15:56:26.686Z"
 }

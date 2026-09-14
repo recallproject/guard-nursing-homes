@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 86,
+  "avg_cahps_overall": 85,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
   "flagged_pct": 50,
@@ -27,14 +27,14 @@
   "members": [
     {
       "ccn": "171509",
-      "name": "SAINT LUKE’S HOSPICE OF LEAVENWORTH, LLC",
+      "name": "SAINT LUKES HOSPICE OF LEAVENWORTH, LLC",
       "city": "LEAVENWORTH",
       "state": "KS",
       "zip": "66048",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,10 +50,10 @@
       "city": "KANSAS CITY",
       "state": "MO",
       "zip": "64111",
-      "ownership_type": "Other",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +68,5 @@
     "SAINT LUKES HEALTH SYSTEM INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.454Z"
+  "generated_at": "2026-09-14T15:56:26.672Z"
 }

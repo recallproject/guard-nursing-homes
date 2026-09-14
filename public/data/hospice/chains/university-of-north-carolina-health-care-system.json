@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 89,
+  "avg_cahps_overall": 89.67,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
   "flagged_pct": 66.7,
@@ -26,7 +26,7 @@
   "members": [
     {
       "ccn": "341510",
-      "name": "HOSPICE AND PALLIATIVE CARE OF NASH GENERAL HOSPIT",
+      "name": "HOSPICE AND PALLIATIVE CARE OF NASH GENERAL HOSPITAL",
       "city": "ROCKY MOUNT",
       "state": "NC",
       "zip": "27804",
@@ -52,7 +52,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 91,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -65,7 +65,7 @@
     {
       "ccn": "341531",
       "name": "UNC HOSPICE",
-      "city": "CHAPEL HILL ",
+      "city": "CHAPEL HILL",
       "state": "NC",
       "zip": "27517",
       "ownership_type": "Combination Government & Non-Profit",
@@ -86,5 +86,5 @@
     "UNIVERSITY OF NORTH CAROLINA HEALTH CARE SYSTEM"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.693Z"
 }

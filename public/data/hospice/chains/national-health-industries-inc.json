@@ -2,7 +2,7 @@
   "chain_name": "NATIONAL HEALTH INDUSTRIES, INC.",
   "chain_slug": "national-health-industries-inc",
   "norm_key": "national health industries",
-  "facility_count": 9,
+  "facility_count": 8,
   "state_count": 5,
   "states": [
     "FL",
@@ -12,12 +12,12 @@
     "TN"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.67,
-  "avg_cahps_overall": 81.78,
+  "avg_hci_composite": 9.75,
+  "avg_cahps_overall": 82.38,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
-  "flagged_pct": 33.3,
-  "oldest_association": "2011-04-04",
+  "flagged_pct": 37.5,
+  "oldest_association": "2016-12-31",
   "newest_association": "2021-05-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
@@ -25,8 +25,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 84.44,
-  "member_count": 9,
+  "avg_disclosed_ownership_pct": 82.5,
+  "member_count": 8,
   "members": [
     {
       "ccn": "101514",
@@ -37,7 +37,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -53,10 +53,10 @@
       "city": "GURNEE",
       "state": "IL",
       "zip": "60031",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 68,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -75,7 +75,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -91,7 +91,7 @@
       "city": "FORTY FORT",
       "state": "PA",
       "zip": "18704",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 92,
@@ -113,7 +113,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -125,53 +125,15 @@
     },
     {
       "ccn": "421515",
-      "name": "HOSPICE OF LANCASTER",
+      "name": "HOSPICE OF LANCASTER & THE PIEDMONT",
       "city": "LANCASTER",
       "state": "SC",
       "zip": "29720",
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "441529",
-      "name": "SUNCREST HOSPICE - NEW TAZEWELL",
-      "city": "NEW TAZEWELL",
-      "state": "TN",
-      "zip": "37825",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 87,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "441560",
-      "name": "TENNOVA HEALTHCARE HOSPICE",
-      "city": "KNOXVILLE",
-      "state": "TN",
-      "zip": "37909",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -182,7 +144,7 @@
     },
     {
       "ccn": "441522",
-      "name": "TENNOVA HOSPICE-CLARKSVILLE",
+      "name": "SUNCREST HOSPICE",
       "city": "CLARKSVILLE",
       "state": "TN",
       "zip": "37040",
@@ -198,11 +160,30 @@
         "nonProfit": false,
         "chain": false
       }
+    },
+    {
+      "ccn": "441560",
+      "name": "SUNCREST HOSPICE",
+      "city": "KNOXVILLE",
+      "state": "TN",
+      "zip": "37909",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "NATIONAL HEALTH INDUSTRIES, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.699Z"
 }

@@ -1,15 +1,15 @@
 {
-  "chain_name": "ALABAMA HEALTH CARE GROUP LLC",
+  "chain_name": "ALABAMA HEALTH CARE GROUP, LLC",
   "chain_slug": "alabama-health-care-group-llc",
   "norm_key": "alabama health care group",
-  "facility_count": 7,
+  "facility_count": 6,
   "state_count": 1,
   "states": [
     "AL"
   ],
-  "avg_cms_rating": 4.86,
-  "avg_hci_composite": 9.43,
-  "avg_cahps_overall": 86.4,
+  "avg_cms_rating": 4.83,
+  "avg_hci_composite": 9.5,
+  "avg_cahps_overall": 87.25,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -21,8 +21,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 95.29,
-  "member_count": 7,
+  "avg_disclosed_ownership_pct": 94.5,
+  "member_count": 6,
   "members": [
     {
       "ccn": "011657",
@@ -30,10 +30,10 @@
       "city": "TRUSSVILLE",
       "state": "AL",
       "zip": "35173",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -53,25 +53,6 @@
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "011662",
-      "name": "ALABAMA HOSPICE CARE OF JASPER",
-      "city": "JASPER",
-      "state": "AL",
-      "zip": "35501",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -128,7 +109,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -144,7 +125,7 @@
       "city": "SCOTTSBORO",
       "state": "AL",
       "zip": "35768",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": 92,
@@ -159,8 +140,8 @@
     }
   ],
   "raw_owner_names_in_disclosure": [
-    "ALABAMA HEALTH CARE GROUP LLC"
+    "ALABAMA HEALTH CARE GROUP, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.704Z"
 }

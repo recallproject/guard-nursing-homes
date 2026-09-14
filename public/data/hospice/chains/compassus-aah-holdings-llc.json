@@ -12,7 +12,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.7,
-  "avg_cahps_overall": 75.1,
+  "avg_cahps_overall": 77.3,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 5,
   "flagged_pct": 30,
@@ -55,7 +55,7 @@
       "ownership_type": "Government",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -71,10 +71,10 @@
       "city": "GRAND BLANC",
       "state": "MI",
       "zip": "48439",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -90,10 +90,10 @@
       "city": "PORTAGE",
       "state": "MI",
       "zip": "49002",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -112,7 +112,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -131,7 +131,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -150,7 +150,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -169,7 +169,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -188,7 +188,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -207,7 +207,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -222,5 +222,5 @@
     "COMPASSUS AAH HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.702Z"
 }

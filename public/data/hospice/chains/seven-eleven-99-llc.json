@@ -2,18 +2,18 @@
   "chain_name": "SEVEN ELEVEN 99 LLC",
   "chain_slug": "seven-eleven-99-llc",
   "norm_key": "seven eleven 99",
-  "facility_count": 8,
+  "facility_count": 10,
   "state_count": 2,
   "states": [
     "GA",
     "TX"
   ],
-  "avg_cms_rating": 4.4,
-  "avg_hci_composite": 8.8,
-  "avg_cahps_overall": 79.25,
-  "flagged_facility_count": 1,
-  "flagged_pattern_count": 1,
-  "flagged_pct": 12.5,
+  "avg_cms_rating": 4.5,
+  "avg_hci_composite": 8.83,
+  "avg_cahps_overall": 81.75,
+  "flagged_facility_count": 2,
+  "flagged_pattern_count": 2,
+  "flagged_pct": 20,
   "oldest_association": "2020-03-03",
   "newest_association": "2023-12-31",
   "is_pe_disclosed": false,
@@ -22,8 +22,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 46.39,
-  "member_count": 8,
+  "avg_disclosed_ownership_pct": 45.67,
+  "member_count": 10,
   "members": [
     {
       "ccn": "851542",
@@ -34,7 +34,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,7 +50,7 @@
       "city": "DUBLIN",
       "state": "GA",
       "zip": "31021",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 2,
       "hci_composite": 6,
       "cahps_overall_rating_pct": null,
@@ -87,7 +87,7 @@
       "name": "EXCELACARE HOSPICE",
       "city": "SAN ANTONIO",
       "state": "TX",
-      "zip": "78240",
+      "zip": "78228",
       "ownership_type": "For-Profit",
       "cms_overall_rating": null,
       "hci_composite": null,
@@ -110,7 +110,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -126,10 +126,10 @@
       "city": "PFLUGERVILLE",
       "state": "TX",
       "zip": "78660",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -148,7 +148,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -176,11 +176,49 @@
         "nonProfit": false,
         "chain": false
       }
+    },
+    {
+      "ccn": "A91740",
+      "name": "REMARKABLE HOSPICE",
+      "city": "COLLEGE STATION",
+      "state": "TX",
+      "zip": "77845",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741703",
+      "name": "WEST TEXAS HOSPICE, LLC",
+      "city": "SNYDER",
+      "state": "TX",
+      "zip": "79549",
+      "ownership_type": "Government",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "SEVEN ELEVEN 99 LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.707Z"
 }

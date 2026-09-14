@@ -2,7 +2,7 @@
   "chain_name": "ADVANCED HEALTH CARE - LARRY H MILLER CORPORATION",
   "chain_slug": "advanced-health-care-larry-h-miller-corporation",
   "norm_key": "advanced health care larry h miller",
-  "facility_count": 14,
+  "facility_count": 15,
   "state_count": 10,
   "states": [
     "AZ",
@@ -18,20 +18,20 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.58,
-  "avg_cahps_overall": 77.5,
+  "avg_cahps_overall": 79.89,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
-  "flagged_pct": 14.3,
+  "flagged_pct": 13.3,
   "oldest_association": "2020-12-31",
   "newest_association": "2023-09-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 12,
-  "non_profit_disclosure_count": 1,
+  "for_profit_disclosure_count": 14,
+  "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 14,
+  "member_count": 15,
   "members": [
     {
       "ccn": "031682",
@@ -42,7 +42,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -55,9 +55,9 @@
     {
       "ccn": "061606",
       "name": "ADVANCED HOSPICE OF COLORADO",
-      "city": "AURORA",
+      "city": "ENGLEWOOD",
       "state": "CO",
-      "zip": "80012",
+      "zip": "80111",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
@@ -74,13 +74,13 @@
     {
       "ccn": "061624",
       "name": "AHC HOME HEALTH AND HOSPICE OF COLORADO SPRINGS",
-      "city": "COLORAD SPRINGS",
+      "city": "COLORADO SPRINGS",
       "state": "CO",
       "zip": "80910",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -99,7 +99,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -118,7 +118,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 68,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -137,7 +137,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -153,10 +153,10 @@
       "city": "KANSAS CITY",
       "state": "MO",
       "zip": "64114",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -213,7 +213,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 69,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361742",
+      "name": "AHC HOME HEALTH OF CINCINNATI LLC",
+      "city": "CINCINNATI",
+      "state": "OH",
+      "zip": "45246",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -229,7 +248,7 @@
       "city": "MAYFIELD HEIGHTS",
       "state": "OH",
       "zip": "44124",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
       "cahps_overall_rating_pct": null,
@@ -248,7 +267,7 @@
       "city": "BETHLEHEM",
       "state": "PA",
       "zip": "18017",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
       "cahps_overall_rating_pct": null,
@@ -267,7 +286,7 @@
       "city": "ST GEORGE",
       "state": "UT",
       "zip": "84790",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": null,
@@ -289,7 +308,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -304,5 +323,5 @@
     "ADVANCED HEALTH CARE - LARRY H MILLER CORPORATION"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.708Z"
 }

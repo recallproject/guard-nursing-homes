@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.5,
-  "avg_cahps_overall": 74.5,
+  "avg_cahps_overall": 77.5,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -33,7 +33,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,7 +52,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "BRISTOL HOSPICE AND HOMECARE - SOUTH CENTRAL LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.704Z"
 }

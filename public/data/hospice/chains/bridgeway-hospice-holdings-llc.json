@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.25,
-  "avg_cahps_overall": 68.25,
+  "avg_cahps_overall": 74.33,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 2,
   "flagged_pct": 25,
@@ -52,7 +52,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -71,7 +71,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 64,
+      "cahps_overall_rating_pct": 68,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -83,14 +83,14 @@
     },
     {
       "ccn": "111762",
-      "name": "AFFINITY HOSPICE ",
+      "name": "AFFINITY HOSPICE",
       "city": "MARIETTA",
       "state": "GA",
       "zip": "30067",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 58,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -105,5 +105,5 @@
     "BRIDGEWAY HOSPICE HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.701Z"
 }

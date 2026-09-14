@@ -2,17 +2,17 @@
   "chain_name": "COMPASSUS BSMH VIRGINIA LLC",
   "chain_slug": "compassus-bsmh-virginia-llc",
   "norm_key": "compassus bsmh virginia",
-  "facility_count": 2,
+  "facility_count": 3,
   "state_count": 1,
   "states": [
     "VA"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 78.5,
+  "avg_hci_composite": 9.33,
+  "avg_cahps_overall": 79,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 2,
-  "flagged_pct": 50,
+  "flagged_pct": 33.3,
   "oldest_association": "2024-04-23",
   "newest_association": "2024-05-01",
   "is_pe_disclosed": false,
@@ -22,8 +22,27 @@
   "for_profit_disclosure_count": 2,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 2,
+  "member_count": 3,
   "members": [
+    {
+      "ccn": "491503",
+      "name": "BON SECOURS HOSPICE",
+      "city": "SUFFOLK",
+      "state": "VA",
+      "zip": "23435",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 76,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
     {
       "ccn": "491514",
       "name": "BON SECOURS HOSPICE AND PALLIATIVE CARE",
@@ -33,7 +52,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -52,7 +71,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +86,5 @@
     "COMPASSUS BSMH VIRGINIA LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.709Z"
 }

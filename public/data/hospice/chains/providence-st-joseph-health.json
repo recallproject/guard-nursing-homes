@@ -2,37 +2,38 @@
   "chain_name": "PROVIDENCE ST. JOSEPH HEALTH",
   "chain_slug": "providence-st-joseph-health",
   "norm_key": "providence st joseph health",
-  "facility_count": 3,
-  "state_count": 3,
+  "facility_count": 6,
+  "state_count": 4,
   "states": [
     "AK",
     "CA",
+    "TX",
     "WA"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.67,
-  "avg_cahps_overall": 81.33,
+  "avg_hci_composite": 9.83,
+  "avg_cahps_overall": 82.83,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
-  "flagged_pct": 33.3,
+  "flagged_pct": 16.7,
   "oldest_association": "2016-07-01",
-  "newest_association": "2016-07-01",
+  "newest_association": "2025-02-27",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
-  "non_profit_disclosure_count": 3,
-  "avg_disclosed_ownership_pct": 100,
-  "member_count": 3,
+  "non_profit_disclosure_count": 2,
+  "avg_disclosed_ownership_pct": 60,
+  "member_count": 6,
   "members": [
     {
       "ccn": "021506",
-      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, AN",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, ANCHORAGE",
       "city": "ANCHORAGE",
       "state": "AK",
       "zip": "99508",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 87,
@@ -47,14 +48,14 @@
     },
     {
       "ccn": "051512",
-      "name": "PROVIDENCE HOSPICE LA COUNTY",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE LA COUNTY",
       "city": "TORRANCE",
       "state": "CA",
       "zip": "90503",
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -65,8 +66,27 @@
       }
     },
     {
+      "ccn": "451519",
+      "name": "COVENANT HEALTH AT HOME WITH COMPASSUS, HOSPICE OF LUBBOCK",
+      "city": "LUBBOCK",
+      "state": "TX",
+      "zip": "79410",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "501515",
-      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, PU",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS HOSPICE CARE, PUGET SOUND",
       "city": "TUKWILA",
       "state": "WA",
       "zip": "98168",
@@ -82,11 +102,49 @@
         "nonProfit": false,
         "chain": false
       }
+    },
+    {
+      "ccn": "501511",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS, PUGET SOUND SOUTH",
+      "city": "LACEY",
+      "state": "WA",
+      "zip": "98503",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "501514",
+      "name": "PROVIDENCE AT HOME WITH COMPASSUS, SNOHOMISH COUNTY",
+      "city": "EVERETT",
+      "state": "WA",
+      "zip": "98203",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
     }
   ],
   "raw_owner_names_in_disclosure": [
     "PROVIDENCE ST. JOSEPH HEALTH"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.691Z"
 }

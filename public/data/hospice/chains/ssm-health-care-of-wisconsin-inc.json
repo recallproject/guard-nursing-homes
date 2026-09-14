@@ -2,17 +2,17 @@
   "chain_name": "SSM HEALTH CARE OF WISCONSIN INC",
   "chain_slug": "ssm-health-care-of-wisconsin-inc",
   "norm_key": "ssm health care of wisconsin",
-  "facility_count": 2,
+  "facility_count": 3,
   "state_count": 1,
   "states": [
     "WI"
   ],
-  "avg_cms_rating": 4.5,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 80.5,
+  "avg_cms_rating": 4.67,
+  "avg_hci_composite": 9.33,
+  "avg_cahps_overall": 85,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
-  "flagged_pct": 100,
+  "flagged_pct": 66.7,
   "oldest_association": "2018-01-01",
   "newest_association": "2018-08-13",
   "is_pe_disclosed": false,
@@ -20,9 +20,9 @@
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
-  "non_profit_disclosure_count": 1,
+  "non_profit_disclosure_count": 2,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 2,
+  "member_count": 3,
   "members": [
     {
       "ccn": "521522",
@@ -33,8 +33,27 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521512",
+      "name": "SSM HEALTH AT HOME HOSPICE",
+      "city": "FOND DU LAC",
+      "state": "WI",
+      "zip": "54937",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -52,7 +71,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +86,5 @@
     "SSM HEALTH CARE OF WISCONSIN INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.457Z"
+  "generated_at": "2026-09-14T15:56:26.685Z"
 }

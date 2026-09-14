@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.8,
-  "avg_cahps_overall": 83,
+  "avg_cahps_overall": 83.6,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
   "flagged_pct": 60,
@@ -53,7 +53,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -69,7 +69,7 @@
       "city": "UNION CITY",
       "state": "TN",
       "zip": "38261",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": 92,
@@ -88,7 +88,7 @@
       "city": "HUNTINGDON",
       "state": "TN",
       "zip": "38344",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": 81,
@@ -110,7 +110,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -125,5 +125,5 @@
     "LHCG LXXXVIII LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.709Z"
 }

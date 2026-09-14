@@ -2,7 +2,7 @@
   "chain_name": "MEDICAL SERVICES OF AMERICA INC",
   "chain_slug": "medical-services-of-america-inc",
   "norm_key": "medical services of america",
-  "facility_count": 17,
+  "facility_count": 18,
   "state_count": 5,
   "states": [
     "GA",
@@ -13,20 +13,20 @@
   ],
   "avg_cms_rating": 4.65,
   "avg_hci_composite": 9.24,
-  "avg_cahps_overall": 77.5,
+  "avg_cahps_overall": 79.64,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
   "oldest_association": "1994-02-01",
-  "newest_association": "2018-11-01",
+  "newest_association": "2023-09-11",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 10,
+  "for_profit_disclosure_count": 12,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 17,
+  "member_count": 18,
   "members": [
     {
       "ccn": "111626",
@@ -56,7 +56,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -75,7 +75,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 65,
+      "cahps_overall_rating_pct": 69,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -94,7 +94,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -107,13 +107,13 @@
     {
       "ccn": "341600",
       "name": "MEDI HOME HOSPICE",
-      "city": "SAINT PAULS ",
+      "city": "SAINT PAULS",
       "state": "NC",
       "zip": "28384",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -132,7 +132,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -163,14 +163,14 @@
     },
     {
       "ccn": "421547",
-      "name": "MEDICAL SERVICES OF AMERICA  HOSPICE - COASTAL",
+      "name": "MEDICAL SERVICES OF AMERICA HOSPICE - COASTAL",
       "city": "MYRTLE BEACH",
       "state": "SC",
       "zip": "29577",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -182,7 +182,7 @@
     },
     {
       "ccn": "421560",
-      "name": "MEDICAL SERVICES OF AMERICA HOSPICE OF THE LOWCOUN",
+      "name": "MEDICAL SERVICES OF AMERICA HOSPICE OF THE LOWCOUNTRY",
       "city": "RIDGELAND",
       "state": "SC",
       "zip": "29936",
@@ -208,7 +208,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -227,7 +227,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491574",
+      "name": "MEDI HOME HEALTH & HOSPICE",
+      "city": "ROANOKE",
+      "state": "VA",
+      "zip": "24014",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -246,26 +265,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "491586",
-      "name": "MEDI HOME HEALTH AND HOSPICE -  PULASKI",
-      "city": "PULASKI",
-      "state": "VA",
-      "zip": "24301",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -284,7 +284,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -295,15 +295,15 @@
       }
     },
     {
-      "ccn": "491574",
-      "name": "MEDI HOME HEALTH AND HOSPICE - ROANOKE",
-      "city": "ROANOKE",
+      "ccn": "491586",
+      "name": "MEDI HOME HEALTH AND HOSPICE - PULASKI",
+      "city": "PULASKI",
       "state": "VA",
-      "zip": "24014",
+      "zip": "24301",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -315,14 +315,33 @@
     },
     {
       "ccn": "491579",
-      "name": "MEDI HOME HOSPICE - RICHMOND",
-      "city": "GLEN ALLEN",
+      "name": "MEDI HOME HOSPICE",
+      "city": "CHARLOTTESVILLE",
       "state": "VA",
-      "zip": "23060",
+      "zip": "22911",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "491665",
+      "name": "MEDI HOME HOSPICE",
+      "city": "DANVILLE",
+      "state": "VA",
+      "zip": "24540",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -341,7 +360,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -356,5 +375,5 @@
     "MEDICAL SERVICES OF AMERICA INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.453Z"
+  "generated_at": "2026-09-14T15:56:26.670Z"
 }

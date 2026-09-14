@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 3.5,
   "avg_hci_composite": 8,
-  "avg_cahps_overall": 83,
+  "avg_cahps_overall": 84,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
   "flagged_pct": 50,
@@ -33,7 +33,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -49,7 +49,7 @@
       "city": "DUBLIN",
       "state": "GA",
       "zip": "31021",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 2,
       "hci_composite": 6,
       "cahps_overall_rating_pct": null,
@@ -67,5 +67,5 @@
     "EOL CARE LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.711Z"
 }

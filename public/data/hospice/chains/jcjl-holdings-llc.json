@@ -2,14 +2,14 @@
   "chain_name": "JCJL HOLDINGS LLC",
   "chain_slug": "jcjl-holdings-llc",
   "norm_key": "jcjl",
-  "facility_count": 4,
+  "facility_count": 5,
   "state_count": 1,
   "states": [
     "MO"
   ],
   "avg_cms_rating": 4,
-  "avg_hci_composite": 8.25,
-  "avg_cahps_overall": 80.33,
+  "avg_hci_composite": 8.2,
+  "avg_cahps_overall": 77.75,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -22,7 +22,7 @@
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 75,
-  "member_count": 4,
+  "member_count": 5,
   "members": [
     {
       "ccn": "261603",
@@ -44,12 +44,31 @@
       }
     },
     {
+      "ccn": "261612",
+      "name": "PREFERRED HOSPICE OF MISSOURI (CENTRAL)",
+      "city": "COLUMBIA",
+      "state": "MO",
+      "zip": "65202",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "261610",
-      "name": "PREFERRED HOSPICE OF MISSOURI (NORTHEAST), LLC",
+      "name": "PREFERRED HOSPICE OF MISSOURI (NORTHEAST)",
       "city": "BALLWIN",
       "state": "MO",
       "zip": "63011",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 3,
       "hci_composite": 7,
       "cahps_overall_rating_pct": null,
@@ -71,7 +90,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -90,7 +109,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -105,5 +124,5 @@
     "JCJL HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.453Z"
+  "generated_at": "2026-09-14T15:56:26.670Z"
 }

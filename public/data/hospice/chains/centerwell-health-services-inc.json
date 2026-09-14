@@ -2,8 +2,8 @@
   "chain_name": "CENTERWELL HEALTH SERVICES INC",
   "chain_slug": "centerwell-health-services-inc",
   "norm_key": "centerwell health services",
-  "facility_count": 220,
-  "state_count": 37,
+  "facility_count": 207,
+  "state_count": 36,
   "states": [
     "AL",
     "AR",
@@ -33,7 +33,6 @@
     "NV",
     "OH",
     "OK",
-    "OR",
     "PA",
     "RI",
     "SC",
@@ -43,22 +42,22 @@
     "WA",
     "WI"
   ],
-  "avg_cms_rating": 4.94,
-  "avg_hci_composite": 9.57,
-  "avg_cahps_overall": 79.39,
-  "flagged_facility_count": 10,
-  "flagged_pattern_count": 11,
-  "flagged_pct": 4.5,
+  "avg_cms_rating": 4.95,
+  "avg_hci_composite": 9.61,
+  "avg_cahps_overall": 81.54,
+  "flagged_facility_count": 8,
+  "flagged_pattern_count": 9,
+  "flagged_pct": 3.9,
   "oldest_association": "2000-03-15",
   "newest_association": "2022-12-22",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 201,
+  "for_profit_disclosure_count": 191,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 41.9,
-  "member_count": 220,
+  "avg_disclosed_ownership_pct": 42.02,
+  "member_count": 207,
   "members": [
     {
       "ccn": "281528A",
@@ -68,15 +67,15 @@
       "missing": true
     },
     {
-      "ccn": "011675",
-      "name": "GENTIVA BIRMINGHAM",
-      "city": "BIRMINGHAM",
+      "ccn": "011522",
+      "name": "GENTIVA",
+      "city": "ENTERPRISE",
       "state": "AL",
-      "zip": "35243",
+      "zip": "36330",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -87,15 +86,15 @@
       }
     },
     {
-      "ccn": "011522",
-      "name": "GENTIVA DOTHAN",
-      "city": "DOTHAN",
+      "ccn": "011675",
+      "name": "GENTIVA BIRMINGHAM",
+      "city": "BIRMINGHAM",
       "state": "AL",
-      "zip": "36301",
+      "zip": "35243",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -114,7 +113,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -133,7 +132,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -152,7 +151,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -171,7 +170,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -203,13 +202,13 @@
     {
       "ccn": "011506",
       "name": "SOUTHERNCARE NEW BEACON - JASPER",
-      "city": "JASPER",
+      "city": "NORTHPORT",
       "state": "AL",
-      "zip": "35504",
+      "zip": "35473",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -221,8 +220,8 @@
     },
     {
       "ccn": "011501",
-      "name": "SOUTHERNCARE NEW BEACON N. BIRMINGHAM",
-      "city": "BIRMINGHAM ",
+      "name": "SOUTHERNCARE NEW BEACON N BIRMINGHAM",
+      "city": "BIRMINGHAM",
       "state": "AL",
       "zip": "35235",
       "ownership_type": "For-Profit",
@@ -247,7 +246,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -266,7 +265,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -285,7 +284,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -304,7 +303,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -323,7 +322,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -342,7 +341,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -361,7 +360,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -380,7 +379,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -399,7 +398,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -412,32 +411,13 @@
     {
       "ccn": "031537",
       "name": "GENTIVA II",
-      "city": "GILBERT",
+      "city": "CASA GRANDE",
       "state": "AZ",
-      "zip": "85233",
+      "zip": "85122",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "051593",
-      "name": "GENTIVA",
-      "city": "SAN BERNARDINO",
-      "state": "CA",
-      "zip": "92408",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -456,7 +436,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -475,7 +455,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -494,64 +474,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "551562",
-      "name": "GENTIVA",
-      "city": "PLEASANTON",
-      "state": "CA",
-      "zip": "94588",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 59,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "051692",
-      "name": "HEARTLAND HOSPICE (MONTEREY)",
-      "city": "MONTEREY",
-      "state": "CA",
-      "zip": "93940",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "051690",
-      "name": "HEARTLAND HOSPICE (SANTA CLARA)",
-      "city": "SAN JOSE",
-      "state": "CA",
-      "zip": "95110",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 65,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -570,7 +493,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -582,14 +505,14 @@
     },
     {
       "ccn": "061583",
-      "name": "NEW CENTURY HOSPICE OF COLORADO SPRINGS",
+      "name": "GENTIVA I",
       "city": "COLORADO SPRINGS",
       "state": "CO",
       "zip": "80918",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -627,7 +550,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -646,7 +569,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -665,7 +588,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 65,
+      "cahps_overall_rating_pct": 64,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -684,7 +607,45 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101502",
+      "name": "HEARTLAND HOSPICE (BROWARD)",
+      "city": "PLANTATION",
+      "state": "FL",
+      "zip": "33324",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "101549",
+      "name": "HEARTLAND HOSPICE (JACKSONVILLE)",
+      "city": "JACKSONVILLE",
+      "state": "FL",
+      "zip": "32256",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -703,7 +664,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -741,7 +702,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -760,7 +721,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -779,7 +740,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -798,7 +759,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -817,7 +778,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -855,7 +816,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 68,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -867,14 +828,14 @@
     },
     {
       "ccn": "111644",
-      "name": "HEARTLAND HOSPICE ",
+      "name": "GENTIVA",
       "city": "BRUNSWICK",
       "state": "GA",
       "zip": "31520",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -912,7 +873,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -969,7 +930,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -981,14 +942,14 @@
     },
     {
       "ccn": "161586",
-      "name": "GENTIVA ",
+      "name": "GENTIVA",
       "city": "SPIRIT LAKE",
       "state": "IA",
       "zip": "51360",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1004,7 +965,7 @@
       "city": "AMES",
       "state": "IA",
       "zip": "50010",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -1026,7 +987,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1045,7 +1006,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1083,7 +1044,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1102,7 +1063,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1121,7 +1082,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1140,7 +1101,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1159,7 +1120,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1178,7 +1139,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1197,7 +1158,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "151558",
+      "name": "GENTIVA I",
+      "city": "EVANSVILLE",
+      "state": "IN",
+      "zip": "47715",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1216,7 +1196,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1235,7 +1215,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1254,7 +1234,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1292,7 +1272,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1330,26 +1310,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "151558",
-      "name": "KINDRED HOSPICE",
-      "city": "EVANSVILLE",
-      "state": "IN",
-      "zip": "47715",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1368,7 +1329,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1387,7 +1348,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1406,7 +1367,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1425,7 +1386,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1444,7 +1405,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1463,7 +1424,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1501,7 +1462,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1520,7 +1481,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1539,7 +1500,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1558,45 +1519,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "221594",
-      "name": "GENTIVA",
-      "city": "FALL RIVER",
-      "state": "MA",
-      "zip": "02723",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "221620",
-      "name": "GENTIVA",
-      "city": "HYANNIS",
-      "state": "MA",
-      "zip": "02601",
-      "ownership_type": null,
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1615,7 +1538,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 66,
+      "cahps_overall_rating_pct": 68,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1634,7 +1557,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 66,
+      "cahps_overall_rating_pct": 65,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1646,7 +1569,7 @@
     },
     {
       "ccn": "201523",
-      "name": "GENTIVA ",
+      "name": "GENTIVA",
       "city": "BREWER",
       "state": "ME",
       "zip": "04412",
@@ -1665,14 +1588,14 @@
     },
     {
       "ccn": "201525",
-      "name": "KINDRED HOSPICE",
-      "city": "PORTLAND",
+      "name": "GENTIVA I",
+      "city": "SOUTH PORTLAND",
       "state": "ME",
-      "zip": "04101",
-      "ownership_type": "For-Profit",
+      "zip": "04106",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1691,7 +1614,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1710,7 +1633,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1729,7 +1652,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1748,7 +1671,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1767,7 +1690,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1786,7 +1709,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1805,7 +1728,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -1824,7 +1747,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1837,13 +1760,13 @@
     {
       "ccn": "231588",
       "name": "HEARTLAND HOSPICE (MASON)",
-      "city": "OKEMOS ",
+      "city": "OKEMOS",
       "state": "MI",
       "zip": "48864",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1859,29 +1782,10 @@
       "city": "MONROE",
       "state": "MI",
       "zip": "48162",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "231569",
-      "name": "HEARTLAND HOSPICE (SOUTHFIELD)",
-      "city": "SOUTHFIELD",
-      "state": "MI",
-      "zip": "48076",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1900,7 +1804,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1913,13 +1817,13 @@
     {
       "ccn": "241611",
       "name": "GENTIVA",
-      "city": "SAINT PAUL",
+      "city": "EDINA",
       "state": "MN",
-      "zip": "55104",
+      "zip": "55439",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 68,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -1938,45 +1842,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "241601",
-      "name": "GENTIVA II ",
-      "city": "EDINA",
-      "state": "MN",
-      "zip": "55439",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "241579",
-      "name": "HEARTLAND HOSPICE - ROCHESTER",
-      "city": "ROCHESTER",
-      "state": "MN",
-      "zip": "55904",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 66,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -1995,7 +1861,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2052,26 +1918,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "261701",
-      "name": "GENTIVA",
-      "city": "KANSAS CITY",
-      "state": "MO",
-      "zip": "64153",
-      "ownership_type": null,
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2090,7 +1937,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2109,7 +1956,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2128,7 +1975,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2160,13 +2007,13 @@
     {
       "ccn": "251590",
       "name": "GENTIVA",
-      "city": "FLOWOOD",
+      "city": "JACKSON",
       "state": "MS",
-      "zip": "39232",
+      "zip": "39216",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2204,7 +2051,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2242,7 +2089,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2273,14 +2120,14 @@
     },
     {
       "ccn": "251537",
-      "name": "SOUTHERN CARE INC DBA GENTIVA ",
+      "name": "SOUTHERN CARE INC DBA GENTIVA",
       "city": "BILOXI",
       "state": "MS",
       "zip": "39532",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2299,7 +2146,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2318,7 +2165,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2337,7 +2184,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2356,7 +2203,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2375,7 +2222,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2394,7 +2241,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 64,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2413,7 +2260,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2432,7 +2279,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2448,7 +2295,7 @@
       "city": "LINCOLN",
       "state": "NE",
       "zip": "68516",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
@@ -2470,7 +2317,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2486,10 +2333,10 @@
       "city": "LAUREL SPRINGS",
       "state": "NJ",
       "zip": "08021",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 64,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2508,7 +2355,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2527,27 +2374,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "321581",
-      "name": "GENTIVA",
-      "city": "LAS CRUCES",
-      "state": "NM",
-      "zip": "88005",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -2565,7 +2393,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2603,7 +2431,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2622,7 +2450,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2641,7 +2469,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2676,10 +2504,10 @@
       "city": "KETTERING",
       "state": "OH",
       "zip": "45429",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2694,11 +2522,11 @@
       "name": "HEARTLAND HOSPICE",
       "city": "COLUMBUS",
       "state": "OH",
-      "zip": "43229",
+      "zip": "43230",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2717,7 +2545,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2736,8 +2564,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "361582",
+      "name": "HEARTLAND HOSPICE (SYLVANIA)",
+      "city": "MAUMEE",
+      "state": "OH",
+      "zip": "43537",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -2755,7 +2602,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2774,7 +2621,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2793,7 +2640,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2812,7 +2659,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2831,26 +2678,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "381547",
-      "name": "GENTIVA",
-      "city": "LAKE OSWEGO",
-      "state": "OR",
-      "zip": "97035",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 57,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2869,7 +2697,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2888,7 +2716,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2926,7 +2754,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2956,15 +2784,34 @@
       }
     },
     {
+      "ccn": "391610",
+      "name": "HEARTLAND HOSPICE",
+      "city": "PITTSBURGH",
+      "state": "PA",
+      "zip": "15220",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "391637",
       "name": "HEARTLAND HOSPICE (ALLENTOWN)",
-      "city": "READING",
+      "city": "WYOMISSING",
       "state": "PA",
       "zip": "19610",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -2983,27 +2830,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "391676",
-      "name": "HEARTLAND HOSPICE (ERIE)",
-      "city": "ERIE",
-      "state": "PA",
-      "zip": "16505",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 3,
-      "hci_composite": 7,
-      "cahps_overall_rating_pct": 86,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -3021,26 +2849,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "391610",
-      "name": "HEARTLAND HOSPICE (PITTSBURGH)",
-      "city": "PITTSBURGH",
-      "state": "PA",
-      "zip": "15220",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3059,7 +2868,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3078,7 +2887,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3097,7 +2906,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3110,13 +2919,13 @@
     {
       "ccn": "421534",
       "name": "GENTIVA",
-      "city": "GREENVILLE",
+      "city": "ANDERSON",
       "state": "SC",
-      "zip": "29615",
+      "zip": "29625",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3135,7 +2944,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3154,7 +2963,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3173,7 +2982,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3192,7 +3001,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3208,10 +3017,10 @@
       "city": "CHARLESTON",
       "state": "SC",
       "zip": "29407",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3223,7 +3032,7 @@
     },
     {
       "ccn": "441576",
-      "name": " GENTIVA",
+      "name": "GENTIVA",
       "city": "CHATTANOOGA",
       "state": "TN",
       "zip": "37403",
@@ -3249,7 +3058,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3268,7 +3077,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3287,7 +3096,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3306,7 +3115,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3325,7 +3134,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3344,7 +3153,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3363,7 +3172,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3382,7 +3191,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3401,27 +3210,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "451722",
-      "name": "GENTIVA",
-      "city": "GREENVILLE",
-      "state": "TX",
-      "zip": "75402",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -3439,7 +3229,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3458,7 +3248,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3477,8 +3267,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451682",
+      "name": "GENTIVA",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78228",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 77,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -3496,7 +3305,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3515,7 +3324,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3528,13 +3337,13 @@
     {
       "ccn": "671626",
       "name": "GENTIVA",
-      "city": "BELLAIRE ",
+      "city": "BELLAIRE",
       "state": "TX",
       "zip": "77401",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3568,11 +3377,11 @@
       "name": "GENTIVA",
       "city": "LIVINGSTON",
       "state": "TX",
-      "zip": "77351",
+      "zip": "77352",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 91,
+      "cahps_overall_rating_pct": 93,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3591,7 +3400,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -3610,8 +3419,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451583",
+      "name": "GENTIVA",
+      "city": "TEXARKANA",
+      "state": "TX",
+      "zip": "75503",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -3629,7 +3457,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3644,7 +3472,7 @@
       "name": "GENTIVA",
       "city": "ABILENE",
       "state": "TX",
-      "zip": "79606",
+      "zip": "79602",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
@@ -3686,27 +3514,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "451583",
-      "name": "GENTIVA ",
-      "city": "TEXARKANA",
-      "state": "TX",
-      "zip": "75503",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -3724,26 +3533,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "451682",
-      "name": "GENTIVA, HOSPICE IPU ADS",
-      "city": "SAN ANTONIO",
-      "state": "TX",
-      "zip": "78228",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3762,7 +3552,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3777,11 +3567,11 @@
       "name": "NEW CENTURY HOSPICE OF AUSTIN",
       "city": "AUSTIN",
       "state": "TX",
-      "zip": "78759",
+      "zip": "78727",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3800,7 +3590,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3819,7 +3609,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3838,7 +3628,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3857,7 +3647,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3876,7 +3666,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3895,7 +3685,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3914,7 +3704,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3933,7 +3723,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3952,26 +3742,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 71,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "491567",
-      "name": "HEARTLAND HOSPICE",
-      "city": "NORTH CHESTERFIELD",
-      "state": "VA",
-      "zip": "23235",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -3990,7 +3761,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4009,7 +3780,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4047,7 +3818,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4066,7 +3837,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4085,26 +3856,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "521559",
-      "name": "GENTIVA",
-      "city": "WEST ALLIS",
-      "state": "WI",
-      "zip": "53227",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4117,13 +3869,13 @@
     {
       "ccn": "521617",
       "name": "HEARTLAND HOSPICE CENTRAL WISCONSIN",
-      "city": "STEVENS POINT ",
+      "city": "STEVENS POINT",
       "state": "WI",
       "zip": "54482",
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4142,7 +3894,7 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4161,7 +3913,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4180,7 +3932,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4199,7 +3951,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 67,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4218,7 +3970,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 69,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -4234,5 +3986,5 @@
     "CENTERWELL HEALTH SERVICES INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.453Z"
+  "generated_at": "2026-09-14T15:56:26.669Z"
 }

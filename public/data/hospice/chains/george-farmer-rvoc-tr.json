@@ -2,21 +2,19 @@
   "chain_name": "GEORGE FARMER RVOC TR",
   "chain_slug": "george-farmer-rvoc-tr",
   "norm_key": "george farmer rvoc tr",
-  "facility_count": 8,
-  "state_count": 5,
+  "facility_count": 6,
+  "state_count": 3,
   "states": [
-    "GA",
-    "KS",
     "OH",
     "PA",
     "TN"
   ],
-  "avg_cms_rating": 4.75,
+  "avg_cms_rating": 4.67,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 79.63,
+  "avg_cahps_overall": 79,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
-  "flagged_pct": 25,
+  "flagged_pct": 33.3,
   "oldest_association": "2007-01-09",
   "newest_association": "2022-11-10",
   "is_pe_disclosed": false,
@@ -25,47 +23,9 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 19.17,
-  "member_count": 8,
+  "avg_disclosed_ownership_pct": 16.53,
+  "member_count": 6,
   "members": [
-    {
-      "ccn": "111607",
-      "name": "CROSSROADS HOSPICE OF ATLANTA, LLC",
-      "city": "TUCKER",
-      "state": "GA",
-      "zip": "30084",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "171578",
-      "name": "CROSSROADS HOSPICE",
-      "city": "LENEXA",
-      "state": "KS",
-      "zip": "66219",
-      "ownership_type": "Other",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
     {
       "ccn": "361614",
       "name": "CROSSROADS HOSPICE OF CINCINNATI, LLC",
@@ -75,7 +35,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 74,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -113,7 +73,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -132,7 +92,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -151,7 +111,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -163,11 +123,11 @@
     },
     {
       "ccn": "441573",
-      "name": "CROSSROADS HOSPICE OF TENNESSE",
+      "name": "CROSSROADS HOSPICE OF TENNESSEE, LLC",
       "city": "MEMPHIS",
       "state": "TN",
       "zip": "38134",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": 78,
@@ -185,5 +145,5 @@
     "GEORGE FARMER RVOC TR"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.455Z"
+  "generated_at": "2026-09-14T15:56:26.675Z"
 }

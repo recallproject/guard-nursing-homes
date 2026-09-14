@@ -1,0 +1,59 @@
+{
+  "chain_name": "GERINET PHYSICIAN SERVICES, INC.",
+  "chain_slug": "gerinet-physician-services-inc",
+  "norm_key": "gerinet physician services",
+  "facility_count": 2,
+  "state_count": 1,
+  "states": [
+    "AZ"
+  ],
+  "avg_cms_rating": 5,
+  "avg_hci_composite": 10,
+  "avg_cahps_overall": 80,
+  "flagged_facility_count": 0,
+  "flagged_pattern_count": 0,
+  "flagged_pct": 0,
+  "oldest_association": "2011-11-14",
+  "newest_association": "2025-02-26",
+  "is_pe_disclosed": false,
+  "is_reit_disclosed": false,
+  "is_holding_co_disclosed": true,
+  "is_mgmt_co_disclosed": false,
+  "for_profit_disclosure_count": 2,
+  "non_profit_disclosure_count": 0,
+  "avg_disclosed_ownership_pct": 50,
+  "member_count": 2,
+  "members": [
+    {
+      "ccn": "001586",
+      "name": null,
+      "city": null,
+      "state": null,
+      "missing": true
+    },
+    {
+      "ccn": "031605",
+      "name": "BRISTOL HOSPICE - TUCSON",
+      "city": "TUCSON",
+      "state": "AZ",
+      "zip": "85711",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 80,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    }
+  ],
+  "raw_owner_names_in_disclosure": [
+    "GERINET PHYSICIAN SERVICES, INC."
+  ],
+  "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
+  "generated_at": "2026-09-14T15:56:26.703Z"
+}

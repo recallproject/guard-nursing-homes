@@ -19,7 +19,7 @@
   ],
   "avg_cms_rating": 4.88,
   "avg_hci_composite": 9.31,
-  "avg_cahps_overall": 79.42,
+  "avg_cahps_overall": 81,
   "flagged_facility_count": 5,
   "flagged_pattern_count": 7,
   "flagged_pct": 19.2,
@@ -43,7 +43,7 @@
       "ownership_type": "Combination Government & Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -62,7 +62,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -100,7 +100,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -119,7 +119,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 57,
+      "cahps_overall_rating_pct": 60,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -138,7 +138,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -176,7 +176,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -195,7 +195,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -214,7 +214,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -233,26 +233,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 89,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "231599",
-      "name": "COMPASS - LANSING",
-      "city": "LANSING",
-      "state": "MI",
-      "zip": "48917",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -271,7 +252,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "231599",
+      "name": "COMPASSUS - LANSING",
+      "city": "LANSING",
+      "state": "MI",
+      "zip": "48917",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -290,7 +290,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -309,7 +309,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 91,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -328,7 +328,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -347,7 +347,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 68,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -366,7 +366,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -381,11 +381,11 @@
       "name": "COMPASSUS - MUSKOGEE",
       "city": "MUSKOGEE",
       "state": "OK",
-      "zip": "74401",
+      "zip": "74403",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 71,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -401,10 +401,10 @@
       "city": "TULSA",
       "state": "OK",
       "zip": "74135",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -423,7 +423,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -442,7 +442,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -461,7 +461,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -480,7 +480,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -499,7 +499,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -533,5 +533,5 @@
     "HOSPICE ADVANTAGE MIDCO LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.459Z"
+  "generated_at": "2026-09-14T15:56:26.688Z"
 }

@@ -9,31 +9,31 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 83.5,
+  "avg_cahps_overall": 85,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
   "flagged_pct": 100,
   "oldest_association": "2007-10-30",
-  "newest_association": "2009-09-15",
+  "newest_association": "2014-09-08",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
-  "non_profit_disclosure_count": 2,
+  "non_profit_disclosure_count": 3,
   "avg_disclosed_ownership_pct": null,
   "member_count": 2,
   "members": [
     {
-      "ccn": "181526",
-      "name": "HOSPICE OF THE BLUEGRASS",
-      "city": "HAZARD",
+      "ccn": "181500",
+      "name": "HOSPICE OF THE BLUEGRASS, INC DBA BLUEGRASS CARE N",
+      "city": "LEXINGTON",
       "state": "KY",
-      "zip": "41701",
+      "zip": "40504",
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -44,15 +44,15 @@
       }
     },
     {
-      "ccn": "181500",
-      "name": "HOSPICE OF THE BLUEGRASS, INC DBA BLUEGRASS CARE N",
-      "city": "LEXINGTON",
+      "ccn": "181526",
+      "name": "HOSPICE OF THE BLUEGRASS, INC.",
+      "city": "HAZARD",
       "state": "KY",
-      "zip": "40504",
-      "ownership_type": "Other",
+      "zip": "41701",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "HOSPICE OF THE BLUEGRASS, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.701Z"
 }

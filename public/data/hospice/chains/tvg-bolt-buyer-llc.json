@@ -2,29 +2,29 @@
   "chain_name": "TVG BOLT BUYER, LLC",
   "chain_slug": "tvg-bolt-buyer-llc",
   "norm_key": "tvg bolt buyer",
-  "facility_count": 7,
+  "facility_count": 8,
   "state_count": 3,
   "states": [
     "CA",
     "ID",
     "UT"
   ],
-  "avg_cms_rating": 4.71,
-  "avg_hci_composite": 9.14,
-  "avg_cahps_overall": 81.86,
-  "flagged_facility_count": 0,
-  "flagged_pattern_count": 0,
-  "flagged_pct": 0,
+  "avg_cms_rating": 4.75,
+  "avg_hci_composite": 9.13,
+  "avg_cahps_overall": 82.43,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 12.5,
   "oldest_association": "2020-11-25",
-  "newest_association": "2021-11-25",
+  "newest_association": "2025-12-03",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 6,
+  "for_profit_disclosure_count": 5,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 47.79,
-  "member_count": 7,
+  "avg_disclosed_ownership_pct": 47.95,
+  "member_count": 8,
   "members": [
     {
       "ccn": "551754",
@@ -35,7 +35,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A11731",
+      "name": "MISSION HOSPICE SERVICES OF EAST BAY, LLC",
+      "city": "CONCORD",
+      "state": "CA",
+      "zip": "94520",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -54,7 +73,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +92,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -92,8 +111,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551539",
+      "name": "TRADITIONS HEALTH",
+      "city": "BAKERSFIELD",
+      "state": "CA",
+      "zip": "93309",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -111,7 +149,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -130,26 +168,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "461556",
-      "name": "TENDER CARE HOSPICE (MISSION HOSPICE SERVICES OF S",
-      "city": "WEST VALLEY CITY",
-      "state": "UT",
-      "zip": "84119",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": 69,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -164,5 +183,5 @@
     "TVG BOLT BUYER, LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.688Z"
 }

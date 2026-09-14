@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-05-03T18:41:50.574Z",
+  "generated_at": "2026-09-14T15:56:23.096Z",
   "source_window": "CMS Hospice Care Compare · most recent provider data",
-  "total_providers": 6943,
+  "total_providers": 6669,
   "total_states": 55,
-  "total_flagged": 1013,
-  "total_flagged_pct": 14.590234768831916,
+  "total_flagged": 980,
+  "total_flagged_pct": 14.694856800119958,
   "thresholds": {
-    "live_discharge_p90": 14.6,
-    "live_discharge_median": 6.5,
+    "live_discharge_p90": 14.8,
+    "live_discharge_median": 6.7,
     "gip_p90": 1.3,
     "gip_median": 0
   },
   "coverage": {
-    "cms_overall_rating": 5520,
-    "cms_overall_rating_pct": 79.50453694368429,
-    "cahps_overall_rating": 3147,
-    "cahps_overall_rating_pct": 45.326227855393924,
-    "cahps_any_measure": 3147,
-    "cahps_any_measure_pct": 45.326227855393924
+    "cms_overall_rating": 5278,
+    "cms_overall_rating_pct": 79.14230019493176,
+    "cahps_overall_rating": 3204,
+    "cahps_overall_rating_pct": 48.043184885290145,
+    "cahps_any_measure": 3204,
+    "cahps_any_measure_pct": 48.043184885290145
   },
   "by_state": [
     {
       "state": "AZ",
-      "count": 244,
-      "flagged_count": 18,
-      "flagged_pct": 7.377049180327869
+      "count": 237,
+      "flagged_count": 16,
+      "flagged_pct": 6.751054852320674
     },
     {
       "state": "AL",
@@ -46,21 +46,21 @@
     },
     {
       "state": "CA",
-      "count": 2155,
-      "flagged_count": 152,
-      "flagged_pct": 7.053364269141531
+      "count": 1913,
+      "flagged_count": 142,
+      "flagged_pct": 7.422895974908521
     },
     {
       "state": "CO",
-      "count": 87,
+      "count": 88,
       "flagged_count": 14,
-      "flagged_pct": 16.091954022988507
+      "flagged_pct": 15.909090909090908
     },
     {
       "state": "CT",
       "count": 28,
-      "flagged_count": 9,
-      "flagged_pct": 32.142857142857146
+      "flagged_count": 8,
+      "flagged_pct": 28.57142857142857
     },
     {
       "state": "DE",
@@ -76,15 +76,15 @@
     },
     {
       "state": "FL",
-      "count": 58,
+      "count": 61,
       "flagged_count": 40,
-      "flagged_pct": 68.96551724137932
+      "flagged_pct": 65.57377049180327
     },
     {
       "state": "GA",
-      "count": 259,
-      "flagged_count": 45,
-      "flagged_pct": 17.374517374517374
+      "count": 261,
+      "flagged_count": 43,
+      "flagged_pct": 16.47509578544061
     },
     {
       "state": "HI",
@@ -94,27 +94,27 @@
     },
     {
       "state": "ID",
-      "count": 54,
-      "flagged_count": 8,
-      "flagged_pct": 14.814814814814813
+      "count": 56,
+      "flagged_count": 7,
+      "flagged_pct": 12.5
     },
     {
       "state": "IL",
-      "count": 147,
+      "count": 149,
       "flagged_count": 40,
-      "flagged_pct": 27.2108843537415
+      "flagged_pct": 26.845637583892618
     },
     {
       "state": "IN",
       "count": 102,
-      "flagged_count": 21,
-      "flagged_pct": 20.588235294117645
+      "flagged_count": 20,
+      "flagged_pct": 19.607843137254903
     },
     {
       "state": "IA",
-      "count": 70,
-      "flagged_count": 15,
-      "flagged_pct": 21.428571428571427
+      "count": 71,
+      "flagged_count": 14,
+      "flagged_pct": 19.718309859154928
     },
     {
       "state": "KS",
@@ -130,9 +130,9 @@
     },
     {
       "state": "LA",
-      "count": 119,
+      "count": 118,
       "flagged_count": 24,
-      "flagged_pct": 20.168067226890756
+      "flagged_pct": 20.33898305084746
     },
     {
       "state": "ME",
@@ -154,27 +154,27 @@
     },
     {
       "state": "MI",
-      "count": 172,
-      "flagged_count": 32,
-      "flagged_pct": 18.6046511627907
+      "count": 173,
+      "flagged_count": 31,
+      "flagged_pct": 17.91907514450867
     },
     {
       "state": "MN",
-      "count": 84,
-      "flagged_count": 6,
-      "flagged_pct": 7.142857142857142
+      "count": 81,
+      "flagged_count": 5,
+      "flagged_pct": 6.172839506172839
     },
     {
       "state": "MS",
-      "count": 83,
+      "count": 84,
       "flagged_count": 12,
-      "flagged_pct": 14.457831325301203
+      "flagged_pct": 14.285714285714285
     },
     {
       "state": "MO",
-      "count": 133,
-      "flagged_count": 17,
-      "flagged_pct": 12.781954887218044
+      "count": 132,
+      "flagged_count": 16,
+      "flagged_pct": 12.121212121212121
     },
     {
       "state": "MT",
@@ -184,15 +184,15 @@
     },
     {
       "state": "NE",
-      "count": 42,
+      "count": 43,
       "flagged_count": 2,
-      "flagged_pct": 4.761904761904762
+      "flagged_pct": 4.651162790697675
     },
     {
       "state": "NV",
-      "count": 179,
-      "flagged_count": 18,
-      "flagged_pct": 10.05586592178771
+      "count": 183,
+      "flagged_count": 17,
+      "flagged_pct": 9.289617486338798
     },
     {
       "state": "NH",
@@ -203,20 +203,20 @@
     {
       "state": "NJ",
       "count": 61,
-      "flagged_count": 16,
-      "flagged_pct": 26.229508196721312
+      "flagged_count": 15,
+      "flagged_pct": 24.59016393442623
     },
     {
       "state": "NM",
-      "count": 54,
-      "flagged_count": 11,
-      "flagged_pct": 20.37037037037037
+      "count": 52,
+      "flagged_count": 10,
+      "flagged_pct": 19.230769230769234
     },
     {
       "state": "NY",
-      "count": 40,
+      "count": 39,
       "flagged_count": 17,
-      "flagged_pct": 42.5
+      "flagged_pct": 43.58974358974359
     },
     {
       "state": "NC",
@@ -232,15 +232,15 @@
     },
     {
       "state": "OH",
-      "count": 168,
-      "flagged_count": 47,
-      "flagged_pct": 27.976190476190478
+      "count": 169,
+      "flagged_count": 46,
+      "flagged_pct": 27.218934911242602
     },
     {
       "state": "OK",
-      "count": 133,
+      "count": 135,
       "flagged_count": 15,
-      "flagged_pct": 11.278195488721805
+      "flagged_pct": 11.11111111111111
     },
     {
       "state": "OR",
@@ -250,9 +250,9 @@
     },
     {
       "state": "PA",
-      "count": 183,
-      "flagged_count": 41,
-      "flagged_pct": 22.404371584699454
+      "count": 179,
+      "flagged_count": 40,
+      "flagged_pct": 22.3463687150838
     },
     {
       "state": "PR",
@@ -263,38 +263,38 @@
     {
       "state": "RI",
       "count": 11,
-      "flagged_count": 2,
-      "flagged_pct": 18.181818181818183
+      "flagged_count": 1,
+      "flagged_pct": 9.090909090909092
     },
     {
       "state": "SC",
-      "count": 91,
+      "count": 88,
       "flagged_count": 16,
-      "flagged_pct": 17.582417582417584
+      "flagged_pct": 18.181818181818183
     },
     {
       "state": "SD",
-      "count": 17,
+      "count": 16,
       "flagged_count": 5,
-      "flagged_pct": 29.411764705882355
+      "flagged_pct": 31.25
     },
     {
       "state": "TN",
-      "count": 60,
+      "count": 61,
       "flagged_count": 9,
-      "flagged_pct": 15
+      "flagged_pct": 14.754098360655737
     },
     {
       "state": "TX",
-      "count": 1081,
-      "flagged_count": 149,
-      "flagged_pct": 13.783533765032377
+      "count": 1053,
+      "flagged_count": 143,
+      "flagged_pct": 13.580246913580247
     },
     {
       "state": "UT",
-      "count": 85,
+      "count": 82,
       "flagged_count": 5,
-      "flagged_pct": 5.88235294117647
+      "flagged_pct": 6.097560975609756
     },
     {
       "state": "VT",
@@ -310,15 +310,15 @@
     },
     {
       "state": "VA",
-      "count": 112,
+      "count": 110,
       "flagged_count": 22,
-      "flagged_pct": 19.642857142857142
+      "flagged_pct": 20
     },
     {
       "state": "WA",
-      "count": 49,
+      "count": 50,
       "flagged_count": 8,
-      "flagged_pct": 16.3265306122449
+      "flagged_pct": 16
     },
     {
       "state": "WV",
@@ -328,9 +328,9 @@
     },
     {
       "state": "WI",
-      "count": 83,
+      "count": 85,
       "flagged_count": 15,
-      "flagged_pct": 18.072289156626507
+      "flagged_pct": 17.647058823529413
     },
     {
       "state": "WY",
@@ -346,7 +346,7 @@
     },
     {
       "state": "MP",
-      "count": 2,
+      "count": 1,
       "flagged_count": 0,
       "flagged_pct": 0
     }
@@ -360,9 +360,9 @@
     },
     {
       "state": "FL",
-      "count": 58,
+      "count": 61,
       "flagged_count": 40,
-      "flagged_pct": 68.96551724137932
+      "flagged_pct": 65.57377049180327
     },
     {
       "state": "WY",
@@ -372,9 +372,9 @@
     },
     {
       "state": "NY",
-      "count": 40,
+      "count": 39,
       "flagged_count": 17,
-      "flagged_pct": 42.5
+      "flagged_pct": 43.58974358974359
     },
     {
       "state": "NC",
@@ -391,8 +391,8 @@
     {
       "state": "CT",
       "count": 28,
-      "flagged_count": 9,
-      "flagged_pct": 32.142857142857146
+      "flagged_count": 8,
+      "flagged_pct": 28.57142857142857
     },
     {
       "state": "AR",
@@ -402,15 +402,15 @@
     },
     {
       "state": "OH",
-      "count": 168,
-      "flagged_count": 47,
-      "flagged_pct": 27.976190476190478
+      "count": 169,
+      "flagged_count": 46,
+      "flagged_pct": 27.218934911242602
     },
     {
       "state": "IL",
-      "count": 147,
+      "count": 149,
       "flagged_count": 40,
-      "flagged_pct": 27.2108843537415
+      "flagged_pct": 26.845637583892618
     }
   ],
   "framework_source": "California State Auditor Report 2021-123 (March 2022)"

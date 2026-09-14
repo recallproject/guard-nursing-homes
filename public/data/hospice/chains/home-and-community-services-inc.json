@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 4.2,
   "avg_hci_composite": 8.5,
-  "avg_cahps_overall": 80.4,
+  "avg_cahps_overall": 79.14,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 1,
   "flagged_pct": 10,
@@ -33,7 +33,26 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "111728",
+      "name": "AFFINIS HOSPICE",
+      "city": "NEWNAN",
+      "state": "GA",
+      "zip": "30263",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -49,7 +68,7 @@
       "city": "POOLER",
       "state": "GA",
       "zip": "31322",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -87,29 +106,10 @@
       "city": "VIDALIA",
       "state": "GA",
       "zip": "30474",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "111728",
-      "name": "AFFINIS HOSPICE LLC- NEWNAN",
-      "city": "NEWNAN",
-      "state": "GA",
-      "zip": "30263",
-      "ownership_type": "Non-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -147,7 +147,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -163,10 +163,10 @@
       "city": "AUGUSTA",
       "state": "GA",
       "zip": "30909",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -185,7 +185,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -204,7 +204,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -219,5 +219,5 @@
     "HOME AND COMMUNITY SERVICES INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.704Z"
 }

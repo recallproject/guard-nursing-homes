@@ -2,7 +2,7 @@
   "chain_name": "HOMECARE PREFERRED CHOICE, INC.",
   "chain_slug": "homecare-preferred-choice-inc",
   "norm_key": "homecare preferred choice",
-  "facility_count": 26,
+  "facility_count": 25,
   "state_count": 11,
   "states": [
     "AL",
@@ -18,21 +18,21 @@
     "WI"
   ],
   "avg_cms_rating": 4.96,
-  "avg_hci_composite": 9.5,
-  "avg_cahps_overall": 80.85,
-  "flagged_facility_count": 2,
-  "flagged_pattern_count": 2,
-  "flagged_pct": 7.7,
+  "avg_hci_composite": 9.52,
+  "avg_cahps_overall": 82.68,
+  "flagged_facility_count": 1,
+  "flagged_pattern_count": 1,
+  "flagged_pct": 4,
   "oldest_association": "1994-08-19",
   "newest_association": "2020-06-01",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 3,
-  "non_profit_disclosure_count": 0,
+  "for_profit_disclosure_count": 8,
+  "non_profit_disclosure_count": 1,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 26,
+  "member_count": 25,
   "members": [
     {
       "ccn": "011566",
@@ -54,15 +54,15 @@
       }
     },
     {
-      "ccn": "011586",
-      "name": "AMEDISYS HOSPICE OF HAMILTON",
-      "city": "HAMILTON",
+      "ccn": "011567",
+      "name": "AMEDISYS HOSPICE OF MOBILE",
+      "city": "MOBILE",
       "state": "AL",
-      "zip": "35470",
+      "zip": "36602",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 86,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -73,15 +73,15 @@
       }
     },
     {
-      "ccn": "011567",
-      "name": "AMEDISYS HOSPICE OF MOBILE",
-      "city": "MOBILE",
+      "ccn": "011586",
+      "name": "ASERCARE HOSPICE - HAMILTON",
+      "city": "HAMILTON",
       "state": "AL",
-      "zip": "36602",
+      "zip": "35470",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -100,7 +100,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -119,7 +119,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -138,7 +138,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -157,7 +157,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -176,7 +176,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -195,7 +195,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -214,7 +214,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -233,7 +233,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -252,7 +252,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -271,7 +271,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -290,7 +290,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -309,7 +309,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -347,7 +347,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -366,7 +366,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -385,7 +385,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -404,7 +404,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -423,7 +423,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -442,27 +442,8 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "441581",
-      "name": "ASERACARE HOSPICE - MCKENZIE",
-      "city": "MC KENZIE",
-      "state": "TN",
-      "zip": "38201",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": 82,
-      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -474,13 +455,13 @@
     {
       "ccn": "491584",
       "name": "AMEDISYS HOSPICE OF RICHMOND",
-      "city": "RICHMOND",
+      "city": "GLEN ALLEN",
       "state": "VA",
-      "zip": "23235",
+      "zip": "23059",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -499,7 +480,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -518,7 +499,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -533,5 +514,5 @@
     "HOMECARE PREFERRED CHOICE, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.459Z"
+  "generated_at": "2026-09-14T15:56:26.686Z"
 }

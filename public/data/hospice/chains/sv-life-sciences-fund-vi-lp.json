@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 4.67,
   "avg_hci_composite": 8.83,
-  "avg_cahps_overall": 80,
+  "avg_cahps_overall": 82,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 3,
   "flagged_pct": 50,
@@ -23,7 +23,7 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 55.69,
+  "avg_disclosed_ownership_pct": 55.15,
   "member_count": 6,
   "members": [
     {
@@ -35,7 +35,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -47,14 +47,33 @@
     },
     {
       "ccn": "321559",
-      "name": "HOSPICE DE LA LUZ ",
-      "city": "ALBUQUERQUE ",
+      "name": "HOSPICE DE LA LUZ",
+      "city": "ALBUQUERQUE",
       "state": "NM",
       "zip": "87109",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 89,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741622",
+      "name": "KLARUS HOSPICE",
+      "city": "SAN ANTONIO",
+      "state": "TX",
+      "zip": "78228",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -75,25 +94,6 @@
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
       "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "741622",
-      "name": "KLARUS HOSPICE ",
-      "city": "SAN ANTONIO",
-      "state": "TX",
-      "zip": "78228",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -130,7 +130,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -145,5 +145,5 @@
     "SV LIFE SCIENCES FUND VI LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.692Z"
 }

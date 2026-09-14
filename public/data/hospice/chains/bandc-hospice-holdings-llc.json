@@ -46,11 +46,11 @@
     },
     {
       "ccn": "731504",
-      "name": "MORNING STAR HOSPICE AND PALLIATIVE CARE SOLUTIONS",
+      "name": "MORNING STAR HOSPICE AND PALLIATIVE CARE SOLUTIONS, LLC",
       "city": "HARRISBURG",
       "state": "PA",
       "zip": "17111",
-      "ownership_type": "For-Profit",
+      "ownership_type": null,
       "cms_overall_rating": 1,
       "hci_composite": 5,
       "cahps_overall_rating_pct": null,
@@ -68,5 +68,5 @@
     "BANDC HOSPICE HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.712Z"
 }

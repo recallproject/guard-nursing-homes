@@ -13,7 +13,7 @@
   ],
   "avg_cms_rating": 4.75,
   "avg_hci_composite": 9.38,
-  "avg_cahps_overall": 79.57,
+  "avg_cahps_overall": 78.71,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -31,51 +31,13 @@
     {
       "ccn": "011629",
       "name": "ADORATION HOSPICE",
-      "city": "OXFORD ",
+      "city": "OXFORD",
       "state": "AL",
       "zip": "35203",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 68,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "851509",
-      "name": "SACRED JOURNEY HOSPICE-GWINNETT",
-      "city": "LAWRENCEVILLE",
-      "state": "GA",
-      "zip": "30046",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "851562",
-      "name": "SACRED JOURNEY HOSPICE, DALTON",
-      "city": "DALTON",
-      "state": "GA",
-      "zip": "30721",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -87,14 +49,14 @@
     },
     {
       "ccn": "111599",
-      "name": "SACRED JOURNEY HOSPICE, INC",
+      "name": "ADORATION HOSPICE",
       "city": "MCDONOUGH",
       "state": "GA",
       "zip": "30253",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -106,14 +68,52 @@
     },
     {
       "ccn": "111799",
-      "name": "SACRED JOURNEY HOSPICE, LLC",
+      "name": "ADORATION HOSPICE",
       "city": "NEWNAN",
       "state": "GA",
       "zip": "30265",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851509",
+      "name": "ADORATION HOSPICE",
+      "city": "LAWRENCEVILLE",
+      "state": "GA",
+      "zip": "30046",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 65,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "851562",
+      "name": "ADORATION HOSPICE",
+      "city": "DALTON",
+      "state": "GA",
+      "zip": "30721",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -151,7 +151,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -189,7 +189,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -204,5 +204,5 @@
     "ADORATION HOSPICE CARE LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.704Z"
 }

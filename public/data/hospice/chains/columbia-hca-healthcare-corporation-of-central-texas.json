@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 10,
-  "avg_cahps_overall": 88.5,
+  "avg_cahps_overall": 90,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -26,14 +26,14 @@
   "members": [
     {
       "ccn": "451600",
-      "name": "METHODIST HEALTHCARE HILL COUNTRY HOSPICE & FAMILY",
+      "name": "METHODIST HEALTHCARE HILL COUNTRY HOSPICE & FAMILY CARE",
       "city": "FREDERICKSBURG",
       "state": "TX",
       "zip": "78624",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -45,14 +45,14 @@
     },
     {
       "ccn": "671700",
-      "name": "METHODIST HOSPICE AND FAMILY CARE ",
+      "name": "METHODIST HOSPICE AND FAMILY CARE",
       "city": "SAN ANTONIO",
       "state": "TX",
       "zip": "78232",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -67,5 +67,5 @@
     "COLUMBIA-HCA HEALTHCARE CORPORATION OF CENTRAL TEXAS"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.712Z"
 }

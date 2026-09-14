@@ -9,7 +9,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.67,
-  "avg_cahps_overall": 74.67,
+  "avg_cahps_overall": 76.33,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 2,
   "flagged_pct": 33.3,
@@ -30,10 +30,10 @@
       "city": "GRAND BLANC",
       "state": "MI",
       "zip": "48439",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -49,10 +49,10 @@
       "city": "PORTAGE",
       "state": "MI",
       "zip": "49002",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -71,7 +71,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -86,5 +86,5 @@
     "COMPASSUS AAH HOLDINGS OF MICHIGAN LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.464Z"
+  "generated_at": "2026-09-14T15:56:26.711Z"
 }

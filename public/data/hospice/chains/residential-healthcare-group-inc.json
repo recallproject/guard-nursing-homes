@@ -11,7 +11,7 @@
   ],
   "avg_cms_rating": 4.6,
   "avg_hci_composite": 9.2,
-  "avg_cahps_overall": 75.75,
+  "avg_cahps_overall": 76.75,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 4,
   "flagged_pct": 60,
@@ -35,7 +35,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 67,
+      "cahps_overall_rating_pct": 68,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -54,7 +54,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -73,7 +73,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -92,7 +92,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -126,5 +126,5 @@
     "RESIDENTIAL HEALTHCARE GROUP INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.691Z"
 }

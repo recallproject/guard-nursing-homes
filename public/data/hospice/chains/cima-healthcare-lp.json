@@ -2,13 +2,13 @@
   "chain_name": "CIMA HEALTHCARE LP",
   "chain_slug": "cima-healthcare-lp",
   "norm_key": "cima healthcare",
-  "facility_count": 3,
+  "facility_count": 2,
   "state_count": 1,
   "states": [
     "TX"
   ],
   "avg_cms_rating": 5,
-  "avg_hci_composite": 9.67,
+  "avg_hci_composite": 9.5,
   "avg_cahps_overall": 82.5,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
@@ -21,8 +21,8 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 89.38,
-  "member_count": 3,
+  "avg_disclosed_ownership_pct": 90.03,
+  "member_count": 2,
   "members": [
     {
       "ccn": "671556",
@@ -33,7 +33,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,26 +52,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "671558",
-      "name": "ELARA CARING ",
-      "city": "EDINBURG",
-      "state": "TX",
-      "zip": "78539",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -86,5 +67,5 @@
     "CIMA HEALTHCARE LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.693Z"
 }

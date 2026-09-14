@@ -14,7 +14,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.6,
-  "avg_cahps_overall": 82.44,
+  "avg_cahps_overall": 84.11,
   "flagged_facility_count": 1,
   "flagged_pattern_count": 2,
   "flagged_pct": 10,
@@ -51,13 +51,13 @@
     {
       "ccn": "011506",
       "name": "SOUTHERNCARE NEW BEACON - JASPER",
-      "city": "JASPER",
+      "city": "NORTHPORT",
       "state": "AL",
-      "zip": "35504",
+      "zip": "35473",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -69,8 +69,8 @@
     },
     {
       "ccn": "011501",
-      "name": "SOUTHERNCARE NEW BEACON N. BIRMINGHAM",
-      "city": "BIRMINGHAM ",
+      "name": "SOUTHERNCARE NEW BEACON N BIRMINGHAM",
+      "city": "BIRMINGHAM",
       "state": "AL",
       "zip": "35235",
       "ownership_type": "For-Profit",
@@ -95,7 +95,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 88,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -114,7 +114,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -171,7 +171,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -183,7 +183,7 @@
     },
     {
       "ccn": "441576",
-      "name": " GENTIVA",
+      "name": "GENTIVA",
       "city": "CHATTANOOGA",
       "state": "TN",
       "zip": "37403",
@@ -209,7 +209,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -224,5 +224,5 @@
     "REGENCY HEALTHCARE HOLDINGS LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.689Z"
 }

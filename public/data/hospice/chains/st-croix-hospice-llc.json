@@ -2,32 +2,33 @@
   "chain_name": "ST CROIX HOSPICE LLC",
   "chain_slug": "st-croix-hospice-llc",
   "norm_key": "st croix hospice",
-  "facility_count": 15,
-  "state_count": 6,
+  "facility_count": 24,
+  "state_count": 7,
   "states": [
     "IL",
     "IN",
     "MI",
     "MN",
     "MO",
+    "NE",
     "WI"
   ],
-  "avg_cms_rating": 4.71,
-  "avg_hci_composite": 9.21,
-  "avg_cahps_overall": 82.5,
-  "flagged_facility_count": 2,
-  "flagged_pattern_count": 2,
-  "flagged_pct": 13.3,
+  "avg_cms_rating": 4.75,
+  "avg_hci_composite": 9.3,
+  "avg_cahps_overall": 85.45,
+  "flagged_facility_count": 3,
+  "flagged_pattern_count": 3,
+  "flagged_pct": 12.5,
   "oldest_association": "2021-07-01",
-  "newest_association": "2024-07-18",
+  "newest_association": "2025-07-29",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 15,
+  "for_profit_disclosure_count": 24,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 15,
+  "member_count": 24,
   "members": [
     {
       "ccn": "141621",
@@ -38,7 +39,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141747",
+      "name": "ST CROIX HOSPICE",
+      "city": "MOLINE",
+      "state": "IL",
+      "zip": "61265",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -57,8 +77,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "141624",
+      "name": "ST CROIX HOSPICE LOMBARD",
+      "city": "LOMBARD",
+      "state": "IL",
+      "zip": "60148",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 83,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -76,7 +115,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -114,7 +153,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -133,7 +172,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -152,7 +191,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 73,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -164,14 +203,14 @@
     },
     {
       "ccn": "241620",
-      "name": "ST. CROIX HOSPICE",
+      "name": "ST CROIX HOSPICE",
       "city": "ST. CLOUD",
       "state": "MN",
       "zip": "56301",
       "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -183,14 +222,52 @@
     },
     {
       "ccn": "241623",
-      "name": "ST. CROIX HOSPICE",
+      "name": "ST CROIX HOSPICE",
       "city": "HOPKINS",
       "state": "MN",
       "zip": "55305",
       "ownership_type": null,
       "cms_overall_rating": null,
       "hci_composite": null,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "241629",
+      "name": "ST CROIX HOSPICE",
+      "city": "MOOSE LAKE",
+      "state": "MN",
+      "zip": "55767",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": 90,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "241503",
+      "name": "STCH SOUTH CENTRAL MN OPCO LLC",
+      "city": "MANKATO",
+      "state": "MN",
+      "zip": "56001",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -206,10 +283,10 @@
       "city": "SAINT PETERS",
       "state": "MO",
       "zip": "63376",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -228,7 +305,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 88,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "261716",
+      "name": "ST CROIX HOSPICE",
+      "city": "ARNOLD",
+      "state": "MO",
+      "zip": "63101",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -240,7 +336,7 @@
     },
     {
       "ccn": "261648",
-      "name": "ST. CROIX HOSPICE ",
+      "name": "ST. CROIX HOSPICE",
       "city": "HARRISONVILLE",
       "state": "MO",
       "zip": "64701",
@@ -258,15 +354,34 @@
       }
     },
     {
-      "ccn": "521622",
-      "name": "ST CROIX HOSPICE  WAUSAU",
-      "city": "WAUSAU",
-      "state": "WI",
-      "zip": "54401",
-      "ownership_type": null,
+      "ccn": "261570",
+      "name": "ST. CROIX HOSPICE",
+      "city": "MOBERLY",
+      "state": "MO",
+      "zip": "65270",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281547",
+      "name": "ST. CROIX HOSPICE",
+      "city": "SOUTH SIOUX CITY",
+      "state": "NE",
+      "zip": "68776",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -285,7 +400,45 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521519",
+      "name": "ST CROIX HOSPICE HUDSON",
+      "city": "HUDSON",
+      "state": "WI",
+      "zip": "54016",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521507",
+      "name": "ST CROIX HOSPICE LA CROSSE",
+      "city": "LA CROSSE",
+      "state": "WI",
+      "zip": "54601",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -304,7 +457,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "521622",
+      "name": "ST CROIX HOSPICE WAUSAU",
+      "city": "WAUSAU",
+      "state": "WI",
+      "zip": "54401",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -319,5 +491,5 @@
     "ST CROIX HOSPICE LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.690Z"
 }

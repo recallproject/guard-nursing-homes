@@ -2,43 +2,104 @@
   "chain_name": "VISTRIA FUND III LP",
   "chain_slug": "vistria-fund-iii-lp",
   "norm_key": "vistria fund iii",
-  "facility_count": 13,
-  "state_count": 6,
+  "facility_count": 32,
+  "state_count": 10,
   "states": [
     "AL",
+    "AZ",
     "CA",
     "ID",
     "LA",
     "MS",
+    "NE",
+    "OK",
+    "TX",
     "UT"
   ],
-  "avg_cms_rating": 4.62,
-  "avg_hci_composite": 9,
-  "avg_cahps_overall": 81.77,
-  "flagged_facility_count": 0,
-  "flagged_pattern_count": 0,
-  "flagged_pct": 0,
+  "avg_cms_rating": 4.53,
+  "avg_hci_composite": 8.81,
+  "avg_cahps_overall": 81.27,
+  "flagged_facility_count": 4,
+  "flagged_pattern_count": 4,
+  "flagged_pct": 12.5,
   "oldest_association": "2020-11-25",
-  "newest_association": "2021-12-29",
-  "is_pe_disclosed": false,
+  "newest_association": "2025-12-03",
+  "is_pe_disclosed": true,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 7,
+  "for_profit_disclosure_count": 6,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 32.95,
-  "member_count": 13,
+  "avg_disclosed_ownership_pct": 24.54,
+  "member_count": 32,
   "members": [
     {
+      "ccn": "011549",
+      "name": "TRADITIONS HEALTH OF SELMA",
+      "city": "SELMA",
+      "state": "AL",
+      "zip": "36701",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 79,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
       "ccn": "011598",
-      "name": "VITALCARING GROUP ",
-      "city": "SARALAND",
+      "name": "VITALCARING GROUP",
+      "city": "MOBILE",
       "state": "AL",
       "zip": "36571",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 94,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031601",
+      "name": "TRADITIONS HEALTH",
+      "city": "CHANDLER",
+      "state": "AZ",
+      "zip": "85226",
+      "ownership_type": "Non-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031606",
+      "name": "TRADITIONS HEALTH",
+      "city": "SCOTTSDALE",
+      "state": "AZ",
+      "zip": "85258",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -57,7 +118,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "A11731",
+      "name": "MISSION HOSPICE SERVICES OF EAST BAY, LLC",
+      "city": "CONCORD",
+      "state": "CA",
+      "zip": "94520",
+      "ownership_type": null,
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -76,7 +156,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 86,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -95,7 +175,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -114,8 +194,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 81,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551539",
+      "name": "TRADITIONS HEALTH",
+      "city": "BAKERSFIELD",
+      "state": "CA",
+      "zip": "93309",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -133,7 +232,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 85,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "191597",
+      "name": "TRADITIONS HEALTH",
+      "city": "COVINGTON",
+      "state": "LA",
+      "zip": "70433",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -152,7 +270,45 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 72,
+      "cahps_overall_rating_pct": 73,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251701",
+      "name": "TRADITIONS HEALTH",
+      "city": "RIDGELAND",
+      "state": "MS",
+      "zip": "39157",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 87,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "251679",
+      "name": "TRADITIONS HEALTH",
+      "city": "OCEAN SPRINGS",
+      "state": "MS",
+      "zip": "39564",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -171,7 +327,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -190,7 +346,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -209,7 +365,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -225,10 +381,238 @@
       "city": "BATESVILLE",
       "state": "MS",
       "zip": "38606",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "281546",
+      "name": "ST. CROIX HOSPICE",
+      "city": "LINCOLN",
+      "state": "NE",
+      "zip": "68510",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371673",
+      "name": "TRADITIONS HEALTH OF EDMOND",
+      "city": "EDMOND",
+      "state": "OK",
+      "zip": "73003",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371583",
+      "name": "TRADITIONS HEALTH OF ELK CITY",
+      "city": "ELK CITY",
+      "state": "OK",
+      "zip": "73644",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 74,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371600",
+      "name": "TRADITIONS HEALTH OF SEMINOLE",
+      "city": "SEMINOLE",
+      "state": "OK",
+      "zip": "74868",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 75,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "371669",
+      "name": "TRADITIONS HEALTH OF WOODWARD",
+      "city": "WOODWARD",
+      "state": "OK",
+      "zip": "73801",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 82,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671592",
+      "name": "TRADITIONS HEALTH",
+      "city": "TYLER",
+      "state": "TX",
+      "zip": "75703",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671686",
+      "name": "TRADITIONS HOSPICE",
+      "city": "HOUSTON",
+      "state": "TX",
+      "zip": "77058",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": 70,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671772",
+      "name": "VITALCARING GROUP",
+      "city": "SUGAR LAND",
+      "state": "TX",
+      "zip": "77478",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451753",
+      "name": "VITALCARING GROUP",
+      "city": "COLLEGE STATION",
+      "state": "TX",
+      "zip": "77845",
+      "ownership_type": "Government",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 81,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "671773",
+      "name": "VITALCARING GROUP",
+      "city": "CROCKETT",
+      "state": "TX",
+      "zip": "75835",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": 84,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451709",
+      "name": "VITALCARING GROUP",
+      "city": "TOMBALL",
+      "state": "TX",
+      "zip": "77377",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "451773",
+      "name": "VITALCARING GROUP",
+      "city": "PLAINVIEW",
+      "state": "TX",
+      "zip": "79072",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -247,26 +631,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 88,
-      "flagged_count": 0,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "461556",
-      "name": "TENDER CARE HOSPICE (MISSION HOSPICE SERVICES OF S",
-      "city": "WEST VALLEY CITY",
-      "state": "UT",
-      "zip": "84119",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
-      "cahps_overall_rating_pct": 69,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -281,5 +646,5 @@
     "VISTRIA FUND III LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.688Z"
 }

@@ -14,7 +14,7 @@
   ],
   "avg_cms_rating": 4.09,
   "avg_hci_composite": 8.29,
-  "avg_cahps_overall": 75.67,
+  "avg_cahps_overall": 77.21,
   "flagged_facility_count": 16,
   "flagged_pattern_count": 20,
   "flagged_pct": 34.8,
@@ -26,7 +26,7 @@
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 3,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 96.1,
+  "avg_disclosed_ownership_pct": 96.76,
   "member_count": 46,
   "members": [
     {
@@ -38,7 +38,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -53,11 +53,11 @@
       "name": "HARBOR HOSPICE OF ALEXANDRIA, LP",
       "city": "ALEXANDRIA",
       "state": "LA",
-      "zip": "71303",
+      "zip": "71301",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -152,7 +152,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -203,9 +203,9 @@
     {
       "ccn": "671747",
       "name": "BEACON HOSPICE OF CENTRAL TEXAS, LP",
-      "city": "SAN ANTONIO",
+      "city": "AUSTIN",
       "state": "TX",
-      "zip": "78258",
+      "zip": "78704",
       "ownership_type": "For-Profit",
       "cms_overall_rating": null,
       "hci_composite": null,
@@ -266,7 +266,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -304,7 +304,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -361,7 +361,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -373,14 +373,14 @@
     },
     {
       "ccn": "671711",
-      "name": "HARBOR HOSPICE OF CENTRAL HOUSTON, LP",
+      "name": "HARBOR HOSPICE OF CENTRAL HOUSTON, L.P.",
       "city": "HOUSTON",
       "state": "TX",
       "zip": "77045",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 2,
       "hci_composite": 6,
-      "cahps_overall_rating_pct": 58,
+      "cahps_overall_rating_pct": 65,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -392,7 +392,7 @@
     },
     {
       "ccn": "A91681",
-      "name": "HARBOR HOSPICE OF CENTRAL SAN ANTONIO LP ",
+      "name": "HARBOR HOSPICE OF CENTRAL SAN ANTONIO LP",
       "city": "SAN ANTONIO",
       "state": "TX",
       "zip": "78248",
@@ -418,8 +418,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "741550",
+      "name": "HARBOR HOSPICE OF DALLAS, L.P.",
+      "city": "DESOTO",
+      "state": "TX",
+      "zip": "75115",
+      "ownership_type": "Other",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -456,7 +475,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 64,
+      "cahps_overall_rating_pct": 58,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -472,10 +491,10 @@
       "city": "JASPER",
       "state": "TX",
       "zip": "75951",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -488,9 +507,9 @@
     {
       "ccn": "741516",
       "name": "HARBOR HOSPICE OF FORT WORTH LP",
-      "city": "BENBROOK",
+      "city": "FORT WORTH",
       "state": "TX",
-      "zip": "76132",
+      "zip": "76109",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 1,
       "hci_composite": 5,
@@ -513,7 +532,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -551,7 +570,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -570,7 +589,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -610,25 +629,6 @@
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
       "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "741550",
-      "name": "HARBOR HOSPICE OF NORTH DALLAS-FORT WORTH, L.P.",
-      "city": "DESOTO",
-      "state": "TX",
-      "zip": "75115",
-      "ownership_type": "Other",
-      "cms_overall_rating": 3,
-      "hci_composite": 7,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -678,9 +678,9 @@
     {
       "ccn": "671784",
       "name": "HARBOR HOSPICE OF PORTLAND, LP",
-      "city": "CORPUS CHRISTI",
+      "city": "PORTLAND",
       "state": "TX",
-      "zip": "78411",
+      "zip": "78374",
       "ownership_type": "For-Profit",
       "cms_overall_rating": null,
       "hci_composite": null,
@@ -703,7 +703,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 56,
+      "cahps_overall_rating_pct": 58,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -760,7 +760,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -794,11 +794,11 @@
       "name": "HARBOR HOSPICE OF TEXAS LP",
       "city": "TOMBALL",
       "state": "TX",
-      "zip": "77375",
+      "zip": "77377",
       "ownership_type": "Other",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -817,7 +817,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -836,7 +836,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -848,11 +848,11 @@
     },
     {
       "ccn": "741574",
-      "name": "HARBOR HOSPICE OF WEST DALLAS FORT WORTH LP",
+      "name": "HARBOR HOSPICE OF WEST DALLAS-FORT WORTH, LP",
       "city": "BENBROOK",
       "state": "TX",
       "zip": "76132",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": null,
       "hci_composite": null,
       "cahps_overall_rating_pct": null,
@@ -908,5 +908,5 @@
     "ARFEEN PROPERTIES, L.P."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.700Z"
 }

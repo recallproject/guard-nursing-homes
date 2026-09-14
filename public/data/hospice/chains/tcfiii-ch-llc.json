@@ -2,7 +2,7 @@
   "chain_name": "TCFIII CH LLC",
   "chain_slug": "tcfiii-ch-llc",
   "norm_key": "tcfiii ch",
-  "facility_count": 20,
+  "facility_count": 23,
   "state_count": 6,
   "states": [
     "AZ",
@@ -12,22 +12,22 @@
     "OK",
     "TX"
   ],
-  "avg_cms_rating": 4.47,
-  "avg_hci_composite": 8.84,
-  "avg_cahps_overall": 80.09,
-  "flagged_facility_count": 4,
-  "flagged_pattern_count": 5,
-  "flagged_pct": 20,
+  "avg_cms_rating": 4.45,
+  "avg_hci_composite": 8.73,
+  "avg_cahps_overall": 79.73,
+  "flagged_facility_count": 5,
+  "flagged_pattern_count": 6,
+  "flagged_pct": 21.7,
   "oldest_association": "2020-07-20",
-  "newest_association": "2025-07-10",
+  "newest_association": "2026-04-01",
   "is_pe_disclosed": true,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
   "is_mgmt_co_disclosed": false,
-  "for_profit_disclosure_count": 7,
+  "for_profit_disclosure_count": 6,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 75.17,
-  "member_count": 20,
+  "avg_disclosed_ownership_pct": 75.73,
+  "member_count": 23,
   "members": [
     {
       "ccn": "031598",
@@ -38,7 +38,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,7 +50,7 @@
     },
     {
       "ccn": "031716",
-      "name": "LUMICARE HOSPICE",
+      "name": "CHOICE HOSPICE OF ARIZONA",
       "city": "TUCSON",
       "state": "AZ",
       "zip": "85711",
@@ -58,6 +58,44 @@
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031705",
+      "name": "HAVEN HOSPICE",
+      "city": "TUCSON",
+      "state": "AZ",
+      "zip": "85715",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "031695",
+      "name": "HAVEN HOSPICE",
+      "city": "SCOTTSDALE",
+      "state": "AZ",
+      "zip": "85260",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -76,7 +114,26 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 72,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "061619",
+      "name": "CHOICE HOSPICE",
+      "city": "WESTMINSTER",
+      "state": "CO",
+      "zip": "80234",
+      "ownership_type": "Other",
+      "cms_overall_rating": 5,
+      "hci_composite": 10,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -88,10 +145,10 @@
     },
     {
       "ccn": "171612",
-      "name": "KINDFUL HOSPICE",
-      "city": "WICHITA",
+      "name": "CHOICE HOSPICE",
+      "city": "OVERLAND PARK",
       "state": "KS",
-      "zip": "67211",
+      "zip": "66210",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
@@ -133,7 +190,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -145,7 +202,7 @@
     },
     {
       "ccn": "371566",
-      "name": "CHOICE HEALTH AT HOME - HENRYETTA",
+      "name": "CHOICE HEALTH AT HOME - HENRYETTA HOSPICE",
       "city": "HENRYETTA",
       "state": "OK",
       "zip": "74437",
@@ -171,7 +228,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -190,7 +247,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -202,14 +259,14 @@
     },
     {
       "ccn": "371629",
-      "name": "CHOICE HEALTH AT HOME - SOUTHEASTERN OKLAHOMA HOSP",
+      "name": "CHOICE HEALTH AT HOME - SOUTHEASTERN OKLAHOMA HOSPICE",
       "city": "ADA",
       "state": "OK",
       "zip": "74820",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 89,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -228,7 +285,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -244,10 +301,10 @@
       "city": "ENID",
       "state": "OK",
       "zip": "73701",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Other",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 92,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -266,7 +323,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -285,7 +342,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 73,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -304,7 +361,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 91,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -334,15 +391,15 @@
       }
     },
     {
-      "ccn": "741592",
+      "ccn": "741708",
       "name": "CHOICE HOSPICE",
-      "city": "GRAPEVINE",
+      "city": "CONROE",
       "state": "TX",
-      "zip": "76051",
+      "zip": "77301",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -372,16 +429,16 @@
       }
     },
     {
-      "ccn": "971597",
-      "name": "CHOICE HOSPICE",
-      "city": "THE WOODLANDS",
+      "ccn": "671791",
+      "name": "HOPESTONE HOSPICE & PALLIATIVE CARE",
+      "city": "TEXAS CITY",
       "state": "TX",
-      "zip": "77380",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 10,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
+      "zip": "77591",
+      "ownership_type": "Other",
+      "cms_overall_rating": 4,
+      "hci_composite": 8,
+      "cahps_overall_rating_pct": 60,
+      "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -391,14 +448,14 @@
       }
     },
     {
-      "ccn": "671791",
-      "name": "HOPESTONE HOSPICE & PALLIATIVE CARE",
-      "city": "TEXAS CITY",
+      "ccn": "971534",
+      "name": "HOPESTONE HOSPICE AND PALLIATIVE CARE, LLC",
+      "city": "GRAPEVINE",
       "state": "TX",
-      "zip": "77591",
-      "ownership_type": "Other",
-      "cms_overall_rating": 4,
-      "hci_composite": 8,
+      "zip": "76051",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 3,
+      "hci_composite": 7,
       "cahps_overall_rating_pct": null,
       "flagged_count": 1,
       "ownership_flags": {
@@ -414,5 +471,5 @@
     "TCFIII CH LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.461Z"
+  "generated_at": "2026-09-14T15:56:26.691Z"
 }

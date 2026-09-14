@@ -10,7 +10,7 @@
   ],
   "avg_cms_rating": 4.33,
   "avg_hci_composite": 8.83,
-  "avg_cahps_overall": 78,
+  "avg_cahps_overall": 80.67,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -31,7 +31,7 @@
       "city": "CUMMING",
       "state": "GA",
       "zip": "30040",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
       "cahps_overall_rating_pct": null,
@@ -50,7 +50,7 @@
       "city": "VALDOSTA",
       "state": "GA",
       "zip": "31601",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
       "cahps_overall_rating_pct": null,
@@ -69,7 +69,7 @@
       "city": "VILLA RICA",
       "state": "GA",
       "zip": "30180",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
       "cahps_overall_rating_pct": null,
@@ -91,7 +91,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -104,13 +104,13 @@
     {
       "ccn": "251595",
       "name": "COMMUNITY HOSPICE",
-      "city": "TUPELO ",
+      "city": "TUPELO",
       "state": "MS",
       "zip": "38801",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 83,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -126,10 +126,10 @@
       "city": "PHILADELPHIA",
       "state": "MS",
       "zip": "39350",
-      "ownership_type": "Other",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -144,5 +144,5 @@
     "HALCYON HEALTHCARE LLC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.690Z"
 }

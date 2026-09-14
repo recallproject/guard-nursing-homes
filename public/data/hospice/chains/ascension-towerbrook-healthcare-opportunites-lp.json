@@ -14,7 +14,7 @@
   ],
   "avg_cms_rating": 4.5,
   "avg_hci_composite": 8.5,
-  "avg_cahps_overall": 83.4,
+  "avg_cahps_overall": 84,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 3,
   "flagged_pct": 33.3,
@@ -38,7 +38,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -57,7 +57,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -76,7 +76,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -95,7 +95,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -114,7 +114,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 84,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 2,
       "ownership_flags": {
         "pe": false,
@@ -126,7 +126,7 @@
     },
     {
       "ccn": "A91647",
-      "name": "COMPASSUS - CORPUS CHRISTI",
+      "name": "COMPASSUS- CORPUS CHRISTI",
       "city": "CORPUS CHRISTI",
       "state": "TX",
       "zip": "78405",
@@ -148,5 +148,5 @@
     "ASCENSION TOWERBROOK HEALTHCARE OPPORTUNITES LP"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.691Z"
 }

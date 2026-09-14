@@ -2,14 +2,15 @@
   "chain_name": "PARAGON HEALTHCARE, INC.",
   "chain_slug": "paragon-healthcare-inc",
   "norm_key": "paragon healthcare",
-  "facility_count": 3,
-  "state_count": 1,
+  "facility_count": 4,
+  "state_count": 2,
   "states": [
+    "ID",
     "WA"
   ],
   "avg_cms_rating": 4.67,
   "avg_hci_composite": 9,
-  "avg_cahps_overall": 78.67,
+  "avg_cahps_overall": 78,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -22,8 +23,27 @@
   "for_profit_disclosure_count": 3,
   "non_profit_disclosure_count": 0,
   "avg_disclosed_ownership_pct": 100,
-  "member_count": 3,
+  "member_count": 4,
   "members": [
+    {
+      "ccn": "131591",
+      "name": "ELITE HOSPICE",
+      "city": "LEWISTON",
+      "state": "ID",
+      "zip": "83501",
+      "ownership_type": null,
+      "cms_overall_rating": null,
+      "hci_composite": null,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
     {
       "ccn": "501533",
       "name": "ELITE HOSPICE",
@@ -33,7 +53,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 76,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -52,7 +72,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 83,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -71,7 +91,7 @@
       "ownership_type": null,
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -86,5 +106,5 @@
     "PARAGON HEALTHCARE, INC."
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.705Z"
 }

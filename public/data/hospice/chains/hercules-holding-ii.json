@@ -13,19 +13,19 @@
   ],
   "avg_cms_rating": 4.92,
   "avg_hci_composite": 9.58,
-  "avg_cahps_overall": 83,
+  "avg_cahps_overall": 85.89,
   "flagged_facility_count": 3,
   "flagged_pattern_count": 5,
   "flagged_pct": 25,
-  "oldest_association": "2019-02-01",
-  "newest_association": "2023-04-01",
+  "oldest_association": "2021-07-01",
+  "newest_association": "2026-02-06",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 12,
   "non_profit_disclosure_count": 0,
-  "avg_disclosed_ownership_pct": 20.75,
+  "avg_disclosed_ownership_pct": 19.08,
   "member_count": 12,
   "members": [
     {
@@ -37,7 +37,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 85,
+      "cahps_overall_rating_pct": 87,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -56,7 +56,7 @@
       "ownership_type": "Other",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -75,7 +75,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 1,
       "ownership_flags": {
         "pe": false,
@@ -113,7 +113,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -132,7 +132,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -170,7 +170,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": null,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -183,13 +183,13 @@
     {
       "ccn": "671785",
       "name": "MEDICAL CITY HOSPICE & FAMILY CARE",
-      "city": "PLANO",
+      "city": "IRVING",
       "state": "TX",
-      "zip": "75093",
+      "zip": "75038",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 68,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -201,14 +201,14 @@
     },
     {
       "ccn": "451600",
-      "name": "METHODIST HEALTHCARE HILL COUNTRY HOSPICE & FAMILY",
+      "name": "METHODIST HEALTHCARE HILL COUNTRY HOSPICE & FAMILY CARE",
       "city": "FREDERICKSBURG",
       "state": "TX",
       "zip": "78624",
-      "ownership_type": "For-Profit",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 90,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -220,14 +220,14 @@
     },
     {
       "ccn": "671700",
-      "name": "METHODIST HOSPICE AND FAMILY CARE ",
+      "name": "METHODIST HOSPICE AND FAMILY CARE",
       "city": "SAN ANTONIO",
       "state": "TX",
       "zip": "78232",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 87,
+      "cahps_overall_rating_pct": 88,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -261,5 +261,5 @@
     "HERCULES HOLDING II"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.703Z"
 }

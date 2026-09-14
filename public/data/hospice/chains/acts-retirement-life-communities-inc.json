@@ -10,12 +10,12 @@
   ],
   "avg_cms_rating": 3.5,
   "avg_hci_composite": 7.5,
-  "avg_cahps_overall": 82,
+  "avg_cahps_overall": 86,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
-  "oldest_association": "2015-01-01",
-  "newest_association": "2018-04-03",
+  "oldest_association": "2018-04-03",
+  "newest_association": "2025-12-31",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
   "is_holding_co_disclosed": false,
@@ -31,10 +31,10 @@
       "city": "HOCKESSIN",
       "state": "DE",
       "zip": "19707",
-      "ownership_type": "Non-Profit",
+      "ownership_type": "For-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
-      "cahps_overall_rating_pct": 89,
+      "cahps_overall_rating_pct": 92,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -53,7 +53,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 3,
       "hci_composite": 7,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 80,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -68,5 +68,5 @@
     "ACTS RETIREMENT-LIFE COMMUNITIES INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.463Z"
+  "generated_at": "2026-09-14T15:56:26.709Z"
 }

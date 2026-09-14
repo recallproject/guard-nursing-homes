@@ -10,15 +10,15 @@
   ],
   "avg_cms_rating": 4.86,
   "avg_hci_composite": 9.29,
-  "avg_cahps_overall": 80.6,
+  "avg_cahps_overall": 80.8,
   "flagged_facility_count": 2,
   "flagged_pattern_count": 2,
   "flagged_pct": 28.6,
   "oldest_association": "1983-05-06",
-  "newest_association": "2019-08-01",
+  "newest_association": "2019-03-24",
   "is_pe_disclosed": false,
   "is_reit_disclosed": false,
-  "is_holding_co_disclosed": false,
+  "is_holding_co_disclosed": true,
   "is_mgmt_co_disclosed": false,
   "for_profit_disclosure_count": 0,
   "non_profit_disclosure_count": 7,
@@ -34,7 +34,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 84,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -53,8 +53,27 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 78,
       "flagged_count": 1,
+      "ownership_flags": {
+        "pe": false,
+        "reit": false,
+        "forProfit": false,
+        "nonProfit": false,
+        "chain": false
+      }
+    },
+    {
+      "ccn": "551635",
+      "name": "ADVENTIST HEALTH HOME CARE SERVICES",
+      "city": "SIMI VALLEY",
+      "state": "CA",
+      "zip": "93065",
+      "ownership_type": "For-Profit",
+      "cms_overall_rating": 5,
+      "hci_composite": 9,
+      "cahps_overall_rating_pct": null,
+      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -69,7 +88,7 @@
       "city": "BAKERSFIELD",
       "state": "CA",
       "zip": "93309",
-      "ownership_type": "Other",
+      "ownership_type": "Non-Profit",
       "cms_overall_rating": 4,
       "hci_composite": 8,
       "cahps_overall_rating_pct": null,
@@ -91,7 +110,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 92,
+      "cahps_overall_rating_pct": 90,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -110,27 +129,8 @@
       "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 75,
+      "cahps_overall_rating_pct": 77,
       "flagged_count": 1,
-      "ownership_flags": {
-        "pe": false,
-        "reit": false,
-        "forProfit": false,
-        "nonProfit": false,
-        "chain": false
-      }
-    },
-    {
-      "ccn": "551635",
-      "name": "ADVENTIST HEALTH HOSPICE",
-      "city": "GLENDALE",
-      "state": "CA",
-      "zip": "91206",
-      "ownership_type": "For-Profit",
-      "cms_overall_rating": 5,
-      "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
-      "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
         "reit": false,
@@ -148,7 +148,7 @@
       "ownership_type": "Non-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 75,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -163,5 +163,5 @@
     "ADVENTIST HEALTH SYSTEM/WEST"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.462Z"
+  "generated_at": "2026-09-14T15:56:26.701Z"
 }

@@ -14,7 +14,7 @@
   ],
   "avg_cms_rating": 5,
   "avg_hci_composite": 9.67,
-  "avg_cahps_overall": 77,
+  "avg_cahps_overall": 78.67,
   "flagged_facility_count": 0,
   "flagged_pattern_count": 0,
   "flagged_pct": 0,
@@ -38,7 +38,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 77,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -50,14 +50,14 @@
     },
     {
       "ccn": "061583",
-      "name": "NEW CENTURY HOSPICE OF COLORADO SPRINGS",
+      "name": "GENTIVA I",
       "city": "COLORADO SPRINGS",
       "state": "CO",
       "zip": "80918",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 78,
+      "cahps_overall_rating_pct": 86,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -76,7 +76,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 70,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -88,14 +88,14 @@
     },
     {
       "ccn": "201525",
-      "name": "KINDRED HOSPICE",
-      "city": "PORTLAND",
+      "name": "GENTIVA I",
+      "city": "SOUTH PORTLAND",
       "state": "ME",
-      "zip": "04101",
-      "ownership_type": "For-Profit",
+      "zip": "04106",
+      "ownership_type": null,
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": 80,
+      "cahps_overall_rating_pct": 85,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -114,7 +114,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 74,
+      "cahps_overall_rating_pct": 71,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -129,11 +129,11 @@
       "name": "NEW CENTURY HOSPICE OF AUSTIN",
       "city": "AUSTIN",
       "state": "TX",
-      "zip": "78759",
+      "zip": "78727",
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 76,
+      "cahps_overall_rating_pct": 79,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -152,7 +152,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 82,
+      "cahps_overall_rating_pct": 81,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -171,7 +171,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 10,
-      "cahps_overall_rating_pct": 79,
+      "cahps_overall_rating_pct": 82,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -190,7 +190,7 @@
       "ownership_type": "For-Profit",
       "cms_overall_rating": 5,
       "hci_composite": 9,
-      "cahps_overall_rating_pct": null,
+      "cahps_overall_rating_pct": 72,
       "flagged_count": 0,
       "ownership_flags": {
         "pe": false,
@@ -205,5 +205,5 @@
     "NEW CENTURY HOSPICE INC"
   ],
   "source_note": "Aggregated from CMS hospice owners disclosure (Oct 2025). \"Common disclosed ownership\" reflects publicly filed CMS forms — not an independent finding of fact about consolidated control.",
-  "generated_at": "2026-05-03T19:01:49.460Z"
+  "generated_at": "2026-09-14T15:56:26.688Z"
 }
