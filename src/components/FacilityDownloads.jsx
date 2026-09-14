@@ -1,17 +1,25 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { generatePDF } from '../utils/generatePDF';
-import { generateEvidencePDF } from '../utils/generateEvidencePDF';
+import { checkoutSingleReport } from '../utils/stripe';
 import '../styles/facility-downloads.css';
 
-export default function FacilityDownloads({
-  facility,
-  nearbyFacilities = [],
-  allFacilities = [],
-  antipsychoticData = null,
-}) {
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+  );
+}
+
+function facilityCcn(facility) {
+  return facility?.ccn || facility?.provider_number || '';
+}
+
+function useFacilityReportActions(facility, nearbyFacilities, allFacilities, antipsychoticData, placement) {
   const [familyLoading, setFamilyLoading] = useState(false);
-  const [briefLoading, setBriefLoading] = useState(false);
 
   const trackEvent = (name, props) => {
     if (typeof window !== 'undefined' && window.plausible) {
@@ -19,12 +27,13 @@ export default function FacilityDownloads({
     }
   };
 
-  const downloadFamilyReport = async () => {
+  const downloadFamilyReport = () => {
     if (!facility || familyLoading) return;
     trackEvent('Free-PDF-Download', {
-      ccn: facility.ccn || facility.provider_number || '',
+      ccn: facilityCcn(facility),
       state: facility.state,
       report: 'family',
+      placement,
       composite_score: String(facility.composite || ''),
     });
     setFamilyLoading(true);
@@ -40,26 +49,109 @@ export default function FacilityDownloads({
     }, 100);
   };
 
-  const downloadFacilityBrief = async () => {
-    if (!facility || briefLoading) return;
-    trackEvent('Free-PDF-Download', {
-      ccn: facility.ccn || facility.provider_number || '',
+  const buyFacilityBrief = () => {
+    if (!facility) return;
+    const ccn = facilityCcn(facility);
+    if (!ccn) {
+      alert('This facility is missing a CMS ID, so checkout cannot start. Please try another facility or contact support.');
+      return;
+    }
+    trackEvent('Facility-Brief-Checkout', {
+      ccn,
       state: facility.state,
-      report: 'brief',
+      placement,
       composite_score: String(facility.composite || ''),
     });
-    setBriefLoading(true);
-    setTimeout(() => {
-      try {
-        generateEvidencePDF(facility, nearbyFacilities, allFacilities, antipsychoticData, null, 'attorney');
-      } catch (err) {
-        console.error('Facility Brief PDF failed:', err);
-        alert('Failed to generate brief. Please try again.');
-      } finally {
-        setBriefLoading(false);
-      }
-    }, 100);
+    checkoutSingleReport(ccn);
   };
+
+  return { familyLoading, downloadFamilyReport, buyFacilityBrief };
+}
+
+const MEDICARE_COMPARE = 'https://www.medicare.gov/care-compare/';
+
+/** Compact sticky Downloads rail — two primary CTAs only. */
+export function FacilityCtaRail({
+  facility,
+  nearbyFacilities = [],
+  allFacilities = [],
+  antipsychoticData = null,
+}) {
+  const { familyLoading, downloadFamilyReport, buyFacilityBrief } = useFacilityReportActions(
+    facility,
+    nearbyFacilities,
+    allFacilities,
+    antipsychoticData,
+    'cta-rail'
+  );
+
+  return (
+    <aside className="fp-cta-rail" aria-label="Downloads">
+      <div className="fp-cta-rail-card">
+        <h2 className="fp-cta-rail-title">Downloads</h2>
+        <p className="fp-cta-rail-note">Everything on this page is free to browse. PDFs below are optional.</p>
+
+        <div className="fp-cta-item">
+          <div className="fp-cta-item-kicker">1 · Family Report · Free</div>
+          <p className="fp-cta-item-desc">1-page plain-language summary for families.</p>
+          <button
+            type="button"
+            className="fp-cta-btn fp-cta-btn--free"
+            onClick={downloadFamilyReport}
+            disabled={familyLoading}
+            aria-label="Download Family Report (Free)"
+          >
+            {familyLoading ? 'Generating…' : (
+              <>
+                <DownloadIcon />
+                Download Family Report (Free)
+              </>
+            )}
+          </button>
+        </div>
+
+        <div className="fp-cta-item fp-cta-item--paid">
+          <div className="fp-cta-item-kicker">2 · Facility Brief · $29</div>
+          <ul className="fp-cta-item-bullets">
+            <li>Scannable deep dive (not a text wall)</li>
+            <li>Staffing vs peers · timeline · visit checklist</li>
+            <li>Same public facts — packaged to share</li>
+          </ul>
+          <button
+            type="button"
+            className="fp-cta-btn fp-cta-btn--paid"
+            onClick={buyFacilityBrief}
+            aria-label="Buy Facility Brief ($29)"
+          >
+            Buy Facility Brief ($29)
+          </button>
+        </div>
+
+        <p className="fp-cta-attorney">
+          <Link to="/attorneys">For attorneys</Link>
+        </p>
+        <p className="fp-cta-disclaimer">
+          Always verify on <a href={MEDICARE_COMPARE} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>.
+          Not affiliated with or endorsed by HHS/CMS.
+        </p>
+      </div>
+    </aside>
+  );
+}
+
+export default function FacilityDownloads({
+  facility,
+  nearbyFacilities = [],
+  allFacilities = [],
+  antipsychoticData = null,
+}) {
+  const { familyLoading, downloadFamilyReport, buyFacilityBrief } = useFacilityReportActions(
+    facility,
+    nearbyFacilities,
+    allFacilities,
+    antipsychoticData,
+    'downloads-section'
+  );
 
   return (
     <div className="section" id="s-downloads">
@@ -67,10 +159,9 @@ export default function FacilityDownloads({
         <div className="section-number">10</div>
         <div className="section-title">Take this with you</div>
       </div>
-      <p className="section-subtitle">Two free reports built from federal CMS data, formatted for different needs. No login. No paywall.</p>
+      <p className="section-subtitle">All facility data on this page is free. Optional PDFs if you want a copy to share.</p>
 
       <div className="fd-grid">
-        {/* FAMILY REPORT */}
         <div className="fd-card fd-card--family">
           <div className="fd-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -79,41 +170,32 @@ export default function FacilityDownloads({
             </svg>
           </div>
           <div className="fd-title">Family Report</div>
-          <div className="fd-audience">For families · plain-language</div>
-          <p className="fd-desc">A scannable summary you can read in 5 minutes. Designed for placement decisions and conversations with the facility.</p>
+          <div className="fd-audience">Free · for families · plain-language</div>
+          <p className="fd-desc">A short summary you can read before a visit or share with relatives. Same public CMS facts as this page.</p>
           <ul className="fd-bullets">
             <li>Safety score and key alerts</li>
             <li>Top concerns in plain English</li>
             <li>Questions to ask the facility</li>
             <li>Comparable nearby facilities</li>
           </ul>
-          <div className="fd-stats">
-            <div className="fd-stat"><span className="fd-stat-num">12</span><span className="fd-stat-label">Pages</span></div>
-            <div className="fd-stat-divider"></div>
-            <div className="fd-stat"><span className="fd-stat-num">5 min</span><span className="fd-stat-label">Read time</span></div>
-          </div>
-          <button className="fd-btn" onClick={downloadFamilyReport} disabled={familyLoading} aria-label="Download Family Report">
+          <button
+            type="button"
+            className="fd-btn"
+            onClick={downloadFamilyReport}
+            disabled={familyLoading}
+            aria-label="Download Family Report (Free)"
+          >
             {familyLoading ? (
               <span>Generating…</span>
             ) : (
               <>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                Download Family Report
+                <DownloadIcon />
+                Download Family Report (Free)
               </>
             )}
           </button>
-          <div className="fd-pills">
-            <span className="fd-pill">Free</span>
-            <span className="fd-pill">No login</span>
-            <span className="fd-pill">No email</span>
-          </div>
         </div>
 
-        {/* FACILITY BRIEF */}
         <div className="fd-card fd-card--brief">
           <div className="fd-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -124,42 +206,30 @@ export default function FacilityDownloads({
             </svg>
           </div>
           <div className="fd-title">Facility Brief</div>
-          <div className="fd-audience">For attorneys · journalists · AGs</div>
-          <p className="fd-desc">Detailed inspection, penalty, ownership, and quality data with full federal regulatory citations. Designed for case evaluation.</p>
+          <div className="fd-audience">$29 · printable · for families</div>
+          <p className="fd-desc">A packaged deep dive of this facility’s public record — staffing, inspections, and ownership — formatted to print or share.</p>
           <ul className="fd-bullets">
-            <li>Full inspection citation history</li>
-            <li>Federal regulation references (42 CFR)</li>
-            <li>Ownership chain and related-party data</li>
-            <li>Discovery angle for every citation</li>
+            <li>Inspection and penalty timeline</li>
+            <li>Staffing vs peers</li>
+            <li>Ownership chain</li>
+            <li>Visit checklist</li>
           </ul>
-          <div className="fd-stats">
-            <div className="fd-stat"><span className="fd-stat-num">22</span><span className="fd-stat-label">Pages</span></div>
-            <div className="fd-stat-divider"></div>
-            <div className="fd-stat"><span className="fd-stat-num">12 min</span><span className="fd-stat-label">Read time</span></div>
-          </div>
-          <button className="fd-btn" onClick={downloadFacilityBrief} disabled={briefLoading} aria-label="Download Facility Brief">
-            {briefLoading ? (
-              <span>Generating…</span>
-            ) : (
-              <>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                Download Facility Brief
-              </>
-            )}
+          <button
+            type="button"
+            className="fd-btn fd-btn--paid"
+            onClick={buyFacilityBrief}
+            aria-label="Buy Facility Brief ($29)"
+          >
+            Buy Facility Brief ($29)
           </button>
-          <div className="fd-pills">
-            <span className="fd-pill">Free</span>
-            <span className="fd-pill">No login</span>
-            <span className="fd-pill">No email</span>
-          </div>
         </div>
       </div>
 
-      {/* Ask a Clinician panel */}
+      <p className="fd-attorney-link">
+        <Link to="/attorneys">For attorneys</Link>
+        {' — counsel pack and evidence workflow, not required for families.'}
+      </p>
+
       <div className="fd-clinician">
         <div className="fd-clinician-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -175,7 +245,11 @@ export default function FacilityDownloads({
           to="/ask-a-clinician"
           state={{ ccn: facility?.ccn, facilityName: facility?.name }}
           className="fd-clinician-cta"
-          onClick={() => trackEvent('Ask-Clinician-CTA-Click', { ccn: facility?.ccn || '', placement: 'downloads-section' })}
+          onClick={() => {
+            if (typeof window !== 'undefined' && window.plausible) {
+              window.plausible('Ask-Clinician-CTA-Click', { props: { ccn: facility?.ccn || '', placement: 'downloads-section' } });
+            }
+          }}
         >
           Ask a Clinician<span className="fd-clinician-price"> · $49</span>
         </Link>

@@ -172,7 +172,9 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
     }
   }, [ccn, facility]);
 
-  if (COMING_SOON) {
+  // Paid Facility Brief downloads use tokenVerified via /evidence-download.
+  // Keep the public evidence route gated, but do not block customers who already paid.
+  if (COMING_SOON && !tokenVerified) {
     return (
       <ComingSoonPage
         title="Evidence Reports — Data Verification in Progress"

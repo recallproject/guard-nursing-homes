@@ -5,7 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Footer from '../components/landing/Footer';
 import { useNavigate } from 'react-router-dom';
 import '../styles/design.css';
-import { checkoutSingleReport } from '../utils/stripe';
 import { track } from '../utils/analytics';
 import '../styles/pricing.css';
 
@@ -20,9 +19,9 @@ const tiers = [
     badge: 'ALWAYS FREE',
     features: [
       'Family Report — plain-language safety summary',
-      'Facility Brief — full inspection + regulatory data',
+      'Browse all facility data with no paywall',
       'All 14,699 Medicare-certified facilities covered',
-      'Downloadable PDFs, no login, no email gate',
+      'Downloadable Family Report PDF, no login, no email gate',
       'Computed from public CMS federal data',
     ],
     cta: 'Find Your Facility →',
@@ -194,8 +193,8 @@ export default function PricingPage() {
           <div className="pricing-transparency-quote">
             <p>
               &ldquo;Safety data should be free — and it is. Every report card, every Family Report,
-              every Facility Brief, every state page. No ads, no sponsors, no conflicts of interest.
-              I charge for one thing: the time I spend reviewing a facility&rsquo;s record as a clinician.&rdquo;
+              every state page. No ads, no sponsors, no conflicts of interest.
+              I charge for packaged briefs and the time I spend reviewing a facility&rsquo;s record as a clinician.&rdquo;
             </p>
           </div>
           <div className="pricing-author">

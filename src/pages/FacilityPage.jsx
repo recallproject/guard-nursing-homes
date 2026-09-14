@@ -4,17 +4,14 @@ import { Helmet } from 'react-helmet-async';
 import { useFacilityData, useSingleFacility } from '../hooks/useFacilityData';
 import { computeBenchmarks } from '../utils/benchmarks';
 import { haversineDistance } from '../utils/haversine';
-import { checkoutSingleReport } from '../utils/stripe';
 import { NearbyFacilities } from '../components/NearbyFacilities';
-import { DownloadButton } from '../components/DownloadButton';
-import FacilityDownloads from '../components/FacilityDownloads';
+import FacilityDownloads, { FacilityCtaRail } from '../components/FacilityDownloads';
 import { ActionPaths } from '../components/ActionPaths';
 import StaffingSection from '../components/StaffingSection';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useWatchlist } from '../hooks/useWatchlist';
 import { track } from '../utils/analytics';
 
-import ClinicianCTA from '../components/ClinicianCTA';
 import ExplainerBanners from '../components/facility/ExplainerBanners';
 import MetricTooltip from '../components/facility/MetricTooltip';
 import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisMean';
@@ -200,7 +197,6 @@ export function FacilityPage() {
   const { watchlist, addFacility, removeFacility, isWatched } = useWatchlist();
   const pageRef = useRef(null);
   const fromState = location.state?.fromState || null;
-  const [showEvidencePreview, setShowEvidencePreview] = useState(false);
   const [ahcaData, setAhcaData] = useState(null);
   const [antipsychoticDataForPDF, setAntipsychoticDataForPDF] = useState(null);
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -457,30 +453,12 @@ export function FacilityPage() {
               : 'Star facilities to compare them in My Favorites'}
           </span>
         </div>
-        <a
-          href="#s-downloads"
-          className="fd-topbar-pill"
-          onClick={(e) => {
-            e.preventDefault();
-            const el = document.getElementById('s-downloads');
-            if (el) {
-              const top = el.getBoundingClientRect().top + window.scrollY - 24;
-              window.scrollTo({ top, behavior: 'smooth' });
-            }
-          }}
-          aria-label="Jump to free reports at the bottom of the page"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <polyline points="19 12 12 19 5 12" />
-          </svg>
-          Free reports below
-        </a>
       </div>
 
       <div className="fp-body">
+        <div className="fp-fold">
         {/* Section 1: Facility Identity — name, stars, location */}
-        <div className="section fp-identity-card" style={{ borderTop: `4px solid ${safetyColor}` }}>
+        <div className="section fp-identity-card fp-fold-identity" style={{ borderTop: `4px solid ${safetyColor}` }}>
           <div className="fp-name-row">
             <h1 className="fp-name">{facility.name}</h1>
             <div className="fp-star-badge" style={{ '--safety-color': safetyColor }}>
@@ -504,6 +482,14 @@ export function FacilityPage() {
           <p className="fp-ccn">CMS CCN: {ccn}</p>
         </div>
 
+        <FacilityCtaRail
+          facility={facility}
+          nearbyFacilities={nearbyForPDF}
+          allFacilities={allFacilities}
+          antipsychoticData={antipsychoticDataForPDF}
+        />
+
+        <div className="fp-fold-rest">
         {/* Antipsychotic Alert Banner */}
         <AntipsychoticAlert ccn={ccn} />
 
@@ -559,6 +545,8 @@ export function FacilityPage() {
         </div>
 
         <FlagExplainer facility={facility} />
+        </div>{/* end fp-fold-rest */}
+        </div>{/* end fp-fold */}
 
         {/* Facility layout: sidebar nav + content sections */}
         <div className="fp-sections-layout">
@@ -2215,7 +2203,7 @@ export function FacilityPage() {
         {/* Nearby Alternatives */}
         <NearbyFacilities facility={facility} />
 
-        {/* Section 10 — Downloads (Family Report + Facility Brief + Ask a Clinician) */}
+        {/* Section 10 — Downloads (Family Report free + Facility Brief $29) */}
         <FacilityDownloads
           facility={facility}
           nearbyFacilities={nearbyForPDF}
