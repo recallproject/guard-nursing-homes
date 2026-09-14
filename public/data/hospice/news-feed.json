@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-09-13T16:57:15.005Z",
+  "generated_at": "2026-09-14T16:47:22.659Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-11T19:56:01.000Z",
+      "last_pubdate": "2026-09-14T15:50:38.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-12T09:00:00.000Z",
+      "last_pubdate": "2026-09-14T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-09-11T10:00:00.000Z",
+      "last_pubdate": "2026-09-14T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 13,
+  "hospice_filtered": 12,
   "matched_to_ccn": 1,
   "matched_unique_ccns": 1,
   "confidence_breakdown": {
@@ -32,6 +32,28 @@
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-ylimzc",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-14T15:50:38.000Z",
+      "headline": "Future Leader: McKayla Hamiel, Clinical Educator, St. Francis Hospice",
+      "summary": "McKayla Hamiel, Clinical Educator at St. Francis Hospice, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of age or...",
+      "url": "https://hospicenews.com/2026/09/14/future-leader-mckayla-hamiel-clinical-educator-st-francis-hospice/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-308uuv",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-14T15:25:56.000Z",
+      "headline": "NPHI: Let CMS Hospice, Home Health Moratoria End",
+      "summary": "The six-month moratoria on hospice and home health enrollment in Medicare should end as scheduled in November, according to the National Partnership for Healthcare and Hospice Innovation (NPHI). The U.S. Centers for Medicare & Medicaid Services’ (CMS) implemented the moratoria...",
+      "url": "https://hospicenews.com/2026/09/14/nphi-let-cms-hospice-home-health-moratoria-end/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-88enah",
       "source": "Hospice News",
@@ -141,39 +163,6 @@
       "headline": "Family Caregivers Turn to Tech as Burden Soars",
       "summary": "Family caregivers are using technology to address their most significant concerns amid rising demand for end-of-life support. Hospices are paying attention to these and other trends as they develop strategies to curb increasingly complex caregiver burden. Improving family...",
       "url": "https://hospicenews.com/2026/09/08/family-caregivers-turn-to-tech-as-burden-soars/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-n3qv24",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-08T17:08:50.000Z",
-      "headline": "Future Leader: Haven Banks, Director of Marketing & Outreach, MiraSol Health",
-      "summary": "Haven Banks, Director of Marketing & Outreach at MiraSol Health, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of...",
-      "url": "https://hospicenews.com/2026/09/08/future-leader-haven-banks-director-of-marketing-outreach-mirasol-health/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-95ar02",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-08T12:12:16.000Z",
-      "headline": "CMS Recalculating 2027 Hospice Payment Rates Due to Error",
-      "summary": "The 2027 hospice payment rates likely will change based on a technical error by the U.S. Centers for Medicare & Medicaid Services (CMS). The agency made a mistake that affected the Fiscal Year 2027 hospice wage index and has recalculated those numbers. CMS is in the process of...",
-      "url": "https://hospicenews.com/2026/09/08/cms-recalculating-2027-hospice-payment-rates-due-to-error/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "kff-health-news-7dt1i5",
-      "source": "KFF Health News",
-      "source_url": "https://kffhealthnews.org/feed/",
-      "date": "2026-09-08T09:00:00.000Z",
-      "headline": "The Market Forces Quietly Adding Thousands to Patient Bills",
-      "summary": "The true cost of “vertical integration”: patients directed to a higher-priced location for procedures. Or forced to buy from their insurer’s wholly owned pharmacy, which may not stock the drug prescribed or provide it at the lowest price.",
-      "url": "https://kffhealthnews.org/news/vertical-integration-high-health-costs-prices-hospital-mergers-pharmacies-pbms/",
       "matched_ccns": [],
       "match_confidence": "none"
     }
