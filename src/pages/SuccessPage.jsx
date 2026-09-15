@@ -209,7 +209,7 @@ export default function SuccessPage() {
               {error}
             </p>
             <p style={{ color: 'var(--text-cream)' }}>
-              Contact <a href="mailto:support@oversightreports.com" style={{ color: 'var(--accent-teal)' }}>support@oversightreports.com</a>
+              Contact <a href="mailto:contact@oversightreports.com" style={{ color: 'var(--accent-teal)' }}>contact@oversightreports.com</a>
             </p>
           </>
         )}

@@ -576,6 +576,8 @@ export default function HospicePage() {
             <span>Sources: CMS Care Compare · HIS · HCRIS · CA State Auditor</span>
             <span>
               <Link to="/terms">Terms</Link> · <Link to="/privacy">Privacy</Link> · <Link to="/methodology">Methodology</Link>
+              {' · '}
+              <a href="mailto:contact@oversightreports.com">contact@oversightreports.com</a>
             </span>
           </div>
         </footer>

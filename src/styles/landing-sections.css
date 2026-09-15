@@ -1641,7 +1641,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
   gap: 3rem;
   margin-bottom: 3rem;
 }
@@ -1683,6 +1683,7 @@
   color: var(--text-muted);
   font-size: 0.95rem;
   transition: color var(--transition-fast);
+  overflow-wrap: anywhere;
 }
 
 .footer-col a:hover {
@@ -1720,12 +1721,14 @@
 
 .footer-bottom-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
 }
 
 .footer-bottom-links a {
   color: var(--text-muted);
   font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 
 /* --- Author Card (Clickable Bio) --- */
