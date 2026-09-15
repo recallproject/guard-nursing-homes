@@ -62,7 +62,7 @@ export default function EvidenceDownloadPage() {
           backgroundColor: 'var(--bg-deep)',
         }}>
           <p style={{ color: 'var(--text-cream)', fontSize: '1.1rem' }}>
-            Verifying your download link...
+            Verifying your Facility Brief download...
           </p>
         </div>
       </>

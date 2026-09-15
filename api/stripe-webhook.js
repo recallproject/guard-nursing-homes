@@ -96,7 +96,7 @@ export default async function handler(req, res) {
         console.log('Subscription activated:', session.metadata?.tier || 'unknown tier');
       }
 
-      // For one-time payments (evidence reports):
+      // For one-time payments (Facility Brief):
       // send-evidence.js verifies the session directly with Stripe
       if (session.mode === 'payment') {
         console.log('One-time payment received:', session.id, 'ccn:', session.client_reference_id);
