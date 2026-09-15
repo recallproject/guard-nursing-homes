@@ -1,6 +1,6 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { resolveFacilityCcn } from './resolveFacilityCcn.js';
+import { assertPaidFacilityBriefSession, resolveFacilityCcn } from './resolveFacilityCcn.js';
 
 describe('resolveFacilityCcn', () => {
   it('prefers client_reference_id over localStorage/URL CCN', () => {
@@ -51,5 +51,32 @@ describe('resolveFacilityCcn', () => {
       '675408'
     );
     assert.deepEqual(result, { ccn: '675408' });
+  });
+});
+
+describe('assertPaidFacilityBriefSession', () => {
+  it('rejects unpaid sessions', () => {
+    const result = assertPaidFacilityBriefSession({
+      payment_status: 'unpaid',
+      mode: 'payment',
+    });
+    assert.equal(result.status, 402);
+  });
+
+  it('rejects subscription checkouts used as a single-report bypass', () => {
+    const result = assertPaidFacilityBriefSession({
+      payment_status: 'paid',
+      mode: 'subscription',
+    });
+    assert.equal(result.status, 400);
+    assert.match(result.error, /Invalid checkout type/);
+  });
+
+  it('accepts a paid one-time session', () => {
+    const result = assertPaidFacilityBriefSession({
+      payment_status: 'paid',
+      mode: 'payment',
+    });
+    assert.deepEqual(result, { ok: true });
   });
 });

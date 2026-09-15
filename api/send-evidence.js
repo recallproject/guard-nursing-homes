@@ -25,7 +25,7 @@
 
 import crypto from 'crypto';
 import Stripe from 'stripe';
-import { resolveFacilityCcn } from './lib/resolveFacilityCcn.js';
+import { assertPaidFacilityBriefSession, resolveFacilityCcn } from './lib/resolveFacilityCcn.js';
 
 const EVIDENCE_SECRET = process.env.EVIDENCE_SECRET;
 const SITE_URL = process.env.SITE_URL || 'https://www.oversightreports.com';
@@ -76,14 +76,9 @@ export default async function handler(req, res) {
   let session;
   try {
     session = await stripe.checkout.sessions.retrieve(checkout_session_id);
-
-    if (session.payment_status !== 'paid') {
-      return res.status(402).json({ error: 'Payment not completed. Please complete checkout first.' });
-    }
-
-    // Verify this is a one-time payment (not a subscription checkout used to bypass)
-    if (session.mode !== 'payment') {
-      return res.status(400).json({ error: 'Invalid checkout type for single report' });
+    const payment = assertPaidFacilityBriefSession(session);
+    if (!payment.ok) {
+      return res.status(payment.status).json({ error: payment.error });
     }
   } catch (err) {
     console.error('Stripe session verification failed:', err.message);

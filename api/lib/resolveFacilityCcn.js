@@ -32,6 +32,25 @@ function sessionAttachedCcn(session) {
 }
 
 /**
+ * Payment checks that must pass before a download token is issued.
+ * @returns {{ ok: true } | { error: string, status: number }}
+ */
+export function assertPaidFacilityBriefSession(session) {
+  if (!session || session.payment_status !== 'paid') {
+    return {
+      error: 'Payment not completed. Please complete checkout first.',
+      status: 402,
+    };
+  }
+
+  if (session.mode !== 'payment') {
+    return { error: 'Invalid checkout type for single report', status: 400 };
+  }
+
+  return { ok: true };
+}
+
+/**
  * @param {object} session Stripe Checkout Session
  * @param {string} [requestedCcn] Optional CCN from the browser
  * @returns {{ ccn: string } | { error: string, status: number }}

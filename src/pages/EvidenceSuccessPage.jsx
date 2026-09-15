@@ -57,7 +57,6 @@ export default function EvidenceSuccessPage() {
     if (!sessionId) return;
 
     const hintCcn = readOptionalStoredCcn() || ccnFromUrl;
-    clearOptionalStoredCcn();
 
     let cancelled = false;
 
@@ -75,6 +74,7 @@ export default function EvidenceSuccessPage() {
         if (cancelled) return;
         if (res.ok && data.success) {
           const resolvedCcn = data.ccn || hintCcn;
+          clearOptionalStoredCcn();
           setDownloadUrl(data.downloadUrl);
           setCcn(resolvedCcn);
           setStatus('ready');
