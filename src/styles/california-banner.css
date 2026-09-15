@@ -28,6 +28,14 @@
   justify-content: center;
 }
 
+.ca-banner-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .ca-banner-flag {
   flex-shrink: 0;
   background: #B45309;
@@ -45,6 +53,11 @@
 }
 
 .ca-banner-text strong {
+  color: #451A03;
+  font-weight: 700;
+}
+
+.ca-banner-kicker strong {
   color: #451A03;
   font-weight: 700;
 }

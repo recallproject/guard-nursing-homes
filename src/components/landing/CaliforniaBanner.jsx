@@ -39,11 +39,13 @@ export default function CaliforniaBanner() {
   return (
     <div className="ca-banner">
       <Link to="/states/california" className="ca-banner-link" onClick={handleClick}>
-        <span className="ca-banner-flag">CA</span>
+        <span className="ca-banner-kicker">
+          <span className="ca-banner-flag">CA</span>
+          {' '}
+          <strong>California:</strong>
+        </span>
         {' '}
         <span className="ca-banner-text">
-          <strong>California:</strong>
-          {' '}
           CA AG announced alleged $267M Medi-Cal hospice fraud case.
         </span>
         {' '}
