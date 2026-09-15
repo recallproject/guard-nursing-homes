@@ -105,7 +105,7 @@ function LoadingFallback() {
 }
 
 function App() {
-  const { lastAdded, clearLastAdded } = useWatchlist();
+  const { lastAdded, clearLastAdded, watchlist } = useWatchlist();
 
   return (
     <>
@@ -182,6 +182,7 @@ function App() {
       <SaveToast
         visible={!!lastAdded}
         facilityName={lastAdded?.name}
+        favoriteCount={watchlist.length}
         onDismiss={clearLastAdded}
       />
     </>

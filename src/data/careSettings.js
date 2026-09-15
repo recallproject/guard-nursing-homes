@@ -47,7 +47,7 @@ export const CARE_SETTINGS = [
     dataDir: null,
     extraLinks: [
       { to: '/methodology', label: 'How we score' },
-      { to: '/watchlist', label: 'Saved facilities' },
+      { to: '/watchlist', label: 'Favorites' },
     ],
     howToRead: (asOfLabel) => [
       'Stars are signals, not a guarantee of care.',

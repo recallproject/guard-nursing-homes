@@ -451,11 +451,17 @@ export function FacilityPage() {
           >
             {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
           </button>
-          <span className="fp-compare-hint">
-            {watchlist.length >= 2
-              ? <Link to="/watchlist">You have {watchlist.length} favorites — compare them →</Link>
-              : 'Star facilities to compare them in My Favorites'}
-          </span>
+          {watchlist.length >= 2 ? (
+            <Link to="/watchlist?compare=1" className="fp-compare-cta">
+              Compare your {watchlist.length} favorites →
+            </Link>
+          ) : (
+            <span className="fp-compare-hint">
+              {watchlist.length === 1
+                ? 'Favorite one more facility to compare them side-by-side.'
+                : 'Favorite this facility, then add another to compare them side-by-side.'}
+            </span>
+          )}
         </div>
       </div>
 

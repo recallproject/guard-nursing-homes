@@ -115,7 +115,7 @@ export function HubSearch({
           or{' '}
           <Link to={`${setting.route}#browse-states`}>{browseLabel}</Link>
           {' · '}
-          <Link to="/watchlist">Compare saved facilities</Link>
+          <Link to="/watchlist?compare=1">Compare your favorites</Link>
         </p>
       )}
     </form>
