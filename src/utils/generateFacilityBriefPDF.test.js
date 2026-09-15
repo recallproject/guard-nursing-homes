@@ -48,5 +48,12 @@ describe('generateFacilityBriefPDF', () => {
     assert.doesNotMatch(raw, /ATTORNEY EVIDENCE REPORT/);
     assert.doesNotMatch(raw, /nurse-to-resident ratio/i);
     assert.doesNotMatch(raw, /April 2026/);
+    assert.doesNotMatch(raw, /CONFIDENTIAL/);
+    assert.doesNotMatch(raw, /PREPARED FOR AUTHORIZED/);
+    assert.doesNotMatch(raw, /→/);
+    assert.doesNotMatch(raw, /!'/);
+    assert.match(raw, /->/);
+    assert.match(raw, /Staffing/);
+    assert.match(raw, /Ownership/);
   });
 });

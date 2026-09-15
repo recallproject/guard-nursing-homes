@@ -443,7 +443,7 @@ function buildStaffingContext(facility, details) {
   }
   const trend = facility.staffing_trend;
   if (trend?.rn_hprd?.length && trend.zero_rn_pct?.length) {
-    const rn = trend.rn_hprd.map((v) => fmtNum(v)).join(' → ');
+    const rn = trend.rn_hprd.map((v) => fmtNum(v)).join(' -> ');
     const z = trend.zero_rn_pct[trend.zero_rn_pct.length - 1];
     bullets.push(`Recent trend (PBJ quarters): RN hours moved ${rn}; zero-RN days ${z != null ? fmtPct(z) : ''} in the latest quarter shown.`);
   }
@@ -461,7 +461,7 @@ function buildOwnershipBullets(facility) {
   const owners = facility.num_owners || facility.owner_count;
   if (owners) bullets.push({ label: 'Owners on record', value: String(owners) });
   if (facility.ownership_change_date) {
-    const who = facility.new_owner_name ? ` → ${titleCase(facility.new_owner_name)}` : '';
+    const who = facility.new_owner_name ? ` -> ${titleCase(facility.new_owner_name)}` : '';
     bullets.push({ label: 'Change', value: `${facility.ownership_change_date}${who}` });
   }
   if (facility.worst_owner && facility.owner_portfolio_count > 1) {
@@ -470,7 +470,7 @@ function buildOwnershipBullets(facility) {
       : '';
     bullets.push({
       label: 'Worst linked owner',
-      value: `${titleCase(facility.worst_owner)} — controls ${facility.owner_portfolio_count} facilities; portfolio avg fines ${fmtMoney(facility.owner_avg_fines)}; avg stars ${facility.owner_avg_stars != null ? Number(facility.owner_avg_stars).toFixed(2) : 'n/a'}${below}`,
+      value: `${titleCase(facility.worst_owner)} - controls ${facility.owner_portfolio_count} facilities; portfolio avg fines ${fmtMoney(facility.owner_avg_fines)}; avg stars ${facility.owner_avg_stars != null ? Number(facility.owner_avg_stars).toFixed(2) : 'n/a'}${below}`,
     });
   }
   if (facility.related_party_costs) {
@@ -825,6 +825,7 @@ export function buildFacilityBriefModel(facility, opts = {}) {
     reportDateLabel,
     name: facility.name || 'Nursing facility',
     ccn: facility.ccn || '',
+    locationLine: location,
     metaLine: metaParts.join(' · '),
     chips,
     bottomLine: buildBottomLine(facility, ctx),
