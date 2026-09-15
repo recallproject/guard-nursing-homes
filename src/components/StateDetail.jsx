@@ -207,7 +207,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
     <div className="state-detail">
       <div className="state-detail-header" ref={headerRef}>
         <nav className="state-detail-breadcrumb" aria-label="Breadcrumb">
-          <Link to="/" className="state-detail-breadcrumb-link" onClick={() => window.plausible && window.plausible('Breadcrumb-Click', { props: { state: stateCode, target: 'home' } })}>Home</Link>
+          <Link to="/skilled-nursing" className="state-detail-breadcrumb-link" onClick={() => window.plausible && window.plausible('Breadcrumb-Click', { props: { state: stateCode, target: 'home' } })}>Home</Link>
           <span className="state-detail-breadcrumb-sep">›</span>
           <button className="state-detail-breadcrumb-link" onClick={() => { window.plausible && window.plausible('Breadcrumb-Click', { props: { state: stateCode, target: 'all-states' } }); onBack(); }}>All States</button>
           <span className="state-detail-breadcrumb-sep">›</span>

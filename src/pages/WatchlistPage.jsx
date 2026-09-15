@@ -247,7 +247,7 @@ export function WatchlistPage() {
           <p>
             Click the star icon on any facility to add it here. Compare them side by side, then export a spreadsheet of your picks.
           </p>
-          <Link to="/" state={{ jumpToMap: true }} className="btn btn-primary">
+          <Link to="/skilled-nursing?view=map" className="btn btn-primary">
             Explore the Map
           </Link>
         </div>

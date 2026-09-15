@@ -381,6 +381,7 @@
 }
 .v5-state-card:hover::before { opacity: 1; }
 .v5-state-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.v5-state-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .v5-state-abbr { font-size: 16px; font-weight: 800; color: var(--navy); }
 .v5-state-count { font-size: 10px; color: var(--muted); margin-top: 2px; }
 .v5-state-note { font-size: 9px; font-weight: 600; margin-top: 2px; }

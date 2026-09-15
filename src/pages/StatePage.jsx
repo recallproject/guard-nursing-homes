@@ -154,7 +154,7 @@ export default function StatePage() {
         {/* Header */}
         <div className="sd-header">
           <div className="sd-breadcrumb">
-            <Link to="/">Home</Link> <span>/</span> <span>{stateName}</span>
+            <Link to="/skilled-nursing">Home</Link> <span>/</span> <span>{stateName}</span>
           </div>
           <h1 className="sd-title">{stateName}</h1>
           <p className="sd-subtitle">Nursing home safety data from CMS federal records</p>

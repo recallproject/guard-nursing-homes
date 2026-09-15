@@ -850,7 +850,7 @@ export default function ComparePage() {
           <p>
             Search any nursing home in America. See what the other tools don't show you.
           </p>
-          <Link to="/" state={{ jumpToMap: true }} className="compare-cta-btn">
+          <Link to="/skilled-nursing" className="compare-cta-btn">
             Search Facilities
           </Link>
         </div>

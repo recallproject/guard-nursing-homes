@@ -96,7 +96,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
       label: 'Families',
       paths: ['/', '/facility', '/watchlist', '/skilled-nursing', '/hospice', '/home-health', '/irf', '/ltach'],
       items: [
-        { to: '/', label: 'Search & Map', desc: 'Find and compare nursing homes', state: { jumpToMap: true } },
+        { to: '/skilled-nursing?view=map', label: 'Search & Map', desc: 'Find and compare nursing homes' },
         { to: '/skilled-nursing', label: 'Nursing Homes', desc: 'Every Medicare-certified SNF' },
         { to: '/hospice', label: 'Hospice', desc: 'Verify a referral · national directory' },
         { to: '/home-health', label: 'Home Health', desc: 'Agencies with CMS stars + HHCAHPS' },

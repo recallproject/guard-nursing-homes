@@ -230,10 +230,7 @@ export default function PricingPage() {
       </section>
 
       {/* Footer */}
-      <Footer
-        onExplore={() => navigate('/')}
-        onSearch={() => navigate('/')}
-      />
+      <Footer />
     </div>
   );
 }

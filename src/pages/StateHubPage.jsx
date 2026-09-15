@@ -153,10 +153,7 @@ export default function StateHubPage() {
 
       </div>
 
-      <Footer
-        onExplore={() => navigate('/')}
-        onSearch={() => navigate('/')}
-      />
+      <Footer />
     </div>
   );
 }

@@ -421,7 +421,7 @@ export function FacilityPage() {
             <meta itemProp="position" content="1" />
           </li>
           <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-            <Link to={`/?state=${facility.state}`} itemProp="item"><span itemProp="name">{facility.state}</span></Link>
+            <Link to={`/skilled-nursing?state=${facility.state}`} itemProp="item"><span itemProp="name">{facility.state}</span></Link>
             <meta itemProp="position" content="2" />
           </li>
           <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
@@ -434,9 +434,9 @@ export function FacilityPage() {
       {/* Header */}
       <div className="fp-header">
         {fromState ? (
-          <Link to={`/?state=${fromState}`} className="fp-back">← Back to {facility.state} facilities</Link>
+          <Link to={`/skilled-nursing?state=${fromState}`} className="fp-back">← Back to {facility.state} facilities</Link>
         ) : (
-          <Link to="/" className="fp-back">← Back to Map</Link>
+          <Link to="/skilled-nursing" className="fp-back">← Back to Map</Link>
         )}
         <h2 className="fp-badge">Facility Report Card</h2>
         <div className="fp-watchlist-group">
@@ -2278,7 +2278,7 @@ export function FacilityPage() {
         </div>
 
         <div className="fp-footer-nav">
-          <Link to="/">← Back to Map</Link>
+          <Link to="/skilled-nursing">← Back to Map</Link>
         </div>
       </div>
     </div>

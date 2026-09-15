@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate, Navigate, Link } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from '../components/landing/Footer';
 import { getStateHub } from '../data/stateHubs';
@@ -10,7 +10,6 @@ import '../styles/state-hub.css';
 
 export default function StateTypePage() {
   const { stateCode, typeSlug } = useParams();
-  const navigate = useNavigate();
   const hub = getStateHub((stateCode || '').toLowerCase());
   const type = getTypeBySlug(typeSlug);
 
@@ -138,10 +137,7 @@ export default function StateTypePage() {
         </div>
       </div>
 
-      <Footer
-        onExplore={() => navigate('/')}
-        onSearch={() => navigate('/')}
-      />
+      <Footer />
     </div>
   );
 }
