@@ -3,7 +3,6 @@ import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
 import CaliforniaBanner from './components/landing/CaliforniaBanner';
-import FeedbackButton from './components/FeedbackButton';
 import FacilityErrorBoundary from './components/FacilityErrorBoundary';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
@@ -162,7 +161,6 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-      {!isHomePage && <FeedbackButton />}
       <SaveToast
         visible={!!lastAdded}
         facilityName={lastAdded?.name}

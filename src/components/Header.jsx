@@ -55,6 +55,16 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Close mobile menu on Escape
+  useEffect(() => {
+    if (!mobileOpen) return;
+    function handleKey(e) {
+      if (e.key === 'Escape') setMobileOpen(false);
+    }
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, [mobileOpen]);
+
   const handleDropdownEnter = (name) => {
     clearTimeout(dropdownTimeoutRef.current);
     setActiveDropdown(name);
@@ -93,7 +103,6 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
         { to: '/irf', label: 'Inpatient Rehab', desc: 'IRF Compare quality measures' },
         { to: '/ltach', label: 'LTACH', desc: 'Long-term acute care hospitals' },
         { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
-        { to: '/ask-a-clinician', label: 'Ask a Clinician', desc: 'Facility report from an NP — $49' },
         { to: '/know-your-rights', label: 'Know Your Rights', desc: 'Discharge appeals & safety resources' },
       ]
     },
@@ -135,7 +144,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
 
   return (
     <>
-      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''} ${simple ? 'site-header--simple' : ''}`} ref={navRef}>
+      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''} ${simple ? 'site-header--simple' : ''} ${mobileOpen ? 'site-header--menu-open' : ''}`} ref={navRef}>
         <div className={`site-header__inner ${simple ? 'site-header__inner--simple' : ''}`}>
           {/* Brand — onClick forces MapPage view reset when already on / */}
           <Link to="/" className="site-header__brand" onClick={(e) => {
@@ -269,10 +278,16 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay — sits above the site header so logo + close appear once */}
       {mobileOpen && (
         <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
-          <nav className="mobile-menu" onClick={(e) => e.stopPropagation()} aria-label="Mobile navigation">
+          <nav
+            className="mobile-menu"
+            onClick={(e) => e.stopPropagation()}
+            aria-label="Mobile navigation"
+            aria-modal="true"
+            role="dialog"
+          >
             <div className="mobile-menu__header">
               <Link to="/" className="site-header__brand" onClick={(e) => {
                 setMobileOpen(false);
@@ -293,6 +308,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
               </button>
             </div>
 
+            <div className="mobile-menu__body">
             {simple ? (
               <>
                 {simpleMobileLinks.map((link) => (
@@ -305,13 +321,6 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
                     {link.label}
                   </Link>
                 ))}
-                <Link
-                  to="/ask-a-clinician"
-                  className="mobile-menu__search"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  Ask a clinician
-                </Link>
               </>
             ) : (
             <>
@@ -364,6 +373,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
             )}
             </>
             )}
+            </div>
           </nav>
         </div>
       )}
