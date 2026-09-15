@@ -4,6 +4,12 @@ import '../styles/post-acute-home.css';
 
 const REFRESH_HISTORY = [
   {
+    date: 'September 15, 2026',
+    title: 'CMS nursing-home data refreshed to August 2026 release',
+    notes: 'SNF Care Compare rebuilt from the August 26, 2026 Provider Data Catalog release (processing date 2026-08-01): Provider Info (4pq5-n9py, 14,690 homes), Health Citations (419,479 rows), Fire Safety Citations (200,327), Penalties (15,696 records / 6,775 homes), Ownership, and MDS Quality Measures. data_as_of on state files is 2026-08-26. Roster: 28 CCNs left the CMS active file, 19 added (net 14,699 → 14,690); several adds are CCN recodes of the same building. Penalty and deficiency coverage now run through the August 2026 snapshot. Scoring methodology unchanged; new facilities have composite 50 until sub-scores exist.',
+    source: 'CMS Provider Info · Health Citations · Fire Safety · Penalties · Ownership · MDS QM',
+  },
+  {
     date: 'September 14, 2026',
     title: 'Home Health, IRF, and LTACH directories go live',
     notes: 'Searchable national directories and CMS-sourced provider detail pages for Home Health Care Compare (6jpm-sxkc + HHCAHPS), IRF Compare (7t8x-u3ir + v9e4-nwhh), and LTCH Compare (azum-44iv + fp6g-2gsn). SPA routes only — no per-provider static HTML. Rebuild with node scripts/build-postacute-data.js.',

@@ -19,7 +19,7 @@ import sys
 from collections import defaultdict
 
 STATES_DIR = os.path.join(os.path.dirname(__file__), '..', 'public', 'data', 'states')
-DEFAULT_CSV = os.path.join(os.path.dirname(__file__), '..', 'data', 'cms_raw', 'NH_Ownership_Mar2026.csv')
+DEFAULT_CSV = os.path.join(os.path.dirname(__file__), '..', 'data', 'cms_raw', 'NH_Ownership_Aug2026.csv')
 
 
 def load_ownership_from_csv(csv_path):

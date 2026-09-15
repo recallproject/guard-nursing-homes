@@ -416,7 +416,7 @@ export function MethodologyPage() {
             </div>
 
             <div className="methodology-note-box">
-              <strong>High-Risk list:</strong> Composite scores run from 0-100. The public high-risk list uses a stricter all-five screen: 1-star overall rating, fines above $100,000, total staffing below 3.5 HPRD, at least one zero-RN day, and 15 or more deficiencies. Currently 225 of 14,699 facilities meet all five criteria.
+              <strong>High-Risk list:</strong> Composite scores run from 0-100. The public high-risk list uses a stricter all-five screen: 1-star overall rating, fines above $100,000, total staffing below 3.5 HPRD, at least one zero-RN day, and 15 or more deficiencies. Currently 244 of 14,690 facilities meet all five criteria.
             </div>
           </section>
 
@@ -425,7 +425,7 @@ export function MethodologyPage() {
             <h2>Key Metrics Explained</h2>
             <p className="methodology-section-intro">Every number on the site has a precise definition. Click to expand.</p>
 
-            <AccordionSection title="Facilities Analyzed (14,699)">
+            <AccordionSection title="Facilities Analyzed (14,690)">
               <p>Every Medicare/Medicaid-certified nursing home in the United States. Source: CMS Provider Information dataset.</p>
               <div className="methodology-formula-box">
                 <span className="methodology-formula-label">Count</span>
@@ -901,11 +901,11 @@ export function MethodologyPage() {
             <h2>Data Freshness</h2>
             <div className="methodology-freshness-row">
               <div className="methodology-freshness-card">
-                <div className="methodology-freshness-big">Apr 2026</div>
+                <div className="methodology-freshness-big">Aug 2026</div>
                 <div className="methodology-freshness-sub">Current data version</div>
               </div>
               <div className="methodology-freshness-card">
-                <div className="methodology-freshness-big">May 3</div>
+                <div className="methodology-freshness-big">Sep 15</div>
                 <div className="methodology-freshness-sub">Last downloaded</div>
               </div>
               <div className="methodology-freshness-card">
@@ -913,7 +913,7 @@ export function MethodologyPage() {
                 <div className="methodology-freshness-sub">CMS datasets integrated</div>
               </div>
               <div className="methodology-freshness-card">
-                <div className="methodology-freshness-big">~Jul 2026</div>
+                <div className="methodology-freshness-big">~Sep 30</div>
                 <div className="methodology-freshness-sub">Next CMS refresh</div>
               </div>
             </div>
