@@ -25,25 +25,7 @@ const tiers = [
       'Computed from public CMS federal data',
     ],
     cta: 'Find Your Facility →',
-    ctaLink: '/',
-    ctaType: 'primary',
-  },
-  {
-    name: 'Ask a Clinician',
-    price: '$49',
-    period: 'one-time',
-    description: 'For families who want expert context',
-    badge: 'OPTIONAL · PERSONALIZED',
-    features: [
-      'A nurse practitioner reviews the data',
-      'Staffing & inspection analysis in context',
-      'Ownership background & related facilities',
-      '3 nearby alternatives ranked by safety data',
-      'Questions to ask the facility administrator',
-      'Delivered to your email within 48 hours',
-    ],
-    cta: 'Ask a Clinician — $49',
-    ctaLink: '/ask-a-clinician',
+    ctaLink: '/skilled-nursing',
     ctaType: 'primary',
   },
 ];
@@ -97,12 +79,10 @@ export default function PricingPage() {
   }, []);
 
   const handleCtaClick = (tier) => {
-    if (tier.ctaLink === '/') {
-      navigate('/');
+    if (tier.ctaLink === '/' || tier.ctaLink === '/skilled-nursing') {
+      navigate(tier.ctaLink);
     } else if (tier.ctaLink === '/evidence') {
       navigate('/evidence-sample');
-    } else if (tier.ctaLink === '/ask-a-clinician') {
-      navigate('/ask-a-clinician');
     } else if (tier.ctaLink) {
       window.location.href = tier.ctaLink;
     }

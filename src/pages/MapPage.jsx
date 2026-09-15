@@ -11,8 +11,8 @@ import '../styles/map.css';
 import '../styles/cards.css';
 import '../styles/state-detail.css';
 
-// SNF browse-by-state lives here at /skilled-nursing?state=XX (MapPage detail view).
-// `/` is the post-acute hub and must not be used for SNF state deep-links.
+// LandingV5 browse-by-state cards go to /state/:code (StatePage).
+// This page still honors /skilled-nursing?state=XX as a MapPage detail deep-link.
 
 export function MapPage() {
   const { data, loading, error, searchFacilities } = useFacilityData();

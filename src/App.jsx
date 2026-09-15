@@ -71,14 +71,17 @@ function EvidenceRedirect() {
 }
 
 // `/` is the post-acute hub when the flag is on; SNF MapPage lives at /skilled-nursing.
-// Preserve old `/?state=`, `/?view=map`, and jumpToMap location-state deep-links.
+// Old `/?state=XX` bookmarks go to /state/XX. `/?view=map` and jumpToMap still hit MapPage.
 function RootHome() {
   const [searchParams] = useSearchParams();
   const location = useLocation();
 
   if (POST_ACUTE_HOME_ENABLED) {
-    const snfQuery = searchParams.get('state')
-      || searchParams.get('view') === 'map'
+    const stateAbbr = searchParams.get('state');
+    if (stateAbbr) {
+      return <Navigate to={`/state/${stateAbbr}`} replace />;
+    }
+    const snfQuery = searchParams.get('view') === 'map'
       || searchParams.get('q')
       || searchParams.get('city');
     const jumpToMap = location.state?.jumpToMap;

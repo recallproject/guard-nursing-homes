@@ -421,7 +421,7 @@ export function FacilityPage() {
             <meta itemProp="position" content="1" />
           </li>
           <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-            <Link to={`/skilled-nursing?state=${facility.state}`} itemProp="item"><span itemProp="name">{facility.state}</span></Link>
+            <Link to={`/state/${facility.state}`} itemProp="item"><span itemProp="name">{facility.state}</span></Link>
             <meta itemProp="position" content="2" />
           </li>
           <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
@@ -434,7 +434,7 @@ export function FacilityPage() {
       {/* Header */}
       <div className="fp-header">
         {fromState ? (
-          <Link to={`/skilled-nursing?state=${fromState}`} className="fp-back">← Back to {facility.state} facilities</Link>
+          <Link to={`/state/${fromState}`} className="fp-back">← Back to {facility.state} facilities</Link>
         ) : (
           <Link to="/skilled-nursing" className="fp-back">← Back to Map</Link>
         )}

@@ -345,7 +345,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
     ? STATE_CARDS.filter(s => s.abbr.toLowerCase().includes(stateFilter.toLowerCase()) || s.count.toLowerCase().includes(stateFilter.toLowerCase()))
     : STATE_CARDS;
 
-  // SNF lists live on MapPage at /skilled-nursing?state=XX (not `/` — that is the post-acute hub).
+  // SNF state lists live at /state/:code (StatePage). `/` is the post-acute hub.
   function trackStateClick(abbr) {
     window.plausible && window.plausible('Browse-State-Clicked', { props: { state: abbr } });
   }
@@ -635,7 +635,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           {filteredStates.map(s => (
             <Link
               key={s.abbr}
-              to={`/skilled-nursing?state=${s.abbr}`}
+              to={`/state/${s.abbr}`}
               className={`v5-state-card ${s.flag === 'flagged' ? 'v5-state-flagged' : ''} ${s.flag === 'top' ? 'v5-state-top' : ''}`}
               onClick={() => trackStateClick(s.abbr)}
             >

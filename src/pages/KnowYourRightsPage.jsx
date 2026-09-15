@@ -280,20 +280,6 @@ export default function KnowYourRightsPage() {
           </div>
         </section>
 
-        {/* ASK A CLINICIAN CTA */}
-        <div className="kyr-clinician-cta">
-          <div className="kyr-clinician-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <h3>Need Personalized Help?</h3>
-          <p>Every situation is different. If you're not sure how this applies to your family's case, a clinician can walk you through your facility's data and help you understand your options.</p>
-          <p className="kyr-clinician-pricing">One-time $49 fee · Data interpretation using public CMS records · Not legal or clinical advice</p>
-          <Link to="/ask-a-clinician" className="kyr-clinician-button">
-            Ask a Clinician
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </Link>
-        </div>
-
         {/* FOOTER TEXT */}
         <div className="kyr-footer-text">
           <p>Data sourced from CMS federal records. This page provides general information about federal regulations — it is not legal advice. Consult with an attorney or ombudsman for guidance specific to your situation.</p>
