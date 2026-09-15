@@ -23,5 +23,7 @@ Disallow: /
 # Allow legitimate search engines and all other bots
 User-agent: *
 Allow: /
+Disallow: /ag-toolkit
+Disallow: /screening
 
 Sitemap: https://www.oversightreports.com/sitemap.xml

@@ -424,16 +424,6 @@ const staticPages = [
     description: 'Nursing homes cited for immediate jeopardy — imminent risk of serious harm or death. Search by state, see inspection details and penalty history.'
   },
   {
-    route: 'ag-toolkit',
-    title: 'State AG Toolkit — Nursing Home Enforcement Data | The Oversight Report',
-    description: 'Data tools for state attorneys general investigating nursing home safety. Facility screening, ownership analysis, and enforcement evidence.'
-  },
-  {
-    route: 'screening',
-    title: 'Nursing Home Screening Reports — State-Level Safety Data | The Oversight Report',
-    description: 'Generate nursing home screening reports by state. Inspection citations, staffing levels, fines, and risk scores for all Medicare-certified facilities.'
-  },
-  {
     route: 'discrepancies',
     title: 'Staffing Discrepancies — Reported vs Payroll Hours | The Oversight Report',
     description: 'Nursing homes reporting more staff than payroll records support. Compare self-reported staffing to PBJ payroll data for all Medicare facilities.'

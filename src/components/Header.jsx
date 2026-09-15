@@ -99,7 +99,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
     },
     {
       label: 'Professionals',
-      paths: ['/professionals', '/evidence', '/screening', '/discrepancies', '/ownership', '/ag-toolkit', '/chains', '/high-risk', '/trends', '/antipsychotic-trends'],
+      paths: ['/professionals', '/evidence', '/discrepancies', '/ownership', '/chains', '/high-risk', '/trends', '/antipsychotic-trends'],
       items: [
         { to: '/professionals', label: 'All Professional Tools', desc: 'Full toolkit overview' },
         { to: '/antipsychotic-trends', label: 'AP Alerts', desc: 'Antipsychotic prescribing trends by facility' },

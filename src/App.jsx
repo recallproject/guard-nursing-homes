@@ -120,6 +120,7 @@ function App() {
           <Route path="/facility/:ccn" element={<FacilityErrorBoundary><FacilityPage /></FacilityErrorBoundary>} />
           <Route path="/professionals" element={<ProfessionalsPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          {/* Parked: AG Toolkit / screening kept for bookmarks; not linked from primary UI */}
           <Route path="/screening" element={<ScreeningPage />} />
           <Route path="/discrepancies" element={<DiscrepanciesPage />} />
           <Route path="/ownership" element={<OwnershipPage />} />
@@ -129,7 +130,7 @@ function App() {
           <Route path="/watchlist" element={<WatchlistPage />} />
           <Route path="/trends" element={<TrendsPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
-          <Route path="/ag-toolkit" element={<AGToolkitPage />} />
+          <Route path="/ag-toolkit" element={<AGToolkitPage />} /> {/* Parked: not linked from primary UI */}
           <Route path="/chains" element={<ChainsPage />} />
           <Route path="/chain/:chainName" element={<ChainDetailPage />} />
           <Route path="/high-risk" element={<HighRiskPage />} />
