@@ -1,0 +1,85 @@
+{
+  "downloaded_on": "2026-09-15",
+  "catalog": "https://data.cms.gov/provider-data/topics/nursing-homes",
+  "archive": "https://data.cms.gov/provider-data/archived-data/nursing-homes",
+  "note": "Official CMS Provider Data Catalog CSVs. Theme zip was not used; individual dataset files match the August 26, 2026 nursing-homes release.",
+  "datasets": [
+    {
+      "dataset_id": "4pq5-n9py",
+      "title": "Provider Information",
+      "modified": "2026-08-01",
+      "issued": "2026-02-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/328596835e6db31b2564cd733c3795f4_1786724150/NH_ProviderInfo_Aug2026.csv",
+      "filename": "NH_ProviderInfo_Aug2026.csv",
+      "bytes": 9151628
+    },
+    {
+      "dataset_id": "g6vv-u9sr",
+      "title": "Penalties",
+      "modified": "2026-08-01",
+      "issued": "2026-06-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/22b16c9dfd718b1b2a003eb8d4222046_1786724150/NH_Penalties_Aug2026.csv",
+      "filename": "NH_Penalties_Aug2026.csv",
+      "bytes": 2712484
+    },
+    {
+      "dataset_id": "r5ix-sfxw",
+      "title": "Health Deficiencies",
+      "modified": "2026-08-01",
+      "issued": "2023-06-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/600f5d1861dd2e0280b2e961e8396245_1786724148/NH_HealthCitations_Aug2026.csv",
+      "filename": "NH_HealthCitations_Aug2026.csv",
+      "bytes": 165336194
+    },
+    {
+      "dataset_id": "ifjz-ge4w",
+      "title": "Fire Safety Deficiencies",
+      "modified": "2026-08-01",
+      "issued": "2023-06-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/3d8cda3e909d835f20cecf639d7e21ad_1786724148/NH_FireSafetyCitations_Aug2026.csv",
+      "filename": "NH_FireSafetyCitations_Aug2026.csv",
+      "bytes": 69332299
+    },
+    {
+      "dataset_id": "y2hd-n93e",
+      "title": "Ownership",
+      "modified": "2026-08-01",
+      "issued": "2023-06-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/cc4bedc83a7b3752efb24f7817a856ce_1786724150/NH_Ownership_Aug2026.csv",
+      "filename": "NH_Ownership_Aug2026.csv",
+      "bytes": 57251685
+    },
+    {
+      "dataset_id": "djen-97ju",
+      "title": "MDS Quality Measures",
+      "modified": "2026-08-01",
+      "issued": "2023-06-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/be86252fa6f8cc3035ec7cd9d3a14371_1786724149/NH_QualityMsr_MDS_Aug2026.csv",
+      "filename": "NH_QualityMsr_MDS_Aug2026.csv",
+      "bytes": 75049382
+    },
+    {
+      "dataset_id": "ijh5-nb2v",
+      "title": "Medicare Claims Quality Measures",
+      "modified": "2026-08-01",
+      "issued": "2023-06-01",
+      "released": "2026-08-26",
+      "next_update": "2026-09-30",
+      "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/6f3001dacc01644d9f284248ed6af75f_1786724149/NH_QualityMsr_Claims_Aug2026.csv",
+      "filename": "NH_QualityMsr_Claims_Aug2026.csv",
+      "bytes": 16570133
+    }
+  ]
+}

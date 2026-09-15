@@ -5,7 +5,7 @@ import { track } from '../../utils/analytics';
 import '../../styles/landing-v5.css';
 
 // ISO 8601 timestamp of the most recent CMS data refresh. Update when new data is pulled.
-const LAST_REFRESH_ISO = '2026-04-29T02:00:00Z';
+const LAST_REFRESH_ISO = '2026-09-15T17:00:00Z';
 
 function formatRefreshAgo(iso) {
   const last = new Date(iso);
@@ -382,7 +382,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
             <span className="v5-ticker-muted">data refreshed</span>&nbsp;
             <span className="v5-ticker-strong">{formatRefreshAgo(LAST_REFRESH_ISO)}</span>
             <span className="v5-ticker-sep">·</span>
-            <span className="v5-ticker-strong">14,699</span>&nbsp;
+            <span className="v5-ticker-strong">14,690</span>&nbsp;
             <span className="v5-ticker-muted">facilities</span>
             <span className="v5-ticker-sep">·</span>
             <span className="v5-ticker-strong">50 states</span>
@@ -458,7 +458,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-stat-card v5-fade-in">
           <div className="v5-stat-accent"></div>
           <div className="v5-stat-body">
-            <div className="v5-stat-value" data-target="14699">0</div>
+            <div className="v5-stat-value" data-target="14690">0</div>
             <div className="v5-stat-label">Facilities analyzed with full safety reports</div>
           </div>
         </div>
@@ -612,7 +612,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
         <div className="v5-featured-browse-all">
           <button className="v5-browse-all-btn" onClick={() => onSearch && onSearch()}>
-            Search all 14,699 facilities &rarr;
+            Search all 14,690 facilities &rarr;
           </button>
         </div>
       </div>
@@ -660,7 +660,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <div className="v5-trust-badges">
             <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--navy)'}}>&#9670;</span> Cited: Harvard Data Science Review</div>
             <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--orange)'}}>&#9650;</span> 418 upvotes on r/nursing</div>
-            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--blue)'}}>&#9632;</span> 14,699 facilities analyzed</div>
+            <div className="v5-trust-badge"><span className="v5-badge-icon" style={{color: 'var(--blue)'}}>&#9632;</span> 14,690 facilities analyzed</div>
           </div>
         </div>
       </div>
@@ -764,7 +764,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ FINAL CTA ═══════ */}
       <section className="v5-final-cta">
         <h2>Search any nursing facility</h2>
-        <p>14,699 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
+        <p>14,690 Medicare-certified nursing homes. Federal CMS data. Free to search. No login required.</p>
         <div className="v5-final-search">
           <InlineSearch searchFacilities={searchFacilities} placeholder="Facility name, city, or ZIP code" onFallbackSearch={onSearch} />
         </div>

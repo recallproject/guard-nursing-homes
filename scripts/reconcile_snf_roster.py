@@ -31,9 +31,7 @@ from datetime import date
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 STATES_DIR = os.path.join(ROOT, 'public', 'data', 'states')
-DEFAULT_CSV = os.path.join(
-    ROOT, '..', 'data', 'cms_raw', 'NH_ProviderInfo_Apr2026.csv'
-)
+DEFAULT_CSV = os.path.join(ROOT, 'data', 'cms_raw', 'NH_ProviderInfo_Aug2026.csv')
 
 
 def parse_int(v, default=None):
@@ -233,7 +231,7 @@ def reconcile():
         data['total_fines'] = round(new_total_fines, 2)
 
         meta = data.setdefault('_metadata', {})
-        meta['data_as_of'] = '2026-04-01'
+        meta['data_as_of'] = '2026-08-26'
         meta['last_enriched'] = today_iso
         meta['facility_count'] = len(kept)
         if 'sources' not in meta:

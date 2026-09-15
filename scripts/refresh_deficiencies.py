@@ -8,7 +8,7 @@ Recalculates for each facility:
   - complaint_investigations: count of complaint-based health citations
   - serious_deficiency_count: count of citations with immediate jeopardy/actual harm
 
-Source: CMS NH_HealthCitations_Mar2026.csv and NH_FireSafetyCitations_Mar2026.csv
+Source: CMS NH_HealthCitations_Aug2026.csv and NH_FireSafetyCitations_Aug2026.csv
 Run: python3 scripts/refresh_deficiencies.py [path_to_health_csv] [path_to_fire_csv]
 """
 
@@ -19,8 +19,8 @@ import sys
 from collections import defaultdict
 
 STATES_DIR = os.path.join(os.path.dirname(__file__), '..', 'public', 'data', 'states')
-DEFAULT_HEALTH_CSV = os.path.join(os.path.dirname(__file__), '..', 'data', 'cms_raw', 'NH_HealthCitations_Mar2026.csv')
-DEFAULT_FIRE_CSV = os.path.join(os.path.dirname(__file__), '..', 'data', 'cms_raw', 'NH_FireSafetyCitations_Mar2026.csv')
+DEFAULT_HEALTH_CSV = os.path.join(os.path.dirname(__file__), '..', 'data', 'cms_raw', 'NH_HealthCitations_Aug2026.csv')
+DEFAULT_FIRE_CSV = os.path.join(os.path.dirname(__file__), '..', 'data', 'cms_raw', 'NH_FireSafetyCitations_Aug2026.csv')
 
 
 def load_health_citations_from_csv(csv_path):
