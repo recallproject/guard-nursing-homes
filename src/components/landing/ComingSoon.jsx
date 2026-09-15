@@ -2,18 +2,11 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
-import { SearchIcon, BarChartIcon, UsersIcon, DownloadIcon, StarIcon, TrendingUpIcon, BuildingIcon, AlertTriangleIcon } from './Icons';
+import { BarChartIcon, UsersIcon, DownloadIcon, StarIcon, TrendingUpIcon, BuildingIcon, AlertTriangleIcon } from './Icons';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const features = [
-  {
-    Icon: SearchIcon,
-    title: 'State Screening Reports',
-    description: 'Filter and export facility data by state for oversight, compliance, or investigation.',
-    live: true,
-    to: '/screening',
-  },
   {
     Icon: BarChartIcon,
     title: 'Staffing Discrepancy Index',

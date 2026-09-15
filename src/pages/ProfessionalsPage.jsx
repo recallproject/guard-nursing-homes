@@ -14,7 +14,7 @@ export function ProfessionalsPage() {
     <div className="professionals-page" style={{ paddingTop: '5rem' }}>
       <Helmet>
         <title>Professional Tools — The Oversight Report</title>
-        <meta name="description" content="Advanced tools for attorneys, journalists, regulators, and healthcare professionals. State screening, staffing discrepancies, ownership networks, and more." />
+        <meta name="description" content="Advanced tools for attorneys, journalists, regulators, and healthcare professionals. Staffing discrepancies, ownership networks, chain rankings, and more." />
         <link rel="canonical" href="https://www.oversightreports.com/professionals" />
       </Helmet>
 

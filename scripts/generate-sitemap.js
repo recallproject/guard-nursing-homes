@@ -38,12 +38,10 @@ urls.push({ loc: '/', priority: '1.0', changefreq: 'weekly' });
 // Static pages
 const staticPages = [
   { path: '/chains', priority: '0.6' },
-  { path: '/ag-toolkit', priority: '0.6' },
   { path: '/high-risk', priority: '0.6' },
   { path: '/methodology', priority: '0.6' },
   { path: '/pricing', priority: '0.6' },
   { path: '/ownership', priority: '0.6' },
-  { path: '/screening', priority: '0.6' },
   { path: '/discrepancies', priority: '0.6' },
   { path: '/trends', priority: '0.6' },
   { path: '/watchlist', priority: '0.6' },

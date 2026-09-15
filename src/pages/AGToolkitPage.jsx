@@ -331,6 +331,9 @@ export function AGToolkitPage() {
   if (loading) {
     return (
       <div className="ag-toolkit-page">
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <div className="ag-toolkit-loading">
           <div className="loading-spinner"></div>
           <div className="loading-text">Loading facility data...</div>
@@ -342,6 +345,9 @@ export function AGToolkitPage() {
   if (error) {
     return (
       <div className="ag-toolkit-page">
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <div className="ag-toolkit-error">
           <h2>Error Loading Data</h2>
           <p>{error}</p>
@@ -538,6 +544,7 @@ export function AGToolkitPage() {
       <Helmet>
         <title>Attorney General Toolkit — Nursing Home Enforcement Data | The Oversight Report</title>
         <meta name="description" content="State-level nursing home enforcement data for Attorneys General. Staffing analysis, high-risk facilities, chain operators, and accountability metrics by state." />
+        <meta name="robots" content="noindex, nofollow" />
         <link rel="canonical" href="https://www.oversightreports.com/ag-toolkit" />
       </Helmet>
       {/* Header */}

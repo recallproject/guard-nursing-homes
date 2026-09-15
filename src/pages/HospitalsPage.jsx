@@ -14,9 +14,9 @@ export default function HospitalsPage() {
     <div className="hospitals-page">
       <Helmet>
         <title>For Hospitals &amp; Discharge Planners | The Oversight Report</title>
-        <meta name="description" content="Staffing discrepancy index, state screening reports, and chain rankings to support safe nursing home discharge planning. Federal CMS data on 14,699 facilities." />
+        <meta name="description" content="Staffing discrepancy index, chain rankings, and high-risk flags to support safe nursing home discharge planning. Federal CMS data on 14,699 facilities." />
         <meta property="og:title" content="Nursing Home Tools for Discharge Planners & Case Managers" />
-        <meta property="og:description" content="State screening reports, staffing discrepancy data, and chain rankings to support safe discharge planning." />
+        <meta property="og:description" content="Staffing discrepancy data, chain rankings, and high-risk flags to support safe discharge planning." />
         <meta property="og:url" content="https://www.oversightreports.com/hospitals" />
         <link rel="canonical" href="https://www.oversightreports.com/hospitals" />
       </Helmet>
@@ -30,12 +30,12 @@ export default function HospitalsPage() {
           </div>
           <h1>Data-backed nursing home<br />placement support</h1>
           <p className="hospitals-hero-subtitle">
-            Screen facilities before discharge. Staffing discrepancy index, state-level safety reports,
-            and chain ownership data — all from federal CMS sources, covering 14,699 facilities.
+            Screen facilities before discharge. Staffing discrepancy index, chain ownership data,
+            and high-risk flags — all from federal CMS sources, covering 14,699 facilities.
           </p>
           <div className="hospitals-hero-actions">
             <Link to="/professionals" className="hospitals-cta-primary">View Professional Tools</Link>
-            <Link to="/screening" className="hospitals-cta-secondary">State Screening Reports</Link>
+            <Link to="/discrepancies" className="hospitals-cta-secondary">Staffing Discrepancy Index</Link>
           </div>
           <div className="hospitals-hero-trust">
             <span>
@@ -62,21 +62,6 @@ export default function HospitalsPage() {
             Designed for clinicians who need to move fast — without compromising on patient safety.
           </p>
           <div className="hospitals-feature-grid">
-            <div className="hospitals-feature-card">
-              <div className="hospitals-feature-icon hospitals-icon-blue">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-              </div>
-              <h3>State Screening Reports</h3>
-              <p>
-                One-click screening for all facilities in any state. See stars, staffing, deficiencies,
-                and penalty totals in a sortable table. Ideal for rapid multi-facility evaluation when
-                your patient has geographic flexibility.
-              </p>
-              <Link to="/screening" className="hospitals-feature-link">
-                Open State Screener →
-              </Link>
-            </div>
-
             <div className="hospitals-feature-card">
               <div className="hospitals-feature-icon hospitals-icon-purple">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -164,7 +149,7 @@ export default function HospitalsPage() {
               <div className="hospitals-workflow-num">1</div>
               <div className="hospitals-workflow-content">
                 <h3>Identify candidates</h3>
-                <p>Use the state screener to pull all facilities in a geographic area. Sort by staffing HPRD or star rating to build a shortlist.</p>
+                <p>Search facilities by location to pull candidates in a geographic area. Sort by staffing HPRD or star rating to build a shortlist.</p>
               </div>
             </div>
             <div className="hospitals-workflow-step">

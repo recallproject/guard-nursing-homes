@@ -13,12 +13,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.oversightreports.com/ag-toolkit</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.oversightreports.com/high-risk</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -38,12 +32,6 @@
   </url>
   <url>
     <loc>https://www.oversightreports.com/ownership</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.oversightreports.com/screening</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
