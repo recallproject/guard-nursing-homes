@@ -1,37 +1,72 @@
 {
-  "generated_at": "2026-09-14T16:47:22.659Z",
+  "generated_at": "2026-09-15T17:38:51.269Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-14T15:50:38.000Z",
+      "last_pubdate": "2026-09-15T17:15:50.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-14T09:00:00.000Z",
+      "last_pubdate": "2026-09-15T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-09-14T09:00:00.000Z",
+      "last_pubdate": "2026-09-15T10:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 12,
-  "matched_to_ccn": 1,
-  "matched_unique_ccns": 1,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 2,
   "confidence_breakdown": {
-    "high": 1,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-melyh8",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-15T17:15:50.000Z",
+      "headline": "Entries for the 2026 SHN Architecture & Design Awards Are Due September 30",
+      "summary": "Entries for the 2026 SHN Architecture & Design Awards are due Wednesday, September 30 at 11:59pm CDT. The 2026 SHN Architecture & Design Awards program is designed to showcase the best buildings, campuses, communities, and renovation/repositioning projects across the following...",
+      "url": "https://hospicenews.com/2026/09/15/entries-for-the-2026-shn-architecture-design-awards-are-due-september-30/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-4l4vu0",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-15T10:32:05.000Z",
+      "headline": "LeadingAge CEO to Step Down in 2027",
+      "summary": "LeadingAge, the association of nonprofit and mission-driven providers of aging services, today announced that President and CEO Katie Smith Sloan will step down, effective March 31, 2027. Katie Smith Sloan, president and CEO of LeadingAge, will step down effective March 31,...",
+      "url": "https://hospicenews.com/2026/09/15/leadingage-ceo-to-step-down-in-2027/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-tie7fg",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-14T20:29:41.000Z",
+      "headline": "Dementia Focus a ‘Huge Distinguisher’ for Hospice Austin",
+      "summary": "Hospice Austin and its Austin Palliative Care program have made dementia care a strategic priority in expanding access to end-of-life support. Hospice Austin and Austin Palliative Care first zeroed in on dementia care roughly a year-and-a-half ago. The organization reached its...",
+      "url": "https://hospicenews.com/2026/09/14/dementia-focus-a-huge-distinguisher-for-hospice-austin/",
+      "matched_ccns": [
+        "451515"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "hospice-news-ylimzc",
       "source": "Hospice News",
@@ -48,8 +83,8 @@
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
       "date": "2026-09-14T15:25:56.000Z",
-      "headline": "NPHI: Let CMS Hospice, Home Health Moratoria End",
-      "summary": "The six-month moratoria on hospice and home health enrollment in Medicare should end as scheduled in November, according to the National Partnership for Healthcare and Hospice Innovation (NPHI). The U.S. Centers for Medicare & Medicaid Services’ (CMS) implemented the moratoria...",
+      "headline": "NPHI Urges CMS to Build on Hospice Moratorium With Targeted Enforcement",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) should follow the six-month moratoria on hospice and home health enrollment in Medicare with more pinpointed efforts to root out fraud, according to the National Partnership for Healthcare and Hospice Innovation (NPHI). CMS...",
       "url": "https://hospicenews.com/2026/09/14/nphi-let-cms-hospice-home-health-moratoria-end/",
       "matched_ccns": [],
       "match_confidence": "none"
@@ -123,28 +158,6 @@
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-jyr1y6",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-09T18:50:27.000Z",
-      "headline": "Compassus Exec: Hospice a ‘Huge Opportunity’ for Growth",
-      "summary": "Hospices have untapped potential to grow their patient reach, according to Compassus Senior Vice President and Chief Growth Officer Chris Core. Demand for end-of-life care is swelling, but these services remain vastly underutilized nationwide, Core said. Technology is playing an...",
-      "url": "https://hospicenews.com/2026/09/09/compassus-exec-hospice-a-huge-opportunity-for-growth/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-gxbirm",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-09T12:06:58.000Z",
-      "headline": "National Alliance: Hospice, Home Health Moratoria Curbing Access to Care",
-      "summary": "The U.S. Centers for Medicare & Medicaid Services’ (CMS) six-month moratoria on home health and hospice Medicare enrollment are adversely affecting access to care, as well as providers’ financial positions. This is according to the National Alliance for Care at Home, which...",
-      "url": "https://hospicenews.com/2026/09/09/national-alliance-hospice-home-health-moratoria-curbing-access-to-care/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
       "id": "propublica-z4khpx",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
@@ -152,17 +165,6 @@
       "headline": "I Wrote About His Wrongful Conviction. He Got Only 13 Years of Freedom Before Cancer Took His Life.",
       "summary": "The post I Wrote About His Wrongful Conviction. He Got Only 13 Years of Freedom Before Cancer Took His Life. appeared first on ProPublica .",
       "url": "https://www.propublica.org/article/wrongful-conviction-cancer-death",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-26zb0f",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-08T21:39:12.000Z",
-      "headline": "Family Caregivers Turn to Tech as Burden Soars",
-      "summary": "Family caregivers are using technology to address their most significant concerns amid rising demand for end-of-life support. Hospices are paying attention to these and other trends as they develop strategies to curb increasingly complex caregiver burden. Improving family...",
-      "url": "https://hospicenews.com/2026/09/08/family-caregivers-turn-to-tech-as-burden-soars/",
       "matched_ccns": [],
       "match_confidence": "none"
     }
@@ -176,6 +178,16 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/09/10/hospice-savannah-forms-larger-parent-company-georgia-care-innovators/",
         "summary": "Hospice Savannah has created a new, larger parent company to reflect and coordinate its growing scope of services — Georgia Care Innovators. The hospice itself will remain intact as a subsidiary of the new organization, along with seven other entities. These include the Edel..."
+      }
+    ],
+    "451515": [
+      {
+        "id": "hospice-news-tie7fg",
+        "date": "2026-09-14T20:29:41.000Z",
+        "headline": "Dementia Focus a ‘Huge Distinguisher’ for Hospice Austin",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/09/14/dementia-focus-a-huge-distinguisher-for-hospice-austin/",
+        "summary": "Hospice Austin and its Austin Palliative Care program have made dementia care a strategic priority in expanding access to end-of-life support. Hospice Austin and Austin Palliative Care first zeroed in on dementia care roughly a year-and-a-half ago. The organization reached its..."
       }
     ]
   }
