@@ -2189,7 +2189,7 @@ export function FacilityPage() {
           })()}
         </div>
 
-        {/* Mid-page Ask a Clinician CTA removed — now lives in FacilityDownloads section */}
+        {/* Mid-page Ask a Clinician CTA parked — not a facility-page surface */}
 
         {/* Section 11 — What You Can Do */}
         <div className="section">
@@ -2262,7 +2262,7 @@ export function FacilityPage() {
           <strong>About This Data:</strong> The Oversight Report identifies patterns and discrepancies in publicly available federal data. These indicators do not constitute evidence of wrongdoing. If you have concerns about a facility, contact your state survey agency or the HHS Office of Inspector General at <a href="https://tips.hhs.gov" target="_blank" rel="noopener noreferrer">tips.hhs.gov</a>.
         </div>
 
-        {/* Evidence Preview Modal + bottom ClinicianCTA removed — both replaced by FacilityDownloads section */}
+        {/* Evidence Preview Modal + bottom ClinicianCTA parked — Downloads is Family Report + Facility Brief only */}
 
         </div>{/* end fp-sections-main */}
         </div>{/* end fp-sections-layout */}
