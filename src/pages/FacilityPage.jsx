@@ -191,7 +191,7 @@ export function FacilityPage() {
   const { ccn } = useParams();
   const location = useLocation();
   // Fast load: only fetches CCN index (201KB) + one state file (1-5MB)
-  const { facility, allStateFacilities, loading: fastLoading, error: fastError } = useSingleFacility(ccn);
+  const { facility, allStateFacilities, stateData, loading: fastLoading, error: fastError } = useSingleFacility(ccn);
   // Background load: full dataset for benchmarks and ownership clusters
   const { data, loading: fullLoading, error: fullError } = useFacilityData();
   const { watchlist, addFacility, removeFacility, isWatched } = useWatchlist();
@@ -220,6 +220,10 @@ export function FacilityPage() {
     if (data?.states) return Object.values(data.states).flatMap(state => state.facilities || []);
     return allStateFacilities;
   }, [data, allStateFacilities]);
+
+  const dataAsOf = stateData?._metadata?.data_as_of
+    || (facility?.state && data?.states?.[facility.state]?._metadata?.data_as_of)
+    || null;
 
   // Compute benchmarks (available once full data loads in background)
   const benchmarks = useMemo(() => {
@@ -487,6 +491,7 @@ export function FacilityPage() {
           nearbyFacilities={nearbyForPDF}
           allFacilities={allFacilities}
           antipsychoticData={antipsychoticDataForPDF}
+          dataAsOf={dataAsOf}
         />
 
         <div className="fp-fold-rest">
@@ -2209,6 +2214,7 @@ export function FacilityPage() {
           nearbyFacilities={nearbyForPDF}
           allFacilities={allFacilities}
           antipsychoticData={antipsychoticDataForPDF}
+          dataAsOf={dataAsOf}
         />
 
         {/* Data Sources */}

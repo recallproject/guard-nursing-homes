@@ -17,7 +17,7 @@ function facilityCcn(facility) {
   return facility?.ccn || facility?.provider_number || '';
 }
 
-function useFacilityReportActions(facility, nearbyFacilities, allFacilities, antipsychoticData, placement) {
+function useFacilityReportActions(facility, nearbyFacilities, allFacilities, antipsychoticData, placement, dataAsOf) {
   const [familyLoading, setFamilyLoading] = useState(false);
 
   const trackEvent = (name, props) => {
@@ -38,7 +38,7 @@ function useFacilityReportActions(facility, nearbyFacilities, allFacilities, ant
     setFamilyLoading(true);
     setTimeout(() => {
       try {
-        generatePDF(facility, { nearbyFacilities, allFacilities, antipsychoticData });
+        generatePDF(facility, { nearbyFacilities, allFacilities, antipsychoticData, dataAsOf });
       } catch (err) {
         console.error('Family Report PDF failed:', err);
         alert('Failed to generate report. Please try again.');
@@ -75,13 +75,15 @@ export function FacilityCtaRail({
   nearbyFacilities = [],
   allFacilities = [],
   antipsychoticData = null,
+  dataAsOf = null,
 }) {
   const { familyLoading, downloadFamilyReport, buyFacilityBrief } = useFacilityReportActions(
     facility,
     nearbyFacilities,
     allFacilities,
     antipsychoticData,
-    'cta-rail'
+    'cta-rail',
+    dataAsOf
   );
 
   return (
@@ -140,13 +142,15 @@ export default function FacilityDownloads({
   nearbyFacilities = [],
   allFacilities = [],
   antipsychoticData = null,
+  dataAsOf = null,
 }) {
   const { familyLoading, downloadFamilyReport, buyFacilityBrief } = useFacilityReportActions(
     facility,
     nearbyFacilities,
     allFacilities,
     antipsychoticData,
-    'downloads-section'
+    'downloads-section',
+    dataAsOf
   );
 
   return (
@@ -169,10 +173,10 @@ export default function FacilityDownloads({
           <div className="fd-audience">Free · for families · plain-language</div>
           <p className="fd-desc">A short summary you can read before a visit or share with relatives. Same public CMS facts as this page.</p>
           <ul className="fd-bullets">
-            <li>Safety score and key alerts</li>
-            <li>Top concerns in plain English</li>
-            <li>Questions to ask the facility</li>
-            <li>Comparable nearby facilities</li>
+            <li>CMS stars and key alerts</li>
+            <li>Bottom line in plain English</li>
+            <li>Watch-fors and visit questions</li>
+            <li>Soft link to the $29 Facility Brief</li>
           </ul>
           <button
             type="button"
