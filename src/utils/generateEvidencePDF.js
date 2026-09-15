@@ -2,18 +2,26 @@ import jsPDFModule from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import ftagReference from '../data/ftag-reference.json';
 import nationalAveragesData from '../../public/data/national_averages.json';
+import { generateFacilityBriefPDF } from './generateFacilityBriefPDF.js';
 
 const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
 
 /**
- * Generates a professional, documented Evidence Package PDF.
+ * Attorney Evidence Report PDF.
+ *
+ * The $29 family purchase always uses generateFacilityBriefPDF (Facility Brief).
+ * Passing reportType anything other than 'attorney' delegates to that generator
+ * so leftover call sites cannot accidentally emit the old consumer dump.
  *
  * @param {Object} facility - The facility data object
  * @param {Array} nearbyAlternatives - Array of nearby facilities with better scores
  * @param {Array} allFacilities - All facilities for ownership portfolio analysis
  */
 export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacilities = [], antipsychoticData = null, dataAsOf = null, reportType = 'consumer') {
-  const isAttorney = reportType === 'attorney';
+  if (reportType !== 'attorney') {
+    return generateFacilityBriefPDF(facility, nearbyAlternatives, allFacilities, antipsychoticData, dataAsOf);
+  }
+  const isAttorney = true;
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',

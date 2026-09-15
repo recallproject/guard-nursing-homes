@@ -112,8 +112,8 @@ export function FacilityCtaRail({
         <div className="fp-cta-item fp-cta-item--paid">
           <div className="fp-cta-item-kicker">2 · Facility Brief · $29</div>
           <ul className="fp-cta-item-bullets">
-            <li>Scannable deep dive (not a text wall)</li>
-            <li>Staffing vs peers · timeline · visit checklist</li>
+            <li>Scannable 9-page brief (not a text wall)</li>
+            <li>Inspection story · visit checklist · worksheet</li>
             <li>Same public facts — packaged to share</li>
           </ul>
           <button
@@ -203,12 +203,12 @@ export default function FacilityDownloads({
           </div>
           <div className="fd-title">Facility Brief</div>
           <div className="fd-audience">$29 · printable · for families</div>
-          <p className="fd-desc">A packaged deep dive of this facility’s public record — staffing, inspections, and ownership — formatted to print or share.</p>
+          <p className="fd-desc">A 9-page printable brief of this facility’s public record — decision snapshot, inspection story, staffing hours, and a visit checklist with answer lines.</p>
           <ul className="fd-bullets">
-            <li>Inspection and penalty timeline</li>
-            <li>Staffing vs peers</li>
-            <li>Ownership chain</li>
-            <li>Visit checklist</li>
+            <li>Decision snapshot and inspection story</li>
+            <li>Staffing hours per resident day (HPRD)</li>
+            <li>Visit checklist with blank answer lines</li>
+            <li>Nearby comparison + decision worksheet</li>
           </ul>
           <button
             type="button"

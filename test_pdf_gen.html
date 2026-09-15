@@ -5,23 +5,14 @@
 <h2>Evidence PDF Generator Test</h2>
 <p>Loading facility data...</p>
 <script type="module">
-import { generateEvidencePDF } from '/src/utils/generateEvidencePDF.js';
+import { generateFacilityBriefPDF } from '/src/utils/generateFacilityBriefPDF.js';
 
-const resp = await fetch('/facilities_map_data.json');
+const resp = await fetch('/data/states/TX.json');
 const data = await resp.json();
 
-const allFacilities = [];
-let facility = null;
-const targetCCN = '145995'; // Archer Heights
-
-for (const [state, stateData] of Object.entries(data.states)) {
-  if (stateData.facilities) {
-    for (const f of stateData.facilities) {
-      allFacilities.push(f);
-      if (f.ccn === targetCCN) facility = f;
-    }
-  }
-}
+const allFacilities = data.facilities || [];
+const targetCCN = '675408'; // Avir at Overton
+const facility = allFacilities.find(f => f.ccn === targetCCN);
 
 if (!facility) {
   document.body.innerHTML += '<p style="color:red">Facility not found!</p>';
@@ -37,7 +28,7 @@ if (!facility) {
   document.body.innerHTML += '<p>Generating PDF... (will auto-download)</p>';
 
   try {
-    generateEvidencePDF(facility, nearby, allFacilities);
+    generateFacilityBriefPDF(facility, nearby, allFacilities, null, data._metadata?.data_as_of);
     document.body.innerHTML += '<p style="color:green">PDF generated and downloaded!</p>';
   } catch(err) {
     document.body.innerHTML += `<p style="color:red">Error: ${err.message}</p>`;

@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { haversineDistance } from '../utils/haversine';
-import { generateEvidencePDF } from '../utils/generateEvidencePDF';
+import { generateFacilityBriefPDF } from '../utils/generateFacilityBriefPDF';
 import { checkoutSingleReport } from '../utils/stripe';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
@@ -104,7 +104,6 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   }, [facility, allFacilities]);
 
   const [pdfLoading, setPdfLoading] = useState(false);
-  const [reportType, setReportType] = useState('consumer');
   const [deficiencyDetails, setDeficiencyDetails] = useState(null);
   const [defDetailsLoading, setDefDetailsLoading] = useState(false);
   const [antipsychoticAlerts, setAntipsychoticAlerts] = useState(null);
@@ -158,12 +157,12 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
       const stateCode = facility.state?.toUpperCase();
       const stateMetadata = stateCode && data?.states?.[stateCode]?._metadata;
       const dataAsOf = stateMetadata?.data_as_of || null;
-      generateEvidencePDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData, dataAsOf, reportType);
-      window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state, reportType}});
+      generateFacilityBriefPDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData, dataAsOf);
+      window.plausible && window.plausible('PDF-Download', {props: {facility: facility.name, ccn: facility.ccn, state: facility.state, reportType: 'facility-brief'}});
     } finally {
       setPdfLoading(false);
     }
-  }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails, antipsychoticAlerts, reportType]);
+  }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails, antipsychoticAlerts, data]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -293,7 +292,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
       <div className="ev">
         <div className="ev-header no-print">
           <Link to={`/facility/${ccn}`} className="ev-back">Back to Report Card</Link>
-          <h2 className="ev-badge">Evidence Package</h2>
+          <h2 className="ev-badge">Facility Brief</h2>
         </div>
         <div className="ev-body" style={{ opacity: 0.4, filter: 'blur(3px)', pointerEvents: 'none' }}>
           <section className="ev-section ev-cover">
@@ -302,12 +301,12 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           </section>
         </div>
         <div className="ev-purchase-gate">
-          <h2>Evidence Package — {facility.name}</h2>
-          <p>10-section professionally documented report with staffing data, inspection history, penalties, ownership profile, and nearby alternatives.</p>
-          <p className="ev-value-line">We analyze publicly available federal data from 18 CMS databases so you don't have to. Each report compiles inspections, penalties, staffing records, ownership, quality measures, and cost reports into a single professional analysis.</p>
+          <h2>Facility Brief — {facility.name}</h2>
+          <p>A 9-page printable brief with a decision snapshot, inspection story, staffing hours, visit checklist, and nearby comparison — built from public CMS records.</p>
+          <p className="ev-value-line">Same public facts as the facility page, packaged to take on a tour. Not an attorney evidence report.</p>
           <div className="ev-purchase-options">
             <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn)}>
-              Download Evidence Report — $29
+              Download Facility Brief — $29
             </button>
             <p className="ev-or-subscribe">or <Link to="/pricing">subscribe for unlimited access</Link></p>
           </div>
@@ -319,29 +318,20 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   return (
     <div className="ev">
       <Helmet>
-        <title>{facility?.name || 'Facility'} — Evidence Package | The Oversight Report</title>
-        <meta name="description" content={`Evidence package for ${facility?.name || 'facility'} in ${facility?.city || ''}, ${facility?.state || ''}. Comprehensive safety documentation for legal and advocacy use.`} />
+        <title>{facility?.name || 'Facility'} — Facility Brief | The Oversight Report</title>
+        <meta name="description" content={`Facility Brief for ${facility?.name || 'facility'} in ${facility?.city || ''}, ${facility?.state || ''}. A printable CMS-based snapshot for families preparing a visit.`} />
         <link rel="canonical" href={`https://www.oversightreports.com/evidence/${ccn}`} />
       </Helmet>
       {/* Header */}
       <div className="ev-header no-print">
         <Link to={`/facility/${ccn}`} className="ev-back">Back to Report Card</Link>
-        <h2 className="ev-badge">Evidence Package</h2>
+        <h2 className="ev-badge">Facility Brief</h2>
         <div className="ev-header-actions">
-          <select
-            value={reportType}
-            onChange={(e) => setReportType(e.target.value)}
-            className="ev-btn ev-btn-secondary"
-            style={{ marginRight: '8px', cursor: 'pointer' }}
-          >
-            <option value="consumer">Consumer Report</option>
-            <option value="attorney">Attorney Report</option>
-          </select>
           <button onClick={handlePrint} className="ev-btn ev-btn-secondary">
             Print Version
           </button>
           <button onClick={handleDownloadPDF} className="ev-btn ev-btn-primary" disabled={pdfLoading}>
-            {pdfLoading ? 'Generating PDF...' : (reportType === 'attorney' ? 'Download Attorney PDF' : 'Download PDF')}
+            {pdfLoading ? 'Generating PDF...' : 'Download Facility Brief'}
           </button>
         </div>
       </div>

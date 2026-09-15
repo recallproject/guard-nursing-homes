@@ -596,13 +596,13 @@ const utilityPages = [
   },
   {
     route: 'evidence-success',
-    title: 'Evidence Request Received — The Oversight Report',
-    description: 'Your evidence report request was received.'
+    title: 'Your Facility Brief — The Oversight Report',
+    description: 'Your Facility Brief is ready to download.'
   },
   {
     route: 'evidence-download',
-    title: 'Download Evidence Report — The Oversight Report',
-    description: 'Download your evidence report from The Oversight Report.'
+    title: 'Download Facility Brief — The Oversight Report',
+    description: 'Download your Facility Brief from The Oversight Report.'
   },
 ];
 
