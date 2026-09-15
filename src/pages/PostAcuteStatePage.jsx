@@ -78,7 +78,7 @@ export default function PostAcuteStatePage({ settingId }) {
           <div className="pas-crumb">
             <Link to="/">Home</Link>
             <span className="pas-crumb-sep">/</span>
-            <Link to={setting.route}>{setting.label}</Link>
+            <Link to={setting.route}>{setting.familyLabel || setting.label}</Link>
             <span className="pas-crumb-sep">/</span>
             {stateName}
           </div>

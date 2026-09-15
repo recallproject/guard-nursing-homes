@@ -436,7 +436,7 @@ export function FacilityPage() {
         {fromState ? (
           <Link to={`/state/${fromState}`} className="fp-back">← Back to {facility.state} facilities</Link>
         ) : (
-          <Link to="/skilled-nursing" className="fp-back">← Back to Map</Link>
+          <Link to="/skilled-nursing" className="fp-back">← Back to skilled nursing</Link>
         )}
         <h2 className="fp-badge">Facility Report Card</h2>
         <div className="fp-watchlist-group">
@@ -2278,7 +2278,7 @@ export function FacilityPage() {
         </div>
 
         <div className="fp-footer-nav">
-          <Link to="/skilled-nursing">← Back to Map</Link>
+          <Link to="/skilled-nursing">← Back to skilled nursing</Link>
         </div>
       </div>
     </div>

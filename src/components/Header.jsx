@@ -1,61 +1,46 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { CARE_SETTINGS, careSettingFromPath } from '../data/careSettings';
 import '../styles/header.css';
 
 /**
- * Global navigation header with audience-lane dropdowns
- * Families / Professionals / Hospitals
- * Mobile hamburger menu
+ * Global family navigation — same shell on hub, setting, state, and facility.
  */
-export function Header({ onSearchOpen, transparent = false, lightMode = false, simple = false }) {
+export function Header() {
   const [isCompact, setIsCompact] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const navRef = useRef(null);
   const dropdownTimeoutRef = useRef(null);
   const { watchlist } = useWatchlist();
   const watchlistCount = watchlist.length;
+  const currentSetting = careSettingFromPath(location.pathname);
 
-  // Compact on scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setIsCompact(window.scrollY > 60);
-    };
+    const handleScroll = () => setIsCompact(window.scrollY > 60);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-    setActiveDropdown(null);
-  }, [location.pathname]);
-
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e) {
       if (navRef.current && !navRef.current.contains(e.target)) {
-        setActiveDropdown(null);
+        setSettingsOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Prevent body scroll when mobile menu open
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    if (mobileOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
-  // Close mobile menu on Escape
   useEffect(() => {
     if (!mobileOpen) return;
     function handleKey(e) {
@@ -65,205 +50,112 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
     return () => document.removeEventListener('keydown', handleKey);
   }, [mobileOpen]);
 
-  const handleDropdownEnter = (name) => {
-    clearTimeout(dropdownTimeoutRef.current);
-    setActiveDropdown(name);
-  };
-
-  const handleDropdownLeave = () => {
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 150);
-  };
-
   const isActive = (path) => location.pathname === path;
-  const isInGroup = (paths) => paths.some(p => location.pathname.startsWith(p));
+  const settingsActive = Boolean(currentSetting);
+  const statesActive = location.pathname.startsWith('/state/') || location.hash === '#browse-states';
 
-  const simpleLinks = [
-    { to: '/skilled-nursing', label: 'Nursing homes' },
-    { to: '/hospice', label: 'Hospice' },
-    { to: '/about', label: 'About' },
-  ];
-  const simpleMobileLinks = [
-    ...simpleLinks,
-    { to: '/home-health', label: 'Home health' },
-    { to: '/irf', label: 'Inpatient rehab' },
-    { to: '/ltach', label: 'LTACH' },
-  ];
-
-  const navGroups = [
-    {
-      label: 'Families',
-      paths: ['/', '/facility', '/watchlist', '/skilled-nursing', '/hospice', '/home-health', '/irf', '/ltach'],
-      items: [
-        { to: '/skilled-nursing?view=map', label: 'Search & Map', desc: 'Find and compare nursing homes' },
-        { to: '/skilled-nursing', label: 'Nursing Homes', desc: 'Every Medicare-certified SNF' },
-        { to: '/hospice', label: 'Hospice', desc: 'Verify a referral · national directory' },
-        { to: '/home-health', label: 'Home Health', desc: 'Agencies with CMS stars + HHCAHPS' },
-        { to: '/irf', label: 'Inpatient Rehab', desc: 'IRF Compare quality measures' },
-        { to: '/ltach', label: 'LTACH', desc: 'Long-term acute care hospitals' },
-        { to: '/watchlist', label: 'My Favorites', desc: 'Track and compare your picks' },
-        { to: '/know-your-rights', label: 'Know Your Rights', desc: 'Discharge appeals & safety resources' },
-      ]
-    },
-    {
-      label: 'Professionals',
-      paths: ['/professionals', '/evidence', '/discrepancies', '/ownership', '/chains', '/high-risk', '/trends', '/antipsychotic-trends'],
-      items: [
-        { to: '/professionals', label: 'All Professional Tools', desc: 'Full toolkit overview' },
-        { to: '/antipsychotic-trends', label: 'AP Alerts', desc: 'Antipsychotic prescribing trends by facility' },
-      ]
-    },
-    {
-      label: 'Hospitals',
-      paths: ['/referral-scorecard'],
-      items: [
-        { to: '/referral-scorecard', label: 'Referral Scorecard', desc: 'Compare facilities for discharge planning' },
-      ]
-    },
-    {
-      label: 'States',
-      paths: ['/states', '/state'],
-      items: [
-        { to: '/states/california', label: 'California', desc: '6,456 facilities — SNF, hospice, home health, rehab' },
-      ]
-    },
-    {
-      label: 'About',
-      paths: ['/about', '/methodology', '/pricing', '/blog'],
-      items: [
-        { to: '/about', label: 'About', desc: 'Who built this and why' },
-        { to: '/blog', label: 'Blog', desc: 'Writing on oversight, CMS data, and policy' },
-        { to: '/methodology', label: 'Methodology', desc: 'How we calculate every number' },
-        { to: '/pricing', label: 'Pricing', desc: 'Free for families, Pro for professionals' },
-        { to: '/terms', label: 'Terms of Use', desc: 'Legal terms and disclaimers' },
-        { to: '/privacy', label: 'Privacy Policy', desc: 'How we handle your data' },
-      ]
-    }
+  const topLinks = [
+    { to: '/', label: 'Find a facility', match: (p) => p === '/' },
+    { to: '/compare', label: 'Compare', match: (p) => p === '/compare' },
+    { to: '/methodology', label: 'Methodology', match: (p) => p.startsWith('/methodology') },
   ];
 
   return (
     <>
-      <header className={`site-header ${isCompact ? 'site-header--compact' : ''} ${transparent && !isCompact ? 'site-header--transparent' : ''} ${lightMode ? 'site-header--light' : ''} ${simple ? 'site-header--simple' : ''} ${mobileOpen ? 'site-header--menu-open' : ''}`} ref={navRef}>
-        <div className={`site-header__inner ${simple ? 'site-header__inner--simple' : ''}`}>
-          {/* Brand — onClick forces MapPage view reset when already on / */}
-          <Link to="/" className="site-header__brand" onClick={(e) => {
-            if (location.pathname === '/') {
-              e.preventDefault();
-              navigate('/', { state: { resetView: Date.now() }, replace: true });
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-          }}>
+      <header
+        className={`site-header site-header--family ${isCompact ? 'site-header--compact' : ''} ${mobileOpen ? 'site-header--menu-open' : ''}`}
+        ref={navRef}
+      >
+        <div className="site-header__inner site-header__inner--family">
+          <Link
+            to="/"
+            className="site-header__brand"
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault();
+                navigate('/', { replace: true });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
+          >
             <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
           </Link>
 
-          {simple && (
-            <nav className="site-header__simple-nav" aria-label="Main navigation">
-              {simpleLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`site-header__simple-link ${isActive(link.to) ? 'site-header__simple-link--active' : ''}`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          )}
-
-          {/* Desktop Nav */}
-          {!simple && (
-          <nav className="site-header__nav" aria-label="Main navigation">
-            {/* Top-level Compare link (no dropdown) */}
+          <nav className="site-header__family-nav" aria-label="Main navigation">
             <Link
-              to="/compare"
-              className={`site-header__top-link ${isActive('/compare') ? 'site-header__top-link--active' : ''}`}
+              to="/"
+              className={`site-header__family-link ${isActive('/') ? 'site-header__family-link--active' : ''}`}
             >
-              Compare
+              Find a facility
             </Link>
 
-            {navGroups.map((group) => (
-              <div
-                key={group.label}
-                className={`site-header__group ${isInGroup(group.paths) ? 'site-header__group--active' : ''}`}
-                onMouseEnter={() => handleDropdownEnter(group.label)}
-                onMouseLeave={handleDropdownLeave}
+            <div
+              className={`site-header__group ${settingsActive ? 'site-header__group--active' : ''}`}
+              onMouseEnter={() => {
+                clearTimeout(dropdownTimeoutRef.current);
+                setSettingsOpen(true);
+              }}
+              onMouseLeave={() => {
+                dropdownTimeoutRef.current = setTimeout(() => setSettingsOpen(false), 150);
+              }}
+            >
+              <button
+                type="button"
+                className={`site-header__family-link site-header__family-btn ${settingsActive ? 'site-header__family-link--active' : ''}`}
+                aria-expanded={settingsOpen}
+                aria-haspopup="true"
+                onClick={() => setSettingsOpen((v) => !v)}
               >
-                <button
-                  className="site-header__group-label"
-                  onClick={() => setActiveDropdown(activeDropdown === group.label ? null : group.label)}
-                  aria-expanded={activeDropdown === group.label}
-                >
-                  {group.label}
-                  <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                    <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
+                Settings
+              </button>
+              {settingsOpen && (
+                <div className="site-header__dropdown" role="menu">
+                  {CARE_SETTINGS.map((s) => (
+                    <Link
+                      key={s.id}
+                      to={s.route}
+                      className={`site-header__dropdown-item ${isActive(s.route) ? 'site-header__dropdown-item--active' : ''}`}
+                      onClick={() => setSettingsOpen(false)}
+                    >
+                      <span className="site-header__dropdown-label">{s.familyLabel}</span>
+                      <span className="site-header__dropdown-desc">
+                        {s.nerdLabel ? s.nerdLabel : s.pageTitle}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
-                {activeDropdown === group.label && (
-                  <div
-                    className="site-header__dropdown"
-                    onMouseEnter={() => handleDropdownEnter(group.label)}
-                    onMouseLeave={handleDropdownLeave}
-                  >
-                    {group.items.map((item) => (
-                      item.href ? (
-                        <a
-                          key={item.href}
-                          href={item.href}
-                          className="site-header__dropdown-item"
-                          onClick={() => setActiveDropdown(null)}
-                        >
-                          <span className="site-header__dropdown-label">{item.label}</span>
-                          <span className="site-header__dropdown-desc">{item.desc}</span>
-                        </a>
-                      ) : (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          state={item.state}
-                          className={`site-header__dropdown-item ${isActive(item.to) ? 'site-header__dropdown-item--active' : ''}`}
-                          onClick={() => setActiveDropdown(null)}
-                        >
-                          <span className="site-header__dropdown-label">{item.label}</span>
-                          <span className="site-header__dropdown-desc">{item.desc}</span>
-                        </Link>
-                      )
-                    ))}
-                  </div>
-                )}
-              </div>
+            <Link
+              to="/skilled-nursing#browse-states"
+              className={`site-header__family-link ${statesActive ? 'site-header__family-link--active' : ''}`}
+            >
+              States
+            </Link>
+
+            {topLinks.filter((l) => l.to !== '/').map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`site-header__family-link ${link.match(location.pathname) ? 'site-header__family-link--active' : ''}`}
+              >
+                {link.label}
+              </Link>
             ))}
           </nav>
-          )}
 
-          {/* Actions */}
           <div className="site-header__actions">
-            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Favorites (${watchlistCount})`}>
+            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Saved (${watchlistCount})`}>
               <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
                 {watchlistCount > 0 ? '★' : '☆'}
               </span>
-              <span className="site-header__fav-label">Favorites</span>
+              <span className="site-header__fav-label">Saved</span>
               {watchlistCount > 0 && (
                 <span className="site-header__fav-badge">{watchlistCount}</span>
               )}
             </Link>
-            {onSearchOpen && (
-              <button
-                className="site-header__search-btn"
-                onClick={onSearchOpen}
-                aria-label="Search facilities"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8"/>
-                  <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-                <span className="site-header__search-label">Search</span>
-                <kbd className="site-header__kbd">&#x2318;K</kbd>
-              </button>
-            )}
 
-            {/* Hamburger */}
             <button
               className={`site-header__hamburger ${mobileOpen ? 'site-header__hamburger--open' : ''}`}
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -278,7 +170,6 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
         </div>
       </header>
 
-      {/* Mobile Menu Overlay — sits above the site header so logo + close appear once */}
       {mobileOpen && (
         <div className="mobile-menu-overlay" onClick={() => setMobileOpen(false)}>
           <nav
@@ -289,14 +180,7 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
             role="dialog"
           >
             <div className="mobile-menu__header">
-              <Link to="/" className="site-header__brand" onClick={(e) => {
-                setMobileOpen(false);
-                if (location.pathname === '/') {
-                  e.preventDefault();
-                  navigate('/', { state: { resetView: Date.now() }, replace: true });
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }
-              }}>
+              <Link to="/" className="site-header__brand" onClick={() => setMobileOpen(false)}>
                 <span className="site-header__logo-text">The <span className="logo-accent">Oversight</span> Report</span>
               </Link>
               <button
@@ -309,70 +193,39 @@ export function Header({ onSearchOpen, transparent = false, lightMode = false, s
             </div>
 
             <div className="mobile-menu__body">
-            {simple ? (
-              <>
-                {simpleMobileLinks.map((link) => (
+              <Link to="/" className={`mobile-menu__standalone-link ${isActive('/') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
+                Find a facility
+              </Link>
+              <div className="mobile-menu__group">
+                <div className="mobile-menu__group-label">Settings</div>
+                {CARE_SETTINGS.map((s) => (
                   <Link
-                    key={link.to}
-                    to={link.to}
-                    className={`mobile-menu__standalone-link ${isActive(link.to) ? 'mobile-menu__standalone-link--active' : ''}`}
+                    key={s.id}
+                    to={s.route}
+                    className={`mobile-menu__item ${isActive(s.route) ? 'mobile-menu__item--active' : ''}`}
                     onClick={() => setMobileOpen(false)}
                   >
-                    {link.label}
+                    <span className="mobile-menu__item-label">{s.familyLabel}</span>
+                    {s.nerdLabel ? (
+                      <span className="mobile-menu__item-desc">{s.nerdLabel}</span>
+                    ) : (
+                      <span className="mobile-menu__item-desc">{s.pageTitle}</span>
+                    )}
                   </Link>
                 ))}
-              </>
-            ) : (
-            <>
-            {/* Top-level Compare link */}
-            <Link
-              to="/compare"
-              className={`mobile-menu__standalone-link ${isActive('/compare') ? 'mobile-menu__standalone-link--active' : ''}`}
-              onClick={() => setMobileOpen(false)}
-            >
-              Compare Tools
-            </Link>
-
-            {navGroups.map((group) => (
-              <div key={group.label} className="mobile-menu__group">
-                <div className="mobile-menu__group-label">{group.label}</div>
-                {group.items.map((item) => (
-                  item.href ? (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      className="mobile-menu__item"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <span className="mobile-menu__item-label">{item.label}</span>
-                      <span className="mobile-menu__item-desc">{item.desc}</span>
-                    </a>
-                  ) : (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      state={item.state}
-                      className={`mobile-menu__item ${isActive(item.to) ? 'mobile-menu__item--active' : ''}`}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      <span className="mobile-menu__item-label">{item.label}</span>
-                      <span className="mobile-menu__item-desc">{item.desc}</span>
-                    </Link>
-                  )
-                ))}
               </div>
-            ))}
-
-            {onSearchOpen && (
-              <button
-                className="mobile-menu__search"
-                onClick={() => { setMobileOpen(false); onSearchOpen(); }}
-              >
-                Search Facilities
-              </button>
-            )}
-            </>
-            )}
+              <Link to="/skilled-nursing#browse-states" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
+                States
+              </Link>
+              <Link to="/compare" className={`mobile-menu__standalone-link ${isActive('/compare') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
+                Compare
+              </Link>
+              <Link to="/methodology" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
+                Methodology
+              </Link>
+              <Link to="/watchlist" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
+                Saved
+              </Link>
             </div>
           </nav>
         </div>
