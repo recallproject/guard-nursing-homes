@@ -1,3 +1,5 @@
+import { buildSingleReportCheckoutUrl, isValidFacilityCcn, normalizeFacilityCcn } from './facilityBriefCheckout.js';
+
 /**
  * Stripe Payment Links (LIVE)
  *
@@ -59,9 +61,12 @@ const SINGLE_REPORT_LINK = 'https://buy.stripe.com/00wfZh5Z63m53DubNR0x204';
 const CLINICIAN_REPORT_LINK = 'https://buy.stripe.com/28EaEX1IQ4q92zqbNR0x205';
 
 /**
- * Redirect to Stripe for a single evidence report purchase.
- * After payment, Stripe redirects to /evidence-success?ccn={ccn}
- * where user enters email to receive a signed download link.
+ * Redirect to Stripe for a Facility Brief purchase.
+ *
+ * CCN is attached as Stripe `client_reference_id` so /evidence-success can
+ * recover it from the paid Checkout Session. localStorage is only a helper
+ * and fails across www vs apex (different origins).
+ *
  * @param {string} ccn - Facility CCN for post-payment PDF delivery
  */
 export function checkoutSingleReport(ccn) {
@@ -69,9 +74,27 @@ export function checkoutSingleReport(ccn) {
     alert('Single report purchase is coming soon. Subscribe to Professional for immediate access.');
     return;
   }
-  // Store CCN for the success page redirect (read-only, not used for access control)
-  localStorage.setItem('pending_single_report', ccn);
-  window.location.href = SINGLE_REPORT_LINK;
+
+  const normalized = normalizeFacilityCcn(ccn);
+  if (!isValidFacilityCcn(normalized)) {
+    alert('This facility is missing a valid CMS ID, so checkout cannot start. Please try another facility or contact support.');
+    return;
+  }
+
+  const checkoutUrl = buildSingleReportCheckoutUrl(SINGLE_REPORT_LINK, normalized);
+  if (!checkoutUrl) {
+    alert('Checkout could not be started. Please contact support.');
+    return;
+  }
+
+  // Optional helper for same-origin returns. Not required for fulfillment.
+  try {
+    localStorage.setItem('pending_single_report', normalized);
+  } catch {
+    // Private mode / storage blocked — Stripe session still has the CCN.
+  }
+
+  window.location.href = checkoutUrl;
 }
 
 /**
