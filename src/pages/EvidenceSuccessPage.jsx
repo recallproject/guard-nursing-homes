@@ -1,14 +1,16 @@
 /**
- * Evidence Report Success Page
+ * Facility Brief Success Page
  *
  * SECURITY MODEL:
  * After Stripe payment, user is redirected here with ?session_id=cs_xxx.
- * The CCN is stored in localStorage before checkout (not security-sensitive,
- * just identifies which report they want).
+ * This page calls /api/send-evidence with the session ID. The API:
+ * 1. Verifies payment with Stripe
+ * 2. Resolves CCN from the paid session (client_reference_id / metadata)
+ * 3. Generates the HMAC download token
  *
- * This page passes both session_id and ccn to /api/send-evidence, which
- * verifies payment with Stripe before generating the download token.
- * Without a valid paid session_id, no download link is generated.
+ * localStorage (`pending_single_report`) and ?ccn= are optional hints only.
+ * They fail across www vs apex (different origins) and when storage is
+ * blocked. The paid Checkout Session is the source of truth for CCN.
  *
  * STRIPE PAYMENT LINK SETUP (MANUAL STEP):
  * The single-report Payment Link success URL must be:
@@ -20,55 +22,63 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import '../styles/design.css';
 
+function readOptionalStoredCcn() {
+  try {
+    return localStorage.getItem('pending_single_report') || '';
+  } catch {
+    return '';
+  }
+}
+
+function clearOptionalStoredCcn() {
+  try {
+    localStorage.removeItem('pending_single_report');
+  } catch {
+    // Storage may be blocked; fulfillment does not depend on it.
+  }
+}
+
 export default function EvidenceSuccessPage() {
   const [searchParams] = useSearchParams();
 
   // session_id comes from Stripe redirect URL (server-verified, secure)
   const sessionId = searchParams.get('session_id') || '';
 
-  // CCN comes from localStorage (set before checkout) or URL fallback
-  // Not security-sensitive — just identifies which facility report to generate.
-  // The actual access control is the Stripe session verification.
+  // Optional CCN hints — never required for a paid session
   const ccnFromUrl = searchParams.get('ccn') || '';
-  const ccnFromStorage = typeof window !== 'undefined'
-    ? localStorage.getItem('pending_single_report') || ''
-    : '';
-  const ccn = ccnFromStorage || ccnFromUrl;
 
   const [status, setStatus] = useState('loading'); // loading | ready | error
   const [downloadUrl, setDownloadUrl] = useState('');
+  const [ccn, setCcn] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (!sessionId) return;
 
-    // Clean up localStorage
-    localStorage.removeItem('pending_single_report');
+    const hintCcn = readOptionalStoredCcn() || ccnFromUrl;
 
-    if (!sessionId) {
-      setStatus('error');
-      setErrorMsg('No payment session found. If you just completed payment, please check your email or contact support.');
-      return;
-    }
-
-    if (!ccn) {
-      setStatus('error');
-      setErrorMsg('No facility ID found. Please contact support with your payment confirmation.');
-      return;
-    }
+    let cancelled = false;
 
     async function getDownloadLink() {
       try {
+        const body = { checkout_session_id: sessionId };
+        if (hintCcn) body.ccn = hintCcn;
+
         const res = await fetch('/api/send-evidence', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ccn, checkout_session_id: sessionId }),
+          body: JSON.stringify(body),
         });
         const data = await res.json();
+        if (cancelled) return;
         if (res.ok && data.success) {
+          const resolvedCcn = data.ccn || hintCcn;
+          clearOptionalStoredCcn();
           setDownloadUrl(data.downloadUrl);
+          setCcn(resolvedCcn);
           setStatus('ready');
-          window.plausible && window.plausible('Evidence-Purchase-Complete', { props: { ccn } });
+          window.plausible && window.plausible('Evidence-Purchase-Complete', { props: { ccn: resolvedCcn } });
         } else if (res.status === 402) {
           setErrorMsg('Payment has not been completed. Please complete checkout and try again.');
           setStatus('error');
@@ -77,18 +87,25 @@ export default function EvidenceSuccessPage() {
           setStatus('error');
         }
       } catch {
+        if (cancelled) return;
         setErrorMsg('Network error. Please try again.');
         setStatus('error');
       }
     }
 
     getDownloadLink();
-  }, [ccn, sessionId]);
+    return () => { cancelled = true; };
+  }, [sessionId, ccnFromUrl]);
+
+  const displayStatus = sessionId ? status : 'error';
+  const displayError = sessionId
+    ? errorMsg
+    : 'No payment session found. If you just completed payment, please check your email or contact support.';
 
   return (
     <>
       <Helmet>
-        <title>Your Evidence Report | The Oversight Report</title>
+        <title>Your Facility Brief | The Oversight Report</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <div style={{
@@ -108,13 +125,13 @@ export default function EvidenceSuccessPage() {
           padding: '3rem 2rem',
           border: '1px solid rgba(255,255,255,0.1)',
         }}>
-          {status === 'loading' && (
+          {displayStatus === 'loading' && (
             <p style={{ color: 'var(--text-cream)', fontSize: '1.1rem' }}>
-              Preparing your report...
+              Preparing your Facility Brief...
             </p>
           )}
 
-          {status === 'ready' && (
+          {displayStatus === 'ready' && (
             <>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>&#10003;</div>
               <h1 style={{
@@ -131,7 +148,7 @@ export default function EvidenceSuccessPage() {
                 lineHeight: 1.6,
                 marginBottom: '2rem',
               }}>
-                Your Evidence Report for facility <strong>{ccn}</strong> is ready.
+                Your Facility Brief{ccn ? <> for facility <strong>{ccn}</strong></> : ''} is ready.
                 This link expires in 72 hours.
               </p>
               <a
@@ -139,7 +156,7 @@ export default function EvidenceSuccessPage() {
                 className="btn btn-primary"
                 style={{ display: 'inline-block', padding: '14px 28px', fontSize: '1rem', textDecoration: 'none' }}
               >
-                Download Evidence Report
+                Download Facility Brief
               </a>
               <p style={{ marginTop: '1.5rem' }}>
                 <Link to="/" style={{ color: 'var(--accent-teal)', textDecoration: 'none' }}>
@@ -149,7 +166,7 @@ export default function EvidenceSuccessPage() {
             </>
           )}
 
-          {status === 'error' && (
+          {displayStatus === 'error' && (
             <>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>&#9888;</div>
               <h2 style={{
@@ -161,7 +178,7 @@ export default function EvidenceSuccessPage() {
                 Something Went Wrong
               </h2>
               <p style={{ color: 'var(--text-cream)', marginBottom: '1.5rem' }}>
-                {errorMsg}
+                {displayError}
               </p>
               <p style={{ color: 'var(--text-cream)' }}>
                 Contact <a href="mailto:support@oversightreports.com" style={{ color: 'var(--accent-teal)' }}>support@oversightreports.com</a>

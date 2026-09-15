@@ -84,6 +84,7 @@ export default async function handler(req, res) {
         customer: session.customer,
         customerEmail: session.customer_email || session.customer_details?.email,
         paymentStatus: session.payment_status,
+        clientReferenceId: session.client_reference_id,
         metadata: session.metadata,
       });
 
@@ -98,7 +99,7 @@ export default async function handler(req, res) {
       // For one-time payments (evidence reports):
       // send-evidence.js verifies the session directly with Stripe
       if (session.mode === 'payment') {
-        console.log('One-time payment received:', session.id);
+        console.log('One-time payment received:', session.id, 'ccn:', session.client_reference_id);
       }
       break;
     }

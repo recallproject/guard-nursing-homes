@@ -1,21 +1,22 @@
 /**
- * Generate Evidence Report Download Link
+ * Generate Facility Brief Download Link
  *
  * SECURITY MODEL:
  * Before generating an HMAC-signed download token, this endpoint verifies
  * that the user actually paid by checking the Stripe checkout session.
  *
  * Flow:
- * 1. User pays via Stripe Payment Link -> redirected to /evidence-success?session_id=cs_xxx&ccn=055559
- * 2. Frontend calls POST /api/send-evidence with { ccn, checkout_session_id }
+ * 1. User pays via Stripe Payment Link (CCN in client_reference_id)
+ *    -> redirected to /evidence-success?session_id=cs_xxx
+ * 2. Frontend calls POST /api/send-evidence with { checkout_session_id, ccn? }
  * 3. This endpoint calls Stripe API to verify payment_status === 'paid'
- * 4. Only then generates the HMAC download token
- * 5. The download token is verified by verify-token.js (unchanged)
+ * 4. CCN is resolved from the paid session (client_reference_id / metadata)
+ *    so www vs apex localStorage mismatches cannot block fulfillment
+ * 5. Only then generates the HMAC download token
  *
  * STRIPE PAYMENT LINK SETUP (MANUAL STEP):
  * The single-report Payment Link success URL must be set to:
  *   https://www.oversightreports.com/evidence-success?session_id={CHECKOUT_SESSION_ID}
- * The frontend appends &ccn=XXXXXX from localStorage before calling this API.
  *
  * ENV VARS REQUIRED:
  * - EVIDENCE_SECRET: For HMAC token generation (existing)
@@ -24,6 +25,7 @@
 
 import crypto from 'crypto';
 import Stripe from 'stripe';
+import { assertPaidFacilityBriefSession, resolveFacilityCcn } from './lib/resolveFacilityCcn.js';
 
 const EVIDENCE_SECRET = process.env.EVIDENCE_SECRET;
 const SITE_URL = process.env.SITE_URL || 'https://www.oversightreports.com';
@@ -53,11 +55,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const { ccn, checkout_session_id } = req.body || {};
-
-  if (!ccn || typeof ccn !== 'string' || !/^\d{6}$/.test(ccn)) {
-    return res.status(400).json({ error: 'Invalid facility CCN' });
-  }
+  const { ccn: requestedCcn, checkout_session_id } = req.body || {};
 
   // ── Payment verification ─────────────────────────────────────────
   // Require a Stripe checkout session ID and verify payment with Stripe.
@@ -75,16 +73,12 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Payment verification not configured' });
   }
 
+  let session;
   try {
-    const session = await stripe.checkout.sessions.retrieve(checkout_session_id);
-
-    if (session.payment_status !== 'paid') {
-      return res.status(402).json({ error: 'Payment not completed. Please complete checkout first.' });
-    }
-
-    // Verify this is a one-time payment (not a subscription checkout used to bypass)
-    if (session.mode !== 'payment') {
-      return res.status(400).json({ error: 'Invalid checkout type for single report' });
+    session = await stripe.checkout.sessions.retrieve(checkout_session_id);
+    const payment = assertPaidFacilityBriefSession(session);
+    if (!payment.ok) {
+      return res.status(payment.status).json({ error: payment.error });
     }
   } catch (err) {
     console.error('Stripe session verification failed:', err.message);
@@ -95,6 +89,12 @@ export default async function handler(req, res) {
   }
   // ── End payment verification ─────────────────────────────────────
 
+  const resolved = resolveFacilityCcn(session, requestedCcn);
+  if (resolved.error) {
+    return res.status(resolved.status).json({ error: resolved.error });
+  }
+
+  const ccn = resolved.ccn;
   const { token } = generateToken(ccn);
   const downloadUrl = `${SITE_URL}/evidence-download?token=${token}&ccn=${ccn}`;
 
@@ -104,7 +104,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        _subject: `Evidence Report Purchase — ${ccn}`,
+        _subject: `Facility Brief Purchase — ${ccn}`,
         message: `Verified purchase (session: ${checkout_session_id}) for CCN ${ccn}`,
       }),
     }).catch(() => {});
@@ -113,5 +113,6 @@ export default async function handler(req, res) {
   return res.status(200).json({
     success: true,
     downloadUrl,
+    ccn,
   });
 }

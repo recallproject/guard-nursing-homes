@@ -89,6 +89,10 @@ export default function SuccessPage() {
       } else if (res.status === 402) {
         setError('Payment has not been completed. Please complete checkout and try again.');
         setTierName('');
+      } else if (data.error === 'Not a subscription checkout') {
+        // Facility Brief (one-time) landed on /success — CCN is on the Stripe session.
+        navigate(`/evidence-success?session_id=${encodeURIComponent(sid)}`, { replace: true });
+        return;
       } else {
         setError(data.error || 'Could not verify subscription. Please contact support.');
         // Fall back to pending_tier if available
