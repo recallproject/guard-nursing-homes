@@ -56,7 +56,7 @@ export function Header() {
 
   const topLinks = [
     { to: '/', label: 'Find a facility', match: (p) => p === '/' },
-    { to: '/compare', label: 'Compare', match: (p) => p === '/compare' },
+    { to: '/compare', label: 'Compare tools', match: (p) => p === '/compare' },
     { to: '/methodology', label: 'Methodology', match: (p) => p.startsWith('/methodology') },
   ];
 
@@ -146,11 +146,11 @@ export function Header() {
           </nav>
 
           <div className="site-header__actions">
-            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Saved (${watchlistCount})`}>
+            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Favorites (${watchlistCount})`}>
               <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
                 {watchlistCount > 0 ? '★' : '☆'}
               </span>
-              <span className="site-header__fav-label">Saved</span>
+              <span className="site-header__fav-label">Favorites</span>
               {watchlistCount > 0 && (
                 <span className="site-header__fav-badge">{watchlistCount}</span>
               )}
@@ -218,13 +218,13 @@ export function Header() {
                 States
               </Link>
               <Link to="/compare" className={`mobile-menu__standalone-link ${isActive('/compare') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
-                Compare
+                Compare tools
               </Link>
               <Link to="/methodology" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
                 Methodology
               </Link>
               <Link to="/watchlist" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
-                Saved
+                Favorites
               </Link>
             </div>
           </nav>

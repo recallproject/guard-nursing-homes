@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
@@ -24,6 +24,7 @@ export function WatchlistPage() {
   const { getFacility, loading, error } = useFacilityData();
   const { watchlist, removeFacility, clearWatchlist } = useWatchlist();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [sortBy, setSortBy] = useState('date'); // date, risk, name, state
   const [filterState, setFilterState] = useState('all');
@@ -62,6 +63,14 @@ export function WatchlistPage() {
       );
     }
   }, [watchlist, sortBy, filterState]);
+
+  useEffect(() => {
+    if (searchParams.get('compare') !== '1' || loading) return;
+    const timer = setTimeout(() => {
+      document.getElementById('compare')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [searchParams, loading]);
 
   if (loading) {
     return (
@@ -224,19 +233,19 @@ export function WatchlistPage() {
   return (
     <div className="watchlist-page">
       <Helmet>
-        <title>My Favorites — Facility Monitoring | The Oversight Report</title>
-        <meta name="description" content="Track nursing homes you care about. Get a personalized dashboard of safety data for your favorite facilities." />
+        <title>Favorites — Compare facilities | The Oversight Report</title>
+        <meta name="description" content="Favorite nursing homes and compare them side-by-side. Track safety data for the facilities you care about." />
         <link rel="canonical" href="https://www.oversightreports.com/watchlist" />
       </Helmet>
       {/* Header */}
       <div className="watchlist-header" ref={headerRef}>
         <div className="watchlist-header-top">
-          <h1>My Favorites</h1>
+          <h1>Favorites</h1>
           {facilities.length > 0 && (
             <span className="watchlist-count-badge">{facilities.length}</span>
           )}
         </div>
-        <p className="watchlist-subtitle">Track facilities you care about</p>
+        <p className="watchlist-subtitle">Favorite facilities, then compare them side-by-side</p>
       </div>
 
       {/* Empty State */}
@@ -245,7 +254,7 @@ export function WatchlistPage() {
           <div className="watchlist-empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <h2>No favorites yet</h2>
           <p>
-            Click the star icon on any facility to add it here. Compare them side by side, then export a spreadsheet of your picks.
+            Tap Favorite on a facility page, then add a second home. You can compare 2–3 side-by-side here.
           </p>
           <Link to="/skilled-nursing#browse-states" className="btn btn-primary">
             Explore the Map
@@ -279,24 +288,29 @@ export function WatchlistPage() {
           </div>
 
           {/* Compare Bar */}
-          <div className="watchlist-compare-bar">
+          <div
+            className={`watchlist-compare-bar${facilities.length >= 2 ? ' watchlist-compare-bar--docked' : ''}`}
+            id="compare"
+          >
             {facilities.length >= 2 ? (
               <>
                 <span className="watchlist-compare-info">
                   {selectedForCompare.size === 0
-                    ? 'Select 2-3 facilities to compare'
-                    : `${selectedForCompare.size} selected`}
+                    ? 'Select 2–3 facilities, then tap Compare'
+                    : selectedForCompare.size === 1
+                      ? 'Select 1 more to compare side-by-side'
+                      : `${selectedForCompare.size} selected — compare side-by-side`}
                 </span>
                 <button
                   className={`btn btn-primary watchlist-compare-btn ${selectedForCompare.size < 2 ? 'watchlist-compare-btn--disabled' : ''}`}
                   disabled={selectedForCompare.size < 2}
                   onClick={handleCompareSelected}
                 >
-                  Compare Selected
+                  Compare side-by-side
                 </button>
               </>
             ) : (
-              <span className="watchlist-compare-hint">Star 2+ facilities to compare them side-by-side</span>
+              <span className="watchlist-compare-hint">Favorite one more facility to compare them side-by-side</span>
             )}
           </div>
 
@@ -349,6 +363,7 @@ export function WatchlistPage() {
                       onChange={() => toggleCompareSelect(facility.ccn)}
                       disabled={!selectedForCompare.has(facility.ccn) && selectedForCompare.size >= 3}
                     />
+                    <span className="watchlist-compare-check-label">Compare</span>
                   </label>
                   <h3 className="watchlist-card-name">{facility.name}</h3>
                   <button

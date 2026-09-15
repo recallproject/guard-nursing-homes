@@ -567,15 +567,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 16px 24px;
-  background: rgba(79, 70, 229, 0.08);
-  border: 1px solid rgba(43, 108, 176, 0.1);
+  background: #EEF2FF;
+  border: 2px solid rgba(43, 108, 176, 0.35);
   border-radius: 12px;
 }
 
 .watchlist-compare-info {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e3a5f;
 }
 
 .watchlist-compare-hint {
@@ -586,7 +588,9 @@
 
 .watchlist-compare-btn {
   padding: 10px 24px;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .watchlist-compare-btn--disabled {
@@ -597,7 +601,16 @@
 .watchlist-compare-check {
   display: flex;
   align-items: center;
+  gap: 6px;
   flex-shrink: 0;
+}
+
+.watchlist-compare-check-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .watchlist-compare-check input[type="checkbox"] {
@@ -730,6 +743,36 @@
 
   .watchlist-added-date {
     text-align: center;
+  }
+
+  .watchlist-page:has(.watchlist-compare-bar--docked) {
+    padding-bottom: 140px;
+  }
+
+  .watchlist-compare-bar--docked {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 40;
+    max-width: none;
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px 16px;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.18);
+    background: #fff;
+  }
+
+  .watchlist-compare-info {
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .watchlist-compare-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
   }
 }
 
