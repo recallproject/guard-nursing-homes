@@ -6,6 +6,7 @@ import { formatDataAsOf } from '../utils/facilityBriefContent';
 import { FacilityResultCard } from '../components/FacilityResultCard';
 import { hasSffFlag } from '../utils/facilityFlags';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
+import { useWatchlist } from '../hooks/useWatchlist';
 import USAMap from '../components/USAMap';
 import '../styles/family-ia.css';
 import '../styles/map.css';
@@ -67,6 +68,7 @@ export default function StatePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [compareCcns, setCompareCcns] = useState(() => readCompare());
   const [showSticky, setShowSticky] = useState(false);
+  const { addFacility } = useWatchlist();
 
   const unknownState = !stateCode || !STATE_NAMES[stateCode];
 
@@ -160,6 +162,8 @@ export default function StatePage() {
   };
 
   function toggleCompare(facility) {
+    const already = compareCcns.includes(facility.ccn);
+    if (!already) addFacility(facility.ccn, facility.name);
     setCompareCcns((prev) => {
       const has = prev.includes(facility.ccn);
       const next = has ? prev.filter((c) => c !== facility.ccn) : [...prev, facility.ccn].slice(0, 3);
@@ -352,7 +356,7 @@ export default function StatePage() {
         primaryLabel="Filter"
         secondaryLabel={compareCcns.length >= 2 ? `Compare (${compareCcns.length})` : 'Compare'}
         onPrimary={focusFilter}
-        secondaryTo="/watchlist"
+        secondaryTo="/watchlist?compare=1"
       />
     </div>
   );

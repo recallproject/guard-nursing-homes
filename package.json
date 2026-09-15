@@ -8,7 +8,7 @@
     "build:postacute": "node scripts/build-postacute-data.js",
     "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.js && vite build && node scripts/generate-seo-pages.js",
     "lint": "eslint .",
-    "test": "node --test src/utils/facilityBriefCheckout.test.js src/utils/facilityBriefContent.test.js src/utils/generateFacilityBriefPDF.test.js src/utils/parseWhere.test.js src/data/careSettings.test.js api/lib/resolveFacilityCcn.test.js",
+    "test": "node --test src/utils/facilityBriefCheckout.test.js src/utils/facilityBriefContent.test.js src/utils/generateFacilityBriefPDF.test.js src/utils/parseWhere.test.js src/utils/californiaBanner.test.js src/data/careSettings.test.js api/lib/resolveFacilityCcn.test.js",
     "preview": "vite preview",
     "deploy": "node scripts/generate-sitemap.js && vite build && node scripts/generate-seo-pages.js && gh-pages -d dist"
   },

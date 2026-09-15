@@ -43,3 +43,24 @@
 .save-toast__link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+  .save-toast {
+    left: 12px;
+    right: 12px;
+    transform: none;
+    max-width: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .save-toast__text {
+    white-space: normal;
+  }
+
+  @keyframes toast-slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

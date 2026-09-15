@@ -84,7 +84,7 @@ export function FacilityResultCard({
           onClick={handleSave}
           aria-pressed={watched}
         >
-          {watched ? 'Saved' : 'Save'}
+          {watched ? 'Favorited' : 'Favorite'}
         </button>
         <button
           type="button"
