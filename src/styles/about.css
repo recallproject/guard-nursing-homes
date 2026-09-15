@@ -73,6 +73,16 @@
 
 .about-profile-info { flex: 1; }
 
+.about-profile-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
 .about-profile-name {
   font-family: 'DM Serif Display', Georgia, serif;
   font-size: 28px;
@@ -139,6 +149,96 @@
 
 .about-section p:last-child { margin-bottom: 0; }
 .about-section p em { font-style: italic; color: var(--text-white); font-weight: 500; }
+
+.about-section--compact {
+  padding: 28px 32px;
+}
+
+.about-section-lead {
+  margin-bottom: 16px !important;
+}
+
+.about-cite-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-cite-list li {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 12px 0 12px 18px;
+  position: relative;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.about-cite-list li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.about-cite-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.15em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-light);
+}
+
+.about-cite-list a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.about-cite-list a:hover {
+  text-decoration: underline;
+}
+
+.about-trust-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.about-trust-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 26px;
+  box-shadow: var(--shadow-sm);
+}
+
+.about-trust-card h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text-white);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.about-trust-card p {
+  font-size: 15px;
+  color: var(--text-cream);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.about-trust-card a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.about-trust-card a:hover {
+  text-decoration: underline;
+}
 
 /* ── PULLQUOTE ── */
 .about-pullquote {
@@ -420,6 +520,16 @@
   margin-bottom: 24px;
 }
 
+.about-contact p a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-contact p a:hover {
+  text-decoration: underline;
+}
+
 .about-contact-btn {
   display: inline-flex;
   align-items: center;
@@ -450,6 +560,8 @@
   .about-photo { width: 110px; height: 140px; }
   .about-training-grid { grid-template-columns: 1fr; }
   .about-principles { grid-template-columns: 1fr; }
+  .about-trust-grid { grid-template-columns: 1fr; }
+  .about-trust-card { padding: 24px 20px; }
   .about-section { padding: 24px 20px; }
   .about-research { padding: 24px 20px; }
   .about-featured { padding: 20px; }

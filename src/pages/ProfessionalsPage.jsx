@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import ComingSoon from '../components/landing/ComingSoon';
 import WhoThisIsFor from '../components/landing/WhoThisIsFor';
-import Footer from '../components/landing/Footer';
 import '../styles/design.css';
 import '../styles/landing-sections.css';
 
@@ -23,9 +22,6 @@ export function ProfessionalsPage() {
 
       {/* Who This Is For */}
       <WhoThisIsFor />
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

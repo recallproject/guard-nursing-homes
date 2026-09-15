@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
+import Footer from './components/landing/Footer';
 import { MapPage } from './pages/MapPage';
 import CaliforniaBanner from './components/landing/CaliforniaBanner';
 import FacilityErrorBoundary from './components/FacilityErrorBoundary';
@@ -179,6 +180,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <Footer />
       <SaveToast
         visible={!!lastAdded}
         facilityName={lastAdded?.name}

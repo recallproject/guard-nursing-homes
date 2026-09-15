@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { generatePDF } from '../utils/generatePDF';
 import { checkoutSingleReport } from '../utils/stripe';
+import { CONTACT_EMAIL, CONTACT_MAILTO } from '../data/contact';
 import '../styles/facility-downloads.css';
 
 function DownloadIcon() {
@@ -128,6 +129,11 @@ export function FacilityCtaRail({
           </button>
         </div>
 
+        <p className="fp-cta-support">
+          Questions about a report?{' '}
+          <a href={CONTACT_MAILTO}>Email {CONTACT_EMAIL}</a>
+        </p>
+
         <p className="fp-cta-disclaimer">
           Always verify on <a href={MEDICARE_COMPARE} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>.
           Not affiliated with or endorsed by HHS/CMS.
@@ -224,6 +230,11 @@ export default function FacilityDownloads({
           </button>
         </div>
       </div>
+
+      <p className="fd-support">
+        Questions about a report?{' '}
+        <a href={CONTACT_MAILTO}>Email {CONTACT_EMAIL}</a>
+      </p>
     </div>
   );
 }

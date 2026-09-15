@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Footer from '../components/landing/Footer';
 import { useNavigate } from 'react-router-dom';
 import '../styles/design.css';
 import { track } from '../utils/analytics';
@@ -208,9 +207,6 @@ export default function PricingPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

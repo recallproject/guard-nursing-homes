@@ -249,6 +249,21 @@
   background: var(--primary-dark, #1D4E7E);
 }
 
+.fd-support {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted, #64748B);
+  text-align: center;
+}
+
+.fd-support a {
+  color: var(--primary, #2B6CB0);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* Pills */
 .fd-pills {
   display: flex;
@@ -423,6 +438,19 @@
 
 .fp-cta-btn--paid:hover:not(:disabled) {
   filter: brightness(1.08);
+}
+
+.fp-cta-support {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted, #64748B);
+  margin: 12px 0 10px;
+}
+
+.fp-cta-support a {
+  color: var(--primary, #2B6CB0);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .fp-cta-disclaimer {
