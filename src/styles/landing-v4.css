@@ -345,7 +345,7 @@
 .v4-footer-main { font-size: 14px; color: var(--text-dim); margin-bottom: 4px; }
 .v4-footer-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
 .v4-footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-.v4-footer-link { font-size: 13px; color: var(--text-muted); text-decoration: none; }
+.v4-footer-link { font-size: 13px; color: var(--text-muted); text-decoration: none; overflow-wrap: anywhere; }
 .v4-footer-link:hover { color: var(--blue); }
 
 /* ── RESPONSIVE ── */

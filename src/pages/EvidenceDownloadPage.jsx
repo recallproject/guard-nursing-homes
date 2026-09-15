@@ -114,7 +114,7 @@ export default function EvidenceDownloadPage() {
             {errorMsg}
           </p>
           <p style={{ color: 'var(--text-cream)', marginBottom: '1.5rem' }}>
-            Need help? Contact <a href="mailto:support@oversightreports.com" style={{ color: 'var(--accent-teal)' }}>support@oversightreports.com</a>
+            Need help? Contact <a href="mailto:contact@oversightreports.com" style={{ color: 'var(--accent-teal)' }}>contact@oversightreports.com</a>
           </p>
           <Link to="/" className="btn btn-primary" style={{ textDecoration: 'none' }}>
             Back to Home

@@ -116,6 +116,8 @@ export default function PostAcuteHomePage() {
             <span>Sources: CMS · HCRIS · PBJ · Care Compare · OIG · BLS · Census</span>
             <span>
               <Link to="/terms">Terms</Link> · <Link to="/privacy">Privacy</Link> · <Link to="/methodology">Methodology</Link>
+              {' · '}
+              <a href="mailto:contact@oversightreports.com">contact@oversightreports.com</a>
             </span>
           </div>
         </footer>

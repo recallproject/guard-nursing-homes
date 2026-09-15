@@ -781,7 +781,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <Link to="/pricing" className="v5-footer-link">Pricing</Link>
           <Link to="/ask-a-clinician" className="v5-footer-link">Ask a Clinician</Link>
           <Link to="/about" className="v5-footer-link">About</Link>
-          <a href="mailto:contact@oversightreports.com" className="v5-footer-link">Contact</a>
+          <a href="mailto:contact@oversightreports.com" className="v5-footer-link">contact@oversightreports.com</a>
         </div>
       </footer>
 

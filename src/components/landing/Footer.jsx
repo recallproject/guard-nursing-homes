@@ -38,11 +38,22 @@ export default function Footer({ onExplore, onSearch }) {
               <li><Link to="/methodology">Data Sources</Link></li>
             </ul>
           </div>
+          <div className="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li>
+                <a href="mailto:contact@oversightreports.com">
+                  contact@oversightreports.com
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div className="footer-bottom">
           <p className="footer-disclaimer">Reports are prepared using the professional knowledge of a licensed Nurse Practitioner applied to publicly available CMS regulatory data. The Oversight Report is an independent service with no financial ties to any nursing facility or chain. Reports are informational — not medical advice — and do not create a provider-patient relationship.</p>
           <p>&copy; {currentYear} The Oversight Report · DataLink Clinical LLC. All data sourced from CMS Medicare.gov. Built by Robert Benard, NP.</p>
           <div className="footer-bottom-links">
+            <a href="mailto:contact@oversightreports.com">contact@oversightreports.com</a>
             <Link to="/privacy">Privacy</Link>
             <Link to="/terms">Terms</Link>
           </div>

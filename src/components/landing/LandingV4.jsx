@@ -361,7 +361,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
           <Link to="/methodology" className="v4-footer-link">Data Sources</Link>
           <Link to="/pricing" className="v4-footer-link">Evidence PDFs</Link>
           <Link to="/about" className="v4-footer-link">About</Link>
-          <a href="mailto:contact@oversightreports.com" className="v4-footer-link">Contact</a>
+          <a href="mailto:contact@oversightreports.com" className="v4-footer-link">contact@oversightreports.com</a>
         </div>
       </footer>
     </div>
