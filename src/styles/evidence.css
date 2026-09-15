@@ -635,7 +635,8 @@
   .ev-btn,
   .ev-purchase-gate,
   .site-header,
-  .ca-banner {
+  .ca-banner,
+  .site-footer {
     display: none !important;
   }
 
