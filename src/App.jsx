@@ -105,20 +105,12 @@ function LoadingFallback() {
 }
 
 function App() {
-  const location = useLocation();
-  // Landing-page treatment (transparent header) applies to / and to the SNF page when the
-  // post-acute hub is enabled — /skilled-nursing renders MapPage and needs the same header style.
-  const isHomePage =
-    location.pathname === '/' ||
-    location.pathname === '' ||
-    location.pathname === '/post-acute';
-  const isLandingPage = isHomePage || location.pathname === '/skilled-nursing';
   const { lastAdded, clearLastAdded } = useWatchlist();
 
   return (
     <>
       <CaliforniaBanner />
-      <Header transparent={isLandingPage} lightMode={isLandingPage} simple={isHomePage} />
+      <Header />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
           <Route path="/" element={<RootHome />} />

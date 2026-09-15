@@ -17,8 +17,8 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Explore</h4>
             <ul>
-              <li><Link to="/skilled-nursing?view=map">State Map</Link></li>
-              <li><Link to="/skilled-nursing">Search Facilities</Link></li>
+              <li><Link to="/skilled-nursing#browse-states">Browse by state</Link></li>
+              <li><Link to="/skilled-nursing">Skilled nursing</Link></li>
               <li><Link to="/about">About</Link></li>
             </ul>
           </div>

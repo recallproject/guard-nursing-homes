@@ -1,7 +1,7 @@
 // Shared config for live post-acute settings (Home Health, IRF, LTACH).
 // Data files live at /data/{dataDir}/ — built by scripts/build-postacute-data.js.
 
-import { POST_ACUTE_CMS_COUNTS } from './postAcuteCounts';
+import { POST_ACUTE_CMS_COUNTS } from './postAcuteCounts.js';
 
 export const STATE_NAME = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
@@ -24,7 +24,7 @@ export const POST_ACUTE_CATALOG = {
     id: 'home-health',
     route: '/home-health',
     dataDir: 'home-health',
-    label: 'Home Health',
+    label: 'Home health',
     singular: 'home health agency',
     plural: 'home health agencies',
     short: 'HHA',
@@ -69,7 +69,7 @@ export const POST_ACUTE_CATALOG = {
     id: 'irf',
     route: '/irf',
     dataDir: 'irf',
-    label: 'Inpatient Rehab',
+    label: 'Inpatient rehab',
     singular: 'inpatient rehab facility',
     plural: 'inpatient rehab facilities',
     short: 'IRF',
@@ -108,7 +108,7 @@ export const POST_ACUTE_CATALOG = {
     id: 'ltach',
     route: '/ltach',
     dataDir: 'ltach',
-    label: 'LTACH',
+    label: 'Long-term acute care',
     singular: 'long-term acute care hospital',
     plural: 'long-term acute care hospitals',
     short: 'LTCH',

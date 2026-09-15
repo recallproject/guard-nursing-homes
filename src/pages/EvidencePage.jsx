@@ -205,7 +205,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
         <div className="ev-error">
           <h1>Facility Not Found</h1>
           <p>We could not find a facility with CCN: {ccn}</p>
-          <Link to="/skilled-nursing">Return to Map</Link>
+          <Link to="/skilled-nursing">Return to skilled nursing</Link>
         </div>
       </div>
     );

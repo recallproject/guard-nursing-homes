@@ -11,8 +11,8 @@ import { formatSettingCount } from './postAcuteCatalog';
 export const POST_ACUTE_SETTINGS = [
   {
     id: 'snf',
-    label: 'Nursing Homes',
-    sub: 'Skilled nursing facilities (SNFs)',
+    label: 'Skilled nursing',
+    sub: 'Skilled nursing facilities',
     iconCode: 'SN',
     desc: 'Inpatient rehab and long-term care after a hospital stay.',
     count: '14,690',
@@ -37,7 +37,7 @@ export const POST_ACUTE_SETTINGS = [
   },
   {
     id: 'home-health',
-    label: 'Home Health',
+    label: 'Home health',
     sub: 'Home health agencies (HHA)',
     iconCode: 'HH',
     desc: 'Nurses and therapists who come to the home.',
@@ -50,8 +50,8 @@ export const POST_ACUTE_SETTINGS = [
   },
   {
     id: 'irf',
-    label: 'Inpatient Rehab',
-    sub: 'IRFs · 3-hr/day intensive rehab',
+    label: 'Inpatient rehab',
+    sub: 'IRF · 3-hr/day intensive rehab',
     iconCode: 'IR',
     desc: 'Recovery after stroke, hip, or major surgery.',
     count: formatSettingCount('irf'),
@@ -63,8 +63,8 @@ export const POST_ACUTE_SETTINGS = [
   },
   {
     id: 'ltach',
-    label: 'LTACH',
-    sub: 'Long-term acute care hospitals',
+    label: 'Long-term acute care',
+    sub: 'LTACH · long-term acute care hospitals',
     iconCode: 'LT',
     desc: 'Long-stay hospital care for medically complex patients.',
     count: formatSettingCount('ltach'),

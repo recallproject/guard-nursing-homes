@@ -130,7 +130,7 @@ export default function HeroSearchDropdown({
     else if (item.type === 'state') navigate(`/states/${item.data.name.toLowerCase().replace(/\s+/g, '-')}`);
     else if (item.type === 'city') {
       const stateCode = item.data.state;
-      navigate(`/skilled-nursing?city=${encodeURIComponent(item.data.name)}&state=${stateCode}`);
+      navigate(`/state/${stateCode}?q=${encodeURIComponent(item.data.name)}`);
     }
   };
 

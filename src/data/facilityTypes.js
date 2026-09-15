@@ -4,7 +4,7 @@
 export const FACILITY_TYPES = {
   'skilled-nursing': {
     slug: 'skilled-nursing',
-    name: 'Skilled Nursing',
+    name: 'Skilled nursing',
     shortName: 'SNF',
     accentColor: 'primary',
     description: 'Long-term care and post-hospital recovery. Most-regulated post-acute setting — full inspection, staffing, and ownership data.',
@@ -34,7 +34,7 @@ export const FACILITY_TYPES = {
   },
   'home-health': {
     slug: 'home-health',
-    name: 'Home Health',
+    name: 'Home health',
     shortName: 'HHA',
     accentColor: 'teal',
     description: 'In-home skilled nursing and therapy. Star ratings published, but staffing-level data is not collected.',
@@ -49,8 +49,8 @@ export const FACILITY_TYPES = {
   },
   'rehab-ltach': {
     slug: 'rehab-ltach',
-    name: 'Rehab & LTACH',
-    shortName: 'IRF/LTACH',
+    name: 'Inpatient rehab & long-term acute care',
+    shortName: 'IRF / LTACH',
     accentColor: 'orange',
     description: 'Inpatient rehab hospitals (IRF) and long-term acute care (LTACH). Smaller segment, narrower data — ownership and Medicare cost reports available.',
     dataPoints: [

@@ -91,9 +91,9 @@ export const SETTING_ROUTE = {
 };
 
 export const SETTING_LABEL = {
-  snf: 'Nursing home',
+  snf: 'Skilled nursing',
   hospice: 'Hospice',
   'home-health': 'Home health',
   irf: 'Inpatient rehab',
-  ltach: 'LTACH',
+  ltach: 'Long-term acute care',
 };
