@@ -241,7 +241,6 @@ export default function AttorneysPage() {
         <p>Search any facility. Review the data. Download a cited Evidence Report.</p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/evidence-sample" className="attorneys-cta-primary">Preview Sample Brief</Link>
-          <Link to="/ask-a-clinician" className="attorneys-cta-secondary">Ask a Clinician — $49</Link>
         </div>
       </section>
 

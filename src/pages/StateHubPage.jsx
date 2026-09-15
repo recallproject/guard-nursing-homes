@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from '../components/landing/Footer';
+import NotFoundPage from './NotFoundPage';
 import { getStateHub } from '../data/stateHubs';
 import { FACILITY_TYPES, TYPE_ORDER } from '../data/facilityTypes';
 import { track } from '../utils/analytics';
@@ -22,7 +23,7 @@ export default function StateHubPage() {
   }, [hub]);
 
   if (!hub) {
-    return <Navigate to="/" replace />;
+    return <NotFoundPage />;
   }
 
   const handleTypeClick = (typeSlug) => {
@@ -153,10 +154,7 @@ export default function StateHubPage() {
 
       </div>
 
-      <Footer
-        onExplore={() => navigate('/')}
-        onSearch={() => navigate('/')}
-      />
+      <Footer />
     </div>
   );
 }

@@ -194,8 +194,7 @@ export default function EvidenceSamplePage() {
           <h2>Ready to Pull a Report?</h2>
           <p>Search any of 14,699 Medicare-certified nursing facilities. Family Report is free; Facility Brief is $29.</p>
           <div className="ev-sample-cta-buttons">
-            <Link to="/" className="ev-sample-cta-btn-primary">Search Facilities</Link>
-            <Link to="/ask-a-clinician" className="ev-sample-cta-btn-secondary">Ask a Clinician — $49</Link>
+            <Link to="/skilled-nursing" className="ev-sample-cta-btn-primary">Search Facilities</Link>
           </div>
         </div>
 

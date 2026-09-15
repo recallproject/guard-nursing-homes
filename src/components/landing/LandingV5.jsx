@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { submitLead } from '../../utils/submitLead';
 import { track } from '../../utils/analytics';
@@ -266,10 +266,9 @@ const STATE_CARDS = [
 const FEATURED_FACILITIES = [
   { ccn: '145639', name: 'Chicago Ridge SNF', city: 'Chicago', state: 'IL', risk: 'critical', riskLabel: 'SFF -- Federal Watch', citations: 125, fines: '$588K', rn: '0.2 hrs/day' },
   { ccn: '676381', name: 'West Houston Rehabilitation', city: 'Houston', state: 'TX', risk: 'high', riskLabel: 'Elevated Citations', citations: 32, fines: '$205K', rn: 'N/A' },
-  { ccn: '555608', name: 'Sunrise Senior Living', city: 'McLean', state: 'VA', risk: 'moderate', riskLabel: 'Under Review', citations: 18, fines: '$42K', rn: '0.8 hrs/day' },
   { ccn: '385274', name: 'Mirabella Portland', city: 'Portland', state: 'OR', risk: 'good', riskLabel: 'Top Performer', citations: 14, fines: '$0', rn: '1.2 hrs/day' },
-  { ccn: '055267', name: 'Laguna Honda Hospital', city: 'San Francisco', state: 'CA', risk: 'critical', riskLabel: 'SFF -- Federal Watch', citations: 89, fines: '$1.2M', rn: '0.6 hrs/day' },
-  { ccn: '335313', name: 'Sapphire Center for Rehabilitation', city: 'Flushing', state: 'NY', risk: 'high', riskLabel: 'Elevated Citations', citations: 44, fines: '$180K', rn: '0.5 hrs/day' },
+  { ccn: '555929', name: 'Laguna Honda Hospital', city: 'San Francisco', state: 'CA', risk: 'critical', riskLabel: 'SFF -- Federal Watch', citations: 89, fines: '$1.2M', rn: '0.6 hrs/day' },
+  { ccn: '335133', name: 'Sapphire Center for Rehabilitation', city: 'Flushing', state: 'NY', risk: 'high', riskLabel: 'Elevated Citations', citations: 44, fines: '$180K', rn: '0.5 hrs/day' },
 ];
 
 
@@ -346,9 +345,9 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
     ? STATE_CARDS.filter(s => s.abbr.toLowerCase().includes(stateFilter.toLowerCase()) || s.count.toLowerCase().includes(stateFilter.toLowerCase()))
     : STATE_CARDS;
 
-  function handleStateClick(abbr) {
+  // SNF state lists live at /state/:code (StatePage). `/` is the post-acute hub.
+  function trackStateClick(abbr) {
     window.plausible && window.plausible('Browse-State-Clicked', { props: { state: abbr } });
-    navigate(`/?state=${abbr}`);
   }
 
   return (
@@ -634,16 +633,17 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         </div>
         <div className="v5-state-grid">
           {filteredStates.map(s => (
-            <a
+            <Link
               key={s.abbr}
+              to={`/state/${s.abbr}`}
               className={`v5-state-card ${s.flag === 'flagged' ? 'v5-state-flagged' : ''} ${s.flag === 'top' ? 'v5-state-top' : ''}`}
-              onClick={() => handleStateClick(s.abbr)}
+              onClick={() => trackStateClick(s.abbr)}
             >
               <div className="v5-state-abbr">{s.abbr}</div>
               <div className="v5-state-count">{s.count}</div>
               {s.flag === 'flagged' && <div className="v5-state-note flagged">{s.note}</div>}
               {s.flag === 'top' && <div className="v5-state-note top">{s.note}</div>}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
@@ -779,7 +779,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <Link to="/compare" className="v5-footer-link">Compare Tools</Link>
           <Link to="/methodology" className="v5-footer-link">Methodology</Link>
           <Link to="/pricing" className="v5-footer-link">Pricing</Link>
-          <Link to="/ask-a-clinician" className="v5-footer-link">Ask a Clinician</Link>
+          <Link to="/attorneys" className="v5-footer-link">Attorneys</Link>
           <Link to="/about" className="v5-footer-link">About</Link>
           <a href="mailto:contact@oversightreports.com" className="v5-footer-link">contact@oversightreports.com</a>
         </div>
@@ -788,14 +788,13 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
       {/* ═══════ STICKY CTA — Desktop ═══════ */}
       <div className={`v5-sticky-cta ${showSticky ? 'v5-sticky-visible' : ''}`}>
         <button className="v5-sticky-btn primary" onClick={() => onSearch && onSearch()}>Search a Facility</button>
-        <Link to="/ask-a-clinician" className="v5-sticky-btn secondary">Ask a Clinician</Link>
         <button className="v5-sticky-btn tertiary" onClick={() => onExplore && onExplore()}>Browse by State</button>
       </div>
 
       {/* ═══════ MOBILE STICKY CTA BAR — visible only on mobile (md:hidden via CSS) ═══════ */}
       <div className={`v5-mobile-cta-bar ${showSticky ? 'v5-sticky-visible' : ''}`}>
         <button className="v5-mobile-cta-btn primary" onClick={() => onSearch && onSearch()}>Search a Facility</button>
-        <Link to="/ask-a-clinician" className="v5-mobile-cta-btn secondary">Ask a Clinician</Link>
+        <button className="v5-mobile-cta-btn secondary" onClick={() => onExplore && onExplore()}>Browse by State</button>
       </div>
 
     </div>

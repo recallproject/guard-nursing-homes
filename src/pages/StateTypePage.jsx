@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate, Navigate, Link } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Footer from '../components/landing/Footer';
+import NotFoundPage from './NotFoundPage';
 import { getStateHub } from '../data/stateHubs';
 import { getTypeBySlug, FACILITY_TYPES } from '../data/facilityTypes';
 import { track } from '../utils/analytics';
@@ -10,7 +11,6 @@ import '../styles/state-hub.css';
 
 export default function StateTypePage() {
   const { stateCode, typeSlug } = useParams();
-  const navigate = useNavigate();
   const hub = getStateHub((stateCode || '').toLowerCase());
   const type = getTypeBySlug(typeSlug);
 
@@ -24,7 +24,7 @@ export default function StateTypePage() {
     }
   }, [hub, type, typeSlug]);
 
-  if (!hub) return <Navigate to="/" replace />;
+  if (!hub) return <NotFoundPage />;
   if (!type) return <Navigate to={`/states/${stateCode}`} replace />;
 
   // SNF gets routed to existing /state/CA page from the hub click handler — but if someone
@@ -138,10 +138,7 @@ export default function StateTypePage() {
         </div>
       </div>
 
-      <Footer
-        onExplore={() => navigate('/')}
-        onSearch={() => navigate('/')}
-      />
+      <Footer />
     </div>
   );
 }

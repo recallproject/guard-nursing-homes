@@ -11,6 +11,9 @@ import '../styles/map.css';
 import '../styles/cards.css';
 import '../styles/state-detail.css';
 
+// LandingV5 browse-by-state cards go to /state/:code (StatePage).
+// This page still honors /skilled-nursing?state=XX as a MapPage detail deep-link.
+
 export function MapPage() {
   const { data, loading, error, searchFacilities } = useFacilityData();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,7 +49,7 @@ export function MapPage() {
     if (stateParam && data?.states?.[stateParam]) {
       setSelectedState(stateParam);
       setView('detail');
-      setSearchParams({}, { replace: true });
+      // Keep ?state= in the URL so MapPage detail is shareable / refreshable.
     } else if (stateParam && data && !data.states?.[stateParam]) {
       setSelectedState(null);
       setView('states');
@@ -57,7 +60,7 @@ export function MapPage() {
       // Clear location state so back button doesn't re-trigger
       if (jump) window.history.replaceState({}, '');
     }
-  }, [searchParams, location.state, data]);
+  }, [searchParams, location.state, data, setSearchParams]);
 
   // Handle keyboard shortcuts
   useEffect(() => {
@@ -68,6 +71,7 @@ export function MapPage() {
         } else if (selectedState) {
           setSelectedState(null);
           setView('states');
+          setSearchParams({}, { replace: true });
         } else if (view === 'states') {
           setView('hero');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -81,7 +85,7 @@ export function MapPage() {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [selectedState, view, searchOpen]);
+  }, [selectedState, view, searchOpen, setSearchParams]);
 
   // Mobile detection
   useEffect(() => {
@@ -108,21 +112,24 @@ export function MapPage() {
     }
   }, [view, loading]);
 
-  // Handle state selection
+  // Handle state selection — keep ?state= so the list is shareable
   function handleStateSelect(stateCode) {
     setSelectedState(stateCode);
     setView('detail');
+    setSearchParams({ state: stateCode }, { replace: true });
   }
 
   // Handle back navigation
   function handleBackToMap() {
     setSelectedState(null);
     setView('states');
+    setSearchParams({}, { replace: true });
   }
 
   function handleBackToHero() {
     setSelectedState(null);
     setView('hero');
+    setSearchParams({}, { replace: true });
   }
 
   // Handle explore button click
@@ -185,7 +192,7 @@ export function MapPage() {
       <Helmet>
         <title>The Oversight Report — Nursing Home Safety Data</title>
         <meta name="description" content="Search 14,699 nursing homes. See inspection citations, staffing levels, fines, and risk scores. Independent safety data for families, journalists, and attorneys." />
-        <link rel="canonical" href="https://www.oversightreports.com/" />
+        <link rel="canonical" href="https://www.oversightreports.com/skilled-nursing" />
       </Helmet>
       {/* V4 Landing Page */}
       {(view === 'hero' || view === 'states') && (

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function Footer({ onExplore, onSearch }) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -17,17 +17,9 @@ export default function Footer({ onExplore, onSearch }) {
           <div className="footer-col">
             <h4>Explore</h4>
             <ul>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); onExplore(); }}>
-                  State Map
-                </a>
-              </li>
-              <li>
-                <a href="#" onClick={(e) => { e.preventDefault(); onSearch(); }}>
-                  Search Facilities
-                </a>
-              </li>
-              <li><Link to="/ask-a-clinician">Ask a Clinician</Link></li>
+              <li><Link to="/skilled-nursing?view=map">State Map</Link></li>
+              <li><Link to="/skilled-nursing">Search Facilities</Link></li>
+              <li><Link to="/about">About</Link></li>
             </ul>
           </div>
           <div className="footer-col">

@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { MapPage } from './pages/MapPage';
@@ -70,6 +70,32 @@ function EvidenceRedirect() {
   return <Navigate to={`/facility/${ccn}`} replace />;
 }
 
+// `/` is the post-acute hub when the flag is on; SNF MapPage lives at /skilled-nursing.
+// Old `/?state=XX` bookmarks go to /state/XX. `/?view=map` and jumpToMap still hit MapPage.
+function RootHome() {
+  const [searchParams] = useSearchParams();
+  const location = useLocation();
+
+  if (POST_ACUTE_HOME_ENABLED) {
+    const stateAbbr = searchParams.get('state');
+    if (stateAbbr) {
+      return <Navigate to={`/state/${stateAbbr}`} replace />;
+    }
+    const snfQuery = searchParams.get('view') === 'map'
+      || searchParams.get('q')
+      || searchParams.get('city');
+    const jumpToMap = location.state?.jumpToMap;
+    if (snfQuery || jumpToMap) {
+      const qs = searchParams.toString();
+      const search = qs ? `?${qs}` : jumpToMap ? '?view=map' : '';
+      return <Navigate to={`/skilled-nursing${search}`} replace />;
+    }
+    return <PostAcuteHomePage />;
+  }
+
+  return <MapPage />;
+}
+
 function LoadingFallback() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh', color: '#94a3b8' }}>
@@ -95,7 +121,7 @@ function App() {
       <Header transparent={isLandingPage} lightMode={isLandingPage} simple={isHomePage} />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
-          <Route path="/" element={POST_ACUTE_HOME_ENABLED ? <PostAcuteHomePage /> : <MapPage />} />
+          <Route path="/" element={<RootHome />} />
           <Route path="/post-acute" element={<PostAcuteHomePage />} />
           <Route path="/skilled-nursing" element={<MapPage />} />
           <Route path="/hospice" element={<HospicePage />} />
@@ -138,7 +164,7 @@ function App() {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/compare" element={<ComparePage />} />
-          <Route path="/ask-a-clinician" element={<AskClinicianPage />} />
+          <Route path="/ask-a-clinician" element={<AskClinicianPage />} /> {/* Parked: not linked from primary UI */}
           <Route path="/ask-a-clinician-submitted" element={<AskClinicianSubmittedPage />} />
           <Route path="/evidence-success" element={<EvidenceSuccessPage />} />
           <Route path="/evidence-download" element={<EvidenceDownloadPage />} />
@@ -157,7 +183,7 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/favorites" element={<Navigate to="/watchlist" replace />} />
           <Route path="/ask-clinician" element={<Navigate to="/ask-a-clinician" replace />} />
-          <Route path="/map" element={<Navigate to="/" replace />} />
+          <Route path="/map" element={<Navigate to="/skilled-nursing" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
