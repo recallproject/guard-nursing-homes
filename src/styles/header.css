@@ -43,6 +43,11 @@
   height: 52px;
 }
 
+/* Drawer covers the bar, so lower it while open to avoid a second logo/close */
+.site-header--menu-open {
+  z-index: 998;
+}
+
 /* ========================================
    BRAND
    ======================================== */
@@ -384,7 +389,7 @@
 .mobile-menu-overlay {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 1100; /* above .site-header (1000) so logo + close appear once */
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -400,12 +405,15 @@
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
   width: min(85vw, 360px);
-  height: 100vh;
+  height: 100%;
+  max-height: 100dvh;
   background: #FFFFFF;
   border-left: 1px solid #D7E0EA;
-  padding: 1.5rem;
-  overflow-y: auto;
+  padding: 0;
+  overflow: hidden;
   animation: menuSlideIn 0.25s ease-out;
 }
 
@@ -418,28 +426,46 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  flex-shrink: 0;
+  padding: calc(0.75rem + env(safe-area-inset-top, 0px)) 1rem 0.75rem 1.25rem;
+  margin: 0;
   border-bottom: 1px solid #E8EDF2;
+  background: #FFFFFF;
 }
 
 .mobile-menu__close {
   margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   color: #64748B;
   font-size: 1.25rem;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0;
   line-height: 1;
+  border-radius: 8px;
 }
 
 .mobile-menu__close:hover {
   color: #0F172A;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.mobile-menu__body {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 1.25rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
 }
 
 .mobile-menu__group {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 /* Mobile standalone link (e.g. Compare) */
