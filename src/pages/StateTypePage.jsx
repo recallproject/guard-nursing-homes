@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import Footer from '../components/landing/Footer';
 import NotFoundPage from './NotFoundPage';
 import { getStateHub } from '../data/stateHubs';
 import { getTypeBySlug, FACILITY_TYPES } from '../data/facilityTypes';
@@ -137,8 +136,6 @@ export default function StateTypePage() {
           </ul>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }
