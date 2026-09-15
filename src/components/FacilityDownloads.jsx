@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { generatePDF } from '../utils/generatePDF';
 import { checkoutSingleReport } from '../utils/stripe';
 import '../styles/facility-downloads.css';
@@ -127,9 +126,6 @@ export function FacilityCtaRail({
           </button>
         </div>
 
-        <p className="fp-cta-attorney">
-          <Link to="/attorneys">For attorneys</Link>
-        </p>
         <p className="fp-cta-disclaimer">
           Always verify on <a href={MEDICARE_COMPARE} target="_blank" rel="noopener noreferrer">Medicare Care Compare</a>.
           Not affiliated with or endorsed by HHS/CMS.
@@ -223,36 +219,6 @@ export default function FacilityDownloads({
             Buy Facility Brief ($29)
           </button>
         </div>
-      </div>
-
-      <p className="fd-attorney-link">
-        <Link to="/attorneys">For attorneys</Link>
-        {' — counsel pack and evidence workflow, not required for families.'}
-      </p>
-
-      <div className="fd-clinician">
-        <div className="fd-clinician-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
-        </div>
-        <div className="fd-clinician-text">
-          <div className="fd-clinician-tag">Optional · Personalized</div>
-          <div className="fd-clinician-headline">Not sure what this data means for your family?</div>
-          <div className="fd-clinician-sub">A nurse practitioner reviews this facility's safety record and answers the questions families actually ask.</div>
-        </div>
-        <Link
-          to="/ask-a-clinician"
-          state={{ ccn: facility?.ccn, facilityName: facility?.name }}
-          className="fd-clinician-cta"
-          onClick={() => {
-            if (typeof window !== 'undefined' && window.plausible) {
-              window.plausible('Ask-Clinician-CTA-Click', { props: { ccn: facility?.ccn || '', placement: 'downloads-section' } });
-            }
-          }}
-        >
-          Ask a Clinician<span className="fd-clinician-price"> · $49</span>
-        </Link>
       </div>
     </div>
   );
