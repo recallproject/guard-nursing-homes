@@ -180,33 +180,34 @@
   font-size: 0.85rem;
 }
 
-/* === Cover Page === */
+.ev-body--brief {
+  overflow: visible;
+}
+
+/* === Cover Page (legacy attorney slab — unused by Facility Brief) === */
 .ev-cover {
-  text-align: center;
-  padding: 4rem 3rem;
-  background: linear-gradient(160deg, #0F1629 0%, #1A2744 100%);
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 4px solid #14b8a6;
+  text-align: left;
+  padding: 28px 40px 22px;
+  background: #FFFFFF;
+  min-height: 0;
+  display: block;
+  border-bottom: 1px solid #E5E7EB;
 }
 
 .ev-logo {
   font-family: 'DM Serif Display', Georgia, serif;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #14b8a6;
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.08em;
+  color: #0F1629;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0;
 }
 
 .ev-facility-name {
   font-family: 'DM Serif Display', Georgia, serif;
   font-size: 2.2rem;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #0F1629;
   margin-bottom: 1.5rem;
   line-height: 1.25;
 }
@@ -230,16 +231,7 @@
 }
 
 .ev-confidential {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #F59E0B;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-top: 2.5rem;
-  padding: 0.65rem 1.5rem;
-  border: 1.5px solid rgba(245, 158, 11, 0.4);
-  border-radius: 4px;
-  background: rgba(245, 158, 11, 0.06);
+  display: none;
 }
 
 .ev-date {
@@ -640,8 +632,17 @@
 @media print {
   .no-print,
   .ev-header,
-  .ev-btn {
+  .ev-btn,
+  .ev-purchase-gate,
+  .site-header,
+  .ca-banner,
+  .site-footer {
     display: none !important;
+  }
+
+  @page {
+    size: letter;
+    margin: 14mm 14mm 16mm;
   }
 
   .ev {
@@ -649,31 +650,35 @@
     padding-top: 0;
   }
 
-  .ev-body {
+  .ev-body,
+  .ev-body--brief {
     max-width: 100%;
     margin: 0;
     border-radius: 0;
     box-shadow: none;
+    overflow: visible;
   }
 
   .ev-section {
-    padding: 1.5rem;
+    padding: 1.5rem 0;
     border-bottom: 1px solid #CCC;
-    page-break-inside: avoid;
+    page-break-inside: auto;
   }
 
   .ev-cover {
     background: #FFFFFF;
-    color: #000;
-    border-bottom: 2px solid #000;
-    page-break-after: always;
+    color: #111;
+    border-bottom: 1px solid #D1D5DB;
+    page-break-after: avoid;
+    min-height: 0;
+    padding: 12px 0 16px;
   }
 
-  .ev-cover .ev-logo { color: #000; }
-  .ev-cover .ev-facility-name { color: #000; }
-  .ev-cover .ev-facility-meta { color: #333; }
-  .ev-cover .ev-confidential { color: #000; border-color: #000; background: none; }
-  .ev-cover .ev-date { color: #333; }
+  .ev-cover .ev-logo { color: #0F1629; }
+  .ev-cover .ev-facility-name { color: #0F1629; }
+  .ev-cover .ev-facility-meta { color: #4B5563; }
+  .ev-cover .ev-confidential { display: none !important; }
+  .ev-cover .ev-date { color: #4B5563; }
 
   .ev-section h2 { color: #000; border-bottom-color: #000; }
   .ev-summary-item { background: #F8F8F8; border-color: #CCC; }
@@ -725,8 +730,8 @@
   }
 
   .ev-cover {
-    padding: 2.5rem 1.5rem;
-    min-height: 340px;
+    padding: 1.5rem 1.25rem;
+    min-height: 0;
   }
 
   .ev-logo {
@@ -766,8 +771,8 @@
   }
 
   .ev-cover {
-    padding: 2rem 1rem;
-    min-height: 300px;
+    padding: 1.25rem 1rem;
+    min-height: 0;
   }
 
   .ev-facility-name {

@@ -2,6 +2,7 @@ import jsPDFModule from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { BRIEF_PAGE_COUNT, PRODUCT_LABEL, buildFacilityBriefModel } from './facilityBriefContent.js';
 import { haversineDistance } from './haversine.js';
+import { pdfSafeDeep, pdfSafeText } from './pdfSafeText.js';
 
 const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
 
@@ -75,15 +76,21 @@ export function generateFacilityBriefPDF(
   const nearby = (nearbyAlternatives && nearbyAlternatives.length)
     ? nearbyAlternatives
     : fallbackNearby(facility, allFacilities);
-  const model = buildFacilityBriefModel(facility, {
+  const model = pdfSafeDeep(buildFacilityBriefModel(facility, {
     deficiencyDetails: facility.deficiency_details || [],
     nearbyAlternatives: nearby,
     dataAsOf,
     reportDate: options.reportDate,
     antipsychoticData,
-  });
+  }));
 
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });
+  const rawText = doc.text.bind(doc);
+  doc.text = (text, x, y, options) => {
+    doc.setCharSpace(0);
+    const safe = Array.isArray(text) ? text.map((line) => pdfSafeText(line)) : pdfSafeText(text);
+    return rawText(safe, x, y, options);
+  };
   doc.setProperties({
     title: `The Oversight Report — ${PRODUCT_LABEL}`,
     author: 'Robert Benard, NP — DataLink Clinical LLC',
@@ -111,7 +118,7 @@ export function generateFacilityBriefPDF(
 
   function wrap(text, width, size = 11.5) {
     doc.setFontSize(size);
-    return doc.splitTextToSize(String(text || ''), width);
+    return doc.splitTextToSize(pdfSafeText(text), width);
   }
 
   function textBlock(text, x, yy, width, opts = {}) {
@@ -216,7 +223,7 @@ export function generateFacilityBriefPDF(
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(14);
       setText(tone.text);
-      doc.text(String(m.v || '—'), xx + mw / 2, yy + 8.2, { align: 'center' });
+      doc.text(String(m.v || '-'), xx + mw / 2, yy + 8.2, { align: 'center' });
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(7);
       setText(C.muted);
@@ -246,7 +253,7 @@ export function generateFacilityBriefPDF(
     setText(C.muted);
     doc.setFont('helvetica', 'bold');
     setText(C.ink);
-    doc.text(`${PRODUCT_LABEL} · ${model.name} · CCN ${model.ccn}`, MX, y);
+    doc.text(`${PRODUCT_LABEL} - ${model.name} - CCN ${model.ccn}`, MX, y);
     doc.setFont('helvetica', 'normal');
     setText(C.muted);
     doc.text(`${pageNo} / ${BRIEF_PAGE_COUNT}`, PW - MX, y, { align: 'right' });
@@ -292,7 +299,7 @@ export function generateFacilityBriefPDF(
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(10);
   setText(C.muted);
-  doc.text('  · oversightreports.com', MX + brandW + 1, y);
+  doc.text('  - oversightreports.com', MX + brandW + 1, y);
 
   const rightX = PW - MX;
   doc.setFont('helvetica', 'normal');
@@ -381,9 +388,9 @@ export function generateFacilityBriefPDF(
   // ───────────────────────── PAGE 2 ─────────────────────────
   doc.addPage();
   pageHead(2);
-  sectionHead('Scorecard · How to read these ratings');
+  sectionHead('Scorecard - How to read these ratings');
   y = textBlock(
-    `CMS data as of ${model.dataAsOfLabel} · Report prepared ${model.reportDateLabel} · Oversight composite uses public CMS inputs (higher = more concern in this model)`,
+    `CMS data as of ${model.dataAsOfLabel} - Report prepared ${model.reportDateLabel} - Oversight composite uses public CMS inputs (higher = more concern in this model)`,
     MX, y, W, { size: 9.5, color: C.muted, lh: 4.2 }
   ) + 3;
 
@@ -395,7 +402,7 @@ export function generateFacilityBriefPDF(
   ], MX, y, W) + 4;
 
   y = drawChips([
-    { label: 'Oversight composite', value: model.composite ? `${model.composite} · ${model.compositeLabel}` : 'n/a', tone: 'warn' },
+    { label: 'Oversight composite', value: model.composite ? `${model.composite} - ${model.compositeLabel}` : 'n/a', tone: 'warn' },
     { label: 'Deficiencies on record', value: `${model.deficiencyCount} health`, tone: 'neutral' },
     { label: 'Complaint investigations', value: String(model.complaintInvestigations || 0), tone: 'neutral' },
   ], MX, y, W) + 4;
@@ -428,7 +435,11 @@ export function generateFacilityBriefPDF(
 
   const three = model.staffingHighlights;
   const tw = (W - 5.2) / 3;
-  const threeH = 28;
+  const threeHeights = three.map((h) => {
+    const noteLines = wrap(h.note, tw - 8, 8.5);
+    return Math.max(28, 18 + noteLines.length * 3.6);
+  });
+  const threeH = Math.max(...threeHeights, 28);
   three.forEach((h, i) => {
     const xx = MX + i * (tw + 2.6);
     card(xx, y, tw, threeH, h.tone === 'urgent' ? 'urgent' : h.tone === 'warn' ? 'warn' : 'neutral');
@@ -441,10 +452,10 @@ export function generateFacilityBriefPDF(
   });
   y += threeH + 4;
 
-  const ctxH = 10 + measureBullets(model.staffingContext.length ? model.staffingContext : ['No extra staffing context in this extract.'], colW - 8, 10);
+  const ctxH = 12 + measureBullets(model.staffingContext.length ? model.staffingContext : ['No extra staffing context in this extract.'], colW - 8, 10);
   const ownItems = model.ownership.map((b) => (b.label ? `${b.label}: ${b.value}` : b.value));
-  const ownH = 10 + measureBullets(ownItems, colW - 8, 10);
-  const soH = Math.max(ctxH, ownH, 36);
+  const ownH = 12 + measureBullets(ownItems, colW - 8, 10);
+  const soH = Math.max(ctxH, ownH, 40);
   card(MX, y, colW, soH, 'neutral');
   h3('More staffing context', MX + 5, y + 6);
   drawBullets(model.staffingContext.length ? model.staffingContext : ['No extra staffing context in this extract.'], MX + 4, y + 11, colW - 8, 10);
@@ -457,11 +468,13 @@ export function generateFacilityBriefPDF(
   // ───────────────────────── PAGE 4 ─────────────────────────
   doc.addPage();
   pageHead(4);
-  sectionHead('Care fit · Who this profile speaks to');
+  sectionHead('Care fit - Who this profile speaks to');
   y = textBlock(model.careFitIntro, MX, y, W, { size: 11.5, lh: 5 }) + 3;
   y = metricGrid(model.careFitMetrics, MX, y, W) + 4;
 
-  const fitH = 28;
+  const longLines = wrap(model.longStayNote, colW - 8, 9.5);
+  const shortLines = wrap(model.shortStayNote, colW - 8, 9.5);
+  const fitH = Math.max(28, 14 + Math.max(longLines.length, shortLines.length) * 4.1);
   card(MX, y, colW, fitH, 'soft');
   h3('Long-stay relevance', MX + 5, y + 6);
   textBlock(model.longStayNote, MX + 4, y + 11.5, colW - 8, { size: 9.5, color: C.muted, lh: 4.1 });
@@ -572,7 +585,7 @@ export function generateFacilityBriefPDF(
   // ───────────────────────── PAGE 6 ─────────────────────────
   doc.addPage();
   pageHead(6);
-  sectionHead('F-tag table · Decision-relevant deficiencies');
+  sectionHead('F-tag table - Decision-relevant deficiencies');
   y = textBlock(model.ftagIntro, MX, y, W, { size: 11.2, lh: 4.9 }) + 2;
 
   if (model.ftagRows.length) {
@@ -638,23 +651,27 @@ export function generateFacilityBriefPDF(
     y = textBlock('No penalty timeline rows appear in this extract.', MX, y, W, { size: 11, color: C.muted }) + 4;
   }
 
-  const alertH = 32;
   if (model.sffCard || model.abuseCard) {
     if (model.sffCard && model.abuseCard) {
+      const sffLines = wrap(model.sffCard, colW - 8, 9.5);
+      const abuseLines = wrap(model.abuseCard, colW - 8, 9.5);
+      const alertH = Math.max(32, 16 + Math.max(sffLines.length, abuseLines.length) * 4.1);
       card(MX, y, colW, alertH, 'urgent');
       h3('Special Focus Facility (SFF)', MX + 5, y + 6);
       textBlock(model.sffCard, MX + 4, y + 12, colW - 8, { size: 9.5, lh: 4.1 });
       card(MX + colW + 4, y, colW, alertH, 'urgent');
-      h3('Abuse icon — active', MX + colW + 9, y + 6);
+      h3('Abuse icon - active', MX + colW + 9, y + 6);
       textBlock(model.abuseCard, MX + colW + 8, y + 12, colW - 8, { size: 9.5, lh: 4.1 });
       y += alertH + 4;
     } else {
       const text = model.sffCard || model.abuseCard;
-      const title = model.sffCard ? 'Special Focus Facility (SFF)' : 'Abuse icon — active';
-      card(MX, y, W, 26, 'urgent');
+      const title = model.sffCard ? 'Special Focus Facility (SFF)' : 'Abuse icon - active';
+      const lines = wrap(text, W - 8, 10);
+      const boxH = Math.max(26, 14 + lines.length * 4.2);
+      card(MX, y, W, boxH, 'urgent');
       h3(title, MX + 5, y + 6);
       textBlock(text, MX + 4, y + 12, W - 8, { size: 10, lh: 4.2 });
-      y += 30;
+      y += boxH + 4;
     }
   }
 
@@ -670,7 +687,7 @@ export function generateFacilityBriefPDF(
   // ───────────────────────── PAGE 8 ─────────────────────────
   doc.addPage();
   pageHead(8);
-  sectionHead('Visit checklist · Questions tied to this facility');
+  sectionHead('Visit checklist - Questions tied to this facility');
   y = textBlock(model.visitIntro, MX, y, W, { size: 11.2, lh: 4.9 }) + 2;
 
   const qMax = model.questions.length;

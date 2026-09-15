@@ -49,6 +49,15 @@ const avir = {
   owner_avg_fines: 95254,
   owner_avg_stars: 2.64,
   owner_pct_below_avg: 46.6,
+  adj_total_hprd: 4.443,
+  adj_rn_hprd: 0.33,
+  total_turnover: 58.3,
+  admin_turnover: 1,
+  staffing_trend: {
+    quarters: ['Q2 2024', 'Q3 2024', 'Q4 2024', 'Q3 2025'],
+    rn_hprd: [0.073, 0.171, 0.222, 0.127],
+    zero_rn_pct: [69.2, 30.4, 4.3, 42.4],
+  },
   flags: [
     'SPECIAL FOCUS FACILITY (CMS flagged)',
     'ABUSE ICON active',
@@ -131,6 +140,11 @@ describe('facilityBriefContent', () => {
     assert.match(model.limitation, /cannot predict an individual resident/i);
     assert.equal(model.nearby.length, 1);
     assert.match(model.sources, /August 2026/);
+    assert.ok(model.locationLine.includes('Overton'));
+    assert.ok(model.staffingContext.some((line) => line.includes('0.07 -> 0.17')));
+    assert.ok(model.ownership.some((b) => /01\/01\/2024 -> Winnie-Stowell/i.test(b.value)));
+    assert.ok(model.staffingContext.every((line) => !line.includes('→')));
+    assert.ok(model.ownership.every((b) => !String(b.value).includes('→')));
   });
 
   it('prioritizes Immediate Jeopardy rows in the F-tag subset', () => {
