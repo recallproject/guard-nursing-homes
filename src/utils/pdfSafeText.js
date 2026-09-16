@@ -63,3 +63,27 @@ export function pdfSafeDeep(value) {
   }
   return value;
 }
+
+/**
+ * jsPDF Identity-H paints glyph IDs (`<00240056...> Tj`), not Unicode.
+ * Map them back through the ToUnicode bfchar table so tests can read copy.
+ */
+export function decodeJsPdfContent(raw) {
+  const src = String(raw);
+  const cmap = new Map();
+  for (const block of src.matchAll(/beginbfchar\s*([\s\S]*?)\s*endbfchar/g)) {
+    for (const row of block[1].matchAll(/<([0-9A-Fa-f]+)>\s*<([0-9A-Fa-f]+)>/g)) {
+      cmap.set(row[1].toLowerCase().padStart(4, '0'), String.fromCharCode(parseInt(row[2], 16)));
+    }
+  }
+  const parts = [];
+  for (const match of src.matchAll(/<((?:[0-9A-Fa-f]{4}){2,})>\s*Tj/g)) {
+    const hex = match[1];
+    let out = '';
+    for (let i = 0; i < hex.length; i += 4) {
+      out += cmap.get(hex.slice(i, i + 4).toLowerCase()) || '';
+    }
+    if (out) parts.push(out);
+  }
+  return parts.join('\n');
+}

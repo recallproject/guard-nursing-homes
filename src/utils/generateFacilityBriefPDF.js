@@ -3,8 +3,10 @@ import autoTable from 'jspdf-autotable';
 import { BRIEF_PAGE_COUNT, PRODUCT_LABEL, buildFacilityBriefModel } from './facilityBriefContent.js';
 import { haversineDistance } from './haversine.js';
 import { pdfSafeDeep, pdfSafeText } from './pdfSafeText.js';
+import { BRIEF_PDF_FONT, registerBriefPdfFonts } from './briefPdfFonts.js';
 
 const jsPDF = jsPDFModule.jsPDF || jsPDFModule;
+const FONT = BRIEF_PDF_FONT;
 
 const C = {
   ink: [31, 41, 55],
@@ -13,6 +15,7 @@ const C = {
   bg: [250, 250, 248],
   card: [255, 255, 255],
   teal: [13, 148, 136],
+  ask: [15, 94, 88],
   tealSoft: [204, 251, 241],
   tealLine: [94, 234, 212],
   amber: [180, 83, 9],
@@ -84,7 +87,13 @@ export function generateFacilityBriefPDF(
     antipsychoticData,
   }));
 
-  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });
+  const doc = new jsPDF({
+    orientation: 'portrait',
+    unit: 'mm',
+    format: 'letter',
+    putOnlyUsedFonts: true,
+  });
+  registerBriefPdfFonts(doc);
   const rawText = doc.text.bind(doc);
   doc.text = (text, x, y, options) => {
     doc.setCharSpace(0);
@@ -125,7 +134,7 @@ export function generateFacilityBriefPDF(
   }
 
   function wrap(text, width, size = 11.5, font = 'normal') {
-    doc.setFont('helvetica', font);
+    doc.setFont(FONT, font);
     doc.setFontSize(size);
     return doc.splitTextToSize(pdfSafeText(String(text ?? '')), width);
   }
@@ -142,7 +151,7 @@ export function generateFacilityBriefPDF(
     const color = opts.color || C.ink;
     const lines = wrap(text, width, size, font);
     const lh = lineMm(size, factor);
-    doc.setFont('helvetica', font);
+    doc.setFont(FONT, font);
     doc.setFontSize(size);
     setText(color);
     doc.text(lines, x, yy, { lineHeightFactor: factor });
@@ -182,7 +191,7 @@ export function generateFacilityBriefPDF(
       const lines = wrap(item, width - 5, size);
       setFill(C.navy);
       doc.circle(x + 1.2, cy + 1.1, 0.55, 'F');
-      doc.setFont('helvetica', 'normal');
+      doc.setFont(FONT, 'normal');
       doc.setFontSize(size);
       setText(C.ink);
       doc.text(lines, x + 4, cy + 1.4, { lineHeightFactor: factor });
@@ -224,7 +233,7 @@ export function generateFacilityBriefPDF(
     const h = 11.5;
     const gap = 2.2;
     for (const item of items) {
-      doc.setFont('helvetica', 'bold');
+      doc.setFont(FONT, 'bold');
       doc.setFontSize(7.5);
       const lw = doc.getTextWidth(String(item.label).toUpperCase());
       doc.setFontSize(10);
@@ -239,7 +248,7 @@ export function generateFacilityBriefPDF(
       setDraw(t.border);
       doc.setLineWidth(0.3);
       doc.roundedRect(cx, cy, w, h, 1.6, 1.6, 'FD');
-      doc.setFont('helvetica', 'bold');
+      doc.setFont(FONT, 'bold');
       doc.setFontSize(6.8);
       setText(C.muted);
       doc.text(String(item.label).toUpperCase(), cx + 3.5, cy + 3.8);
@@ -263,11 +272,11 @@ export function generateFacilityBriefPDF(
       doc.setLineWidth(0.3);
       doc.roundedRect(xx, yy, mw, h, 2, 2, 'FD');
       const tone = TONE[m.tone] || TONE.neutral;
-      doc.setFont('helvetica', 'bold');
+      doc.setFont(FONT, 'bold');
       doc.setFontSize(14);
       setText(tone.text);
       doc.text(String(m.v || '-'), xx + mw / 2, yy + 8.2, { align: 'center' });
-      doc.setFont('helvetica', 'normal');
+      doc.setFont(FONT, 'normal');
       doc.setFontSize(7);
       setText(C.muted);
       const lines = wrap(String(m.l || '').toUpperCase(), mw - 4, 7);
@@ -277,7 +286,7 @@ export function generateFacilityBriefPDF(
   }
 
   function sectionHead(title) {
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(13);
     setText(C.navy);
     doc.text(String(title).toUpperCase(), MX, y);
@@ -291,13 +300,13 @@ export function generateFacilityBriefPDF(
   function pageHead(pageNo) {
     paintBg();
     y = 11;
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(8.5);
     setText(C.muted);
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     setText(C.ink);
     doc.text(`${PRODUCT_LABEL} - ${model.name} - CCN ${model.ccn}`, MX, y);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     setText(C.muted);
     doc.text(`${pageNo} / ${BRIEF_PAGE_COUNT}`, PW - MX, y, { align: 'right' });
     y += 2.5;
@@ -314,7 +323,7 @@ export function generateFacilityBriefPDF(
     const h = 5.5 + lines.length * lineMm(size, factor) + 3;
     setFill(C.note);
     doc.roundedRect(MX, yy, W, h, 1.8, 1.8, 'F');
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(size);
     setText(C.muted);
     doc.text(lines, MX + 4, yy + 5.5, { lineHeightFactor: factor });
@@ -322,7 +331,7 @@ export function generateFacilityBriefPDF(
   }
 
   function h3(text, x, yy, color = C.navy) {
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(11.5);
     setText(color);
     doc.text(text, x, yy);
@@ -332,7 +341,7 @@ export function generateFacilityBriefPDF(
   // ───────────────────────── PAGE 1 ─────────────────────────
   paintBg();
   y = 12;
-  doc.setFont('helvetica', 'bold');
+  doc.setFont(FONT, 'bold');
   doc.setFontSize(9);
   setText(C.teal);
   doc.text(PRODUCT_LABEL.toUpperCase(), MX, y);
@@ -341,23 +350,23 @@ export function generateFacilityBriefPDF(
   setText(C.navy);
   doc.text('The Oversight Report', MX, y);
   const brandW = doc.getTextWidth('The Oversight Report');
-  doc.setFont('helvetica', 'normal');
+  doc.setFont(FONT, 'normal');
   doc.setFontSize(10);
   setText(C.muted);
   doc.text('  - oversightreports.com', MX + brandW + 1, y);
 
   const rightX = PW - MX;
-  doc.setFont('helvetica', 'normal');
+  doc.setFont(FONT, 'normal');
   doc.setFontSize(9);
   setText(C.muted);
   doc.text('Report date:', rightX - 48, 12);
-  doc.setFont('helvetica', 'bold');
+  doc.setFont(FONT, 'bold');
   setText(C.ink);
   doc.text(model.reportDateLabel, rightX, 12, { align: 'right' });
-  doc.setFont('helvetica', 'normal');
+  doc.setFont(FONT, 'normal');
   setText(C.muted);
   doc.text('CMS data as of:', rightX - 48, 16.6);
-  doc.setFont('helvetica', 'bold');
+  doc.setFont(FONT, 'bold');
   setText(C.ink);
   doc.text(model.dataAsOfLabel, rightX, 16.6, { align: 'right' });
 
@@ -367,7 +376,7 @@ export function generateFacilityBriefPDF(
   doc.line(MX, y, MX + W, y);
 
   y = 30;
-  doc.setFont('helvetica', 'bold');
+  doc.setFont(FONT, 'bold');
   doc.setFontSize(24);
   setText(C.navy);
   const nameLines = wrap(model.name, W, 24);
@@ -387,11 +396,11 @@ export function generateFacilityBriefPDF(
   setDraw(C.navy);
   doc.setLineWidth(0.5);
   doc.roundedRect(MX, y, W, blH, 2.2, 2.2, 'FD');
-  doc.setFont('helvetica', 'bold');
+  doc.setFont(FONT, 'bold');
   doc.setFontSize(8.5);
   setText(C.teal);
   doc.text('BOTTOM LINE', MX + 5, y + 6);
-  doc.setFont('helvetica', 'normal');
+  doc.setFont(FONT, 'normal');
   doc.setFontSize(blSize);
   setText(C.ink);
   doc.text(blLines, MX + 5, y + 12.5, { lineHeightFactor: blFactor });
@@ -416,18 +425,18 @@ export function generateFacilityBriefPDF(
   doc.setLineWidth(0.3);
   doc.roundedRect(MX, y, W, nextH, 2.2, 2.2, 'FD');
   h3('What to do next', MX + 5, y + 6, [15, 118, 110]);
-  doc.setFont('helvetica', 'normal');
+  doc.setFont(FONT, 'normal');
   doc.setFontSize(nextSize);
   setText(C.ink);
   doc.text(nextLines, MX + 5, y + 12.5, { lineHeightFactor: nextFactor });
   y += nextH + 5;
 
-  doc.setFont('helvetica', 'bold');
+  doc.setFont(FONT, 'bold');
   doc.setFontSize(9.5);
   setText(C.ink);
   doc.text('Inside this brief: ', MX, y);
   const prefixW = doc.getTextWidth('Inside this brief: ');
-  doc.setFont('helvetica', 'normal');
+  doc.setFont(FONT, 'normal');
   setText(C.muted);
   const insideLines = wrap(model.inside, W - prefixW, 9.5);
   doc.text(insideLines, MX + prefixW, y, { lineHeightFactor: 1.4 });
@@ -493,7 +502,7 @@ export function generateFacilityBriefPDF(
     const xx = MX + i * (tw + 2.6);
     card(xx, y, tw, threeH, h.tone === 'urgent' ? 'urgent' : h.tone === 'warn' ? 'warn' : 'neutral');
     h3(h.title, xx + 4, y + 6);
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(14);
     setText((TONE[h.tone] || TONE.neutral).text);
     doc.text(String(h.value), xx + 4, y + 13.5);
@@ -547,7 +556,7 @@ export function generateFacilityBriefPDF(
       head: [['Measure', 'Facility rate', 'Reading tip']],
       body: model.careFitRows.map((r) => [r.name, r.rate, r.tip]),
       theme: 'plain',
-      styles: { font: 'helvetica', fontSize: 9.5, textColor: C.ink, cellPadding: { top: 1.8, bottom: 1.8, left: 1.5, right: 1.5 }, overflow: 'linebreak', minCellHeight: 7 },
+      styles: { font: FONT, fontSize: 9.5, textColor: C.ink, cellPadding: { top: 1.8, bottom: 1.8, left: 1.5, right: 1.5 }, overflow: 'linebreak', minCellHeight: 7 },
       headStyles: { fontStyle: 'bold', fontSize: 8, textColor: C.muted, fillColor: C.bg, cellPadding: { top: 2, bottom: 2, left: 1.5, right: 1.5 } },
       columnStyles: { 0: { cellWidth: W * 0.42 }, 1: { cellWidth: W * 0.18, fontStyle: 'bold' }, 2: { cellWidth: W * 0.4 } },
       didParseCell: (data) => {
@@ -592,11 +601,11 @@ export function generateFacilityBriefPDF(
     setFill(C.card);
     setDraw(C.line);
     doc.roundedRect(xx, y, cw, 18, 1.8, 1.8, 'FD');
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(16);
     setText(C.navy);
     doc.text(String(c.n), xx + cw / 2, y + 8, { align: 'center' });
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(7.2);
     setText(C.muted);
     const tl = wrap(c.t, cw - 4, 7.2);
@@ -618,25 +627,25 @@ export function generateFacilityBriefPDF(
     setFill(C.card);
     setDraw(C.line);
     doc.roundedRect(MX, y, W, sh, 2, 2, 'FD');
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(8);
     setText(C.muted);
     doc.text(story.tag, MX + 5, y + 5.5);
     let sy = y + 11;
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(11);
     setText(C.ink);
     doc.text(finding, MX + 5, sy, { lineHeightFactor: 1.35 });
     sy += finding.length * lineMm(11, 1.35) + 1;
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(10);
     setText([55, 65, 81]);
     doc.text(why, MX + 5, sy, { lineHeightFactor: 1.4 });
     sy += why.length * lineMm(10, 1.4) + 1;
     doc.text(status, MX + 5, sy, { lineHeightFactor: 1.4 });
     sy += status.length * lineMm(10, 1.4) + 1;
-    doc.setFont('helvetica', 'bold');
-    setText([15, 118, 110]);
+    doc.setFont(FONT, 'bold');
+    setText(C.ask);
     doc.text(ask, MX + 5, sy, { lineHeightFactor: 1.4 });
     y += sh + 3;
   }
@@ -656,7 +665,7 @@ export function generateFacilityBriefPDF(
       head: [['Date', 'F-tag', 'Plain label', 'Scope / severity', 'Status']],
       body: model.ftagRows.map((r) => [r.date, r.ftag, r.label, r.scope, r.status]),
       theme: 'plain',
-      styles: { font: 'helvetica', fontSize: 9, textColor: C.ink, cellPadding: { top: 1.6, bottom: 1.6, left: 1.2, right: 1.2 }, overflow: 'linebreak' },
+      styles: { font: FONT, fontSize: 9, textColor: C.ink, cellPadding: { top: 1.6, bottom: 1.6, left: 1.2, right: 1.2 }, overflow: 'linebreak' },
       headStyles: { fontStyle: 'bold', fontSize: 7.5, textColor: C.muted, fillColor: C.bg },
       columnStyles: {
         0: { cellWidth: W * 0.14 },
@@ -695,7 +704,7 @@ export function generateFacilityBriefPDF(
       head: [['Date', 'Type', 'Detail']],
       body: model.penaltyRows.map((r) => [r.date, r.type, r.detail]),
       theme: 'plain',
-      styles: { font: 'helvetica', fontSize: 10, textColor: C.ink, cellPadding: { top: 1.8, bottom: 1.8, left: 1.5, right: 1.5 } },
+      styles: { font: FONT, fontSize: 10, textColor: C.ink, cellPadding: { top: 1.8, bottom: 1.8, left: 1.5, right: 1.5 } },
       headStyles: { fontStyle: 'bold', fontSize: 8, textColor: C.muted, fillColor: C.bg },
       columnStyles: { 0: { cellWidth: W * 0.18 }, 1: { cellWidth: W * 0.24 }, 2: { cellWidth: W * 0.58, fontStyle: 'bold' } },
       didParseCell: (data) => {
@@ -765,7 +774,7 @@ export function generateFacilityBriefPDF(
     const qH = qLines.length * lineMm(qSize, qFactor);
     const block = qH + (compact ? 9 : 11);
     if (y + block > FLOOR - 8) return;
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(qSize);
     setText(C.ink);
     doc.text(qLines, MX, y, { lineHeightFactor: qFactor });
@@ -774,7 +783,7 @@ export function generateFacilityBriefPDF(
     doc.setLineWidth(0.25);
     doc.line(MX, y + 3.5, MX + W, y + 3.5);
     y += 5.2;
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(8.5);
     setText(C.muted);
     doc.text('Answered by:', MX, y);
@@ -800,7 +809,7 @@ export function generateFacilityBriefPDF(
       head: [['Facility', 'City', 'Stars', 'Composite', 'Fines', 'IJ']],
       body: model.nearby.map((n) => [n.name, n.city, n.stars, n.composite, n.fines, n.ij]),
       theme: 'plain',
-      styles: { font: 'helvetica', fontSize: 9.5, textColor: C.ink, cellPadding: { top: 1.6, bottom: 1.6, left: 1.2, right: 1.2 }, overflow: 'linebreak' },
+      styles: { font: FONT, fontSize: 9.5, textColor: C.ink, cellPadding: { top: 1.6, bottom: 1.6, left: 1.2, right: 1.2 }, overflow: 'linebreak' },
       headStyles: { fontStyle: 'bold', fontSize: 7.5, textColor: C.muted, fillColor: C.bg },
       columnStyles: {
         0: { cellWidth: W * 0.38 },
@@ -837,11 +846,11 @@ export function generateFacilityBriefPDF(
     setFill(C.card);
     setDraw(C.line);
     doc.roundedRect(xx, yy, boxW, boxH, 2, 2, 'FD');
-    doc.setFont('helvetica', 'bold');
+    doc.setFont(FONT, 'bold');
     doc.setFontSize(11);
     setText(C.navy);
     doc.text(b.title, xx + 3.5, yy + 5.5);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(8);
     setText(C.muted);
     doc.text(wrap(b.hint, boxW - 7, 8), xx + 3.5, yy + 10, { lineHeightFactor: 1.25 });
@@ -860,7 +869,7 @@ export function generateFacilityBriefPDF(
     if (y + srcH < FLOOR) {
       card(MX, y, W, srcH, 'neutral');
       h3('Sources', MX + 5, y + 5.5);
-      doc.setFont('helvetica', 'normal');
+      doc.setFont(FONT, 'normal');
       doc.setFontSize(srcSize);
       setText(C.ink);
       doc.text(wrap(model.sources, W - 8, srcSize), MX + 5, y + 11, { lineHeightFactor: srcFactor });
@@ -876,7 +885,7 @@ export function generateFacilityBriefPDF(
       setFill(C.card);
       setDraw(C.line);
       doc.roundedRect(MX, y, W, lh, 1.8, 1.8, 'FD');
-      doc.setFont('helvetica', 'normal');
+      doc.setFont(FONT, 'normal');
       doc.setFontSize(limSize);
       setText([55, 65, 81]);
       doc.text(lim, MX + 4, y + 5.5, { lineHeightFactor: limFactor });
@@ -891,7 +900,7 @@ export function generateFacilityBriefPDF(
     setDraw(C.line);
     doc.setLineWidth(0.25);
     doc.line(MX, fy, MX + W, fy);
-    doc.setFont('helvetica', 'normal');
+    doc.setFont(FONT, 'normal');
     doc.setFontSize(8);
     setText(C.muted);
     doc.text('Source: CMS public data · oversightreports.com', MX, fy + 4.5);

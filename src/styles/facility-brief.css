@@ -3,6 +3,7 @@
 .fb {
   --fb-navy: #0f1629;
   --fb-teal: #0d9488;
+  --fb-ask: #0f5f5a;
   --fb-ink: #1f2937;
   --fb-muted: #6b7280;
   --fb-line: #e5e7eb;
@@ -10,9 +11,27 @@
   --fb-bg: #f9fafb;
   --fb-amber: #b45309;
   --fb-red: #b91c1c;
+  --fb-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--fb-ink);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--fb-sans);
   line-height: 1.55;
+}
+
+/* Global h1–h6 use DM Serif Display (400 only). Card titles / .fb-sub are
+   font-weight 700 <h3>s — synthetic bold of that webfont is what printed as
+   squiggly navy question text. Keep Georgia only on the display headings. */
+.fb h3,
+.fb h4,
+.fb p,
+.fb li,
+.fb td,
+.fb th,
+.fb button,
+.fb-card-title,
+.fb-sub,
+.fb-questions,
+.fb-ask {
+  font-family: var(--fb-sans);
 }
 
 .fb-top {
@@ -309,7 +328,7 @@
 }
 
 .fb-ask {
-  color: #0f766e;
+  color: var(--fb-ask);
 }
 
 .fb-table {
@@ -420,10 +439,42 @@
     display: none !important;
   }
 
+  /*
+   * Chrome print-to-PDF subsets the site's variable webfonts poorly and
+   * fake-bolds 600/700, which reads as jagged glyphs — worst on teal Ask:
+   * lines and navy questions. System UI fonts are already on the device,
+   * hinted, and have a real Bold.
+   */
+  html,
+  body,
+  .ev,
+  .ev--brief,
+  .fb,
+  .fb * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    -webkit-font-smoothing: auto !important;
+    -moz-osx-font-smoothing: auto !important;
+    text-rendering: auto !important;
+    font-synthesis: none !important;
+    font-variation-settings: normal !important;
+    font-optical-sizing: none !important;
+  }
+
   .fb {
     color: #111;
     font-size: 11px;
     line-height: 1.32;
+  }
+
+  .fb-ask {
+    color: #115e59 !important;
+  }
+
+  .fb-questions p,
+  .fb-card-title,
+  .fb-sub,
+  .fb-ask strong {
+    font-weight: 700;
   }
 
   .fb-top {
