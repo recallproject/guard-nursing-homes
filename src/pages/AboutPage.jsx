@@ -12,6 +12,11 @@ export default function AboutPage() {
           name="description"
           content="Who built The Oversight Report, where the CMS data comes from, how the work is funded, and how to contact us."
         />
+        <meta property="og:title" content="About / Why trust us — The Oversight Report" />
+        <meta
+          property="og:description"
+          content="Who built The Oversight Report, where the CMS data comes from, how the work is funded, and how to contact us."
+        />
         <link rel="canonical" href="https://www.oversightreports.com/about" />
       </Helmet>
 

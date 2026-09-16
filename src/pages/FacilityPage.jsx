@@ -22,6 +22,7 @@ import '../styles/facility.css';
 import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
 import ftagReference from '../data/ftag-reference.json';
+import { facilitySeoDescription, facilitySeoTitle } from '../utils/facilitySeo';
 
 // Accordion component for abuse/neglect citation groups
 function AbuseGroupAccordion({ ftag, desc, defs, harmCount, hasActualHarm }) {
@@ -386,10 +387,10 @@ export function FacilityPage() {
   return (
     <div className="fp" ref={pageRef}>
       <Helmet>
-        <title>{`${facility.name}, ${facility.city}, ${facility.state} - Oversight Report | OversightReports`}</title>
-        <meta name="description" content={`${facility.name} in ${facility.city}, ${facility.state}. ${facility.stars}/5 stars, ${facility.total_deficiencies || 0} deficiencies. Independent nursing home safety data.`} />
-        <meta property="og:title" content={`${facility.name}, ${facility.city}, ${facility.state} - Oversight Report`} />
-        <meta property="og:description" content={`${facility.stars}/5 stars · ${facility.total_deficiencies || 0} deficiencies · Independent safety data for ${facility.city}, ${facility.state}`} />
+        <title>{facilitySeoTitle(facility)}</title>
+        <meta name="description" content={facilitySeoDescription(facility)} />
+        <meta property="og:title" content={facilitySeoTitle(facility)} />
+        <meta property="og:description" content={facilitySeoDescription(facility)} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.oversightreports.com/facility/${facility.ccn}`} />
         <meta property="og:image" content="https://www.oversightreports.com/og-image.png" />

@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { facilitySeoDescription, facilitySeoTitle } from '../src/utils/facilitySeo.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -455,8 +456,8 @@ const staticPages = [
   },
   {
     route: 'about',
-    title: 'About — The Oversight Report',
-    description: 'The Oversight Report provides independent nursing home safety data for families, journalists, and attorneys. Built by a nurse practitioner using federal CMS data.'
+    title: 'About / Why trust us — The Oversight Report',
+    description: 'Who built The Oversight Report, where the CMS data comes from, how the work is funded, and how to contact us.'
   },
   {
     route: 'professionals',
@@ -652,17 +653,12 @@ let facilityCount = 0;
 for (const [stateCode, stateData] of Object.entries(facilityData.states)) {
   if (stateData.facilities) {
     for (const f of stateData.facilities) {
-      const stars = f.stars != null ? `${f.stars}/5 stars` : 'Unrated';
-      const defCount = f.total_deficiencies || 0;
-      const city = f.city || '';
-      const state = f.state || stateCode;
-
       const body = facilityBodyContent(f, stateCode);
 
       createPage(
         `facility/${f.ccn}`,
-        `${f.name} — Safety Report | The Oversight Report`,
-        `${f.name} in ${city}, ${state}. ${stars}. ${defCount} inspection deficiencies. See staffing levels, fines, ownership, and safety data.`,
+        facilitySeoTitle({ ...f, state: f.state || stateCode }),
+        facilitySeoDescription({ ...f, state: f.state || stateCode }),
         `/facility/${f.ccn}`,
         body
       );

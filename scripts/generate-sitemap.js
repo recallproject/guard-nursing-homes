@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { ROBOTS_TXT } from './robots-txt.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -211,35 +212,5 @@ ${urls.map(u => `  <url>
 writeFileSync(join(publicDir, 'sitemap.xml'), xml);
 console.log(`Sitemap generated: ${urls.length} URLs (${facilityCount} facilities, ${chainCount} chains, ${blogCount} blog posts, ${hospiceStateCount} hospice states, ${hospiceProviderCount} hospice providers, ${hospiceChainCount} hospice chains, ${postacuteHubCount} post-acute hubs, ${postacuteStateCount} post-acute states, ${postacuteProviderCount} post-acute providers)`);
 
-// Generate robots.txt
-const robots = `# Block AI/LLM scraping bots
-User-agent: CCBot
-Disallow: /
-
-User-agent: GPTBot
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
-
-# Allow legitimate search engines and all other bots
-User-agent: *
-Allow: /
-
-Sitemap: ${BASE_URL}/sitemap.xml
-`;
-
-writeFileSync(join(publicDir, 'robots.txt'), robots);
+writeFileSync(join(publicDir, 'robots.txt'), ROBOTS_TXT);
 console.log('robots.txt generated');
