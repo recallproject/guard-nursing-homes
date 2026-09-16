@@ -660,6 +660,21 @@
     background: #fff !important;
     margin: 0 !important;
     padding: 0 !important;
+    -webkit-font-smoothing: auto !important;
+    -moz-osx-font-smoothing: auto !important;
+    text-rendering: auto !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  }
+
+  .ev,
+  .ev--brief,
+  .ev *,
+  .fb,
+  .fb * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    -webkit-font-smoothing: auto !important;
+    font-synthesis: none !important;
+    font-variation-settings: normal !important;
   }
 
   .ev,
