@@ -628,7 +628,12 @@
   content: '→ ';
 }
 
-/* === Print Styles === */
+/* === Print Styles ===
+ * Facility Brief Print Version: ~9 letter pages (one `.fb-page` per sheet).
+ * Chrome headers/footers (date + evidence-download token URL) are not fully
+ * suppressible from CSS — EvidencePage swaps the URL/title before print, and
+ * Robert should uncheck "Headers and footers" in the Chrome dialog.
+ */
 @media print {
   .no-print,
   .ev-header,
@@ -636,31 +641,46 @@
   .ev-purchase-gate,
   .site-header,
   .ca-banner,
-  .site-footer {
+  .site-footer,
+  footer.site-footer {
     display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
   }
 
   @page {
     size: letter;
-    margin: 14mm 14mm 16mm;
+    margin: 10mm 12mm 12mm;
   }
 
-  .ev {
+  html,
+  body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .ev,
+  .ev--brief {
     background-color: #FFFFFF;
-    padding-top: 0;
+    padding: 0 !important;
+    min-height: 0 !important;
   }
 
   .ev-body,
   .ev-body--brief {
     max-width: 100%;
     margin: 0;
+    padding: 0;
     border-radius: 0;
     box-shadow: none;
     overflow: visible;
   }
 
   .ev-section {
-    padding: 1.5rem 0;
+    padding: 0.6rem 0;
     border-bottom: 1px solid #CCC;
     page-break-inside: auto;
   }
@@ -671,7 +691,7 @@
     border-bottom: 1px solid #D1D5DB;
     page-break-after: avoid;
     min-height: 0;
-    padding: 12px 0 16px;
+    padding: 4px 0 8px;
   }
 
   .ev-cover .ev-logo { color: #0F1629; }
@@ -698,9 +718,9 @@
   .ev-table tr:nth-child(odd) { background: #FFF; }
   .ev-disclaimer { background: #FAFAFA; border-left-color: #999; }
   .ev-disclaimer p, .ev-disclaimer strong { color: #000; }
-  .ev-footer { background: #FFF; border-top: 1px solid #CCC; }
-  .ev-footer-logo { color: #000; }
-  .ev-footer-text { color: #333; }
+  .ev-footer {
+    display: none !important;
+  }
 }
 
 /* === Responsive === */

@@ -103,6 +103,7 @@ export function generateFacilityBriefPDF(
   const PH = doc.internal.pageSize.getHeight();
   const MX = 14;
   const W = PW - MX * 2;
+  const colW = (W - 4) / 2;
   // Absolute footers collided with page 8/9 in mock iteration — keep a hard floor.
   const FLOOR = PH - 18;
   let y = 12;
@@ -116,21 +117,35 @@ export function generateFacilityBriefPDF(
   function setDraw(rgb) { doc.setDrawColor(...rgb); }
   function setText(rgb) { doc.setTextColor(...rgb); }
 
-  function wrap(text, width, size = 11.5) {
+  // jsPDF line spacing is (fontSize pt / scaleFactor) * lineHeightFactor, in mm.
+  // Card borders used size*0.42 (~1.19×) while doc.text used 1.4× — boxes were short.
+  const PT_MM = 1 / doc.internal.scaleFactor;
+  function lineMm(sizePt, factor = 1.4) {
+    return sizePt * PT_MM * factor;
+  }
+
+  function wrap(text, width, size = 11.5, font = 'normal') {
+    doc.setFont('helvetica', font);
     doc.setFontSize(size);
-    return doc.splitTextToSize(pdfSafeText(text), width);
+    return doc.splitTextToSize(pdfSafeText(String(text ?? '')), width);
+  }
+
+  function wrappedHeight(text, width, size, factor = 1.4, font = 'normal') {
+    const lines = wrap(text, width, size, font);
+    return Math.max(1, lines.length) * lineMm(size, factor);
   }
 
   function textBlock(text, x, yy, width, opts = {}) {
     const size = opts.size || 11.5;
-    const lh = opts.lh || size * 0.42;
+    const factor = opts.factor || 1.45;
     const font = opts.font || 'normal';
     const color = opts.color || C.ink;
-    const lines = wrap(text, width, size);
+    const lines = wrap(text, width, size, font);
+    const lh = lineMm(size, factor);
     doc.setFont('helvetica', font);
     doc.setFontSize(size);
     setText(color);
-    doc.text(lines, x, yy, { lineHeightFactor: opts.factor || 1.45 });
+    doc.text(lines, x, yy, { lineHeightFactor: factor });
     return yy + lines.length * lh;
   }
 
@@ -149,30 +164,58 @@ export function generateFacilityBriefPDF(
     }
   }
 
-  function measureBullets(items, width, size = 10.5) {
+  function measureBullets(items, width, size = 10.5, factor = 1.4) {
+    const lh = lineMm(size, factor);
     let h = 0;
-    doc.setFontSize(size);
     for (const item of items) {
       const lines = wrap(item, width - 5, size);
-      h += Math.max(1, lines.length) * (size * 0.42) + 1.2;
+      h += Math.max(1, lines.length) * lh + 1.3;
     }
     return h;
   }
 
-  function drawBullets(items, x, yy, width, size = 10.5) {
+  function drawBullets(items, x, yy, width, size = 10.5, factor = 1.4) {
     let cy = yy;
+    const lh = lineMm(size, factor);
     doc.setFontSize(size);
     for (const item of items) {
       const lines = wrap(item, width - 5, size);
-      const lh = size * 0.42;
       setFill(C.navy);
       doc.circle(x + 1.2, cy + 1.1, 0.55, 'F');
       doc.setFont('helvetica', 'normal');
+      doc.setFontSize(size);
       setText(C.ink);
-      doc.text(lines, x + 4, cy + 1.4, { lineHeightFactor: 1.4 });
+      doc.text(lines, x + 4, cy + 1.4, { lineHeightFactor: factor });
       cy += lines.length * lh + 1.3;
     }
     return cy;
+  }
+
+  /** Title at +6, bullets at +11 — height must cover last descender + bottom pad. */
+  function bulletCardHeight(items, innerWidth, size = 10.5, factor = 1.4) {
+    const titleBlock = 11;
+    const bottomPad = 4.5;
+    return titleBlock + measureBullets(items, innerWidth, size, factor) + bottomPad;
+  }
+
+  function drawBulletPair(yy, left, right, size = 10.2) {
+    const inner = colW - 8;
+    const h = Math.max(
+      bulletCardHeight(left.items, inner, size),
+      bulletCardHeight(right.items, inner, size),
+      32
+    );
+    card(MX, yy, colW, h, left.variant);
+    h3(left.title, MX + 5, yy + 6, left.titleColor);
+    drawBullets(left.items, MX + 4, yy + 11, inner, size);
+    card(MX + colW + 4, yy, colW, h, right.variant);
+    h3(right.title, MX + colW + 9, yy + 6, right.titleColor);
+    drawBullets(right.items, MX + colW + 8, yy + 11, inner, size);
+    return yy + h;
+  }
+
+  function paragraphCardHeight(text, innerWidth, size, factor, bodyStart, bottomPad = 4) {
+    return bodyStart + wrappedHeight(text, innerWidth, size, factor) + bottomPad;
   }
 
   function drawChips(items, x, yy, maxW) {
@@ -265,14 +308,16 @@ export function generateFacilityBriefPDF(
   }
 
   function noteBox(text, yy) {
-    const lines = wrap(text, W - 8, 9.5);
-    const h = lines.length * 4.1 + 8;
+    const size = 9.5;
+    const factor = 1.4;
+    const lines = wrap(text, W - 8, size);
+    const h = 5.5 + lines.length * lineMm(size, factor) + 3;
     setFill(C.note);
     doc.roundedRect(MX, yy, W, h, 1.8, 1.8, 'F');
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9.5);
+    doc.setFontSize(size);
     setText(C.muted);
-    doc.text(lines, MX + 4, yy + 5.5, { lineHeightFactor: 1.4 });
+    doc.text(lines, MX + 4, yy + 5.5, { lineHeightFactor: factor });
     return yy + h;
   }
 
@@ -329,13 +374,15 @@ export function generateFacilityBriefPDF(
   doc.text(nameLines, MX, y, { lineHeightFactor: 1.15 });
   y += nameLines.length * 9 + 2;
 
-  y = textBlock(model.metaLine, MX, y, W, { size: 10.5, color: C.muted, lh: 4.6 });
+  y = textBlock(model.metaLine, MX, y, W, { size: 10.5, color: C.muted });
   y += 3;
   y = drawChips(model.chips, MX, y, W) + 5;
 
   // Bottom line
-  const blLines = wrap(model.bottomLine, W - 10, 12);
-  const blH = blLines.length * 5.4 + 14;
+  const blSize = 12;
+  const blFactor = 1.4;
+  const blLines = wrap(model.bottomLine, W - 10, blSize);
+  const blH = 12.5 + blLines.length * lineMm(blSize, blFactor) + 4;
   setFill(C.card);
   setDraw(C.navy);
   doc.setLineWidth(0.5);
@@ -345,34 +392,34 @@ export function generateFacilityBriefPDF(
   setText(C.teal);
   doc.text('BOTTOM LINE', MX + 5, y + 6);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(12);
+  doc.setFontSize(blSize);
   setText(C.ink);
-  doc.text(blLines, MX + 5, y + 12.5, { lineHeightFactor: 1.4 });
+  doc.text(blLines, MX + 5, y + 12.5, { lineHeightFactor: blFactor });
   y += blH + 5;
 
-  const colW = (W - 4) / 2;
-  const leftH = 10 + measureBullets(model.strengths, colW - 8, 10.2);
-  const rightH = 10 + measureBullets(model.concerns, colW - 8, 10.2);
-  const colH = Math.max(leftH, rightH, 38);
-  card(MX, y, colW, colH, 'soft');
-  h3('Comparatively less alarming', MX + 5, y + 6);
-  drawBullets(model.strengths, MX + 4, y + 11, colW - 8, 10.2);
-  card(MX + colW + 4, y, colW, colH, 'urgent');
-  h3('Questions & concerns', MX + colW + 9, y + 6);
-  drawBullets(model.concerns, MX + colW + 8, y + 11, colW - 8, 10.2);
-  y += colH + 5;
+  y = drawBulletPair(y, {
+    title: 'Comparatively less alarming',
+    items: model.strengths,
+    variant: 'soft',
+  }, {
+    title: 'Questions & concerns',
+    items: model.concerns,
+    variant: 'urgent',
+  }, 10.2) + 5;
 
-  const nextLines = wrap(model.nextAction, W - 10, 11.5);
-  const nextH = nextLines.length * 5 + 14;
+  const nextSize = 11.5;
+  const nextFactor = 1.4;
+  const nextLines = wrap(model.nextAction, W - 10, nextSize);
+  const nextH = 12.5 + nextLines.length * lineMm(nextSize, nextFactor) + 4;
   setFill(C.tealSoft);
   setDraw(C.tealLine);
   doc.setLineWidth(0.3);
   doc.roundedRect(MX, y, W, nextH, 2.2, 2.2, 'FD');
   h3('What to do next', MX + 5, y + 6, [15, 118, 110]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(11.5);
+  doc.setFontSize(nextSize);
   setText(C.ink);
-  doc.text(nextLines, MX + 5, y + 12.5, { lineHeightFactor: 1.4 });
+  doc.text(nextLines, MX + 5, y + 12.5, { lineHeightFactor: nextFactor });
   y += nextH + 5;
 
   doc.setFont('helvetica', 'bold');
@@ -391,7 +438,7 @@ export function generateFacilityBriefPDF(
   sectionHead('Scorecard - How to read these ratings');
   y = textBlock(
     `CMS data as of ${model.dataAsOfLabel} - Report prepared ${model.reportDateLabel} - Oversight composite uses public CMS inputs (higher = more concern in this model)`,
-    MX, y, W, { size: 9.5, color: C.muted, lh: 4.2 }
+    MX, y, W, { size: 9.5, color: C.muted }
   ) + 3;
 
   y = metricGrid([
@@ -408,36 +455,38 @@ export function generateFacilityBriefPDF(
   ], MX, y, W) + 4;
 
   const interpItems = model.interpretations.map((i) => `${i.title}: ${i.text}`);
-  const interpH = 10 + measureBullets(interpItems, W - 10, 10.2);
+  const interpH = bulletCardHeight(interpItems, W - 10, 10.2);
   card(MX, y, W, interpH, 'neutral');
   h3('What each signal means (plain English)', MX + 5, y + 6);
   drawBullets(interpItems, MX + 4, y + 11, W - 10, 10.2);
   y += interpH + 4;
 
-  const lcH = 10 + measureBullets(model.lookCloser, colW - 8, 10);
-  const dnH = 10 + measureBullets(model.doesNotTell, colW - 8, 10);
-  const pairH = Math.max(lcH, dnH);
-  card(MX, y, colW, pairH, 'warn');
-  h3('Look closer', MX + 5, y + 6);
-  drawBullets(model.lookCloser, MX + 4, y + 11, colW - 8, 10);
-  card(MX + colW + 4, y, colW, pairH, 'neutral');
-  h3('What this does not tell you', MX + colW + 9, y + 6);
-  drawBullets(model.doesNotTell, MX + colW + 8, y + 11, colW - 8, 10);
-  y += pairH + 5;
+  y = drawBulletPair(y, {
+    title: 'Look closer',
+    items: model.lookCloser,
+    variant: 'warn',
+  }, {
+    title: 'What this does not tell you',
+    items: model.doesNotTell,
+    variant: 'neutral',
+  }, 10) + 5;
   noteBox('Stars are signals, not guarantees. CMS updates Care Compare on a schedule; always confirm the "last updated" date on medicare.gov when you verify.', y);
 
   // ───────────────────────── PAGE 3 ─────────────────────────
   doc.addPage();
   pageHead(3);
   sectionHead('Staffing & ownership');
-  y = textBlock(model.staffingIntro, MX, y, W, { size: 11.5, lh: 5 }) + 3;
+  y = textBlock(model.staffingIntro, MX, y, W, { size: 11.5 }) + 3;
   y = metricGrid(model.staffingMetrics, MX, y, W) + 4;
 
   const three = model.staffingHighlights;
   const tw = (W - 5.2) / 3;
+  const noteSize = 8.5;
+  const noteFactor = 1.45;
   const threeHeights = three.map((h) => {
-    const noteLines = wrap(h.note, tw - 8, 8.5);
-    return Math.max(28, 18 + noteLines.length * 3.6);
+    const noteH = wrappedHeight(h.note, tw - 8, noteSize, noteFactor);
+    // title at +6, value at +13.5, note baseline at +17.5
+    return 17.5 + noteH + 3.5;
   });
   const threeH = Math.max(...threeHeights, 28);
   three.forEach((h, i) => {
@@ -448,44 +497,47 @@ export function generateFacilityBriefPDF(
     doc.setFontSize(14);
     setText((TONE[h.tone] || TONE.neutral).text);
     doc.text(String(h.value), xx + 4, y + 13.5);
-    textBlock(h.note, xx + 4, y + 17.5, tw - 8, { size: 8.5, color: C.muted, lh: 3.6 });
+    textBlock(h.note, xx + 4, y + 17.5, tw - 8, { size: noteSize, color: C.muted, factor: noteFactor });
   });
   y += threeH + 4;
 
-  const ctxH = 12 + measureBullets(model.staffingContext.length ? model.staffingContext : ['No extra staffing context in this extract.'], colW - 8, 10);
+  const ctxItems = model.staffingContext.length ? model.staffingContext : ['No extra staffing context in this extract.'];
   const ownItems = model.ownership.map((b) => (b.label ? `${b.label}: ${b.value}` : b.value));
-  const ownH = 12 + measureBullets(ownItems, colW - 8, 10);
-  const soH = Math.max(ctxH, ownH, 40);
-  card(MX, y, colW, soH, 'neutral');
-  h3('More staffing context', MX + 5, y + 6);
-  drawBullets(model.staffingContext.length ? model.staffingContext : ['No extra staffing context in this extract.'], MX + 4, y + 11, colW - 8, 10);
-  card(MX + colW + 4, y, colW, soH, 'neutral');
-  h3('Ownership', MX + colW + 9, y + 6);
-  drawBullets(ownItems, MX + colW + 8, y + 11, colW - 8, 10);
-  y += soH + 4;
+  y = drawBulletPair(y, {
+    title: 'More staffing context',
+    items: ctxItems,
+    variant: 'neutral',
+  }, {
+    title: 'Ownership',
+    items: ownItems,
+    variant: 'neutral',
+  }, 10) + 4;
   noteBox(`Why it matters: ${model.staffingWhy}`, y);
 
   // ───────────────────────── PAGE 4 ─────────────────────────
   doc.addPage();
   pageHead(4);
   sectionHead('Care fit - Who this profile speaks to');
-  y = textBlock(model.careFitIntro, MX, y, W, { size: 11.5, lh: 5 }) + 3;
+  y = textBlock(model.careFitIntro, MX, y, W, { size: 11.5 }) + 3;
   y = metricGrid(model.careFitMetrics, MX, y, W) + 4;
 
-  const longLines = wrap(model.longStayNote, colW - 8, 9.5);
-  const shortLines = wrap(model.shortStayNote, colW - 8, 9.5);
-  const fitH = Math.max(28, 14 + Math.max(longLines.length, shortLines.length) * 4.1);
+  const fitFactor = 1.45;
+  const fitSize = 9.5;
+  const fitH = Math.max(
+    paragraphCardHeight(model.longStayNote, colW - 8, fitSize, fitFactor, 11.5),
+    paragraphCardHeight(model.shortStayNote, colW - 8, fitSize, fitFactor, 11.5),
+    28
+  );
   card(MX, y, colW, fitH, 'soft');
   h3('Long-stay relevance', MX + 5, y + 6);
-  textBlock(model.longStayNote, MX + 4, y + 11.5, colW - 8, { size: 9.5, color: C.muted, lh: 4.1 });
+  textBlock(model.longStayNote, MX + 4, y + 11.5, colW - 8, { size: fitSize, color: C.muted, factor: fitFactor });
   card(MX + colW + 4, y, colW, fitH, 'neutral');
   h3('Short-stay note', MX + colW + 9, y + 6);
-  textBlock(model.shortStayNote, MX + colW + 8, y + 11.5, colW - 8, { size: 9.5, color: C.muted, lh: 4.1 });
+  textBlock(model.shortStayNote, MX + colW + 8, y + 11.5, colW - 8, { size: fitSize, color: C.muted, factor: fitFactor });
   y += fitH + 5;
 
-  h3('Selected long-stay quality measures (real values only)', MX, y);
-  y += 1;
-  y = textBlock('Lower is generally better unless noted. These are facility-reported rates CMS publishes — not a complete clinical chart.', MX, y, W, { size: 9.5, color: C.muted, lh: 4 });
+  y = h3('Selected long-stay quality measures (real values only)', MX, y);
+  y = textBlock('Lower is generally better unless noted. These are facility-reported rates CMS publishes — not a complete clinical chart.', MX, y, W, { size: 9.5, color: C.muted });
 
   if (model.careFitRows.length) {
     autoTable(doc, {
@@ -513,7 +565,11 @@ export function generateFacilityBriefPDF(
   const ctxBits = model.careFitContext.length
     ? model.careFitContext
     : ['No additional quality-measure context in this extract.'];
-  const cH = Math.max(10 + measureBullets(ctxBits, colW - 8, 10), 10 + measureBullets(model.fitChecklist, colW - 8, 10), 32);
+  const cH = Math.max(
+    bulletCardHeight(ctxBits, colW - 8, 10),
+    bulletCardHeight(model.fitChecklist, colW - 8, 10),
+    32
+  );
   if (y + cH < FLOOR) {
     card(MX, y, colW, cH, 'neutral');
     h3('Also reported (context)', MX + 5, y + 6);
@@ -527,7 +583,7 @@ export function generateFacilityBriefPDF(
   doc.addPage();
   pageHead(5);
   sectionHead('Inspection story');
-  y = textBlock(model.inspectionIntro, MX, y, W, { size: 11.5, lh: 5 }) + 3;
+  y = textBlock(model.inspectionIntro, MX, y, W, { size: 11.5 }) + 3;
 
   const cats = model.categories.slice(0, 4);
   const cw = (W - 3 * 2.5) / Math.max(cats.length, 1);
@@ -553,7 +609,11 @@ export function generateFacilityBriefPDF(
     const why = wrap(`Why it matters: ${story.why}`, W - 10, 10);
     const status = wrap(`Status: ${story.status}`, W - 10, 10);
     const ask = wrap(`Ask: "${story.ask}"`, W - 10, 10);
-    const sh = 8 + finding.length * 4.8 + why.length * 4.3 + status.length * 4.3 + ask.length * 4.3 + 8;
+    const sh = 11
+      + finding.length * lineMm(11, 1.35) + 1
+      + why.length * lineMm(10, 1.4) + 1
+      + status.length * lineMm(10, 1.4) + 1
+      + ask.length * lineMm(10, 1.4) + 4;
     if (y + sh > FLOOR - 18) break;
     setFill(C.card);
     setDraw(C.line);
@@ -567,14 +627,14 @@ export function generateFacilityBriefPDF(
     doc.setFontSize(11);
     setText(C.ink);
     doc.text(finding, MX + 5, sy, { lineHeightFactor: 1.35 });
-    sy += finding.length * 4.8 + 1;
+    sy += finding.length * lineMm(11, 1.35) + 1;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(10);
     setText([55, 65, 81]);
     doc.text(why, MX + 5, sy, { lineHeightFactor: 1.4 });
-    sy += why.length * 4.3 + 1;
+    sy += why.length * lineMm(10, 1.4) + 1;
     doc.text(status, MX + 5, sy, { lineHeightFactor: 1.4 });
-    sy += status.length * 4.3 + 1;
+    sy += status.length * lineMm(10, 1.4) + 1;
     doc.setFont('helvetica', 'bold');
     setText([15, 118, 110]);
     doc.text(ask, MX + 5, sy, { lineHeightFactor: 1.4 });
@@ -586,7 +646,7 @@ export function generateFacilityBriefPDF(
   doc.addPage();
   pageHead(6);
   sectionHead('F-tag table - Decision-relevant deficiencies');
-  y = textBlock(model.ftagIntro, MX, y, W, { size: 11.2, lh: 4.9 }) + 2;
+  y = textBlock(model.ftagIntro, MX, y, W, { size: 11.2 }) + 2;
 
   if (model.ftagRows.length) {
     autoTable(doc, {
@@ -623,10 +683,9 @@ export function generateFacilityBriefPDF(
   doc.addPage();
   pageHead(7);
   sectionHead('Penalties & safety extras');
-  y = textBlock(model.penaltyIntro, MX, y, W, { size: 11.5, lh: 5 }) + 3;
+  y = textBlock(model.penaltyIntro, MX, y, W, { size: 11.5 }) + 3;
   y = drawChips(model.penaltyChips, MX, y, W) + 5;
-  h3('Penalty timeline', MX, y);
-  y += 1;
+  y = h3('Penalty timeline', MX, y) + 1;
 
   if (model.penaltyRows.length) {
     autoTable(doc, {
@@ -653,34 +712,39 @@ export function generateFacilityBriefPDF(
 
   if (model.sffCard || model.abuseCard) {
     if (model.sffCard && model.abuseCard) {
-      const sffLines = wrap(model.sffCard, colW - 8, 9.5);
-      const abuseLines = wrap(model.abuseCard, colW - 8, 9.5);
-      const alertH = Math.max(32, 16 + Math.max(sffLines.length, abuseLines.length) * 4.1);
+      const alertSize = 9.5;
+      const alertFactor = 1.45;
+      const alertH = Math.max(
+        paragraphCardHeight(model.sffCard, colW - 8, alertSize, alertFactor, 12),
+        paragraphCardHeight(model.abuseCard, colW - 8, alertSize, alertFactor, 12),
+        32
+      );
       card(MX, y, colW, alertH, 'urgent');
       h3('Special Focus Facility (SFF)', MX + 5, y + 6);
-      textBlock(model.sffCard, MX + 4, y + 12, colW - 8, { size: 9.5, lh: 4.1 });
+      textBlock(model.sffCard, MX + 4, y + 12, colW - 8, { size: alertSize, factor: alertFactor });
       card(MX + colW + 4, y, colW, alertH, 'urgent');
       h3('Abuse icon - active', MX + colW + 9, y + 6);
-      textBlock(model.abuseCard, MX + colW + 8, y + 12, colW - 8, { size: 9.5, lh: 4.1 });
+      textBlock(model.abuseCard, MX + colW + 8, y + 12, colW - 8, { size: alertSize, factor: alertFactor });
       y += alertH + 4;
     } else {
       const text = model.sffCard || model.abuseCard;
       const title = model.sffCard ? 'Special Focus Facility (SFF)' : 'Abuse icon - active';
-      const lines = wrap(text, W - 8, 10);
-      const boxH = Math.max(26, 14 + lines.length * 4.2);
+      const boxH = Math.max(26, paragraphCardHeight(text, W - 8, 10, 1.45, 12));
       card(MX, y, W, boxH, 'urgent');
       h3(title, MX + 5, y + 6);
-      textBlock(text, MX + 4, y + 12, W - 8, { size: 10, lh: 4.2 });
+      textBlock(text, MX + 4, y + 12, W - 8, { size: 10, factor: 1.45 });
       y += boxH + 4;
     }
   }
 
   if (model.fireCard && y + 28 < FLOOR) {
-    const fh = 10 + measureBullets(model.fireCard, W - 10, 10);
-    card(MX, y, W, fh, 'neutral');
-    h3('Fire safety (when present)', MX + 5, y + 6);
-    drawBullets(model.fireCard, MX + 4, y + 11, W - 10, 10);
-    y += fh + 4;
+    const fh = bulletCardHeight(model.fireCard, W - 10, 10);
+    if (y + fh < FLOOR) {
+      card(MX, y, W, fh, 'neutral');
+      h3('Fire safety (when present)', MX + 5, y + 6);
+      drawBullets(model.fireCard, MX + 4, y + 11, W - 10, 10);
+      y += fh + 4;
+    }
   }
   if (y < FLOOR - 12) noteBox(model.penaltyNote, y);
 
@@ -688,21 +752,24 @@ export function generateFacilityBriefPDF(
   doc.addPage();
   pageHead(8);
   sectionHead('Visit checklist - Questions tied to this facility');
-  y = textBlock(model.visitIntro, MX, y, W, { size: 11.2, lh: 4.9 }) + 2;
+  y = textBlock(model.visitIntro, MX, y, W, { size: 11.2 }) + 2;
 
   const qMax = model.questions.length;
   const remaining = FLOOR - 16 - y;
   const slot = remaining / Math.max(qMax, 1);
   const compact = slot < 18;
+  const qSize = compact ? 10 : 10.5;
+  const qFactor = 1.35;
   model.questions.forEach((q, i) => {
-    const qLines = wrap(`${i + 1}. ${q}`, W, compact ? 10 : 10.5);
-    const block = qLines.length * 4.2 + (compact ? 9 : 11);
+    const qLines = wrap(`${i + 1}. ${q}`, W, qSize);
+    const qH = qLines.length * lineMm(qSize, qFactor);
+    const block = qH + (compact ? 9 : 11);
     if (y + block > FLOOR - 8) return;
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(compact ? 10 : 10.5);
+    doc.setFontSize(qSize);
     setText(C.ink);
-    doc.text(qLines, MX, y, { lineHeightFactor: 1.35 });
-    y += qLines.length * 4.2 + 1.5;
+    doc.text(qLines, MX, y, { lineHeightFactor: qFactor });
+    y += qH + 1.5;
     setDraw([203, 213, 225]);
     doc.setLineWidth(0.25);
     doc.line(MX, y + 3.5, MX + W, y + 3.5);
@@ -722,9 +789,8 @@ export function generateFacilityBriefPDF(
   doc.addPage();
   pageHead(9);
   sectionHead('Decision worksheet & sources');
-  y = textBlock('After the tour, capture what must be true for your family — then verify on Care Compare.', MX, y, W, { size: 11.5, lh: 5 }) + 2;
-  h3('Nearby alternatives to compare', MX, y);
-  y += 1;
+  y = textBlock('After the tour, capture what must be true for your family — then verify on Care Compare.', MX, y, W, { size: 11.5 }) + 2;
+  y = h3('Nearby alternatives to compare', MX, y) + 1;
 
   if (model.nearby.length) {
     autoTable(doc, {
@@ -755,7 +821,7 @@ export function generateFacilityBriefPDF(
   } else {
     y = textBlock('No lower-composite nearby homes were available to list in this extract.', MX, y, W, { size: 10, color: C.muted }) + 2;
   }
-  y = textBlock(model.nearbyNote, MX, y, W, { size: 9, color: C.muted, lh: 3.9 }) + 3;
+  y = textBlock(model.nearbyNote, MX, y, W, { size: 9, color: C.muted }) + 3;
 
   const boxW = (W - 3) / 2;
   const boxH = 28;
@@ -788,26 +854,33 @@ export function generateFacilityBriefPDF(
   y += boxH * 2 + 8;
 
   if (y + 18 < FLOOR) {
-    const srcLines = wrap(model.sources, W - 8, 9.5);
-    const srcH = srcLines.length * 4.1 + 10;
-    card(MX, y, W, srcH, 'neutral');
-    h3('Sources', MX + 5, y + 5.5);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9.5);
-    setText(C.ink);
-    doc.text(srcLines, MX + 5, y + 11, { lineHeightFactor: 1.35 });
-    y += srcH + 3;
+    const srcSize = 9.5;
+    const srcFactor = 1.35;
+    const srcH = paragraphCardHeight(model.sources, W - 8, srcSize, srcFactor, 11, 4);
+    if (y + srcH < FLOOR) {
+      card(MX, y, W, srcH, 'neutral');
+      h3('Sources', MX + 5, y + 5.5);
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(srcSize);
+      setText(C.ink);
+      doc.text(wrap(model.sources, W - 8, srcSize), MX + 5, y + 11, { lineHeightFactor: srcFactor });
+      y += srcH + 3;
+    }
   }
   if (y + 14 < FLOOR) {
-    const lim = wrap(`Limitation: ${model.limitation}  · The Oversight Report · oversightreports.com · DataLink Clinical LLC`, W - 8, 10);
-    const lh = lim.length * 4.2 + 8;
-    setFill(C.card);
-    setDraw(C.line);
-    doc.roundedRect(MX, y, W, lh, 1.8, 1.8, 'FD');
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(10);
-    setText([55, 65, 81]);
-    doc.text(lim, MX + 4, y + 5.5, { lineHeightFactor: 1.4 });
+    const limSize = 10;
+    const limFactor = 1.4;
+    const lim = wrap(`Limitation: ${model.limitation}  · The Oversight Report · oversightreports.com · DataLink Clinical LLC`, W - 8, limSize);
+    const lh = 5.5 + lim.length * lineMm(limSize, limFactor) + 3;
+    if (y + lh < FLOOR + 6) {
+      setFill(C.card);
+      setDraw(C.line);
+      doc.roundedRect(MX, y, W, lh, 1.8, 1.8, 'FD');
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(limSize);
+      setText([55, 65, 81]);
+      doc.text(lim, MX + 4, y + 5.5, { lineHeightFactor: limFactor });
+    }
   }
 
   // Footers last so page count is accurate and content never sits on the line.
