@@ -395,6 +395,18 @@
   .fb-answer-line { flex-wrap: wrap; }
 }
 
+/*
+ * Print Version contract (Chrome → Save as PDF / Print):
+ * Nine `.fb-page` sections + light header should land on ~9 letter pages,
+ * matching the jsPDF Facility Brief. Extra pages in #30 came from:
+ *   1) page-break-inside:avoid on large cards/notes, which shoved leftovers
+ *      onto nearly empty pages (staffing "why it matters", limitation box);
+ *   2) screen-sized padding/type so a section overflowed, then the next
+ *      section's page-break-before created a gap page.
+ * Keep page-break-before on major sections. Compress spacing so each section
+ * typically fits one page. Do not cut copy. Do not show site chrome / token URL
+ * (EvidencePage rewrites history before window.print).
+ */
 @media print {
   .no-print,
   .fb-actions,
@@ -402,21 +414,29 @@
   .ca-banner,
   .site-footer,
   .ev-header,
-  .ev-btn {
+  .ev-btn,
+  .ev-header-actions,
+  .ev-purchase-gate {
     display: none !important;
   }
 
   .fb {
     color: #111;
+    font-size: 11px;
+    line-height: 1.32;
   }
 
   .fb-top {
-    padding: 12px 0 14px;
+    padding: 2px 0 8px;
     border-bottom: 1px solid #d1d5db;
   }
 
+  .fb-brand-row { margin-bottom: 8px; }
+  .fb-facility { font-size: 20px; margin: 0 0 4px; }
+  .fb-meta { font-size: 11.5px; }
+
   .fb-page {
-    padding: 16px 0 8px;
+    padding: 6px 0 2px;
     break-before: page;
     page-break-before: always;
   }
@@ -426,15 +446,50 @@
     page-break-before: auto;
   }
 
-  .fb-card,
+  .fb-page h2 {
+    font-size: 14px;
+    margin: 0 0 6px;
+    padding-bottom: 3px;
+  }
+
+  .fb-sub { margin: 8px 0 4px; }
+  .fb-lead,
+  .fb-page p { margin: 0 0 6px; }
+  .fb-chip-row { margin: 0 0 8px; gap: 6px; }
+  .fb-chip { padding: 5px 8px; min-width: 6.5rem; }
+  .fb-metrics { gap: 6px; margin: 0 0 8px; }
+  .fb-metric { padding: 8px 8px; }
+  .fb-metric-v { font-size: 18px; }
+  .fb-two,
+  .fb-three { gap: 8px; margin: 0 0 8px; }
+  .fb-card { padding: 8px 10px; }
+  .fb-card-title { margin: 0 0 4px; }
+  .fb-bullets li { margin-bottom: 0.2rem; }
+  .fb-note { padding: 6px 8px; font-size: 0.85rem; }
+  .fb-table { font-size: 10px; margin: 0 0 8px; }
+  .fb-table th,
+  .fb-table td { padding: 4px 5px; }
+  .fb-questions { margin: 0 0 8px; }
+  .fb-questions li { margin-bottom: 8px; }
+  .fb-write-block { min-height: 22px; }
+  .fb-highlight-v { font-size: 18px; margin: 0 0 4px; }
+  .fb-limitation { padding: 6px 8px; font-size: 0.82rem; }
+
+  /* Small chips/metrics may stay intact. Large cards/tables must split rather
+     than jump to a new page and leave a sparse leftover sheet. */
   .fb-metric,
-  .fb-questions li,
-  .fb-table,
-  .fb-note {
+  .fb-chip,
+  .fb-questions li {
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
-  .fb-table { font-size: 11px; }
-  .fb-facility { font-size: 24px; }
+  .fb-card,
+  .fb-table,
+  .fb-note,
+  .fb-two,
+  .fb-three {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
 }

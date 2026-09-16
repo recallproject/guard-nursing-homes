@@ -113,6 +113,26 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
   }, [facility, nearbyAlternatives, allFacilities, deficiencyDetails, antipsychoticAlerts, dataAsOf]);
 
   const handlePrint = () => {
+    // Chrome's print header/footer otherwise shows the tokenized
+    // /evidence-download?token=… URL on every page.
+    const previousTitle = document.title;
+    const previousUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    document.title = `${facility?.name || 'Facility'} — Facility Brief`;
+    try {
+      window.history.replaceState(window.history.state, '', `/facility/${ccn}`);
+    } catch {
+      /* ignore */
+    }
+    const restore = () => {
+      document.title = previousTitle;
+      try {
+        window.history.replaceState(window.history.state, '', previousUrl);
+      } catch {
+        /* ignore */
+      }
+      window.removeEventListener('afterprint', restore);
+    };
+    window.addEventListener('afterprint', restore);
     window.print();
   };
 

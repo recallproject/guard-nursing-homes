@@ -840,3 +840,9 @@
     display: none;
   }
 }
+
+@media print {
+  .site-header {
+    display: none !important;
+  }
+}

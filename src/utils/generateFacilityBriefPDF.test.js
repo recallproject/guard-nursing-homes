@@ -55,5 +55,8 @@ describe('generateFacilityBriefPDF', () => {
     assert.match(raw, /->/);
     assert.match(raw, /Staffing/);
     assert.match(raw, /Ownership/);
+    assert.match(raw, /Questions & concerns/);
+    assert.match(raw, /Murrell portfolio/);
+    assert.match(raw, /averages high fines/);
   });
 });
