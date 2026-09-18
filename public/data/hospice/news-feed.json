@@ -1,37 +1,61 @@
 {
-  "generated_at": "2026-09-17T17:36:01.933Z",
+  "generated_at": "2026-09-18T17:03:21.624Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-17T16:17:22.000Z",
+      "last_pubdate": "2026-09-18T15:45:23.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-17T09:00:20.000Z",
+      "last_pubdate": "2026-09-18T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-09-17T09:00:00.000Z",
+      "last_pubdate": "2026-09-18T15:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 12,
-  "matched_to_ccn": 2,
-  "matched_unique_ccns": 4,
+  "hospice_filtered": 11,
+  "matched_to_ccn": 3,
+  "matched_unique_ccns": 5,
   "confidence_breakdown": {
-    "high": 2,
+    "high": 3,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-4d5tzt",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-18T15:45:23.000Z",
+      "headline": "Hospices’ Top Legislative Priorities",
+      "summary": "As the midterm elections approach, hospices have unfinished business in the halls of Congress. Providers have identified several high priority pieces of legislation they would like to see passed before this Congress ends in December, according to healthcare leaders attending the...",
+      "url": "https://hospicenews.com/2026/09/18/hospices-top-legislative-priorities/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-99nv02",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-17T17:48:43.000Z",
+      "headline": "Rural Solterra Hospice Triples Patient Census",
+      "summary": "Oregon-based Solterra Hospice has seen its average daily census rate triple in the last year. The organization’s leaders attribute the expansion to balanced clinical capacity and strong community collaboration. Solterra Hospice began serving patients in November 2024 after...",
+      "url": "https://hospicenews.com/2026/09/17/rural-solterra-hospice-triples-patient-census/",
+      "matched_ccns": [
+        "381590"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "hospice-news-j2tzrb",
       "source": "Hospice News",
@@ -127,39 +151,6 @@
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-88enah",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-11T19:56:01.000Z",
-      "headline": "LeadingAge to CMS: Halt the Hospice, Home Health Moratorium",
-      "summary": "LeadingAge has urged the U.S. Centers for Medicare & Medicaid Services (CMS) to end the temporary hospice and home health moratoria in advance of the November expiration date. The association of nonprofit aging service providers recently submitted the request in a letter to CMS...",
-      "url": "https://hospicenews.com/2026/09/11/leadingage-to-cms-halt-the-hospice-home-health-moratorium/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-nj8zq5",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-11T13:35:52.000Z",
-      "headline": "Frazier Healthcare Acquires MatrixCare, Appoints Lujan CEO",
-      "summary": "The private equity firm Frazier Healthcare Partners has acquired the post-acute software company MatrixCare from ResMed (NYSE: RMD). The transaction makes MatrixCare a standalone company, rather than a subsidiary. Financial terms were undisclosed. In the wake of the deal, the...",
-      "url": "https://hospicenews.com/2026/09/11/frazier-healthcare-acquires-matrixcare-appoints-lujan-ceo/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "kff-health-news-6rbl46",
-      "source": "KFF Health News",
-      "source_url": "https://kffhealthnews.org/feed/",
-      "date": "2026-09-11T09:00:00.000Z",
-      "headline": "Readers Wrestle With Healthcare Inequalities and Want a Word With Congress",
-      "summary": "KFF Health News gives readers a chance to comment on a recent batch of stories.",
-      "url": "https://kffhealthnews.org/letter-to-the-editor/congressional-benefits-hospice-care-hospital-monopolies-student-loans-ai-solutions-common-ground/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
       "id": "propublica-z4khpx",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
@@ -180,6 +171,16 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
         "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
+      }
+    ],
+    "381590": [
+      {
+        "id": "hospice-news-99nv02",
+        "date": "2026-09-17T17:48:43.000Z",
+        "headline": "Rural Solterra Hospice Triples Patient Census",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/09/17/rural-solterra-hospice-triples-patient-census/",
+        "summary": "Oregon-based Solterra Hospice has seen its average daily census rate triple in the last year. The organization’s leaders attribute the expansion to balanced clinical capacity and strong community collaboration. Solterra Hospice began serving patients in November 2024 after..."
       }
     ],
     "451515": [

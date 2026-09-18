@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-17T17:36:08.906Z",
+  "generated_at": "2026-09-18T17:03:31.447Z",
   "source": "CourtListener",
   "source_url": "https://www.courtlistener.com",
   "coverage_note": "CourtListener RECAP archive coverage depends on RECAP user uploads. Snapshot, not a backfill.",
@@ -17,11 +17,11 @@
     {
       "query": "hospice fraud settlement",
       "label": "fraud-settlement",
-      "pulled": 16
+      "pulled": 17
     }
   ],
   "api_soft_failures": 0,
-  "total_search_results": 49,
+  "total_search_results": 50,
   "hospice_filtered": 3,
   "matched_to_ccn": 0,
   "matched_high_confidence": 0,
