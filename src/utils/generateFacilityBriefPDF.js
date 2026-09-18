@@ -94,19 +94,6 @@ export function generateFacilityBriefPDF(
     putOnlyUsedFonts: true,
   });
   registerBriefPdfFonts(doc);
-  const rawText = doc.text.bind(doc);
-  doc.text = (text, x, y, options) => {
-    doc.setCharSpace(0);
-    const safe = Array.isArray(text) ? text.map((line) => pdfSafeText(line)) : pdfSafeText(text);
-    return rawText(safe, x, y, options);
-  };
-  doc.setProperties({
-    title: `The Oversight Report — ${PRODUCT_LABEL}`,
-    author: 'Robert Benard, NP — DataLink Clinical LLC',
-    creator: 'oversightreports.com — provenance dlc-prov-2026q2-9c4f5b3a',
-    subject: `${PRODUCT_LABEL} for ${model.name}. Provenance fingerprint dlc-prov-2026q2-9c4f5b3a.`,
-    keywords: 'nursing home, CMS, oversight, facility brief, dlc-prov-2026q2-9c4f5b3a, DataLink Clinical',
-  });
 
   const PW = doc.internal.pageSize.getWidth();
   const PH = doc.internal.pageSize.getHeight();
@@ -115,6 +102,70 @@ export function generateFacilityBriefPDF(
   const colW = (W - 4) / 2;
   // Absolute footers collided with page 8/9 in mock iteration — keep a hard floor.
   const FLOOR = PH - 18;
+  const PT_MM = 1 / doc.internal.scaleFactor;
+  function lineMm(sizePt, factor = 1.4) {
+    return sizePt * PT_MM * factor;
+  }
+
+  const overflows = [];
+  let auditLayout = true;
+  const rawText = doc.text.bind(doc);
+  doc.text = (text, x, y, options) => {
+    doc.setCharSpace(0);
+    const safe = Array.isArray(text) ? text.map((line) => pdfSafeText(line)) : pdfSafeText(text);
+    if (auditLayout) {
+      const opts = options || {};
+      const lines = Array.isArray(safe) ? safe : String(safe).split('\n');
+      const size = doc.getFontSize();
+      const factor = opts.lineHeightFactor || 1.15;
+      const lh = lineMm(size, factor);
+      const align = opts.align || 'left';
+      const page = doc.internal.getCurrentPageInfo().pageNumber;
+      lines.forEach((line, i) => {
+        const tw = doc.getTextWidth(String(line));
+        let left = x;
+        if (align === 'center') left = x - tw / 2;
+        if (align === 'right') left = x - tw;
+        const right = left + tw;
+        const yy = y + i * lh;
+        if (right > PW - MX + 0.8) {
+          overflows.push({
+            page,
+            kind: 'right',
+            line: String(line).slice(0, 96),
+            right: Number(right.toFixed(2)),
+            limit: Number((PW - MX).toFixed(2)),
+          });
+        }
+        if (left < MX - 0.8) {
+          overflows.push({
+            page,
+            kind: 'left',
+            line: String(line).slice(0, 96),
+            left: Number(left.toFixed(2)),
+          });
+        }
+        if (yy > PH - 13.5) {
+          overflows.push({
+            page,
+            kind: 'bottom',
+            line: String(line).slice(0, 96),
+            y: Number(yy.toFixed(2)),
+          });
+        }
+      });
+    }
+    return rawText(safe, x, y, options);
+  };
+  doc.__briefOverflows = overflows;
+  doc.setProperties({
+    title: `The Oversight Report — ${PRODUCT_LABEL}`,
+    author: 'Robert Benard, NP — DataLink Clinical LLC',
+    creator: 'oversightreports.com — provenance dlc-prov-2026q2-9c4f5b3a',
+    subject: `${PRODUCT_LABEL} for ${model.name}. Provenance fingerprint dlc-prov-2026q2-9c4f5b3a.`,
+    keywords: 'nursing home, CMS, oversight, facility brief, dlc-prov-2026q2-9c4f5b3a, DataLink Clinical',
+  });
+
   let y = 12;
 
   function paintBg() {
@@ -126,17 +177,100 @@ export function generateFacilityBriefPDF(
   function setDraw(rgb) { doc.setDrawColor(...rgb); }
   function setText(rgb) { doc.setTextColor(...rgb); }
 
-  // jsPDF line spacing is (fontSize pt / scaleFactor) * lineHeightFactor, in mm.
-  // Card borders used size*0.42 (~1.19×) while doc.text used 1.4× — boxes were short.
-  const PT_MM = 1 / doc.internal.scaleFactor;
-  function lineMm(sizePt, factor = 1.4) {
-    return sizePt * PT_MM * factor;
-  }
-
   function wrap(text, width, size = 11.5, font = 'normal') {
     doc.setFont(FONT, font);
     doc.setFontSize(size);
-    return doc.splitTextToSize(pdfSafeText(String(text ?? '')), width);
+    const safe = pdfSafeText(String(text ?? ''));
+    if (!safe) return [''];
+    const raw = doc.splitTextToSize(safe, width);
+    const out = [];
+    for (const line of raw) {
+      if (doc.getTextWidth(line) <= width + 0.15) {
+        out.push(line);
+        continue;
+      }
+      let buf = '';
+      for (const ch of line) {
+        const trial = buf + ch;
+        if (buf && doc.getTextWidth(trial) > width) {
+          out.push(buf);
+          buf = ch;
+        } else {
+          buf = trial;
+        }
+      }
+      if (buf) out.push(buf);
+    }
+    return out.length ? out : [''];
+  }
+
+  function wrapAfterPrefix(lead, body, fullW, firstW, size, bodyFont = 'normal') {
+    doc.setFont(FONT, bodyFont);
+    doc.setFontSize(size);
+    const words = pdfSafeText(String(body ?? '')).split(/\s+/).filter(Boolean);
+    let first = '';
+    let i = 0;
+    while (i < words.length) {
+      const trial = first ? `${first} ${words[i]}` : words[i];
+      if (doc.getTextWidth(trial) <= firstW) {
+        first = trial;
+        i += 1;
+      } else {
+        break;
+      }
+    }
+    if (!first && words.length) {
+      const word = words[0];
+      let buf = '';
+      let consumed = 0;
+      for (const ch of word) {
+        if (buf && doc.getTextWidth(buf + ch) > firstW) break;
+        buf += ch;
+        consumed += 1;
+      }
+      first = buf;
+      const leftover = word.slice(consumed);
+      const restWords = leftover ? [leftover, ...words.slice(1)] : words.slice(1);
+      const more = restWords.length ? wrap(restWords.join(' '), fullW, size, bodyFont) : [];
+      return { first, more };
+    }
+    const rest = words.slice(i).join(' ');
+    const more = rest ? wrap(rest, fullW, size, bodyFont) : [];
+    return { first, more };
+  }
+
+  function labeledHeight(lead, body, width, size, factor, leadFont = 'bold', bodyFont = 'normal') {
+    const leadText = pdfSafeText(lead);
+    doc.setFont(FONT, leadFont);
+    doc.setFontSize(size);
+    const firstW = Math.max(12, width - doc.getTextWidth(leadText));
+    const packed = wrapAfterPrefix(leadText, body, width, firstW, size, bodyFont);
+    return (1 + packed.more.length) * lineMm(size, factor);
+  }
+
+  function drawLabeled(lead, body, x, yy, width, opts = {}) {
+    const size = opts.size || 10;
+    const factor = opts.factor || 1.4;
+    const leadFont = opts.leadFont || 'bold';
+    const bodyFont = opts.bodyFont || 'normal';
+    const color = opts.color || C.ink;
+    const leadText = pdfSafeText(lead);
+    doc.setFont(FONT, leadFont);
+    doc.setFontSize(size);
+    const leadW = doc.getTextWidth(leadText);
+    const firstW = Math.max(12, width - leadW);
+    const packed = wrapAfterPrefix(leadText, body, width, firstW, size, bodyFont);
+    const lh = lineMm(size, factor);
+    setText(color);
+    doc.setFont(FONT, leadFont);
+    doc.setFontSize(size);
+    doc.text(leadText, x, yy);
+    doc.setFont(FONT, bodyFont);
+    if (packed.first) doc.text(packed.first, x + leadW, yy);
+    if (packed.more.length) {
+      doc.text(packed.more, x, yy + lh, { lineHeightFactor: factor });
+    }
+    return yy + (1 + packed.more.length) * lh;
   }
 
   function wrappedHeight(text, width, size, factor = 1.4, font = 'normal') {
@@ -300,27 +434,35 @@ export function generateFacilityBriefPDF(
   function pageHead(pageNo) {
     paintBg();
     y = 11;
-    doc.setFont(FONT, 'normal');
-    doc.setFontSize(8.5);
-    setText(C.muted);
+    const pageLabel = `${pageNo} / ${BRIEF_PAGE_COUNT}`;
     doc.setFont(FONT, 'bold');
+    doc.setFontSize(8.5);
+    const pageW = doc.getTextWidth(pageLabel);
+    const headLines = wrap(`${PRODUCT_LABEL} - ${model.name} - CCN ${model.ccn}`, Math.max(40, W - pageW - 4), 8.5, 'bold');
     setText(C.ink);
-    doc.text(`${PRODUCT_LABEL} - ${model.name} - CCN ${model.ccn}`, MX, y);
+    doc.text(headLines, MX, y, { lineHeightFactor: 1.2 });
     doc.setFont(FONT, 'normal');
     setText(C.muted);
-    doc.text(`${pageNo} / ${BRIEF_PAGE_COUNT}`, PW - MX, y, { align: 'right' });
-    y += 2.5;
+    doc.text(pageLabel, PW - MX, y, { align: 'right' });
+    y += Math.max(1, headLines.length) * lineMm(8.5, 1.2) + 2;
     setDraw(C.line);
     doc.setLineWidth(0.25);
     doc.line(MX, y, MX + W, y);
     y += 7;
   }
 
-  function noteBox(text, yy) {
-    const size = 9.5;
+  function noteBox(text, yy, maxBottom = FLOOR) {
+    let size = 9.5;
     const factor = 1.4;
-    const lines = wrap(text, W - 8, size);
-    const h = 5.5 + lines.length * lineMm(size, factor) + 3;
+    let lines = wrap(text, W - 8, size);
+    let h = 5.5 + lines.length * lineMm(size, factor) + 3;
+    while (yy + h > maxBottom && size > 7.5) {
+      size -= 0.4;
+      lines = wrap(text, W - 8, size);
+      h = 5.5 + lines.length * lineMm(size, factor) + 3;
+    }
+    if (yy >= maxBottom) return yy;
+    if (yy + h > maxBottom) h = maxBottom - yy;
     setFill(C.note);
     doc.roundedRect(MX, yy, W, h, 1.8, 1.8, 'F');
     doc.setFont(FONT, 'normal');
@@ -379,7 +521,7 @@ export function generateFacilityBriefPDF(
   doc.setFont(FONT, 'bold');
   doc.setFontSize(24);
   setText(C.navy);
-  const nameLines = wrap(model.name, W, 24);
+  const nameLines = wrap(model.name, W, 24, 'bold');
   doc.text(nameLines, MX, y, { lineHeightFactor: 1.15 });
   y += nameLines.length * 9 + 2;
 
@@ -596,11 +738,14 @@ export function generateFacilityBriefPDF(
 
   const cats = model.categories.slice(0, 4);
   const cw = (W - 3 * 2.5) / Math.max(cats.length, 1);
+  const catLabels = cats.map((c) => wrap(c.t, cw - 4, 7.2));
+  const catExtra = Math.max(0, ...catLabels.map((lines) => (lines.length - 1) * lineMm(7.2, 1.15)));
+  const catH = 16 + catExtra;
   cats.forEach((c, i) => {
     const xx = MX + i * (cw + 2.5);
     setFill(C.card);
     setDraw(C.line);
-    doc.roundedRect(xx, y, cw, 18, 1.8, 1.8, 'FD');
+    doc.roundedRect(xx, y, cw, catH, 1.8, 1.8, 'FD');
     doc.setFont(FONT, 'bold');
     doc.setFontSize(16);
     setText(C.navy);
@@ -608,48 +753,73 @@ export function generateFacilityBriefPDF(
     doc.setFont(FONT, 'normal');
     doc.setFontSize(7.2);
     setText(C.muted);
-    const tl = wrap(c.t, cw - 4, 7.2);
-    doc.text(tl, xx + cw / 2, y + 12, { align: 'center', lineHeightFactor: 1.15 });
+    doc.text(catLabels[i], xx + cw / 2, y + 12, { align: 'center', lineHeightFactor: 1.15 });
   });
-  y += 22;
+  y += catH + 4;
 
-  for (const story of model.stories) {
-    const finding = wrap(`Finding: ${story.finding}`, W - 10, 11);
-    const why = wrap(`Why it matters: ${story.why}`, W - 10, 10);
-    const status = wrap(`Status: ${story.status}`, W - 10, 10);
-    const ask = wrap(`Ask: "${story.ask}"`, W - 10, 10);
-    const sh = 11
-      + finding.length * lineMm(11, 1.35) + 1
-      + why.length * lineMm(10, 1.4) + 1
-      + status.length * lineMm(10, 1.4) + 1
-      + ask.length * lineMm(10, 1.4) + 4;
-    if (y + sh > FLOOR - 18) break;
+  const storyInner = W - 10;
+  function measureStory(story, findingSize, bodySize) {
+    const tagLines = wrap(story.tag, storyInner, 8, 'bold');
+    const tagH = Math.max(1, tagLines.length) * lineMm(8, 1.2);
+    const findingH = labeledHeight('Finding: ', story.finding, storyInner, findingSize, 1.35);
+    const whyH = labeledHeight('Why it matters: ', story.why, storyInner, bodySize, 1.4);
+    const statusH = labeledHeight('Status: ', story.status, storyInner, bodySize, 1.4);
+    const askH = labeledHeight('Ask: "', `${story.ask}"`, storyInner, bodySize, 1.4, 'bold', 'bold');
+    return {
+      tagLines,
+      findingSize,
+      bodySize,
+      h: 6 + tagH + 1.6 + findingH + 1 + whyH + 1 + statusH + 1 + askH + 3.2,
+    };
+  }
+
+  const noteReserve = 5.5 + wrap(model.alsoOnRecord, W - 8, 9.5).length * lineMm(9.5, 1.4) + 8;
+  let findingSize = 11;
+  let bodySize = 10;
+  let storyLayouts = model.stories.map((story) => measureStory(story, findingSize, bodySize));
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    const total = storyLayouts.reduce((sum, layout) => sum + layout.h + 3, 0);
+    if (y + total + noteReserve <= FLOOR || (findingSize <= 9 && bodySize <= 8.5)) break;
+    findingSize = Math.max(9, findingSize - 0.5);
+    bodySize = Math.max(8.5, bodySize - 0.4);
+    storyLayouts = model.stories.map((story) => measureStory(story, findingSize, bodySize));
+  }
+
+  model.stories.forEach((story, idx) => {
+    const layout = storyLayouts[idx];
     setFill(C.card);
     setDraw(C.line);
-    doc.roundedRect(MX, y, W, sh, 2, 2, 'FD');
+    doc.roundedRect(MX, y, W, layout.h, 2, 2, 'FD');
     doc.setFont(FONT, 'bold');
     doc.setFontSize(8);
     setText(C.muted);
-    doc.text(story.tag, MX + 5, y + 5.5);
-    let sy = y + 11;
-    doc.setFont(FONT, 'bold');
-    doc.setFontSize(11);
-    setText(C.ink);
-    doc.text(finding, MX + 5, sy, { lineHeightFactor: 1.35 });
-    sy += finding.length * lineMm(11, 1.35) + 1;
-    doc.setFont(FONT, 'normal');
-    doc.setFontSize(10);
-    setText([55, 65, 81]);
-    doc.text(why, MX + 5, sy, { lineHeightFactor: 1.4 });
-    sy += why.length * lineMm(10, 1.4) + 1;
-    doc.text(status, MX + 5, sy, { lineHeightFactor: 1.4 });
-    sy += status.length * lineMm(10, 1.4) + 1;
-    doc.setFont(FONT, 'bold');
-    setText(C.ask);
-    doc.text(ask, MX + 5, sy, { lineHeightFactor: 1.4 });
-    y += sh + 3;
-  }
-  if (y < FLOOR - 16) noteBox(model.alsoOnRecord, y);
+    doc.text(layout.tagLines, MX + 5, y + 5.5, { lineHeightFactor: 1.2 });
+    let sy = y + 6 + Math.max(1, layout.tagLines.length) * lineMm(8, 1.2) + 1.4;
+    sy = drawLabeled('Finding: ', story.finding, MX + 5, sy, storyInner, {
+      size: layout.findingSize,
+      factor: 1.35,
+      color: C.ink,
+    }) + 1;
+    sy = drawLabeled('Why it matters: ', story.why, MX + 5, sy, storyInner, {
+      size: layout.bodySize,
+      factor: 1.4,
+      color: [55, 65, 81],
+    }) + 1;
+    sy = drawLabeled('Status: ', story.status, MX + 5, sy, storyInner, {
+      size: layout.bodySize,
+      factor: 1.4,
+      color: [55, 65, 81],
+    }) + 1;
+    drawLabeled('Ask: "', `${story.ask}"`, MX + 5, sy, storyInner, {
+      size: layout.bodySize,
+      factor: 1.4,
+      color: C.ask,
+      leadFont: 'bold',
+      bodyFont: 'bold',
+    });
+    y += layout.h + 3;
+  });
+  if (y < FLOOR) noteBox(model.alsoOnRecord, y);
 
   // ───────────────────────── PAGE 6 ─────────────────────────
   doc.addPage();
@@ -704,7 +874,7 @@ export function generateFacilityBriefPDF(
       head: [['Date', 'Type', 'Detail']],
       body: model.penaltyRows.map((r) => [r.date, r.type, r.detail]),
       theme: 'plain',
-      styles: { font: FONT, fontSize: 10, textColor: C.ink, cellPadding: { top: 1.8, bottom: 1.8, left: 1.5, right: 1.5 } },
+      styles: { font: FONT, fontSize: 10, textColor: C.ink, cellPadding: { top: 1.8, bottom: 1.8, left: 1.5, right: 1.5 }, overflow: 'linebreak' },
       headStyles: { fontStyle: 'bold', fontSize: 8, textColor: C.muted, fillColor: C.bg },
       columnStyles: { 0: { cellWidth: W * 0.18 }, 1: { cellWidth: W * 0.24 }, 2: { cellWidth: W * 0.58, fontStyle: 'bold' } },
       didParseCell: (data) => {
@@ -763,26 +933,33 @@ export function generateFacilityBriefPDF(
   sectionHead('Visit checklist - Questions tied to this facility');
   y = textBlock(model.visitIntro, MX, y, W, { size: 11.2 }) + 2;
 
-  const qMax = model.questions.length;
-  const remaining = FLOOR - 16 - y;
-  const slot = remaining / Math.max(qMax, 1);
-  const compact = slot < 18;
-  const qSize = compact ? 10 : 10.5;
-  const qFactor = 1.35;
-  model.questions.forEach((q, i) => {
-    const qLines = wrap(`${i + 1}. ${q}`, W, qSize);
-    const qH = qLines.length * lineMm(qSize, qFactor);
-    const block = qH + (compact ? 9 : 11);
-    if (y + block > FLOOR - 8) return;
+  const tipReserve = 5.5 + wrap(model.visitTip, W - 8, 9.5).length * lineMm(9.5, 1.4) + 6;
+  let qSize = 10.5;
+  let qFactor = 1.35;
+  let compact = false;
+  let qBlocks = [];
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    qBlocks = model.questions.map((q, i) => {
+      const lines = wrap(`${i + 1}. ${q}`, W, qSize, 'bold');
+      const qH = Math.max(1, lines.length) * lineMm(qSize, qFactor);
+      return { lines, qH, block: qH + (compact ? 8.6 : 11) };
+    });
+    const total = qBlocks.reduce((sum, block) => sum + block.block, 0);
+    if (y + total + tipReserve <= FLOOR || qSize <= 8.8) break;
+    qSize = Math.max(8.8, qSize - 0.4);
+    qFactor = 1.28;
+    compact = true;
+  }
+  qBlocks.forEach((block) => {
     doc.setFont(FONT, 'bold');
     doc.setFontSize(qSize);
     setText(C.ink);
-    doc.text(qLines, MX, y, { lineHeightFactor: qFactor });
-    y += qH + 1.5;
+    doc.text(block.lines, MX, y, { lineHeightFactor: qFactor });
+    y += block.qH + 1.4;
     setDraw([203, 213, 225]);
     doc.setLineWidth(0.25);
-    doc.line(MX, y + 3.5, MX + W, y + 3.5);
-    y += 5.2;
+    doc.line(MX, y + 3.2, MX + W, y + 3.2);
+    y += 4.8;
     doc.setFont(FONT, 'normal');
     doc.setFontSize(8.5);
     setText(C.muted);
@@ -790,9 +967,9 @@ export function generateFacilityBriefPDF(
     doc.line(MX + 22, y + 0.6, MX + 78, y + 0.6);
     doc.text('Role / date:', MX + 84, y);
     doc.line(MX + 104, y + 0.6, MX + W, y + 0.6);
-    y += compact ? 4.2 : 5;
+    y += compact ? 3.6 : 4.6;
   });
-  if (y < FLOOR - 8) noteBox(model.visitTip, y);
+  if (y < FLOOR) noteBox(model.visitTip, y);
 
   // ───────────────────────── PAGE 9 ─────────────────────────
   doc.addPage();
@@ -893,6 +1070,7 @@ export function generateFacilityBriefPDF(
   }
 
   // Footers last so page count is accurate and content never sits on the line.
+  auditLayout = false;
   const total = doc.getNumberOfPages();
   for (let i = 1; i <= total; i++) {
     doc.setPage(i);
