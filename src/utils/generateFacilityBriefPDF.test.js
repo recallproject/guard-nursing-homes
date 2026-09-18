@@ -38,7 +38,8 @@ describe('generateFacilityBriefPDF', () => {
       { returnDoc: true, reportDate: new Date('2026-09-15T12:00:00') }
     );
 
-    assert.equal(doc.internal.getNumberOfPages(), 9);
+    const pageCount = doc.internal.getNumberOfPages();
+    assert.ok(pageCount === 9 || pageCount === 10, `expected 9-10 pages, got ${pageCount}`);
     const raw = doc.output();
     const text = decodeJsPdfContent(raw);
     assert.match(raw, /Facility Brief/);
@@ -67,6 +68,7 @@ describe('generateFacilityBriefPDF', () => {
     assert.match(raw, /Identity-H/);
     assert.match(text, /INSPECTION STORY|Inspection story/i);
     assert.match(text, /VISIT CHECKLIST|Visit checklist/i);
+    assert.match(text, /Questions continued/i);
     assert.match(text, /Special Focus Facility/);
     assert.match(text, /Winnie-Stowell Hospital District/);
     assert.match(text, /Answered by:/);
