@@ -1,37 +1,109 @@
 {
-  "generated_at": "2026-09-14T16:47:22.659Z",
+  "generated_at": "2026-09-17T17:36:01.933Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-14T15:50:38.000Z",
+      "last_pubdate": "2026-09-17T16:17:22.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-14T09:00:00.000Z",
+      "last_pubdate": "2026-09-17T09:00:20.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-09-14T09:00:00.000Z",
+      "last_pubdate": "2026-09-17T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 12,
-  "matched_to_ccn": 1,
-  "matched_unique_ccns": 1,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 4,
   "confidence_breakdown": {
-    "high": 1,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-j2tzrb",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-17T16:17:22.000Z",
+      "headline": "The Pennant Group Shows Strong Growth as Amedisys Asset Integration Proceeds",
+      "summary": "The Pennant Group’s (Nasdaq: PNTG) existing home health, hospice and senior living operations continued to improve while the company worked through a major expansion in the Southeast, executives said during the Jefferies Healthcare Services Conference. In October 2025, The...",
+      "url": "https://hospicenews.com/2026/09/17/the-pennant-group-shows-strong-growth-as-amedisys-asset-integration-proceeds/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-493150",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-16T19:06:19.000Z",
+      "headline": "Hospices Flesh Out Leadership Suites",
+      "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as...",
+      "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
+      "matched_ccns": [
+        "061500",
+        "061504",
+        "221618"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-hpecsd",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-15T19:14:28.000Z",
+      "headline": "Legacy-Building Nonprofit Enhances Hospice Education, Bereavement Support",
+      "summary": "A recently developed student-led bereavement program is expanding hospice education while boosting volunteer opportunities in grief support. Pre-med students at John Hopkins University and Brown University have established Letters Without Limits, a nonprofit legacy-building...",
+      "url": "https://hospicenews.com/2026/09/15/legacy-building-nonprofit-enhances-hospice-education-bereavement-support/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-melyh8",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-15T17:15:50.000Z",
+      "headline": "Entries for the 2026 SHN Architecture & Design Awards Are Due September 30",
+      "summary": "Entries for the 2026 SHN Architecture & Design Awards are due Wednesday, September 30 at 11:59pm CDT. The 2026 SHN Architecture & Design Awards program is designed to showcase the best buildings, campuses, communities, and renovation/repositioning projects across the following...",
+      "url": "https://hospicenews.com/2026/09/15/entries-for-the-2026-shn-architecture-design-awards-are-due-september-30/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-4l4vu0",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-15T10:32:05.000Z",
+      "headline": "LeadingAge CEO to Step Down in 2027",
+      "summary": "LeadingAge, the association of nonprofit and mission-driven providers of aging services, today announced that President and CEO Katie Smith Sloan will step down, effective March 31, 2027. Smith Sloan has led the association of nonprofit aging services providers since 2016. She...",
+      "url": "https://hospicenews.com/2026/09/15/leadingage-ceo-to-step-down-in-2027/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-tie7fg",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-14T20:29:41.000Z",
+      "headline": "Dementia Focus a ‘Huge Distinguisher’ for Hospice Austin",
+      "summary": "Hospice Austin and its Austin Palliative Care program have made dementia care a strategic priority in expanding access to end-of-life support. Hospice Austin and Austin Palliative Care first zeroed in on dementia care roughly a year-and-a-half ago. The organization reached its...",
+      "url": "https://hospicenews.com/2026/09/14/dementia-focus-a-huge-distinguisher-for-hospice-austin/",
+      "matched_ccns": [
+        "451515"
+      ],
+      "match_confidence": "high"
+    },
     {
       "id": "hospice-news-ylimzc",
       "source": "Hospice News",
@@ -48,8 +120,8 @@
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
       "date": "2026-09-14T15:25:56.000Z",
-      "headline": "NPHI: Let CMS Hospice, Home Health Moratoria End",
-      "summary": "The six-month moratoria on hospice and home health enrollment in Medicare should end as scheduled in November, according to the National Partnership for Healthcare and Hospice Innovation (NPHI). The U.S. Centers for Medicare & Medicaid Services’ (CMS) implemented the moratoria...",
+      "headline": "NPHI Urges CMS to Build on Hospice Moratorium With Targeted Enforcement",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) should follow the six-month moratoria on hospice and home health enrollment in Medicare with more pinpointed efforts to root out fraud, according to the National Partnership for Healthcare and Hospice Innovation (NPHI). CMS...",
       "url": "https://hospicenews.com/2026/09/14/nphi-let-cms-hospice-home-health-moratoria-end/",
       "matched_ccns": [],
       "match_confidence": "none"
@@ -88,63 +160,6 @@
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-net436",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-10T20:28:07.000Z",
-      "headline": "Hospice 'Anomalies' Uncovered in AI-Guided Regulation",
-      "summary": "Hospices lack clarity around how regulators are using artificial intelligence (AI) to improve program integrity. Hospices need to understand the technology trends that are quickly taking shape in regulation, according to Angelo Spinola, home health, home care and hospice chair...",
-      "url": "https://hospicenews.com/2026/09/10/hospice-anomalies-uncovered-in-ai-guided-regulation/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-yoksdp",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-10T15:42:14.000Z",
-      "headline": "Future Leader: Yvette Vega, Clinical Manager, THEMA Health Services - Hospice",
-      "summary": "Yvette Vega, Clinical Manager at THEMA Health Services - Hospice, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of...",
-      "url": "https://hospicenews.com/2026/09/10/future-leader-yvette-vega-clinical-manager-thema-health-services-hospice/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-k42u20",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-10T14:12:30.000Z",
-      "headline": "Hospice Savannah Forms Larger Parent Company Georgia Care Innovators",
-      "summary": "Hospice Savannah has created a new, larger parent company to reflect and coordinate its growing scope of services — Georgia Care Innovators. The hospice itself will remain intact as a subsidiary of the new organization, along with seven other entities. These include the Edel...",
-      "url": "https://hospicenews.com/2026/09/10/hospice-savannah-forms-larger-parent-company-georgia-care-innovators/",
-      "matched_ccns": [
-        "111504"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-jyr1y6",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-09T18:50:27.000Z",
-      "headline": "Compassus Exec: Hospice a ‘Huge Opportunity’ for Growth",
-      "summary": "Hospices have untapped potential to grow their patient reach, according to Compassus Senior Vice President and Chief Growth Officer Chris Core. Demand for end-of-life care is swelling, but these services remain vastly underutilized nationwide, Core said. Technology is playing an...",
-      "url": "https://hospicenews.com/2026/09/09/compassus-exec-hospice-a-huge-opportunity-for-growth/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-gxbirm",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-09T12:06:58.000Z",
-      "headline": "National Alliance: Hospice, Home Health Moratoria Curbing Access to Care",
-      "summary": "The U.S. Centers for Medicare & Medicaid Services’ (CMS) six-month moratoria on home health and hospice Medicare enrollment are adversely affecting access to care, as well as providers’ financial positions. This is according to the National Alliance for Care at Home, which...",
-      "url": "https://hospicenews.com/2026/09/09/national-alliance-hospice-home-health-moratoria-curbing-access-to-care/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
       "id": "propublica-z4khpx",
       "source": "ProPublica",
       "source_url": "https://www.propublica.org/feeds/propublica/main",
@@ -154,28 +169,47 @@
       "url": "https://www.propublica.org/article/wrongful-conviction-cancer-death",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-26zb0f",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-08T21:39:12.000Z",
-      "headline": "Family Caregivers Turn to Tech as Burden Soars",
-      "summary": "Family caregivers are using technology to address their most significant concerns amid rising demand for end-of-life support. Hospices are paying attention to these and other trends as they develop strategies to curb increasingly complex caregiver burden. Improving family...",
-      "url": "https://hospicenews.com/2026/09/08/family-caregivers-turn-to-tech-as-burden-soars/",
-      "matched_ccns": [],
-      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
-    "111504": [
+    "221618": [
       {
-        "id": "hospice-news-k42u20",
-        "date": "2026-09-10T14:12:30.000Z",
-        "headline": "Hospice Savannah Forms Larger Parent Company Georgia Care Innovators",
+        "id": "hospice-news-493150",
+        "date": "2026-09-16T19:06:19.000Z",
+        "headline": "Hospices Flesh Out Leadership Suites",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/10/hospice-savannah-forms-larger-parent-company-georgia-care-innovators/",
-        "summary": "Hospice Savannah has created a new, larger parent company to reflect and coordinate its growing scope of services — Georgia Care Innovators. The hospice itself will remain intact as a subsidiary of the new organization, along with seven other entities. These include the Edel..."
+        "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
+        "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
+      }
+    ],
+    "451515": [
+      {
+        "id": "hospice-news-tie7fg",
+        "date": "2026-09-14T20:29:41.000Z",
+        "headline": "Dementia Focus a ‘Huge Distinguisher’ for Hospice Austin",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/09/14/dementia-focus-a-huge-distinguisher-for-hospice-austin/",
+        "summary": "Hospice Austin and its Austin Palliative Care program have made dementia care a strategic priority in expanding access to end-of-life support. Hospice Austin and Austin Palliative Care first zeroed in on dementia care roughly a year-and-a-half ago. The organization reached its..."
+      }
+    ],
+    "061500": [
+      {
+        "id": "hospice-news-493150",
+        "date": "2026-09-16T19:06:19.000Z",
+        "headline": "Hospices Flesh Out Leadership Suites",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
+        "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
+      }
+    ],
+    "061504": [
+      {
+        "id": "hospice-news-493150",
+        "date": "2026-09-16T19:06:19.000Z",
+        "headline": "Hospices Flesh Out Leadership Suites",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
+        "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
       }
     ]
   }
