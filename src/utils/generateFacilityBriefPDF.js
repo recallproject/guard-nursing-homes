@@ -451,6 +451,27 @@ export function generateFacilityBriefPDF(
     y += 7;
   }
 
+  function startBriefPage(pageNo, title) {
+    doc.addPage();
+    pageHead(pageNo);
+    if (title) sectionHead(title);
+  }
+
+  function rewriteHeaderPageNumbers(total) {
+    const savedAudit = auditLayout;
+    auditLayout = false;
+    for (let i = 2; i <= total; i += 1) {
+      doc.setPage(i);
+      setFill(C.bg);
+      doc.rect(PW - MX - 26, 6.2, 26, 7.4, 'F');
+      doc.setFont(FONT, 'normal');
+      doc.setFontSize(8.5);
+      setText(C.muted);
+      doc.text(`${i} / ${total}`, PW - MX, 11, { align: 'right' });
+    }
+    auditLayout = savedAudit;
+  }
+
   function noteBox(text, yy, maxBottom = FLOOR) {
     let size = 9.5;
     const factor = 1.4;
@@ -931,35 +952,39 @@ export function generateFacilityBriefPDF(
   doc.addPage();
   pageHead(8);
   sectionHead('Visit checklist - Questions tied to this facility');
-  y = textBlock(model.visitIntro, MX, y, W, { size: 11.2 }) + 2;
+  y = textBlock(model.visitIntro, MX, y, W, { size: 11.2 }) + 4;
 
-  const tipReserve = 5.5 + wrap(model.visitTip, W - 8, 9.5).length * lineMm(9.5, 1.4) + 6;
-  let qSize = 10.5;
-  let qFactor = 1.35;
-  let compact = false;
-  let qBlocks = [];
-  for (let attempt = 0; attempt < 8; attempt += 1) {
-    qBlocks = model.questions.map((q, i) => {
-      const lines = wrap(`${i + 1}. ${q}`, W, qSize, 'bold');
-      const qH = Math.max(1, lines.length) * lineMm(qSize, qFactor);
-      return { lines, qH, block: qH + (compact ? 8.6 : 11) };
-    });
-    const total = qBlocks.reduce((sum, block) => sum + block.block, 0);
-    if (y + total + tipReserve <= FLOOR || qSize <= 8.8) break;
-    qSize = Math.max(8.8, qSize - 0.4);
-    qFactor = 1.28;
-    compact = true;
+  // Keep PR #36 bold wrap. Do not compact Q&A spacing to force one page —
+  // leftover prompts may continue onto page 9.
+  const qSize = 10.5;
+  const qFactor = 1.4;
+  const gapAfterQuestion = 7;
+  const gapAfterAnswer = 10;
+  let briefPage = 8;
+
+  function ensureRoom(neededMm, continuedTitle) {
+    if (y + neededMm <= FLOOR) return;
+    briefPage += 1;
+    startBriefPage(briefPage, continuedTitle);
   }
-  qBlocks.forEach((block) => {
+
+  const qBlocks = model.questions.map((q, i) => {
+    const lines = wrap(`${i + 1}. ${q}`, W, qSize, 'bold');
+    const qH = Math.max(1, lines.length) * lineMm(qSize, qFactor);
+    return { lines, qH };
+  });
+
+  qBlocks.forEach((block, idx) => {
+    const isLast = idx === qBlocks.length - 1;
+    const needed = block.qH + gapAfterQuestion + 4 + (isLast ? 5 : gapAfterAnswer);
+    ensureRoom(needed, 'Visit checklist - Questions continued');
     doc.setFont(FONT, 'bold');
     doc.setFontSize(qSize);
     setText(C.ink);
     doc.text(block.lines, MX, y, { lineHeightFactor: qFactor });
-    y += block.qH + 1.4;
+    y += block.qH + gapAfterQuestion;
     setDraw([203, 213, 225]);
     doc.setLineWidth(0.25);
-    doc.line(MX, y + 3.2, MX + W, y + 3.2);
-    y += 4.8;
     doc.setFont(FONT, 'normal');
     doc.setFontSize(8.5);
     setText(C.muted);
@@ -967,13 +992,27 @@ export function generateFacilityBriefPDF(
     doc.line(MX + 22, y + 0.6, MX + 78, y + 0.6);
     doc.text('Role / date:', MX + 84, y);
     doc.line(MX + 104, y + 0.6, MX + W, y + 0.6);
-    y += compact ? 3.6 : 4.6;
+    y += isLast ? 5 : gapAfterAnswer;
   });
+
+  const tipH = 5.5 + wrap(model.visitTip, W - 8, 9.5).length * lineMm(9.5, 1.4) + 4;
+  if (y + tipH > FLOOR) {
+    briefPage += 1;
+    startBriefPage(briefPage, briefPage === 9 ? 'Visit checklist - Questions continued' : null);
+  }
   if (y < FLOOR) noteBox(model.visitTip, y);
 
   // ───────────────────────── PAGE 9 ─────────────────────────
-  doc.addPage();
-  pageHead(9);
+  const worksheetMin = 88;
+  if (briefPage < 9) {
+    briefPage = 9;
+    startBriefPage(9);
+  } else if (y + worksheetMin > FLOOR) {
+    briefPage += 1;
+    startBriefPage(briefPage);
+  } else {
+    y += 8;
+  }
   sectionHead('Decision worksheet & sources');
   y = textBlock('After the tour, capture what must be true for your family — then verify on Care Compare.', MX, y, W, { size: 11.5 }) + 2;
   y = h3('Nearby alternatives to compare', MX, y) + 1;
@@ -1072,6 +1111,7 @@ export function generateFacilityBriefPDF(
   // Footers last so page count is accurate and content never sits on the line.
   auditLayout = false;
   const total = doc.getNumberOfPages();
+  rewriteHeaderPageNumbers(total);
   for (let i = 1; i <= total; i++) {
     doc.setPage(i);
     const fy = PH - 10.5;
