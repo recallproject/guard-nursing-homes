@@ -74,7 +74,6 @@ export function FacilityBriefDocument({
             <button type="button" className="fb-btn fb-btn-ghost" onClick={onPrint}>
               Print
             </button>
-            <span className="fb-no-dropdown">Family Brief · no attorney toggle</span>
           </div>
         ) : null}
       </header>

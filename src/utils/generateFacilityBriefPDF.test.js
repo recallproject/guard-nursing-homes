@@ -65,6 +65,28 @@ describe('generateFacilityBriefPDF', () => {
     assert.match(raw, /\/FontFile2/);
     assert.match(raw, /\/Subtype\s*\/CIDFontType2/);
     assert.match(raw, /Identity-H/);
+    assert.match(text, /INSPECTION STORY|Inspection story/i);
+    assert.match(text, /VISIT CHECKLIST|Visit checklist/i);
+    assert.match(text, /Special Focus Facility/);
+    assert.match(text, /Winnie-Stowell Hospital District/);
+    assert.match(text, /Answered by:/);
+    const overflows = doc.__briefOverflows || [];
+    const page5 = overflows.filter((item) => item.page === 5);
+    const page8 = overflows.filter((item) => item.page === 8);
+    assert.equal(page5.length, 0, `page 5 overflow: ${JSON.stringify(page5, null, 2)}`);
+    assert.equal(page8.length, 0, `page 8 overflow: ${JSON.stringify(page8, null, 2)}`);
+    assert.equal(overflows.length, 0, `layout overflow: ${JSON.stringify(overflows, null, 2)}`);
+  });
+
+  it('does not show an attorney-toggle debug label on the customer-facing Brief', () => {
+    const jsx = fs.readFileSync(path.join(root, 'src/components/FacilityBriefDocument.jsx'), 'utf8');
+    const css = fs.readFileSync(path.join(root, 'src/styles/facility-brief.css'), 'utf8');
+    assert.doesNotMatch(jsx, /attorney toggle/i);
+    assert.doesNotMatch(jsx, /fb-no-dropdown/);
+    assert.doesNotMatch(css, /fb-no-dropdown/);
+    assert.doesNotMatch(css, /no attorney/i);
+    assert.match(jsx, /Download PDF/);
+    assert.match(jsx, /Print/);
   });
 
   it('print CSS uses system fonts and does not print Google webfonts', () => {

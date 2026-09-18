@@ -129,12 +129,6 @@
   border: 1px solid var(--fb-line);
 }
 
-.fb-no-dropdown {
-  font-size: 12px;
-  color: var(--fb-muted);
-  margin-left: 4px;
-}
-
 .fb-page {
   padding: 28px 40px 8px;
 }
