@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { watchlistComparePath } from '../utils/watchlistCompare';
 import '../styles/save-toast.css';
 
 export function SaveToast({ visible, facilityName, favoriteCount = 0, onDismiss }) {
@@ -21,7 +22,7 @@ export function SaveToast({ visible, facilityName, favoriteCount = 0, onDismiss 
         {facilityName ? `${facilityName} added to favorites` : 'Added to favorites'}
       </span>
       <Link
-        to={canCompare ? '/watchlist?compare=1' : '/watchlist'}
+        to={canCompare ? watchlistComparePath() : '/watchlist'}
         className="save-toast__link"
         onClick={onDismiss}
       >

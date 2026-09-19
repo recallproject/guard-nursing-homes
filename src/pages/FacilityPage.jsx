@@ -23,6 +23,7 @@ import NotFoundPage from './NotFoundPage';
 import '../styles/staffing.css';
 import ftagReference from '../data/ftag-reference.json';
 import { facilitySeoDescription, facilitySeoTitle } from '../utils/facilitySeo';
+import { watchlistComparePath } from '../utils/watchlistCompare';
 
 // Accordion component for abuse/neglect citation groups
 function AbuseGroupAccordion({ ftag, desc, defs, harmCount, hasActualHarm }) {
@@ -453,7 +454,7 @@ export function FacilityPage() {
             {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
           </button>
           {watchlist.length >= 2 ? (
-            <Link to="/watchlist?compare=1" className="fp-compare-cta">
+            <Link to={watchlistComparePath({ ccns: watchlist.map((item) => item.ccn) })} className="fp-compare-cta">
               Compare your {watchlist.length} favorites →
             </Link>
           ) : (

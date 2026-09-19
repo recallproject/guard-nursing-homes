@@ -776,7 +776,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
         <div className="v5-footer-main">Public CMS data &middot; No industry funding &middot; Built by a bedside clinician</div>
         <div className="v5-footer-sub">The Oversight Report -- oversightreports.com</div>
         <div className="v5-footer-links">
-          <Link to="/compare" className="v5-footer-link">Compare Tools</Link>
+          <Link to="/compare" className="v5-footer-link">How tools compare</Link>
           <Link to="/methodology" className="v5-footer-link">Methodology</Link>
           <Link to="/pricing" className="v5-footer-link">Pricing</Link>
           <Link to="/attorneys" className="v5-footer-link">Attorneys</Link>

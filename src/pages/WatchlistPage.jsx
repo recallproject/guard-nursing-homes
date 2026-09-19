@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useFacilityData } from '../hooks/useFacilityData';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { WatchlistCompareView } from '../components/WatchlistCompareView';
+import { readSessionCompareCcns, resolveCompareSelection } from '../utils/watchlistCompare';
 import '../styles/watchlist.css';
 
 const US_STATES = {
@@ -30,12 +32,29 @@ export function WatchlistPage() {
   const [filterState, setFilterState] = useState('all');
   const [showConfirmRemove, setShowConfirmRemove] = useState(null);
   const [showConfirmClear, setShowConfirmClear] = useState(false);
-  const [selectedForCompare, setSelectedForCompare] = useState(new Set());
-  const [showCompare, setShowCompare] = useState(false);
   const comparisonRef = useRef(null);
-
   const headerRef = useRef(null);
   const contentRef = useRef(null);
+  const trackedAutoCompareRef = useRef('');
+
+  const queryKey = `${searchParams.get('compare')}|${searchParams.get('ccns') || ''}`;
+  const favoriteCcns = watchlist.map((item) => item.ccn);
+  const autoCompare = resolveCompareSelection({
+    favoriteCcns,
+    queryCompare: searchParams.get('compare'),
+    queryCcns: searchParams.get('ccns'),
+    sessionCcns: loading ? [] : readSessionCompareCcns(),
+  });
+
+  const [compareOverride, setCompareOverride] = useState(null);
+  const [prevQueryKey, setPrevQueryKey] = useState(queryKey);
+  if (queryKey !== prevQueryKey) {
+    setPrevQueryKey(queryKey);
+    setCompareOverride(null);
+  }
+
+  const selectedForCompare = compareOverride?.selected ?? new Set(autoCompare.selected);
+  const showCompare = compareOverride?.show ?? autoCompare.openCompare;
 
   // Plausible: track watchlist page view
   useEffect(() => {
@@ -65,12 +84,22 @@ export function WatchlistPage() {
   }, [watchlist, sortBy, filterState]);
 
   useEffect(() => {
-    if (searchParams.get('compare') !== '1' || loading) return;
+    if (!autoCompare.openCompare) return;
+    const key = `${queryKey}|${autoCompare.selected.join(',')}`;
+    if (trackedAutoCompareRef.current === key) return;
+    trackedAutoCompareRef.current = key;
+    window.plausible && window.plausible('Compare-Used', {
+      props: { count: String(autoCompare.selected.length), source: 'auto' },
+    });
+  }, [autoCompare.openCompare, autoCompare.selected, queryKey]);
+
+  useEffect(() => {
+    if (!showCompare) return;
     const timer = setTimeout(() => {
-      document.getElementById('compare')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      comparisonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 150);
     return () => clearTimeout(timer);
-  }, [searchParams, loading]);
+  }, [showCompare]);
 
   if (loading) {
     return (
@@ -100,6 +129,10 @@ export function WatchlistPage() {
       const facility = getFacility(item.ccn);
       return facility ? { ...facility, addedAt: item.addedAt } : null;
     })
+    .filter(Boolean);
+
+  const selectedFacilities = [...selectedForCompare]
+    .map((ccn) => facilities.find((fac) => fac.ccn === ccn))
     .filter(Boolean);
 
   // Apply state filter
@@ -209,20 +242,18 @@ export function WatchlistPage() {
   };
 
   const toggleCompareSelect = (ccn) => {
-    setSelectedForCompare(prev => {
-      const next = new Set(prev);
-      if (next.has(ccn)) {
-        next.delete(ccn);
-      } else if (next.size < 3) {
-        next.add(ccn);
-      }
-      return next;
-    });
+    const next = new Set(selectedForCompare);
+    if (next.has(ccn)) {
+      next.delete(ccn);
+    } else if (next.size < 3) {
+      next.add(ccn);
+    }
+    setCompareOverride({ selected: next, show: showCompare });
   };
 
   const handleCompareSelected = () => {
     window.plausible && window.plausible('Compare-Used', {props: {count: String(selectedForCompare.size)}});
-    setShowCompare(true);
+    setCompareOverride({ selected: selectedForCompare, show: true });
     setTimeout(() => {
       if (comparisonRef.current) {
         comparisonRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -245,7 +276,9 @@ export function WatchlistPage() {
             <span className="watchlist-count-badge">{facilities.length}</span>
           )}
         </div>
-        <p className="watchlist-subtitle">Favorite facilities, then compare them side-by-side</p>
+        <p className="watchlist-subtitle">
+          Favorite 2–3 homes, then compare them side-by-side. Saved on this device only — no account needed.
+        </p>
       </div>
 
       {/* Empty State */}
@@ -262,6 +295,20 @@ export function WatchlistPage() {
         </div>
       ) : (
         <>
+          {showCompare && selectedFacilities.length >= 2 && (
+            <div ref={comparisonRef}>
+              <WatchlistCompareView
+                facilities={selectedFacilities}
+                onChangeHomes={() => {
+                  setCompareOverride({ selected: selectedForCompare, show: false });
+                  setTimeout(() => {
+                    document.getElementById('favorites-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 50);
+                }}
+              />
+            </div>
+          )}
+
           {/* Summary Stats */}
           <div className="watchlist-stats">
             <div className="watchlist-stat-card">
@@ -288,31 +335,33 @@ export function WatchlistPage() {
           </div>
 
           {/* Compare Bar */}
-          <div
-            className={`watchlist-compare-bar${facilities.length >= 2 ? ' watchlist-compare-bar--docked' : ''}`}
-            id="compare"
-          >
-            {facilities.length >= 2 ? (
-              <>
-                <span className="watchlist-compare-info">
-                  {selectedForCompare.size === 0
-                    ? 'Select 2–3 facilities, then tap Compare'
-                    : selectedForCompare.size === 1
-                      ? 'Select 1 more to compare side-by-side'
-                      : `${selectedForCompare.size} selected — compare side-by-side`}
-                </span>
-                <button
-                  className={`btn btn-primary watchlist-compare-btn ${selectedForCompare.size < 2 ? 'watchlist-compare-btn--disabled' : ''}`}
-                  disabled={selectedForCompare.size < 2}
-                  onClick={handleCompareSelected}
-                >
-                  Compare side-by-side
-                </button>
-              </>
-            ) : (
-              <span className="watchlist-compare-hint">Favorite one more facility to compare them side-by-side</span>
-            )}
-          </div>
+          {!showCompare && (
+            <div
+              className={`watchlist-compare-bar${facilities.length >= 2 ? ' watchlist-compare-bar--docked' : ''}`}
+              id="compare"
+            >
+              {facilities.length >= 2 ? (
+                <>
+                  <span className="watchlist-compare-info">
+                    {selectedForCompare.size === 0
+                      ? 'Select 2–3 facilities, then tap Compare'
+                      : selectedForCompare.size === 1
+                        ? 'Select 1 more to compare side-by-side'
+                        : `${selectedForCompare.size} selected — ready to compare`}
+                  </span>
+                  <button
+                    className={`btn btn-primary watchlist-compare-btn ${selectedForCompare.size < 2 ? 'watchlist-compare-btn--disabled' : ''}`}
+                    disabled={selectedForCompare.size < 2}
+                    onClick={handleCompareSelected}
+                  >
+                    Compare side-by-side
+                  </button>
+                </>
+              ) : (
+                <span className="watchlist-compare-hint">Favorite one more facility to compare them side-by-side</span>
+              )}
+            </div>
+          )}
 
           {/* Controls */}
           <div className="watchlist-controls">
@@ -352,7 +401,7 @@ export function WatchlistPage() {
           </div>
 
           {/* Facility List */}
-          <div className="watchlist-grid" ref={contentRef}>
+          <div className="watchlist-grid" ref={contentRef} id="favorites-list">
             {filteredFacilities.map(facility => (
               <div key={facility.ccn} className={`watchlist-card ${selectedForCompare.has(facility.ccn) ? 'watchlist-card--selected' : ''}`}>
                 <div className="watchlist-card-header">
@@ -434,94 +483,6 @@ export function WatchlistPage() {
             </div>
           )}
         </>
-      )}
-
-      {/* Inline Comparison */}
-      {showCompare && selectedForCompare.size >= 2 && (
-        <div className="watchlist-compare-view" ref={comparisonRef}>
-          <h2 className="watchlist-compare-title">Side-by-Side Comparison</h2>
-          <div className="watchlist-compare-table-wrap">
-            <table className="watchlist-compare-table">
-              <thead>
-                <tr>
-                  <th></th>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return f ? <th key={ccn}>{f.name}<br /><span className="wct-meta">{f.city}, {f.state}</span></th> : null;
-                  })}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="wct-label">CMS Stars</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return <td key={ccn}>{f ? `${'★'.repeat(f.stars || 0)}${'☆'.repeat(5 - (f.stars || 0))}` : '—'}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">Risk Score</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    const score = f?.composite || 0;
-                    const cls = score >= 60 ? 'wct-danger' : score >= 40 ? 'wct-warning' : score >= 20 ? 'wct-caution' : 'wct-good';
-                    return <td key={ccn} className={cls}>{score.toFixed(1)}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">Total Fines</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return <td key={ccn}>{formatCurrency(f?.total_fines)}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">Deficiencies</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return <td key={ccn}>{f?.total_deficiencies || 0}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">Serious Harm</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    const count = f?.jeopardy_count || 0;
-                    return <td key={ccn} className={count > 0 ? 'wct-danger' : ''}>{count}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">Total HPRD</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return <td key={ccn}>{f?.total_hprd?.toFixed(2) || '—'}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">RN Hours</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return <td key={ccn}>{f?.rn_hprd?.toFixed(2) || '—'}</td>;
-                  })}
-                </tr>
-                <tr>
-                  <td className="wct-label">Beds</td>
-                  {[...selectedForCompare].map(ccn => {
-                    const f = facilities.find(fac => fac.ccn === ccn);
-                    return <td key={ccn}>{f?.beds || '—'}</td>;
-                  })}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div className="watchlist-compare-actions">
-            {[...selectedForCompare].map(ccn => (
-              <Link key={ccn} to={`/facility/${ccn}`} className="btn btn-secondary">
-                View Full Report
-              </Link>
-            ))}
-          </div>
-        </div>
       )}
 
       {/* Disclaimer */}

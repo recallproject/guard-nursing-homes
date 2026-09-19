@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CARE_SETTINGS, getCareSetting } from '../data/careSettings';
 import { buildSettingSearchPath } from '../utils/parseWhere';
+import { watchlistComparePath } from '../utils/watchlistCompare';
 
 let cachedSearchIndex = null;
 
@@ -115,7 +116,7 @@ export function HubSearch({
           or{' '}
           <Link to={`${setting.route}#browse-states`}>{browseLabel}</Link>
           {' · '}
-          <Link to="/watchlist?compare=1">Compare your favorites</Link>
+          <Link to={watchlistComparePath()}>Compare your favorites</Link>
         </p>
       )}
     </form>
