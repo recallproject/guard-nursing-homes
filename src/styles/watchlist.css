@@ -25,26 +25,37 @@
 }
 
 .watchlist-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 800;
   color: var(--text-dark, #1A202C);
   letter-spacing: -0.02em;
+  line-height: 1;
   margin: 0;
+}
+
+.watchlist-title-text {
+  display: block;
+  line-height: 1;
 }
 
 .watchlist-count-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 48px;
-  height: 48px;
-  padding: 0 16px;
+  align-self: center;
+  min-width: 1.15em;
+  height: 1.15em;
+  padding: 0 0.38em;
   background-color: var(--primary);
   color: var(--text-white);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.25rem;
+  font-size: 0.42em;
   font-weight: 700;
-  border-radius: 24px;
+  line-height: 1;
+  border-radius: 999px;
   box-shadow: var(--shadow-md);
 }
 
@@ -77,6 +88,13 @@
 .watchlist-error p {
   color: var(--text-muted);
   font-size: 1.125rem;
+}
+
+.watchlist-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
 }
 
 /* ========================================
@@ -892,12 +910,7 @@
 
   .watchlist-header h1 {
     font-size: 2.5rem;
-  }
-
-  .watchlist-count-badge {
-    min-width: 40px;
-    height: 40px;
-    font-size: 1rem;
+    align-items: center;
   }
 
   .watchlist-stats {

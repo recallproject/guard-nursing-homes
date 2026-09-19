@@ -13,8 +13,10 @@ function readSrc(relPath) {
 describe('P0 facility Downloads conversion', () => {
   it('keeps a plain free-vs-paid line for stressed readers', () => {
     const rail = readSrc('components/FacilityDownloads.jsx');
-    assert.match(rail, /Free 1-page snapshot/);
-    assert.match(rail, /Full decision packet — \$29/);
+    const copy = readSrc('components/facilityReportCopy.js');
+    assert.match(copy, /Free 1-page snapshot/);
+    assert.match(copy, /Full decision packet — \$29/);
+    assert.match(rail, /FREE_VS_PAID_COPY/);
     assert.match(rail, /fp-cta-compare/);
   });
 

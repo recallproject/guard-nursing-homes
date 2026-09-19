@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { generatePDF } from '../utils/generatePDF';
 import { checkoutSingleReport } from '../utils/stripe';
 import { CONTACT_EMAIL, CONTACT_MAILTO } from '../data/contact';
+import { FREE_VS_PAID_COPY } from './facilityReportCopy';
 import '../styles/facility-downloads.css';
+
+export { FREE_VS_PAID_COPY };
 
 function DownloadIcon() {
   return (
@@ -69,12 +72,6 @@ function useFacilityReportActions(facility, nearbyFacilities, allFacilities, ant
 }
 
 const MEDICARE_COMPARE = 'https://www.medicare.gov/care-compare/';
-
-/** Plain free-vs-paid line for stressed / older readers. */
-export const FREE_VS_PAID_COPY = {
-  free: 'Free 1-page snapshot',
-  paid: 'Full decision packet — $29',
-};
 
 /** Compact sticky Downloads rail — two primary CTAs only. */
 export function FacilityCtaRail({

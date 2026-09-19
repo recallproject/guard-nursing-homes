@@ -1,33 +1,36 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { watchlistComparePath } from '../utils/watchlistCompare';
+import { useLocation } from 'react-router-dom';
 import '../styles/save-toast.css';
 
-export function SaveToast({ visible, facilityName, favoriteCount = 0, onDismiss }) {
+/**
+ * Short confirmation after favoriting. No compare-arrow CTA — the list-page
+ * Compare dock and Favorites page are the intentional next steps.
+ */
+export function SaveToast({ visible, facilityName, onDismiss }) {
+  const location = useLocation();
+  const hideToast = location.pathname === '/watchlist' || location.pathname.startsWith('/state/');
+
   useEffect(() => {
-    if (visible) {
-      const timer = setTimeout(onDismiss, 3500);
-      return () => clearTimeout(timer);
+    if (!visible) return undefined;
+    if (hideToast) {
+      onDismiss();
+      return undefined;
     }
-  }, [visible, onDismiss]);
+    const timer = setTimeout(onDismiss, 2800);
+    return () => clearTimeout(timer);
+  }, [visible, onDismiss, hideToast]);
 
-  if (!visible) return null;
-
-  const canCompare = favoriteCount >= 2;
+  if (!visible || hideToast) return null;
 
   return (
-    <div className="save-toast">
-      <span className="save-toast__star">★</span>
+    <div className="save-toast" role="status">
+      <span className="save-toast__star" aria-hidden="true">★</span>
       <span className="save-toast__text">
-        {facilityName ? `${facilityName} added to favorites` : 'Added to favorites'}
+        {facilityName ? `${facilityName} saved to favorites` : 'Saved to favorites'}
       </span>
-      <Link
-        to={canCompare ? watchlistComparePath() : '/watchlist'}
-        className="save-toast__link"
-        onClick={onDismiss}
-      >
-        {canCompare ? 'Compare favorites →' : 'View favorites →'}
-      </Link>
+      <button type="button" className="save-toast__dismiss" onClick={onDismiss} aria-label="Dismiss">
+        ×
+      </button>
     </div>
   );
 }

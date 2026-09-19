@@ -1,15 +1,7 @@
 /**
- * CA news strip is only relevant on California hub / CA state pages.
- * It must not appear on facility pages (including non-CA facilities) or
- * nationally framed surfaces like hospice.
+ * CA AG hospice-fraud promo strip — disabled site-wide.
+ * Kept as a single flag so it can be re-enabled without hunting JSX.
  */
-export function shouldShowCaliforniaBanner(pathname) {
-  const path = (pathname || '/').split('?')[0].replace(/\/+$/, '') || '/';
-  const lower = path.toLowerCase();
-  if (lower.startsWith('/facility')) return false;
-  if (lower.startsWith('/hospice')) return false;
-  if (lower === '/california') return true;
-  if (lower === '/state/ca') return true;
-  if (lower === '/states/california' || lower.startsWith('/states/california/')) return true;
+export function shouldShowCaliforniaBanner(_pathname) {
   return false;
 }

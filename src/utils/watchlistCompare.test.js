@@ -120,4 +120,22 @@ describe('resolveCompareSelection', () => {
     assert.deepEqual(result.selected, []);
     assert.equal(result.openCompare, false);
   });
+
+  it('honors explicit compare CCNs when favorites have not hydrated yet', () => {
+    const fromQuery = resolveCompareSelection({
+      favoriteCcns: [],
+      queryCompare: '1',
+      queryCcns: '056435,555117',
+    });
+    assert.deepEqual(fromQuery.selected, ['056435', '555117']);
+    assert.equal(fromQuery.openCompare, true);
+
+    const fromSession = resolveCompareSelection({
+      favoriteCcns: [],
+      queryCompare: '1',
+      sessionCcns: ['056435', '555117'],
+    });
+    assert.deepEqual(fromSession.selected, ['056435', '555117']);
+    assert.equal(fromSession.openCompare, true);
+  });
 });

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { generatePDF } from '../utils/generatePDF';
 import { checkoutSingleReport } from '../utils/stripe';
-import { FREE_VS_PAID_COPY } from './FacilityDownloads';
+import { formatMetricNumber } from '../utils/watchlistFacilities';
+import { FREE_VS_PAID_COPY } from './facilityReportCopy';
 
 function formatCurrency(amount) {
   if (!amount) return '$0';
@@ -24,16 +24,16 @@ function riskClass(score) {
 }
 
 function metricRows(facility) {
-  const score = facility?.composite || 0;
-  const jeopardy = facility?.jeopardy_count || 0;
+  const score = Number(facility?.composite) || 0;
+  const jeopardy = Number(facility?.jeopardy_count) || 0;
   return [
     { label: 'CMS Stars', value: renderStars(facility?.stars), className: '' },
-    { label: 'Risk Score', value: score.toFixed(1), className: riskClass(score) },
+    { label: 'Risk Score', value: formatMetricNumber(facility?.composite, 1), className: riskClass(score) },
     { label: 'Total Fines', value: formatCurrency(facility?.total_fines), className: '' },
     { label: 'Deficiencies', value: facility?.total_deficiencies || 0, className: '' },
     { label: 'Serious Harm', value: jeopardy, className: jeopardy > 0 ? 'wct-danger' : '' },
-    { label: 'Total HPRD', value: facility?.total_hprd != null ? facility.total_hprd.toFixed(2) : '—', className: '' },
-    { label: 'RN Hours', value: facility?.rn_hprd != null ? facility.rn_hprd.toFixed(2) : '—', className: '' },
+    { label: 'Total HPRD', value: formatMetricNumber(facility?.total_hprd, 2), className: '' },
+    { label: 'RN Hours', value: formatMetricNumber(facility?.rn_hprd, 2), className: '' },
     { label: 'Beds', value: facility?.beds || '—', className: '' },
   ];
 }
@@ -56,8 +56,9 @@ function CompareFacilityCtas({ facility }) {
       });
     }
     setFamilyLoading(true);
-    setTimeout(() => {
+    setTimeout(async () => {
       try {
+        const { generatePDF } = await import('../utils/generatePDF');
         generatePDF(facility);
       } catch (err) {
         console.error('Family Report PDF failed:', err);

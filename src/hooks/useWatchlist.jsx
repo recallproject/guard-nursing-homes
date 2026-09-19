@@ -34,11 +34,21 @@ export function WatchlistProvider({ children }) {
 
   const [lastAdded, setLastAdded] = useState(null);
 
+  const persist = (next) => {
+    try {
+      localStorage.setItem(WATCHLIST_KEY, JSON.stringify(next));
+    } catch (err) {
+      console.error('Error saving watchlist:', err);
+    }
+  };
+
   const addFacility = useCallback((ccn, name) => {
     if (!ccn) return;
     setWatchlist(prev => {
       if (prev.some(item => item.ccn === ccn)) return prev;
-      return [...prev, { ccn, addedAt: new Date().toISOString() }];
+      const next = [...prev, { ccn, addedAt: new Date().toISOString() }];
+      persist(next);
+      return next;
     });
     setLastAdded({ ccn, name, timestamp: Date.now() });
     track('watchlist_added', { ccn, facility_name: name });
@@ -49,7 +59,11 @@ export function WatchlistProvider({ children }) {
   }, []);
 
   const removeFacility = useCallback((ccn) => {
-    setWatchlist(prev => prev.filter(item => item.ccn !== ccn));
+    setWatchlist(prev => {
+      const next = prev.filter(item => item.ccn !== ccn);
+      persist(next);
+      return next;
+    });
   }, []);
 
   const watchedSet = useMemo(() => new Set(watchlist.map(item => item.ccn)), [watchlist]);
@@ -59,6 +73,7 @@ export function WatchlistProvider({ children }) {
   }, [watchedSet]);
 
   const clearWatchlist = useCallback(() => {
+    persist([]);
     setWatchlist([]);
   }, []);
 
