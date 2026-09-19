@@ -872,10 +872,28 @@
   align-items: center;
   justify-content: center;
   min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: #1d4ed8;
+  font: inherit;
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.watchlist-compare-actionbar-paid:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.watchlist-compare-actionbar-note {
+  margin: 0;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #64748b;
 }
 
 .watchlist-compare-upgrade {

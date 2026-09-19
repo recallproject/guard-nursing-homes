@@ -10,7 +10,8 @@
  *    -> redirected to /evidence-success?session_id=cs_xxx
  * 2. Frontend calls POST /api/send-evidence with { checkout_session_id, ccn? }
  * 3. This endpoint calls Stripe API to verify payment_status === 'paid'
- * 4. CCN is resolved from the paid session (client_reference_id / metadata)
+ * 4. Facility Brief: CCN from client_reference_id / metadata.ccn
+ *    Compare Brief: CCNs from metadata.ccns (all homes in the paid set)
  *    so www vs apex localStorage mismatches cannot block fulfillment
  * 5. Only then generates the HMAC download token
  *
@@ -23,8 +24,13 @@
  * - STRIPE_SECRET_KEY: For verifying checkout sessions with Stripe
  */
 
-import crypto from 'crypto';
 import Stripe from 'stripe';
+import { generateCompareBriefToken, generateFacilityBriefToken } from './lib/downloadToken.js';
+import {
+  assertPaidCompareBriefSession,
+  isCompareBriefSession,
+  resolveCompareCcns,
+} from './lib/resolveCompareBrief.js';
 import { assertPaidFacilityBriefSession, resolveFacilityCcn } from './lib/resolveFacilityCcn.js';
 
 const EVIDENCE_SECRET = process.env.EVIDENCE_SECRET;
@@ -35,17 +41,6 @@ const stripe = process.env.STRIPE_SECRET_KEY
   ? new Stripe(process.env.STRIPE_SECRET_KEY)
   : null;
 
-function generateToken(ccn) {
-  const expiry = Date.now() + 72 * 60 * 60 * 1000; // 72 hours
-  const payload = `${ccn}:${expiry}`;
-  const signature = crypto
-    .createHmac('sha256', EVIDENCE_SECRET)
-    .update(payload)
-    .digest('hex');
-  const token = Buffer.from(payload).toString('base64url') + '.' + signature;
-  return { token, expiry };
-}
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -55,7 +50,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const { ccn: requestedCcn, checkout_session_id } = req.body || {};
+  const { ccn: requestedCcn, ccns: requestedCcns, checkout_session_id } = req.body || {};
 
   // ── Payment verification ─────────────────────────────────────────
   // Require a Stripe checkout session ID and verify payment with Stripe.
@@ -76,16 +71,49 @@ export default async function handler(req, res) {
   let session;
   try {
     session = await stripe.checkout.sessions.retrieve(checkout_session_id);
-    const payment = assertPaidFacilityBriefSession(session);
-    if (!payment.ok) {
-      return res.status(payment.status).json({ error: payment.error });
-    }
   } catch (err) {
     console.error('Stripe session verification failed:', err.message);
     if (err.type === 'StripeInvalidRequestError') {
       return res.status(400).json({ error: 'Invalid checkout session' });
     }
     return res.status(500).json({ error: 'Payment verification failed' });
+  }
+
+  if (isCompareBriefSession(session)) {
+    const payment = assertPaidCompareBriefSession(session);
+    if (!payment.ok) {
+      return res.status(payment.status).json({ error: payment.error });
+    }
+    const resolved = resolveCompareCcns(session, requestedCcns || requestedCcn);
+    if (resolved.error) {
+      return res.status(resolved.status).json({ error: resolved.error });
+    }
+    const ccns = resolved.ccns;
+    const { token } = generateCompareBriefToken(ccns, EVIDENCE_SECRET);
+    const downloadUrl = `${SITE_URL}/compare-brief-download?token=${token}&ccns=${ccns.join(',')}`;
+
+    if (FORMSPREE_ID) {
+      fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Compare Brief Purchase — ${ccns.join(', ')}`,
+          message: `Verified Compare Brief purchase (session: ${checkout_session_id}) for CCNs ${ccns.join(', ')}`,
+        }),
+      }).catch(() => {});
+    }
+
+    return res.status(200).json({
+      success: true,
+      product: 'compare_brief',
+      downloadUrl,
+      ccns,
+    });
+  }
+
+  const payment = assertPaidFacilityBriefSession(session);
+  if (!payment.ok) {
+    return res.status(payment.status).json({ error: payment.error });
   }
   // ── End payment verification ─────────────────────────────────────
 
@@ -95,7 +123,7 @@ export default async function handler(req, res) {
   }
 
   const ccn = resolved.ccn;
-  const { token } = generateToken(ccn);
+  const { token } = generateFacilityBriefToken(ccn, EVIDENCE_SECRET);
   const downloadUrl = `${SITE_URL}/evidence-download?token=${token}&ccn=${ccn}`;
 
   // Notify Rob via Formspree that a report was purchased (verified)
@@ -112,6 +140,7 @@ export default async function handler(req, res) {
 
   return res.status(200).json({
     success: true,
+    product: 'facility_brief',
     downloadUrl,
     ccn,
   });

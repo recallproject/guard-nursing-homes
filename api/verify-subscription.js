@@ -81,9 +81,13 @@ export default async function handler(req, res) {
     }
 
     if (session.mode !== 'subscription') {
+      const product = session.metadata?.product === 'compare_brief'
+        ? 'compare_brief'
+        : 'facility_brief';
       return res.status(400).json({
         verified: false,
         error: 'Not a subscription checkout',
+        product,
       });
     }
 
