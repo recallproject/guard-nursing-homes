@@ -7,6 +7,7 @@ import { FacilityResultCard } from '../components/FacilityResultCard';
 import { hasSffFlag } from '../utils/facilityFlags';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { readSessionCompareCcns, watchlistComparePath, WATCHLIST_COMPARE_SESSION_KEY } from '../utils/watchlistCompare';
 import USAMap from '../components/USAMap';
 import '../styles/family-ia.css';
 import '../styles/map.css';
@@ -26,21 +27,13 @@ const STATE_NAMES = {
 };
 
 const ROWS_PER_PAGE = 25;
-const COMPARE_KEY = 'oversight_compare_ccns';
-
-function readCompare() {
-  try {
-    const raw = sessionStorage.getItem(COMPARE_KEY);
-    const parsed = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
 
 function writeCompare(ccns) {
   try {
-    sessionStorage.setItem(COMPARE_KEY, JSON.stringify(ccns.slice(0, 3)));
+    sessionStorage.setItem(
+      WATCHLIST_COMPARE_SESSION_KEY,
+      JSON.stringify(ccns.slice(0, 3))
+    );
   } catch {
     /* ignore */
   }
@@ -66,7 +59,7 @@ export default function StatePage() {
   const [sffOnly, setSffOnly] = useState(false);
   const [sortCol, setSortCol] = useState('risk');
   const [currentPage, setCurrentPage] = useState(1);
-  const [compareCcns, setCompareCcns] = useState(() => readCompare());
+  const [compareCcns, setCompareCcns] = useState(() => readSessionCompareCcns());
   const [showSticky, setShowSticky] = useState(false);
   const { addFacility } = useWatchlist();
 
@@ -356,7 +349,7 @@ export default function StatePage() {
         primaryLabel="Filter"
         secondaryLabel={compareCcns.length >= 2 ? `Compare (${compareCcns.length})` : 'Compare'}
         onPrimary={focusFilter}
-        secondaryTo="/watchlist?compare=1"
+        secondaryTo={watchlistComparePath({ ccns: compareCcns })}
       />
     </div>
   );

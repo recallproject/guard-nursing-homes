@@ -56,7 +56,7 @@ export function Header() {
 
   const topLinks = [
     { to: '/', label: 'Find a facility', match: (p) => p === '/' },
-    { to: '/compare', label: 'Compare tools', match: (p) => p === '/compare' },
+    { to: '/compare', label: 'How tools compare', match: (p) => p === '/compare' },
     { to: '/methodology', label: 'Methodology', match: (p) => p.startsWith('/methodology') },
   ];
 
@@ -217,14 +217,14 @@ export function Header() {
               <Link to="/skilled-nursing#browse-states" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
                 States
               </Link>
+              <Link to="/watchlist" className={`mobile-menu__standalone-link ${isActive('/watchlist') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
+                Favorites{watchlistCount >= 2 ? ' — compare homes' : ''}
+              </Link>
               <Link to="/compare" className={`mobile-menu__standalone-link ${isActive('/compare') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
-                Compare tools
+                How tools compare
               </Link>
               <Link to="/methodology" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
                 Methodology
-              </Link>
-              <Link to="/watchlist" className="mobile-menu__standalone-link" onClick={() => setMobileOpen(false)}>
-                Favorites
               </Link>
             </div>
           </nav>

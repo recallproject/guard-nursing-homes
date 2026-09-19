@@ -32,11 +32,19 @@ export default function ComparePage() {
         <div className="container-narrow">
           <h1>Know Your Options</h1>
           <p className="compare-subtitle">
-            A side-by-side comparison of nursing home search tools — features, revenue models, and data transparency.
+            This page compares nursing-home <em>search websites</em> — Medicare Care Compare, ProPublica, referral sites, and us. It is not the side-by-side for homes you favorited.
           </p>
           <div className="compare-hero-callout">
             Choosing a nursing home is one of the most important decisions a family will make.
             You deserve to know how the tools you're using actually work — including ours.
+          </div>
+          <div className="compare-favorites-banner">
+            <p>
+              <strong>Want to compare two nursing homes?</strong> Favorite them on a facility page, then open a side-by-side on Favorites.
+            </p>
+            <Link to="/watchlist?compare=1" className="compare-favorites-banner-link">
+              Compare your favorites →
+            </Link>
           </div>
         </div>
       </section>
