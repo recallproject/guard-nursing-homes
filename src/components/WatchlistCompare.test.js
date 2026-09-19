@@ -33,6 +33,8 @@ describe('Favorites compare UX v2 wiring', () => {
     assert.match(view, /Download Family Report \(Free\)/);
     assert.match(view, /Buy Facility Brief \(\$29\)/);
     assert.match(view, /The free comparison stays available/);
+    assert.match(view, /watchlist-compare-actionbar/);
+    assert.match(view, /Get a \$29 Facility Brief/);
     assert.doesNotMatch(view, /buy\.stripe\.com/);
   });
 

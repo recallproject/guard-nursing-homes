@@ -287,15 +287,7 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
         })}
       </div>
 
-      <div className="watchlist-compare-actionbar">
-        <button
-          type="button"
-          className="watchlist-compare-cta watchlist-compare-cta--free"
-          onClick={downloadComparison}
-          disabled={snapLoading}
-        >
-          {snapLoading ? 'Generating…' : `Download my ${count}-home comparison`}
-        </button>
+      <div className="watchlist-compare-briefs" id="compare-briefs">
         <p className="watchlist-compare-upgrade">
           Want help deciding what to ask on a tour? Get the paid family brief ($29 per home).
           Includes a plain-language packet, questions tailored to the home, and a visit worksheet.
@@ -309,6 +301,20 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="watchlist-compare-actionbar">
+        <button
+          type="button"
+          className="watchlist-compare-cta watchlist-compare-cta--free"
+          onClick={downloadComparison}
+          disabled={snapLoading}
+        >
+          {snapLoading ? 'Generating…' : `Download my ${count}-home comparison`}
+        </button>
+        <a className="watchlist-compare-actionbar-paid" href="#compare-briefs">
+          Get a $29 Facility Brief
+        </a>
       </div>
 
       <MetricSheet row={sheetRow} onClose={() => setSheetRow(null)} />
