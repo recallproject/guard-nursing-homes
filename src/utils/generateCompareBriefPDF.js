@@ -31,7 +31,9 @@ function pdfStars(text) {
 }
 
 /**
- * Paid Compare Brief — deeper than the free 1-page snapshot, one packet for 2-3 homes.
+ * Paid Compare Brief PDF — LAYOUT IS DRAFT. Do not invent or finalize page
+ * composition until Rob says GO. Checkout/success still needs a generator so
+ * this file stays callable; treat pages as a placeholder, not the product spec.
  */
 export function generateCompareBriefPDF(facilities, options = {}) {
   const model = pdfSafeDeep(buildCompareBriefModel(facilities, options));
