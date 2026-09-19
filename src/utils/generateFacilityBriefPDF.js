@@ -1050,7 +1050,7 @@ export function generateFacilityBriefPDF(
         }
       },
     });
-    y = doc.lastAutoTable.finalY + 2;
+    y = doc.lastAutoTable.finalY + 5;
   } else {
     y = textBlock('No lower-composite nearby homes were available to list in this extract.', MX, y, W, { size: 10, color: C.muted }) + 2;
   }
