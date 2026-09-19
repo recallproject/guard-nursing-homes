@@ -1000,19 +1000,14 @@ export function generateFacilityBriefPDF(
     briefPage += 1;
     startBriefPage(briefPage, briefPage === 9 ? 'Visit checklist - Questions continued' : null);
   }
-  if (y < FLOOR) noteBox(model.visitTip, y);
-
-  // ───────────────────────── PAGE 9 ─────────────────────────
-  const worksheetMin = 88;
-  if (briefPage < 9) {
-    briefPage = 9;
-    startBriefPage(9);
-  } else if (y + worksheetMin > FLOOR) {
-    briefPage += 1;
-    startBriefPage(briefPage);
-  } else {
-    y += 8;
+  if (y < FLOOR) {
+    y = noteBox(model.visitTip, y) + 3;
   }
+
+  // Worksheet always starts on a fresh page. Sharing a y-cursor with leftover
+  // checklist Q&A painted the heading/rule over Q8's answer lines on Avir.
+  briefPage += 1;
+  startBriefPage(briefPage);
   sectionHead('Decision worksheet & sources');
   y = textBlock('After the tour, capture what must be true for your family — then verify on Care Compare.', MX, y, W, { size: 11.5 }) + 2;
   y = h3('Nearby alternatives to compare', MX, y) + 1;
