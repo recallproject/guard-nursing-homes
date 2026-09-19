@@ -1,41 +1,44 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { generateComparisonPDF } from '../utils/generateComparisonPDF';
 import { checkoutSingleReport } from '../utils/stripe';
-import { formatMetricNumber } from '../utils/watchlistFacilities';
 import { FREE_VS_PAID_COPY } from './facilityReportCopy';
+import { CMS_SNF_AS_OF_ISO } from '../data/careSettings';
+import {
+  cellValue,
+  DETAIL_GROUPS,
+  FIRST_VIEW_ROWS,
+  freshnessLabel,
+} from '../utils/compareMetrics';
+import { useWatchlist } from '../hooks/useWatchlist';
+import { useCompareTray } from '../hooks/useCompareTray';
 
-function formatCurrency(amount) {
-  if (!amount) return '$0';
-  if (amount >= 1000000) return `$${(amount / 1000000).toFixed(1)}M`;
-  if (amount >= 1000) return `$${(amount / 1000).toFixed(0)}K`;
-  return `$${Math.round(amount).toLocaleString()}`;
-}
-
-function renderStars(count) {
-  const n = Math.max(0, Math.min(5, Number(count) || 0));
-  return `${'★'.repeat(n)}${'☆'.repeat(5 - n)}`;
-}
-
-function riskClass(score) {
-  if (score >= 60) return 'wct-danger';
-  if (score >= 40) return 'wct-warning';
-  if (score >= 20) return 'wct-caution';
-  return 'wct-good';
-}
-
-function metricRows(facility) {
-  const score = Number(facility?.composite) || 0;
-  const jeopardy = Number(facility?.jeopardy_count) || 0;
-  return [
-    { label: 'CMS Stars', value: renderStars(facility?.stars), className: '' },
-    { label: 'Risk Score', value: formatMetricNumber(facility?.composite, 1), className: riskClass(score) },
-    { label: 'Total Fines', value: formatCurrency(facility?.total_fines), className: '' },
-    { label: 'Deficiencies', value: facility?.total_deficiencies || 0, className: '' },
-    { label: 'Serious Harm', value: jeopardy, className: jeopardy > 0 ? 'wct-danger' : '' },
-    { label: 'Total HPRD', value: formatMetricNumber(facility?.total_hprd, 2), className: '' },
-    { label: 'RN Hours', value: formatMetricNumber(facility?.rn_hprd, 2), className: '' },
-    { label: 'Beds', value: facility?.beds || '—', className: '' },
-  ];
+function MetricSheet({ row, onClose }) {
+  if (!row) return null;
+  return (
+    <div className="wcg-sheet-overlay" onClick={onClose} role="presentation">
+      <div
+        className="wcg-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="wcg-sheet-title"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <h3 id="wcg-sheet-title">{row.label}</h3>
+        <p className="wcg-dir">{row.direction}</p>
+        <p>{row.why}</p>
+        <p className="wcg-sheet-source">
+          Source: CMS Care Compare / Provider Data Catalog.{' '}
+          <a href="https://www.medicare.gov/care-compare/" target="_blank" rel="noopener noreferrer">
+            Verify on Medicare
+          </a>
+        </p>
+        <button type="button" className="watchlist-compare-cta watchlist-compare-cta--link" onClick={onClose}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
 }
 
 function CompareFacilityCtas({ facility }) {
@@ -112,21 +115,116 @@ function CompareFacilityCtas({ facility }) {
         Buy Facility Brief ($29)
       </button>
       <Link to={`/facility/${ccn}`} className="watchlist-compare-cta watchlist-compare-cta--link">
-        View Full Report
+        View full report
       </Link>
     </div>
   );
 }
 
-export function WatchlistCompareView({ facilities, onChangeHomes }) {
-  if (!facilities?.length) return null;
+function CompareGrid({ facilities, rows, onExplain }) {
+  return (
+    <div
+      className="wcg-wrap"
+      style={{ '--compare-count': facilities.length }}
+    >
+      {facilities.length > 2 && (
+        <p className="watchlist-compare-scroll-cue" aria-hidden="true">
+          Swipe to see the next home →
+        </p>
+      )}
+      <div className="wcg" role="table" aria-label="Side-by-side facility comparison">
+        <div className="wcg-corner" role="columnheader">Metric</div>
+        {facilities.map((facility) => (
+          <div key={facility.ccn} className="wcg-head" role="columnheader">
+            <div className="wcg-head-name">{facility.name}</div>
+            <div className="wcg-head-meta">{facility.city}, {facility.state}</div>
+          </div>
+        ))}
+        {rows.map((row) => (
+          <CompareRow key={row.id} row={row} facilities={facilities} onExplain={onExplain} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function CompareRow({ row, facilities, onExplain }) {
+  return (
+    <>
+      <div className="wcg-label" role="rowheader">
+        <button type="button" className="wcg-label-btn" onClick={() => onExplain(row)}>
+          <span>{row.label}</span>
+          <span className="wcg-dir">{row.direction}</span>
+        </button>
+      </div>
+      {facilities.map((facility) => (
+        <div key={`${row.id}-${facility.ccn}`} className="wcg-cell" role="cell">
+          {cellValue(row, facility)}
+        </div>
+      ))}
+    </>
+  );
+}
+
+export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS_SNF_AS_OF_ISO }) {
+  const { isWatched, addFacility, removeFacility } = useWatchlist();
+  const { remove } = useCompareTray();
+  const [openGroups, setOpenGroups] = useState(() => new Set());
+  const [sheetRow, setSheetRow] = useState(null);
+  const [snapLoading, setSnapLoading] = useState(false);
+  const homes = useMemo(() => (facilities || []).filter(Boolean).slice(0, 3), [facilities]);
+
+  if (!homes.length) return null;
+
+  const asOf = freshnessLabel(dataAsOf);
+  const count = homes.length;
+
+  const downloadComparison = () => {
+    if (snapLoading) return;
+    if (typeof window !== 'undefined' && window.plausible) {
+      window.plausible('Free-PDF-Download', {
+        props: {
+          report: 'compare-snapshot',
+          placement: 'watchlist-compare',
+          count: String(count),
+        },
+      });
+    }
+    setSnapLoading(true);
+    setTimeout(() => {
+      try {
+        generateComparisonPDF(homes, { dataAsOf });
+      } catch (err) {
+        console.error('Comparison PDF failed:', err);
+        alert('Failed to generate comparison. Please try again.');
+      } finally {
+        setSnapLoading(false);
+      }
+    }, 100);
+  };
+
+  const toggleGroup = (id) => {
+    setOpenGroups((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
 
   return (
     <div className="watchlist-compare-view" id="compare-results">
       <div className="watchlist-compare-view-head">
         <h2 className="watchlist-compare-title">Side-by-side comparison</h2>
         <p className="watchlist-compare-lede">
-          Same public CMS facts for each home you favorited. Download a free 1-page snapshot or a $29 Facility Brief when you want a copy to share.
+          Same public CMS facts for {count} home{count === 1 ? '' : 's'}. Updated {asOf}.
+          Saving a home is separate from this comparison.
+        </p>
+        <p className="watchlist-compare-fresh">
+          CMS data as of {asOf} ·{' '}
+          <a href="https://data.cms.gov/provider-data/topics/nursing-homes" target="_blank" rel="noopener noreferrer">
+            Source: CMS Provider Data Catalog
+          </a>
         </p>
         {onChangeHomes && (
           <button type="button" className="watchlist-compare-change" onClick={onChangeHomes}>
@@ -135,67 +233,68 @@ export function WatchlistCompareView({ facilities, onChangeHomes }) {
         )}
       </div>
 
-      <div className="watchlist-compare-cards" aria-label="Facility comparison cards">
-        <p className="watchlist-compare-cards-cue">
-          Same metrics for each home — scroll down to compare.
-        </p>
-        {facilities.map((facility) => (
-          <article key={facility.ccn} className="watchlist-compare-card">
-            <header className="watchlist-compare-card-head">
-              <h3 className="watchlist-compare-card-name">{facility.name}</h3>
-              <p className="watchlist-compare-card-meta">
-                {facility.city}, {facility.state}
-              </p>
-            </header>
-            <dl className="watchlist-compare-card-metrics">
-              {metricRows(facility).map((row) => (
-                <div key={row.label} className="watchlist-compare-card-row">
-                  <dt>{row.label}</dt>
-                  <dd className={row.className}>{row.value}</dd>
-                </div>
-              ))}
-            </dl>
-            <CompareFacilityCtas facility={facility} />
-          </article>
-        ))}
+      <div className="wcg-head-actions">
+        {homes.map((facility) => {
+          const saved = isWatched(facility.ccn);
+          return (
+            <div key={facility.ccn} className="wcg-head-action">
+              <button
+                type="button"
+                className={`watchlist-compare-check${saved ? ' watchlist-compare-check--on' : ''}`}
+                onClick={() => (saved ? removeFacility(facility.ccn) : addFacility(facility.ccn, facility.name))}
+              >
+                {saved ? 'Saved' : 'Save'}
+              </button>
+              <button
+                type="button"
+                className="watchlist-compare-check"
+                onClick={() => remove(facility.ccn)}
+                aria-label={`Remove ${facility.name} from compare`}
+              >
+                Remove
+              </button>
+            </div>
+          );
+        })}
       </div>
 
-      <div className="watchlist-compare-table-panel">
-        <p className="watchlist-compare-scroll-cue" aria-hidden="true">
-          Swipe or scroll sideways to see the next home →
+      <CompareGrid facilities={homes} rows={FIRST_VIEW_ROWS} onExplain={setSheetRow} />
+
+      <div className="wcg-accordions">
+        {DETAIL_GROUPS.map((group) => {
+          const open = openGroups.has(group.id);
+          return (
+            <section key={group.id} className="wcg-acc">
+              <button
+                type="button"
+                className="wcg-acc-head"
+                aria-expanded={open}
+                onClick={() => toggleGroup(group.id)}
+              >
+                <span>
+                  <strong>{group.title}</strong>
+                  <span className="wcg-acc-blurb">{group.blurb}</span>
+                </span>
+                <span className="wcg-acc-count">
+                  {group.rows.length} more measure{group.rows.length === 1 ? '' : 's'}
+                </span>
+              </button>
+              {open && (
+                <CompareGrid facilities={homes} rows={group.rows} onExplain={setSheetRow} />
+              )}
+            </section>
+          );
+        })}
+      </div>
+
+      <div className="watchlist-compare-briefs" id="compare-briefs">
+        <p className="watchlist-compare-upgrade">
+          Want help deciding what to ask on a tour? Get the paid family brief ($29 per home).
+          Includes a plain-language packet, questions tailored to the home, and a visit worksheet.
+          The free comparison stays available.
         </p>
-        <div className="watchlist-compare-table-wrap">
-          <table className="watchlist-compare-table">
-            <caption className="sr-only">Side-by-side facility comparison</caption>
-            <thead>
-              <tr>
-                <th scope="col">Metric</th>
-                {facilities.map((f) => (
-                  <th key={f.ccn} scope="col">
-                    {f.name}
-                    <br />
-                    <span className="wct-meta">{f.city}, {f.state}</span>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {metricRows(facilities[0]).map((row, rowIdx) => (
-                <tr key={row.label}>
-                  <th className="wct-label" scope="row">{row.label}</th>
-                  {facilities.map((f) => {
-                    const cell = metricRows(f)[rowIdx];
-                    return (
-                      <td key={f.ccn} className={cell.className}>{cell.value}</td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
         <div className="watchlist-compare-table-ctas">
-          {facilities.map((facility) => (
+          {homes.map((facility) => (
             <div key={facility.ccn} className="watchlist-compare-table-cta-col">
               <p className="watchlist-compare-table-cta-name">{facility.name}</p>
               <CompareFacilityCtas facility={facility} />
@@ -203,6 +302,22 @@ export function WatchlistCompareView({ facilities, onChangeHomes }) {
           ))}
         </div>
       </div>
+
+      <div className="watchlist-compare-actionbar">
+        <button
+          type="button"
+          className="watchlist-compare-cta watchlist-compare-cta--free"
+          onClick={downloadComparison}
+          disabled={snapLoading}
+        >
+          {snapLoading ? 'Generating…' : `Download my ${count}-home comparison`}
+        </button>
+        <a className="watchlist-compare-actionbar-paid" href="#compare-briefs">
+          Get a $29 Facility Brief
+        </a>
+      </div>
+
+      <MetricSheet row={sheetRow} onClose={() => setSheetRow(null)} />
     </div>
   );
 }

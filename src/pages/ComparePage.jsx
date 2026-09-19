@@ -40,10 +40,10 @@ export default function ComparePage() {
           </div>
           <div className="compare-favorites-banner">
             <p>
-              <strong>Want to compare two nursing homes?</strong> Favorite them on a facility page, then open a side-by-side on Favorites.
+              <strong>Want to compare two nursing homes?</strong> Add them to compare from a facility card, then tap Compare now. Saving a home does not start a comparison.
             </p>
             <Link to="/watchlist?compare=1" className="compare-favorites-banner-link">
-              Compare your favorites →
+              Open your comparison tray →
             </Link>
           </div>
         </div>

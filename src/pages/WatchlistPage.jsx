@@ -4,10 +4,13 @@ import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
 import { useWatchlistFacilities } from '../hooks/useFacilityData';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { useCompareTray } from '../hooks/useCompareTray';
 import { WatchlistCompareView } from '../components/WatchlistCompareView';
 import { WatchlistErrorBoundary } from '../components/WatchlistErrorBoundary';
+import { CompareTray } from '../components/CompareTray';
 import { collectWatchlistCcns } from '../utils/watchlistFacilities';
-import { readSessionCompareCcns, resolveCompareSelection } from '../utils/watchlistCompare';
+import { parseCompareItems, resolveCompareSelection } from '../utils/watchlistCompare';
+import { CMS_SNF_AS_OF_ISO } from '../data/careSettings';
 import '../styles/watchlist.css';
 
 const US_STATES = {
@@ -26,14 +29,14 @@ const US_STATES = {
 
 export function WatchlistPage() {
   const { watchlist, removeFacility, clearWatchlist } = useWatchlist();
+  const { items: compareItems, ccns: compareCcns, toggle, isInCompare, atCap, replace } = useCompareTray();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const queryCcns = searchParams.get('ccns') || '';
-  const sessionCcns = readSessionCompareCcns();
   const hydrateCcns = collectWatchlistCcns({
     favoriteCcns: watchlist.map((item) => item.ccn),
     queryCcns,
-    sessionCcns,
+    sessionCcns: compareCcns,
   });
   const { getFacility, loading, error } = useWatchlistFacilities(hydrateCcns);
 
@@ -45,25 +48,24 @@ export function WatchlistPage() {
   const headerRef = useRef(null);
   const contentRef = useRef(null);
   const trackedAutoCompareRef = useRef('');
+  const hydratedQueryRef = useRef('');
 
   const queryKey = `${searchParams.get('compare')}|${searchParams.get('ccns') || ''}`;
-  const favoriteCcns = watchlist.map((item) => item.ccn);
   const autoCompare = resolveCompareSelection({
-    favoriteCcns,
     queryCompare: searchParams.get('compare'),
     queryCcns: searchParams.get('ccns'),
-    sessionCcns: loading ? [] : sessionCcns,
+    sessionCcns: compareCcns,
   });
 
-  const [compareOverride, setCompareOverride] = useState(null);
-  const [prevQueryKey, setPrevQueryKey] = useState(queryKey);
-  if (queryKey !== prevQueryKey) {
-    setPrevQueryKey(queryKey);
-    setCompareOverride(null);
-  }
+  useEffect(() => {
+    const queryCcns = searchParams.get('ccns');
+    if (!queryCcns || hydratedQueryRef.current === queryKey) return;
+    hydratedQueryRef.current = queryKey;
+    const fromQuery = parseCompareItems(queryCcns);
+    if (fromQuery.length) replace(fromQuery);
+  }, [queryKey, replace, searchParams]);
 
-  const selectedForCompare = compareOverride?.selected ?? new Set(autoCompare.selected);
-  const wantsCompare = compareOverride?.show ?? autoCompare.openCompare;
+  const showCompare = autoCompare.openCompare && compareCcns.length >= 2;
 
   // Plausible: track watchlist page view
   useEffect(() => {
@@ -101,22 +103,22 @@ export function WatchlistPage() {
   }, [watchlist, sortBy, filterState]);
 
   useEffect(() => {
-    if (!autoCompare.openCompare) return;
-    const key = `${queryKey}|${autoCompare.selected.join(',')}`;
+    if (!showCompare) return;
+    const key = `${queryKey}|${compareCcns.join(',')}`;
     if (trackedAutoCompareRef.current === key) return;
     trackedAutoCompareRef.current = key;
     window.plausible && window.plausible('Compare-Used', {
-      props: { count: String(autoCompare.selected.length), source: 'auto' },
+      props: { count: String(compareCcns.length), source: 'compare-now' },
     });
-  }, [autoCompare.openCompare, autoCompare.selected, queryKey]);
+  }, [showCompare, compareCcns, queryKey]);
 
   useEffect(() => {
-    if (!wantsCompare) return;
+    if (!showCompare) return;
     const timer = setTimeout(() => {
       comparisonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 150);
     return () => clearTimeout(timer);
-  }, [wantsCompare]);
+  }, [showCompare]);
 
   if (loading) {
     return (
@@ -124,7 +126,7 @@ export function WatchlistPage() {
         <div className="watchlist-loading">
           <div className="loading-spinner"></div>
           <div className="loading-text">
-            {wantsCompare ? 'Loading comparison…' : 'Loading favorites…'}
+            {showCompare ? 'Loading comparison…' : 'Loading saved homes…'}
           </div>
         </div>
       </div>
@@ -150,8 +152,15 @@ export function WatchlistPage() {
     })
     .filter(Boolean);
 
-  const selectedFacilities = [...selectedForCompare]
-    .map((ccn) => facilities.find((fac) => fac.ccn === ccn))
+  const selectedFacilities = compareCcns
+    .map((ccn) => {
+      const fromWatch = facilities.find((fac) => fac.ccn === ccn);
+      if (fromWatch) return fromWatch;
+      const loaded = getFacility(ccn);
+      if (loaded) return loaded;
+      const chip = compareItems.find((item) => item.ccn === ccn);
+      return chip ? { ...chip } : null;
+    })
     .filter(Boolean);
 
   // Apply state filter
@@ -260,39 +269,32 @@ export function WatchlistPage() {
     setShowConfirmRemove(null);
   };
 
-  const toggleCompareSelect = (ccn) => {
-    const next = new Set(selectedForCompare);
-    if (next.has(ccn)) {
-      next.delete(ccn);
-    } else if (next.size < 3) {
-      next.add(ccn);
-    }
-    setCompareOverride({ selected: next, show: wantsCompare && next.size >= 2 });
+  const toggleCompareSelect = (facility) => {
+    toggle(facility);
   };
 
-  const handleCompareSelected = () => {
-    window.plausible && window.plausible('Compare-Used', {props: {count: String(selectedForCompare.size)}});
-    setCompareOverride({ selected: selectedForCompare, show: true });
+  const closeCompareView = () => {
+    const next = new URLSearchParams(searchParams);
+    next.delete('compare');
+    setSearchParams(next, { replace: true });
     setTimeout(() => {
-      if (comparisonRef.current) {
-        comparisonRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
+      document.getElementById('favorites-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   };
 
   return (
     <WatchlistErrorBoundary resetKey={queryKey}>
     <div className="watchlist-page">
       <Helmet>
-        <title>Favorites — Compare facilities | The Oversight Report</title>
-        <meta name="description" content="Favorite nursing homes and compare them side-by-side. Track safety data for the facilities you care about." />
+        <title>Saved homes — Compare when you are ready | The Oversight Report</title>
+        <meta name="description" content="Save nursing homes on this device, then add up to 3 to compare side-by-side. Saving does not start a comparison." />
         <link rel="canonical" href="https://www.oversightreports.com/watchlist" />
       </Helmet>
       {/* Header */}
       <div className="watchlist-header" ref={headerRef}>
         <div className="watchlist-header-top">
           <h1>
-            <span className="watchlist-title-text">Favorites</span>
+            <span className="watchlist-title-text">Saved homes</span>
             {facilities.length > 0 && (
               <span className="watchlist-count-badge" aria-label={`${facilities.length} saved`}>
                 {facilities.length}
@@ -301,38 +303,35 @@ export function WatchlistPage() {
           </h1>
         </div>
         <p className="watchlist-subtitle">
-          Favorite 2–3 homes, then compare them side-by-side. Saved on this device only — no account needed.
+          Save homes while you explore. Add up to 3 to compare side-by-side — saving does not add them to compare. Stored on this device only; no account needed.
         </p>
       </div>
+
+      {showCompare && selectedFacilities.length >= 2 && (
+        <div ref={comparisonRef}>
+          <WatchlistCompareView
+            facilities={selectedFacilities}
+            dataAsOf={CMS_SNF_AS_OF_ISO}
+            onChangeHomes={closeCompareView}
+          />
+        </div>
+      )}
 
       {/* Empty State */}
       {facilities.length === 0 ? (
         <div className="watchlist-empty">
           <div className="watchlist-empty-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <h2>No favorites yet</h2>
+          <h2>No saved homes yet</h2>
           <p>
-            Tap Favorite on a facility page, then add a second home. You can compare 2–3 side-by-side here.
+            Tap Save on a facility card. When you are ready, add 2–3 homes to compare. Saving and comparing are separate.
           </p>
+          {!showCompare && <CompareTray />}
           <Link to="/skilled-nursing#browse-states" className="btn btn-primary">
             Explore the Map
           </Link>
         </div>
       ) : (
         <>
-          {wantsCompare && selectedFacilities.length >= 2 && (
-            <div ref={comparisonRef}>
-              <WatchlistCompareView
-                facilities={selectedFacilities}
-                onChangeHomes={() => {
-                  setCompareOverride({ selected: selectedForCompare, show: false });
-                  setTimeout(() => {
-                    document.getElementById('favorites-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }, 50);
-                }}
-              />
-            </div>
-          )}
-
           {/* Summary Stats */}
           <div className="watchlist-stats">
             <div className="watchlist-stat-card">
@@ -358,32 +357,9 @@ export function WatchlistPage() {
             </div>
           </div>
 
-          {/* Compare Bar */}
-          {!(wantsCompare && selectedFacilities.length >= 2) && (
-            <div
-              className={`watchlist-compare-bar${facilities.length >= 2 ? ' watchlist-compare-bar--docked' : ''}`}
-              id="compare"
-            >
-              {facilities.length >= 2 ? (
-                <>
-                  <span className="watchlist-compare-info">
-                    {selectedForCompare.size === 0
-                      ? 'Select 2–3 facilities, then tap Compare'
-                      : selectedForCompare.size === 1
-                        ? 'Select 1 more to compare side-by-side'
-                        : `${selectedForCompare.size} selected — ready to compare`}
-                  </span>
-                  <button
-                    className={`btn btn-primary watchlist-compare-btn ${selectedForCompare.size < 2 ? 'watchlist-compare-btn--disabled' : ''}`}
-                    disabled={selectedForCompare.size < 2}
-                    onClick={handleCompareSelected}
-                  >
-                    Compare side-by-side
-                  </button>
-                </>
-              ) : (
-                <span className="watchlist-compare-hint">Favorite one more facility to compare them side-by-side</span>
-              )}
+          {!showCompare && (
+            <div id="compare">
+              <CompareTray />
             </div>
           )}
 
@@ -427,17 +403,17 @@ export function WatchlistPage() {
           {/* Facility List */}
           <div className="watchlist-grid" ref={contentRef} id="favorites-list">
             {filteredFacilities.map(facility => (
-              <div key={facility.ccn} className={`watchlist-card ${selectedForCompare.has(facility.ccn) ? 'watchlist-card--selected' : ''}`}>
+              <div key={facility.ccn} className={`watchlist-card ${isInCompare(facility.ccn) ? 'watchlist-card--selected' : ''}`}>
                 <div className="watchlist-card-header">
-                  <label className="watchlist-compare-check" title="Select for comparison">
-                    <input
-                      type="checkbox"
-                      checked={selectedForCompare.has(facility.ccn)}
-                      onChange={() => toggleCompareSelect(facility.ccn)}
-                      disabled={!selectedForCompare.has(facility.ccn) && selectedForCompare.size >= 3}
-                    />
-                    <span className="watchlist-compare-check-label">Compare</span>
-                  </label>
+                  <button
+                    type="button"
+                    className={`watchlist-compare-check${isInCompare(facility.ccn) ? ' watchlist-compare-check--on' : ''}`}
+                    onClick={() => toggleCompareSelect(facility)}
+                    disabled={!isInCompare(facility.ccn) && atCap}
+                    title={atCap && !isInCompare(facility.ccn) ? 'Compare is full (3 of 3). Remove a home first.' : 'Add this home to a 2–3 home comparison'}
+                  >
+                    {isInCompare(facility.ccn) ? 'In compare' : 'Add to compare'}
+                  </button>
                   <h3 className="watchlist-card-name">{facility.name}</h3>
                   <button
                     className="watchlist-remove-btn"
@@ -549,6 +525,8 @@ export function WatchlistPage() {
           </div>
         </div>
       )}
+
+      {!showCompare && <CompareTray docked />}
     </div>
     </WatchlistErrorBoundary>
   );

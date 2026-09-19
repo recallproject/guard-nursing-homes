@@ -31,6 +31,7 @@ export function FacilityResultCard({
   viewTo,
   compareSelected,
   onToggleCompare,
+  compareFull = false,
 }) {
   const { addFacility, removeFacility, isWatched } = useWatchlist();
   const watched = isWatched(facility.ccn);
@@ -38,6 +39,7 @@ export function FacilityResultCard({
   const abuse = hasAbuseFlag(facility);
   const aboveStaffing = (facility.total_hprd || 0) >= 4 || (facility.staffing_stars || 0) >= 4;
   const fines = formatFines(facility.total_fines);
+  const compareBlocked = compareFull && !compareSelected;
 
   function handleSave(e) {
     e.preventDefault();
@@ -49,6 +51,7 @@ export function FacilityResultCard({
   function handleCompare(e) {
     e.preventDefault();
     e.stopPropagation();
+    if (compareBlocked) return;
     onToggleCompare?.(facility);
   }
 
@@ -83,19 +86,27 @@ export function FacilityResultCard({
           className={`ia-btn ${watched ? 'ia-btn--on' : ''}`}
           onClick={handleSave}
           aria-pressed={watched}
+          aria-label={watched ? `Remove ${facility.name} from saved homes` : `Save ${facility.name} to your shortlist`}
         >
-          {watched ? 'Favorited' : 'Favorite'}
+          {watched ? 'Saved' : 'Save'}
         </button>
         <button
           type="button"
           className={`ia-btn ${compareSelected ? 'ia-btn--on' : ''}`}
           onClick={handleCompare}
           aria-pressed={!!compareSelected}
+          disabled={compareBlocked}
+          title={compareBlocked ? 'Compare is full (3 of 3). Remove a home first.' : 'Add this home to a 2–3 home comparison'}
+          aria-label={
+            compareSelected
+              ? `Remove ${facility.name} from compare`
+              : `Add ${facility.name} to compare`
+          }
         >
-          Compare
+          {compareSelected ? 'In compare' : 'Add to compare'}
         </button>
-        <Link to={viewTo} className="ia-btn ia-btn--primary">
-          View
+        <Link to={viewTo} className="ia-fac-view">
+          View report
         </Link>
       </div>
     </article>

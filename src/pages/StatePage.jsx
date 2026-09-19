@@ -4,11 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import { getCareSetting, CMS_SNF_AS_OF_ISO } from '../data/careSettings';
 import { formatDataAsOf } from '../utils/facilityBriefContent';
 import { FacilityResultCard } from '../components/FacilityResultCard';
+import { CompareTray } from '../components/CompareTray';
 import { hasSffFlag } from '../utils/facilityFlags';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
-import { useWatchlist } from '../hooks/useWatchlist';
+import { useCompareTray } from '../hooks/useCompareTray';
 import { loadStateData } from '../hooks/useFacilityData';
-import { readSessionCompareCcns, watchlistComparePath, WATCHLIST_COMPARE_SESSION_KEY } from '../utils/watchlistCompare';
 import USAMap from '../components/USAMap';
 import '../styles/family-ia.css';
 import '../styles/map.css';
@@ -29,17 +29,6 @@ const STATE_NAMES = {
 
 const ROWS_PER_PAGE = 25;
 
-function writeCompare(ccns) {
-  try {
-    sessionStorage.setItem(
-      WATCHLIST_COMPARE_SESSION_KEY,
-      JSON.stringify(ccns.slice(0, 3))
-    );
-  } catch {
-    /* ignore */
-  }
-}
-
 export default function StatePage() {
   const { code } = useParams();
   const navigate = useNavigate();
@@ -48,6 +37,7 @@ export default function StatePage() {
   const stateCode = code ? code.toUpperCase() : '';
   const stateName = STATE_NAMES[stateCode] || stateCode;
   const filterRef = useRef(null);
+  const { toggle, isInCompare, atCap, count: compareCount } = useCompareTray();
 
   const [facilities, setFacilities] = useState([]);
   const [meta, setMeta] = useState(null);
@@ -60,9 +50,7 @@ export default function StatePage() {
   const [sffOnly, setSffOnly] = useState(false);
   const [sortCol, setSortCol] = useState('risk');
   const [currentPage, setCurrentPage] = useState(1);
-  const [compareCcns, setCompareCcns] = useState(() => readSessionCompareCcns());
   const [showSticky, setShowSticky] = useState(false);
-  const { addFacility } = useWatchlist();
 
   const unknownState = !stateCode || !STATE_NAMES[stateCode];
 
@@ -151,17 +139,6 @@ export default function StatePage() {
     setSearchParams(next, { replace: true });
   };
 
-  function toggleCompare(facility) {
-    const already = compareCcns.includes(facility.ccn);
-    if (!already) addFacility(facility.ccn, facility.name);
-    setCompareCcns((prev) => {
-      const has = prev.includes(facility.ccn);
-      const next = has ? prev.filter((c) => c !== facility.ccn) : [...prev, facility.ccn].slice(0, 3);
-      writeCompare(next);
-      return next;
-    });
-  }
-
   function focusFilter() {
     filterRef.current?.focus();
     filterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -229,6 +206,9 @@ export default function StatePage() {
           <div className="ia-meta-row">
             {facilities.length.toLocaleString('en-US')} Medicare-certified facilities · CMS data as of {asOf}
           </div>
+          <p className="ia-sub">
+            Save homes while you look around. Add up to 3 to compare side-by-side — saving does not start a comparison.
+          </p>
           <div className="ia-toolbar" role="toolbar" aria-label="List filters">
             <button
               type="button"
@@ -304,13 +284,17 @@ export default function StatePage() {
                 aria-label="Filter facilities"
               />
             </div>
+            <div className="ia-compare-inline">
+              <CompareTray />
+            </div>
             {paginated.map((f) => (
               <FacilityResultCard
                 key={f.ccn}
                 facility={f}
                 viewTo={`/facility/${f.ccn}`}
-                compareSelected={compareCcns.includes(f.ccn)}
-                onToggleCompare={toggleCompare}
+                compareSelected={isInCompare(f.ccn)}
+                compareFull={atCap}
+                onToggleCompare={toggle}
               />
             ))}
             {paginated.length === 0 && (
@@ -341,13 +325,17 @@ export default function StatePage() {
         )}
       </div>
 
-      <StickyFamilyActions
-        visible={showSticky}
-        primaryLabel="Filter"
-        secondaryLabel={compareCcns.length >= 2 ? `Compare (${compareCcns.length})` : 'Compare'}
-        onPrimary={focusFilter}
-        secondaryTo={compareCcns.length >= 2 ? watchlistComparePath({ ccns: compareCcns }) : '/watchlist'}
-      />
+      {compareCount > 0 && <CompareTray docked />}
+
+      {compareCount === 0 && (
+        <StickyFamilyActions
+          visible={showSticky}
+          primaryLabel="Filter"
+          secondaryLabel="Saved homes"
+          onPrimary={focusFilter}
+          secondaryTo="/watchlist"
+        />
+      )}
     </div>
   );
 }

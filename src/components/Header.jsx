@@ -146,11 +146,11 @@ export function Header() {
           </nav>
 
           <div className="site-header__actions">
-            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Favorites (${watchlistCount})`}>
+            <Link to="/watchlist" className="site-header__favorites-btn" aria-label={`Saved homes (${watchlistCount})`}>
               <span className={`site-header__fav-star ${watchlistCount > 0 ? 'site-header__fav-star--filled' : ''}`}>
                 {watchlistCount > 0 ? '★' : '☆'}
               </span>
-              <span className="site-header__fav-label">Favorites</span>
+              <span className="site-header__fav-label">Saved</span>
               {watchlistCount > 0 && (
                 <span className="site-header__fav-badge">{watchlistCount}</span>
               )}
@@ -218,7 +218,7 @@ export function Header() {
                 States
               </Link>
               <Link to="/watchlist" className={`mobile-menu__standalone-link ${isActive('/watchlist') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
-                Favorites{watchlistCount >= 2 ? ' — compare homes' : ''}
+                Saved homes{watchlistCount > 0 ? ` (${watchlistCount})` : ''}
               </Link>
               <Link to="/compare" className={`mobile-menu__standalone-link ${isActive('/compare') ? 'mobile-menu__standalone-link--active' : ''}`} onClick={() => setMobileOpen(false)}>
                 How tools compare
