@@ -1001,15 +1001,28 @@ export function generateFacilityBriefPDF(
     startBriefPage(briefPage, briefPage === 9 ? 'Visit checklist - Questions continued' : null);
   }
   if (y < FLOOR) {
-    y = noteBox(model.visitTip, y) + 3;
+    y = noteBox(model.visitTip, y);
   }
 
-  // Worksheet always starts on a fresh page. Sharing a y-cursor with leftover
-  // checklist Q&A painted the heading/rule over Q8's answer lines on Avir.
-  briefPage += 1;
-  startBriefPage(briefPage);
+  // Continue the worksheet on this page when the header + nearby table
+  // will fit. noteBox must advance y first so the heading cannot paint
+  // over Q8's answer lines. Page-break only when the leftover hole is
+  // too small for a meaningful start.
+  const gapBeforeWorksheet = 8;
+  const worksheetIntro = 'After the tour, capture what must be true for your family — then verify on Care Compare.';
+  const worksheetLeadMm = 8
+    + wrappedHeight(worksheetIntro, W, 11.5, 1.45)
+    + 8
+    + 6.5
+    + (model.nearby.length ? 28 : 10);
+  if (y + gapBeforeWorksheet + worksheetLeadMm > FLOOR) {
+    briefPage += 1;
+    startBriefPage(briefPage);
+  } else {
+    y += gapBeforeWorksheet;
+  }
   sectionHead('Decision worksheet & sources');
-  y = textBlock('After the tour, capture what must be true for your family — then verify on Care Compare.', MX, y, W, { size: 11.5 }) + 2;
+  y = textBlock(worksheetIntro, MX, y, W, { size: 11.5 }) + 2;
   y = h3('Nearby alternatives to compare', MX, y) + 1;
 
   if (model.nearby.length) {

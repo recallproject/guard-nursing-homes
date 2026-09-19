@@ -70,7 +70,7 @@ describe('generateFacilityBriefPDF', () => {
     assert.match(text, /VISIT CHECKLIST|Visit checklist/i);
     assert.match(text, /Questions continued/i);
     assert.match(text, /DECISION WORKSHEET|Decision worksheet/i);
-    assert.equal(pageCount, 10, 'leftover checklist questions must not share a page with the worksheet');
+    assert.equal(pageCount, 9, 'Q8 + tip should share page 9 with the worksheet when space remains');
     assert.match(text, /Special Focus Facility/);
     assert.match(text, /Winnie-Stowell Hospital District/);
     assert.match(text, /Answered by:/);
