@@ -468,6 +468,15 @@ export function FacilityPage() {
 
       <div className="fp-body">
         <div className="fp-fold">
+        {/* Downloads first in the DOM so mobile stacks Free + $29 above the identity card */}
+        <FacilityCtaRail
+          facility={facility}
+          nearbyFacilities={nearbyForPDF}
+          allFacilities={allFacilities}
+          antipsychoticData={antipsychoticDataForPDF}
+          dataAsOf={dataAsOf}
+        />
+
         {/* Section 1: Facility Identity — name, stars, location */}
         <div className="section fp-identity-card fp-fold-identity" style={{ borderTop: `4px solid ${safetyColor}` }}>
           <div className="fp-name-row">
@@ -492,14 +501,6 @@ export function FacilityPage() {
           </p>
           <p className="fp-ccn">CMS CCN: {ccn}</p>
         </div>
-
-        <FacilityCtaRail
-          facility={facility}
-          nearbyFacilities={nearbyForPDF}
-          allFacilities={allFacilities}
-          antipsychoticData={antipsychoticDataForPDF}
-          dataAsOf={dataAsOf}
-        />
 
         <div className="fp-fold-rest">
         {/* Antipsychotic Alert Banner */}

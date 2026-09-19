@@ -70,6 +70,12 @@ function useFacilityReportActions(facility, nearbyFacilities, allFacilities, ant
 
 const MEDICARE_COMPARE = 'https://www.medicare.gov/care-compare/';
 
+/** Plain free-vs-paid line for stressed / older readers. */
+export const FREE_VS_PAID_COPY = {
+  free: 'Free 1-page snapshot',
+  paid: 'Full decision packet — $29',
+};
+
 /** Compact sticky Downloads rail — two primary CTAs only. */
 export function FacilityCtaRail({
   facility,
@@ -91,42 +97,49 @@ export function FacilityCtaRail({
     <aside className="fp-cta-rail" aria-label="Downloads">
       <div className="fp-cta-rail-card">
         <h2 className="fp-cta-rail-title">Downloads</h2>
+        <p className="fp-cta-compare">
+          <span className="fp-cta-compare-free">{FREE_VS_PAID_COPY.free}</span>
+          <span className="fp-cta-compare-sep" aria-hidden="true">·</span>
+          <span className="fp-cta-compare-paid">{FREE_VS_PAID_COPY.paid}</span>
+        </p>
         <p className="fp-cta-rail-note">Everything on this page is free to browse. PDFs below are optional.</p>
 
-        <div className="fp-cta-item">
-          <div className="fp-cta-item-kicker">1 · Family Report · Free</div>
-          <p className="fp-cta-item-desc">1-page plain-language summary for families.</p>
-          <button
-            type="button"
-            className="fp-cta-btn fp-cta-btn--free"
-            onClick={downloadFamilyReport}
-            disabled={familyLoading}
-            aria-label="Download Family Report (Free)"
-          >
-            {familyLoading ? 'Generating…' : (
-              <>
-                <DownloadIcon />
-                Download Family Report (Free)
-              </>
-            )}
-          </button>
-        </div>
+        <div className="fp-cta-actions">
+          <div className="fp-cta-item">
+            <div className="fp-cta-item-kicker">1 · Family Report · Free</div>
+            <p className="fp-cta-item-desc">1-page plain-language summary for families.</p>
+            <button
+              type="button"
+              className="fp-cta-btn fp-cta-btn--free"
+              onClick={downloadFamilyReport}
+              disabled={familyLoading}
+              aria-label="Download Family Report (Free)"
+            >
+              {familyLoading ? 'Generating…' : (
+                <>
+                  <DownloadIcon />
+                  Download Family Report (Free)
+                </>
+              )}
+            </button>
+          </div>
 
-        <div className="fp-cta-item fp-cta-item--paid">
-          <div className="fp-cta-item-kicker">2 · Facility Brief · $29</div>
-          <ul className="fp-cta-item-bullets">
-            <li>Scannable 9-page brief (not a text wall)</li>
-            <li>Inspection story · visit checklist · worksheet</li>
-            <li>Same public facts — packaged to share</li>
-          </ul>
-          <button
-            type="button"
-            className="fp-cta-btn fp-cta-btn--paid"
-            onClick={buyFacilityBrief}
-            aria-label="Buy Facility Brief ($29)"
-          >
-            Buy Facility Brief ($29)
-          </button>
+          <div className="fp-cta-item fp-cta-item--paid">
+            <div className="fp-cta-item-kicker">2 · Facility Brief · $29</div>
+            <ul className="fp-cta-item-bullets">
+              <li>Scannable 9-page brief (not a text wall)</li>
+              <li>Inspection story · visit checklist · worksheet</li>
+              <li>Same public facts — packaged to share</li>
+            </ul>
+            <button
+              type="button"
+              className="fp-cta-btn fp-cta-btn--paid"
+              onClick={buyFacilityBrief}
+              aria-label="Buy Facility Brief ($29)"
+            >
+              Buy Facility Brief ($29)
+            </button>
+          </div>
         </div>
 
         <p className="fp-cta-support">
