@@ -265,6 +265,17 @@
   background: rgba(220,38,38,0.1);
 }
 
+.fp-watchlist-btn--compare {
+  color: #1d4ed8;
+  border-color: #1d4ed8;
+  background: rgba(29, 78, 216, 0.08);
+}
+
+.fp-watchlist-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 /* === Watchlist Group + Compare Hint === */
 .fp-watchlist-group {
   display: flex;

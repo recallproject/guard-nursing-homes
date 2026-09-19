@@ -530,6 +530,26 @@
   gap: 8px;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: center;
+}
+
+.ia-fac-view {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ia-blue, #1d4ed8);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 8px 4px;
+}
+
+.ia-fac-view:hover,
+.ia-fac-view:focus-visible {
+  color: var(--ia-navy);
+}
+
+.ia-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .ia-btn {
@@ -648,6 +668,12 @@
   }
   .ia-page {
     padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ia-compare-inline {
+    display: none;
   }
 }
 

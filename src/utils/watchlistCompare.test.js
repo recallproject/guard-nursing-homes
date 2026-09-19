@@ -1,9 +1,13 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import {
+  addCompareItem,
   MAX_COMPARE_FACILITIES,
   parseCcnList,
+  parseCompareItems,
+  removeCompareItem,
   resolveCompareSelection,
+  toggleCompareItem,
   watchlistComparePath,
 } from './watchlistCompare.js';
 
@@ -18,6 +22,13 @@ describe('parseCcnList', () => {
     assert.deepEqual(parseCcnList(''), []);
     assert.deepEqual(parseCcnList(null), []);
   });
+
+  it('accepts tray item objects', () => {
+    assert.deepEqual(
+      parseCcnList([{ ccn: '111111', name: 'A' }, { ccn: '222222', name: 'B' }]),
+      ['111111', '222222']
+    );
+  });
 });
 
 describe('watchlistComparePath', () => {
@@ -30,71 +41,100 @@ describe('watchlistComparePath', () => {
   });
 });
 
+describe('addCompareItem / cap', () => {
+  it('adds until 3 and then refuses without dropping existing homes', () => {
+    const one = addCompareItem([], { ccn: 'aaa', name: 'A' });
+    assert.equal(one.added, true);
+    const two = addCompareItem(one.items, { ccn: 'bbb', name: 'B' });
+    const three = addCompareItem(two.items, { ccn: 'ccc', name: 'C' });
+    assert.equal(three.items.length, MAX_COMPARE_FACILITIES);
+    assert.equal(three.atCap, true);
+
+    const blocked = addCompareItem(three.items, { ccn: 'ddd', name: 'D' });
+    assert.equal(blocked.added, false);
+    assert.equal(blocked.atCap, true);
+    assert.deepEqual(blocked.items.map((i) => i.ccn), ['aaa', 'bbb', 'ccc']);
+  });
+
+  it('is a no-op when the home is already in the tray', () => {
+    const first = addCompareItem([], { ccn: 'aaa', name: 'A' });
+    const again = addCompareItem(first.items, { ccn: 'aaa', name: 'A again' });
+    assert.equal(again.added, false);
+    assert.equal(again.already, true);
+    assert.equal(again.items.length, 1);
+  });
+});
+
+describe('removeCompareItem / toggleCompareItem', () => {
+  it('removes by CCN and toggle adds then removes', () => {
+    const added = addCompareItem([], { ccn: 'aaa', name: 'A' });
+    assert.deepEqual(removeCompareItem(added.items, 'aaa'), []);
+    const toggledOn = toggleCompareItem([], { ccn: 'bbb', name: 'B' });
+    assert.equal(toggledOn.added, true);
+    const toggledOff = toggleCompareItem(toggledOn.items, { ccn: 'bbb' });
+    assert.equal(toggledOff.removed, true);
+    assert.deepEqual(toggledOff.items, []);
+  });
+});
+
+describe('parseCompareItems', () => {
+  it('keeps names for tray chips', () => {
+    const items = parseCompareItems([{ ccn: '111111', name: 'Sunrise', city: 'Austin', state: 'TX' }]);
+    assert.equal(items[0].name, 'Sunrise');
+    assert.equal(items[0].city, 'Austin');
+  });
+});
+
 describe('resolveCompareSelection', () => {
-  const favorites = ['aaa', 'bbb', 'ccc', 'ddd'];
-
-  it('opens compare with all favorites when there are 2–3 and compare=1', () => {
-    const two = resolveCompareSelection({
-      favoriteCcns: ['aaa', 'bbb'],
-      queryCompare: '1',
-    });
-    assert.deepEqual(two.selected, ['aaa', 'bbb']);
-    assert.equal(two.openCompare, true);
-    assert.equal(two.preselect, true);
-
-    const three = resolveCompareSelection({
-      favoriteCcns: ['aaa', 'bbb', 'ccc'],
-      queryCompare: '1',
-    });
-    assert.deepEqual(three.selected, ['aaa', 'bbb', 'ccc']);
-    assert.equal(three.openCompare, true);
-  });
-
-  it('preselects 2–3 favorites without opening when compare is not requested', () => {
+  it('does not auto-select favorites when compare is not requested', () => {
     const result = resolveCompareSelection({
-      favoriteCcns: ['aaa', 'bbb'],
       queryCompare: null,
-    });
-    assert.deepEqual(result.selected, ['aaa', 'bbb']);
-    assert.equal(result.openCompare, false);
-    assert.equal(result.preselect, true);
-  });
-
-  it('does not preselect when there are 4+ favorites and no compare intent', () => {
-    const result = resolveCompareSelection({
-      favoriteCcns: favorites,
-      queryCompare: null,
+      sessionCcns: [],
     });
     assert.deepEqual(result.selected, []);
     assert.equal(result.openCompare, false);
   });
 
-  it('uses the most recently added favorites when compare=1 and the list is long', () => {
+  it('does not treat a 2–3 favorite list as a compare set', () => {
     const result = resolveCompareSelection({
-      favoriteCcns: favorites,
-      queryCompare: '1',
+      queryCompare: null,
+      queryCcns: null,
+      sessionCcns: [],
     });
-    assert.deepEqual(result.selected, ['bbb', 'ccc', 'ddd']);
-    assert.equal(result.selected.length, MAX_COMPARE_FACILITIES);
-    assert.equal(result.openCompare, true);
+    assert.deepEqual(result.selected, []);
+    assert.equal(result.openCompare, false);
+    assert.equal(result.preselect, false);
   });
 
-  it('prefers explicit ?ccns= that are in the favorites list', () => {
-    const result = resolveCompareSelection({
-      favoriteCcns: favorites,
+  it('opens compare only for explicit tray/query picks of 2+', () => {
+    const fromQuery = resolveCompareSelection({
       queryCompare: '1',
-      queryCcns: 'ccc,aaa,missing',
+      queryCcns: 'aaa,bbb',
+    });
+    assert.deepEqual(fromQuery.selected, ['aaa', 'bbb']);
+    assert.equal(fromQuery.openCompare, true);
+
+    const one = resolveCompareSelection({
+      queryCompare: '1',
+      queryCcns: 'aaa',
+    });
+    assert.deepEqual(one.selected, ['aaa']);
+    assert.equal(one.openCompare, false);
+  });
+
+  it('prefers explicit ?ccns= over the session tray', () => {
+    const result = resolveCompareSelection({
+      queryCompare: '1',
+      queryCcns: 'ccc,aaa',
       sessionCcns: ['bbb', 'ddd'],
     });
     assert.deepEqual(result.selected, ['ccc', 'aaa']);
     assert.equal(result.openCompare, true);
   });
 
-  it('falls back to session picks when compare=1 and no usable query ccns', () => {
+  it('falls back to session picks when compare=1 and no query ccns', () => {
     const result = resolveCompareSelection({
-      favoriteCcns: favorites,
       queryCompare: '1',
-      queryCcns: 'not-a-favorite',
       sessionCcns: ['ddd', 'aaa'],
     });
     assert.deepEqual(result.selected, ['ddd', 'aaa']);
@@ -103,7 +143,6 @@ describe('resolveCompareSelection', () => {
 
   it('ignores session picks unless compare=1', () => {
     const result = resolveCompareSelection({
-      favoriteCcns: favorites,
       queryCompare: null,
       sessionCcns: ['ddd', 'aaa'],
     });
@@ -111,11 +150,10 @@ describe('resolveCompareSelection', () => {
     assert.equal(result.openCompare, false);
   });
 
-  it('does not open compare with fewer than two valid facilities', () => {
+  it('never opens compare from favorites length alone', () => {
     const result = resolveCompareSelection({
-      favoriteCcns: ['aaa'],
       queryCompare: '1',
-      queryCcns: 'aaa',
+      sessionCcns: [],
     });
     assert.deepEqual(result.selected, []);
     assert.equal(result.openCompare, false);

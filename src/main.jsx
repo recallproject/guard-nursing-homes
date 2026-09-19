@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx';
 import { WatchlistProvider } from './hooks/useWatchlist';
+import { CompareTrayProvider } from './hooks/useCompareTray';
 import { trackOnce, getEntryContext } from './utils/analytics';
 
 // Fire session_started once per browser session with entry page, referrer, and UTMs
@@ -66,7 +67,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ErrorBoundary>
         <BrowserRouter>
           <WatchlistProvider>
-            <App />
+            <CompareTrayProvider>
+              <App />
+            </CompareTrayProvider>
           </WatchlistProvider>
         </BrowserRouter>
       </ErrorBoundary>

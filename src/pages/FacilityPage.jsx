@@ -24,6 +24,7 @@ import '../styles/staffing.css';
 import ftagReference from '../data/ftag-reference.json';
 import { facilitySeoDescription, facilitySeoTitle } from '../utils/facilitySeo';
 import { watchlistComparePath } from '../utils/watchlistCompare';
+import { useCompareTray } from '../hooks/useCompareTray';
 
 // Accordion component for abuse/neglect citation groups
 function AbuseGroupAccordion({ ftag, desc, defs, harmCount, hasActualHarm }) {
@@ -196,7 +197,8 @@ export function FacilityPage() {
   const { facility, allStateFacilities, stateData, loading: fastLoading, error: fastError } = useSingleFacility(ccn);
   // Background load: full dataset for benchmarks and ownership clusters
   const { data, loading: fullLoading, error: fullError } = useFacilityData();
-  const { watchlist, addFacility, removeFacility, isWatched } = useWatchlist();
+  const { addFacility, removeFacility, isWatched } = useWatchlist();
+  const { toggle: toggleCompare, isInCompare, atCap, count: compareCount, ccns: compareCcns } = useCompareTray();
   const pageRef = useRef(null);
   const fromState = location.state?.fromState || null;
   const [ahcaData, setAhcaData] = useState(null);
@@ -449,19 +451,28 @@ export function FacilityPage() {
           <button
             className={`fp-watchlist-btn ${isWatched(ccn) ? 'fp-watchlist-btn--active' : ''}`}
             onClick={() => { if (!isWatched(ccn)) { addFacility(ccn, facility.name); window.plausible && window.plausible('Star-Favorite', {props: {facility: facility.name, ccn: facility.ccn}}); } else { removeFacility(ccn); } }}
-            title={isWatched(ccn) ? 'Remove from favorites' : 'Add to favorites'}
+            title={isWatched(ccn) ? 'Remove from saved homes' : 'Save this home to your shortlist'}
           >
-            {isWatched(ccn) ? '★ Favorited' : '☆ Favorite'}
+            {isWatched(ccn) ? '★ Saved' : '☆ Save'}
           </button>
-          {watchlist.length >= 2 ? (
-            <Link to={watchlistComparePath({ ccns: watchlist.map((item) => item.ccn) })} className="fp-compare-cta">
-              Compare your {watchlist.length} favorites →
+          <button
+            type="button"
+            className={`fp-watchlist-btn ${isInCompare(ccn) ? 'fp-watchlist-btn--compare' : ''}`}
+            onClick={() => toggleCompare(facility)}
+            disabled={atCap && !isInCompare(ccn)}
+            title={atCap && !isInCompare(ccn) ? 'Compare is full (3 of 3). Remove a home first.' : 'Add this home to a 2–3 home comparison'}
+          >
+            {isInCompare(ccn) ? 'In compare' : 'Add to compare'}
+          </button>
+          {compareCount >= 2 ? (
+            <Link to={watchlistComparePath({ ccns: compareCcns })} className="fp-compare-cta">
+              Compare now ({compareCount} of 3) →
             </Link>
           ) : (
             <span className="fp-compare-hint">
-              {watchlist.length === 1
-                ? 'Favorite one more facility to compare them side-by-side.'
-                : 'Favorite this facility, then add another to compare them side-by-side.'}
+              {compareCount === 1
+                ? 'Add 1 more home to compare side-by-side. Saving does not add it to compare.'
+                : 'Add this home to compare, then add a second. Saving is a separate shortlist.'}
             </span>
           )}
         </div>
