@@ -22,7 +22,7 @@ describe('Favorites compare UX wiring', () => {
 
   it('surfaces Free Family Report and $29 Brief on compare results', () => {
     const view = readSrc('components/WatchlistCompareView.jsx');
-    assert.match(view, /import \{ generatePDF \} from '\.\.\/utils\/generatePDF'/);
+    assert.match(view, /import\('\.\.\/utils\/generatePDF'\)/);
     assert.match(view, /import \{ checkoutSingleReport \} from '\.\.\/utils\/stripe'/);
     assert.match(view, /FREE_VS_PAID_COPY/);
     assert.match(view, /Download Family Report \(Free\)/);
@@ -55,12 +55,29 @@ describe('Favorites compare UX wiring', () => {
     assert.match(comparePage, /\/watchlist\?compare=1/);
   });
 
+  it('does not mount the CA AG promo banner', () => {
+    const app = readSrc('App.jsx');
+    assert.doesNotMatch(app, /CaliforniaBanner/);
+    const flag = readSrc('utils/californiaBanner.js');
+    assert.match(flag, /return false/);
+  });
+
+  it('loads only favorited CCNs on the watchlist page', () => {
+    const page = readSrc('pages/WatchlistPage.jsx');
+    assert.match(page, /useWatchlistFacilities/);
+    assert.match(page, /collectWatchlistCcns/);
+    assert.match(page, /WatchlistErrorBoundary/);
+    assert.doesNotMatch(page, /useFacilityData\(\)/);
+  });
+
   it('sends facility and search compare actions through watchlistComparePath', () => {
     const facility = readSrc('pages/FacilityPage.jsx');
     assert.match(facility, /watchlistComparePath\(\{ ccns: watchlist.map/);
     const toast = readSrc('components/SaveToast.jsx');
-    assert.match(toast, /watchlistComparePath\(\)/);
+    assert.doesNotMatch(toast, /watchlistComparePath/);
+    assert.doesNotMatch(toast, /Compare favorites/);
     const state = readSrc('pages/StatePage.jsx');
     assert.match(state, /watchlistComparePath\(\{ ccns: compareCcns \}\)/);
+    assert.match(state, /compareCcns\.length >= 2/);
   });
 });

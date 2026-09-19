@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { gsap } from 'gsap';
-import { useFacilityData } from '../hooks/useFacilityData';
+import { useWatchlistFacilities } from '../hooks/useFacilityData';
 import { useWatchlist } from '../hooks/useWatchlist';
 import { WatchlistCompareView } from '../components/WatchlistCompareView';
+import { WatchlistErrorBoundary } from '../components/WatchlistErrorBoundary';
+import { collectWatchlistCcns } from '../utils/watchlistFacilities';
 import { readSessionCompareCcns, resolveCompareSelection } from '../utils/watchlistCompare';
 import '../styles/watchlist.css';
 
@@ -23,10 +25,17 @@ const US_STATES = {
 };
 
 export function WatchlistPage() {
-  const { getFacility, loading, error } = useFacilityData();
   const { watchlist, removeFacility, clearWatchlist } = useWatchlist();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const queryCcns = searchParams.get('ccns') || '';
+  const sessionCcns = readSessionCompareCcns();
+  const hydrateCcns = collectWatchlistCcns({
+    favoriteCcns: watchlist.map((item) => item.ccn),
+    queryCcns,
+    sessionCcns,
+  });
+  const { getFacility, loading, error } = useWatchlistFacilities(hydrateCcns);
 
   const [sortBy, setSortBy] = useState('date'); // date, risk, name, state
   const [filterState, setFilterState] = useState('all');
@@ -43,7 +52,7 @@ export function WatchlistPage() {
     favoriteCcns,
     queryCompare: searchParams.get('compare'),
     queryCcns: searchParams.get('ccns'),
-    sessionCcns: loading ? [] : readSessionCompareCcns(),
+    sessionCcns: loading ? [] : sessionCcns,
   });
 
   const [compareOverride, setCompareOverride] = useState(null);
@@ -54,7 +63,7 @@ export function WatchlistPage() {
   }
 
   const selectedForCompare = compareOverride?.selected ?? new Set(autoCompare.selected);
-  const showCompare = compareOverride?.show ?? autoCompare.openCompare;
+  const wantsCompare = compareOverride?.show ?? autoCompare.openCompare;
 
   // Plausible: track watchlist page view
   useEffect(() => {
@@ -63,24 +72,32 @@ export function WatchlistPage() {
 
   // Animate on mount
   useEffect(() => {
-    if (headerRef.current) {
+    if (!headerRef.current) return undefined;
+    try {
       gsap.fromTo(
         headerRef.current,
         { opacity: 0, y: -30 },
         { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }
       );
+    } catch {
+      /* animation is optional */
     }
+    return undefined;
   }, []);
 
   // Animate content when watchlist changes
   useEffect(() => {
-    if (contentRef.current && watchlist.length > 0) {
+    if (!contentRef.current || watchlist.length === 0) return undefined;
+    try {
       gsap.fromTo(
         contentRef.current.children,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' }
       );
+    } catch {
+      /* animation is optional */
     }
+    return undefined;
   }, [watchlist, sortBy, filterState]);
 
   useEffect(() => {
@@ -94,19 +111,21 @@ export function WatchlistPage() {
   }, [autoCompare.openCompare, autoCompare.selected, queryKey]);
 
   useEffect(() => {
-    if (!showCompare) return;
+    if (!wantsCompare) return;
     const timer = setTimeout(() => {
       comparisonRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 150);
     return () => clearTimeout(timer);
-  }, [showCompare]);
+  }, [wantsCompare]);
 
   if (loading) {
     return (
       <div className="watchlist-page">
         <div className="watchlist-loading">
           <div className="loading-spinner"></div>
-          <div className="loading-text">Loading watchlist...</div>
+          <div className="loading-text">
+            {wantsCompare ? 'Loading comparison…' : 'Loading favorites…'}
+          </div>
         </div>
       </div>
     );
@@ -248,7 +267,7 @@ export function WatchlistPage() {
     } else if (next.size < 3) {
       next.add(ccn);
     }
-    setCompareOverride({ selected: next, show: showCompare });
+    setCompareOverride({ selected: next, show: wantsCompare && next.size >= 2 });
   };
 
   const handleCompareSelected = () => {
@@ -262,6 +281,7 @@ export function WatchlistPage() {
   };
 
   return (
+    <WatchlistErrorBoundary resetKey={queryKey}>
     <div className="watchlist-page">
       <Helmet>
         <title>Favorites — Compare facilities | The Oversight Report</title>
@@ -271,10 +291,14 @@ export function WatchlistPage() {
       {/* Header */}
       <div className="watchlist-header" ref={headerRef}>
         <div className="watchlist-header-top">
-          <h1>Favorites</h1>
-          {facilities.length > 0 && (
-            <span className="watchlist-count-badge">{facilities.length}</span>
-          )}
+          <h1>
+            <span className="watchlist-title-text">Favorites</span>
+            {facilities.length > 0 && (
+              <span className="watchlist-count-badge" aria-label={`${facilities.length} saved`}>
+                {facilities.length}
+              </span>
+            )}
+          </h1>
         </div>
         <p className="watchlist-subtitle">
           Favorite 2–3 homes, then compare them side-by-side. Saved on this device only — no account needed.
@@ -295,7 +319,7 @@ export function WatchlistPage() {
         </div>
       ) : (
         <>
-          {showCompare && selectedFacilities.length >= 2 && (
+          {wantsCompare && selectedFacilities.length >= 2 && (
             <div ref={comparisonRef}>
               <WatchlistCompareView
                 facilities={selectedFacilities}
@@ -335,7 +359,7 @@ export function WatchlistPage() {
           </div>
 
           {/* Compare Bar */}
-          {!showCompare && (
+          {!(wantsCompare && selectedFacilities.length >= 2) && (
             <div
               className={`watchlist-compare-bar${facilities.length >= 2 ? ' watchlist-compare-bar--docked' : ''}`}
               id="compare"
@@ -526,5 +550,6 @@ export function WatchlistPage() {
         </div>
       )}
     </div>
+    </WatchlistErrorBoundary>
   );
 }

@@ -1,4 +1,10 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import {
+  ccnLookupKeys,
+  extractFacilities,
+  lookupStateForCcn,
+  normalizeCcn,
+} from '../utils/watchlistFacilities';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -22,7 +28,7 @@ async function loadIndex() {
 /**
  * Load the CCN-to-state mapping (~201KB)
  */
-async function loadCcnIndex() {
+export async function loadCcnIndex() {
   if (ccnIndex) return ccnIndex;
   const res = await fetch(`${BASE}data/ccn-index.json`);
   if (!res.ok) throw new Error(`Failed to load CCN index: ${res.status}`);
@@ -33,8 +39,9 @@ async function loadCcnIndex() {
 /**
  * Load a single state's facility data (0.1–5MB depending on state)
  */
-async function loadStateData(stateCode) {
-  const code = stateCode.toUpperCase();
+export async function loadStateData(stateCode) {
+  if (!stateCode) throw new Error('Missing state code');
+  const code = String(stateCode).toUpperCase();
   if (stateCache[code]) return stateCache[code];
   const res = await fetch(`${BASE}data/states/${code}.json`);
   if (!res.ok) throw new Error(`Failed to load state ${code}: ${res.status}`);
@@ -316,4 +323,85 @@ export function useStateData(stateCode) {
   }, [stateCode]);
 
   return { stateData, loading, error };
+}
+
+
+// ═══════════════════════════════════════════════════════════
+// Hook 4: useWatchlistFacilities — load only the states needed
+// for a short CCN list. Used by Favorites/compare so first
+// navigation never pulls the full national dataset.
+// ═══════════════════════════════════════════════════════════
+export function useWatchlistFacilities(ccns) {
+  const wantedKey = Array.isArray(ccns) ? ccns.filter(Boolean).join(',') : String(ccns || '');
+  const wanted = useMemo(
+    () => wantedKey.split(',').map((ccn) => normalizeCcn(ccn)).filter(Boolean),
+    [wantedKey]
+  );
+  const [byCcn, setByCcn] = useState(() => new Map());
+  const [loading, setLoading] = useState(wanted.length > 0);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (wanted.length === 0) {
+      setByCcn(new Map());
+      setLoading(false);
+      setError(null);
+      return undefined;
+    }
+
+    async function load() {
+      setLoading(true);
+      try {
+        const index = await loadCcnIndex();
+        const statesNeeded = new Set();
+        for (const ccn of wanted) {
+          const state = lookupStateForCcn(index, ccn);
+          if (state) statesNeeded.add(state);
+        }
+
+        const loaded = await Promise.all(
+          [...statesNeeded].map((code) => loadStateData(code).catch(() => null))
+        );
+        if (cancelled) return;
+
+        const map = new Map();
+        for (const stateData of loaded) {
+          for (const facility of extractFacilities(stateData)) {
+            const ccn = normalizeCcn(facility?.ccn);
+            if (!ccn) continue;
+            for (const key of ccnLookupKeys(ccn)) {
+              map.set(key, facility);
+            }
+          }
+        }
+        setByCcn(map);
+        setError(null);
+      } catch (err) {
+        if (!cancelled) {
+          console.error('Error loading watchlist facilities:', err);
+          setError(err.message || 'Unable to load favorites');
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      cancelled = true;
+    };
+  }, [wantedKey, wanted]);
+
+  const getFacility = useCallback((ccn) => {
+    if (!ccn) return null;
+    for (const key of ccnLookupKeys(ccn)) {
+      const found = byCcn.get(key);
+      if (found) return found;
+    }
+    return null;
+  }, [byCcn]);
+
+  return { getFacility, loading, error };
 }

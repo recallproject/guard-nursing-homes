@@ -3,8 +3,8 @@ import { lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import Footer from './components/landing/Footer';
 import { MapPage } from './pages/MapPage';
-import CaliforniaBanner from './components/landing/CaliforniaBanner';
 import FacilityErrorBoundary from './components/FacilityErrorBoundary';
+import { WatchlistErrorBoundary } from './components/WatchlistErrorBoundary';
 import { SaveToast } from './components/SaveToast';
 import { useWatchlist } from './hooks/useWatchlist';
 import './styles/design.css';
@@ -106,11 +106,10 @@ function LoadingFallback() {
 }
 
 function App() {
-  const { lastAdded, clearLastAdded, watchlist } = useWatchlist();
+  const { lastAdded, clearLastAdded } = useWatchlist();
 
   return (
     <>
-      <CaliforniaBanner />
       <Header />
       <Suspense fallback={<LoadingFallback />}>
         <Routes>
@@ -145,7 +144,7 @@ function App() {
           <Route path="/referral-scorecard" element={<ReferralScorecardPage />} />
           {/* /evidence/:ccn redirects to /facility/:ccn — Facility Brief is $29 checkout on the facility page */}
           <Route path="/evidence/:ccn" element={<EvidenceRedirect />} />
-          <Route path="/watchlist" element={<WatchlistPage />} />
+          <Route path="/watchlist" element={<WatchlistErrorBoundary><WatchlistPage /></WatchlistErrorBoundary>} />
           <Route path="/trends" element={<TrendsPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
           <Route path="/ag-toolkit" element={<AGToolkitPage />} /> {/* Parked: not linked from primary UI */}
@@ -184,7 +183,6 @@ function App() {
       <SaveToast
         visible={!!lastAdded}
         facilityName={lastAdded?.name}
-        favoriteCount={watchlist.length}
         onDismiss={clearLastAdded}
       />
     </>

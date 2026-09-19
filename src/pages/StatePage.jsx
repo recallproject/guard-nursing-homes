@@ -7,6 +7,7 @@ import { FacilityResultCard } from '../components/FacilityResultCard';
 import { hasSffFlag } from '../utils/facilityFlags';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { loadStateData } from '../hooks/useFacilityData';
 import { readSessionCompareCcns, watchlistComparePath, WATCHLIST_COMPARE_SESSION_KEY } from '../utils/watchlistCompare';
 import USAMap from '../components/USAMap';
 import '../styles/family-ia.css';
@@ -70,11 +71,7 @@ export default function StatePage() {
     if (unknownState) return undefined;
 
     let cancelled = false;
-    fetch(`/data/states/${stateCode}.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`No data found for ${stateCode}`);
-        return res.json();
-      })
+    loadStateData(stateCode)
       .then((data) => {
         if (cancelled) return;
         setFacilities(Array.isArray(data) ? data : data.facilities || []);
@@ -84,7 +81,7 @@ export default function StatePage() {
       })
       .catch((err) => {
         if (cancelled) return;
-        setError(err.message);
+        setError(err.message || `No data found for ${stateCode}`);
         setLoading(false);
       });
     return () => {
@@ -349,7 +346,7 @@ export default function StatePage() {
         primaryLabel="Filter"
         secondaryLabel={compareCcns.length >= 2 ? `Compare (${compareCcns.length})` : 'Compare'}
         onPrimary={focusFilter}
-        secondaryTo={watchlistComparePath({ ccns: compareCcns })}
+        secondaryTo={compareCcns.length >= 2 ? watchlistComparePath({ ccns: compareCcns }) : '/watchlist'}
       />
     </div>
   );

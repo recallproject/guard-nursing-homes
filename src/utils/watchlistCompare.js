@@ -49,14 +49,22 @@ export function resolveCompareSelection({
   const inFavorites = (ccns) => parseCcnList(ccns).filter((ccn) => favoriteSet.has(ccn));
 
   const autoOpen = queryCompare === '1' || queryCompare === 'true';
+  const fromQueryAll = parseCcnList(queryCcns);
   const fromQuery = inFavorites(queryCcns);
+  const fromSessionAll = parseCcnList(sessionCcns);
   const fromSession = inFavorites(sessionCcns);
+  const favoritesHydrated = favorites.length > 0;
 
   let selected = [];
   if (fromQuery.length >= 2) {
     selected = fromQuery;
+  } else if (!favoritesHydrated && fromQueryAll.length >= 2) {
+    // First paint can land before localStorage favorites hydrate — honor explicit CCNs.
+    selected = fromQueryAll;
   } else if (autoOpen && fromSession.length >= 2) {
     selected = fromSession;
+  } else if (autoOpen && !favoritesHydrated && fromSessionAll.length >= 2) {
+    selected = fromSessionAll;
   } else if (favorites.length >= 2 && favorites.length <= MAX_COMPARE_FACILITIES) {
     selected = [...favorites];
   } else if (autoOpen && favorites.length > MAX_COMPARE_FACILITIES) {
