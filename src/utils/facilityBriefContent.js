@@ -831,7 +831,7 @@ export function buildFacilityBriefModel(facility, opts = {}) {
     bottomLine: buildBottomLine(facility, ctx),
     strengths: buildStrengths(facility, ctx),
     concerns: buildConcerns(facility, ctx, details),
-    nextAction: '1) Read the inspection story and F-tag table (pages 5–6). 2) Tour with the visit checklist and ask about weekend RN coverage, abuse policies, and SFF status. 3) Fill the visit checklist (page 8), then compare nearby options and use the decision worksheet (page 9) before signing anything.',
+    nextAction: '1) Read the inspection story and F-tag table (pages 5–6). 2) Tour with the visit checklist and ask about weekend RN coverage, abuse policies, and SFF status. 3) Fill the visit checklist (page 8), then compare nearby options and use the decision worksheet before signing anything.',
     inside: 'Scorecard · Staffing & ownership · Care fit · Inspection story · F-tag table · Penalties & safety · Visit checklist · Decision worksheet & sources',
     stars: {
       overall: starLine('Overall CMS', facility.stars),
@@ -966,7 +966,7 @@ export function buildFacilityBriefModel(facility, opts = {}) {
       ].filter(Boolean)
       : null,
     penaltyNote: 'Fine totals on marketing pages sometimes round differently than the detailed timeline. This brief uses the facility total_fines field from the CMS extract.',
-    visitIntro: 'Bring this page on the tour. Every question links to a real flag in the CMS record. Write who answered you. Nearby facilities to compare are on page 9.',
+    visitIntro: 'Bring this page on the tour. Every question links to a real flag in the CMS record. Write who answered you. Nearby facilities to compare are on the decision worksheet.',
     questions: buildVisitQuestions(facility, details, ctx),
     visitTip: 'Tip: photograph any written policy they hand you, and note the staff member’s name on each line above before you leave.',
     nearby: pickNearby(opts.nearbyAlternatives),

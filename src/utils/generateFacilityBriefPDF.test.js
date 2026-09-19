@@ -24,7 +24,7 @@ function loadAvir() {
 }
 
 describe('generateFacilityBriefPDF', () => {
-  it('renders a 9-page Facility Brief from live Avir JSON without a reportType picker', () => {
+  it('renders a Facility Brief from live Avir JSON without a reportType picker', () => {
     const { facility, nearby, dataAsOf } = loadAvir();
     assert.ok(facility, 'Avir 675408 should exist in TX.json');
     assert.equal(dataAsOf, '2026-08-26');
@@ -69,6 +69,8 @@ describe('generateFacilityBriefPDF', () => {
     assert.match(text, /INSPECTION STORY|Inspection story/i);
     assert.match(text, /VISIT CHECKLIST|Visit checklist/i);
     assert.match(text, /Questions continued/i);
+    assert.match(text, /DECISION WORKSHEET|Decision worksheet/i);
+    assert.equal(pageCount, 10, 'leftover checklist questions must not share a page with the worksheet');
     assert.match(text, /Special Focus Facility/);
     assert.match(text, /Winnie-Stowell Hospital District/);
     assert.match(text, /Answered by:/);
