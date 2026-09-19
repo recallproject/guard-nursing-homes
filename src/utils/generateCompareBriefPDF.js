@@ -211,6 +211,7 @@ export function generateCompareBriefPDF(facilities, options = {}) {
   footer(1);
 
   // ── Scorecard ──────────────────────────────────────────
+  doc.addPage();
   y = pageHead('Side-by-side scorecard');
   doc.setFont(FONT, 'normal');
   doc.setFontSize(9.5);

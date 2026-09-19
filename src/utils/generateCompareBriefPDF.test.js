@@ -28,11 +28,12 @@ describe('generateCompareBriefPDF', () => {
     });
 
     const pages = doc.internal.getNumberOfPages();
-    assert.ok(pages >= 5 && pages <= 8, `expected 5-8 pages, got ${pages}`);
+    assert.equal(pages, 6, `expected 6 pages (cover through appendix), got ${pages}`);
     const raw = doc.output();
     const text = decodeJsPdfContent(raw);
     assert.match(raw, /Compare Brief/);
     assert.match(text, /Comparing /);
+    assert.match(text, /Inside this packet|INSIDE THIS PACKET/i);
     assert.match(text, /August 2026/);
     assert.match(text, /Side-by-side scorecard|SCORECARD/i);
     assert.match(text, /What stands out|WHAT STANDS OUT/i);
