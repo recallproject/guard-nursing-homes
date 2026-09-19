@@ -46,6 +46,20 @@ export default function SuccessPage() {
       return;
     }
 
+    let pendingCompareBrief = '';
+    try {
+      pendingCompareBrief = localStorage.getItem('pending_compare_brief') || '';
+    } catch {
+      pendingCompareBrief = '';
+    }
+    if (pendingCompareBrief) {
+      const compareUrl = sessionId
+        ? `/compare-brief-success?session_id=${sessionId}`
+        : `/compare-brief-success?ccns=${encodeURIComponent(pendingCompareBrief)}`;
+      navigate(compareUrl, { replace: true });
+      return;
+    }
+
     // If we have a session_id, verify with server (secure path)
     if (sessionId) {
       verifySubscription(sessionId);
@@ -90,8 +104,11 @@ export default function SuccessPage() {
         setError('Payment has not been completed. Please complete checkout and try again.');
         setTierName('');
       } else if (data.error === 'Not a subscription checkout') {
-        // Facility Brief (one-time) landed on /success — CCN is on the Stripe session.
-        navigate(`/evidence-success?session_id=${encodeURIComponent(sid)}`, { replace: true });
+        // One-time Brief purchase landed on /success — session is the source of truth.
+        const dest = data.product === 'compare_brief'
+          ? `/compare-brief-success?session_id=${encodeURIComponent(sid)}`
+          : `/evidence-success?session_id=${encodeURIComponent(sid)}`;
+        navigate(dest, { replace: true });
         return;
       } else {
         setError(data.error || 'Could not verify subscription. Please contact support.');

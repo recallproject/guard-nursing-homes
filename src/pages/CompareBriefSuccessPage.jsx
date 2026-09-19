@@ -1,69 +1,53 @@
 /**
- * Facility Brief Success Page
+ * Compare Brief success page.
  *
- * SECURITY MODEL:
- * After Stripe payment, user is redirected here with ?session_id=cs_xxx.
- * This page calls /api/send-evidence with the session ID. The API:
- * 1. Verifies payment with Stripe
- * 2. Resolves CCN from the paid session (client_reference_id / metadata)
- * 3. Generates the HMAC download token
- *
- * localStorage (`pending_single_report`) and ?ccn= are optional hints only.
- * They fail across www vs apex (different origins) and when storage is
- * blocked. The paid Checkout Session is the source of truth for CCN.
- *
- * STRIPE PAYMENT LINK SETUP (MANUAL STEP):
- * The single-report Payment Link success URL must be:
- *   https://www.oversightreports.com/evidence-success?session_id={CHECKOUT_SESSION_ID}
- * Stripe will replace {CHECKOUT_SESSION_ID} with the real session ID on redirect.
+ * After Stripe Checkout, user lands here with ?session_id=cs_xxx.
+ * This page calls /api/send-evidence, which verifies payment and
+ * resolves every CCN from session metadata.
  */
-import { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link, useSearchParams } from 'react-router-dom';
+import { PENDING_COMPARE_BRIEF_KEY } from '../utils/compareBriefCheckout.js';
 import '../styles/design.css';
 
-function readOptionalStoredCcn() {
+function readOptionalStoredCcns() {
   try {
-    return localStorage.getItem('pending_single_report') || '';
+    return localStorage.getItem(PENDING_COMPARE_BRIEF_KEY) || '';
   } catch {
     return '';
   }
 }
 
-function clearOptionalStoredCcn() {
+function clearOptionalStoredCcns() {
   try {
-    localStorage.removeItem('pending_single_report');
+    localStorage.removeItem(PENDING_COMPARE_BRIEF_KEY);
   } catch {
     // Storage may be blocked; fulfillment does not depend on it.
   }
 }
 
-export default function EvidenceSuccessPage() {
+export default function CompareBriefSuccessPage() {
   const [searchParams] = useSearchParams();
-
-  // session_id comes from Stripe redirect URL (server-verified, secure)
   const sessionId = searchParams.get('session_id') || '';
+  const ccnsFromUrl = searchParams.get('ccns') || '';
 
-  // Optional CCN hints — never required for a paid session
-  const ccnFromUrl = searchParams.get('ccn') || '';
-
-  const [status, setStatus] = useState('loading'); // loading | ready | error
+  const [status, setStatus] = useState('loading');
   const [downloadUrl, setDownloadUrl] = useState('');
-  const [ccn, setCcn] = useState('');
+  const [ccns, setCcns] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
     if (!sessionId) return;
 
-    const hintCcn = readOptionalStoredCcn() || ccnFromUrl;
-
+    const hintCcns = readOptionalStoredCcns() || ccnsFromUrl;
     let cancelled = false;
 
     async function getDownloadLink() {
       try {
         const body = { checkout_session_id: sessionId };
-        if (hintCcn) body.ccn = hintCcn;
+        if (hintCcns) body.ccns = hintCcns;
 
         const res = await fetch('/api/send-evidence', {
           method: 'POST',
@@ -73,16 +57,18 @@ export default function EvidenceSuccessPage() {
         const data = await res.json();
         if (cancelled) return;
         if (res.ok && data.success) {
-          if (data.product === 'compare_brief' && data.downloadUrl) {
+          if (data.product === 'facility_brief' && data.downloadUrl) {
             window.location.replace(data.downloadUrl);
             return;
           }
-          const resolvedCcn = data.ccn || hintCcn;
-          clearOptionalStoredCcn();
+          clearOptionalStoredCcns();
+          const resolved = data.ccns || String(hintCcns || '').split(',').filter(Boolean);
           setDownloadUrl(data.downloadUrl);
-          setCcn(resolvedCcn);
+          setCcns(resolved);
           setStatus('ready');
-          window.plausible && window.plausible('Evidence-Purchase-Complete', { props: { ccn: resolvedCcn } });
+          window.plausible && window.plausible('Compare-Brief-Purchase-Complete', {
+            props: { count: String(resolved.length), ccns: resolved.join(',') },
+          });
         } else if (res.status === 402) {
           setErrorMsg('Payment has not been completed. Please complete checkout and try again.');
           setStatus('error');
@@ -99,7 +85,7 @@ export default function EvidenceSuccessPage() {
 
     getDownloadLink();
     return () => { cancelled = true; };
-  }, [sessionId, ccnFromUrl]);
+  }, [sessionId, ccnsFromUrl]);
 
   const displayStatus = sessionId ? status : 'error';
   const displayError = sessionId
@@ -109,7 +95,7 @@ export default function EvidenceSuccessPage() {
   return (
     <>
       <Helmet>
-        <title>Your Facility Brief | The Oversight Report</title>
+        <title>Your Compare Brief | The Oversight Report</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <div style={{
@@ -131,7 +117,7 @@ export default function EvidenceSuccessPage() {
         }}>
           {displayStatus === 'loading' && (
             <p style={{ color: 'var(--text-cream)', fontSize: '1.1rem' }}>
-              Preparing your Facility Brief...
+              Preparing your Compare Brief...
             </p>
           )}
 
@@ -152,7 +138,7 @@ export default function EvidenceSuccessPage() {
                 lineHeight: 1.6,
                 marginBottom: '2rem',
               }}>
-                Your Facility Brief{ccn ? <> for facility <strong>{ccn}</strong></> : ''} is ready.
+                Your Compare Brief{ccns.length ? <> for {ccns.length} homes</> : ''} is ready.
                 This link expires in 72 hours.
               </p>
               <a
@@ -160,7 +146,7 @@ export default function EvidenceSuccessPage() {
                 className="btn btn-primary"
                 style={{ display: 'inline-block', padding: '14px 28px', fontSize: '1rem', textDecoration: 'none' }}
               >
-                Download Facility Brief
+                Download Compare Brief
               </a>
               <p style={{ marginTop: '1.5rem' }}>
                 <Link to="/" style={{ color: 'var(--accent-teal)', textDecoration: 'none' }}>

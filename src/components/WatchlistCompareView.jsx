@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { selectCompareBriefOffer } from '../utils/compareBriefPricing';
 import { generateComparisonPDF } from '../utils/generateComparisonPDF';
-import { checkoutSingleReport } from '../utils/stripe';
+import { checkoutCompareBrief, checkoutSingleReport } from '../utils/stripe';
 import { FREE_VS_PAID_COPY } from './facilityReportCopy';
 import { CMS_SNF_AS_OF_ISO } from '../data/careSettings';
 import {
@@ -172,7 +173,9 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
   const [openGroups, setOpenGroups] = useState(() => new Set());
   const [sheetRow, setSheetRow] = useState(null);
   const [snapLoading, setSnapLoading] = useState(false);
+  const [briefLoading, setBriefLoading] = useState(false);
   const homes = useMemo(() => (facilities || []).filter(Boolean).slice(0, 3), [facilities]);
+  const compareOffer = selectCompareBriefOffer(homes.length);
 
   if (!homes.length) return null;
 
@@ -201,6 +204,21 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
         setSnapLoading(false);
       }
     }, 100);
+  };
+
+  const buyCompareBrief = () => {
+    if (!compareOffer || briefLoading) return;
+    if (typeof window !== 'undefined' && window.plausible) {
+      window.plausible('Compare-Brief-Checkout', {
+        props: {
+          placement: 'watchlist-compare',
+          count: String(count),
+          price_usd: String(compareOffer.priceUsd),
+        },
+      });
+    }
+    setBriefLoading(true);
+    checkoutCompareBrief(homes.map((h) => h.ccn)).finally(() => setBriefLoading(false));
   };
 
   const toggleGroup = (id) => {
@@ -289,9 +307,10 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
 
       <div className="watchlist-compare-briefs" id="compare-briefs">
         <p className="watchlist-compare-upgrade">
-          Want help deciding what to ask on a tour? Get the paid family brief ($29 per home).
-          Includes a plain-language packet, questions tailored to the home, and a visit worksheet.
-          The free comparison stays available.
+          The free download is a one-page snapshot. The paid Compare Brief is one deeper packet
+          for these homes — scorecard, what stands out, a shared visit checklist, and one
+          decision worksheet. Individual $29 Facility Briefs stay available per home if you
+          only want a single-facility packet. The free comparison is never blocked.
         </p>
         <div className="watchlist-compare-table-ctas">
           {homes.map((facility) => (
@@ -312,9 +331,24 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
         >
           {snapLoading ? 'Generating…' : `Download my ${count}-home comparison`}
         </button>
-        <a className="watchlist-compare-actionbar-paid" href="#compare-briefs">
-          Get a $29 Facility Brief
-        </a>
+        {compareOffer ? (
+          <button
+            type="button"
+            className="watchlist-compare-actionbar-paid"
+            onClick={buyCompareBrief}
+            disabled={briefLoading}
+          >
+            {briefLoading ? 'Starting checkout…' : compareOffer.ctaLabel}
+          </button>
+        ) : (
+          <a className="watchlist-compare-actionbar-paid" href="#compare-briefs">
+            Get a $29 Facility Brief
+          </a>
+        )}
+        <p className="watchlist-compare-actionbar-note">
+          Free snapshot first. Compare Brief is the deeper multi-home packet
+          {compareOffer ? ` (${compareOffer.priceLabel})` : ''}.
+        </p>
       </div>
 
       <MetricSheet row={sheetRow} onClose={() => setSheetRow(null)} />

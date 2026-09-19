@@ -605,6 +605,16 @@ const utilityPages = [
     title: 'Download Facility Brief — The Oversight Report',
     description: 'Download your Facility Brief from The Oversight Report.'
   },
+  {
+    route: 'compare-brief-success',
+    title: 'Your Compare Brief — The Oversight Report',
+    description: 'Your Compare Brief is ready to download.'
+  },
+  {
+    route: 'compare-brief-download',
+    title: 'Download Compare Brief — The Oversight Report',
+    description: 'Download your Compare Brief from The Oversight Report.'
+  },
 ];
 
 for (const page of utilityPages) {

@@ -1,3 +1,5 @@
+import { compareBriefCheckoutRequestBody, PENDING_COMPARE_BRIEF_KEY } from './compareBriefCheckout.js';
+import { normalizeCompareCcns, selectCompareBriefOffer } from './compareBriefPricing.js';
 import { buildSingleReportCheckoutUrl, isValidFacilityCcn, normalizeFacilityCcn } from './facilityBriefCheckout.js';
 
 /**
@@ -95,6 +97,43 @@ export function checkoutSingleReport(ccn) {
   }
 
   window.location.href = checkoutUrl;
+}
+
+/**
+ * Start Compare Brief checkout for the 2–3 homes currently compared.
+ * Server creates a Checkout Session so metadata can carry every CCN.
+ *
+ * @param {string[]} ccns
+ */
+export async function checkoutCompareBrief(ccns) {
+  const normalized = normalizeCompareCcns(ccns);
+  const offer = selectCompareBriefOffer(normalized.length);
+  if (!offer) {
+    alert('Compare Brief is available for 2 or 3 homes. Add another home to the compare tray, or buy a $29 Facility Brief for a single home.');
+    return;
+  }
+
+  try {
+    localStorage.setItem(PENDING_COMPARE_BRIEF_KEY, normalized.join(','));
+  } catch {
+    // Private mode / storage blocked — Stripe session still has the CCNs.
+  }
+
+  try {
+    const res = await fetch('/api/create-compare-brief-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(compareBriefCheckoutRequestBody(normalized)),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok && data.url) {
+      window.location.href = data.url;
+      return;
+    }
+    alert(data.error || 'Checkout could not be started. Please contact support.');
+  } catch {
+    alert('Network error starting checkout. Please try again.');
+  }
 }
 
 /**
