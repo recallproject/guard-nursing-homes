@@ -1,6 +1,6 @@
 /**
- * Compare Brief content model — rule-based, CMS fields already on the facility.
- * No invented clinical advice. Same disclaimer family as other PDFs.
+ * Compare Brief content model — rule-based from existing CMS fields.
+ * PDF page composition is DRAFT. Wait for Rob's GO before changing layout.
  */
 
 import { CMS_SNF_AS_OF_ISO } from '../data/careSettings.js';
