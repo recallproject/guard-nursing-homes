@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useWatchlist } from '../hooks/useWatchlist';
+import { sffStatusOf } from '../utils/sffStatus';
 
 export default function FacilityRow({ facility }) {
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ export default function FacilityRow({ facility }) {
 
   const score = facility.composite || 0;
   const riskInfo = getRiskInfo(score);
-  const isSFF = facility.flags?.some(f => f.includes('SPECIAL FOCUS'));
+  const sffStatus = sffStatusOf(facility);
+  const isSFF = sffStatus === 'active';
+  const isSffCandidate = sffStatus === 'candidate';
 
   const renderStars = (stars) => {
     const starCount = Math.max(0, Math.min(5, stars || 0));
@@ -61,7 +64,13 @@ export default function FacilityRow({ facility }) {
   // 2C: Get hook line (first match wins — SFF is highest priority)
   const getHookLine = () => {
     if (isSFF) {
-      return `-- CMS Special Focus Facility — federal watch list for persistent quality failures`;
+      return `-- Current CMS Special Focus Facility — federal watch list for persistent quality failures`;
+    }
+    if (isSffCandidate) {
+      return `-- CMS SFF candidate — not a current Special Focus Facility`;
+    }
+    if (sffStatus === 'graduated') {
+      return `-- Graduated from the CMS Special Focus Facility program`;
     }
     if (facility.zero_rn_pct > 0) {
       return `-- ${facility.zero_rn_pct.toFixed(1)}% of days had zero registered nurses on site`;
@@ -115,6 +124,7 @@ export default function FacilityRow({ facility }) {
         <div className="facility-row-bottom">
           <span className="facility-row-risk-label" style={{ color: riskInfo.color }}>{riskInfo.label}</span>
           {isSFF && <span className="facility-row-sff-badge">SFF</span>}
+          {isSffCandidate && <span className="facility-row-sff-badge">SFF candidate</span>}
           <span className="facility-row-stars">{renderStars(facility.stars)}</span>
           {facility.harm_count > 0 && (
             <span className="facility-card-stat stat-danger">{facility.harm_count} residents hurt</span>

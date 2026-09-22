@@ -6,6 +6,8 @@
  * Never uses "nurse-to-resident ratio".
  */
 
+import { sffStatusOf } from './sffStatus.js';
+
 export const BRIEF_PAGE_COUNT = 9;
 export const PRODUCT_LABEL = 'Facility Brief';
 
@@ -150,8 +152,7 @@ export function isImmediateJeopardy(def) {
 }
 
 export function hasSpecialFocus(facility) {
-  if (facility?.sff || facility?.special_focus) return true;
-  return (facility?.flags || []).some((f) => /special focus/i.test(f));
+  return sffStatusOf(facility) === 'active';
 }
 
 export function hasAbuseIcon(facility) {

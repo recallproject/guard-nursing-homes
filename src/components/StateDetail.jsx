@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import FacilityCard from './FacilityCard';
 import FacilityRow from './FacilityRow';
+import { hasSffFlag } from '../utils/facilityFlags';
 import '../styles/state-detail.css';
 
 export default function StateDetail({ stateCode, stateData, stateSummary, onBack }) {
@@ -98,7 +99,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
   } else if (filterBy === 'critical') {
     facilities = facilities.filter((f) => (f.composite || 0) >= 60);
   } else if (filterBy === 'sff') {
-    facilities = facilities.filter((f) => f.flags?.some(flag => flag.includes('SPECIAL FOCUS')));
+    facilities = facilities.filter((f) => hasSffFlag(f));
   }
 
   if (searchQuery.trim()) {
@@ -196,7 +197,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
   // Compute high-risk and SFF counts from facilities
   const highRiskCount = stateData.facilities.filter((f) => (f.composite || 0) >= 40).length;
-  const sffCount = stateData.facilities.filter((f) => f.flags?.some(flag => flag.includes('SPECIAL FOCUS'))).length;
+  const sffCount = stateData.facilities.filter((f) => hasSffFlag(f)).length;
 
   // Compute avg per facility fine
   const avgFinePerFacility = stateSummary.count > 0
@@ -317,7 +318,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
                 setFilterBy(val);
                 window.plausible && window.plausible('Filter-Changed', { props: { state: stateCode, filter: val } });
                 if (val === 'sff') {
-                  const sffN = stateData.facilities.filter((f) => f.flags?.some(flag => flag.includes('SPECIAL FOCUS'))).length;
+                  const sffN = stateData.facilities.filter((f) => hasSffFlag(f)).length;
                   window.plausible && window.plausible('SFF-Filter-Applied', { props: { state: stateCode, sffCount: String(sffN) } });
                 }
               }}

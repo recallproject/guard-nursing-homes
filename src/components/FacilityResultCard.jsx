@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useWatchlist } from '../hooks/useWatchlist';
-import { hasSffFlag, hasAbuseFlag } from '../utils/facilityFlags';
+import { hasAbuseFlag } from '../utils/facilityFlags';
+import { sffStatusOf } from '../utils/sffStatus';
 
 function formatFines(amount) {
   if (!amount) return null;
@@ -35,7 +36,9 @@ export function FacilityResultCard({
 }) {
   const { addFacility, removeFacility, isWatched } = useWatchlist();
   const watched = isWatched(facility.ccn);
-  const sff = hasSffFlag(facility);
+  const sffStatus = sffStatusOf(facility);
+  const sff = sffStatus === 'active';
+  const sffCandidate = sffStatus === 'candidate';
   const abuse = hasAbuseFlag(facility);
   const aboveStaffing = (facility.total_hprd || 0) >= 4 || (facility.staffing_stars || 0) >= 4;
   const fines = formatFines(facility.total_fines);
@@ -61,6 +64,7 @@ export function FacilityResultCard({
         <h3 className="ia-fac-name">
           <Link to={viewTo}>{facility.name}</Link>
           {sff && <span className="ia-badge">SFF</span>}
+          {sffCandidate && <span className="ia-badge">SFF candidate</span>}
           {abuse && <span className="ia-badge">Abuse icon</span>}
           {!sff && !abuse && aboveStaffing && (
             <span className="ia-badge ia-badge--ok">Above avg staffing</span>

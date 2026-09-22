@@ -6,24 +6,29 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { applySffToFacility } from '../src/utils/sffStatus.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DATA = join(__dirname, '..', 'public', 'data');
 
 // Load all state files and merge facilities.
+const sffPosting = JSON.parse(readFileSync(join(PUBLIC_DATA, 'sff_posting.json'), 'utf8'));
 const stateFiles = readdirSync(join(PUBLIC_DATA, 'states')).filter(f => f.endsWith('.json'));
 const facilities = [];
 for (const file of stateFiles) {
   const stateData = JSON.parse(readFileSync(join(PUBLIC_DATA, 'states', file), 'utf-8'));
   if (Array.isArray(stateData.facilities)) {
     for (const f of stateData.facilities) {
-      facilities.push({
-        ccn: f.ccn,
-        name: f.name,
-        city: f.city,
-        state: f.state,
-        zip: f.zip,
-      });
+      const enriched = applySffToFacility(f, sffPosting);
+      const entry = {
+        ccn: enriched.ccn,
+        name: enriched.name,
+        city: enriched.city,
+        state: enriched.state,
+        zip: enriched.zip,
+      };
+      if (enriched.former_names?.length) entry.aliases = enriched.former_names.join(' ');
+      facilities.push(entry);
     }
   }
 }

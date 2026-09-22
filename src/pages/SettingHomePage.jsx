@@ -124,7 +124,7 @@ export default function SettingHomePage({ settingId = 'snf' }) {
   const nameMatches = useMemo(() => {
     if (!q || !nameIndex) return [];
     const fuse = new Fuse(nameIndex, {
-      keys: ['name', 'city', 'state', 'zip', 'ccn'],
+      keys: ['name', 'aliases', 'city', 'state', 'zip', 'ccn'],
       threshold: 0.32,
       ignoreLocation: true,
       minMatchCharLength: 2,

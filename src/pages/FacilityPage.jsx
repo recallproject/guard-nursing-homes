@@ -16,6 +16,7 @@ import ExplainerBanners from '../components/facility/ExplainerBanners';
 import MetricTooltip from '../components/facility/MetricTooltip';
 import WhatDoesThisMean, { KeyPoint } from '../components/facility/WhatDoesThisMean';
 import FlagExplainer from '../components/facility/FlagExplainer';
+import { FormerFacilityName, SffStatusPanel } from '../components/facility/SffStatusPanel';
 import ReportErrorBar from '../components/facility/ReportErrorBar';
 import AntipsychoticAlert, { fetchAlertData } from '../components/facility/AntipsychoticAlert';
 import '../styles/facility.css';
@@ -402,6 +403,7 @@ export function FacilityPage() {
           "@context": "https://schema.org",
           "@type": "MedicalOrganization",
           "name": facility.name,
+          ...(facility.former_names?.length ? { "alternateName": facility.former_names } : {}),
           "address": {
             "@type": "PostalAddress",
             "streetAddress": facility.address || undefined,
@@ -498,6 +500,7 @@ export function FacilityPage() {
               <div className="fp-star-badge-label">out of 5</div>
             </div>
           </div>
+          <FormerFacilityName facility={facility} />
           <div className="fp-star-row">
             <span className="fp-stars-visual" style={{ '--safety-color': safetyColor }}>
               <span className="fp-stars-filled">{starsFilled}</span><span className="fp-stars-empty">{starsEmpty}</span>
@@ -512,6 +515,7 @@ export function FacilityPage() {
             <a href={medicare} target="_blank" rel="noopener noreferrer">Medicare Compare</a>
           </p>
           <p className="fp-ccn">CMS CCN: {ccn}</p>
+          <SffStatusPanel facility={facility} />
         </div>
 
         <div className="fp-fold-rest">
@@ -1015,17 +1019,6 @@ export function FacilityPage() {
             <span className="badge-source">CMS Inspections</span>
           </div>
           <p className="section-subtitle">Complaint investigations, abuse and neglect citations, and Special Focus Facility status</p>
-
-          {/* SFF Banner */}
-          {facility.flags?.some(f => f.includes('SPECIAL FOCUS')) && (
-            <div className="sff-banner">
-              <span className="sff-dot" />
-              <div className="sff-content">
-                <span className="sff-label">CMS Special Focus Facility (SFF)</span>
-                <span className="sff-explain">Designated by CMS as one of approximately 88 nursing homes (out of 14,699) with a persistent pattern of serious quality issues. SFF facilities receive twice the normal inspection frequency. This is an official federal designation — not our assessment.</span>
-              </div>
-            </div>
-          )}
 
           {(() => {
             // Compute complaint stats from deficiency details

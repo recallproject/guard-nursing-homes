@@ -5,6 +5,7 @@ import {
   lookupStateForCcn,
   normalizeCcn,
 } from '../utils/watchlistFacilities';
+import { applySffToFacility } from '../utils/sffStatus';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -13,6 +14,33 @@ const stateCache = {};
 let ccnIndex = null;
 let indexData = null;
 let fullData = null;
+let sffPosting = null;
+let sffPostingPromise = null;
+
+async function loadSffPosting() {
+  if (sffPosting) return sffPosting;
+  if (!sffPostingPromise) {
+    sffPostingPromise = fetch(`${BASE}data/sff_posting.json`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        sffPosting = data;
+        return data;
+      })
+      .catch((err) => {
+        console.error('Error loading SFF posting:', err);
+        return null;
+      });
+  }
+  return sffPostingPromise;
+}
+
+function withSffStatus(stateData, posting) {
+  if (!stateData?.facilities || !posting?.by_ccn) return stateData;
+  return {
+    ...stateData,
+    facilities: stateData.facilities.map((facility) => applySffToFacility(facility, posting)),
+  };
+}
 
 /**
  * Load the lightweight index (state_summary + national stats, ~5KB)
@@ -43,9 +71,12 @@ export async function loadStateData(stateCode) {
   if (!stateCode) throw new Error('Missing state code');
   const code = String(stateCode).toUpperCase();
   if (stateCache[code]) return stateCache[code];
-  const res = await fetch(`${BASE}data/states/${code}.json`);
+  const [res, posting] = await Promise.all([
+    fetch(`${BASE}data/states/${code}.json`),
+    loadSffPosting(),
+  ]);
   if (!res.ok) throw new Error(`Failed to load state ${code}: ${res.status}`);
-  stateCache[code] = await res.json();
+  stateCache[code] = withSffStatus(await res.json(), posting);
   return stateCache[code];
 }
 
@@ -177,6 +208,7 @@ export function useFacilityData() {
 
         for (const facility of stateData.facilities) {
           const nameLower = facility.name?.toLowerCase() || '';
+          const formerLower = (facility.former_names || []).join(' ').toLowerCase();
           const cityLower = facility.city?.toLowerCase() || '';
           const ccn = facility.ccn || '';
           const zip = facility.zip || '';
@@ -184,6 +216,7 @@ export function useFacilityData() {
           // Every token must match at least one field (AND logic)
           const allMatch = tokens.every(token => {
             return nameLower.includes(token) ||
+                   formerLower.includes(token) ||
                    cityLower.includes(token) ||
                    stateCodeLower === token ||
                    stateNameLower.includes(token) ||

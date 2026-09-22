@@ -34,7 +34,7 @@ export default function HeroSearchDropdown({
     if (!index) return null;
     return {
       facilities: new Fuse(index.facilities, {
-        keys: ['name', 'city'],
+        keys: ['name', 'aliases', 'city'],
         threshold: 0.32,
         ignoreLocation: true,
         minMatchCharLength: 2,
@@ -274,7 +274,7 @@ export default function HeroSearchDropdown({
                     onClick={() => handlePick({ type: 'facility', data: f })}
                   >
                     <span className="pa-search-result-main">{f.name}</span>
-                    <span className="pa-search-result-meta">{f.city}, {f.state} · Nursing home</span>
+                    <span className="pa-search-result-meta">{f.city}, {f.state}{f.aliases ? ` · Formerly ${f.aliases}` : ''} · Nursing home</span>
                   </button>
                 );
               })}
