@@ -104,7 +104,37 @@
         }
       }(window.location))
     </script>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Crawlable homepage copy for search/AI bots before JS hydrates. React replaces this on mount. -->
+      <main style="font-family:Plus Jakarta Sans,system-ui,sans-serif;max-width:720px;margin:0 auto;padding:32px 24px;color:#0f172a;line-height:1.65;">
+        <p style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1e40af;margin:0 0 12px 0;">The Oversight Report</p>
+        <h1 style="font-size:2rem;line-height:1.15;margin:0 0 16px 0;">Research a nursing home before you choose</h1>
+        <p style="margin:0 0 14px 0;">OversightReports helps families look up Medicare-certified nursing homes using the same federal inspection, staffing, and ownership records CMS publishes — free, with no login and no paywall.</p>
+        <p style="margin:0 0 14px 0;">It is built for people making difficult care decisions: adult children, spouses, and caregivers who need plain-English safety context before a placement, transfer, or tour.</p>
+        <p style="margin:0 0 14px 0;">Each facility report can include CMS star ratings, nurse staffing hours, health-inspection deficiencies, immediate-jeopardy and serious harm flags, federal fines and payment denials, and ownership or chain affiliations when those fields appear in public data.</p>
+        <p style="margin:0 0 20px 0;">All figures come from public government / CMS sources such as Care Compare, Payroll-Based Journal staffing, penalty files, and ownership disclosures. We compile and explain the record; we do not replace a tour, a clinician, or CMS.gov.</p>
+        <h2 style="font-size:1.15rem;margin:24px 0 10px 0;">Browse nursing homes</h2>
+        <ul style="margin:0 0 20px 0;padding-left:1.2em;">
+          <li><a href="/skilled-nursing">Search skilled nursing facilities nationwide</a></li>
+          <li><a href="/state/NC">Nursing homes in North Carolina</a></li>
+          <li><a href="/state/CA">Nursing homes in California</a></li>
+          <li><a href="/states/california">California post-acute care hub</a></li>
+          <li><a href="/families">Guides for families choosing care</a></li>
+          <li><a href="/methodology">How we read CMS ratings, staffing, and deficiencies</a></li>
+          <li><a href="/data-transparency">Data sources and transparency</a></li>
+          <li><a href="/know-your-rights">Know your rights in a nursing home</a></li>
+          <li><a href="/hospice">Hospice provider data</a></li>
+          <li><a href="/compare">Compare nursing homes side by side</a></li>
+        </ul>
+        <h2 style="font-size:1.15rem;margin:24px 0 10px 0;">Example facility reports</h2>
+        <ul style="margin:0;padding-left:1.2em;">
+          <li><a href="/facility/345529">Universal Health Care/North Raleigh (Raleigh, NC) — CCN 345529</a></li>
+          <li><a href="/facility/555611">Morton Bakar Center (Hayward, CA) — CCN 555611</a></li>
+          <li><a href="/facility/455069">Baylor Scott &amp; White Continuing Care Hospital SKIL (Temple, TX) — CCN 455069</a></li>
+          <li><a href="/facility/105901">Westminster Woods on Julington Creek (Jacksonville, FL) — CCN 105901</a></li>
+        </ul>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
