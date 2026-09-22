@@ -36,8 +36,8 @@ function rulesFor(userAgent) {
 }
 
 describe('robots.txt assistant policy', () => {
-  it('lets GPTBot, ChatGPT search, Claude, and Google-Extended read consumer pages', () => {
-    for (const agent of ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Google-Extended']) {
+  it('lets GPTBot, ChatGPT search/ads, Claude, and Google-Extended read consumer pages', () => {
+    for (const agent of ['GPTBot', 'OAI-SearchBot', 'OAI-AdsBot', 'ChatGPT-User', 'ClaudeBot', 'anthropic-ai', 'Google-Extended']) {
       const rules = rulesFor(agent);
       assert.match(rules, /^Allow: \/$/m, `${agent} should Allow: /`);
       assert.doesNotMatch(rules, /^Disallow: \/$/m, `${agent} should not be sitewide-blocked`);
@@ -45,12 +45,14 @@ describe('robots.txt assistant policy', () => {
   });
 
   it('keeps bulk dumps closed for those assistant crawlers', () => {
-    const gpt = rulesFor('GPTBot');
-    assert.match(gpt, /^Disallow: \/data\/$/m);
-    assert.match(gpt, /^Disallow: \/api\/$/m);
-    assert.match(gpt, /^Disallow: \/deficiency_details\/$/m);
-    assert.match(gpt, /^Disallow: \/facilities_map_data$/m);
-    assert.match(gpt, /^Disallow: \/postacute_facility_data\.json$/m);
+    for (const agent of ['GPTBot', 'OAI-SearchBot', 'OAI-AdsBot']) {
+      const rules = rulesFor(agent);
+      assert.match(rules, /^Disallow: \/data\/$/m, `${agent} should block /data/`);
+      assert.match(rules, /^Disallow: \/api\/$/m, `${agent} should block /api/`);
+      assert.match(rules, /^Disallow: \/deficiency_details\/$/m, `${agent} should block deficiency dumps`);
+      assert.match(rules, /^Disallow: \/facilities_map_data$/m, `${agent} should block map dumps`);
+      assert.match(rules, /^Disallow: \/postacute_facility_data\.json$/m, `${agent} should block postacute dumps`);
+    }
   });
 
   it('still blocks Common Crawl, Bytespider, and PetalBot sitewide', () => {
