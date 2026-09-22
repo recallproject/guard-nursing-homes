@@ -11,6 +11,7 @@ import {
   pickNearbyFacilities,
 } from '../../scripts/facility-prerender.js';
 import { applySffToFacility } from './sffStatus.js';
+import { facilitySeoDescription, facilitySeoTitle } from './facilitySeo.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -57,6 +58,9 @@ describe('facility prerender enrichment', () => {
     assert.match(html, /Graduated from SFF program/);
     assert.match(html, /June 8, 2026/);
     assert.match(html, /15 months/);
+    assert.match(facilitySeoTitle(facility), /Perry Creek Health and Rehabilitation Center, Formerly Universal Health Care\/North Raleigh/);
+    assert.match(facilitySeoDescription(facility), /Formerly Universal Health Care\/North Raleigh/);
+    assert.match(facilitySeoDescription(facility), /graduated from the SFF program/);
     assert.match(html, /not a current SFF designation/);
     assert.doesNotMatch(html, /Yes — CMS-flagged/);
     assert.doesNotMatch(html, /or candidate/);

@@ -223,3 +223,15 @@ export function formerNamesLabel(facility) {
   if (!names.length) return '';
   return `Formerly ${names.join('; ')}`;
 }
+
+/** Name, former names, city, CCN, or ZIP. */
+export function facilityMatchesQuery(facility, query) {
+  const q = String(query || '').trim().toLowerCase();
+  if (!q) return true;
+  const names = [facility?.name, ...(facility?.former_names || [])];
+  if (names.some((name) => String(name || '').toLowerCase().includes(q))) return true;
+  if (String(facility?.city || '').toLowerCase().includes(q)) return true;
+  if (String(facility?.ccn || '').toLowerCase().includes(q)) return true;
+  if (String(facility?.zip || '').includes(q)) return true;
+  return false;
+}

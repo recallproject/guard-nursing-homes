@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import FacilityCard from './FacilityCard';
 import FacilityRow from './FacilityRow';
 import { hasSffFlag } from '../utils/facilityFlags';
+import { facilityMatchesQuery } from '../utils/sffStatus';
 import '../styles/state-detail.css';
 
 export default function StateDetail({ stateCode, stateData, stateSummary, onBack }) {
@@ -104,12 +105,7 @@ export default function StateDetail({ stateCode, stateData, stateSummary, onBack
 
   if (searchQuery.trim()) {
     const query = searchQuery.toLowerCase().trim();
-    facilities = facilities.filter(
-      (f) =>
-        f.name?.toLowerCase().includes(query) ||
-        f.city?.toLowerCase().includes(query) ||
-        f.ccn?.includes(query)
-    );
+    facilities = facilities.filter((f) => facilityMatchesQuery(f, query));
   }
 
   // Sort facilities

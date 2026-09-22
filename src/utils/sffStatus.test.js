@@ -6,6 +6,7 @@ import { describe, it } from 'node:test';
 import { hasSffFlag } from './facilityFlags.js';
 import {
   applySffToFacility,
+  facilityMatchesQuery,
   formatSffDate,
   sffCompareValue,
   sffDetailRows,
@@ -29,6 +30,8 @@ describe('SFF posting status', () => {
     assert.match(stored.flags.join(' '), /SPECIAL FOCUS/);
     const facility = applySffToFacility(stored, posting);
 
+    assert.equal(facilityMatchesQuery(facility, 'Universal Health Care/North Raleigh'), true);
+    assert.equal(facilityMatchesQuery(facility, 'Perry Creek'), true);
     assert.equal(facility.sff_status, 'graduated');
     assert.equal(sffStatusOf(facility), 'graduated');
     assert.equal(hasSffFlag(facility), false);

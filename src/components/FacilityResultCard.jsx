@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useWatchlist } from '../hooks/useWatchlist';
 import { hasAbuseFlag } from '../utils/facilityFlags';
-import { sffStatusOf } from '../utils/sffStatus';
+import { formerNamesLabel, sffStatusOf } from '../utils/sffStatus';
 
 function formatFines(amount) {
   if (!amount) return null;
@@ -82,6 +82,7 @@ export function FacilityResultCard({
           {facility.jeopardy_count > 0 ? ` · ${facility.jeopardy_count} IJ` : ''}
           {fines ? ` · ${fines} fines` : ''}
           {facility.rn_hprd != null ? ` · RN ${Number(facility.rn_hprd).toFixed(2)} HPRD` : ''}
+          {formerNamesLabel(facility) ? ` · ${formerNamesLabel(facility)}` : ''}
         </p>
       </div>
       <div className="ia-fac-actions">

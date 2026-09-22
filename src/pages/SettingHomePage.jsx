@@ -193,6 +193,7 @@ export default function SettingHomePage({ settingId = 'snf' }) {
                   </h3>
                   <p className="ia-fac-bits">
                     {toTitleCase(p.city)}, {p.state} {p.zip} · CCN {p.ccn}
+                    {p.aliases ? ` · Formerly ${p.aliases}` : ''}
                   </p>
                 </div>
                 <Link to={setting.providerPath(p.ccn)} className="ia-btn ia-btn--primary">View</Link>
