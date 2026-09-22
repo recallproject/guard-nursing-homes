@@ -7,6 +7,7 @@
 User-agent: GPTBot
 User-agent: ChatGPT-User
 User-agent: OAI-SearchBot
+User-agent: OAI-AdsBot
 Disallow: /data/
 Disallow: /api/
 Disallow: /deficiency_details/

@@ -19,7 +19,7 @@ export const ROBOTS_TXT = `# Consumer-facing AI assistants may crawl human pages
 # disallowed even with Allow: /. Disallow rules are listed first so first-match
 # parsers also keep dumps closed.
 
-${assistantGroup(['GPTBot', 'ChatGPT-User', 'OAI-SearchBot'])}
+${assistantGroup(['GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'OAI-AdsBot'])}
 ${assistantGroup(['ClaudeBot', 'Claude-User', 'Claude-SearchBot', 'anthropic-ai'])}
 ${assistantGroup(['Google-Extended'])}
 # Training/scrape farms that do not power consumer assistant answers.
