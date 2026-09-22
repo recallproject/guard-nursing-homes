@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { facilitySeoDescription, facilitySeoTitle } from '../src/utils/facilitySeo.js';
+import { applySffToFacility } from '../src/utils/sffStatus.js';
 import {
   facilityBodyContent,
   injectRootContent,
@@ -28,6 +29,7 @@ for (const file of readdirSync(statesDir).filter(f => f.endsWith('.json'))) {
   facilityData.states[stateCode] = stateData;
 }
 const chainData = JSON.parse(readFileSync(join(publicDir, 'data', 'chain_performance.json'), 'utf8'));
+const sffPosting = JSON.parse(readFileSync(join(publicDir, 'data', 'sff_posting.json'), 'utf8'));
 const blogPostsIndex = JSON.parse(readFileSync(join(publicDir, 'data', 'blog', 'posts-index.json'), 'utf8'));
 const blogPosts = Array.isArray(blogPostsIndex.posts) ? blogPostsIndex.posts : [];
 
@@ -522,7 +524,9 @@ for (const [stateCode, stateData] of Object.entries(facilityData.states)) {
   }
 
   const dataAsOf = stateData._metadata?.data_as_of || null;
-  const peers = stateData.facilities;
+  const peers = stateData.facilities.map((row) => (
+    applySffToFacility({ ...row, state: row.state || stateCode }, sffPosting)
+  ));
 
   for (const f of peers) {
     const detailBundle = deficiencyByCcn[f.ccn];

@@ -817,6 +817,12 @@
   margin: 0 0 16px 0;
 }
 
+.fp-former {
+  margin: 4px 0 8px 0;
+  font-size: 15px;
+  color: var(--text-muted, #6b6590);
+}
+
 /* === Callout Boxes (Red / Yellow / Green) === */
 .callout {
   padding: 16px;
@@ -2592,6 +2598,56 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+.sff-facts {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sff-fact {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.sff-fact dt {
+  color: #4B5563;
+  font-weight: 500;
+}
+.sff-fact dd {
+  margin: 0;
+  font-weight: 700;
+  text-align: right;
+  color: #0F172A;
+}
+.sff-banner--candidate {
+  background: linear-gradient(135deg, rgba(217,119,6,0.06), rgba(217,119,6,0.02));
+  border-color: rgba(217,119,6,0.35);
+}
+.sff-banner--candidate .sff-dot {
+  background: #D97706;
+  animation: none;
+}
+.sff-banner--candidate .sff-label { color: #B45309; }
+.sff-banner--graduated {
+  background: linear-gradient(135deg, rgba(13,148,136,0.07), rgba(13,148,136,0.02));
+  border-color: rgba(13,148,136,0.35);
+}
+.sff-banner--graduated .sff-dot {
+  background: #0D9488;
+  animation: none;
+}
+.sff-banner--graduated .sff-label { color: #0F766E; }
+.sff-banner--terminated {
+  background: #F8FAFC;
+  border-color: #CBD5E1;
+}
+.sff-banner--terminated .sff-dot {
+  background: #475569;
+  animation: none;
+}
+.sff-banner--terminated .sff-label { color: #334155; }
 
 /* CMS Callout */
 .cms-callout {

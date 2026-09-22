@@ -10,6 +10,8 @@ import {
   mostRecentSurveyDate,
   pickNearbyFacilities,
 } from '../../scripts/facility-prerender.js';
+import { applySffToFacility } from './sffStatus.js';
+import { facilitySeoDescription, facilitySeoTitle } from './facilitySeo.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -24,7 +26,10 @@ function loadFacility(ccn, stateCode = 'NC') {
 
 describe('facility prerender enrichment', () => {
   it('builds a citation-ready summary for CCN 345529', () => {
-    const { facility, data } = loadFacility('345529', 'NC');
+    const posting = JSON.parse(readFileSync(join(root, 'public/data/sff_posting.json'), 'utf8'));
+    const loaded = loadFacility('345529', 'NC');
+    const facility = applySffToFacility(loaded.facility, posting);
+    const data = loaded.data;
     const defFile = JSON.parse(
       readFileSync(join(root, 'public/deficiency_details/NC.json'), 'utf8')
     );
@@ -41,7 +46,8 @@ describe('facility prerender enrichment', () => {
       mostRecentSurveyDate: surveyDate,
     });
 
-    assert.match(html, /Universal Health Care\/North Raleigh/);
+    assert.match(html, /Perry Creek Health and Rehabilitation Center/);
+    assert.match(html, /Formerly Universal Health Care\/North Raleigh/);
     assert.match(html, /Number \(CCN\): 345529/);
     assert.match(html, /Raleigh/);
     assert.match(html, /What this record shows/);
@@ -49,7 +55,15 @@ describe('facility prerender enrichment', () => {
     assert.match(html, /132 beds/);
     assert.match(html, /Staffing summary/);
     assert.match(html, /Immediate jeopardy/i);
-    assert.match(html, /Special Focus Facility/i);
+    assert.match(html, /Graduated from SFF program/);
+    assert.match(html, /June 8, 2026/);
+    assert.match(html, /15 months/);
+    assert.match(facilitySeoTitle(facility), /Perry Creek Health and Rehabilitation Center, Formerly Universal Health Care\/North Raleigh/);
+    assert.match(facilitySeoDescription(facility), /Formerly Universal Health Care\/North Raleigh/);
+    assert.match(facilitySeoDescription(facility), /graduated from the SFF program/);
+    assert.match(html, /not a current SFF designation/);
+    assert.doesNotMatch(html, /Yes — CMS-flagged/);
+    assert.doesNotMatch(html, /or candidate/);
     assert.match(html, /Federal fines/);
     assert.match(html, /Centers for Medicare/);
     assert.match(html, /data as of/i);

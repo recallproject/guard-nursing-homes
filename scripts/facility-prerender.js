@@ -3,7 +3,8 @@
  * Citation-ready facts only — React still hydrates the full interactive page.
  */
 
-import { hasAbuseFlag, hasSffFlag } from '../src/utils/facilityFlags.js';
+import { hasAbuseFlag } from '../src/utils/facilityFlags.js';
+import { formerNamesLabel, sffDetailRows, sffSummarySentence } from '../src/utils/sffStatus.js';
 
 const STATE_NAMES = {
   AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
@@ -144,6 +145,8 @@ export function mostRecentSurveyDate(deficiencyDetails) {
 
 export function buildWhatThisRecordShows(facility, { mostRecentSurveyDate: surveyDate } = {}) {
   const name = facility?.name || 'This nursing home';
+  const former = formerNamesLabel(facility);
+  const named = former ? `${name} (${former})` : name;
   const city = facility?.city;
   const state = facility?.state;
   const place = city && state ? `${city}, ${state}` : state || city || '';
@@ -151,8 +154,8 @@ export function buildWhatThisRecordShows(facility, { mostRecentSurveyDate: surve
 
   parts.push(
     place
-      ? `${name} is a Medicare-certified nursing home in ${place}`
-      : `${name} is a Medicare-certified nursing home`
+      ? `${named} is a Medicare-certified nursing home in ${place}`
+      : `${named} is a Medicare-certified nursing home`
   );
 
   if (facility?.ccn) parts[0] += ` (CMS Certification Number ${facility.ccn})`;
@@ -192,9 +195,8 @@ export function buildWhatThisRecordShows(facility, { mostRecentSurveyDate: surve
     );
   }
 
-  if (hasSffFlag(facility)) {
-    parts.push('CMS has flagged this home as a Special Focus Facility (or candidate), meaning it has a history of serious quality problems.');
-  }
+  const sffSentence = sffSummarySentence(facility);
+  if (sffSentence) parts.push(sffSentence);
 
   if (facility?.chain_name) {
     parts.push(`Ownership / chain affiliation in CMS records: ${facility.chain_name}.`);
@@ -229,7 +231,7 @@ export function facilityBodyContent(f, opts = {}) {
     ? opts.knownChains
     : new Set(opts.knownChains || []);
   const nearby = Array.isArray(opts.nearby) ? opts.nearby : [];
-  const sff = hasSffFlag(f);
+  const sffRows = sffDetailRows(f);
   const abuse = hasAbuseFlag(f);
   const whatShows = buildWhatThisRecordShows(f, { mostRecentSurveyDate: surveyDate });
 
@@ -272,6 +274,7 @@ export function facilityBodyContent(f, opts = {}) {
 
       <header>
         <h1 style="font-size:28px;font-weight:800;margin:0 0 8px 0;">${escapeHtml(f.name)}</h1>
+        ${formerNamesLabel(f) ? `<p style="font-size:16px;color:#4B5563;margin:0 0 4px 0;">${escapeHtml(formerNamesLabel(f))}</p>` : ''}
         <p style="font-size:16px;color:#4B5563;margin:0 0 4px 0;">${escapeHtml(city)}${city ? ', ' : ''}${escapeHtml(state)} ${escapeHtml(zip)}</p>
         <p style="font-size:14px;color:#6B7280;margin:0 0 16px 0;">CMS Certification Number (CCN): ${escapeHtml(f.ccn)}${f.beds != null ? ` · ${formatNum(f.beds)} beds` : ''}</p>
       </header>
@@ -323,10 +326,10 @@ export function facilityBodyContent(f, opts = {}) {
             <td style="padding:10px 0;color:#4B5563;">Immediate jeopardy citations</td>
             <td style="padding:10px 0;font-weight:700;text-align:right;${(f.jeopardy_count || 0) > 0 ? 'color:#DC2626;' : ''}">${formatNum(f.jeopardy_count || 0)}</td>
           </tr>
-          ${sff ? `<tr style="border-bottom:1px solid #F3F4F6;">
-            <td style="padding:10px 0;color:#4B5563;">Special Focus Facility (SFF)</td>
-            <td style="padding:10px 0;font-weight:700;text-align:right;color:#DC2626;">Yes — CMS-flagged</td>
-          </tr>` : ''}
+          ${sffRows.map((row) => `<tr style="border-bottom:1px solid #F3F4F6;">
+            <td style="padding:10px 0;color:#4B5563;">${escapeHtml(row.label)}</td>
+            <td style="padding:10px 0;font-weight:700;text-align:right;">${escapeHtml(row.value)}</td>
+          </tr>`).join('')}
           ${abuse ? `<tr style="border-bottom:1px solid #F3F4F6;">
             <td style="padding:10px 0;color:#4B5563;">CMS abuse icon</td>
             <td style="padding:10px 0;font-weight:700;text-align:right;color:#DC2626;">Yes</td>

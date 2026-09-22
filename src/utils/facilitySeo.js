@@ -1,4 +1,5 @@
-import { hasAbuseFlag, hasSffFlag } from './facilityFlags.js';
+import { hasAbuseFlag } from './facilityFlags.js';
+import { formerNamesLabel, sffSeoPhrase } from './sffStatus.js';
 
 function clean(value) {
   const text = String(value ?? '').replace(/\s+/g, ' ').trim();
@@ -20,8 +21,10 @@ function starsLabel(facility) {
 
 export function facilitySeoTitle(facility = {}) {
   const name = clean(facility.name) || 'Nursing home';
+  const former = formerNamesLabel(facility);
+  const nameWithFormer = former ? `${name}, ${former}` : name;
   const location = locationLabel(facility);
-  const nameWithPlace = location ? `${name} (${location})` : name;
+  const nameWithPlace = location ? `${nameWithFormer} (${location})` : nameWithFormer;
   const parts = [`${nameWithPlace} — ${starsLabel(facility)}`];
   const ccn = clean(facility.ccn);
   if (ccn) parts.push(`CCN ${ccn}`);
@@ -37,6 +40,8 @@ export function facilitySeoDescription(facility = {}) {
 
   const ccn = clean(facility.ccn);
   if (ccn) bits.push(`CCN ${ccn}.`);
+  const former = formerNamesLabel(facility);
+  if (former) bits.push(`${former}.`);
 
   const deficiencies = Number(facility.total_deficiencies) || 0;
   const jeopardy = Number(facility.jeopardy_count) || 0;
@@ -51,7 +56,8 @@ export function facilitySeoDescription(facility = {}) {
   }
 
   const flags = [];
-  if (hasSffFlag(facility)) flags.push('Special Focus Facility');
+  const sffPhrase = sffSeoPhrase(facility);
+  if (sffPhrase) flags.push(sffPhrase);
   if (hasAbuseFlag(facility)) flags.push('CMS abuse icon');
   if (facility.pe_owned) flags.push('private equity ownership');
   if (facility.reit_owned) flags.push('REIT ownership');

@@ -6,6 +6,7 @@ import { formatDataAsOf } from '../utils/facilityBriefContent';
 import { FacilityResultCard } from '../components/FacilityResultCard';
 import { CompareTray } from '../components/CompareTray';
 import { hasSffFlag } from '../utils/facilityFlags';
+import { facilityMatchesQuery } from '../utils/sffStatus';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
 import { useCompareTray } from '../hooks/useCompareTray';
 import { loadStateData } from '../hooks/useFacilityData';
@@ -105,15 +106,7 @@ export default function StatePage() {
   const filtered = useMemo(() => {
     let list = facilities;
     const q = search.trim().toLowerCase();
-    if (q) {
-      list = list.filter(
-        (f) =>
-          (f.name || '').toLowerCase().includes(q) ||
-          (f.city || '').toLowerCase().includes(q) ||
-          (f.ccn || '').toLowerCase().includes(q) ||
-          (f.zip || '').includes(q)
-      );
-    }
+    if (q) list = list.filter((f) => facilityMatchesQuery(f, q));
     if (highRisk) list = list.filter((f) => (f.composite || 0) >= 60);
     if (sffOnly) list = list.filter((f) => hasSffFlag(f));
     const copy = [...list];

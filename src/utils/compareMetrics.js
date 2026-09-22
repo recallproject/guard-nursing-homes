@@ -5,6 +5,7 @@
 
 import { formatDataAsOf } from './facilityBriefContent.js';
 import { hasAbuseFlag, hasSffFlag } from './facilityFlags.js';
+import { sffCompareValue } from './sffStatus.js';
 import { CMS_SNF_AS_OF_ISO } from '../data/careSettings.js';
 
 export function formatCurrency(amount) {
@@ -164,7 +165,7 @@ export const DETAIL_GROUPS = [
         label: 'Special Focus Facility',
         direction: 'Context matters',
         why: 'CMS watch list for homes with persistent quality problems.',
-        value: (f) => (hasSffFlag(f) ? 'Yes — on the list' : 'No'),
+        value: (f) => sffCompareValue(f),
       },
       {
         id: 'abuse',
