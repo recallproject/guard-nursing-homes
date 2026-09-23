@@ -54,3 +54,48 @@
   body:has(.cah) .mobile-menu,
   body:has(.cah) .mobile-menu-overlay{display:none!important}
 }
+
+/* Agency cards sit on cream paper: county chip in place of the lettermark, white card, soft navy shadow. */
+.cah{background:var(--warm)}
+.cah .pilot-banner{background:var(--warm2);border-bottom:1px solid rgba(23,54,93,.08)}
+.cah .comparison-section{background:var(--warm2)}
+.cah .agency-card{
+  background:#fff;
+  border:1px solid rgba(23,54,93,.10);
+  border-left:3px solid var(--teal);
+  box-shadow:0 1px 2px rgba(23,54,93,.05),0 8px 24px rgba(23,54,93,.05);
+}
+.cah .agency-card .agency-identity,
+.cah .agency-card:nth-child(n) .agency-identity,
+.cah .agency-card.basic .agency-identity,
+.cah .agency-card.researched .agency-identity,
+.cah .agency-card.researched:nth-child(n) .agency-identity{
+  background:#fff;
+  min-height:0;
+  align-items:center;
+  padding-block:18px 2px;
+}
+.cah .county-chip{
+  display:inline-flex;
+  align-items:center;
+  flex:0 1 auto;
+  max-width:62%;
+  padding:4px 9px 3px;
+  background:var(--warm);
+  color:var(--navy);
+  border:1px solid rgba(23,54,93,.12);
+  border-radius:2px;
+  font-size:11px;
+  font-weight:650;
+  letter-spacing:.02em;
+  line-height:1.35;
+  white-space:nowrap;
+}
+.cah .agency-identity small{flex:0 0 auto;max-width:48%;padding-top:1px}
+@media(max-width:800px){
+  .cah .county-chip{font-size:10px;padding:4px 8px 3px}
+}
+@media print{
+  .cah{background:#fff}
+  .cah .agency-card{box-shadow:none}
+}

@@ -216,6 +216,12 @@ describe('care at home delivery', () => {
     const css = read('src/styles/care-at-home.css');
     assert.match(page, /Know what it\s*<br \/>should cost\./);
     assert.match(page, /Compare local agencies before you call\./);
+    assert.match(page, /county-chip/);
+    assert.match(page, /countyChipLabel/);
+    assert.doesNotMatch(page, /agency-monogram|agency\.monogram/);
+    assert.match(css, /\.county-chip\{/);
+    assert.match(css, /0 8px 24px rgba\(23,54,93,\.05\)/);
+    assert.match(css, /border-left:3px solid var\(--teal\)/);
     assert.match(dialog, /has not received this request until you send that email/);
     assert.match(dialog, /has not been delivered to an agency/);
     assert.doesNotMatch(page + dialog, /Preview confirmation|PREVIEW COMPLETE|localStorage/);

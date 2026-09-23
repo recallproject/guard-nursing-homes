@@ -12,6 +12,7 @@ import {
   budgetFineprint,
   comparisonRows,
   confirmationLabel,
+  countyLabel,
   createRequestDraft,
   filterAgencies,
   findAgency,
@@ -33,6 +34,11 @@ const STATS = pilotStats();
 const CHECKED_LABEL = formatCheckedDate(latestChecked());
 const FINEPRINT = budgetFineprint(SCENARIO);
 const ENDPOINT = formspreeEndpoint();
+
+function countyChipLabel(agency) {
+  const labels = (agency.counties || []).map((key) => countyLabel(key)).filter(Boolean);
+  return labels.join(' · ') || agency.area;
+}
 
 const QUESTIONS = [
   ['What would our actual week cost?', 'Describe the days, hours, and support you need. Ask for a written quote with minimum shifts, weekend and holiday rates, cancellation charges, and any other fees.'],
@@ -330,7 +336,7 @@ export function CareAtHomePage() {
             {page.map((agency) => (
               <article key={agency.id} id={`agency-${agency.id}`} className={`agency-card ${agency.enriched ? 'researched' : 'basic'}`} aria-labelledby={`name-${agency.id}`}>
                 <div className="agency-identity">
-                  <span className="agency-monogram" aria-hidden="true">{agency.monogram}</span>
+                  <span className="county-chip">{countyChipLabel(agency)}</span>
                   <small>
                     {agency.enriched ? <>Published details<br />Ready to explore</> : <>Local agency<br />Contact profile</>}
                   </small>
