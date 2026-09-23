@@ -4,12 +4,12 @@ import { CareAtHomeDialog } from '../components/careAtHome/CareAtHomeDialog';
 import { StatusBadge } from '../components/careAtHome/StatusBadge';
 import {
   CARE_AT_HOME_AGENCIES,
-  CARD_FACTS,
   STATUS_LABELS,
   INITIAL_VISIBLE,
   MAX_COMPARE,
   PAGE_STEP,
   budgetFineprint,
+  cardFactChips,
   comparisonRows,
   confirmationLabel,
   countyLabel,
@@ -21,6 +21,8 @@ import {
   getBudgetScenario,
   latestChecked,
   pilotStats,
+  publishedMinimum,
+  publishedRate,
   toggleCompare,
   weeklyBudget,
 } from '../data/careAtHome';
@@ -333,54 +335,51 @@ export function CareAtHomePage() {
             <a className="subtle-link" href="#sources">What do the labels mean? <span aria-hidden="true">↗</span></a>
           </div>
           <div className="agency-grid" id="agency-grid">
-            {page.map((agency) => (
+            {page.map((agency) => {
+              const rate = publishedRate(agency);
+              const minimum = publishedMinimum(agency);
+              const chips = cardFactChips(agency);
+              const sourceLabel = STATUS_LABELS[agency.status] || 'Publicly sourced';
+              return (
               <article key={agency.id} id={`agency-${agency.id}`} className={`agency-card ${agency.enriched ? 'researched' : 'basic'}`} aria-labelledby={`name-${agency.id}`}>
                 <div className="agency-identity">
                   <span className="county-chip">{countyChipLabel(agency)}</span>
-                  <small>
-                    {agency.enriched ? <>Published details<br />Ready to explore</> : <>Local agency<br />Contact profile</>}
-                  </small>
+                  <span className="card-source">{sourceLabel}</span>
                 </div>
                 <div className="agency-body">
-                  <p className="agency-location">{agency.area} · {agency.city}</p>
                   <h3 id={`name-${agency.id}`}>{agency.name}</h3>
                   <p className="agency-description">{agency.description}</p>
-                  <StatusBadge status={agency.status} />
-                  <div className="rate-block">
-                    <div>
-                      <p className={`rate ${agency.rateLow == null ? 'unlisted' : ''}`}>
-                        {agency.rateLow != null ? <>{agency.rateLabel}<span> / hour</span></> : 'Rate not provided'}
-                      </p>
-                      <p className="rate-note">{agency.rateNote || 'Pricing and policies still to be collected.'}</p>
-                    </div>
-                    {agency.enriched && (
-                      <p className="min-shift">
-                        <strong>{agency.minimumLabel}</strong>
-                        minimum visit
-                        {agency.id === 'genki' ? <small>*Transport differs</small> : null}
-                      </p>
-                    )}
-                  </div>
-                  {agency.enriched ? (
-                    <ul className="card-facts">
-                      {CARD_FACTS.map(([key, label]) => (
-                        <li key={key}>
-                          <span className="fact-label">{label}</span>
-                          <span className={`fact-value ${agency.fields[key].status === 'missing' ? 'unanswered' : ''}`}>
-                            {agency.fields[key].value}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                </div>
+                <div className={`price-band${rate ? '' : ' is-empty'}`}>
+                  {rate ? (
+                    <p className="rate">{rate}<span>/hour</span></p>
                   ) : (
-                    <p className="profile-pending">
-                      Start with the agency’s contact details. Rates, minimums and everyday policies will be added as they are researched or confirmed.
+                    <p className="rate unlisted">
+                      Rate not published
+                      <span className="empty-ask">Ask the agency</span>
                     </p>
                   )}
+                  {minimum ? (
+                    <p className="min-shift">
+                      <strong>{minimum}</strong>
+                      <span> min</span>
+                      {agency.id === 'genki' ? <small>Transport differs</small> : null}
+                    </p>
+                  ) : null}
                 </div>
+                {chips.length > 0 && (
+                  <ul className="fact-chips">
+                    {chips.map((chip) => (
+                      <li key={chip.key}>
+                        <span className="chip-label">{chip.label}:</span>
+                        <span className="chip-value">{chip.value}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <div className="card-actions">
-                  <button type="button" className="button button-outline" onClick={() => openDialog({ kind: 'profile', id: agency.id })}>
-                    Explore agency details <span aria-hidden="true">↗</span>
+                  <button type="button" className="button button-forest" onClick={() => openDialog({ kind: 'profile', id: agency.id })}>
+                    Explore details
                   </button>
                   <div className="card-bottom">
                     <label className="check-label">
@@ -398,7 +397,8 @@ export function CareAtHomePage() {
                   </div>
                 </div>
               </article>
-            ))}
+              );
+            })}
           </div>
           <div className="load-more">
             <button
