@@ -24,10 +24,39 @@ export const COMPARISON_ROWS = [
 ];
 
 export const CARD_FACTS = [
+  ['languages', 'Languages'],
   ['backup', 'Backup plan'],
   ['continuity', 'Familiar faces'],
-  ['languages', 'Languages'],
+  ['response', 'Response time'],
 ];
+
+const NOT_PROVIDED = /^not provided$/i;
+
+export function isProvidedValue(value) {
+  const text = String(value ?? '').trim();
+  return text.length > 0 && !NOT_PROVIDED.test(text);
+}
+
+/** Card-face rate. Null when the profile has no published number. */
+export function publishedRate(agency) {
+  if (agency?.rateLow == null || !isProvidedValue(agency.rateLabel)) return null;
+  return String(agency.rateLabel).trim();
+}
+
+/** Card-face minimum. Null when the profile has no published minimum. */
+export function publishedMinimum(agency) {
+  if (!isProvidedValue(agency?.minimumLabel)) return null;
+  return String(agency.minimumLabel).trim();
+}
+
+/** Filled comparison facts for the card chip row. Missing fields stay off the card. */
+export function cardFactChips(agency) {
+  return CARD_FACTS.flatMap(([key, label]) => {
+    const field = agency?.fields?.[key];
+    if (!field || field.status === 'missing' || !isProvidedValue(field.value)) return [];
+    return [{ key, label, value: String(field.value).trim() }];
+  });
+}
 
 export const INITIAL_VISIBLE = 8;
 export const PAGE_STEP = 6;

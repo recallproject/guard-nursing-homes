@@ -45,7 +45,7 @@ function ProfileBody({ agency, onSource, onRequest, onClaim }) {
   const website = safeHttpUrl(agency.website);
   return (
     <>
-      <p className="eyebrow">LOCAL AGENCY PROFILE · {agency.area}</p>
+      <p className="eyebrow">LOCAL AGENCY PROFILE · {agency.city}, {agency.area}</p>
       <h2 id="cah-dialog-title" tabIndex={-1}>{agency.name}</h2>
       <p>{agency.description}</p>
       <div className="profile-summary">

@@ -99,3 +99,157 @@
   .cah{background:#fff}
   .cah .agency-card{box-shadow:none}
 }
+
+/* Price-first cards: sage rate band, filled-fact chips, solid forest CTA. */
+.cah .agency-card .agency-body{padding:14px 22px 0;flex:0 0 auto}
+.cah .agency-card h3,
+.cah .agency-card.researched h3,
+.cah .agency-card.basic h3{
+  font-size:clamp(26px,2.4vw,34px);
+  line-height:1.12;
+  letter-spacing:-.03em;
+}
+.cah .agency-card .agency-description,
+.cah .agency-card.researched .agency-description,
+.cah .agency-card.basic .agency-description{
+  min-height:0;
+  max-width:none;
+  margin-top:8px;
+  font-size:14px;
+  line-height:1.55;
+}
+.cah .card-source{
+  margin-left:auto;
+  color:#7b8794;
+  font-size:12px;
+  font-weight:500;
+  line-height:1.3;
+  text-align:right;
+  letter-spacing:0;
+  text-transform:none;
+}
+.cah .agency-card .price-band{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px 16px;
+  margin-top:16px;
+  padding:16px 22px;
+  background:#e7f3ec;
+  min-width:0;
+}
+.cah .agency-card .price-band .rate,
+.cah .agency-card.researched .price-band .rate{
+  flex:1 1 160px;
+  min-width:0;
+  margin:0;
+  font-size:clamp(30px,3vw,40px);
+  letter-spacing:-.04em;
+  line-height:1;
+  overflow-wrap:anywhere;
+}
+.cah .agency-card .price-band .rate span:not(.empty-ask){
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:0;
+  color:#5c6b7a;
+  margin-left:4px;
+}
+.cah .agency-card .price-band .rate.unlisted,
+.cah .agency-card.researched .price-band .rate.unlisted{
+  font-size:clamp(20px,2.2vw,24px);
+  letter-spacing:-.02em;
+  line-height:1.2;
+  color:#4e6070;
+}
+.cah .agency-card .price-band .rate .empty-ask{
+  display:block;
+  margin:3px 0 0;
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:0;
+  color:var(--muted);
+}
+.cah .agency-card .price-band .min-shift{
+  flex:0 0 auto;
+  margin-left:auto;
+  text-align:right;
+  color:var(--ink);
+  font-size:15px;
+  font-weight:650;
+  line-height:1.25;
+}
+.cah .agency-card .price-band .min-shift strong{
+  display:inline;
+  font-size:15px;
+  font-weight:700;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.cah .agency-card .price-band .min-shift small{
+  display:block;
+  margin-top:2px;
+  font-size:11px;
+  font-weight:500;
+  line-height:1.35;
+  color:var(--muted);
+}
+.cah .fact-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  list-style:none;
+  margin:0;
+  padding:14px 22px 0;
+}
+.cah .fact-chips li{
+  display:inline-flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px;
+  max-width:100%;
+  padding:6px 12px;
+  border:1px solid rgba(23,54,93,.14);
+  border-radius:999px;
+  background:#fff;
+  font-size:12px;
+  line-height:1.35;
+  color:var(--ink);
+}
+.cah .fact-chips .chip-label{color:var(--muted);font-weight:550}
+.cah .fact-chips .chip-value{font-weight:650;overflow-wrap:anywhere}
+.cah .agency-card .card-actions{margin-top:auto;padding:16px 22px 18px}
+.cah .card-actions>.button.button-forest{
+  width:100%;
+  min-height:48px;
+  gap:0;
+  background:#0f6b56;
+  border-color:#0f6b56;
+  color:#fff;
+  border-radius:6px;
+  font-size:14px;
+  font-weight:650;
+}
+.cah .card-actions>.button.button-forest:hover{background:#0c5746;border-color:#0c5746}
+@media(max-width:800px){
+  .cah .agency-card .agency-body,
+  .cah .agency-card .card-actions,
+  .cah .agency-card .price-band,
+  .cah .fact-chips{padding-inline:18px}
+  .cah .agency-card .price-band .rate,
+  .cah .agency-card.researched .price-band .rate{font-size:32px}
+}
+@media(max-width:620px){
+  .cah .agency-card .agency-body,
+  .cah .agency-card .card-actions,
+  .cah .agency-card .price-band,
+  .cah .fact-chips{padding-inline:20px}
+  .cah .agency-card h3,
+  .cah .agency-card.researched h3{font-size:30px}
+  .cah .agency-card .price-band .rate,
+  .cah .agency-card.researched .price-band .rate{font-size:34px}
+  .cah .card-actions>.button.button-forest{min-height:48px;font-size:15px}
+}

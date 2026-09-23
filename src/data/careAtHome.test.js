@@ -7,6 +7,7 @@ import {
   CARE_AT_HOME_AGENCIES,
   COMPARISON_ROWS,
   budgetFineprint,
+  cardFactChips,
   comparisonRows,
   createRequestDraft,
   defaultRequestCounty,
@@ -14,6 +15,8 @@ import {
   formatDollars,
   getBudgetScenario,
   pilotStats,
+  publishedMinimum,
+  publishedRate,
   splitRecipients,
   toggleCompare,
   weeklyBudget,
@@ -123,6 +126,24 @@ describe('care at home seed', () => {
     assert.match(budgetFineprint(scenario), /Not a quote or a county average/);
   });
 
+  it('keeps unpublished rates and missing facts off the card face', () => {
+    assert.deepEqual(cardFactChips(genki).map((chip) => chip.key), ['languages']);
+    assert.equal(cardFactChips(genki)[0].value, 'English and Japanese');
+    assert.equal(publishedRate(genki), '$33–$37');
+    assert.equal(publishedMinimum(genki), '2 hours*');
+
+    assert.deepEqual(cardFactChips(coast).map((chip) => chip.key), ['backup', 'continuity']);
+    assert.equal(publishedRate(coast), '$39');
+    assert.equal(publishedMinimum(coast), '4 hours');
+
+    const basic = CARE_AT_HOME_AGENCIES.find((agency) => !agency.enriched);
+    assert.ok(basic);
+    assert.deepEqual(cardFactChips(basic), []);
+    assert.equal(publishedRate(basic), null);
+    assert.equal(publishedMinimum(basic), null);
+    assert.equal(basic.rateLabel, 'Not provided');
+  });
+
   it('defaults an explicit agency request to that agency county and does not drop outside-county agencies without a choice', () => {
     assert.equal(defaultRequestCounty({ explicitId: 'coast', browseCounty: 'oc' }), 'sd');
     assert.equal(defaultRequestCounty({ selectedIds: ['genki', 'coast'], browseCounty: 'all' }), 'sd');
@@ -220,8 +241,18 @@ describe('care at home delivery', () => {
     assert.match(page, /Compare local agencies before you call\./);
     assert.match(page, /county-chip/);
     assert.match(page, /countyChipLabel/);
+    assert.match(page, /price-band/);
+    assert.match(page, /fact-chips/);
+    assert.match(page, /Explore details/);
+    assert.match(page, /Rate not published/);
+    assert.match(page, /Ask the agency/);
+    assert.match(page, /button-forest/);
+    assert.doesNotMatch(page, /Published details|Ready to explore|profile-pending|Rate not provided|card-facts|fact-value/);
     assert.doesNotMatch(page, /agency-monogram|agency\.monogram/);
     assert.match(css, /\.county-chip\{/);
+    assert.match(css, /\.price-band\{/);
+    assert.match(css, /#0f6b56/);
+    assert.match(css, /#e7f3ec/);
     assert.match(css, /0 8px 24px rgba\(23,54,93,\.05\)/);
     assert.match(css, /border-left:3px solid var\(--teal\)/);
     assert.match(dialog, /has not received this request until you send that email/);
