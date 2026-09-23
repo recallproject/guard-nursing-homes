@@ -9,6 +9,7 @@ import {
   mostRecentSurveyDate,
   pickNearbyFacilities,
 } from './facility-prerender.js';
+import { afterCareBodyContent } from './after-care-prerender.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -341,7 +342,8 @@ const staticPages = [
   {
     route: 'after-care',
     title: 'After Care — Home Setup for Families | The Oversight Report',
-    description: 'Home setup ideas for families leaving a facility: bathing, toileting, walking, and transfers. Medicare notes included. Affiliate links never affect facility scores.'
+    description: 'Home setup ideas for families leaving a facility: bathing, toileting, walking, and transfers. Medicare notes included. Affiliate links never affect facility scores.',
+    bodyContent: afterCareBodyContent(),
   },
   {
     route: 'evidence-sample',
@@ -438,7 +440,7 @@ const staticPages = [
 console.log('Generating SEO pages with static HTML content...');
 
 for (const page of staticPages) {
-  createPage(page.route, page.title, page.description, `/${page.route}`);
+  createPage(page.route, page.title, page.description, `/${page.route}`, page.bodyContent || '');
 }
 console.log(`  ✓ ${staticPages.length} static pages`);
 

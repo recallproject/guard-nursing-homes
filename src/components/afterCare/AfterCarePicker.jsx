@@ -23,6 +23,8 @@ export function AfterCarePicker({ surface, labelId, syncUrl = false }) {
   const products = showAll
     ? AFTER_CARE_PRODUCTS
     : (selectedNeed ? productsForNeed(selectedNeed.id) : []);
+  const useFeatured = !showAll && products.length > 0;
+  const [leadProduct, ...altProducts] = products;
 
   function selectNeed(needId) {
     setShowAll(false);
@@ -55,15 +57,6 @@ export function AfterCarePicker({ surface, labelId, syncUrl = false }) {
         })}
       </div>
 
-      <button
-        type="button"
-        className="ac-see-all"
-        aria-pressed={showAll}
-        onClick={() => setShowAll((open) => !open)}
-      >
-        {showAll ? 'Back to one kind of help' : 'See all home-setup options'}
-      </button>
-
       <div className="ac-results" aria-live="polite">
         {products.length === 0 ? (
           <p className="ac-empty">Select one to see a few options.</p>
@@ -72,14 +65,39 @@ export function AfterCarePicker({ surface, labelId, syncUrl = false }) {
             <h3 className="ac-results-title">
               {showAll ? 'All home-setup options' : selectedNeed.label}
             </h3>
-            <div className={`ac-grid${products.length === 1 ? ' ac-grid--single' : ''}`}>
-              {products.map((product) => (
-                <AfterCareProductCard key={product.id} product={product} surface={surface} />
-              ))}
-            </div>
+            {useFeatured ? (
+              <div className="ac-pick">
+                <AfterCareProductCard product={leadProduct} surface={surface} featured />
+                {altProducts.length > 0 ? (
+                  <div className="ac-alts">
+                    <p className="ac-alts-label">Other options</p>
+                    <div className="ac-alts-grid">
+                      {altProducts.map((product) => (
+                        <AfterCareProductCard key={product.id} product={product} surface={surface} compact />
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <div className="ac-grid">
+                {products.map((product) => (
+                  <AfterCareProductCard key={product.id} product={product} surface={surface} />
+                ))}
+              </div>
+            )}
           </>
         )}
       </div>
+
+      <button
+        type="button"
+        className="ac-see-all"
+        aria-pressed={showAll}
+        onClick={() => setShowAll((open) => !open)}
+      >
+        {showAll ? 'Back to one kind of help' : 'See all home-setup options'}
+      </button>
     </div>
   );
 }
