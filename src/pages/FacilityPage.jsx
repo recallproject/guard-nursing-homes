@@ -7,6 +7,7 @@ import { haversineDistance } from '../utils/haversine';
 import { NearbyFacilities } from '../components/NearbyFacilities';
 import FacilityDownloads, { FacilityCtaRail } from '../components/FacilityDownloads';
 import { ActionPaths } from '../components/ActionPaths';
+import { AfterCareFacilityBlock } from '../components/afterCare/AfterCareFacilityBlock';
 import StaffingSection from '../components/StaffingSection';
 import { StaffingTrendChart } from '../components/StaffingTrendChart';
 import { useWatchlist } from '../hooks/useWatchlist';
@@ -324,7 +325,7 @@ export function FacilityPage() {
 
   // Intersection Observer for active section nav tracking (same pattern as methodology page)
   useEffect(() => {
-    const sectionIds = ['s-safety', 's-inspections', 's-complaints', 's-staffing', 's-quality', 's-fines', 's-fire', 's-ownership', 's-questions', 's-downloads'];
+    const sectionIds = ['s-safety', 's-inspections', 's-complaints', 's-staffing', 's-quality', 's-fines', 's-fire', 's-ownership', 's-questions', 's-after-care', 's-downloads'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -593,6 +594,7 @@ export function FacilityPage() {
             { id: 's-fire', num: '07', label: 'Fire Safety' },
             { id: 's-ownership', num: '08', label: 'Ownership' },
             { id: 's-questions', num: '09', label: 'Questions' },
+            { id: 's-after-care', num: '', label: 'After care' },
             { id: 's-downloads', num: '10', label: 'Downloads' },
           ].map(sec => (
             <a key={sec.id} href={`#${sec.id}`} className={`fp-sidebar-link${activeSection === sec.id ? ' active' : ''}`} onClick={e => {
@@ -2216,6 +2218,14 @@ export function FacilityPage() {
             <div className="section-title">What You Can Do</div>
           </div>
           <ActionPaths facility={facility} />
+        </div>
+
+        <div className="section" id="s-after-care">
+          <div className="section-header-row">
+            <div className="section-title">After care at home</div>
+          </div>
+          <p className="section-subtitle">Bathing, toileting, walking, and transfers. Separate from this facility’s safety score.</p>
+          <AfterCareFacilityBlock />
         </div>
 
         {/* Nearby Alternatives */}

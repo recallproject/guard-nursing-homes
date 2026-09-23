@@ -90,6 +90,7 @@ const staticPages = [
   { path: '/watchlist', priority: '0.6' },
   { path: '/referral-scorecard', priority: '0.6' },
   { path: '/know-your-rights', priority: '0.7' },
+  { path: '/after-care', priority: '0.5' },
   { path: '/evidence-sample', priority: '0.7' },
   { path: '/data-transparency', priority: '0.6' },
   { path: '/families', priority: '0.7' },

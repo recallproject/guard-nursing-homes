@@ -339,6 +339,11 @@ const staticPages = [
     description: 'Your rights in a nursing home. Discharge appeal procedures, CMS complaint filing, ombudsman contacts, and free resources for families.'
   },
   {
+    route: 'after-care',
+    title: 'After Care — Home Setup for Families | The Oversight Report',
+    description: 'Home setup ideas for families leaving a facility: bathing, toileting, walking, and transfers. Medicare notes included. Affiliate links never affect facility scores.'
+  },
+  {
     route: 'evidence-sample',
     title: 'Sample Evidence Report — Litigation-Ready Nursing Home Documentation | The Oversight Report',
     description: 'Preview a sample evidence report. 17-page litigation-ready documentation with staffing data, inspection citations, penalties, and ownership analysis.'

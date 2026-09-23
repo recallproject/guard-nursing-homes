@@ -114,12 +114,16 @@ export function PrivacyPage() {
         <div className="legal-section" data-accent="green">
           <div className="legal-section-header">
             <div className="legal-section-icon"><IconShield /></div>
-            <h2>No Advertising or Sponsored Content</h2>
+            <h2>Facility Content Is Not Sponsored</h2>
           </div>
           <p>
             We do not accept advertising, sponsored placements, or payments from nursing home
-            operators, insurers, healthcare companies, or any entity that could create a
-            conflict of interest with our mission.
+            operators, insurers, or anyone else in exchange for how a facility is scored or described.
+          </p>
+          <p>
+            After Care recommends a small set of home-setup products. OversightReports may earn
+            a commission from qualifying purchases. Commercial relationships never affect facility
+            scores, rankings, or safety data.
           </p>
         </div>
 
