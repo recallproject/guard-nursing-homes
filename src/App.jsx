@@ -61,6 +61,7 @@ const PostAcuteStatePage = lazy(() => import('./pages/PostAcuteStatePage'));
 const PostAcuteProviderPage = lazy(() => import('./pages/PostAcuteProviderPage'));
 const RefreshLogPage = lazy(() => import('./pages/RefreshLogPage'));
 const AfterCarePage = lazy(() => import('./pages/AfterCarePage').then(m => ({ default: m.AfterCarePage })));
+const CareAtHomePage = lazy(() => import('./pages/CareAtHomePage').then(m => ({ default: m.CareAtHomePage })));
 
 // Feature flag: post-acute hub homepage is ON by default. To roll back, set
 // VITE_POST_ACUTE_HOME_ENABLED=false in Vercel project env vars and redeploy.
@@ -164,6 +165,7 @@ function App() {
           <Route path="/evidence-sample" element={<EvidenceSamplePage />} />
           <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
           <Route path="/after-care" element={<AfterCarePage />} />
+          <Route path="/care-at-home" element={<CareAtHomePage />} />
           <Route path="/data-transparency" element={<DataTransparencyPage />} />
           <Route path="/antipsychotic-trends" element={<AntipsychoticTrendsPage />} />
           <Route path="/families" element={<FamiliesPage />} />

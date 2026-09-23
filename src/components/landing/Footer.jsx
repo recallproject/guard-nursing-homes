@@ -23,6 +23,7 @@ export default function Footer() {
               <li><Link to="/skilled-nursing#browse-states">Browse by state</Link></li>
               <li><Link to="/skilled-nursing">Skilled nursing</Link></li>
               <li><Link to="/after-care">After care</Link></li>
+              <li><Link to="/care-at-home">Care at home</Link></li>
             </ul>
           </div>
           <div className="footer-col">

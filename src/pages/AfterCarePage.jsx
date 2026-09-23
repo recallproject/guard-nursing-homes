@@ -70,10 +70,10 @@ export function AfterCarePage() {
             <p>
               If bathing, dressing, meals, toileting, or transfers are difficult, equipment may only solve part of the problem. We can help estimate what part-time home support may cost.
             </p>
-            <Link className="ac-care-cta" to="/home-health">
-              Estimate caregiver support →
+            <Link className="ac-care-cta" to="/care-at-home">
+              Compare local agencies →
             </Link>
-            <p className="ac-care-note">Opens the home health agency lookup. The dollar range is illustrative, not a quote.</p>
+            <p className="ac-care-note">Orange County and San Diego pilot. Published rates are not a quote.</p>
           </div>
           <div className="ac-cost-card">
             <small>Illustrative part-time private-pay support</small>
