@@ -213,6 +213,8 @@ describe('care at home delivery', () => {
     const app = read('src/App.jsx');
     const footer = read('src/components/landing/Footer.jsx');
     const afterCare = read('src/pages/AfterCarePage.jsx');
+    const home = read('src/pages/PostAcuteHomePage.jsx');
+    const homeLink = read('src/components/careAtHome/CareAtHomeHomeLink.jsx');
     const css = read('src/styles/care-at-home.css');
     assert.match(page, /Know what it\s*<br \/>should cost\./);
     assert.match(page, /Compare local agencies before you call\./);
@@ -228,6 +230,11 @@ describe('care at home delivery', () => {
     assert.match(app, /path="\/care-at-home"/);
     assert.match(footer, /to="\/care-at-home"/);
     assert.match(afterCare, /to="\/care-at-home"/);
+    assert.match(home, /<AfterCareHomeLink \/>\s*<CareAtHomeHomeLink \/>/);
+    assert.match(homeLink, /Need hands-on help\?/);
+    assert.match(homeLink, /Compare local agencies in Orange County and San Diego before you call\./);
+    assert.match(homeLink, /to="\/care-at-home"/);
+    assert.match(homeLink, /See Care at home/);
     assert.match(css, /^\.cah\{/);
     assert.doesNotMatch(css, /(^|})body\{/);
     assert.match(read('scripts/generate-sitemap.js'), /\/care-at-home/);
