@@ -15,6 +15,9 @@
  * @property {string} id
  * @property {string} title
  * @property {string} bestFor
+ * @property {string} whyPicked One editorial sentence. Not a clinical claim.
+ * @property {string} image Local product photo path under /after-care/.
+ * @property {string} imageAlt
  * @property {string} [typicalPriceLabel] Approximate retail, shown with a "Typical price" label.
  * @property {MedicareStatus} medicareStatus
  * @property {string} [coverageDetail] Extra coverage wording. Does not replace the badge.
@@ -42,7 +45,7 @@ export const MEDICARE_BADGE_LABEL = {
   'self-pay': 'Usually self-pay',
 };
 
-export const AFTER_CARE_PRIMARY_CTA = 'View recommended option';
+export const AFTER_CARE_PRIMARY_CTA = 'See price on Vive';
 export const AFTER_CARE_SECONDARY_CTA = 'Check Medicare coverage';
 
 export const AFTER_CARE_MERCHANT_LABEL = {
@@ -64,6 +67,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'shower-chair',
     title: 'Shower Chair',
     bestFor: 'Sitting while bathing when standing in the shower is hard.',
+    whyPicked: 'A stable seat is the simplest way to bathe without standing the whole time.',
+    image: '/after-care/shower-chair.jpg',
+    imageAlt: 'Vive shower chair with a backrest, armrests, and drainage holes in the seat',
     typicalPriceLabel: 'about $70',
     medicareStatus: 'self-pay',
     affiliateUrl: vive('shower-chair'),
@@ -74,6 +80,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'tub-transfer-bench',
     title: 'Tub Transfer Bench',
     bestFor: 'Moving from outside the tub onto a seat without stepping over the side.',
+    whyPicked: 'The seat spans the tub wall, so the move happens while sitting instead of stepping over the side.',
+    image: '/after-care/tub-transfer-bench.jpg',
+    imageAlt: 'Vive tub transfer bench with a backrest and adjustable legs',
     typicalPriceLabel: 'about $110',
     medicareStatus: 'self-pay',
     affiliateUrl: vive('tub-transfer-bench'),
@@ -84,6 +93,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'bedside-commode',
     title: 'Folding Bedside Commode',
     bestFor: 'A toilet next to the bed when the bathroom is too far.',
+    whyPicked: 'It puts a toilet within reach of the bed, which is the setup most families need first.',
+    image: '/after-care/bedside-commode.jpg',
+    imageAlt: 'Vive folding bedside commode with a bucket, lid, and armrests',
     typicalPriceLabel: 'about $75',
     medicareStatus: 'may-cover',
     affiliateUrl: vive('commode'),
@@ -94,6 +106,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'core-3-in-1',
     title: 'Core 3-in-1 Shower/Commode/Transport',
     bestFor: 'One chair used for showering, toileting, or moving between rooms.',
+    whyPicked: 'One chair covers showering, toileting, and short moves between rooms.',
+    image: '/after-care/core-3-in-1.jpg',
+    imageAlt: 'Vive 3-in-1 shower, commode, and transport chair with large rear wheels',
     typicalPriceLabel: 'about $130',
     medicareStatus: 'self-pay',
     coverageDetail: 'Often self-pay. Whether Medicare pays can vary by the type of equipment.',
@@ -105,6 +120,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'lightweight-rollator',
     title: 'Lightweight Rollator',
     bestFor: 'Walking farther, with a seat for rest breaks.',
+    whyPicked: 'A seat and brakes make a longer walk possible without switching to a wheelchair.',
+    image: '/after-care/lightweight-rollator.jpg',
+    imageAlt: 'Vive lightweight rollator walker with a seat, backrest, and hand brakes',
     typicalPriceLabel: 'about $100',
     medicareStatus: 'may-cover',
     affiliateUrl: vive('lightweight-rollator'),
@@ -115,6 +133,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'wheelchair-rollator',
     title: 'Wheelchair Rollator Combo',
     bestFor: 'Longer distances when someone needs to walk, sit, and roll in the same outing.',
+    whyPicked: 'When walking tires out mid-outing, the same frame lets someone sit and be pushed.',
+    image: '/after-care/wheelchair-rollator.jpg',
+    imageAlt: 'Vive wheelchair rollator combo with a seat, footrests, and push handles',
     typicalPriceLabel: 'about $200',
     medicareStatus: 'may-cover',
     affiliateUrl: vive('rollator-walker-with-seat'),
@@ -125,6 +146,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'gait-belt',
     title: 'Gait/Transfer Belt',
     bestFor: 'A caregiver-assisted transfer after someone has been shown how to use a belt.',
+    whyPicked: 'A belt gives a caregiver a defined place to hold during a transfer they have already been shown.',
+    image: '/after-care/gait-belt.jpg',
+    imageAlt: 'Vive gait transfer belt with a quick-release buckle',
     typicalPriceLabel: 'about $15',
     medicareStatus: 'self-pay',
     safetyNote:
@@ -137,6 +161,9 @@ export const AFTER_CARE_PRODUCTS = [
     id: 'gel-cushion',
     title: 'Wheelchair Gel Cushion',
     bestFor: 'Comfort and positioning during long periods of sitting in a wheelchair.',
+    whyPicked: 'A simple add-on for comfort during long hours already spent in a wheelchair.',
+    image: '/after-care/gel-cushion.jpg',
+    imageAlt: 'Vive wheelchair gel seat cushion with a contoured fabric cover',
     typicalPriceLabel: 'about $40–$50',
     medicareStatus: 'self-pay',
     coverageDetail: 'Described here for comfort and positioning only — not as prevention or treatment of pressure injuries.',
@@ -146,7 +173,10 @@ export const AFTER_CARE_PRODUCTS = [
   },
 ];
 
-/** @type {AfterCareNeed[]} */
+/**
+ * First id in `productIds` is the Start here pick for that need.
+ * @type {AfterCareNeed[]}
+ */
 export const AFTER_CARE_NEEDS = [
   {
     id: 'shower',

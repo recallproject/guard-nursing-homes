@@ -36,7 +36,7 @@ export function AfterCarePage() {
       </p>
       <ul className="ac-steps">
         <li>Pick one kind of help</li>
-        <li>Open a recommended option if you want to buy it yourself</li>
+        <li>See the price on Vive if you want to buy it yourself</li>
         <li>Check Medicare for that type of equipment</li>
       </ul>
       <AfterCareDisclosure />
