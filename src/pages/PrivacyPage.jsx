@@ -57,7 +57,7 @@ export function PrivacyPage() {
         <p className="legal-hero-sub">
           We collect minimal data, never sell it, and have no financial ties to the nursing home industry.
         </p>
-        <p className="legal-updated">Last updated: March 25, 2026</p>
+        <p className="legal-updated">Last updated: September 23, 2026</p>
       </div>
 
       {/* Sections */}
@@ -160,6 +160,23 @@ export function PrivacyPage() {
             email, and facility of interest through our intake process. This information is used
             solely to prepare and deliver your report. We do not share attorney intake information
             with third parties, nursing home operators, or any other entity.
+          </p>
+        </div>
+
+        <div className="legal-section" data-accent="teal">
+          <div className="legal-section-header">
+            <div className="legal-section-icon"><IconMail /></div>
+            <h2>Care at Home Requests</h2>
+          </div>
+          <p>
+            If you ask OversightReports to help compare home-care agencies, we collect the care
+            preferences, ZIP code, email address, and agency names you choose to share. We use that
+            information to review the request. It is not forwarded to an agency until a person checks
+            the care address and availability, and only for agencies you selected. You can also email{' '}
+            <a href="mailto:contact@oversightreports.com">contact@oversightreports.com</a>.
+            When in-app delivery is configured, the note goes to the site’s existing form inbox.
+            When it is not, the page opens an email draft and does not transmit the form for you.
+            We do not sell this information.
           </p>
         </div>
 

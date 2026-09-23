@@ -207,7 +207,7 @@ describe('after care edit', () => {
     }
     assert.match(page, /We searched the options so you don’t have to\./);
     assert.match(page, /AfterCareDisclosure/);
-    assert.match(page, /to="\/home-health"/);
+    assert.match(page, /to="\/care-at-home"/);
     assert.match(app, /path="\/after-care"/);
     assert.match(footer, /to="\/after-care"/);
     assert.match(footer, /After care/);

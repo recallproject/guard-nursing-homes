@@ -1,0 +1,2561 @@
+[
+  {
+    "id": "genki",
+    "name": "Genki HomeCare",
+    "monogram": "gh.",
+    "area": "San Diego",
+    "city": "Chula Vista",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego County, North County to South Bay",
+    "status": "public",
+    "enriched": true,
+    "description": "San Diego County home-care provider offering personal care, companionship and respite, with English- and Japanese-speaking caregiver options.",
+    "email": "info@genkihomecare.org",
+    "phone": "858-699-7020",
+    "website": "https://genkihomecare.org/",
+    "contactSources": [
+      {
+        "url": "https://genkihomecare.org/about-us/",
+        "title": "Genki HomeCare — About Us",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Public website information has not been confirmed by the agency to OversightReports. Confirm language availability, coverage and the applicable visit minimum.",
+    "rateLow": 33,
+    "rateHigh": 37,
+    "rateLabel": "$33–$37",
+    "rateNote": "$33/hr for daytime visits of 4+ hours; $37/hr for shorter visits or nights (7 pm–7 am). Published rates effective Jan 1, 2026; extras may apply.",
+    "minimumLabel": "2 hours*",
+    "fields": {
+      "rate": {
+        "value": "$33/hr daytime 4+ hours; $37/hr shorter visits or nights",
+        "status": "public",
+        "note": "Night rate applies 7 pm–7 am. Effective January 1, 2026. Confirm the current quote, holiday premium and additional fees.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/pricing/",
+            "title": "Genki HomeCare pricing"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "2-hour minimum; transportation has a separate minimum",
+        "status": "public",
+        "note": "Pricing lists a two-hour minimum with 15-minute increments thereafter. The transportation FAQ requires one four-hour visit per week. Confirm which minimum applies.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/pricing/",
+            "title": "Genki HomeCare pricing"
+          },
+          {
+            "url": "https://genkihomecare.org/faq/",
+            "title": "Genki HomeCare FAQ"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "No explicit replacement or no-show policy located on reviewed pages. Scheduled booking language is not a backup guarantee.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/faq/",
+            "title": "Genki HomeCare FAQ"
+          },
+          {
+            "url": "https://genkihomecare.org/services/",
+            "title": "Genki HomeCare services"
+          },
+          {
+            "url": "https://genkihomecare.org/pricing/",
+            "title": "Genki HomeCare pricing"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Coordinator matches needs, location, schedule and caregiver availability. No explicit promise of the same caregiver each visit.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/faq/",
+            "title": "Genki HomeCare FAQ"
+          },
+          {
+            "url": "https://genkihomecare.org/services/",
+            "title": "Genki HomeCare services"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "No consumer-facing dementia program or training specifics located. An employment application asks about dementia experience; that does not establish staff qualifications or availability.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/services/",
+            "title": "Genki HomeCare services"
+          },
+          {
+            "url": "https://genkihomecare.org/",
+            "title": "Genki HomeCare"
+          },
+          {
+            "url": "https://genkihomecare.org/faq/",
+            "title": "Genki HomeCare FAQ"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Criminal-background checks and HCA registration stated.",
+        "status": "public",
+        "note": "Agency website claim; individual caregiver records not inspected.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/",
+            "title": "Genki HomeCare"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "English and Japanese",
+        "status": "public",
+        "note": "Site describes bilingual English/Japanese care and says many caregivers speak Japanese; availability for a particular schedule needs confirmation.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/services/",
+            "title": "Genki HomeCare services"
+          },
+          {
+            "url": "https://genkihomecare.org/",
+            "title": "Genki HomeCare"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "24-hour notice; full visit charged for late cancellation",
+        "status": "public",
+        "note": "Notice accepted by phone, text or email.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/pricing/",
+            "title": "Genki HomeCare pricing"
+          },
+          {
+            "url": "https://genkihomecare.org/faq/",
+            "title": "Genki HomeCare FAQ"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Published office hours are not a callback deadline, care-start guarantee or 24/7 response promise.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/services/",
+            "title": "Genki HomeCare services"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Listed holidays: 1.5×; transportation fees apply",
+        "status": "public",
+        "note": "1.5× on Martin Luther King Jr. Day, Presidents’ Day, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day and Veterans Day. Closed New Year’s Day, Thanksgiving and Christmas. Transportation: $0.73/mile plus parking. An out-of-area fee may apply; amount not published. Confirm your exact quote.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/pricing/",
+            "title": "Genki HomeCare pricing"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 374700255",
+        "status": "public",
+        "note": "Published on the agency website. Current CDSS registry status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://genkihomecare.org/about-us/",
+            "title": "About Genki HomeCare"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "coast",
+    "name": "Coast Care",
+    "monogram": "cc.",
+    "area": "San Diego",
+    "city": "San Diego (Linda Vista)",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego County, including North Coastal, Central San Diego, North Inland, East County and South Bay. Confirm staffing at the care address.",
+    "status": "public",
+    "enriched": true,
+    "description": "San Diego County home-care provider offering nonmedical personal care, companionship and dementia support.",
+    "email": "info@coastcare.org",
+    "phone": "619-354-2544",
+    "website": "https://www.coastcare.org/",
+    "contactSources": [
+      {
+        "url": "https://www.coastcare.org/privacy-policy",
+        "title": "Coast Care — Privacy Policy",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.coastcare.org/contact",
+        "title": "Coast Care — Contact",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Public website information has not been confirmed by the agency to OversightReports. Confirm the written care agreement, current charges and staffing at your address.",
+    "rateLow": 39,
+    "rateHigh": 39,
+    "rateLabel": "$39",
+    "rateNote": "Published hourly rate for nonmedical caregiver time. No rate-effective date shown; confirm current charges and any extras.",
+    "minimumLabel": "4 hours",
+    "fields": {
+      "rate": {
+        "value": "$39/hour published",
+        "status": "public",
+        "note": "No dated rate-effective period shown. Holiday/weekend premiums, mileage and overnight billing details are not separately itemized; do not assume zero extras.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/pricing",
+            "title": "Coast Care pricing"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "4 hours per visit",
+        "status": "public",
+        "note": "",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/pricing",
+            "title": "Coast Care pricing"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Standby caregivers; replacement timing not stated",
+        "status": "public",
+        "note": "Website describes backup for unavailable caregivers. No timed replacement obligation or specific no-show remedy was found; no independent coverage guarantee.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/pricing",
+            "title": "Coast Care pricing"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Recurring care team within 7 shifts, subject to availability",
+        "status": "public",
+        "note": "Agency describes stabilizing a recurring team within seven shifts; its guidance qualifies consistency by availability. This does not establish a guarantee of one caregiver every visit.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/services",
+            "title": "Coast Care services"
+          },
+          {
+            "url": "https://www.coastcare.org/blog/15-questions-to-ask-before-hiring-a-home-care-agency-in-san-diego",
+            "title": "Coast Care guide to choosing home care"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Dementia-trained caregivers advertised",
+        "status": "public",
+        "note": "Training hours, named credentials and caregiver-specific experience are not disclosed.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/services",
+            "title": "Coast Care services"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Background and reference checks stated",
+        "status": "public",
+        "note": "Agency claim; screening scope, recency and individual results were not independently checked.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/about",
+            "title": "About Coast Care"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "No specific caregiver language list found in the checked pages.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/services",
+            "title": "Coast Care services"
+          },
+          {
+            "url": "https://www.coastcare.org/about",
+            "title": "About Coast Care"
+          },
+          {
+            "url": "https://www.coastcare.org/blog/15-questions-to-ask-before-hiring-a-home-care-agency-in-san-diego",
+            "title": "Coast Care guide to choosing home care"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "No client cancellation notice period or fee found. Website Terms & Conditions is not a care-service cancellation agreement.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/pricing",
+            "title": "Coast Care pricing"
+          },
+          {
+            "url": "https://www.coastcare.org/terms-conditions",
+            "title": "Coast Care website terms"
+          },
+          {
+            "url": "https://www.coastcare.org/contact",
+            "title": "Contact Coast Care"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "No private-pay inquiry response deadline found. 24/7 support availability is not a promised callback time.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/contact",
+            "title": "Contact Coast Care"
+          },
+          {
+            "url": "https://www.coastcare.org/service-areas",
+            "title": "Coast Care service areas"
+          },
+          {
+            "url": "https://www.coastcare.org/pricing",
+            "title": "Coast Care pricing"
+          },
+          {
+            "url": "https://www.coastcare.org/programs/calaim",
+            "title": "Agency website"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Holiday, weekend and overnight prices are not separately itemized on the reviewed pages. Flat-rate wording does not establish that no extras apply.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/pricing",
+            "title": "Coast Care pricing"
+          },
+          {
+            "url": "https://www.coastcare.org/services",
+            "title": "Coast Care services"
+          }
+        ],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 374700060",
+        "status": "public",
+        "note": "Published on the agency website. Current CDSS registry status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://www.coastcare.org/contact",
+            "title": "Contact Coast Care"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "aadvanced-nursing-and-home-care",
+    "name": "Aadvanced Nursing & Home Care",
+    "monogram": "an.",
+    "area": "San Diego",
+    "city": "Del Mar",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego, Del Mar, Rancho Santa Fe, Carlsbad, Encinitas, Oceanside and inland North County",
+    "status": "public",
+    "enriched": false,
+    "description": "Del Mar provider offering hourly and around-the-clock caregiver care in San Diego and North County.",
+    "email": "info@aadvancedhomehealth.com",
+    "phone": "858-259-9228",
+    "website": "https://www.aadvancednursing.com/",
+    "contactSources": [
+      {
+        "url": "https://www.aadvancednursing.com/",
+        "title": "Aadvanced Nursing & Home Care — Home",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm the legal entity, home-care licensing details and private-pay nonmedical scope.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency states it is licensed",
+        "status": "public",
+        "note": "A home-care organization number was not captured from the reviewed page. Current CDSS status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://www.aadvancednursing.com/",
+            "title": "Aadvanced Nursing & Home Care — Home"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "abiding-home-care",
+    "name": "Abiding Home Care",
+    "monogram": "ah.",
+    "area": "Orange County",
+    "city": "Laguna Hills",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange County",
+    "status": "public",
+    "enriched": false,
+    "description": "Laguna Hills home-care agency offering nonmedical personal-care support across Orange County.",
+    "email": "info@abidinghc.com",
+    "phone": "949-876-5266",
+    "website": "https://www.abidinghc.com/",
+    "contactSources": [
+      {
+        "url": "https://www.abidinghc.com/contact",
+        "title": "Contact Abiding Home Care",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm coverage at the care address and current private-pay terms.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Listed in January 2026 county guide",
+        "status": "public",
+        "note": "Orange County Office on Aging list revised January 2026. A listing is not a current CDSS status check or a care-quality endorsement.",
+        "sources": [
+          {
+            "url": "https://www.abidinghc.com/about",
+            "title": "About Abiding Home Care"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "assistance-in-home-care",
+    "name": "Assistance In Home Care",
+    "monogram": "ai.",
+    "area": "Orange County",
+    "city": "Garden Grove",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Garden Grove and surrounding Orange County",
+    "status": "public",
+    "enriched": false,
+    "description": "Garden Grove agency offering private-pay home care in surrounding Orange County communities.",
+    "email": "info@assistanceihc.com",
+    "phone": "844-490-9755",
+    "website": "https://www.assistanceihc.com/",
+    "contactSources": [
+      {
+        "url": "https://www.assistanceihc.com/dementia-care",
+        "title": "In-Home Dementia Care",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm current rates, scheduling and caregiver availability with the agency.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 304700029",
+        "status": "public",
+        "note": "Also listed in the Orange County Office on Aging guide revised January 2026. This is historical corroboration, not a current CDSS status check.",
+        "sources": [
+          {
+            "url": "https://www.assistanceihc.com/dementia-care",
+            "title": "In-Home Dementia Care"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "at-home-nursing-care-at-home-care-solution",
+    "name": "At Home Nursing Care / At Home Care Solution",
+    "monogram": "ah.",
+    "area": "San Diego",
+    "city": "Encinitas",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego County, including North County, South Bay and East County listed in official service-area links",
+    "status": "public",
+    "enriched": false,
+    "description": "Encinitas provider with separate nonmedical home-care and clinical home-health service lines.",
+    "email": "contact@athomenursingcare.com",
+    "phone": "760-965-7223",
+    "website": "https://athomenursingcare.com/",
+    "contactSources": [
+      {
+        "url": "https://athomenursingcare.com/encinitas-ca/contact/",
+        "title": "At Home Nursing Care — San Diego Contact",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Ask which entity provides nonmedical care. At Home Care Solution and At Home Nursing Care have different service licenses.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 374700137",
+        "status": "public",
+        "note": "HCO number applies to At Home Care Solution, Inc. At Home Nursing Care reports a separate CDPH home-health license. Current registry status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://athomenursingcare.com/encinitas-ca/contact/",
+            "title": "At Home Nursing Care — San Diego Contact"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "at-your-home-familycare",
+    "name": "At Your Home Familycare",
+    "monogram": "ay.",
+    "area": "San Diego",
+    "city": "San Diego (Kearny Mesa)",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego area; detailed current boundaries to confirm",
+    "status": "public",
+    "enriched": false,
+    "description": "San Diego nonmedical home-care provider offering personal care, respite and transportation assistance.",
+    "email": "services@atyourhomefamilycare.com",
+    "phone": "858-625-0406",
+    "website": "https://atyourhomefamilycare.com/",
+    "contactSources": [
+      {
+        "url": "https://atyourhomefamilycare.com/",
+        "title": "At Your Home Familycare — Home",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Funded programs are also advertised. Confirm private-pay eligibility, terms and service boundaries.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 374700002",
+        "status": "public",
+        "note": "This is public source information. Current CDSS registry status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://atyourhomefamilycare.com/",
+            "title": "At Your Home Familycare — Home"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "ativa-home-care",
+    "name": "Ativa Home Care",
+    "monogram": "ah.",
+    "area": "Orange County",
+    "city": "Irvine",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Irvine, Newport Beach, Huntington Beach, Costa Mesa, Orange, Laguna Beach, Laguna Niguel, Mission Viejo and surrounding OC",
+    "status": "public",
+    "enriched": false,
+    "description": "Irvine-based provider offering private home care across central and coastal Orange County.",
+    "email": "info@ativahomecare.com",
+    "phone": "949-225-2188",
+    "website": "https://ativahomecare.com/",
+    "contactSources": [
+      {
+        "url": "https://ativahomecare.com/newport_beach/contact-for-complimentary-in-home-assessment/",
+        "title": "Contact Ativa Home Care",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "This provider also offers Medicare home health. Ask specifically about nonmedical private home care.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Listed in January 2026 county guide",
+        "status": "public",
+        "note": "Orange County Office on Aging list revised January 2026. A listing is not a current CDSS status check or a care-quality endorsement.",
+        "sources": [
+          {
+            "url": "https://ativahomecare.com/",
+            "title": "Ativa Home Care Homepage"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "aveanna-healthcare-accredited-home-care-orange-county-and-long-beach",
+    "name": "Aveanna Healthcare / Accredited Home Care — Orange County & Long Beach",
+    "monogram": "ah.",
+    "area": "Orange County",
+    "city": "Orange County / Long Beach office (city to confirm)",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange County and Long Beach",
+    "status": "public",
+    "enriched": false,
+    "description": "Home-care services for Orange County and Long Beach. Accredited Home Care now operates under Aveanna.",
+    "email": "OCHomecare@Aveanna.com",
+    "phone": "714-973-1234",
+    "website": "https://www.aveanna.com/accredited-home-care.html",
+    "contactSources": [
+      {
+        "url": "https://www.aveanna.com/accredited-home-care.html",
+        "title": "Accredited Home Care is now Aveanna Healthcare",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm the current office address and the legal entity providing home care. The two brand names refer to one listing here.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Confirm the current home-care legal entity and licensing details directly with the agency.",
+        "sources": [],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "careworks-health-services",
+    "name": "CareWorks Health Services",
+    "monogram": "ch.",
+    "area": "Orange County",
+    "city": "Laguna Hills / Huntington Beach",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange County including Huntington Beach, Seal Beach, Laguna Hills, Laguna Woods, Mission Viejo and Newport Beach",
+    "status": "public",
+    "enriched": false,
+    "description": "Orange County provider offering private-pay home care, with offices in Laguna Hills and Huntington Beach.",
+    "email": "info@homehealthoc.com",
+    "phone": "949-859-4700",
+    "website": "https://www.careworkshealthservices.com/",
+    "contactSources": [
+      {
+        "url": "https://www.careworkshealthservices.com/wp-content/uploads/2025/08/Medication-Mgmnt-Chart_broch_CareWorks-Health-Services_updated_2025optimized.pdf",
+        "title": "CareWorks 2025-updated Medication Management Brochure",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.careworkshealthservices.com/contact-us/",
+        "title": "CareWorks Contact Us",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm current service boundaries and office details directly. The contact email is published in an agency document.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 304700005",
+        "status": "public",
+        "note": "Also listed in the Orange County Office on Aging guide revised January 2026. This is historical corroboration, not a current CDSS status check.",
+        "sources": [
+          {
+            "url": "https://www.careworkshealthservices.com/wp-content/uploads/2025/08/Medication-Mgmnt-Chart_broch_CareWorks-Health-Services_updated_2025optimized.pdf",
+            "title": "CareWorks 2025-updated Medication Management Brochure"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "caring-companions-at-home",
+    "name": "Caring Companions at Home",
+    "monogram": "cc.",
+    "area": "Orange County",
+    "city": "Newport Beach",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange County, with additional operations in Los Angeles, Riverside and San Bernardino counties",
+    "status": "public",
+    "enriched": false,
+    "description": "Newport Beach home-care agency serving Orange County and several neighboring counties.",
+    "email": "info@caringcompanionsathome.com",
+    "phone": "949-574-0750",
+    "website": "https://www.caringcompanionsathome.com/",
+    "contactSources": [
+      {
+        "url": "https://www.caringcompanionsathome.com/contact-us",
+        "title": "Caring Companions at Home Contact Us",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "This is Caring Companions at Home, a separate business from Caring Companions Referral Agency.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Listed in January 2026 county guide",
+        "status": "public",
+        "note": "Orange County Office on Aging list revised January 2026. A listing is not a current CDSS status check or a care-quality endorsement.",
+        "sources": [
+          {
+            "url": "https://www.caringcompanionsathome.com/frequently-asked-questions",
+            "title": "Caring Companions at Home FAQ"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "golden-care",
+    "name": "Golden Care",
+    "monogram": "gc.",
+    "area": "San Diego",
+    "city": "Carlsbad / La Mesa",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego County; North Coastal, central San Diego and East County",
+    "status": "public",
+    "enriched": false,
+    "description": "Home-care provider with Carlsbad and La Mesa offices and personal-care services across San Diego County.",
+    "email": "info@getgoldencare.com",
+    "phone": "760-828-5201",
+    "website": "https://getgoldencare.com/",
+    "contactSources": [
+      {
+        "url": "https://getgoldencare.com/about-us/",
+        "title": "Golden Care — About Us",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "The Carlsbad and La Mesa offices share one agency contact. Confirm staffing at the care address.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 374700093",
+        "status": "public",
+        "note": "This is public source information. Current CDSS registry status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://getgoldencare.com/about-us/",
+            "title": "Golden Care — About Us"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "lake-forest-home-care-inc",
+    "name": "Lake Forest Home Care, Inc.",
+    "monogram": "lf.",
+    "area": "Orange County",
+    "city": "Laguna Hills",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "South OC including Laguna Hills, Laguna Beach, Laguna Niguel, Lake Forest, Mission Viejo, Aliso Viejo, San Juan Capistrano and San Clemente; parts of LA, Riverside and San Diego",
+    "status": "public",
+    "enriched": false,
+    "description": "Laguna Hills agency serving South Orange County and selected surrounding communities.",
+    "email": "staffing@lakeforesthomecare.com",
+    "phone": "949-305-2431",
+    "website": "https://www.lakeforesthomecare.com/",
+    "contactSources": [
+      {
+        "url": "https://www.lakeforesthomecare.com/home-care-contact-us",
+        "title": "Lake Forest Home Care Contact Us",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm private-pay arrangements and coverage at the care address, particularly outside South Orange County.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Listed in January 2026 county guide",
+        "status": "public",
+        "note": "Orange County Office on Aging list revised January 2026. A listing is not a current CDSS status check or a care-quality endorsement.",
+        "sources": [
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "love-2-live-care-services",
+    "name": "Love 2 Live Care Services",
+    "monogram": "ll.",
+    "area": "San Diego",
+    "city": "San Diego",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego County",
+    "status": "public",
+    "enriched": false,
+    "description": "Family-owned San Diego home-care provider offering personal assistance and respite care.",
+    "email": "info@love2livecare.com",
+    "phone": "619-291-4663",
+    "website": "https://love2livecare.com/",
+    "contactSources": [
+      {
+        "url": "https://love2livecare.com/contact/",
+        "title": "Love 2 Live Care — Contact Us",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm current private-pay terms and caregiver availability at the care address.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 374700017",
+        "status": "public",
+        "note": "This is public source information. Current CDSS registry status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://love2livecare.com/contact/",
+            "title": "Love 2 Live Care — Contact Us"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "magnificare",
+    "name": "Magnificare",
+    "monogram": "m.",
+    "area": "Orange County",
+    "city": "Fullerton",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange and Los Angeles counties; dedicated North OC and South OC phone lines",
+    "status": "public",
+    "enriched": false,
+    "description": "Locally owned home-care agency offering personal care and respite in Orange and Los Angeles counties.",
+    "email": "info@magnificare.net",
+    "phone": "949-438-8881",
+    "website": "https://www.magnificare.net/",
+    "contactSources": [
+      {
+        "url": "https://www.magnificare.net/home-care-services",
+        "title": "Magnificare Services",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm private-pay rates, visit minimums and staffing in your community.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 304700255",
+        "status": "public",
+        "note": "Also listed in the Orange County Office on Aging guide revised January 2026. This is historical corroboration, not a current CDSS status check.",
+        "sources": [
+          {
+            "url": "https://www.magnificare.net/home-care-services",
+            "title": "Magnificare Services"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "momentra-care",
+    "name": "Momentra Care",
+    "monogram": "mc.",
+    "area": "San Diego",
+    "city": "San Diego (Carmel Valley)",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego, Escondido, Poway, Del Mar, Solana Beach, Encinitas, La Mesa, La Jolla and central/north San Diego",
+    "status": "public",
+    "enriched": false,
+    "description": "San Diego home-care agency offering personal care and companionship across central and North County communities.",
+    "email": "info@momentracare.com",
+    "phone": "619-257-1930",
+    "website": "https://momentracare.com/",
+    "contactSources": [
+      {
+        "url": "https://momentracare.com/start-home-care/",
+        "title": "Momentra Care — Start Home Care",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm private-pay terms and service boundaries. Benefits-navigation assistance does not establish insurance coverage.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency states it is licensed",
+        "status": "public",
+        "note": "A home-care organization number was not captured from the reviewed page. Current CDSS status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://momentracare.com/start-home-care/",
+            "title": "Momentra Care — Start Home Care"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "salus-homecare-orange-county",
+    "name": "Salus Homecare — Orange County",
+    "monogram": "sh.",
+    "area": "Orange County",
+    "city": "Irvine",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange County including Anaheim, Fullerton, Irvine, coastal communities and South OC",
+    "status": "public",
+    "enriched": false,
+    "description": "Irvine-based Orange County service offering private-pay, nonmedical home care.",
+    "email": "info@salushomecare.com",
+    "phone": "949-390-7308",
+    "website": "https://www.salushomecare.com/orange-county/",
+    "contactSources": [
+      {
+        "url": "https://www.salushomecare.com/orange-county/contact-us-oc/",
+        "title": "Salus Orange County Contact Us",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "The provider also offers clinical services. Specify nonmedical private-pay home care when requesting a quote.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 304700022",
+        "status": "public",
+        "note": "Also listed in the Orange County Office on Aging guide revised January 2026. This is historical corroboration, not a current CDSS status check.",
+        "sources": [
+          {
+            "url": "https://www.salushomecare.com/orange-county/contact-us-oc/",
+            "title": "Salus Orange County Contact Us"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "seacrest-at-home",
+    "name": "Seacrest at Home",
+    "monogram": "sa.",
+    "area": "San Diego",
+    "city": "Encinitas",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "Coastal North County and San Diego; confirm current boundaries",
+    "status": "public",
+    "enriched": false,
+    "description": "Encinitas-based home-care program offering personal assistance and companionship.",
+    "email": "inquiries@seacrestathome.org",
+    "phone": "760-942-2695",
+    "website": "https://seacrestathome.org/",
+    "contactSources": [
+      {
+        "url": "https://seacrestathome.org/contact-us/",
+        "title": "Seacrest at Home — Contact Us",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Confirm current service boundaries, private-pay terms and licensing details with the agency.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Older agency page reports HCO 374700096",
+        "status": "public",
+        "note": "The current contact page does not show this number. Confirm the legal entity and current CDSS status before relying on it.",
+        "sources": [
+          {
+            "url": "https://www.seacrestathome.org/",
+            "title": "Seacrest at Home — Homepage"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "windward-life-care",
+    "name": "Windward Life Care",
+    "monogram": "wl.",
+    "area": "San Diego",
+    "city": "San Diego (Bankers Hill)",
+    "counties": [
+      "sd"
+    ],
+    "coverage": "San Diego area; detailed service boundaries to confirm",
+    "status": "public",
+    "enriched": false,
+    "description": "San Diego provider offering home care alongside care-management and home-health services.",
+    "email": "agingwell@windwardlifecare.com",
+    "phone": "619-450-4300",
+    "website": "https://www.windwardlifecare.com/",
+    "contactSources": [
+      {
+        "url": "https://www.windwardlifecare.com/contact/locations/",
+        "title": "Windward Life Care — Locations",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "Ask for nonmedical caregiver costs separately from care-management and home-health fees.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency states it is licensed",
+        "status": "public",
+        "note": "A home-care organization number was not captured from the reviewed page. Current CDSS status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://www.windwardlifecare.com/learn-more/frequently-asked-questions/",
+            "title": "Windward Life Care — Frequently Asked Questions"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  },
+  {
+    "id": "with-home-care",
+    "name": "With Home Care",
+    "monogram": "wh.",
+    "area": "Orange County",
+    "city": "Fullerton",
+    "counties": [
+      "oc"
+    ],
+    "coverage": "Orange County and Los Angeles County",
+    "status": "public",
+    "enriched": false,
+    "description": "Fullerton agency offering nonmedical personal care, companionship and respite in Orange and Los Angeles counties.",
+    "email": "info@withhomecare.com",
+    "phone": "714-732-6176",
+    "website": "https://withhomecare.com/",
+    "contactSources": [
+      {
+        "url": "https://withhomecare.com/contact-us/",
+        "title": "Contact With Home Care",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://withhomecare.com/faq/",
+        "title": "With Home Care — FAQ",
+        "supports": "Published agency contact details and office information."
+      },
+      {
+        "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+        "title": "Orange County Office on Aging caregiver list — revised January 2026",
+        "supports": "Published agency contact details and office information."
+      }
+    ],
+    "checked": "2026-09-23",
+    "caveat": "The agency identifies its legal entity as HEAL OC INC, doing business as WITH HOME CARE.",
+    "rateLow": null,
+    "rateHigh": null,
+    "rateLabel": "Not provided",
+    "rateNote": "Request a current quote from the agency.",
+    "minimumLabel": "Not provided",
+    "fields": {
+      "rate": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "minimum": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "backup": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "continuity": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "dementia": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "checks": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "languages": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "cancellation": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "response": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "surcharges": {
+        "value": "Not provided",
+        "status": "missing",
+        "note": "Details have not yet been provided for this profile.",
+        "sources": [],
+        "checked": "2026-09-23"
+      },
+      "registry": {
+        "value": "Agency reports HCO 304700412",
+        "status": "public",
+        "note": "Website identifies HEAL OC INC DBA WITH HOME CARE. HEAL OC is listed in the January 2026 county guide. Current CDSS status has not been independently checked.",
+        "sources": [
+          {
+            "url": "https://withhomecare.com/contact-us/",
+            "title": "Contact With Home Care"
+          },
+          {
+            "url": "https://withhomecare.com/faq/",
+            "title": "With Home Care — FAQ"
+          },
+          {
+            "url": "https://www.officeonaging.ocgov.com/sites/officeonaging/files/2026-02/2026%20In-Home%20Caregiver%20Agency%20list-Final%20Version.pdf",
+            "title": "Orange County Office on Aging caregiver list — revised January 2026"
+          }
+        ],
+        "checked": "2026-09-23"
+      }
+    }
+  }
+]

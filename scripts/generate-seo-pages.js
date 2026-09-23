@@ -10,6 +10,7 @@ import {
   pickNearbyFacilities,
 } from './facility-prerender.js';
 import { afterCareBodyContent } from './after-care-prerender.js';
+import { careAtHomeBodyContent } from './care-at-home-prerender.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -344,6 +345,12 @@ const staticPages = [
     title: 'After Care — Home Setup for Families | The Oversight Report',
     description: 'A curated After Care edit for bathing, walking, transfers, and sitting. Prices and Medicare notes included. Affiliate links never affect facility scores.',
     bodyContent: afterCareBodyContent(),
+  },
+  {
+    route: 'care-at-home',
+    title: 'Care at home — Compare local agencies | The Oversight Report',
+    description: 'Know what it should cost. Know what to ask. Compare local home-care agencies in Orange County and San Diego before you call.',
+    bodyContent: careAtHomeBodyContent(),
   },
   {
     route: 'evidence-sample',
