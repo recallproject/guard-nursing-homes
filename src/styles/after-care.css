@@ -741,6 +741,10 @@
   margin-bottom: 10px;
 }
 
+.ac-home-copy:last-child {
+  margin-bottom: 0;
+}
+
 .ac-home-disclosure {
   background: #f8fafc;
   border: 1px solid #e2e8f0;

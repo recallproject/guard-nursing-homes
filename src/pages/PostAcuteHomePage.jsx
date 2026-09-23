@@ -3,6 +3,7 @@ import { HubSearch } from '../components/HubSearch';
 import { focusHubWhere } from '../utils/focusHubWhere';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
 import { AfterCareHomeLink } from '../components/afterCare/AfterCareHomeLink';
+import { CareAtHomeHomeLink } from '../components/careAtHome/CareAtHomeHomeLink';
 import { getCareSetting } from '../data/careSettings';
 import { useEffect, useState } from 'react';
 import '../styles/family-ia.css';
@@ -57,6 +58,7 @@ export default function PostAcuteHomePage() {
         </section>
 
         <AfterCareHomeLink />
+        <CareAtHomeHomeLink />
 
         <StickyFamilyActions
           visible={showSticky}
