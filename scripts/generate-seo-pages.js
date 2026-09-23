@@ -342,7 +342,7 @@ const staticPages = [
   {
     route: 'after-care',
     title: 'After Care — Home Setup for Families | The Oversight Report',
-    description: 'Home setup ideas for families leaving a facility: bathing, toileting, walking, and transfers. Medicare notes included. Affiliate links never affect facility scores.',
+    description: 'A curated After Care edit for bathing, walking, transfers, and sitting. Prices and Medicare notes included. Affiliate links never affect facility scores.',
     bodyContent: afterCareBodyContent(),
   },
   {

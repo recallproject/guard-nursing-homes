@@ -1,211 +1,346 @@
 /**
- * After Care product config.
- * Swap `affiliateUrl` / `merchant` later (CareX, Target, Walmart) without rewriting UI.
+ * After Care edit — a short curated set, not a catalog.
  * Facility scores do not read this file.
  *
- * Typical prices are rounded from public Vive list prices observed 2026-09-23.
- * They are approximate retail labels, not a quote or a Medicare payment amount.
+ * Retail prices are Vive list prices shown in the After Care edit (observed 2026-09-23).
+ * They are labels, not a quote and not a Medicare payment amount.
+ * Vive links use affiliate id 745. Medicare.gov links never carry an affiliate id.
  */
 
-/** @typedef {'vive'} AfterCareMerchant */
-/** @typedef {'may-cover' | 'self-pay'} MedicareStatus */
+/** @typedef {'vive' | 'coverage'} AfterCareKind */
+/** @typedef {'may-cover' | 'self-pay' | 'varies'} MedicareStatus */
 
 /**
- * @typedef {Object} AfterCareProduct
+ * @typedef {Object} AfterCarePick
  * @property {string} id
+ * @property {AfterCareKind} kind
+ * @property {string} label Ribbon, e.g. "Our first pick".
+ * @property {string} category
  * @property {string} title
- * @property {string} bestFor
- * @property {string} whyPicked One editorial sentence. Not a clinical claim.
- * @property {string} image Local product photo path under /after-care/.
- * @property {string} imageAlt
- * @property {string} [typicalPriceLabel] Approximate retail, shown with a "Typical price" label.
+ * @property {string} price Visible price or coverage prompt.
+ * @property {string} copy Card description.
+ * @property {string} why One editorial sentence revealed by "Why we chose it".
+ * @property {string} fit
+ * @property {string} medicareLabel
  * @property {MedicareStatus} medicareStatus
- * @property {string} [coverageDetail] Extra coverage wording. Does not replace the badge.
+ * @property {string} image Local photo under /after-care/.
+ * @property {string} imageAlt
+ * @property {string} [affiliateUrl] Vive only. Includes aff=745.
+ * @property {string} [coverageUrl] Medicare.gov only. Never an affiliate link.
  * @property {string} [safetyNote]
- * @property {string} affiliateUrl
- * @property {string} coverageUrl Medicare.gov page. Never an affiliate link.
- * @property {AfterCareMerchant} merchant
+ * @property {string} [comfortNote] Non-clinical limit, e.g. cushion is not wound care.
+ * @property {string} merchantLine
  */
 
 /**
  * @typedef {Object} AfterCareNeed
  * @property {string} id
  * @property {string} label
- * @property {string[]} productIds
+ * @property {string} hint
+ * @property {string} image
+ * @property {string} imageAlt
+ * @property {string} editTitle
+ * @property {string} editSub
+ * @property {AfterCarePick} primary
+ * @property {AfterCarePick} alt
  */
 
+export const AFTER_CARE_AFFILIATE_ID = '745';
+
+export const AFTER_CARE_INDEPENDENCE =
+  'Commercial relationships never affect facility scores, rankings, or safety data.';
+
 export const AFTER_CARE_DISCLOSURE =
-  'OversightReports may earn a commission from qualifying purchases. Commercial relationships never affect facility scores, rankings, or safety data.';
+  `OversightReports may earn a commission from qualifying purchases. ${AFTER_CARE_INDEPENDENCE}`;
+
+export const AFTER_CARE_PAGE_DISCLOSURE =
+  `Affiliate disclosure: OversightReports may earn a commission from qualifying purchases made through certain product links. Product availability and retailer pricing can change. Medicare coverage depends on eligibility, medical necessity, documentation, and use of an eligible supplier; buying a retail product through an affiliate link does not mean Medicare will reimburse it. ${AFTER_CARE_INDEPENDENCE}`;
 
 export const MEDICARE_COVERAGE_HELPER =
   'Coverage usually requires medical necessity, a clinician order, and a Medicare-enrolled DME supplier. Buying this retail item may not be reimbursed.';
 
-export const MEDICARE_BADGE_LABEL = {
-  'may-cover': 'Medicare may cover this type of equipment',
-  'self-pay': 'Usually self-pay',
-};
+export const AFTER_CARE_PRIMARY_CTA = 'View option →';
+export const AFTER_CARE_WHY_CTA = 'Why we chose it';
 
-export const AFTER_CARE_PRIMARY_CTA = 'See price on Vive';
-export const AFTER_CARE_SECONDARY_CTA = 'Check Medicare coverage';
+export const AFTER_CARE_DEFAULT_NEED = 'shower';
 
-export const AFTER_CARE_MERCHANT_LABEL = {
-  vive: 'Vive Health',
-};
-
-const MEDICARE_DME = 'https://www.medicare.gov/coverage/durable-medical-equipment-dme-coverage';
-const MEDICARE_COMMODE = 'https://www.medicare.gov/coverage/commode-chairs';
 const MEDICARE_WALKERS = 'https://www.medicare.gov/coverage/walkers';
+const MEDICARE_PRESSURE = 'https://www.medicare.gov/coverage/pressure-reducing-support-surfaces';
+
+const TRANSFER_SAFETY =
+  "Transfer belts aren't for every person or every transfer. Follow physical therapy, occupational therapy, or caregiver training before using one.";
+
+const LIFT_SAFETY =
+  'Caregiver training, fit, and sling selection matter. A lift is not a substitute for a transfer plan, and the sling is sold separately.';
 
 /** @param {string} slug */
 function vive(slug) {
-  return `https://www.vivehealth.com/products/${slug}?aff=745`;
+  return `https://www.vivehealth.com/products/${slug}?aff=${AFTER_CARE_AFFILIATE_ID}`;
 }
 
-/** @type {AfterCareProduct[]} */
-export const AFTER_CARE_PRODUCTS = [
-  {
-    id: 'shower-chair',
-    title: 'Shower Chair',
-    bestFor: 'Sitting while bathing when standing in the shower is hard.',
-    whyPicked: 'A stable seat is the simplest way to bathe without standing the whole time.',
-    image: '/after-care/shower-chair.jpg',
-    imageAlt: 'Vive shower chair with a backrest, armrests, and drainage holes in the seat',
-    typicalPriceLabel: 'about $70',
-    medicareStatus: 'self-pay',
-    affiliateUrl: vive('shower-chair'),
-    coverageUrl: MEDICARE_DME,
-    merchant: 'vive',
-  },
-  {
-    id: 'tub-transfer-bench',
-    title: 'Tub Transfer Bench',
-    bestFor: 'Moving from outside the tub onto a seat without stepping over the side.',
-    whyPicked: 'The seat spans the tub wall, so the move happens while sitting instead of stepping over the side.',
-    image: '/after-care/tub-transfer-bench.jpg',
-    imageAlt: 'Vive tub transfer bench with a backrest and adjustable legs',
-    typicalPriceLabel: 'about $110',
-    medicareStatus: 'self-pay',
-    affiliateUrl: vive('tub-transfer-bench'),
-    coverageUrl: MEDICARE_DME,
-    merchant: 'vive',
-  },
-  {
-    id: 'bedside-commode',
-    title: 'Folding Bedside Commode',
-    bestFor: 'A toilet next to the bed when the bathroom is too far.',
-    whyPicked: 'It puts a toilet within reach of the bed, which is the setup most families need first.',
-    image: '/after-care/bedside-commode.jpg',
-    imageAlt: 'Vive folding bedside commode with a bucket, lid, and armrests',
-    typicalPriceLabel: 'about $75',
-    medicareStatus: 'may-cover',
-    affiliateUrl: vive('commode'),
-    coverageUrl: MEDICARE_COMMODE,
-    merchant: 'vive',
-  },
-  {
-    id: 'core-3-in-1',
-    title: 'Core 3-in-1 Shower/Commode/Transport',
-    bestFor: 'One chair used for showering, toileting, or moving between rooms.',
-    whyPicked: 'One chair covers showering, toileting, and short moves between rooms.',
-    image: '/after-care/core-3-in-1.jpg',
-    imageAlt: 'Vive 3-in-1 shower, commode, and transport chair with large rear wheels',
-    typicalPriceLabel: 'about $130',
-    medicareStatus: 'self-pay',
-    coverageDetail: 'Often self-pay. Whether Medicare pays can vary by the type of equipment.',
-    affiliateUrl: vive('core-shower-commode-transport-wheelchair'),
-    coverageUrl: MEDICARE_DME,
-    merchant: 'vive',
-  },
-  {
-    id: 'lightweight-rollator',
-    title: 'Lightweight Rollator',
-    bestFor: 'Walking farther, with a seat for rest breaks.',
-    whyPicked: 'A seat and brakes make a longer walk possible without switching to a wheelchair.',
-    image: '/after-care/lightweight-rollator.jpg',
-    imageAlt: 'Vive lightweight rollator walker with a seat, backrest, and hand brakes',
-    typicalPriceLabel: 'about $100',
-    medicareStatus: 'may-cover',
-    affiliateUrl: vive('lightweight-rollator'),
-    coverageUrl: MEDICARE_WALKERS,
-    merchant: 'vive',
-  },
-  {
-    id: 'wheelchair-rollator',
-    title: 'Wheelchair Rollator Combo',
-    bestFor: 'Longer distances when someone needs to walk, sit, and roll in the same outing.',
-    whyPicked: 'When walking tires out mid-outing, the same frame lets someone sit and be pushed.',
-    image: '/after-care/wheelchair-rollator.jpg',
-    imageAlt: 'Vive wheelchair rollator combo with a seat, footrests, and push handles',
-    typicalPriceLabel: 'about $200',
-    medicareStatus: 'may-cover',
-    affiliateUrl: vive('rollator-walker-with-seat'),
-    coverageUrl: MEDICARE_WALKERS,
-    merchant: 'vive',
-  },
-  {
-    id: 'gait-belt',
-    title: 'Gait/Transfer Belt',
-    bestFor: 'A caregiver-assisted transfer after someone has been shown how to use a belt.',
-    whyPicked: 'A belt gives a caregiver a defined place to hold during a transfer they have already been shown.',
-    image: '/after-care/gait-belt.jpg',
-    imageAlt: 'Vive gait transfer belt with a quick-release buckle',
-    typicalPriceLabel: 'about $15',
-    medicareStatus: 'self-pay',
-    safetyNote:
-      "Transfer belts aren't for every person or every transfer. Follow physical therapy, occupational therapy, or caregiver training before using one.",
-    affiliateUrl: vive('gait-belt'),
-    coverageUrl: MEDICARE_DME,
-    merchant: 'vive',
-  },
-  {
-    id: 'gel-cushion',
-    title: 'Wheelchair Gel Cushion',
-    bestFor: 'Comfort and positioning during long periods of sitting in a wheelchair.',
-    whyPicked: 'A simple add-on for comfort during long hours already spent in a wheelchair.',
-    image: '/after-care/gel-cushion.jpg',
-    imageAlt: 'Vive wheelchair gel seat cushion with a contoured fabric cover',
-    typicalPriceLabel: 'about $40–$50',
-    medicareStatus: 'self-pay',
-    coverageDetail: 'Described here for comfort and positioning only — not as prevention or treatment of pressure injuries.',
-    affiliateUrl: vive('wheelchair-cushions-gel'),
-    coverageUrl: MEDICARE_DME,
-    merchant: 'vive',
-  },
-];
+const SHOWER_CHAIR_IMG = '/after-care/shower-chair.jpg';
+const TUB_BENCH_IMG = '/after-care/tub-transfer-bench.jpg';
+const ROLLATOR_IMG = '/after-care/lightweight-rollator.jpg';
+const BELT_IMG = '/after-care/transfer-belt.jpg';
+const LIFT_IMG = '/after-care/patient-lift.jpg';
+const CUSHION_IMG = '/after-care/gel-cushion.jpg';
+
+/** @type {AfterCarePick} */
+const showerChair = {
+  id: 'shower-chair',
+  kind: 'vive',
+  label: 'Our first pick',
+  category: 'Bathing safely',
+  title: 'Vive Shower Chair',
+  price: '$67.99',
+  copy: 'A straightforward place to start when standing through a full shower feels unsteady or tiring.',
+  why: 'A seat with a back is the simplest first step when standing through a shower is the hard part.',
+  fit: 'Best for standing less during showers',
+  medicareLabel: 'Usually self-pay',
+  medicareStatus: 'self-pay',
+  image: SHOWER_CHAIR_IMG,
+  imageAlt: 'Vive shower chair with a backrest, armrests, and drainage holes in the seat',
+  affiliateUrl: vive('shower-chair'),
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const tubBench = {
+  id: 'tub-transfer-bench',
+  kind: 'vive',
+  label: 'More support',
+  category: 'Tub entry',
+  title: 'Vive Tub Transfer Bench',
+  price: '$109.99',
+  copy: 'A stronger fit when stepping over the side of a tub is the part that feels difficult.',
+  why: 'The seat spans the tub wall, so the move happens while sitting instead of stepping over the side.',
+  fit: 'Best when tub entry is the problem',
+  medicareLabel: 'Usually self-pay',
+  medicareStatus: 'self-pay',
+  image: TUB_BENCH_IMG,
+  imageAlt: 'Vive tub transfer bench with a backrest and adjustable legs',
+  affiliateUrl: vive('tub-transfer-bench'),
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const rollator = {
+  id: 'lightweight-rollator',
+  kind: 'vive',
+  label: 'Our first pick',
+  category: 'Walking support',
+  title: 'Vive Lightweight Rollator',
+  price: '$99.99',
+  copy: 'A lightweight seated rollator for someone who can walk but benefits from support and a place to rest.',
+  why: 'A seat and hand brakes cover the usual gap between a cane and a wheelchair for longer walks.',
+  fit: 'Best for balance + endurance',
+  medicareLabel: 'This equipment type may qualify',
+  medicareStatus: 'may-cover',
+  image: ROLLATOR_IMG,
+  imageAlt: 'Vive lightweight rollator walker with a seat, backrest, and hand brakes',
+  affiliateUrl: vive('lightweight-rollator'),
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const walkersCoverage = {
+  id: 'walkers-coverage',
+  kind: 'coverage',
+  label: 'Before you buy',
+  category: 'Medicare',
+  title: 'Check coverage first',
+  price: 'May save money',
+  copy: 'Walkers and rollators can be covered in qualifying situations when ordered and supplied through the appropriate Medicare process.',
+  why: 'Retail checkout and a Medicare-enrolled supplier are different paths. Checking coverage first can avoid paying out of pocket for equipment Medicare might supply.',
+  fit: 'Worth checking before retail purchase',
+  medicareLabel: 'Medicare may cover the category',
+  medicareStatus: 'may-cover',
+  image: ROLLATOR_IMG,
+  imageAlt: 'Rollator shown beside Medicare coverage information for walkers',
+  coverageUrl: MEDICARE_WALKERS,
+  merchantLine: 'Coverage information',
+};
+
+/** @type {AfterCarePick} */
+const transferBelt = {
+  id: 'transfer-belt',
+  kind: 'vive',
+  label: 'Our first pick',
+  category: 'Transfer support',
+  title: 'Vive Transfer Belt with Leg Straps',
+  price: '$32.99',
+  copy: 'A more supportive belt option for caregivers who have already been shown an appropriate assisted-transfer technique.',
+  why: 'Leg straps give a caregiver a defined hold during a transfer they have already been shown. The belt does not replace that instruction.',
+  fit: 'Best for trained assisted transfers',
+  medicareLabel: 'Usually self-pay',
+  medicareStatus: 'self-pay',
+  image: BELT_IMG,
+  imageAlt: 'Vive transfer belt with leg straps and a buckle',
+  affiliateUrl: vive('transfer-belt-loops'),
+  safetyNote: TRANSFER_SAFETY,
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const transferLift = {
+  id: 'transfer-lift',
+  kind: 'vive',
+  label: 'If more support is needed',
+  category: 'Higher-assistance transfers',
+  title: 'Consider a patient lift',
+  price: 'From $824.99',
+  copy: 'When standing transfers are not realistic, a lift may be more appropriate than trying to solve the problem with a belt alone.',
+  why: 'We point to a lift here only as the next step when a belt is not enough, and we keep the sling-sold-separately limit visible.',
+  fit: 'Best for higher-assistance transfers',
+  medicareLabel: 'This equipment type may qualify',
+  medicareStatus: 'may-cover',
+  image: LIFT_IMG,
+  imageAlt: 'Vive electric patient lift with a boom arm and a hanging sling bar',
+  affiliateUrl: vive('electric-patient-lift'),
+  safetyNote: LIFT_SAFETY,
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const patientLift = {
+  id: 'patient-lift',
+  kind: 'vive',
+  label: 'Featured option',
+  category: 'Patient lift',
+  title: 'Vive Electric Patient Lift',
+  price: '$824.99',
+  copy: 'A motorized home transfer option designed for bed, wheelchair, and other supported transfers; sling is sold separately.',
+  why: 'We feature a lift when standing transfers are not realistic, and we say plainly that training, fit, and a separate sling still matter.',
+  fit: 'Best for higher-assistance transfers',
+  medicareLabel: 'Patient lifts may qualify',
+  medicareStatus: 'may-cover',
+  image: LIFT_IMG,
+  imageAlt: 'Vive electric patient lift with a boom arm and a hanging sling bar',
+  affiliateUrl: vive('electric-patient-lift'),
+  safetyNote: LIFT_SAFETY,
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const liftBelt = {
+  id: 'lift-belt',
+  kind: 'vive',
+  label: 'Less equipment',
+  category: 'Transfer support',
+  title: 'Transfer belt',
+  price: '$32.99',
+  copy: 'For people who can still participate in a transfer, a properly used transfer belt may be the simpler option.',
+  why: 'If the person can still take part in the move, a belt they have been shown how to use is the smaller piece of equipment.',
+  fit: 'Only if appropriate for the transfer plan',
+  medicareLabel: 'Usually self-pay',
+  medicareStatus: 'self-pay',
+  image: BELT_IMG,
+  imageAlt: 'Vive transfer belt with leg straps and a buckle',
+  affiliateUrl: vive('transfer-belt-loops'),
+  safetyNote: TRANSFER_SAFETY,
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const gelCushion = {
+  id: 'gel-cushion',
+  kind: 'vive',
+  label: 'Our first pick',
+  category: 'Sitting comfort',
+  title: 'Vive Wheelchair Gel Seat Cushion',
+  price: 'From $39.99',
+  copy: 'A simple consumer option for adding cushioning and support to a wheelchair or other chair.',
+  why: 'We kept this as a comfort cushion for long hours in a chair, and we kept it separate from clinical support surfaces.',
+  fit: 'Best for everyday comfort',
+  medicareLabel: 'Usually self-pay / coverage varies',
+  medicareStatus: 'varies',
+  image: CUSHION_IMG,
+  imageAlt: 'Vive wheelchair gel seat cushion with a contoured fabric cover',
+  affiliateUrl: vive('wheelchair-cushions-gel'),
+  comfortNote: 'Shown for everyday comfort and positioning, not as prevention or treatment of pressure injuries.',
+  merchantLine: 'Available from Vive Health',
+};
+
+/** @type {AfterCarePick} */
+const pressureCoverage = {
+  id: 'pressure-coverage',
+  kind: 'coverage',
+  label: 'Important distinction',
+  category: 'Pressure management',
+  title: 'Higher-risk pressure needs',
+  price: 'Ask the care team',
+  copy: 'If there is a pressure injury or significant pressure risk, product selection should be guided by the clinical plan rather than a generic retail cushion.',
+  why: 'A retail comfort cushion and a clinically selected support surface are different decisions.',
+  fit: 'Best handled with individualized guidance',
+  medicareLabel: 'Certain support surfaces may qualify',
+  medicareStatus: 'may-cover',
+  image: CUSHION_IMG,
+  imageAlt: 'Wheelchair cushion shown beside a note that clinical pressure equipment is a separate decision',
+  coverageUrl: MEDICARE_PRESSURE,
+  merchantLine: 'Coverage information',
+};
 
 /**
- * First id in `productIds` is the Start here pick for that need.
+ * Each need has one primary and one alternate. Nothing else is listed.
  * @type {AfterCareNeed[]}
  */
 export const AFTER_CARE_NEEDS = [
   {
     id: 'shower',
-    label: 'Getting in and out of the shower',
-    productIds: ['shower-chair', 'tub-transfer-bench'],
-  },
-  {
-    id: 'toilet',
-    label: 'Getting to the toilet',
-    productIds: ['bedside-commode', 'core-3-in-1'],
+    label: 'Bathing safely',
+    hint: 'Standing less, getting in and out',
+    image: SHOWER_CHAIR_IMG,
+    imageAlt: 'Vive shower chair',
+    editTitle: 'Our picks for safer bathing',
+    editSub: 'Start with the simplest option that solves the actual problem.',
+    primary: showerChair,
+    alt: tubBench,
   },
   {
     id: 'walking',
-    label: 'Walking longer distances',
-    productIds: ['lightweight-rollator', 'wheelchair-rollator'],
+    label: 'Walking with support',
+    hint: 'Balance, endurance, longer distances',
+    image: ROLLATOR_IMG,
+    imageAlt: 'Vive rollator',
+    editTitle: 'Our pick for easier everyday walking',
+    editSub: 'Prioritize stability, weight, and whether a built-in seat matters.',
+    primary: rollator,
+    alt: walkersCoverage,
   },
   {
     id: 'transfer',
-    label: 'Needs help transferring',
-    productIds: ['gait-belt'],
+    label: 'Transfers',
+    hint: 'Bed, chair, standing assistance',
+    image: BELT_IMG,
+    imageAlt: 'Vive transfer belt',
+    editTitle: 'Our edit for assisted transfers',
+    editSub: 'A belt can support a trained transfer plan; it is not a substitute for safe transfer instruction.',
+    primary: transferBelt,
+    alt: transferLift,
   },
   {
-    id: 'wheelchair-sitting',
-    label: 'Sits in a wheelchair much of the day',
-    productIds: ['gel-cushion'],
+    id: 'lift',
+    label: 'More transfer support',
+    hint: 'When standing transfers are difficult',
+    image: LIFT_IMG,
+    imageAlt: 'Vive electric patient lift',
+    editTitle: 'When standing transfers are not realistic',
+    editSub: 'This is a category where caregiver training, fit, sling selection, and Medicare eligibility matter.',
+    primary: patientLift,
+    alt: liftBelt,
+  },
+  {
+    id: 'sitting',
+    label: 'Sitting comfortably',
+    hint: 'Wheelchair comfort and support',
+    image: CUSHION_IMG,
+    imageAlt: 'Vive wheelchair cushion',
+    editTitle: 'Our pick for everyday sitting comfort',
+    editSub: 'Keep comfort products distinct from clinically prescribed pressure-management equipment.',
+    primary: gelCushion,
+    alt: pressureCoverage,
   },
 ];
-
-const productsById = new Map(AFTER_CARE_PRODUCTS.map((product) => [product.id, product]));
 
 /** @param {string} needId */
 export function isAfterCareNeedId(needId) {
@@ -217,9 +352,14 @@ export function getAfterCareNeed(needId) {
   return AFTER_CARE_NEEDS.find((need) => need.id === needId) || null;
 }
 
-/** @param {string} needId */
+/** Primary first, then the single alternate. @param {string} needId */
 export function productsForNeed(needId) {
   const need = getAfterCareNeed(needId);
   if (!need) return [];
-  return need.productIds.map((id) => productsById.get(id)).filter(Boolean);
+  return [need.primary, need.alt];
+}
+
+/** @returns {AfterCarePick[]} */
+export function allAfterCarePicks() {
+  return AFTER_CARE_NEEDS.flatMap((need) => [need.primary, need.alt]);
 }

@@ -4,8 +4,8 @@ import '../../styles/after-care.css';
 
 const HOME_THUMBS = [
   '/after-care/shower-chair.jpg',
-  '/after-care/bedside-commode.jpg',
   '/after-care/lightweight-rollator.jpg',
+  '/after-care/gel-cushion.jpg',
 ];
 
 export function AfterCareHomeLink() {
@@ -20,7 +20,7 @@ export function AfterCareHomeLink() {
         </div>
         <h2 id="ac-home-heading" className="ac-home-title">Heading home?</h2>
         <p className="ac-home-copy">
-          A short list for bathing, toileting, walking, and transfers after a facility stay.
+          A short edit for bathing, walking, transfers, and sitting after a facility stay.
           Separate from facility scores.
         </p>
         <p className="ac-home-disclosure">{AFTER_CARE_DISCLOSURE}</p>
