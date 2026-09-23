@@ -2224,7 +2224,7 @@ export function FacilityPage() {
           <div className="section-header-row">
             <div className="section-title">After care at home</div>
           </div>
-          <p className="section-subtitle">Bathing, toileting, walking, and transfers. Separate from this facility’s safety score.</p>
+          <p className="section-subtitle">Bathing, walking, transfers, and sitting. Separate from this facility’s safety score.</p>
           <AfterCareFacilityBlock />
         </div>
 
