@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { HubSearch } from '../components/HubSearch';
 import { focusHubWhere } from '../utils/focusHubWhere';
 import { StickyFamilyActions } from '../components/StickyFamilyActions';
+import { AfterCareHomeLink } from '../components/afterCare/AfterCareHomeLink';
 import { getCareSetting } from '../data/careSettings';
 import { useEffect, useState } from 'react';
 import '../styles/family-ia.css';
@@ -54,6 +55,8 @@ export default function PostAcuteHomePage() {
             <p>No advisor forms or paid “best match.” Independent facts only.</p>
           </div>
         </section>
+
+        <AfterCareHomeLink />
 
         <StickyFamilyActions
           visible={showSticky}

@@ -94,9 +94,11 @@ export default function AboutPage() {
           <div className="about-trust-card">
             <h2>Independence and funding</h2>
             <p>
-              No facility pays to be listed. No chain sponsors content. No advertising.
+              No facility pays to be listed. No chain sponsors content.
               Facility pages and the 1-page Family Report are free.
-              The optional $29 Facility Brief is how the work is funded.
+              The optional $29 Facility Brief is how the research is funded.
+              After Care may include affiliate links to home equipment.
+              OversightReports may earn a commission from qualifying purchases. Commercial relationships never affect facility scores, rankings, or safety data.
             </p>
           </div>
           <div className="about-trust-card">

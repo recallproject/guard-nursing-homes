@@ -1,0 +1,387 @@
+.ac-page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 108px 20px 72px;
+  color: #0f172a;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ac-page h1,
+.ac-page h2,
+.ac-page h3,
+.ac-embed h2,
+.ac-embed h3,
+.ac-home h2 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1e3a5f;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ac-eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0d9488;
+}
+
+.ac-question {
+  font-size: clamp(28px, 4vw, 40px);
+  max-width: 18ch;
+  margin-bottom: 12px;
+}
+
+.ac-lead,
+.ac-empty,
+.ac-help,
+.ac-detail,
+.ac-price,
+.ac-best,
+.ac-link-note,
+.ac-home-copy,
+.ac-home-disclosure {
+  margin: 0;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.ac-lead {
+  max-width: 62ch;
+  margin-bottom: 16px;
+}
+
+.ac-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+
+.ac-steps li {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e3a5f;
+}
+
+.ac-disclosure,
+.ac-home-disclosure {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #1e3a5f;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.ac-disclosure {
+  margin: 0 0 18px;
+}
+
+.ac-needs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ac-need,
+.ac-see-all,
+.ac-btn,
+.ac-home-cta {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.ac-need {
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.ac-need:hover,
+.ac-need:focus-visible,
+.ac-see-all:focus-visible,
+.ac-btn:focus-visible,
+.ac-home-cta:focus-visible {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}
+
+.ac-need--on {
+  background: #ccfbf1;
+  border-color: #0f766e;
+  color: #115e59;
+}
+
+.ac-see-all {
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #1d4e7e;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 44px;
+}
+
+.ac-results {
+  margin-top: 16px;
+}
+
+.ac-results-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.ac-empty {
+  margin-top: 4px;
+}
+
+.ac-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.ac-grid--single {
+  max-width: 520px;
+}
+
+.ac-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.ac-merchant {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.ac-card-title {
+  font-size: 20px;
+}
+
+.ac-kicker {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.ac-best,
+.ac-price,
+.ac-detail,
+.ac-help,
+.ac-safety {
+  font-size: 14px;
+  color: #334155;
+}
+
+.ac-price-note,
+.ac-link-note,
+.ac-help {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.ac-badge {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.ac-badge--may-cover {
+  border-left: 4px solid #1d4e7e;
+}
+
+.ac-badge--self-pay {
+  border-left: 4px solid #64748b;
+}
+
+.ac-safety {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  color: #78350f;
+}
+
+.ac-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.ac-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.ac-btn--primary {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.ac-btn--primary:hover,
+.ac-btn--primary:focus-visible {
+  background: #152942;
+  color: #fff;
+}
+
+.ac-btn--secondary {
+  background: #fff;
+  color: #1e3a5f;
+  border: 1px solid #cbd5e1;
+}
+
+.ac-btn--secondary:hover,
+.ac-btn--secondary:focus-visible {
+  background: #f8fafc;
+  color: #1e3a5f;
+}
+
+.ac-link-note {
+  margin: 0;
+}
+
+.ac-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ac-embed {
+  margin-top: 4px;
+}
+
+.ac-embed .ac-question {
+  font-size: 22px;
+  max-width: none;
+  margin-bottom: 8px;
+}
+
+.ac-home {
+  max-width: 1052px;
+  width: calc(100% - 48px);
+  margin: 0 auto 36px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.ac-home-title {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.ac-home-copy {
+  max-width: 62ch;
+  margin-bottom: 10px;
+}
+
+.ac-home-disclosure {
+  margin: 0;
+}
+
+.ac-home-cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #1e3a5f;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ac-home-cta:hover,
+.ac-home-cta:focus-visible {
+  background: #152942;
+  color: #fff;
+}
+
+@media (min-width: 800px) {
+  .ac-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ac-grid--single {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .ac-home {
+    flex-direction: column;
+    align-items: stretch;
+    width: calc(100% - 32px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

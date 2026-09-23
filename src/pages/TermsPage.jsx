@@ -153,6 +153,12 @@ export function TermsPage() {
             the Centers for Medicare &amp; Medicaid Services, Medicare, ProPublica, or any government
             agency. References to these entities are for source attribution only.
           </p>
+          <p>
+            Product links on After Care may be affiliate links. OversightReports may earn a
+            commission from qualifying purchases. Those links are not a Medicare or CMS endorsement,
+            and buying a retail item does not mean Medicare will pay for it. Commercial relationships
+            never affect facility scores, rankings, or safety data.
+          </p>
         </div>
 
         <div className="legal-section" data-accent="blue">
