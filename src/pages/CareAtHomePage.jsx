@@ -20,6 +20,7 @@ import {
   formatDollars,
   getBudgetScenario,
   latestChecked,
+  normalizeStatus,
   pilotStats,
   toggleCompare,
   weeklyBudget,
@@ -38,6 +39,39 @@ const ENDPOINT = formspreeEndpoint();
 function countyChipLabel(agency) {
   const labels = (agency.counties || []).map((key) => countyLabel(key)).filter(Boolean);
   return labels.join(' · ') || agency.area;
+}
+
+function publishedField(field) {
+  if (!field || field.status === 'missing') return false;
+  const value = String(field.value || '').trim();
+  return value.length > 0 && !/^not provided$/i.test(value);
+}
+
+function cardFactChips(agency) {
+  return CARD_FACTS.flatMap(([key, label]) => {
+    const field = agency.fields?.[key];
+    if (!publishedField(field)) return [];
+    return [{ key, label, value: String(field.value).trim() }];
+  });
+}
+
+function publishedHourlyRate(agency) {
+  if (agency.rateLow == null) return null;
+  const label = String(agency.rateLabel || '').trim();
+  if (!label || /^not provided$/i.test(label)) return null;
+  return label;
+}
+
+function visitMinimum(label) {
+  const raw = String(label || '').trim();
+  if (!raw || /^not provided$/i.test(raw)) return null;
+  const starred = raw.includes('*');
+  const hours = raw.replace(/\*/g, '').replace(/\s*hours?$/i, '').trim();
+  if (!/^\d+(?:\.\d+)?$/.test(hours)) return { text: raw, note: '' };
+  return {
+    text: `${hours} hr min`,
+    note: starred ? '*Transport differs' : '',
+  };
 }
 
 const QUESTIONS = [
@@ -333,72 +367,79 @@ export function CareAtHomePage() {
             <a className="subtle-link" href="#sources">What do the labels mean? <span aria-hidden="true">↗</span></a>
           </div>
           <div className="agency-grid" id="agency-grid">
-            {page.map((agency) => (
-              <article key={agency.id} id={`agency-${agency.id}`} className={`agency-card ${agency.enriched ? 'researched' : 'basic'}`} aria-labelledby={`name-${agency.id}`}>
-                <div className="agency-identity">
-                  <span className="county-chip">{countyChipLabel(agency)}</span>
-                  <small>
-                    {agency.enriched ? <>Published details<br />Ready to explore</> : <>Local agency<br />Contact profile</>}
-                  </small>
-                </div>
-                <div className="agency-body">
-                  <p className="agency-location">{agency.area} · {agency.city}</p>
-                  <h3 id={`name-${agency.id}`}>{agency.name}</h3>
-                  <p className="agency-description">{agency.description}</p>
-                  <StatusBadge status={agency.status} />
-                  <div className="rate-block">
-                    <div>
-                      <p className={`rate ${agency.rateLow == null ? 'unlisted' : ''}`}>
-                        {agency.rateLow != null ? <>{agency.rateLabel}<span> / hour</span></> : 'Rate not provided'}
+            {page.map((agency) => {
+              const rate = publishedHourlyRate(agency);
+              const minimum = rate ? visitMinimum(agency.minimumLabel) : null;
+              const chips = cardFactChips(agency);
+              return (
+                <article key={agency.id} id={`agency-${agency.id}`} className={`agency-card ${agency.enriched ? 'researched' : 'basic'}`} aria-labelledby={`name-${agency.id}`}>
+                  <div className="agency-identity">
+                    <span className="county-chip">{countyChipLabel(agency)}</span>
+                    <small className="card-source">{STATUS_LABELS[normalizeStatus(agency.status)]}</small>
+                  </div>
+                  <div className="agency-body">
+                    <h3 id={`name-${agency.id}`}>{agency.name}</h3>
+                    <p className="agency-description">{agency.description}</p>
+                    <div className={`price-band${rate ? '' : ' price-band-empty'}`}>
+                      <p className="price-figure">
+                        {rate ? (
+                          <>
+                            {rate}
+                            <span className="price-unit">/hour</span>
+                          </>
+                        ) : (
+                          'Rate not published'
+                        )}
                       </p>
-                      <p className="rate-note">{agency.rateNote || 'Pricing and policies still to be collected.'}</p>
+                      {minimum ? (
+                        <p className="visit-min">
+                          {minimum.text}
+                          {minimum.note ? <small>{minimum.note}</small> : null}
+                        </p>
+                      ) : null}
                     </div>
-                    {agency.enriched && (
-                      <p className="min-shift">
-                        <strong>{agency.minimumLabel}</strong>
-                        minimum visit
-                        {agency.id === 'genki' ? <small>*Transport differs</small> : null}
+                    {chips.length > 0 ? (
+                      <ul className="card-chips">
+                        {chips.map((chip) => (
+                          <li key={chip.key}>
+                            <span className="chip-label">{chip.label}:</span> {chip.value}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    {!agency.enriched ? (
+                      <p className="profile-pending">
+                        Start with the agency’s contact details. Rates, minimums and everyday policies will be added as they are researched or confirmed.
                       </p>
-                    )}
+                    ) : null}
                   </div>
-                  {agency.enriched ? (
-                    <ul className="card-facts">
-                      {CARD_FACTS.map(([key, label]) => (
-                        <li key={key}>
-                          <span className="fact-label">{label}</span>
-                          <span className={`fact-value ${agency.fields[key].status === 'missing' ? 'unanswered' : ''}`}>
-                            {agency.fields[key].value}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="profile-pending">
-                      Start with the agency’s contact details. Rates, minimums and everyday policies will be added as they are researched or confirmed.
-                    </p>
-                  )}
-                </div>
-                <div className="card-actions">
-                  <button type="button" className="button button-outline" onClick={() => openDialog({ kind: 'profile', id: agency.id })}>
-                    Explore agency details <span aria-hidden="true">↗</span>
-                  </button>
-                  <div className="card-bottom">
-                    <label className="check-label">
-                      <input
-                        type="checkbox"
-                        checked={selected.includes(agency.id)}
-                        aria-label={`Compare ${agency.name}`}
-                        onChange={(event) => onCompare(agency.id, event.target.checked)}
-                      />
-                      Compare
-                    </label>
-                    <button type="button" className="subtle-link" onClick={() => openDialog({ kind: 'claim', id: agency.id })}>
-                      Claim this profile
+                  <div className="card-actions">
+                    <button
+                      type="button"
+                      className="button button-forest"
+                      aria-label={`Explore details for ${agency.name}`}
+                      onClick={() => openDialog({ kind: 'profile', id: agency.id })}
+                    >
+                      Explore details
                     </button>
+                    <div className="card-bottom">
+                      <label className="check-label">
+                        <input
+                          type="checkbox"
+                          checked={selected.includes(agency.id)}
+                          aria-label={`Compare ${agency.name}`}
+                          onChange={(event) => onCompare(agency.id, event.target.checked)}
+                        />
+                        Compare
+                      </label>
+                      <button type="button" className="subtle-link" onClick={() => openDialog({ kind: 'claim', id: agency.id })}>
+                        Claim this profile
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
           <div className="load-more">
             <button

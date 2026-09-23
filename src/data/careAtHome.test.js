@@ -220,7 +220,15 @@ describe('care at home delivery', () => {
     assert.match(page, /Compare local agencies before you call\./);
     assert.match(page, /county-chip/);
     assert.match(page, /countyChipLabel/);
+    assert.match(page, /price-band/);
+    assert.match(page, /Explore details/);
+    assert.match(page, /card-chips/);
+    assert.match(page, /Rate not published/);
     assert.doesNotMatch(page, /agency-monogram|agency\.monogram/);
+    assert.doesNotMatch(page, /Published details|Ready to explore|card-facts|className="unanswered"|fact-value/);
+    assert.match(footer, /Facility data from CMS Medicare\.gov/);
+    assert.match(footer, /agency websites and other public records/);
+    assert.doesNotMatch(footer, /All data sourced from CMS/);
     assert.match(css, /\.county-chip\{/);
     assert.match(css, /0 8px 24px rgba\(23,54,93,\.05\)/);
     assert.match(css, /border-left:3px solid var\(--teal\)/);
