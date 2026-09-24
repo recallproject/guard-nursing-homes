@@ -44,8 +44,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p className="footer-disclaimer">Reports are prepared using the professional knowledge of a licensed Nurse Practitioner applied to publicly available CMS regulatory data. The Oversight Report is an independent service with no financial ties to any nursing facility or chain. After Care affiliate links, when shown, are disclosed and do not affect facility scores or safety data. Reports are informational — not medical advice — and do not create a provider-patient relationship.</p>
-          <p>&copy; {currentYear} The Oversight Report · DataLink Clinical LLC. All data sourced from CMS Medicare.gov. Built by Robert Benard, NP.</p>
+          <p className="footer-disclaimer">Facility reports are prepared using the professional knowledge of a licensed Nurse Practitioner applied to publicly available CMS regulatory data. Care at home profiles also use agency websites and other public records. The Oversight Report is an independent service with no financial ties to any nursing facility or chain. After Care affiliate links, when shown, are disclosed and do not affect facility scores or safety data. Reports are informational — not medical advice — and do not create a provider-patient relationship.</p>
+          <p>&copy; {currentYear} The Oversight Report · DataLink Clinical LLC. Facility data from CMS Medicare.gov. Care at home profiles also use agency websites and other public records. Built by Robert Benard, NP.</p>
           <div className="footer-bottom-links">
             <Link to="/about">About</Link>
             <a href={CONTACT_MAILTO}>{CONTACT_EMAIL}</a>

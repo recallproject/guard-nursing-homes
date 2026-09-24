@@ -99,3 +99,135 @@
   .cah{background:#fff}
   .cah .agency-card{box-shadow:none}
 }
+
+/* Direction A cards: price band first, chips only for published facts, solid forest CTA. */
+.cah .agency-card{--card-inline:23px}
+.cah .agency-body,
+.cah .card-actions,
+.cah .agency-card .agency-identity{padding-inline:var(--card-inline)}
+.cah .agency-card h3,
+.cah .agency-card.researched h3{font-size:clamp(28px,2.5vw,36px);line-height:1.12;letter-spacing:-.03em}
+.cah .agency-card .agency-description,
+.cah .agency-card.researched .agency-description,
+.cah .agency-card.basic .agency-description{min-height:0;max-width:none;margin-top:8px}
+.cah .agency-identity small.card-source{
+  flex:0 1 auto;
+  max-width:46%;
+  padding-top:1px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0;
+  text-transform:none;
+  text-align:right;
+  line-height:1.35;
+  color:var(--muted);
+}
+.cah .price-band{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:8px 16px;
+  flex-wrap:wrap;
+  min-width:0;
+  margin:16px calc(var(--card-inline) * -1) 0;
+  padding:14px var(--card-inline) 16px;
+  background:#e7f2ec;
+}
+.cah .price-figure{
+  margin:0;
+  min-width:0;
+  font-family:var(--serif);
+  font-size:clamp(30px,3vw,40px);
+  letter-spacing:-.045em;
+  line-height:1;
+  color:var(--ink);
+}
+.cah .price-unit{
+  font-family:var(--sans);
+  font-size:14px;
+  font-weight:550;
+  letter-spacing:0;
+  color:#5d6d7c;
+  margin-left:4px;
+}
+.cah .price-band-empty{background:#eef3f0}
+.cah .price-band-empty .price-figure{
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:600;
+  letter-spacing:-.01em;
+  line-height:1.35;
+  color:#6a7886;
+}
+.cah .visit-min{
+  margin:0 0 0 auto;
+  text-align:right;
+  color:var(--ink);
+  font-size:15px;
+  font-weight:650;
+  line-height:1.25;
+  white-space:nowrap;
+}
+.cah .visit-min small{
+  display:block;
+  margin-top:3px;
+  font-size:10px;
+  font-weight:500;
+  line-height:1.35;
+  color:var(--muted);
+  white-space:normal;
+}
+.cah .card-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  list-style:none;
+  margin:14px 0 0;
+  padding:0;
+}
+.cah .card-chips li{
+  max-width:100%;
+  padding:6px 11px;
+  border:1px solid rgba(23,54,93,.14);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ink);
+  font-size:12px;
+  line-height:1.4;
+}
+.cah .card-chips .chip-label{font-weight:650}
+.cah .agency-card .profile-pending{margin-top:14px}
+.cah .button.button-forest{
+  width:100%;
+  min-height:48px;
+  padding:12px 16px;
+  gap:0;
+  border-color:#145445;
+  border-radius:4px;
+  background:#145445;
+  color:#fff;
+  font-size:15px;
+  font-weight:650;
+  letter-spacing:0;
+}
+.cah .button.button-forest:hover{background:#0f4337;border-color:#0f4337}
+@media(max-width:1100px){
+  .cah .agency-card{--card-inline:18px}
+  .cah .price-figure{font-size:32px}
+}
+@media(max-width:800px){
+  .cah .agency-card{--card-inline:18px}
+  .cah .card-chips li{font-size:11px}
+  .cah .visit-min{font-size:14px}
+}
+@media(max-width:620px){
+  .cah .agency-card{--card-inline:20px}
+  .cah .agency-grid{grid-template-columns:1fr}
+  .cah .agency-card.basic,
+  .cah .agency-card.researched{grid-column:auto}
+  .cah .price-band{align-items:center}
+  .cah .price-figure{font-size:clamp(28px,8vw,36px)}
+  .cah .price-unit{font-size:13px}
+  .cah .card-chips li{font-size:12px}
+  .cah .button.button-forest{min-height:48px;font-size:15px}
+}
