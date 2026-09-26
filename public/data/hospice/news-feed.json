@@ -1,205 +1,204 @@
 {
-  "generated_at": "2026-09-19T16:24:15.922Z",
+  "generated_at": "2026-09-26T17:06:13.981Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-18T20:31:34.000Z",
+      "last_pubdate": "2026-09-25T17:05:42.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-09-19T09:00:00.000Z",
+      "last_pubdate": "2026-09-26T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-09-19T09:00:00.000Z",
+      "last_pubdate": "2026-09-26T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 3,
+  "matched_to_ccn": 2,
   "matched_unique_ccns": 5,
   "confidence_breakdown": {
-    "high": 3,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-tpxscj",
+      "id": "hospice-news-n1uja1",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-18T20:31:34.000Z",
-      "headline": "Research: Setting Impacts Hospice Quality; Medical Decision Makers Predominantly Women",
-      "summary": "Two analyses have scoured healthcare trends to uncover factors impacting access to quality end-of-life care. Researchers also examined how end-of-life decisions are made among families, as well as the barriers that clinicians see in certain care settings. Nurses Uncover 4 Common...",
-      "url": "https://hospicenews.com/2026/09/18/research-setting-impacts-hospice-quality-medical-decision-makers-predominantly-women/",
+      "date": "2026-09-25T17:05:42.000Z",
+      "headline": "CMS to Update Hospice CoPs",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) has begun the process of revising the hospice Conditions of Participation (CoPs) for the first time in 20 years. The agency’s Center for Clinical Standards & Quality (CCSQ), Clinical Standards Group (CGS), announced the...",
+      "url": "https://hospicenews.com/2026/09/25/cms-to-update-hospice-cops/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-t3tyj2",
+      "id": "hospice-news-dw2e9x",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-18T17:10:31.000Z",
-      "headline": "Future Leader: Erin Horsley, Hospice Regional Executive of Clinical Operations, Compassus",
-      "summary": "Erin Horsley, Hospice Regional Executive of Clinical Operations at Compassus, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is...",
-      "url": "https://hospicenews.com/2026/09/18/future-leader-erin-horsley-hospice-regional-executive-of-clinical-operations-compassus/",
+      "date": "2026-09-25T15:11:06.000Z",
+      "headline": "The Early Bird Deadline for the Aspect Marketing & Advertising Awards Ends September 30",
+      "summary": "Save $100 on your entry fee when you submit your Aspect Marketing & Advertising Awards entries by September 30 at 11:59pm CDT. The Aspect Marketing & Advertising Awards recognize outstanding creativity, innovation, and impact in marketing and advertising campaigns across the...",
+      "url": "https://hospicenews.com/2026/09/25/the-early-bird-deadline-for-the-aspect-marketing-advertising-awards-ends-september-30/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-4d5tzt",
+      "id": "hospice-news-4hjt4j",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-18T15:45:23.000Z",
-      "headline": "Hospices’ Top Legislative Priorities",
-      "summary": "As the midterm elections approach, hospices have unfinished business in the halls of Congress. Providers have identified several high priority pieces of legislation they would like to see passed before this Congress ends in December, according to healthcare leaders attending the...",
-      "url": "https://hospicenews.com/2026/09/18/hospices-top-legislative-priorities/",
+      "date": "2026-09-25T14:57:39.000Z",
+      "headline": "Future Leader: Spencer Jennings, Chief Financial Officer, Empassion Health",
+      "summary": "Spencer Jennings, Chief Financial Officer at Empassion Health, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of age...",
+      "url": "https://hospicenews.com/2026/09/25/future-leader-spencer-jennings-chief-financial-officer-empassion-health/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-99nv02",
+      "id": "hospice-news-9iian6",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-17T17:48:43.000Z",
-      "headline": "Rural Solterra Hospice Triples Patient Census",
-      "summary": "Oregon-based Solterra Hospice has seen its average daily census rate triple in the last year. The organization’s leaders attribute the expansion to balanced clinical capacity and strong community collaboration. Solterra Hospice began serving patients in November 2024 after...",
-      "url": "https://hospicenews.com/2026/09/17/rural-solterra-hospice-triples-patient-census/",
+      "date": "2026-09-25T13:32:02.000Z",
+      "headline": "Empath Health Unveils Dementia Education Program for Clinicians, Caregivers, First Responders",
+      "summary": "Florida-based Empath Health has launched a new dementia program that combines provider and caregiver education with clinical care. The nonprofit will provide training to staff from other health care organizations, first responders and family caregivers, as well as providing...",
+      "url": "https://hospicenews.com/2026/09/25/empath-health-unveils-dementia-education-program-for-clinicians-caregivers-first-responders/",
       "matched_ccns": [
-        "381590"
+        "101573",
+        "101518",
+        "101508",
+        "101567"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-j2tzrb",
+      "id": "hospice-news-cnbrk4",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-17T16:17:22.000Z",
-      "headline": "The Pennant Group Shows Strong Growth as Amedisys Asset Integration Proceeds",
-      "summary": "The Pennant Group’s (Nasdaq: PNTG) existing home health, hospice and senior living operations continued to improve while the company worked through a major expansion in the Southeast, executives said during the Jefferies Healthcare Services Conference. In October 2025, The...",
-      "url": "https://hospicenews.com/2026/09/17/the-pennant-group-shows-strong-growth-as-amedisys-asset-integration-proceeds/",
+      "date": "2026-09-24T18:28:22.000Z",
+      "headline": "NCPPCH CEO: Building Stronger End-of-Life Pediatric Support",
+      "summary": "Families often experience complex emotional, physical and logistical challenges when a child has a serious or terminal condition. Slow-moving state and federal policy are not keeping pace with the growing demand for improved support. This September, the Hospice News Elevate...",
+      "url": "https://hospicenews.com/2026/09/24/ncppch-ceo-building-stronger-end-of-life-pediatric-support/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-493150",
+      "id": "hospice-news-mwy3dv",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-16T19:06:19.000Z",
-      "headline": "Hospices Flesh Out Leadership Suites",
-      "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as...",
-      "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
+      "date": "2026-09-24T17:27:31.000Z",
+      "headline": "Future Leader: Erica Farr, RN and Director of Hospice, Healing Hands Healthcare, LLC",
+      "summary": "Erica Farr, Registered Nurse (RN) and Director of Hospice at Healing Hands Healthcare, LLC, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing...",
+      "url": "https://hospicenews.com/2026/09/24/future-leader-erica-farr-rn-and-director-of-hospice-healing-hands-healthcare-llc/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-lz03g6",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-09-24T17:19:59.000Z",
+      "headline": "Circle of Life to Acquire Washington Regional Hospice",
+      "summary": "Arkansas-based hospice provider Circle of Life will acquire Washington Regional Hospice, with the deal expected to close before the end of September. The acquired hospice is currently owned by the Washington Regional Health System. Financial terms were undisclosed. Current...",
+      "url": "https://hospicenews.com/2026/09/24/circle-of-life-to-acquire-washington-regional-hospice/",
       "matched_ccns": [
-        "061500",
-        "061504",
-        "221618"
+        "041500"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-hpecsd",
+      "id": "hospice-news-f09iqh",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-15T19:14:28.000Z",
-      "headline": "Legacy-Building Nonprofit Enhances Hospice Education, Bereavement Support",
-      "summary": "A recently developed student-led bereavement program is expanding hospice education while boosting volunteer opportunities in grief support. Pre-med students at John Hopkins University and Brown University have established Letters Without Limits, a nonprofit legacy-building...",
-      "url": "https://hospicenews.com/2026/09/15/legacy-building-nonprofit-enhances-hospice-education-bereavement-support/",
+      "date": "2026-09-23T21:44:34.000Z",
+      "headline": "Hospices Have ‘Learning Curves’ in AI Use, Risks",
+      "summary": "Hospices’ compliance and legal risks could be rising alongside their increased use of artificial intelligence (AI) technologies, according to law experts. More providers are leaning into AI-enabled tools to improve quality, compliance and clinical documentation, according to...",
+      "url": "https://hospicenews.com/2026/09/23/hospices-have-learning-curves-in-ai-use-risks/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-melyh8",
+      "id": "hospice-news-wp7cw2",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-15T17:15:50.000Z",
-      "headline": "Entries for the 2026 SHN Architecture & Design Awards Are Due September 30",
-      "summary": "Entries for the 2026 SHN Architecture & Design Awards are due Wednesday, September 30 at 11:59pm CDT. The 2026 SHN Architecture & Design Awards program is designed to showcase the best buildings, campuses, communities, and renovation/repositioning projects across the following...",
-      "url": "https://hospicenews.com/2026/09/15/entries-for-the-2026-shn-architecture-design-awards-are-due-september-30/",
+      "date": "2026-09-23T20:58:39.000Z",
+      "headline": "Future Leader: Chase Knight, Chief Growth Officer, Empassion Health",
+      "summary": "Chase Knight, Chief Growth Officer at Empassion Health, has been named to the Future Leaders Awards Class of 2026 by Hospice News. To become a Future Leader, an individual is nominated by their peers. The candidate must be a high-performing employee who is 40 years of age or...",
+      "url": "https://hospicenews.com/2026/09/23/future-leader-chase-knight-chief-growth-officer-empassion-health/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-4l4vu0",
+      "id": "hospice-news-3zsrt4",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-15T10:32:05.000Z",
-      "headline": "LeadingAge CEO to Step Down in 2027",
-      "summary": "LeadingAge, the association of nonprofit and mission-driven providers of aging services, today announced that President and CEO Katie Smith Sloan will step down, effective March 31, 2027. Smith Sloan has led the association of nonprofit aging services providers since 2016. She...",
-      "url": "https://hospicenews.com/2026/09/15/leadingage-ceo-to-step-down-in-2027/",
+      "date": "2026-09-23T20:36:16.000Z",
+      "headline": "CMS Adds New Chronic Condition Options to ACCESS Model",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) has added new options in its Advancing Chronic Care with Effective, Scalable Solutions (ACCESS) model. The provisions are designed to strengthen symptom management among patients with chronic conditions. The agency unveiled...",
+      "url": "https://hospicenews.com/2026/09/23/cms-adds-new-chronic-condition-options-to-access-model/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-tie7fg",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-14T20:29:41.000Z",
-      "headline": "Dementia Focus a ‘Huge Distinguisher’ for Hospice Austin",
-      "summary": "Hospice Austin and its Austin Palliative Care program have made dementia care a strategic priority in expanding access to end-of-life support. Hospice Austin and Austin Palliative Care first zeroed in on dementia care roughly a year-and-a-half ago. The organization reached its...",
-      "url": "https://hospicenews.com/2026/09/14/dementia-focus-a-huge-distinguisher-for-hospice-austin/",
-      "matched_ccns": [
-        "451515"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
-    "221618": [
+    "101508": [
       {
-        "id": "hospice-news-493150",
-        "date": "2026-09-16T19:06:19.000Z",
-        "headline": "Hospices Flesh Out Leadership Suites",
+        "id": "hospice-news-9iian6",
+        "date": "2026-09-25T13:32:02.000Z",
+        "headline": "Empath Health Unveils Dementia Education Program for Clinicians, Caregivers, First Responders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
-        "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
+        "url": "https://hospicenews.com/2026/09/25/empath-health-unveils-dementia-education-program-for-clinicians-caregivers-first-responders/",
+        "summary": "Florida-based Empath Health has launched a new dementia program that combines provider and caregiver education with clinical care. The nonprofit will provide training to staff from other health care organizations, first responders and family caregivers, as well as providing..."
       }
     ],
-    "381590": [
+    "101518": [
       {
-        "id": "hospice-news-99nv02",
-        "date": "2026-09-17T17:48:43.000Z",
-        "headline": "Rural Solterra Hospice Triples Patient Census",
+        "id": "hospice-news-9iian6",
+        "date": "2026-09-25T13:32:02.000Z",
+        "headline": "Empath Health Unveils Dementia Education Program for Clinicians, Caregivers, First Responders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/17/rural-solterra-hospice-triples-patient-census/",
-        "summary": "Oregon-based Solterra Hospice has seen its average daily census rate triple in the last year. The organization’s leaders attribute the expansion to balanced clinical capacity and strong community collaboration. Solterra Hospice began serving patients in November 2024 after..."
+        "url": "https://hospicenews.com/2026/09/25/empath-health-unveils-dementia-education-program-for-clinicians-caregivers-first-responders/",
+        "summary": "Florida-based Empath Health has launched a new dementia program that combines provider and caregiver education with clinical care. The nonprofit will provide training to staff from other health care organizations, first responders and family caregivers, as well as providing..."
       }
     ],
-    "451515": [
+    "101567": [
       {
-        "id": "hospice-news-tie7fg",
-        "date": "2026-09-14T20:29:41.000Z",
-        "headline": "Dementia Focus a ‘Huge Distinguisher’ for Hospice Austin",
+        "id": "hospice-news-9iian6",
+        "date": "2026-09-25T13:32:02.000Z",
+        "headline": "Empath Health Unveils Dementia Education Program for Clinicians, Caregivers, First Responders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/14/dementia-focus-a-huge-distinguisher-for-hospice-austin/",
-        "summary": "Hospice Austin and its Austin Palliative Care program have made dementia care a strategic priority in expanding access to end-of-life support. Hospice Austin and Austin Palliative Care first zeroed in on dementia care roughly a year-and-a-half ago. The organization reached its..."
+        "url": "https://hospicenews.com/2026/09/25/empath-health-unveils-dementia-education-program-for-clinicians-caregivers-first-responders/",
+        "summary": "Florida-based Empath Health has launched a new dementia program that combines provider and caregiver education with clinical care. The nonprofit will provide training to staff from other health care organizations, first responders and family caregivers, as well as providing..."
       }
     ],
-    "061500": [
+    "101573": [
       {
-        "id": "hospice-news-493150",
-        "date": "2026-09-16T19:06:19.000Z",
-        "headline": "Hospices Flesh Out Leadership Suites",
+        "id": "hospice-news-9iian6",
+        "date": "2026-09-25T13:32:02.000Z",
+        "headline": "Empath Health Unveils Dementia Education Program for Clinicians, Caregivers, First Responders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
-        "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
+        "url": "https://hospicenews.com/2026/09/25/empath-health-unveils-dementia-education-program-for-clinicians-caregivers-first-responders/",
+        "summary": "Florida-based Empath Health has launched a new dementia program that combines provider and caregiver education with clinical care. The nonprofit will provide training to staff from other health care organizations, first responders and family caregivers, as well as providing..."
       }
     ],
-    "061504": [
+    "041500": [
       {
-        "id": "hospice-news-493150",
-        "date": "2026-09-16T19:06:19.000Z",
-        "headline": "Hospices Flesh Out Leadership Suites",
+        "id": "hospice-news-lz03g6",
+        "date": "2026-09-24T17:19:59.000Z",
+        "headline": "Circle of Life to Acquire Washington Regional Hospice",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/16/hospices-flesh-out-leadership-suites/",
-        "summary": "New executives have joined the ranks at four hospices. One Colorado-based organization revealed important responsibilities that leadership teams must oversee in today’s end-of-life care landscape. Care Synergy Names New COO Colorado-based Care Synergy has hired Dr. Emily Guth as..."
+        "url": "https://hospicenews.com/2026/09/24/circle-of-life-to-acquire-washington-regional-hospice/",
+        "summary": "Arkansas-based hospice provider Circle of Life will acquire Washington Regional Hospice, with the deal expected to close before the end of September. The acquired hospice is currently owned by the Washington Regional Health System. Financial terms were undisclosed. Current..."
       }
     ]
   }
