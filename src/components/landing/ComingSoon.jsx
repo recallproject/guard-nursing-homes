@@ -10,7 +10,7 @@ const features = [
   {
     Icon: BarChartIcon,
     title: 'Staffing Discrepancy Index',
-    description: 'Find facilities reporting more staff than payroll records show. Ranked by gap percentage.',
+    description: 'Facilities with a stored gap between an earlier self-reported RN figure and payroll hours. CMS ratings use audited PBJ.',
     live: true,
     to: '/discrepancies',
   },

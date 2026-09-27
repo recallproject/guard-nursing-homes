@@ -62,7 +62,7 @@ export default function EvidenceSamplePage() {
               {/* Red flag teasers */}
               <div className="ev-sample-flags">
                 <div className="ev-sample-flag ev-sample-flag-critical">55.8% of nursing hours provided by contract staff</div>
-                <div className="ev-sample-flag ev-sample-flag-critical">70% gap between self-reported and verified RN staffing</div>
+                <div className="ev-sample-flag ev-sample-flag-critical">70% stored RN staffing gap in this extract</div>
                 <div className="ev-sample-flag ev-sample-flag-warning">Owner controls 63 facilities — declining staffing trend</div>
                 <div className="ev-sample-flag ev-sample-flag-warning">3 payment denials — Medicare refused to pay for substandard care</div>
               </div>

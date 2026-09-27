@@ -137,9 +137,11 @@ export function TermsPage() {
           </div>
           <p>
             We make reasonable efforts to ensure accuracy, but we do not guarantee that data is
-            error-free or complete. CMS data is updated quarterly and may not reflect current
-            conditions at any given facility. Staffing data is self-reported by facilities to CMS
-            and has not been independently audited by The Oversight Report.
+            error-free or complete. Care Compare refreshes monthly. Inspection results can change
+            monthly. Staffing and quality data update quarterly and may not reflect current
+            conditions at any given facility. Staffing hours on Care Compare come from the
+            Payroll-Based Journal. CMS audits those submissions. The Oversight Report has not
+            independently re-audited them.
           </p>
         </div>
 

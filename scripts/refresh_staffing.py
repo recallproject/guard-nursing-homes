@@ -49,7 +49,7 @@ def load_staffing_from_csv(csv_path):
                 continue
 
             staffing[ccn] = {
-                # Reported (self-reported by facility)
+                # Reported staffing hours. CMS Technical Users' Guide: source is PBJ, not a separate self-report.
                 'total_hprd': safe_float(row.get('Reported Total Nurse Staffing Hours per Resident per Day', '')),
                 'rn_hprd': safe_float(row.get('Reported RN Staffing Hours per Resident per Day', '')),
                 'lpn_hprd': safe_float(row.get('Reported LPN Staffing Hours per Resident per Day', '')),

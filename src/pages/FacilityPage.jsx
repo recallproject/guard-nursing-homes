@@ -79,11 +79,11 @@ const QM_CATEGORIES = [
     measures: [
       { code: '481', type: 'mds', stay: 'ls', name: 'Antipsychotic medication', lower: true,
         explain: 'Percentage of long-stay residents receiving antipsychotic medications \u2014 drugs designed for schizophrenia and bipolar disorder but frequently used off-label to sedate dementia patients. The FDA has a black-box warning against this use in elderly dementia patients due to increased risk of death.' },
-      { code: '452', type: 'mds', stay: 'ls', name: 'Anti-anxiety & sedative medication', lower: true,
+      { code: '452', type: 'mds', stay: 'ls', name: 'Anti-anxiety & sedative medication', notInStar: true, lower: true,
         explain: 'Percentage of residents receiving anti-anxiety or hypnotic medications. These include benzodiazepines (Xanax, Ativan, Valium) which increase fall risk in the elderly by 40\u201360%.' },
-      { code: '409', type: 'mds', stay: 'ls', name: 'Physical restraints', lower: true,
+      { code: '409', type: 'mds', stay: 'ls', name: 'Physical restraints', notInStar: true, lower: true,
         explain: 'Percentage of residents physically restrained. Physical restraints cause injury, pressure sores, and psychological trauma. Federal law requires facilities to be restraint-free except in documented emergencies.' },
-      { code: '408', type: 'mds', stay: 'ls', name: 'Depressive symptoms', lower: true,
+      { code: '408', type: 'mds', stay: 'ls', name: 'Depressive symptoms', notInStar: true, lower: true,
         explain: 'Percentage of residents showing signs of depression. Low numbers can sometimes reflect poor screening rather than good care.' },
       { code: '410', type: 'mds', stay: 'ls', name: 'Falls with major injury', lower: true,
         explain: 'Percentage of long-stay residents who experienced a fall resulting in major injury (fractures, head trauma, dislocations). High rates correlate with understaffing and sedative medication use.' },
@@ -100,13 +100,13 @@ const QM_CATEGORIES = [
         explain: 'Percentage of residents with UTIs. For elderly residents, UTIs can cause delirium, falls, and hospitalization. Often caused by delayed incontinence care or poor hygiene.' },
       { code: '406', type: 'mds', stay: 'ls', name: 'Catheter left in', lower: true,
         explain: 'Percentage of residents with an indwelling urinary catheter. Catheters should be removed as soon as medically possible; each additional day increases infection risk by 3\u20137%.' },
-      { code: '404', type: 'mds', stay: 'ls', name: 'Significant weight loss', lower: true,
+      { code: '404', type: 'mds', stay: 'ls', name: 'Significant weight loss', notInStar: true, lower: true,
         explain: 'Percentage of residents who experienced unintentional weight loss of 5%+ in 30 days (or 10% in 180 days). Can indicate inadequate feeding assistance, depression, or neglect.' },
       { code: '401', type: 'mds', stay: 'ls', name: 'Ability to do daily tasks declined', lower: true,
         explain: 'Percentage of residents who lost ability to perform basic ADLs (dressing, eating, bathing). Functional decline accelerates when staff do tasks for residents instead of helping them maintain independence.' },
       { code: '451', type: 'mds', stay: 'ls', name: 'Walking ability worsened', lower: true,
         explain: 'Percentage of residents who could walk but experienced a mobility decline. Once a resident stops walking, recovery is rare. Facilities should actively maintain mobility through walking programs.' },
-      { code: '480', type: 'mds', stay: 'ls', name: 'New or worsened incontinence', lower: true,
+      { code: '480', type: 'mds', stay: 'ls', name: 'New or worsened incontinence', notInStar: true, lower: true,
         explain: 'Percentage who developed new or worsened bladder/bowel control. Incontinence management requires regular toileting schedules, a direct measure of staffing adequacy.' },
     ]
   },
@@ -506,7 +506,7 @@ export function FacilityPage() {
             <span className="fp-stars-visual" style={{ '--safety-color': safetyColor }}>
               <span className="fp-stars-filled">{starsFilled}</span><span className="fp-stars-empty">{starsEmpty}</span>
             </span>
-            <span className="fp-star-caption">CMS Overall Rating <MetricTooltip title="CMS Five-Star Rating">CMS rates every nursing home 1–5 stars based on inspections, staffing, and quality measures. But this rating has serious limitations — it combines very different data types into a single score, and the staffing component relies partly on self-reported data that facilities can inflate. Use it as a starting point, not the final word.</MetricTooltip></span>
+            <span className="fp-star-caption">CMS Overall Rating <MetricTooltip title="CMS Five-Star Rating">CMS rates every nursing home 1–5 stars from health inspections by state surveyors, payroll-based staffing, and quality measures. Some quality measures come from facility-completed MDS assessments; five of the 15 come from Medicare claims. The overall star can hide big differences between those parts. Use it as a starting point, not the final word.</MetricTooltip></span>
           </div>
           <p className="fp-meta">
             {facility.city}, {facility.state} | {facility.beds || '—'} beds
@@ -622,7 +622,7 @@ export function FacilityPage() {
             <span className="badge-updated">Updated</span>
             <span className="badge-source">6 METRICS</span>
           </div>
-          <p className="section-subtitle">6 key safety metrics — all drawn from federal CMS data, not the facility's self-reported numbers</p>
+          <p className="section-subtitle">6 key safety metrics from federal inspection, penalty, and payroll records</p>
           <div className="data-grid data-grid-3col">
           {/* Row 1 */}
           {(() => {
@@ -716,19 +716,16 @@ export function FacilityPage() {
           {(() => {
             const complaintDates = new Set((deficiencyDetails || []).filter(d => d.is_complaint === true).map(d => d.survey_date));
             const complaintInvestigations = complaintDates.size;
-            const natlAvg = 7;
-            const sevColor = complaintInvestigations > natlAvg ? 'var(--accent-red, #DC2626)' : complaintInvestigations > 3 ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
-            const maxScale = Math.max(natlAvg * 3, complaintInvestigations * 1.2);
+            const sevColor = complaintInvestigations > 7 ? 'var(--accent-red, #DC2626)' : complaintInvestigations > 3 ? 'var(--accent-orange, #EA580C)' : 'var(--accent-green, #059669)';
+            const maxScale = Math.max(21, complaintInvestigations * 1.2);
             const pctPos = Math.min(100, (complaintInvestigations / maxScale) * 100);
-            const avgPos = Math.min(100, (natlAvg / maxScale) * 100);
             return (
               <div className="data-cell" style={{ borderTop: `3px solid ${sevColor}` }}>
                 <div className={`data-cell-value ${complaintInvestigations > 7 ? 'val-red' : complaintInvestigations > 3 ? 'val-orange' : 'val-green'}`}>{complaintInvestigations}</div>
-                <div className="data-cell-label">Complaint Investigations <MetricTooltip title="Complaint-triggered inspections" benchmark="National avg: 7 (last 3 years)">When someone files a complaint about a nursing home, CMS may send surveyors for an unannounced investigation. Each date represents a separate complaint survey visit. A high number may indicate recurring problems reported by residents, families, or staff.</MetricTooltip></div>
-                <div className="data-cell-context">Last 3 years · avg: {natlAvg}</div>
+                <div className="data-cell-label">Complaint inspections with citations <MetricTooltip title="Complaint inspections with citations">Unique survey dates in the public citation file where a complaint inspection produced at least one citation, covering about the last three years. This is not the number of complaint allegations. In February 2026, CMS stopped displaying allegation counts and facility-reported incident counts. Complaint inspections and their citations remain public and still count in the inspection rating.</MetricTooltip></div>
+                <div className="data-cell-context">About the last 3 years · citation file</div>
                 <div className="data-cell-position">
                   <div className="position-track">
-                    <div className="position-avg" style={{ left: `${avgPos}%` }} title="National avg" />
                     <div className="position-dot" style={{ left: `${pctPos}%`, background: sevColor }} title="This facility" />
                   </div>
                   <div className="position-labels"><span>Better</span><span>Worse</span></div>
@@ -762,7 +759,7 @@ export function FacilityPage() {
           {/* Change #6: CMS callout moved below Safety Score grid */}
           <div className="safety-grid-callout">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            <span><strong>Note:</strong> Complaint investigation data is no longer available on Care Compare as of 2/25/26. This metric is reconstructed from federal inspection records to ensure continued access.</span>
+            <span><strong>Note:</strong> This count is complaint inspections that produced a citation, from public federal inspection records. As of February 25, 2026, Care Compare no longer shows the number of complaint allegations or facility-reported incidents. Complaint inspections and their citations remain public.</span>
           </div>
         </div>
 
@@ -1060,8 +1057,8 @@ export function FacilityPage() {
                 <div className="data-grid data-grid-3col" style={{ marginBottom: '20px' }}>
                   <div className="data-cell">
                     <div className={`data-cell-value ${complaintInvestigations > 7 ? 'val-red' : complaintInvestigations > 3 ? 'val-orange' : 'val-green'}`}>{complaintInvestigations}</div>
-                    <div className="data-cell-label">Complaint Investigations</div>
-                    <div className="data-cell-context">Last 3 years · avg: 7</div>
+                    <div className="data-cell-label">Complaint inspections with citations</div>
+                    <div className="data-cell-context">About the last 3 years · citation file</div>
                   </div>
                   <div className="data-cell">
                     <div className={`data-cell-value ${abuseDefs.length > 0 ? 'val-red' : 'val-green'}`}>{abuseDefs.length}</div>
@@ -1090,8 +1087,7 @@ export function FacilityPage() {
                         {abuseDefs.length > 0 ? 'Pattern of Complaints With Abuse Citations' : 'Above-Average Complaint Activity'}
                       </h3>
                       <p>
-                        <strong>{complaintInvestigations} complaint investigation{complaintInvestigations !== 1 ? 's' : ''}</strong> in 3 years
-                        {complaintInvestigations > 7 && <> — above the 7.0 national average</>}
+                        <strong>{complaintInvestigations} complaint inspection{complaintInvestigations !== 1 ? 's' : ''} with citations</strong> in this file
                         {abuseDefs.length > 0 && <>. <strong>{abuseDefs.length} resulted in formal abuse or neglect citation{abuseDefs.length !== 1 ? 's' : ''}</strong> under F600–F609, the federal standards for resident protection from abuse</>}
                         .
                       </p>
@@ -1104,13 +1100,13 @@ export function FacilityPage() {
                   <div className="cms-callout-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
                   </div>
-                  <p><strong>Note:</strong> Complaint counts are no longer available on Care Compare as of Feb 25, 2026. This number is reconstructed from publicly available federal inspection records. <Link to="/data-transparency">How we calculate this →</Link></p>
+                  <p><strong>Note:</strong> Care Compare no longer shows complaint allegation counts (as of Feb 25, 2026). This number is unique dates of complaint inspections that produced a citation in public federal inspection records — not the allegation total CMS removed. <Link to="/data-transparency">How we calculate this →</Link></p>
                 </div>
 
                 {/* Complaint Investigations by Year */}
                 {years.length > 0 && (
                   <>
-                    <div className="complaints-sub-label">Complaint Investigations by Year</div>
+                    <div className="complaints-sub-label">Complaint inspections with citations, by year</div>
                     {years.map(yr => (
                       <div key={yr} className="yr-row">
                         <div className="yr-label">{yr}</div>
@@ -1178,7 +1174,7 @@ export function FacilityPage() {
               <strong>If inspectors find a problem</strong> during a complaint investigation, they issue a deficiency citation — just like in a standard inspection. Those citations appear in this section.
             </KeyPoint>
             <KeyPoint color="#D97706">
-              <strong>Complaint counts are no longer available on Care Compare as of February 2026.</strong> The Oversight Report reconstructs complaint-triggered citations from detailed inspection records to preserve this important context.
+              <strong>Allegation counts are no longer on Care Compare as of February 2026.</strong> Complaint inspections and their citations remain public and still count in the inspection rating. This section counts those inspections when they produced a citation.
             </KeyPoint>
             <p>
               <strong>How to file a complaint:</strong> Contact your state&rsquo;s Long-Term Care Ombudsman or file directly with your state survey agency. Complaints can be made anonymously.
@@ -1209,7 +1205,7 @@ export function FacilityPage() {
 
           {facility.rn_gap_pct > 30 && (
             <div className="alert-box-yellow" style={{ marginTop: '12px' }}>
-              <strong>Staffing Discrepancy:</strong> <strong>{facility.rn_gap_pct.toFixed(0)}%</strong> of this facility's self-reported RN hours are not verified by payroll records. It claims {(facility.self_report_rn * 60).toFixed(0)} min/resident/day but payroll shows {(facility.rn_hprd * 60).toFixed(0)} min. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
+              <strong>Stored staffing gap:</strong> this extract includes a <strong>{facility.rn_gap_pct.toFixed(0)}%</strong> gap between an earlier self-reported RN figure{facility.self_report_rn != null ? <> ({(facility.self_report_rn * 60).toFixed(0)} min/resident/day)</> : null} and the payroll figure saved with it. The staffing table shows the latest Payroll-Based Journal hours{facility.rn_hprd != null ? <> ({(facility.rn_hprd * 60).toFixed(0)} min)</> : null}, which CMS uses for the staffing rating and which may not be the pair behind that percentage. <em>Ask to see the posted daily staffing schedule — they are required to display it.</em>
             </div>
           )}
 
@@ -1404,8 +1400,11 @@ export function FacilityPage() {
                 <div key={m.code} className={`qm-indicator${isExp ? ' expanded' : ''}`}>
                   <div className="qm-indicator-header">
                     <div className="qm-indicator-name">
-                      {m.name}
-                      <button className="qm-info-btn" onClick={() => setExpandedQm(isExp ? null : indicatorId)}>?</button>
+                      <span>
+                        {m.name}
+                        {m.notInStar ? <span className="qm-star-note"> — shown on Care Compare; not used in the CMS quality star</span> : null}
+                      </span>
+                      <button className="qm-info-btn" onClick={() => setExpandedQm(isExp ? null : indicatorId)} aria-label={`About ${m.name}`}>?</button>
                     </div>
                     <div className="qm-indicator-values">
                       <span className={`qm-fval ${color}`}>{score.toFixed(1)}%</span>
@@ -1728,7 +1727,7 @@ export function FacilityPage() {
                     <strong>MDS assessments</strong> are clinical evaluations completed by nursing home staff for every resident, regularly updated. They capture things like falls, weight loss, pressure ulcers, and medication use.
                   </KeyPoint>
                   <KeyPoint color="#D97706">
-                    <strong>Claims-based measures</strong> come from Medicare billing data and track hospitalizations and ER visits &mdash; harder to manipulate than self-reported data.
+                    <strong>Claims-based measures</strong> come from Medicare billing data and track hospitalizations and ER visits. Five of the 15 measures in the quality star come from claims. Others come from facility-completed MDS assessments.
                   </KeyPoint>
                   <KeyPoint color="#64748B">
                     <strong>QRP and VBP</strong> are federal programs that compare facilities to national benchmarks and tie Medicare payment to performance. A facility ranked in the bottom quartile nationally faces payment reductions.
@@ -2184,7 +2183,7 @@ export function FacilityPage() {
               questions.push({ priority: 'critical', text: 'How many registered nurses are on duty right now? What about weekends?', context: `This facility reported zero RN hours on ${pct(facility.zero_rn_pct)} of days.` });
             }
             if (facility.rn_gap_pct > 30) {
-              questions.push({ priority: 'critical', text: 'Can I see your actual staffing schedules for the past month?', context: `Payroll records account for only ${(100 - facility.rn_gap_pct).toFixed(0)}% of self-reported RN hours.` });
+              questions.push({ priority: 'critical', text: 'Can I see your actual staffing schedules for the past month?', context: `This extract includes a stored RN staffing gap of about ${facility.rn_gap_pct.toFixed(0)}%. CMS staffing ratings use Payroll-Based Journal hours.` });
             }
             if (facility.total_fines > 50000) {
               questions.push({ priority: 'important', text: `What changes have you made since being fined ${fmt(facility.total_fines)}?`, context: `This is ${((facility.total_fines / (stateBenchmarks.total_fines || 1)).toFixed(0))}× the state average fine amount.` });

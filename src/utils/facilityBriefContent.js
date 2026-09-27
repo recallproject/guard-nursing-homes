@@ -53,26 +53,29 @@ const WHY_IT_MATTERS = {
   F727: 'Federal rules require an RN on duty 8 hours a day. Coverage gaps leave LPNs/CNAs without that clinical backup.',
 };
 
+const NOT_IN_QM_STAR = 'shown on Care Compare; not used in the CMS quality star';
+
 const QM_TABLE = [
-  { code: '410', stay: 'ls', name: 'Falls with major injury (long-stay)', tip: 'Ask how call lights and fall huddles work on nights/weekends' },
-  { code: '479', stay: 'ls', name: 'Pressure ulcers (long-stay)', tip: 'Ask about turning schedules and wound-care nurse coverage' },
-  { code: '401', stay: 'ls', name: 'Need for help with daily activities increased', tip: 'Tracks functional decline — ask how care plans are updated' },
-  { code: '451', stay: 'ls', name: 'Ability to walk independently worsened', tip: 'Relevant if mobility is a goal' },
-  { code: '481', stay: 'ls', name: 'Antipsychotic medication (long-stay)', tip: 'Ask about non-drug approaches and consent' },
-  { code: '404', stay: 'ls', name: 'Significant weight loss (long-stay)', tip: 'Ask how dining assistance is staffed' },
-  { code: '480', stay: 'ls', name: 'New or worsened incontinence (long-stay)', tip: 'Ask about toileting schedules and response time' },
-  { code: '452', stay: 'ls', name: 'Antianxiety / hypnotic medication (long-stay)', tip: 'Sedatives raise fall risk — ask about review and consent' },
+  { code: '410', stay: 'ls', inStar: true, name: 'Falls with major injury (long-stay)', tip: 'Ask how call lights and fall huddles work on nights/weekends' },
+  { code: '479', stay: 'ls', inStar: true, name: 'Pressure ulcers (long-stay)', tip: 'Ask about turning schedules and wound-care nurse coverage' },
+  { code: '401', stay: 'ls', inStar: true, name: 'Need for help with daily activities increased', tip: 'Tracks functional decline — ask how care plans are updated' },
+  { code: '451', stay: 'ls', inStar: true, name: 'Ability to walk independently worsened', tip: 'Relevant if mobility is a goal' },
+  { code: '481', stay: 'ls', inStar: true, name: 'Antipsychotic medication (long-stay)', tip: 'Ask about non-drug approaches and consent' },
+  { code: '434', stay: 'ss', inStar: true, name: 'Newly received an antipsychotic (short-stay)', tip: 'Ask whether new antipsychotic orders are reviewed before discharge' },
+  { code: '404', stay: 'ls', inStar: false, name: 'Significant weight loss (long-stay)', tip: 'Ask how dining assistance is staffed' },
+  { code: '480', stay: 'ls', inStar: false, name: 'New or worsened incontinence (long-stay)', tip: 'Ask about toileting schedules and response time' },
+  { code: '452', stay: 'ls', inStar: false, name: 'Antianxiety / hypnotic medication (long-stay)', tip: 'Sedatives raise fall risk — ask about review and consent' },
 ];
 
 const QM_CONTEXT = [
-  { code: '404', stay: 'ls', label: 'Weight loss' },
-  { code: '480', stay: 'ls', label: 'New/worsened incontinence' },
-  { code: '452', stay: 'ls', label: 'Antianxiety / hypnotic meds' },
-  { code: '415', stay: 'ls', label: 'Pneumococcal vaccine given', higherBetter: true },
-  { code: '406', stay: 'ls', label: 'Catheter left in' },
-  { code: '407', stay: 'ls', label: 'UTI' },
-  { code: '409', stay: 'ls', label: 'Restraints' },
-  { code: '408', stay: 'ls', label: 'Depressive symptoms' },
+  { code: '404', stay: 'ls', inStar: false, label: 'Weight loss' },
+  { code: '480', stay: 'ls', inStar: false, label: 'New/worsened incontinence' },
+  { code: '452', stay: 'ls', inStar: false, label: 'Antianxiety / hypnotic meds' },
+  { code: '415', stay: 'ls', inStar: false, label: 'Pneumococcal vaccine given', higherBetter: true },
+  { code: '406', stay: 'ls', inStar: true, label: 'Catheter left in' },
+  { code: '407', stay: 'ls', inStar: true, label: 'UTI' },
+  { code: '409', stay: 'ls', inStar: false, label: 'Restraints' },
+  { code: '408', stay: 'ls', inStar: false, label: 'Depressive symptoms' },
 ];
 
 const IJ_LETTERS = new Set(['J', 'K', 'L']);
@@ -259,7 +262,7 @@ function buildBottomLine(facility, ctx) {
     staffingBits.push(`${fmtPct(facility.zero_rn_pct, 0)} of days showing zero RN hours`);
   }
   if (facility.rn_gap_pct > 30) {
-    staffingBits.push('a large gap between self-reported and payroll-based hours');
+    staffingBits.push('a stored gap between an earlier self-reported RN figure and payroll hours');
   }
 
   if (flags.length >= 2) {
@@ -344,7 +347,7 @@ function buildConcerns(facility, ctx, details) {
   const staffBits = [];
   if (facility.rn_hprd != null) staffBits.push(`RN hours ~${fmtNum(facility.rn_hprd)}/day`);
   if (facility.zero_rn_pct > 10) staffBits.push(`${fmtPct(facility.zero_rn_pct, 0)} of days with zero RN`);
-  if (facility.rn_gap_pct > 25) staffBits.push(`self-report vs PBJ gap ~${fmtPct(facility.rn_gap_pct, 0)}`);
+  if (facility.rn_gap_pct > 25) staffBits.push(`stored self-report vs PBJ gap ~${fmtPct(facility.rn_gap_pct, 0)}`);
   let ownerBit = '';
   if (facility.ownership_changed_recently && facility.ownership_change_date) {
     ownerBit = ` Ownership changed ${facility.ownership_change_date}`;
@@ -413,8 +416,8 @@ function buildScoreInterpretations(facility, ctx) {
     {
       title: `Health inspection (${insp != null ? insp + ' of 5' : 'n/a'})`,
       text: ctx.ijCount > 0
-        ? `Driven by standard surveys plus recent complaint and infection-control findings. ${ctx.ijCount} Immediate Jeopardy citation${ctx.ijCount === 1 ? '' : 's'} weigh heavily here.`
-        : 'Driven by standard surveys plus recent complaint and infection-control findings. A count of citations is not the same as severity.',
+        ? `The inspection rating uses the two most recent standard inspections, weighted 3/4 and 1/4, plus three years of complaint and infection-control citations, ranked against homes in the same state. ${ctx.ijCount} Immediate Jeopardy citation${ctx.ijCount === 1 ? '' : 's'} weigh heavily in the public record.`
+        : 'The inspection rating uses the two most recent standard inspections, weighted 3/4 and 1/4, plus three years of complaint and infection-control citations, ranked against homes in the same state. A count of citations is not the same as severity.',
     },
     {
       title: `Staffing (${staff != null ? staff + ' of 5' : 'n/a'})`,
@@ -489,18 +492,27 @@ function buildOwnershipBullets(facility) {
   return bullets;
 }
 
+function qmDisplayName(measure) {
+  return measure.inStar ? measure.name : `${measure.name} — ${NOT_IN_QM_STAR}`;
+}
+
 function buildCareFitMeasures(facility) {
-  const rows = [];
+  const longStar = [];
+  const shortStar = [];
+  const other = [];
   for (const m of QM_TABLE) {
     const v = qmValue(facility, m.stay, m.code);
     if (v == null) continue;
-    rows.push({
-      name: m.name,
+    const row = {
+      name: qmDisplayName(m),
       rate: `${v.toFixed(2)}%`,
       tip: m.tip,
-    });
+    };
+    if (!m.inStar) other.push(row);
+    else if (m.stay === 'ss') shortStar.push(row);
+    else longStar.push(row);
   }
-  return rows.slice(0, 6);
+  return [...longStar.slice(0, 5), ...shortStar, ...other].slice(0, 7);
 }
 
 function buildCareFitContext(facility) {
@@ -510,12 +522,13 @@ function buildCareFitContext(facility) {
   for (const m of QM_CONTEXT) {
     const v = qmValue(facility, m.stay, m.code);
     if (v == null) continue;
+    const label = m.inStar ? m.label : `${m.label} (${NOT_IN_QM_STAR})`;
     if (m.higherBetter) {
-      named.push(`${m.label}: ${v.toFixed(2)}% (higher is better)`);
+      named.push(`${label}: ${v.toFixed(2)}% (higher is better)`);
     } else if (v === 0) {
-      zeros.push(m.label.replace(/ \(long-stay\)/, ''));
+      zeros.push(label);
     } else {
-      named.push(`${m.label}: ${v.toFixed(2)}%`);
+      named.push(`${label}: ${v.toFixed(2)}%`);
     }
   }
   if (named.length) bits.push(named.slice(0, 3).join(' · '));
@@ -690,7 +703,7 @@ function buildVisitQuestions(facility, details, ctx) {
   }
   if (facility.rn_gap_pct > 25) {
     qs.push(
-      `Self-reported RN hours differ from PBJ by roughly ${fmtPct(facility.rn_gap_pct, 0)} — which figure do you stand behind, and why the gap?`
+      `This extract stores an RN staffing gap of roughly ${fmtPct(facility.rn_gap_pct, 0)}. CMS staffing ratings use audited Payroll-Based Journal hours. Which hours are on the floor this weekend?`
     );
   }
   const f689 = details.find((d) => normalizeFtag(d.ftag) === 'F689' && isImmediateJeopardy(d))
@@ -873,12 +886,12 @@ export function buildFacilityBriefModel(facility, opts = {}) {
         note: 'Share of days with no registered nurse hours in recent PBJ data.',
       },
       {
-        title: 'Self-report vs PBJ',
+        title: 'Stored RN gap',
         value: facility.rn_gap_pct != null ? `${Math.round(facility.rn_gap_pct)}% gap` : 'n/a',
         tone: facility.rn_gap_pct > 30 ? 'warn' : 'neutral',
         note: facility.self_report_rn != null
-          ? `Self-reports ~${fmtNum(facility.self_report_rn)} RN HPRD; PBJ is lower when a gap is flagged. Ask which number they stand behind.`
-          : 'Ask which RN-hours figure they stand behind.',
+          ? `Stored self-reported figure about ${fmtNum(facility.self_report_rn)} RN HPRD. CMS staffing ratings use audited PBJ hours, and this percentage is not recalculated against the latest hours above.`
+          : 'CMS staffing ratings use audited Payroll-Based Journal hours.',
       },
     ],
     staffingContext: buildStaffingContext(facility, details),

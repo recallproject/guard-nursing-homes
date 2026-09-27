@@ -10,7 +10,7 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
   let gapText = '';
   if (showStaffingFlag) {
     if (facility.rn_gap_pct > 25) {
-      gapText = `the facility self-reports ${Math.round(facility.rn_gap_pct)}% more RN hours than verified payroll records show`;
+      gapText = `this extract stores a ${Math.round(facility.rn_gap_pct)}% gap between an earlier self-reported RN figure and a payroll figure from the same build`;
     } else if (facility.flags && facility.flags.includes('STAFFING INFLATION')) {
       gapText = 'federal data shows indicators of inflated staffing numbers';
     }
@@ -67,13 +67,12 @@ export default function AccountabilityFlags({ facility, allFacilities }) {
           </div>
           <div className="flag-body">
             <p>
-              This facility reports {totalMin} minutes of daily nursing care per resident
-              in federal payroll records, but {gapText}.
+              Latest Payroll-Based Journal hours for this home are {totalMin} nursing hours per resident day.
+              Separately, {gapText}.
             </p>
             <p>
-              Nursing homes self-report their staffing data to the federal government.
-              Inspectors visit and assess actual conditions. When these two don't match,
-              it raises questions about the accuracy of reported staffing levels.
+              CMS staffing ratings use Payroll-Based Journal hours, and CMS audits those submissions.
+              The percentage here was saved with our extract. It is not recalculated against the latest hours in the staffing table.
             </p>
             <p className="flag-action">
               <strong>What you can do:</strong> Ask the facility for their current daily
