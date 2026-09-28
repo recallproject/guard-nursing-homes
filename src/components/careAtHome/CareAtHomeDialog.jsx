@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CONTACT_EMAIL } from '../../data/contact';
+import { track, REDIRECT_CAPTURE } from '../../utils/analytics';
 import {
   CARE_AT_HOME_AGENCIES,
   COMPARISON_ROWS,
@@ -426,7 +427,18 @@ function ClaimBody({ agency, onCopy }) {
         <textarea id="claim-reply" readOnly rows={12} value={questionnaire} />
       </label>
       <div className="form-actions">
-        <a className="button" href={mailto}>Email this checklist <span aria-hidden="true">↗</span></a>
+        <a
+          className="button"
+          href={mailto}
+          onClick={() => track('care_at_home_request', {
+            form: 'claim',
+            delivery: 'mailto',
+            agency_id: agency?.id || '',
+            agency_count: agency?.id ? 1 : 0,
+          }, REDIRECT_CAPTURE)}
+        >
+          Email this checklist <span aria-hidden="true">↗</span>
+        </a>
         <button type="button" className="button button-outline" onClick={() => onCopy(questionnaire)}>Copy reply checklist</button>
       </div>
     </>

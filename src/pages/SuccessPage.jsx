@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { getTierName } from '../hooks/useSubscription';
+import { trackPurchaseCompleted } from '../utils/analytics';
 import '../styles/design.css';
 
 export default function SuccessPage() {
@@ -45,6 +46,17 @@ export default function SuccessPage() {
       navigate(evidenceUrl, { replace: true });
       return;
     }
+
+    let pendingTier = '';
+    try {
+      pendingTier = localStorage.getItem('pending_tier') || '';
+    } catch {
+      pendingTier = '';
+    }
+    trackPurchaseCompleted({
+      product: pendingTier || 'subscription',
+      sessionId,
+    });
 
     // If we have a session_id, verify with server (secure path)
     if (sessionId) {

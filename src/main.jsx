@@ -5,10 +5,11 @@ import { HelmetProvider } from 'react-helmet-async';
 import App from './App.jsx';
 import { WatchlistProvider } from './hooks/useWatchlist';
 import { CompareTrayProvider } from './hooks/useCompareTray';
-import { trackOnce, getEntryContext } from './utils/analytics';
+import { trackOnce, getEntryContext, installAffiliateClickTracking } from './utils/analytics';
 
 // Fire session_started once per browser session with entry page, referrer, and UTMs
 trackOnce('session_started', getEntryContext());
+installAffiliateClickTracking();
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

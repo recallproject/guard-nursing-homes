@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNavigate } from 'react-router-dom';
 import '../styles/design.css';
-import { track } from '../utils/analytics';
+import { track, trackCheckoutStarted } from '../utils/analytics';
 import '../styles/pricing.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -83,7 +83,22 @@ export default function PricingPage() {
     } else if (tier.ctaLink === '/evidence') {
       navigate('/evidence-sample');
     } else if (tier.ctaLink) {
-      window.location.href = tier.ctaLink;
+      const leave = async () => {
+        if (/^https:\/\/buy\.stripe\.com\//i.test(tier.ctaLink)) {
+          const amount = Number(String(tier.price || '').replace(/[^0-9.]/g, ''));
+          try {
+            await trackCheckoutStarted({
+              product: tier.product || 'pricing_plan',
+              price: Number.isFinite(amount) ? amount : undefined,
+              placement: 'pricing',
+            });
+          } catch {
+            // Continue to Stripe if analytics fails.
+          }
+        }
+        window.location.href = tier.ctaLink;
+      };
+      leave();
     }
   };
 

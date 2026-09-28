@@ -20,6 +20,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { trackPurchaseCompleted } from '../utils/analytics';
 import '../styles/design.css';
 
 function readOptionalStoredCcn() {
@@ -51,6 +52,10 @@ export default function EvidenceSuccessPage() {
   const [downloadUrl, setDownloadUrl] = useState('');
   const [ccn, setCcn] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+
+  useEffect(() => {
+    trackPurchaseCompleted({ product: 'facility_brief', sessionId });
+  }, [sessionId]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
