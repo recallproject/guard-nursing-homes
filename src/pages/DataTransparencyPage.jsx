@@ -13,9 +13,9 @@ export default function DataTransparencyPage() {
     <div className="dt-page">
       <Helmet>
         <title>CMS Data Transparency Changes — What Was Removed and What We Kept | The Oversight Report</title>
-        <meta name="description" content="As of February 2026, complaint investigation data is no longer available on Care Compare. The Oversight Report preserves this data from federal inspection records. Here's what changed." />
+        <meta name="description" content="In February 2026, CMS stopped displaying complaint allegation counts and facility-reported incident counts on Care Compare. Complaint inspections and their citations remain public." />
         <meta property="og:title" content="CMS Data Transparency Changes — The Oversight Report" />
-        <meta property="og:description" content="Complaint investigation data is no longer available on Care Compare. The Oversight Report preserves it from federal inspection records so families retain access." />
+        <meta property="og:description" content="CMS removed complaint allegation counts from Care Compare in February 2026. Complaint inspections and their citations remain public and still count in the inspection rating." />
         <meta property="og:url" content="https://www.oversightreports.com/data-transparency" />
         <link rel="canonical" href="https://www.oversightreports.com/data-transparency" />
       </Helmet>
@@ -50,12 +50,12 @@ export default function DataTransparencyPage() {
               </div>
               <span className="dt-change-tag removed">Data Removed</span>
             </div>
-            <h2>Complaint Investigation Counts Removed from Care Compare</h2>
+            <h2>Complaint allegation counts removed from Care Compare</h2>
 
             <div className="dt-subsection">
               <h3>What happened</h3>
               <p>
-                On February 25, 2026, CMS removed the number of complaint allegations and the number of facility-reported incidents from the Nursing Home Care Compare website. Previously, families could see how many complaints had been filed against a nursing home. This information is no longer available on the official CMS site.
+                On February 25, 2026, CMS removed the number of complaint allegations and the number of facility-reported incidents from the Nursing Home Care Compare website. Families can no longer see that allegation count on the official CMS site. Complaint inspections and the citations from those inspections were not removed.
               </p>
             </div>
 
@@ -79,10 +79,10 @@ export default function DataTransparencyPage() {
             <div className="dt-subsection dt-subsection--highlight">
               <h3>What The Oversight Report did</h3>
               <p>
-                We reconstructed complaint investigation counts from publicly available federal inspection records. The CMS Health Deficiencies and Inspection Dates files include a flag on each inspection record indicating whether it was triggered by a complaint investigation. We count these flags per facility to calculate complaint investigation totals.
+                The count on our facility pages is the number of unique survey dates in the public health-deficiency file where a complaint inspection produced at least one citation. The file flags each citation that came from a complaint survey. We count distinct survey dates, not individual allegations.
               </p>
               <p>
-                This is not estimated or modeled data. It is a direct count from the same federal records CMS previously used to display complaint information. Every facility on this site still shows complaint counts, investigation outcomes, and patterns over time.
+                That is not the allegation total CMS removed, and it is not the same statistic Care Compare used to display. Complaint surveys and their citations remain on Care Compare and still count in the health inspection rating. We do not show a national average next to this count: a constant of 7 was stored as a CMS-published figure, but it was not calculated from unique complaint inspections with citations.
               </p>
               <p>
                 We archived these datasets before the removal and will continue to provide this information as long as the underlying inspection records remain publicly available.

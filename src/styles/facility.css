@@ -2345,9 +2345,14 @@
   font-weight: 600;
   color: #0F172A;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 7px;
   flex: 1;
+  min-width: 0;
+}
+.qm-star-note {
+  font-weight: 500;
+  color: #64748b;
 }
 .qm-info-btn {
   width: 16px;

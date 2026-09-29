@@ -175,8 +175,8 @@ export function FacilityBriefDocument({
             <p className="fb-muted">{model.shortStayNote}</p>
           </Card>
         </div>
-        <h3 className="fb-sub">Selected long-stay quality measures (real values only)</h3>
-        <p className="fb-muted">Lower is generally better unless noted. These are facility-reported rates CMS publishes — not a complete clinical chart.</p>
+        <h3 className="fb-sub">Selected quality measures (real values only)</h3>
+        <p className="fb-muted">Lower is generally better unless noted. These are rates CMS publishes. Measures marked as not used in the quality star are still shown on Care Compare.</p>
         {model.careFitRows.length ? (
           <table className="fb-table">
             <thead>

@@ -268,7 +268,20 @@ const staticPages = [
   {
     route: 'methodology',
     title: 'Methodology — Data Sources & Methods | The Oversight Report',
-    description: 'How we calculate nursing home safety scores. Data sources include CMS inspections, PBJ staffing, penalties, HCRIS cost reports, and ownership filings.'
+    description: 'How we calculate nursing home safety scores. Data sources include CMS inspections, PBJ staffing, penalties, HCRIS cost reports, and ownership filings.',
+    bodyContent: `<article style="max-width:720px;margin:32px auto;padding:0 24px;font-family:Georgia,serif;color:#1a1a1a;line-height:1.7;">
+      <h1 style="font-family:sans-serif;font-size:32px;margin:0 0 16px;">Why these numbers matter</h1>
+      <p>CMS star ratings shape where families choose care. When stars launched, 1-star homes lost about 8% of their market share and 5-star homes gained over 6% (<a href="https://doi.org/10.1111/1475-6773.12459">Werner 2016</a>). That's why we show what's behind them.</p>
+      <h2 style="font-family:sans-serif;font-size:20px;">Look at each part, not just the overall star.</h2>
+      <p>The overall rating blends three different things: health inspections, staffing, and quality measures (<a href="https://www.cms.gov/Medicare/Provider-Enrollment-and-Certification/CertificationandComplianc/Downloads/usersguide.pdf">CMS Technical Users' Guide, July 2026</a>). A home can score well on one and poorly on another. The National Academies found the rating misses smaller but real differences and leaves out resident and family experience (<a href="https://doi.org/10.17226/26526">NASEM 2022</a>).</p>
+      <h2 style="font-family:sans-serif;font-size:20px;">Complaints tell a different story.</h2>
+      <p>Inspection stars combine routine inspections with complaint investigations. When researchers separated them, complaint results often disagreed with the overall inspection rating (<a href="https://doi.org/10.1001/jamanetworkopen.2022.53952">Peterson &amp; Bowblis 2023</a>). We show complaint inspections separately.</p>
+      <h2 style="font-family:sans-serif;font-size:20px;">Staffing matters, especially RNs, weekends, and turnover.</h2>
+      <p>During COVID-19, homes with high nurse staffing ratings were less likely to have large outbreaks (<a href="https://doi.org/10.1001/jama.2020.14709">Figueroa 2020</a>). CMS now counts weekend staffing and staff turnover, because steady staff who know residents catch problems early (<a href="https://doi.org/10.1001/jama.2022.14720">Suran 2022</a>).</p>
+      <h2 style="font-family:sans-serif;font-size:20px;">Not everyone gets the same options.</h2>
+      <p>Patients with both Medicare and Medicaid, and Black and Hispanic patients, are more likely to be discharged to 1-star facilities (<a href="https://doi.org/10.1111/jgs.15629">Zuckerman 2019</a>). Ask your hospital discharge planner for quality information on every option.</p>
+      <p>Use these numbers to build a shortlist. Then visit, ideally on an evening or weekend, and ask who the RN on duty is.</p>
+    </article>`
   },
   {
     route: 'chains',
@@ -283,7 +296,7 @@ const staticPages = [
   {
     route: 'discrepancies',
     title: 'Staffing Discrepancies — Reported vs Payroll Hours | The Oversight Report',
-    description: 'Nursing homes reporting more staff than payroll records support. Compare self-reported staffing to PBJ payroll data for all Medicare facilities.'
+    description: 'Stored gaps between an earlier self-reported RN figure and payroll hours. CMS staffing ratings use Payroll-Based Journal data, which CMS audits.'
   },
   {
     route: 'ownership',

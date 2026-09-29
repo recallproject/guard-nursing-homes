@@ -83,6 +83,7 @@ function AccordionSection({ title, children, defaultOpen = false }) {
 
 /* ── Sidebar nav items ────────────────────────────── */
 const NAV_ITEMS = [
+  { id: 'why-numbers', num: '00', label: 'Why these numbers matter' },
   { id: 'data-sources', num: '01', label: 'Data Sources' },
   { id: 'how-built', num: '02', label: 'How Reports Are Built' },
   { id: 'who-reviews', num: '03', label: 'Who Reviews' },
@@ -102,7 +103,7 @@ const NAV_ITEMS = [
    ═══════════════════════════════════════════════════ */
 export function MethodologyPage() {
   const location = useLocation();
-  const [activeSection, setActiveSection] = useState('data-sources');
+  const [activeSection, setActiveSection] = useState('why-numbers');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const progressRef = useRef(null);
@@ -195,6 +196,33 @@ export function MethodologyPage() {
         {/* Main content */}
         <div className="methodology-main">
 
+          {/* ═══ 00 WHY THESE NUMBERS MATTER ═══ */}
+          <section id="why-numbers" className="methodology-section section-white why-numbers-block">
+            <h2>Why these numbers matter</h2>
+            <p>
+              CMS star ratings shape where families choose care. When stars launched, 1-star homes lost about 8% of their market share and 5-star homes gained over 6% (<a href="https://doi.org/10.1111/1475-6773.12459" target="_blank" rel="noopener noreferrer">Werner 2016</a>). That&apos;s why we show what&apos;s behind them.
+            </p>
+            <h3>Look at each part, not just the overall star.</h3>
+            <p>
+              The overall rating blends three different things: health inspections, staffing, and quality measures (<a href="https://www.cms.gov/Medicare/Provider-Enrollment-and-Certification/CertificationandComplianc/Downloads/usersguide.pdf" target="_blank" rel="noopener noreferrer">CMS Technical Users&apos; Guide, July 2026</a>). A home can score well on one and poorly on another. The National Academies found the rating misses smaller but real differences and leaves out resident and family experience (<a href="https://doi.org/10.17226/26526" target="_blank" rel="noopener noreferrer">NASEM 2022</a>).
+            </p>
+            <h3>Complaints tell a different story.</h3>
+            <p>
+              Inspection stars combine routine inspections with complaint investigations. When researchers separated them, complaint results often disagreed with the overall inspection rating (<a href="https://doi.org/10.1001/jamanetworkopen.2022.53952" target="_blank" rel="noopener noreferrer">Peterson &amp; Bowblis 2023</a>). We show complaint inspections separately.
+            </p>
+            <h3>Staffing matters, especially RNs, weekends, and turnover.</h3>
+            <p>
+              During COVID-19, homes with high nurse staffing ratings were less likely to have large outbreaks (<a href="https://doi.org/10.1001/jama.2020.14709" target="_blank" rel="noopener noreferrer">Figueroa 2020</a>). CMS now counts weekend staffing and staff turnover, because steady staff who know residents catch problems early (<a href="https://doi.org/10.1001/jama.2022.14720" target="_blank" rel="noopener noreferrer">Suran 2022</a>).
+            </p>
+            <h3>Not everyone gets the same options.</h3>
+            <p>
+              Patients with both Medicare and Medicaid, and Black and Hispanic patients, are more likely to be discharged to 1-star facilities (<a href="https://doi.org/10.1111/jgs.15629" target="_blank" rel="noopener noreferrer">Zuckerman 2019</a>). Ask your hospital discharge planner for quality information on every option.
+            </p>
+            <p>
+              Use these numbers to build a shortlist. Then visit, ideally on an evening or weekend, and ask who the RN on duty is.
+            </p>
+          </section>
+
           {/* ═══ 01 DATA SOURCES ═══ */}
           <section id="data-sources" className="methodology-section section-white">
             <h2>Data Sources</h2>
@@ -209,7 +237,7 @@ export function MethodologyPage() {
                 <div className="methodology-source-item">
                   <div className="methodology-source-icon s-icon-blue"><IconDoc /></div>
                   <h4>CMS Care Compare</h4>
-                  <p>Provider information, inspection results, penalties, and star ratings. Updated quarterly by CMS.</p>
+                  <p>Provider information, inspection results, penalties, and star ratings. Care Compare refreshes monthly. Inspection results can change monthly. Staffing and quality data update quarterly.</p>
                 </div>
                 <div className="methodology-source-item">
                   <div className="methodology-source-icon s-icon-blue"><IconUsers /></div>
@@ -236,7 +264,7 @@ export function MethodologyPage() {
                 <div className="methodology-source-item">
                   <div className="methodology-source-icon s-icon-green"><IconPulse /></div>
                   <h4>MDS Quality Measures</h4>
-                  <p>Antipsychotic medication rates, pressure ulcers, falls with injury, UTIs, depression — from quarterly resident assessments (MDS 3.0).</p>
+                  <p>The quality star uses exactly 15 measures: 9 long-stay and 6 short-stay. Long-stay measures in the star cover help with daily activities, walking, pressure ulcers, catheters, urinary tract infections, falls with major injury, antipsychotic use, and claims-based hospitalization and emergency-visit rates. Short-stay measures in the star cover functional ability at discharge, new or worsened pressure ulcers, new antipsychotic use, rehospitalization, emergency visits, and return to the community. Five of the 15 come from Medicare claims. Weight loss, incontinence, antianxiety or hypnotic medication, physical restraints, and depressive symptoms are shown on Care Compare; not used in the CMS quality star. MDS measures come from quarterly resident assessments. In our current facility file, the short-stay rating measure with values for most homes is new antipsychotic use. Short-stay rehospitalization and emergency-visit fields are present but rarely filled. Short-stay pressure ulcers, discharge function, and return to the community are not in this extract.</p>
                 </div>
                 <div className="methodology-source-item">
                   <div className="methodology-source-icon s-icon-green"><IconMonitor /></div>
@@ -448,9 +476,12 @@ export function MethodologyPage() {
             </AccordionSection>
 
             <AccordionSection title="Star Ratings (1–5)">
-              <p>Directly from CMS. We display them but do not modify them. Calculated by CMS from health inspections, staffing, and quality measures.</p>
+              <p>Directly from CMS. We display them but do not modify them. The overall star starts from the health inspection rating, then can move by one star for a five-star or one-star staffing rating, and again for the quality-measure rating.</p>
               <div className="methodology-note-box">
-                <strong>Note:</strong> CMS star ratings are widely criticized for being gameable through self-reported data. Our composite score exists because star ratings alone are insufficient for assessing risk.
+                <strong>Note:</strong> Stars combine inspection findings from state surveyors, payroll-based staffing, and quality measures. Some quality measures come from facility-completed MDS assessments; five of the 15 come from Medicare claims. The overall star can hide big differences between those parts, which is why we show each part. Our composite score is a separate view of public risk signals.
+              </div>
+              <div className="methodology-note-box">
+                <strong>Abuse icon:</strong> When Care Compare shows the abuse icon, CMS caps the health inspection rating at 2 stars. Because of how the overall rating is built, the highest overall rating that home can have is 4 stars.
               </div>
             </AccordionSection>
 
@@ -466,7 +497,7 @@ export function MethodologyPage() {
             </AccordionSection>
 
             <AccordionSection title="RN Gap Percentage">
-              <p>Measures the discrepancy between what a facility claims on CMS surveys versus what their payroll records show.</p>
+              <p>A stored comparison in our extract between an earlier self-reported RN figure and a payroll-based journal figure from the same build. CMS staffing ratings use Payroll-Based Journal hours, which CMS audits. This percentage is not recalculated when the latest PBJ hours are refreshed, so it may not equal the difference between the two hour figures shown on a facility page today.</p>
               <div className="methodology-formula-box">
                 <span className="methodology-formula-label">Formula</span>
                 <span className="methodology-formula-value">((Self-Reported RN HPRD - PBJ RN HPRD) &divide; Self-Reported RN HPRD) &times; 100</span>
@@ -700,7 +731,7 @@ export function MethodologyPage() {
               </li>
               <li>
                 <span className="methodology-limit-icon">&#9679;</span>
-                <span><strong>CMS data is self-reported.</strong> Staffing hours are reported by facilities themselves via the Payroll-Based Journal. Deficiency counts depend on survey timing and surveyor judgment. Neither dataset has been independently audited by us.</span>
+                <span><strong>We have not re-audited CMS files.</strong> Staffing hours come from facility payroll submissions in the Payroll-Based Journal. CMS audits those submissions and can assign one staffing star when an audit fails or when a home reports four or more days without an RN. Deficiency counts still depend on survey timing and surveyor judgment.</span>
               </li>
               <li>
                 <span className="methodology-limit-icon">&#9679;</span>
@@ -708,7 +739,7 @@ export function MethodologyPage() {
               </li>
               <li>
                 <span className="methodology-limit-icon">&#9679;</span>
-                <span><strong>Single snapshot.</strong> This analysis uses one point-in-time dataset. Facility conditions change. We will re-validate with each quarterly CMS data refresh and publish updated results.</span>
+                <span><strong>Single snapshot.</strong> This analysis uses one point-in-time dataset. Facility conditions change. Care Compare refreshes monthly; inspection results can change monthly; staffing and quality data update quarterly. We will re-validate when those files refresh and publish updated results.</span>
               </li>
             </ul>
 
@@ -888,9 +919,9 @@ export function MethodologyPage() {
               <ul>
                 <li>The facility actually had no RN working that day — a potential violation of 42 CFR §483.35(b)(1).</li>
                 <li>The facility had an RN present but failed to submit accurate payroll data to CMS — a reporting compliance issue.</li>
-                <li>The facility submitted incomplete or erroneous PBJ data — which CMS does not routinely audit.</li>
+                <li>The facility submitted incomplete or erroneous PBJ data. CMS audits Payroll-Based Journal submissions. A failed audit, or four or more days in the quarter with no RN hours, results in a one-star staffing rating.</li>
               </ul>
-              <p>All three scenarios are concerning. CMS conducts on-site inspections roughly every 12–15 months. Between inspections, there is no real-time monitoring of whether facilities meet the 8-hour RN requirement.</p>
+              <p>All three scenarios are concerning. CMS conducts on-site inspections roughly every 12–15 months. A May 2023 report from the U.S. Senate Special Committee on Aging found about 28% of homes were overdue for inspection by 16 months or more. Between inspections, Payroll-Based Journal staffing is quarterly, not a daily check of the 8-hour RN requirement. CMS does assign one staffing star when that quarterly file shows four or more days with no RN hours.</p>
               <p>Some facilities — particularly small or rural homes — may qualify for a federal waiver of the 8-hour RN requirement (42 CFR §483.35(e)). However, a waiver does not eliminate the requirement for licensed nursing coverage.</p>
               <p>We present this data as reported by facilities to CMS. Families with concerns should contact their state survey agency or CMS regional office.</p>
             </AccordionSection>
@@ -918,7 +949,7 @@ export function MethodologyPage() {
               </div>
             </div>
             <div className="methodology-note-box" style={{ marginTop: '20px' }}>
-              <strong>Important:</strong> Between updates, new inspections, penalties, or ownership changes may have occurred. Always verify current status directly with CMS Care Compare or the facility.
+              <strong>Update cadence:</strong> Care Compare refreshes monthly. Inspection results can change monthly. Staffing and quality data update quarterly. Between updates, new inspections, penalties, or ownership changes may have occurred. Always verify current status directly with CMS Care Compare or the facility.
             </div>
           </section>
 
@@ -927,17 +958,12 @@ export function MethodologyPage() {
             <h2>Government Data Transparency Changes</h2>
             <p className="methodology-section-intro">When CMS removes data from public view, we document it here and explain how it affects what families can see.</p>
 
-            <AccordionSection title="Complaint Counts Removed (Feb 25, 2026)" defaultOpen>
+            <AccordionSection title="Complaint allegation counts removed (Feb 25, 2026)" defaultOpen>
               <p>
-                On February 25, 2026, CMS removed complaint investigation counts from the Care Compare website.
-                The Oversight Report reconstructed complaint counts from publicly available federal inspection records
-                (CMS Health Deficiencies and Inspection Dates files). Each inspection record includes a flag indicating
-                whether it was triggered by a complaint investigation.
+                On February 25, 2026, CMS stopped displaying the number of complaint allegations and the number of facility-reported incidents on Care Compare (memo QSSAM-26-01-NH). Complaint inspections and the citations from those inspections remain public, and they still count in the health inspection rating.
               </p>
               <p>
-                This is not estimated or modeled data — it is a direct count from the same federal records CMS previously
-                used. We archived these datasets before the removal and will continue to provide this information as long
-                as the underlying inspection records remain publicly available.
+                The count on our facility pages is the number of unique survey dates in the public citation file where a complaint inspection produced at least one citation. That is not the allegation total CMS removed, and it is not the same statistic Care Compare used to display. We do not compare it to a national average, because the constant previously labeled &quot;national avg: 7&quot; was not calculated from this definition.
               </p>
             </AccordionSection>
 

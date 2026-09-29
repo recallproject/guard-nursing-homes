@@ -68,9 +68,9 @@ export default function HospitalsPage() {
               </div>
               <h3>Staffing Discrepancy Index</h3>
               <p>
-                Identifies facilities where self-reported staffing diverges from CMS Payroll-Based Journal
-                records. High discrepancy scores indicate possible reporting irregularities — a red flag
-                for discharge placement.
+                Lists facilities with a stored gap between an earlier self-reported RN figure and payroll
+                hours in our extract. CMS staffing ratings use Payroll-Based Journal hours, which CMS audits.
+                The percentage is not recalculated against the latest PBJ file.
               </p>
               <Link to="/discrepancies" className="hospitals-feature-link">
                 View Discrepancy Data →

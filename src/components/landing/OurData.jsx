@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const trustItems = [
   { icon: DatabaseIcon, label: 'CMS Verified Data' },
-  { icon: ShieldIcon, label: 'Updated Monthly' },
+  { icon: ShieldIcon, label: 'Care Compare monthly' },
   { icon: CheckCircleIcon, label: 'No Industry Funding' },
 ];
 
