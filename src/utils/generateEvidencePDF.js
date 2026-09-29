@@ -1376,7 +1376,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     // Verification
     addSubHeading('Staffing Verification');
     if (facility.self_report_rn !== null && facility.self_report_rn !== undefined)
-      addDataRow('Self-Reported RN Hours:', num(facility.self_report_rn) + ' hrs');
+      addDataRow('Stored self-reported RN hours:', num(facility.self_report_rn) + ' hrs');
     addDataRow('Verified RN Hours (Payroll):', num(facility.rn_hprd) + ' hrs');
     if (facility.rn_gap_pct !== null && facility.rn_gap_pct !== undefined)
       addDataRow('Discrepancy:', pct(facility.rn_gap_pct));
@@ -1401,7 +1401,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     if (facility.rn_gap_pct && facility.rn_gap_pct > 20) {
       addAlertBox(
         'Verification Discrepancy: This facility shows a ' + pct(facility.rn_gap_pct) +
-        ' discrepancy between self-reported and verified staffing levels, which may warrant further investigation.',
+        ' stored gap between an earlier self-reported RN figure and payroll hours from the same build. CMS staffing ratings use audited PBJ hours, and this percentage is not recalculated against the latest file.',
         'warning'
       );
     }
@@ -1652,12 +1652,12 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       doc.setFontSize(9.5);
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(...AMBER);
-      doc.text('COMPLAINT INVESTIGATIONS: ' + complaintCountEarly + ' investigations yielding ' + complaintCitationsEarly + ' citations', margin + 7, currentY + 7);
+      doc.text('COMPLAINT INSPECTIONS WITH CITATIONS: ' + complaintCountEarly + ' dates, ' + complaintCitationsEarly + ' citations', margin + 7, currentY + 7);
       doc.setFontSize(8.5);
       doc.setFont('helvetica', 'normal');
       doc.setTextColor(...BODY);
       const yieldEarly = complaintCountEarly > 0 ? (complaintCitationsEarly / complaintCountEarly).toFixed(1) : '0';
-      doc.text(yieldEarly + ' citations per investigation (national avg complaints: ' + NATIONAL_AVG.complaint_investigations + '). See Complaint-Driven Investigations below for detail.', margin + 7, currentY + 14);
+      doc.text(yieldEarly + ' citations per inspection date. Not an allegation count, and not compared to a national average. See below.', margin + 7, currentY + 14);
       currentY += cBoxH + 6;
     }
   }
@@ -2023,18 +2023,17 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     checkPageBreak(30);
     addSubHeading('Complaint-Driven Investigations');
 
-    addDataRow('Complaint Investigations (3-year window):', String(complaintCount));
-    addDataRow('National Average:', String(NATIONAL_AVG.complaint_investigations));
+    addDataRow('Complaint inspections with citations:', String(complaintCount));
 
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(...BODY);
     const complaintNote =
       complaintCount > 0
-        ? complaintCount + ' complaint-driven investigation' + (complaintCount > 1 ? 's' : '') +
-          ' indicate a pattern of reported concerns from residents, families, or staff. ' +
-          'Each complaint investigation was triggered by a formal complaint filed with the state survey agency.'
-        : 'No complaint-driven investigations identified in the available deficiency records.';
+        ? complaintCount + ' complaint inspection' + (complaintCount > 1 ? 's' : '') +
+          ' produced at least one citation in the public file. ' +
+          'This counts survey dates, not the number of allegations filed.'
+        : 'No complaint inspections with citations were identified in the available deficiency records.';
     const cnLines = doc.splitTextToSize(complaintNote, contentWidth);
     doc.text(cnLines, margin, currentY);
     currentY += cnLines.length * 4.5 + 3;
@@ -2043,20 +2042,14 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
     doc.setFont('helvetica', 'italic');
     doc.setTextColor(...STEEL);
     const cmsCaveat =
-      'Note: Complaint investigation data is no longer available on Care Compare as of 2/25/2026. ' +
-      'This count is reconstructed from CMS Health Deficiency inspection records (2017-Dec 2025).';
+      'Note: As of 2/25/2026, Care Compare no longer shows complaint allegation counts or facility-reported incident counts. ' +
+      'Complaint inspections and their citations remain public. This count is unique survey dates with a complaint citation in the public deficiency file.';
     const cavLines = doc.splitTextToSize(cmsCaveat, contentWidth);
     doc.text(cavLines, margin, currentY);
     currentY += cavLines.length * 4.5 + 4;
 
-    if (complaintCount > NATIONAL_AVG.complaint_investigations) {
-      addAlertBox(
-        'Above-Average Complaint Activity: ' + complaintCount + ' complaint investigations exceed the national average of ' +
-        NATIONAL_AVG.complaint_investigations + ' over a 3-year period. ' +
-        'Elevated complaint activity can indicate recurring concerns that may not be captured by routine inspections alone.',
-        'warning'
-      );
-    }
+    // No national-average comparison. The stored constant of 7 was not calculated
+    // from unique complaint-inspection dates with citations.
 
     // ---- Complaint Investigation Yield (citations per investigation) — attorney only ----
     if (isAttorney && complaintCount > 0) {
@@ -2066,8 +2059,8 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
       checkPageBreak(25);
       addSubHeading('Complaint Investigation Yield');
 
-      addDataRow('Citations from Complaint Investigations:', String(complaintCitations));
-      addDataRow('Complaint Investigations:', String(complaintCount));
+      addDataRow('Citations from complaint inspections:', String(complaintCitations));
+      addDataRow('Complaint inspections with citations:', String(complaintCount));
       addDataRow('Citations per Investigation:', yieldRate);
 
       doc.setFontSize(9);
@@ -2614,7 +2607,7 @@ export function generateEvidencePDF(facility, nearbyAlternatives = [], allFacili
   if (facility.zero_rn_pct > 25)
     redFlags.push({ metric: 'High Zero-RN Days: ' + pct(facility.zero_rn_pct), detail: 'Federal law (42 CFR §483.35) requires an RN on site at least 8 hours per day, 7 days per week.', type: 'warning' });
   if (facility.rn_gap_pct > 30)
-    redFlags.push({ metric: 'Staffing Verification Gap: ' + pct(facility.rn_gap_pct), detail: 'Large discrepancies between self-reported and payroll-verified staffing may warrant investigation.', type: 'warning' });
+    redFlags.push({ metric: 'Stored RN staffing gap: ' + pct(facility.rn_gap_pct), detail: 'Stored gap in this extract between an earlier self-reported RN figure and payroll hours. Not a live comparison to the latest PBJ file.', type: 'warning' });
   if (facility.total_fines > 100000)
     redFlags.push({ metric: 'High Financial Penalties: ' + fmt(facility.total_fines), detail: 'CMS records show substantial civil monetary penalties for this facility.', type: 'warning' });
   if (facility.contractor_pct && facility.contractor_pct > 30)

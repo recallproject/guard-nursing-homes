@@ -235,7 +235,7 @@ export default function HowItWorks({ onSearchFacility }) {
                       </div>
                     ))}
                     <div className={`hiw-finding hiw-finding-red ${evIn.findings[0] ? 'in' : ''}`}>
-                      <strong>Staffing discrepancy:</strong> This facility reports adequate staffing but payroll records show <strong>8 min/resident/day</strong> of RN time — 80% below the national average.
+                      <strong>Staffing:</strong> Payroll-Based Journal hours in this example are <strong>8 min/resident/day</strong> of RN time. CMS staffing ratings use those payroll hours, which CMS audits.
                     </div>
                     <div className={`hiw-finding hiw-finding-amber ${evIn.findings[1] ? 'in' : ''}`}>
                       <strong>Ownership flag:</strong> Operated by a 64-facility chain with average fines of <strong>$62,530 per facility</strong> — 5x the national average.

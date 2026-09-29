@@ -405,7 +405,7 @@ export default function HighRiskPage() {
             </p>
             <h3>Data Sources</h3>
             <ul>
-              <li><strong>Quality Ratings:</strong> CMS Five-Star Quality Rating System (updated monthly)</li>
+              <li><strong>Quality Ratings:</strong> CMS Five-Star Quality Rating System. Care Compare refreshes monthly. Inspection results can change monthly. Staffing and quality data update quarterly.</li>
               <li><strong>Staffing Data:</strong> CMS Payroll-Based Journal (PBJ), Q3 2025</li>
               <li><strong>Deficiencies:</strong> CMS Health Deficiencies, 2017-2025</li>
               <li><strong>Penalties:</strong> CMS Penalties, January 2023-December 2025</li>

@@ -76,7 +76,7 @@ export default function FacilityRow({ facility }) {
       return `-- ${facility.zero_rn_pct.toFixed(1)}% of days had zero registered nurses on site`;
     }
     if (facility.rn_gap_pct > 30) {
-      return `-- Reports ${facility.rn_gap_pct.toFixed(1)}% more RN hours than payroll shows`;
+      return `-- Stored RN staffing gap of ${facility.rn_gap_pct.toFixed(1)}% in this extract`;
     }
     if (facility.harm_count > 0) {
       return `-- Inspectors found actual harm to ${facility.harm_count} resident${facility.harm_count > 1 ? 's' : ''}`;

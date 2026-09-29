@@ -265,7 +265,7 @@ function buildWatchFors(facility, ctx) {
   if (facility.rn_gap_pct != null && facility.rn_gap_pct > 25) {
     items.push({
       label: 'Staffing gap',
-      text: `Self-reported RN hours were much higher than payroll-based figures (~${Math.round(facility.rn_gap_pct)}% gap).`,
+      text: `This extract includes a stored RN staffing gap (~${Math.round(facility.rn_gap_pct)}% gap). CMS staffing ratings use audited payroll hours.`,
     });
   } else if (thinRn(facility) && facility.zero_rn_pct > 10) {
     items.push({
@@ -302,7 +302,7 @@ function buildVisitQuestions(facility, ctx) {
     qs.push('How do you prevent and respond to abuse or neglect allegations?');
   }
   if (!ctx.sff && facility.rn_gap_pct != null && facility.rn_gap_pct > 25) {
-    qs.push('Which RN-hours figure do you stand behind — self-report or payroll — and why the gap?');
+    qs.push('This extract shows a stored RN staffing gap. Which hours are on the floor this weekend?');
   }
   if (!ctx.ijCount && (facility.total_fines || 0) > 50000) {
     qs.push('What changed after the CMS fines — and how do you show it is still working?');

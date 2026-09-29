@@ -96,7 +96,7 @@ export default function ComparePage() {
                     Rankings &amp; Reviews
                     <span className="compare-guide-badge compare-guide-badge--partial">PARTIAL</span>
                   </div>
-                  <div className="compare-guide-desc">U.S. News &amp; Newsweek. Reputable brands, but rankings rely on star ratings CMS admits are gameable.</div>
+                  <div className="compare-guide-desc">U.S. News &amp; Newsweek. Reputable brands, but rankings rely on the overall star, which can hide big differences between inspection, staffing, and quality measures.</div>
                 </div>
               </a>
               <a href="#comparison" className="compare-guide-card">
@@ -156,7 +156,7 @@ export default function ComparePage() {
                 <ul>
                   <li>No financial transparency — can't see where the money goes</li>
                   <li>No chain-level analysis — can't compare across an owner's portfolio</li>
-                  <li>Five-Star ratings are based on self-reported data and widely criticized as gameable</li>
+                  <li>The overall star blends inspection findings, payroll-based staffing, and quality measures, and can hide big differences between those parts</li>
                   <li>No related-party transaction data</li>
                   <li>Difficult interface not designed for families</li>
                   <li>No alerts or watchlist functionality</li>

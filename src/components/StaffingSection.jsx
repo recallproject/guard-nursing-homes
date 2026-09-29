@@ -137,7 +137,7 @@ export default function StaffingSection({ facility, benchmarks }) {
       </tbody>
     </table>
     <div style={{ fontSize: '11px', color: 'var(--text-muted, #6b6590)', marginTop: '8px', lineHeight: '1.4' }}>
-      RN and Total hours from CMS Payroll-Based Journal (mandatory payroll records). LPN and CNA hours from CMS Provider Information (facility self-reported). Totals may not equal the sum of individual roles due to different data sources.
+      RN, LPN, nurse aide, and total hours are CMS reported staffing from the Payroll-Based Journal, published together in the Provider Information file. CMS audits those submissions. A small difference between the total and the sum of roles can come from rounding.
     </div>
     </>
   );

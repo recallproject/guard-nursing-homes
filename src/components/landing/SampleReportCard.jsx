@@ -209,7 +209,7 @@ export default function SampleReportCard({ onSearch }) {
                   </div>
                   <div className="report-callout report-callout--amber">
                     <strong>Staffing Data Discrepancy</strong><br />
-                    This facility self-reports 42% more RN hours than verified payroll records show...
+                    This extract stores a 42% RN staffing gap. CMS staffing ratings use audited payroll hours...
                   </div>
                 </div>
                 <span className="report-clinical-attribution">Clinical perspective by Robert Benard, NP — 20+ years in acute care</span>

@@ -218,9 +218,9 @@ export const DETAIL_GROUPS = [
       },
       {
         id: 'rn-gap',
-        label: 'Reported vs payroll RN gap',
+        label: 'Stored RN staffing gap',
         direction: 'Lower is better',
-        why: 'How much higher self-reported RN hours were than payroll-based figures.',
+        why: 'Stored gap in this extract between an earlier self-reported RN figure and payroll hours. Not recalculated against the latest PBJ hours.',
         value: (f) => formatPct(f?.rn_gap_pct),
       },
     ],

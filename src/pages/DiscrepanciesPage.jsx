@@ -116,10 +116,10 @@ export default function DiscrepanciesPage() {
   };
   const formatPercent = (val) => val == null ? 'N/A' : val.toFixed(0) + '%';
   const getGapSeverity = (gap) => {
-    if (gap >= 75) return { label: 'Critical', class: 'severity-critical', desc: 'Payroll records show almost none of the RN staffing this facility claims to CMS.' };
-    if (gap >= 50) return { label: 'Severe', class: 'severity-severe', desc: 'Payroll records show less than half the RN staffing this facility reports.' };
-    if (gap >= 25) return { label: 'Significant', class: 'severity-significant', desc: 'A meaningful gap between what the facility claims and what payroll records show.' };
-    return { label: 'Moderate', class: 'severity-moderate', desc: 'Some difference between reported and verified staffing levels.' };
+    if (gap >= 75) return { label: 'Critical', class: 'severity-critical', desc: 'The stored gap in this extract is very large. It is not a live comparison to this month’s Payroll-Based Journal hours.' };
+    if (gap >= 50) return { label: 'Severe', class: 'severity-severe', desc: 'The stored gap in this extract is large. CMS staffing ratings use audited Payroll-Based Journal hours, not this percentage.' };
+    if (gap >= 25) return { label: 'Significant', class: 'severity-significant', desc: 'A stored gap in this extract between an earlier self-reported RN figure and the payroll figure saved with it.' };
+    return { label: 'Moderate', class: 'severity-moderate', desc: 'A smaller stored gap in this extract. It is not recalculated against the latest PBJ hours.' };
   };
 
   const handleSort = (column) => {
@@ -129,7 +129,7 @@ export default function DiscrepanciesPage() {
   const getSortIcon = (column) => sortColumn !== column ? '⇅' : sortDirection === 'asc' ? '↑' : '↓';
 
   const handleDownloadCSV = () => {
-    const headers = ['Rank','Facility','CCN','State','City','Owner','Reported RN (min/day)','Verified RN (min/day)','Gap %','Zero-RN Days %','Jeopardy Count','Total Fines','Stars','Risk Score'];
+    const headers = ['Rank','Facility','CCN','State','City','Owner','Stored self-reported RN (min/day)','Latest PBJ RN (min/day)','Stored gap %','Zero-RN Days %','Jeopardy Count','Total Fines','Stars','Risk Score'];
     const rows = sortedFacilities.map((f, idx) => [
       idx + 1, f.name || '', f.ccn || '', f.state || '', f.city || '', f.worst_owner || f.chain_name || 'N/A',
       f.self_report_rn ? (f.self_report_rn * 60).toFixed(0) : '0', f.rn_hprd ? (f.rn_hprd * 60).toFixed(0) : '0',
@@ -163,8 +163,8 @@ export default function DiscrepanciesPage() {
   return (
     <div className="discrepancies-page" ref={pageRef}>
       <Helmet>
-        <title>Staffing Discrepancy Index — Self-Reported vs. Reality | The Oversight Report</title>
-        <meta name="description" content="Check if a nursing home's reported staffing matches payroll records. Compare claimed vs. actual nurse staffing for 14,699 facilities." />
+        <title>Staffing Discrepancy Index — Stored RN Gap | The Oversight Report</title>
+        <meta name="description" content="A stored comparison between an earlier self-reported RN figure and payroll hours. CMS staffing ratings use Payroll-Based Journal data, which CMS audits." />
         <link rel="canonical" href="https://www.oversightreports.com/discrepancies" />
       </Helmet>
       <div className="container-wide">
@@ -173,8 +173,10 @@ export default function DiscrepanciesPage() {
         <div className="disc-hero">
           <h1 className="disc-hero-title">Is Your Nursing Home Honest About Its Staffing?</h1>
           <p className="disc-hero-subtitle">
-            Nursing homes self-report their staffing numbers to the government. We compare those
-            claims against actual payroll records. When the numbers don't match, families should know.
+            Care Compare staffing comes from the Payroll-Based Journal, which CMS audits.
+            This index keeps a stored gap from our extract: an earlier self-reported RN figure
+            compared with the payroll figure saved beside it. The percentage is that stored gap.
+            It is not a new calculation against this month&apos;s hours.
           </p>
         </div>
 
@@ -234,15 +236,15 @@ export default function DiscrepanciesPage() {
 
                   <div className="disc-comparison">
                     <div className="disc-comparison-item">
-                      <div className="disc-comparison-label">What they report to CMS</div>
+                      <div className="disc-comparison-label">Stored self-reported figure</div>
                       <div className="disc-comparison-value">{reportedMin} min/day</div>
-                      <div className="disc-comparison-sublabel">RN hours (self-reported)</div>
+                      <div className="disc-comparison-sublabel">Earlier RN hours in this extract</div>
                     </div>
                     <div className="disc-comparison-arrow">→</div>
                     <div className="disc-comparison-item disc-comparison-actual">
-                      <div className="disc-comparison-label">What payroll records show</div>
+                      <div className="disc-comparison-label">Latest PBJ reported hours</div>
                       <div className="disc-comparison-value">{actualMin} min/day</div>
-                      <div className="disc-comparison-sublabel">RN hours (payroll-verified)</div>
+                      <div className="disc-comparison-sublabel">May differ from the payroll figure used in the gap</div>
                     </div>
                   </div>
 
@@ -273,7 +275,7 @@ export default function DiscrepanciesPage() {
                     No Significant Discrepancy Detected
                   </div>
                   <p className="disc-result-explanation">
-                    This facility's reported staffing is reasonably consistent with payroll records.
+                    This extract does not flag a large stored gap for this facility.
                     This doesn't guarantee quality care — check the full report for inspection results, complaints, and penalties.
                   </p>
                   <div className="disc-result-actions">
@@ -292,15 +294,15 @@ export default function DiscrepanciesPage() {
           <h2>What is a staffing discrepancy?</h2>
           <div className="disc-explainer-content">
             <p>
-              Every nursing home reports its staffing levels to the federal government through
-              a system called the <strong>Payroll-Based Journal (PBJ)</strong>. This is supposed to
-              reflect actual hours worked by nurses and aides.
+              CMS staffing ratings use the <strong>Payroll-Based Journal (PBJ)</strong>: payroll hours
+              facilities submit each quarter. The July 2026 Technical Users&apos; Guide says those
+              reported hours come from PBJ, and CMS audits them.
             </p>
             <p>
-              But there's a problem: some facilities report significantly more nurse staffing
-              than their own payroll records support. When a facility claims to have RN
-              coverage but payroll shows little or none, that gap can mean residents aren't
-              getting the care they're told about.
+              The gap on this page is older than that rating file. It compares a self-reported RN
+              figure stored in our extract with the payroll figure saved at the same time. The
+              percentage was not rebuilt when later PBJ hours replaced the staffing table, so the
+              two minute counts on a facility card may not multiply out to the percentage shown.
             </p>
             <p>
               A discrepancy doesn't automatically mean fraud — it can result from reporting
@@ -398,8 +400,8 @@ export default function DiscrepanciesPage() {
                       <th onClick={() => handleSort('state')} className="sortable">State {getSortIcon('state')}</th>
                       <th>City</th>
                       <th>Owner</th>
-                      <th>Reported</th>
-                      <th>Actual</th>
+                      <th>Stored RN</th>
+                      <th>Latest PBJ</th>
                       <th onClick={() => handleSort('rn_gap_pct')} className="sortable">Gap {getSortIcon('rn_gap_pct')}</th>
                       <th onClick={() => handleSort('zero_rn_pct')} className="sortable">Zero-RN {getSortIcon('zero_rn_pct')}</th>
                     </tr>

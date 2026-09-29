@@ -708,8 +708,8 @@ export function generateFacilityBriefPDF(
   textBlock(model.shortStayNote, MX + colW + 8, y + 11.5, colW - 8, { size: fitSize, color: C.muted, factor: fitFactor });
   y += fitH + 5;
 
-  y = h3('Selected long-stay quality measures (real values only)', MX, y);
-  y = textBlock('Lower is generally better unless noted. These are facility-reported rates CMS publishes — not a complete clinical chart.', MX, y, W, { size: 9.5, color: C.muted });
+  y = h3('Selected quality measures (real values only)', MX, y);
+  y = textBlock('Lower is generally better unless noted. These are rates CMS publishes. Measures marked as not used in the quality star are still shown on Care Compare.', MX, y, W, { size: 9.5, color: C.muted });
 
   if (model.careFitRows.length) {
     autoTable(doc, {
