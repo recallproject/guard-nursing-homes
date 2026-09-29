@@ -33,7 +33,7 @@ function productArticle(pick) {
           ${pick.comfortNote ? `<p style="margin:0 0 8px 0;">${escapeHtml(pick.comfortNote)}</p>` : ''}
           ${pick.safetyNote ? `<p style="margin:0 0 8px 0;">${escapeHtml(pick.safetyNote)}</p>` : ''}
           <p style="margin:0 0 8px 0;">${escapeHtml(pick.why)}</p>
-          <p style="margin:0;"><a href="${escapeAttr(href)}" rel="${rel}">${escapeHtml(AFTER_CARE_PRIMARY_CTA)}</a> <span>${escapeHtml(pick.merchantLine)}</span></p>
+          <p style="margin:0;"><a href="${escapeAttr(href)}" data-product-name="${escapeAttr(pick.title)}" rel="${rel}">${escapeHtml(AFTER_CARE_PRIMARY_CTA)}</a> <span>${escapeHtml(pick.merchantLine)}</span></p>
         </article>`;
 }
 

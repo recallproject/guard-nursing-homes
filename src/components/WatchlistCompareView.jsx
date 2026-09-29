@@ -87,7 +87,7 @@ function CompareFacilityCtas({ facility }) {
         },
       });
     }
-    checkoutSingleReport(ccn);
+    checkoutSingleReport(ccn, { placement: 'watchlist-compare' });
   };
 
   return (

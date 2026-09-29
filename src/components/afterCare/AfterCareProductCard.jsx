@@ -42,6 +42,7 @@ export function AfterCareProductCard({ pick, surface, featured = false }) {
           <a
             className="ac-btn ac-btn--primary"
             href={href}
+            data-product-name={pick.title}
             target="_blank"
             rel={isVive ? 'noopener noreferrer sponsored' : 'noopener noreferrer'}
             onClick={() => track(isVive ? 'after_care_affiliate_click' : 'after_care_medicare_click', {

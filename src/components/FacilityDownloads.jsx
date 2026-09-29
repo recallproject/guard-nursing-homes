@@ -65,7 +65,7 @@ function useFacilityReportActions(facility, nearbyFacilities, allFacilities, ant
       placement,
       composite_score: String(facility.composite || ''),
     });
-    checkoutSingleReport(ccn);
+    checkoutSingleReport(ccn, { placement });
   };
 
   return { familyLoading, downloadFamilyReport, buyFacilityBrief };

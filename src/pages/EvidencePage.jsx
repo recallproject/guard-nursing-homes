@@ -198,7 +198,7 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
           <p>A 9-page printable brief with a decision snapshot, inspection story, staffing hours, visit checklist, and nearby comparison — built from public CMS records.</p>
           <p className="ev-value-line">Same public facts as the facility page, packaged to take on a tour. Not an attorney evidence report.</p>
           <div className="ev-purchase-options">
-            <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn)}>
+            <button className="ev-buy-btn" onClick={() => checkoutSingleReport(ccn, { placement: 'evidence-page' })}>
               Download Facility Brief — $29
             </button>
             <p className="ev-or-subscribe">or <Link to="/pricing">subscribe for unlimited access</Link></p>

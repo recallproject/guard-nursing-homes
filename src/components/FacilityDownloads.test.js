@@ -25,7 +25,7 @@ describe('P0 facility Downloads conversion', () => {
     assert.match(rail, /import \{ generatePDF \} from '\.\.\/utils\/generatePDF'/);
     assert.match(rail, /import \{ checkoutSingleReport \} from '\.\.\/utils\/stripe'/);
     assert.match(rail, /generatePDF\(facility/);
-    assert.match(rail, /checkoutSingleReport\(ccn\)/);
+    assert.match(rail, /checkoutSingleReport\(ccn, \{ placement \}\)/);
     assert.match(rail, /Download Family Report \(Free\)/);
     assert.match(rail, /Buy Facility Brief \(\$29\)/);
     assert.doesNotMatch(rail, /buy\.stripe\.com/);
