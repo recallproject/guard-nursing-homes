@@ -48,6 +48,24 @@ describe('checkout_started properties', () => {
     });
   });
 
+  it('records compare SKU, price, home count, and CCN list', () => {
+    assert.deepEqual(checkoutStartedProperties({
+      product: 'compare_brief_3',
+      price: 69,
+      ccns: ['195381', '195180', '195312'],
+      homeCount: 3,
+      placement: 'watchlist-compare',
+      pagePath: '/watchlist',
+    }), {
+      product: 'compare_brief_3',
+      price: 69,
+      page_path: '/watchlist',
+      placement: 'watchlist-compare',
+      ccns: '195381,195180,195312',
+      home_count: 3,
+    });
+  });
+
   it('omits facility id and non-numeric prices', () => {
     assert.deepEqual(checkoutStartedProperties({
       product: 'clinician_report',
@@ -209,6 +227,24 @@ describe('purchase_completed dedupe', () => {
     assert.equal(calls[0].has_session_id, false);
     assert.equal(calls[0].session_id, '');
   });
+
+  it('includes compare price and home count when provided', () => {
+    const calls = [];
+    globalThis.window.posthog.capture = (event, properties) => {
+      calls.push(properties);
+    };
+    assert.equal(trackPurchaseCompleted({
+      product: 'compare_brief_2',
+      sessionId: 'cs_compare',
+      price: 49,
+      homeCount: 2,
+      ccns: ['195381', '195312'],
+    }), true);
+    assert.equal(calls[0].product, 'compare_brief_2');
+    assert.equal(calls[0].price, 49);
+    assert.equal(calls[0].home_count, 2);
+    assert.equal(calls[0].ccns, '195381,195312');
+  });
 });
 
 describe('affiliate_click', () => {
@@ -292,12 +328,16 @@ describe('commerce wiring on main', () => {
   it('flushes checkout_started inside every Stripe redirect helper', () => {
     const stripe = readSrc('src/utils/stripe.js');
     assert.equal(stripe.includes("posthog.init"), false);
-    for (const product of ["product: 'facility_brief'", "product: 'clinician_report'", 'product: priceKey']) {
+    for (const product of ["product: 'facility_brief'", "product: 'clinician_report'", 'product: priceKey', 'product: offer.product']) {
       const at = stripe.indexOf(product);
       assert.ok(at > 0, product);
       const href = stripe.indexOf('window.location.href', at);
       assert.ok(href > at, product);
     }
+    const offers = readSrc('src/utils/compareBriefOffer.js');
+    assert.match(offers, /compare_brief_2/);
+    assert.match(offers, /compare_brief_3/);
+    assert.match(stripe, /checkoutCompareBrief/);
   });
 
   it('passes placement from each live Facility Brief trigger', () => {
@@ -312,8 +352,11 @@ describe('commerce wiring on main', () => {
 
   it('records purchase_completed on the Stripe success routes that exist', () => {
     assert.match(readSrc('src/pages/EvidenceSuccessPage.jsx'), /product: 'facility_brief'/);
+    assert.match(readSrc('src/pages/EvidenceSuccessPage.jsx'), /data\.product \|\| 'facility_brief'/);
     assert.match(readSrc('src/pages/SuccessPage.jsx'), /trackPurchaseCompleted/);
+    assert.match(readSrc('src/pages/SuccessPage.jsx'), /pending_compare_ccns/);
     assert.equal(readSrc('src/App.jsx').includes('compare-brief-success'), false);
+    assert.match(readSrc('src/App.jsx'), /compare-brief-sample/);
   });
 
   it('reuses the index.html snippet and listens for affiliate clicks', () => {

@@ -1,7 +1,9 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { generateComparisonPDF } from '../utils/generateComparisonPDF';
-import { checkoutSingleReport } from '../utils/stripe';
+import { checkoutCompareBrief } from '../utils/stripe';
+import { compareBriefOfferForCount } from '../utils/compareBriefOffer';
+import { track } from '../utils/analytics';
 import { FREE_VS_PAID_COPY } from './facilityReportCopy';
 import { CMS_SNF_AS_OF_ISO } from '../data/careSettings';
 import {
@@ -72,30 +74,13 @@ function CompareFacilityCtas({ facility }) {
     }, 100);
   };
 
-  const buyFacilityBrief = () => {
-    if (!ccn) {
-      alert('This facility is missing a CMS ID, so checkout cannot start. Please try another facility or contact support.');
-      return;
-    }
-    if (typeof window !== 'undefined' && window.plausible) {
-      window.plausible('Facility-Brief-Checkout', {
-        props: {
-          ccn,
-          state: facility.state,
-          placement: 'watchlist-compare',
-          composite_score: String(facility.composite || ''),
-        },
-      });
-    }
-    checkoutSingleReport(ccn, { placement: 'watchlist-compare' });
-  };
-
   return (
     <div className="watchlist-compare-ctas">
       <p className="watchlist-compare-ctas-line">
         <span>{FREE_VS_PAID_COPY.free}</span>
-        <span aria-hidden="true"> · </span>
+        <span> for this home. The </span>
         <span>{FREE_VS_PAID_COPY.paid}</span>
+        <span> stays on the facility page.</span>
       </p>
       <button
         type="button"
@@ -106,16 +91,57 @@ function CompareFacilityCtas({ facility }) {
       >
         {familyLoading ? 'Generating…' : 'Download Family Report (Free)'}
       </button>
-      <button
-        type="button"
-        className="watchlist-compare-cta watchlist-compare-cta--paid"
-        onClick={buyFacilityBrief}
-        aria-label={`Buy Facility Brief ($29) for ${facility.name}`}
-      >
-        Buy Facility Brief ($29)
-      </button>
       <Link to={`/facility/${ccn}`} className="watchlist-compare-cta watchlist-compare-cta--link">
         View full report
+      </Link>
+    </div>
+  );
+}
+
+function CompareOffer({
+  compact = false,
+  count,
+  offer,
+  snapLoading,
+  onFreeDownload,
+  onBuy,
+}) {
+  const priceLabel = offer ? `Get Compare Brief — $${offer.price}` : 'Get Compare Brief';
+  return (
+    <div className={`watchlist-compare-offer${compact ? ' watchlist-compare-offer--compact' : ''}`}>
+      {compact ? null : (
+        <>
+          <p className="watchlist-compare-offer-copy">
+            Make sense of the differences before you visit. Get one PDF with a side-by-side decision page, questions tailored to these homes, and space for your notes.
+          </p>
+          <p className="watchlist-compare-offer-note">
+            The free comparison does not require an email or payment. A Compare Brief is one combined PDF ($49 for 2 homes or $69 for 3 homes), not a stack of $29 Facility Briefs.
+          </p>
+        </>
+      )}
+      <button
+        type="button"
+        className="watchlist-compare-cta watchlist-compare-cta--free"
+        onClick={onFreeDownload}
+        disabled={snapLoading}
+        aria-label={`Download free comparison of ${count} homes`}
+      >
+        {snapLoading ? 'Generating…' : 'Download free comparison'}
+      </button>
+      <button
+        type="button"
+        className="watchlist-compare-cta watchlist-compare-cta--outline"
+        onClick={onBuy}
+        aria-label={priceLabel}
+      >
+        {priceLabel}
+      </button>
+      <Link
+        to="/compare-brief-sample"
+        className="watchlist-compare-sample"
+        onClick={() => track('compare_brief_sample_opened', { placement: 'watchlist-compare', home_count: count })}
+      >
+        See sample
       </Link>
     </div>
   );
@@ -178,6 +204,7 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
 
   const asOf = freshnessLabel(dataAsOf);
   const count = homes.length;
+  const offer = compareBriefOfferForCount(count);
 
   const downloadComparison = () => {
     if (snapLoading) return;
@@ -201,6 +228,21 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
         setSnapLoading(false);
       }
     }, 100);
+  };
+
+  const buyCompareBrief = () => {
+    const ccns = homes.map((facility) => facility.ccn);
+    if (typeof window !== 'undefined' && window.plausible) {
+      window.plausible('Compare-Brief-Checkout', {
+        props: {
+          placement: 'watchlist-compare',
+          count: String(count),
+          product: offer?.product || '',
+          price: String(offer?.price || ''),
+        },
+      });
+    }
+    checkoutCompareBrief(ccns, { placement: 'watchlist-compare' });
   };
 
   const toggleGroup = (id) => {
@@ -260,6 +302,14 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
 
       <CompareGrid facilities={homes} rows={FIRST_VIEW_ROWS} onExplain={setSheetRow} />
 
+      <CompareOffer
+        count={count}
+        offer={offer}
+        snapLoading={snapLoading}
+        onFreeDownload={downloadComparison}
+        onBuy={buyCompareBrief}
+      />
+
       <div className="wcg-accordions">
         {DETAIL_GROUPS.map((group) => {
           const open = openGroups.has(group.id);
@@ -289,9 +339,7 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
 
       <div className="watchlist-compare-briefs" id="compare-briefs">
         <p className="watchlist-compare-upgrade">
-          Want help deciding what to ask on a tour? Get the paid family brief ($29 per home).
-          Includes a plain-language packet, questions tailored to the home, and a visit worksheet.
-          The free comparison stays available.
+          Each home still has a free Family Report. The $29 Facility Brief stays on that home&apos;s page. The free comparison stays available.
         </p>
         <div className="watchlist-compare-table-ctas">
           {homes.map((facility) => (
@@ -304,17 +352,14 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
       </div>
 
       <div className="watchlist-compare-actionbar">
-        <button
-          type="button"
-          className="watchlist-compare-cta watchlist-compare-cta--free"
-          onClick={downloadComparison}
-          disabled={snapLoading}
-        >
-          {snapLoading ? 'Generating…' : `Download my ${count}-home comparison`}
-        </button>
-        <a className="watchlist-compare-actionbar-paid" href="#compare-briefs">
-          Get a $29 Facility Brief
-        </a>
+        <CompareOffer
+          compact
+          count={count}
+          offer={offer}
+          snapLoading={snapLoading}
+          onFreeDownload={downloadComparison}
+          onBuy={buyCompareBrief}
+        />
       </div>
 
       <MetricSheet row={sheetRow} onClose={() => setSheetRow(null)} />

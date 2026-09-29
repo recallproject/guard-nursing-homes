@@ -95,7 +95,7 @@ export function generateComparisonPDF(facilities, options = {}) {
   doc.setFontSize(8);
   doc.setTextColor(71, 85, 105);
   const note = doc.splitTextToSize(pdfSafeText(
-    'Notes: Stars are signals, not guarantees. Verify on medicare.gov/care-compare before a visit. Want help deciding what to ask on a tour? The $29 Facility Brief adds a plain-language packet, visit questions, and a worksheet for each home.'
+    'Notes: Stars are signals, not guarantees. Verify on medicare.gov/care-compare before a visit. This free snapshot is not a paid Compare Brief. A Compare Brief ($49 for 2 homes, $69 for 3) is one combined PDF with differences, tour questions, and a notes page. A $29 Facility Brief remains the single-home packet.'
   ), PW - MX * 2);
   doc.text(note, MX, y);
 

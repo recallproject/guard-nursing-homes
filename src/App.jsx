@@ -35,6 +35,7 @@ const AskClinicianSubmittedPage = lazy(() => import('./pages/AskClinicianSubmitt
 const EvidenceSamplePage = lazy(() => import('./pages/EvidenceSamplePage'));
 const EvidenceSuccessPage = lazy(() => import('./pages/EvidenceSuccessPage'));
 const EvidenceDownloadPage = lazy(() => import('./pages/EvidenceDownloadPage'));
+const CompareBriefSamplePage = lazy(() => import('./pages/CompareBriefSamplePage'));
 const KnowYourRightsPage = lazy(() => import('./pages/KnowYourRightsPage'));
 const DataTransparencyPage = lazy(() => import('./pages/DataTransparencyPage'));
 const AntipsychoticTrendsPage = lazy(() => import('./pages/AntipsychoticTrendsPage').then(m => ({ default: m.AntipsychoticTrendsPage })));
@@ -162,6 +163,7 @@ function App() {
           <Route path="/ask-a-clinician-submitted" element={<AskClinicianSubmittedPage />} />
           <Route path="/evidence-success" element={<EvidenceSuccessPage />} />
           <Route path="/evidence-download" element={<EvidenceDownloadPage />} />
+          <Route path="/compare-brief-sample" element={<CompareBriefSamplePage />} />
           <Route path="/evidence-sample" element={<EvidenceSamplePage />} />
           <Route path="/know-your-rights" element={<KnowYourRightsPage />} />
           <Route path="/after-care" element={<AfterCarePage />} />

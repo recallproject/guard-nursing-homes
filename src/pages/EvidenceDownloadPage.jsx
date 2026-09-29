@@ -2,23 +2,24 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { EvidencePage } from './EvidencePage';
+import { CompareBriefDownload } from './CompareBriefDownload';
+import { parseCompareCcnList } from '../utils/compareBriefOffer';
 import '../styles/design.css';
 
 export default function EvidenceDownloadPage() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get('token') || '';
   const ccn = searchParams.get('ccn') || '';
+  const compareCcns = parseCompareCcnList(ccn);
+  const isCompare = compareCcns.length >= 2;
   const [status, setStatus] = useState('verifying'); // verifying | valid | invalid | error
   const [errorMsg, setErrorMsg] = useState('');
 
+  const missingParams = !token || !ccn;
+
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    if (!token || !ccn) {
-      setStatus('invalid');
-      setErrorMsg('Missing download token or facility ID.');
-      return;
-    }
+    if (missingParams) return undefined;
 
     async function verify() {
       try {
@@ -45,9 +46,15 @@ export default function EvidenceDownloadPage() {
     }
 
     verify();
-  }, [token, ccn]);
+    return undefined;
+  }, [token, ccn, missingParams]);
 
-  if (status === 'verifying') {
+  const displayStatus = missingParams ? 'invalid' : status;
+  const displayError = missingParams
+    ? 'Missing download token or facility ID.'
+    : errorMsg;
+
+  if (displayStatus === 'verifying') {
     return (
       <>
         <Helmet>
@@ -62,14 +69,18 @@ export default function EvidenceDownloadPage() {
           backgroundColor: 'var(--bg-deep)',
         }}>
           <p style={{ color: 'var(--text-cream)', fontSize: '1.1rem' }}>
-            Verifying your Facility Brief download...
+            Verifying your {isCompare ? 'Compare Brief' : 'Facility Brief'} download...
           </p>
         </div>
       </>
     );
   }
 
-  if (status === 'valid') {
+  if (displayStatus === 'valid' && isCompare) {
+    return <CompareBriefDownload ccns={compareCcns} />;
+  }
+
+  if (displayStatus === 'valid') {
     return <EvidencePage tokenVerified ccnOverride={ccn} />;
   }
 
@@ -103,7 +114,7 @@ export default function EvidenceDownloadPage() {
             fontSize: '1.75rem',
             marginBottom: '1rem',
           }}>
-            {status === 'error' ? 'Verification Error' : 'Link Expired'}
+            {displayStatus === 'error' ? 'Verification Error' : 'Link Expired'}
           </h1>
           <p style={{
             color: 'var(--text-cream)',
@@ -111,7 +122,7 @@ export default function EvidenceDownloadPage() {
             lineHeight: 1.6,
             marginBottom: '2rem',
           }}>
-            {errorMsg}
+            {displayError}
           </p>
           <p style={{ color: 'var(--text-cream)', marginBottom: '1.5rem' }}>
             Need help? Contact <a href="mailto:contact@oversightreports.com" style={{ color: 'var(--accent-teal)' }}>contact@oversightreports.com</a>

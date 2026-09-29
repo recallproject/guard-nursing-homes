@@ -151,6 +151,8 @@ export function checkoutStartedProperties({
   product,
   price,
   ccn,
+  ccns,
+  homeCount,
   placement,
   pagePath,
 } = {}) {
@@ -164,6 +166,12 @@ export function checkoutStartedProperties({
   if (facilityId) {
     properties.facility_id = facilityId;
     properties.ccn = facilityId;
+  }
+  if (Array.isArray(ccns) && ccns.length) {
+    properties.ccns = ccns.map((id) => String(id).trim()).filter(Boolean).join(',');
+    properties.home_count = ccns.length;
+  } else if (typeof homeCount === 'number' && Number.isFinite(homeCount)) {
+    properties.home_count = homeCount;
   }
   return properties;
 }
@@ -185,13 +193,17 @@ export function purchaseDedupeKey(product, sessionId) {
  * so scanners that omit the query param stay visible.
  * @returns {boolean} true when the event was sent
  */
-export function trackPurchaseCompleted({ product, sessionId } = {}) {
+export function trackPurchaseCompleted({ product, sessionId, price, homeCount, ccns } = {}) {
   const id = String(sessionId || '').trim();
   const properties = {
     product: product || '',
     session_id: id,
     has_session_id: Boolean(id),
   };
+  if (typeof price === 'number' && Number.isFinite(price)) properties.price = price;
+  if (typeof homeCount === 'number' && Number.isFinite(homeCount)) properties.home_count = homeCount;
+  if (Array.isArray(ccns) && ccns.length) properties.ccns = ccns.map((item) => String(item).trim()).filter(Boolean).join(',');
+  else if (typeof ccns === 'string' && ccns.trim()) properties.ccns = ccns.trim();
   const key = purchaseDedupeKey(product, id);
   const store = pageStorage();
   if (key && store) {

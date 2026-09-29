@@ -17,6 +17,8 @@
  * STRIPE PAYMENT LINK SETUP (MANUAL STEP):
  * The single-report Payment Link success URL must be set to:
  *   https://www.oversightreports.com/evidence-success?session_id={CHECKOUT_SESSION_ID}
+ * Compare Brief Payment Links ($49 for 2 homes, $69 for 3) use that same success URL.
+ * Their client_reference_id is a comma-separated CCN list. Amount must be 4900 or 6900 cents.
  *
  * ENV VARS REQUIRED:
  * - EVIDENCE_SECRET: For HMAC token generation (existing)
@@ -26,6 +28,7 @@
 import crypto from 'crypto';
 import Stripe from 'stripe';
 import { assertPaidFacilityBriefSession, resolveFacilityCcn } from './lib/resolveFacilityCcn.js';
+import { assertCompareBriefPayment, resolveCompareCcns } from '../../src/utils/compareBriefOffer.js';
 
 const EVIDENCE_SECRET = process.env.EVIDENCE_SECRET;
 const SITE_URL = process.env.SITE_URL || 'https://www.oversightreports.com';
@@ -89,6 +92,52 @@ export default async function handler(req, res) {
   }
   // ── End payment verification ─────────────────────────────────────
 
+  const compareCcns = resolveCompareCcns(session, requestedCcn);
+  if (compareCcns.length >= 2) {
+    let pricedSession = session;
+    const priceCheckEnabled = Boolean(
+      process.env.STRIPE_COMPARE_BRIEF_2_PRICE_ID || process.env.STRIPE_COMPARE_BRIEF_3_PRICE_ID
+    );
+    if (priceCheckEnabled) {
+      try {
+        const listed = await stripe.checkout.sessions.listLineItems(checkout_session_id, { limit: 5 });
+        pricedSession = { ...session, line_items: listed };
+      } catch (err) {
+        console.error('Compare Brief line items failed:', err.message);
+        return res.status(500).json({ error: 'Payment verification failed' });
+      }
+    }
+    const comparePayment = assertCompareBriefPayment(pricedSession, compareCcns, process.env);
+    if (!comparePayment.ok) {
+      return res.status(comparePayment.status).json({ error: comparePayment.error });
+    }
+
+    const compareCcn = comparePayment.ccns.join(',');
+    const { token } = generateToken(compareCcn);
+    const downloadUrl = `${SITE_URL}/evidence-download?token=${encodeURIComponent(token)}&ccn=${encodeURIComponent(compareCcn)}`;
+
+    if (FORMSPREE_ID) {
+      fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Compare Brief Purchase — ${comparePayment.offer.product} — ${compareCcn}`,
+          message: `Verified ${comparePayment.offer.product} (session: ${checkout_session_id}) for CCNs ${compareCcn}`,
+        }),
+      }).catch(() => {});
+    }
+
+    return res.status(200).json({
+      success: true,
+      downloadUrl,
+      ccn: compareCcn,
+      ccns: comparePayment.ccns,
+      product: comparePayment.offer.product,
+      price: comparePayment.offer.price,
+      homeCount: comparePayment.ccns.length,
+    });
+  }
+
   const resolved = resolveFacilityCcn(session, requestedCcn);
   if (resolved.error) {
     return res.status(resolved.status).json({ error: resolved.error });
@@ -114,5 +163,9 @@ export default async function handler(req, res) {
     success: true,
     downloadUrl,
     ccn,
+    ccns: [ccn],
+    product: 'facility_brief',
+    price: 29,
+    homeCount: 1,
   });
 }

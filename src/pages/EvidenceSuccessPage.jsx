@@ -21,11 +21,14 @@ import { useState, useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { trackPurchaseCompleted } from '../utils/analytics';
+import { isCompareBriefProduct, parseCompareCcnList } from '../utils/compareBriefOffer';
 import '../styles/design.css';
 
 function readOptionalStoredCcn() {
   try {
-    return localStorage.getItem('pending_single_report') || '';
+    return localStorage.getItem('pending_compare_ccns')
+      || localStorage.getItem('pending_single_report')
+      || '';
   } catch {
     return '';
   }
@@ -34,6 +37,7 @@ function readOptionalStoredCcn() {
 function clearOptionalStoredCcn() {
   try {
     localStorage.removeItem('pending_single_report');
+    localStorage.removeItem('pending_compare_ccns');
   } catch {
     // Storage may be blocked; fulfillment does not depend on it.
   }
@@ -48,13 +52,19 @@ export default function EvidenceSuccessPage() {
   // Optional CCN hints — never required for a paid session
   const ccnFromUrl = searchParams.get('ccn') || '';
 
+  const hintForLabel = readOptionalStoredCcn() || ccnFromUrl;
+  const hintedCompare = parseCompareCcnList(hintForLabel);
   const [status, setStatus] = useState('loading'); // loading | ready | error
   const [downloadUrl, setDownloadUrl] = useState('');
   const [ccn, setCcn] = useState('');
+  const [product, setProduct] = useState(hintedCompare.length >= 2 ? 'compare_brief_2' : 'facility_brief');
+  const [homeCount, setHomeCount] = useState(hintedCompare.length || 1);
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
-    trackPurchaseCompleted({ product: 'facility_brief', sessionId });
+    if (!sessionId) {
+      trackPurchaseCompleted({ product: 'facility_brief', sessionId });
+    }
   }, [sessionId]);
 
   useEffect(() => {
@@ -79,11 +89,23 @@ export default function EvidenceSuccessPage() {
         if (cancelled) return;
         if (res.ok && data.success) {
           const resolvedCcn = data.ccn || hintCcn;
+          const resolvedProduct = data.product || 'facility_brief';
           clearOptionalStoredCcn();
           setDownloadUrl(data.downloadUrl);
           setCcn(resolvedCcn);
+          setProduct(resolvedProduct);
+          setHomeCount(data.homeCount || parseCompareCcnList(resolvedCcn).length || 1);
           setStatus('ready');
-          window.plausible && window.plausible('Evidence-Purchase-Complete', { props: { ccn: resolvedCcn } });
+          trackPurchaseCompleted({
+            product: resolvedProduct,
+            sessionId,
+            price: typeof data.price === 'number' ? data.price : undefined,
+            homeCount: data.homeCount,
+            ccns: data.ccns,
+          });
+          window.plausible && window.plausible('Evidence-Purchase-Complete', {
+            props: { ccn: resolvedCcn, product: resolvedProduct },
+          });
         } else if (res.status === 402) {
           setErrorMsg('Payment has not been completed. Please complete checkout and try again.');
           setStatus('error');
@@ -106,11 +128,13 @@ export default function EvidenceSuccessPage() {
   const displayError = sessionId
     ? errorMsg
     : 'No payment session found. If you just completed payment, please check your email or contact support.';
+  const compare = isCompareBriefProduct(product);
+  const productName = compare ? 'Compare Brief' : 'Facility Brief';
 
   return (
     <>
       <Helmet>
-        <title>Your Facility Brief | The Oversight Report</title>
+        <title>Your {productName} | The Oversight Report</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <div style={{
@@ -132,7 +156,7 @@ export default function EvidenceSuccessPage() {
         }}>
           {displayStatus === 'loading' && (
             <p style={{ color: 'var(--text-cream)', fontSize: '1.1rem' }}>
-              Preparing your Facility Brief...
+              Preparing your {productName}...
             </p>
           )}
 
@@ -153,15 +177,19 @@ export default function EvidenceSuccessPage() {
                 lineHeight: 1.6,
                 marginBottom: '2rem',
               }}>
-                Your Facility Brief{ccn ? <> for facility <strong>{ccn}</strong></> : ''} is ready.
-                This link expires in 72 hours.
+                {compare ? (
+                  <>Your Compare Brief for <strong>{homeCount} homes</strong> is ready.</>
+                ) : (
+                  <>Your Facility Brief{ccn ? <> for facility <strong>{ccn}</strong></> : ''} is ready.</>
+                )}
+                {' '}This link expires in 72 hours.
               </p>
               <a
                 href={downloadUrl}
                 className="btn btn-primary"
                 style={{ display: 'inline-block', padding: '14px 28px', fontSize: '1rem', textDecoration: 'none' }}
               >
-                Download Facility Brief
+                Download {productName}
               </a>
               <p style={{ marginTop: '1.5rem' }}>
                 <Link to="/" style={{ color: 'var(--accent-teal)', textDecoration: 'none' }}>

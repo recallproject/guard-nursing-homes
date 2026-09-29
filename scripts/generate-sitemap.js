@@ -93,6 +93,7 @@ const staticPages = [
   { path: '/after-care', priority: '0.5' },
   { path: '/care-at-home', priority: '0.5' },
   { path: '/evidence-sample', priority: '0.7' },
+  { path: '/compare-brief-sample', priority: '0.6' },
   { path: '/data-transparency', priority: '0.6' },
   { path: '/families', priority: '0.7' },
   { path: '/attorneys', priority: '0.7' },
