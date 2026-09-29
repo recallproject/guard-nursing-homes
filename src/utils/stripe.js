@@ -1,4 +1,10 @@
 import { buildSingleReportCheckoutUrl, isValidFacilityCcn, normalizeFacilityCcn } from './facilityBriefCheckout.js';
+import {
+  buildCompareBriefCheckoutUrl,
+  compareBriefOfferForCcns,
+  compareBriefPaymentLink,
+  parseCompareCcnList,
+} from './compareBriefOffer.js';
 import { trackCheckoutStarted } from './analytics.js';
 
 /**
@@ -11,6 +17,16 @@ import { trackCheckoutStarted } from './analytics.js';
  * 1. Success URL including {CHECKOUT_SESSION_ID}:
  *    - Subscription links: https://www.oversightreports.com/success?session_id={CHECKOUT_SESSION_ID}
  *    - Single report link: https://www.oversightreports.com/evidence-success?session_id={CHECKOUT_SESSION_ID}
+ *    - Compare Brief links ($49 / $69): same evidence-success URL
+ *
+ * Compare Brief Payment Links are not hardcoded. Set these at build time:
+ *    VITE_STRIPE_COMPARE_BRIEF_2_LINK  ($49, 2 homes)
+ *    VITE_STRIPE_COMPARE_BRIEF_3_LINK  ($69, 3 homes)
+ * Optional server checks (runtime):
+ *    STRIPE_COMPARE_BRIEF_2_PRICE_ID / STRIPE_COMPARE_BRIEF_3_PRICE_ID
+ *    STRIPE_COMPARE_BRIEF_2_LINK_ID / STRIPE_COMPARE_BRIEF_3_LINK_ID
+ * Fulfillment rejects a payment whose amount_subtotal is not 4900 or 6900
+ * cents for the CCN count on client_reference_id.
  *
  * 2. Metadata on each subscription Payment Link:
  *    - Key: "tier"  Value: "pro" (for Pro links) or "professional" (for Professional links)
@@ -110,6 +126,7 @@ export async function checkoutSingleReport(ccn, { placement = 'facility-brief' }
   // Optional helper for same-origin returns. Not required for fulfillment.
   try {
     localStorage.setItem('pending_single_report', normalized);
+    localStorage.removeItem('pending_compare_ccns');
   } catch {
     // Private mode / storage blocked — Stripe session still has the CCN.
   }
@@ -119,6 +136,49 @@ export async function checkoutSingleReport(ccn, { placement = 'facility-brief' }
       product: 'facility_brief',
       price: 29,
       ccn: normalized,
+      placement,
+    });
+  } catch {
+    // Checkout must proceed even if analytics fails.
+  }
+  window.location.href = checkoutUrl;
+}
+
+/**
+ * Redirect to Stripe for one combined Compare Brief ($49 for 2 homes, $69 for 3).
+ * CCNs are sent as a comma-separated client_reference_id, in tray order.
+ * Does not start checkout when the Payment Link env var is missing.
+ *
+ * @param {string[]} ccns
+ * @param {{ placement?: string }} [options]
+ */
+export async function checkoutCompareBrief(ccns, { placement = 'watchlist-compare' } = {}) {
+  const list = parseCompareCcnList(ccns);
+  const offer = compareBriefOfferForCcns(list);
+  if (!offer) {
+    alert('A Compare Brief is for 2 or 3 homes. Add homes to compare, or download the free comparison.');
+    return;
+  }
+
+  const checkoutUrl = buildCompareBriefCheckoutUrl(compareBriefPaymentLink(list.length), list);
+  if (!checkoutUrl) {
+    alert('Compare Brief checkout is not set up yet. You can still download the free comparison. If you already paid, email contact@oversightreports.com.');
+    return;
+  }
+
+  try {
+    localStorage.setItem('pending_compare_ccns', list.join(','));
+    localStorage.removeItem('pending_single_report');
+  } catch {
+    // Private mode / storage blocked — Stripe session still has the CCN list.
+  }
+
+  try {
+    await trackCheckoutStarted({
+      product: offer.product,
+      price: offer.price,
+      ccns: list,
+      homeCount: list.length,
       placement,
     });
   } catch {

@@ -455,6 +455,11 @@ const staticPages = [
     title: 'Refresh Log — Public Record of Data Updates | The Oversight Report',
     description: 'A dated, public record of every CMS data refresh, dataset addition, and methodology change on The Oversight Report. Independent. Sourced. Signed.'
   },
+  {
+    route: 'compare-brief-sample',
+    title: 'Compare Brief Sample | The Oversight Report',
+    description: 'Sample Compare Brief for families comparing nursing homes. One PDF with a scorecard, plain-language differences, tour questions, and a notes page. The free comparison stays free.'
+  },
 ];
 
 console.log('Generating SEO pages with static HTML content...');

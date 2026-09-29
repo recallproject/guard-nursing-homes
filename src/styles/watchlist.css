@@ -878,6 +878,55 @@
   text-underline-offset: 2px;
 }
 
+.watchlist-compare-offer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0 8px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.watchlist-compare-offer--compact {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.watchlist-compare-offer-copy {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: #1e293b;
+}
+
+.watchlist-compare-offer-note {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #475569;
+}
+
+.watchlist-compare-cta.watchlist-compare-cta--outline {
+  background: #fff;
+  color: #1d4e7e;
+  border: 2px solid #1d4e7e;
+}
+
+.watchlist-compare-sample {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-weight: 700;
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .watchlist-compare-upgrade {
   margin: 10px 0 16px;
   font-size: 0.88rem;

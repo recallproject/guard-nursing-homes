@@ -99,7 +99,9 @@ export default async function handler(req, res) {
       // For one-time payments (Facility Brief):
       // send-evidence.js verifies the session directly with Stripe
       if (session.mode === 'payment') {
-        console.log('One-time payment received:', session.id, 'ccn:', session.client_reference_id);
+        const ref = session.client_reference_id || '';
+        const kind = String(ref).includes(',') ? 'compare-brief' : 'facility-brief';
+        console.log('One-time payment received:', session.id, kind, 'ref:', ref);
       }
       break;
     }

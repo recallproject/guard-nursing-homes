@@ -23,19 +23,25 @@ describe('Favorites compare UX v2 wiring', () => {
     assert.doesNotMatch(page, /getElementById\('compare'\)\?\.scrollIntoView/);
   });
 
-  it('surfaces free comparison snapshot and $29 Brief without blocking the free path', () => {
+  it('surfaces free comparison download and Compare Brief checkout without blocking the free path', () => {
     const view = readSrc('components/WatchlistCompareView.jsx');
     assert.match(view, /import\('\.\.\/utils\/generatePDF'\)/);
     assert.match(view, /import \{ generateComparisonPDF \} from '\.\.\/utils\/generateComparisonPDF'/);
-    assert.match(view, /import \{ checkoutSingleReport \} from '\.\.\/utils\/stripe'/);
+    assert.match(view, /import \{ checkoutCompareBrief \} from '\.\.\/utils\/stripe'/);
     assert.match(view, /FREE_VS_PAID_COPY/);
-    assert.match(view, /Download my \$\{count\}-home comparison/);
+    assert.match(view, /Download free comparison/);
     assert.match(view, /Download Family Report \(Free\)/);
-    assert.match(view, /Buy Facility Brief \(\$29\)/);
+    assert.match(view, /Get Compare Brief/);
+    assert.match(view, /\$49 for 2 homes or \$69 for 3 homes/);
+    assert.match(view, /See sample/);
+    assert.match(view, /\/compare-brief-sample/);
     assert.match(view, /The free comparison stays available/);
     assert.match(view, /watchlist-compare-actionbar/);
-    assert.match(view, /Get a \$29 Facility Brief/);
+    assert.match(view, /checkoutCompareBrief\(ccns, \{ placement: 'watchlist-compare' \}\)/);
+    assert.doesNotMatch(view, /checkoutSingleReport/);
+    assert.doesNotMatch(view, /Buy Facility Brief/);
     assert.doesNotMatch(view, /buy\.stripe\.com/);
+    assert.doesNotMatch(view, /\b(best|safest|winner)\b/i);
   });
 
   it('uses a sticky-label side-by-side grid on phones instead of stacked compare cards', () => {

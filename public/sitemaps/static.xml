@@ -73,6 +73,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.oversightreports.com/compare-brief-sample</loc>
+    <lastmod>2026-09-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.oversightreports.com/data-transparency</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>

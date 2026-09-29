@@ -35,8 +35,18 @@ export default function SuccessPage() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
+    // Compare Brief and Facility Brief both fulfill on /evidence-success.
+    // Preserve the session_id so that page can verify payment.
+    const pendingCompare = localStorage.getItem('pending_compare_ccns');
+    if (pendingCompare) {
+      const evidenceUrl = sessionId
+        ? `/evidence-success?session_id=${sessionId}`
+        : `/evidence-success?ccn=${encodeURIComponent(pendingCompare)}`;
+      navigate(evidenceUrl, { replace: true });
+      return;
+    }
+
     // If this is a single report purchase, redirect to evidence success page
-    // Preserve the session_id so evidence page can verify payment too
     const pendingSingleReport = localStorage.getItem('pending_single_report');
     if (pendingSingleReport) {
       // Don't remove pending_single_report here — EvidenceSuccessPage will read it
