@@ -10,6 +10,8 @@ const index = {
     { ccn: '015009', name: 'Los Angeles Care', city: 'LOS ANGELES', state: 'CA', zip: '90001' },
     { ccn: '455001', name: 'Fort Worth One', city: 'FORT WORTH', state: 'TX', zip: '76102' },
     { ccn: '455002', name: 'Fort Worth Two', city: 'Fort Worth', state: 'TX', zip: '76102' },
+    { ccn: '455101', name: 'Longview One', city: 'LONGVIEW', state: 'TX', zip: '75601' },
+    { ccn: '455102', name: 'Longview Two', city: 'LONGVIEW', state: 'TX', zip: '75601' },
     { ccn: '265001', name: 'Saint Louis Home', city: 'St. Louis', state: 'MO', zip: '63101' },
   ],
   postacute: [
@@ -32,12 +34,14 @@ describe('suggestLocations', () => {
   it('suggests ZIP prefixes and exact ZIPs from facility records', () => {
     const prefix = suggestLocations(index, '756');
     assert.equal(prefix[0].kind, 'zip');
-    assert.equal(prefix[0].value, '75684');
-    assert.equal(prefix[0].meta, 'Overton, TX');
+    assert.equal(prefix[0].value, '75601');
+    assert.equal(prefix[0].meta, 'Longview, TX');
+    assert.ok(prefix.some((hit) => hit.value === '75684' && hit.meta === 'Overton, TX'));
 
     const exact = suggestLocations(index, '75684');
     assert.equal(exact.length, 1);
     assert.equal(exact[0].value, '75684');
+    assert.equal(exact[0].meta, 'Overton, TX');
   });
 
   it('suggests states by abbreviation and name', () => {

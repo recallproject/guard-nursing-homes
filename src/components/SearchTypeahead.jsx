@@ -84,11 +84,13 @@ export function SearchTypeahead({
       }
       return;
     }
-    if (event.key === 'Escape' && open) {
+    if (event.key === 'Escape') {
       event.preventDefault();
-      event.stopPropagation();
-      setOpen(false);
-      setActiveIndex(-1);
+      if (open) {
+        event.stopPropagation();
+        setOpen(false);
+        setActiveIndex(-1);
+      }
     }
   }
 

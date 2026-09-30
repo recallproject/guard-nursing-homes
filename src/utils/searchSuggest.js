@@ -95,17 +95,19 @@ function buildBundle(index, settingId) {
   const zips = [...zipMap.entries()]
     .map(([zip, citiesForZip]) => {
       let best = null;
+      let total = 0;
       for (const city of citiesForZip.values()) {
+        total += city.count;
         if (!best || city.count > best.count) best = city;
       }
       return {
         zip,
         city: best?.city || '',
         state: best?.state || '',
-        count: best?.count || 0,
+        count: total,
       };
     })
-    .sort((a, b) => a.zip.localeCompare(b.zip));
+    .sort((a, b) => b.count - a.count || a.zip.localeCompare(b.zip));
 
   const states = [...stateCounts.entries()]
     .map(([code, count]) => ({
@@ -191,11 +193,9 @@ export function suggestLocations(index, query, { settingId = 'snf', limit = 8 } 
     const prefix = zipLike[1];
     const hits = [];
     for (const zip of bundle.zips) {
-      if (!zip.zip.startsWith(prefix)) continue;
-      hits.push(zipSuggestion(zip));
-      if (hits.length >= limit) break;
+      if (zip.zip.startsWith(prefix)) hits.push(zip);
     }
-    return hits;
+    return hits.slice(0, limit).map(zipSuggestion);
   }
 
   const parsed = splitCityState(raw);
