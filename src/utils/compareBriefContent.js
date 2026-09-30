@@ -79,8 +79,12 @@ function percent(value) {
   return Number.isInteger(rounded) ? `${rounded}%` : `${rounded.toFixed(1)}%`;
 }
 
+function homeLabel(home) {
+  return home.tableName || home.shortName;
+}
+
 function detailList(homes, values, format) {
-  return homes.map((home, index) => `${home.shortName} ${format(values[index])}`).join('; ');
+  return homes.map((home, index) => `${homeLabel(home)} ${format(values[index])}`).join('; ');
 }
 
 function narrateSpread(homes, values, format, noun, higherIsBetter, ask) {
@@ -89,7 +93,8 @@ function narrateSpread(homes, values, format, noun, higherIsBetter, ask) {
   const direction = higherIsBetter ? 'higher' : 'lower';
   const verb = reportsVerb(leaders.length);
   const detail = detailList(homes, values, format);
-  return `${joinNames(leaders.map((home) => home.shortName))} ${verb} ${direction} ${noun} (${detail}). ${ask}`;
+  const fact = `${joinNames(leaders.map((home) => homeLabel(home)))} ${verb} ${direction} ${noun} (${detail}).`;
+  return { fact, ask };
 }
 
 function findDetailRow(id) {
@@ -113,30 +118,42 @@ function measure(homes, spec) {
   const values = homes.map((home) => spec.read(home.facility));
   if (values.some((value) => value == null)) {
     if (!spec.required) return null;
+    const text = `Not enough comparable information on ${spec.label}. At least one home is missing this figure in the CMS extract.`;
     return {
       id: spec.id,
       status: 'insufficient',
-      text: `Not enough comparable information on ${spec.label}. At least one home is missing this figure in the CMS extract.`,
+      label: spec.label,
+      fact: text,
+      ask: '',
+      text,
     };
   }
   const gap = Math.max(...values) - Math.min(...values);
   if (gap < spec.minGap) return null;
+  const narrated = spec.narrate(homes, values);
   return {
     id: spec.id,
     status: 'difference',
-    text: spec.narrate(homes, values),
+    label: spec.label,
+    fact: narrated.fact,
+    ask: narrated.ask,
+    text: `${narrated.fact} ${narrated.ask}`,
   };
 }
 
-function flagDifference(homes, id, label, isOn, ask) {
+function flagDifference(homes, id, label, sentence, isOn, ask) {
   const flags = homes.map((home) => Boolean(isOn(home.facility)));
   if (flags.every((on) => on === flags[0])) return null;
-  const onNames = homes.filter((_, index) => flags[index]).map((home) => home.shortName);
-  const offNames = homes.filter((_, index) => !flags[index]).map((home) => home.shortName);
+  const onNames = homes.filter((_, index) => flags[index]).map((home) => homeLabel(home));
+  const offNames = homes.filter((_, index) => !flags[index]).map((home) => homeLabel(home));
+  const fact = `${joinNames(onNames)} ${reportsVerb(onNames.length)} ${sentence}. ${joinNames(offNames)} ${offNames.length === 1 ? 'does' : 'do'} not, in this extract.`;
   return {
     id,
     status: 'difference',
-    text: `${joinNames(onNames)} ${reportsVerb(onNames.length)} ${label}. ${joinNames(offNames)} ${offNames.length === 1 ? 'does' : 'do'} not, in this extract. ${ask}`,
+    label,
+    fact,
+    ask,
+    text: `${fact} ${ask}`,
   };
 }
 
@@ -145,11 +162,16 @@ function chainDifference(homes) {
   if (chains.some((chain) => !chain)) return null;
   const unique = new Set(chains.map((chain) => chain.toLowerCase()));
   if (unique.size < 2) return null;
-  const detail = homes.map((home) => `${home.shortName}: ${displayName(home.facility.chain_name)}`).join('; ');
+  const detail = homes.map((home) => `${homeLabel(home)}: ${displayName(home.facility.chain_name)}`).join('; ');
+  const fact = `These homes report different operators (${detail}).`;
+  const ask = 'Ask who manages the building day to day. Operator name is context, not a rating.';
   return {
     id: 'chain',
     status: 'difference',
-    text: `These homes report different operators (${detail}). Ask who manages the building day to day. Operator name is context, not a rating.`,
+    label: 'Operator',
+    fact,
+    ask,
+    text: `${fact} ${ask}`,
   };
 }
 
@@ -159,12 +181,18 @@ function ownershipChangeDifference(homes) {
   const yes = homes.filter((_, index) => changed[index]);
   const detail = yes.map((home) => {
     const when = home.facility?.ownership_change_date;
-    return when ? `${home.shortName} (${when})` : home.shortName;
+    return when ? `${homeLabel(home)} (${when})` : homeLabel(home);
   }).join('; ');
+  const lead = `A recent ownership change is flagged for ${detail}.`;
+  const rest = `The other home${homes.length - yes.length === 1 ? ' has' : 's have'} no recent change flagged in this extract.`;
+  const ask = 'Ask who is in charge day to day since that change.';
   return {
     id: 'ownership-change',
     status: 'difference',
-    text: `A recent ownership change is flagged for ${detail}. Ask who is in charge day to day since that change. The other home${homes.length - yes.length === 1 ? ' has' : 's have'} no recent change flagged in this extract.`,
+    label: 'Ownership change',
+    fact: `${lead} ${rest}`,
+    ask,
+    text: `${lead} ${ask} ${rest}`,
   };
 }
 
@@ -215,6 +243,19 @@ function shortNames(facilities) {
   });
 }
 
+/** Column header. Full name stays on the home card. */
+function tableName(name) {
+  const text = String(name || '').trim();
+  if (text.length <= 26) return text;
+  const trimmed = text
+    .replace(/\b(skilled nursing facility|nursing and rehabilitation|nursing & rehabilitation|healthcare center|health center|nursing home|care center|rehabilitation center)\b/ig, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/[\s,]+$/g, '')
+    .trim();
+  if (trimmed.length >= 4) return trimmed;
+  return text.split(/\s+/).slice(0, 3).join(' ');
+}
+
 /**
  * @param {object[]} facilities 2 or 3 facility records
  * @param {{ dataAsOf?: string, reportDate?: Date }} [options]
@@ -224,11 +265,13 @@ export function buildCompareBriefModel(facilities, options = {}) {
   const names = shortNames(source);
   const homes = source.map((facility, index) => {
     const stars = num(facility?.stars);
+    const shortName = names[index];
     return {
       facility,
       ccn: String(facility?.ccn || ''),
       name: displayName(facility?.name) || `CCN ${facility?.ccn || ''}`,
-      shortName: names[index],
+      shortName,
+      tableName: tableName(shortName),
       city: displayName(facility?.city),
       state: facility?.state || '',
       place: [displayName(facility?.city), facility?.state].filter(Boolean).join(', '),
@@ -440,6 +483,7 @@ export function buildCompareBriefModel(facilities, options = {}) {
     flagDifference(
       homes,
       'sff',
+      'Special Focus Facility',
       'an active Special Focus Facility designation',
       hasSffFlag,
       'Ask what that designation means and what the improvement plan is.',
@@ -447,6 +491,7 @@ export function buildCompareBriefModel(facilities, options = {}) {
     flagDifference(
       homes,
       'abuse',
+      'Abuse icon',
       'a Care Compare abuse icon',
       hasAbuseFlag,
       'Ask what the icon refers to and how allegations are investigated.',
@@ -454,6 +499,7 @@ export function buildCompareBriefModel(facilities, options = {}) {
     flagDifference(
       homes,
       'pe',
+      'Ownership',
       'private-equity ownership in this extract',
       (facility) => Boolean(facility?.pe_owned),
       'Ask how the operating company makes staffing decisions. Ownership is context, not a rating.',
@@ -477,6 +523,7 @@ export function buildCompareBriefModel(facilities, options = {}) {
       state: home.state,
       place: home.place,
       starsLabel: home.starsLabel,
+      tableName: tableName(home.shortName),
     })),
     dataAsOfLabel,
     reportDateLabel: formatReportDate(reportDate),
@@ -489,23 +536,20 @@ export function buildCompareBriefModel(facilities, options = {}) {
     sharedQuestions: SHARED_TOUR_QUESTIONS,
     facilityQuestions: homes.map((home) => ({
       ccn: home.ccn,
-      name: home.shortName,
+      name: home.tableName || home.shortName,
       questions: facilityQuestions(home.facility),
     })),
-    independence: 'The Oversight Report is an independent publication of DataLink Clinical LLC. It is not affiliated with, endorsed by, or a contractor of CMS or the U.S. Department of Health and Human Services.',
-    paymentDisclosure: 'Nursing homes cannot pay OversightReports to be included, excluded, or presented differently in this Compare Brief. A family payment buys this document. It does not change the facts or how a home is shown.',
+    independence: 'The Oversight Report is an independent publication of DataLink Clinical LLC. It is not affiliated with or endorsed by CMS or HHS.',
+    paymentDisclosure: 'Nursing homes cannot pay OversightReports to be included, excluded, or shown differently. A family payment buys this document. It does not change the facts.',
     limits: [
-      'This Compare Brief is a decision aid for the homes named on the cover. It does not pick a home or assign a rank.',
-      'CMS ratings leave out considerations that matter to a particular family, including specialty care and how close the home is.',
-      'Staffing hours are payroll-based journal reports. An HHS Office of Inspector General audit found unsupported RN staffing hours in sampled records. Treat hours as reported, then ask what you will see on a tour.',
-      'This document does not show live bed availability or private-pay prices.',
-      'Missing figures are labeled "Not enough comparable information." A small gap is omitted rather than called equal.',
+      'A decision aid for the homes named here. It does not pick a home or assign a rank.',
+      'Stars leave out distance and the kind of care a family needs. Staffing hours are payroll reports. An HHS OIG audit found unsupported RN hours in sampled records. Treat hours as reported, then ask what you will see on a tour.',
+      'No live bed availability or private-pay prices. Missing figures say "Not enough comparable information." A small gap is left off rather than called equal.',
     ],
     sources: [
-      'CMS Care Compare and the Provider Data Catalog: Provider Info, health deficiencies, penalties, Payroll-Based Journal staffing, quality measures, and ownership.',
-      `Snapshot date: CMS data as of ${dataAsOfLabel}. Generated ${formatReportDate(reportDate)}.`,
-      'Verify current records at https://www.medicare.gov/care-compare/ before a visit.',
-      'Long-term care ombudsman help: https://theconsumervoice.org/get-help',
+      'CMS Care Compare and the Provider Data Catalog: ratings, inspections, penalties, Payroll-Based Journal staffing, quality measures, and ownership.',
+      `CMS data as of ${dataAsOfLabel}. Generated ${formatReportDate(reportDate)}.`,
+      'Verify current records at https://www.medicare.gov/care-compare/ before a visit. Ombudsman help: https://theconsumervoice.org/get-help',
     ],
     worksheetPrompts: [
       'Visit date',

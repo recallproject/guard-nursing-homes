@@ -35,13 +35,13 @@ describe('generateCompareBriefPDF', () => {
     const { doc, text, dataAsOf } = render(['195381', '195180', '195312']);
     const pages = doc.internal.getNumberOfPages();
     assert.equal(dataAsOf, '2026-08-26');
-    assert.ok(pages >= 4 && pages <= 8, `expected 4-8 pages, got ${pages}`);
+    assert.ok(pages >= 3 && pages <= 8, `expected 3-8 pages, got ${pages}`);
     assert.match(text, /Compare Brief/);
     assert.match(text, /Christwood/);
     assert.match(text, /Pierremont/);
     assert.match(text, /August 2026/);
     assert.match(text, /Scorecard/);
-    assert.match(text, /Material differences/);
+    assert.match(text, /Differences to ask about/);
     assert.match(text, /Questions for your visit/);
     assert.match(text, /Notes and decision/);
     assert.match(text, /Not affiliated with/);
@@ -57,7 +57,7 @@ describe('generateCompareBriefPDF', () => {
   it('renders a two-home brief on the $49 path without a third column of facts', () => {
     const { doc, text } = render(['195381', '195312']);
     const pages = doc.internal.getNumberOfPages();
-    assert.ok(pages >= 4 && pages <= 8, `expected 4-8 pages, got ${pages}`);
+    assert.ok(pages >= 3 && pages <= 8, `expected 3-8 pages, got ${pages}`);
     assert.match(text, /2 nursing homes/);
     assert.match(text, /Christwood/);
     assert.match(text, /Pierremont/);
