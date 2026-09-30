@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, it } from 'node:test';
@@ -55,6 +55,22 @@ describe('robots.txt assistant policy', () => {
     }
   });
 
+  it('closes the same bulk dumps for every other crawler without blocking human pages', () => {
+    const rules = rulesFor('*');
+    assert.match(rules, /^Allow: \/$/m);
+    assert.doesNotMatch(rules, /^Disallow: \/$/m);
+    assert.match(rules, /^Disallow: \/data\/$/m);
+    assert.match(rules, /^Disallow: \/api\/$/m);
+    assert.match(rules, /^Disallow: \/deficiency_details\/$/m);
+    assert.match(rules, /^Disallow: \/facilities_map_data$/m);
+    assert.match(rules, /^Disallow: \/postacute_facility_data\.json$/m);
+    assert.match(rules, /^Disallow: \/ag-toolkit$/m);
+    assert.match(rules, /^Disallow: \/screening$/m);
+    const disallowAt = rules.indexOf('Disallow: /data/');
+    const allowAt = rules.indexOf('Allow: /');
+    assert.ok(disallowAt !== -1 && allowAt !== -1 && disallowAt < allowAt);
+  });
+
   it('still blocks Common Crawl, Bytespider, and PetalBot sitewide', () => {
     for (const agent of ['CCBot', 'Bytespider', 'PetalBot']) {
       const rules = rulesFor(agent);
@@ -69,5 +85,20 @@ describe('robots.txt assistant policy', () => {
     assert.equal(publicFile, ROBOTS_TXT);
     const sitemapScript = readFileSync(join(root, 'scripts/generate-sitemap.js'), 'utf8');
     assert.match(sitemapScript, /ROBOTS_TXT/);
+  });
+
+  it('does not ship the unused public monoliths', () => {
+    for (const file of [
+      'public/facilities_map_data.json',
+      'public/facilities_map_data_backup_20260301.json',
+      'public/postacute_facility_data.json',
+    ]) {
+      assert.equal(existsSync(join(root, file)), false, `${file} should not be deployed`);
+    }
+    const hook = readFileSync(join(root, 'src/hooks/useFacilityData.js'), 'utf8');
+    assert.doesNotMatch(hook, /fetch\([^)]*facilities_map_data/);
+    assert.match(hook, /data\/states\//);
+    const clientSrc = readFileSync(join(root, 'src/pages/ReferralScorecardPage.jsx'), 'utf8');
+    assert.doesNotMatch(clientSrc, /postacute_facility_data\.json/);
   });
 });

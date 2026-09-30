@@ -7,7 +7,7 @@
  * - 53 deficiency citations on record
  *
  * Data sources:
- *   public/facilities_map_data.json  — facility record
+ *   public/data/states/*.json        — facility records
  *   public/deficiency_details/NC.json — inspection details
  *
  * Run:   node scripts/generate-sample-evidence-pdf.mjs
@@ -16,7 +16,7 @@
 
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
@@ -28,7 +28,12 @@ const root = resolve(__dirname, '..');
 // ================================================================
 
 console.log('Loading facility data...');
-const mapData = JSON.parse(readFileSync(resolve(root, 'public/facilities_map_data.json'), 'utf8'));
+const statesDir = resolve(root, 'public/data/states');
+const mapData = { states: {} };
+for (const file of readdirSync(statesDir).filter((name) => name.endsWith('.json'))) {
+  const code = file.replace(/\.json$/, '');
+  mapData.states[code] = JSON.parse(readFileSync(resolve(statesDir, file), 'utf8'));
+}
 
 // Flatten all facilities for portfolio lookups and nearby alternatives
 const allFacilities = [];

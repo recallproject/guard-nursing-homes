@@ -1,5 +1,5 @@
 // State hub config. Adding a state = adding an entry here.
-// Counts pulled from public/data/states/CA.json + public/postacute_facility_data.json (verified 2026-04-28).
+// Counts pulled from public/data/states/CA.json and public/data/{home-health,hospice,irf,ltach} (verified 2026-04-28).
 
 export const STATE_HUBS = {
   california: {

@@ -13,7 +13,6 @@ const BASE = import.meta.env.BASE_URL;
 const stateCache = {};
 let ccnIndex = null;
 let indexData = null;
-let fullData = null;
 let sffPosting = null;
 let sffPostingPromise = null;
 
@@ -80,20 +79,10 @@ export async function loadStateData(stateCode) {
   return stateCache[code];
 }
 
-/**
- * Load the full monolith (legacy, for pages that need all data at once)
- */
-async function loadFullData() {
-  if (fullData) return fullData;
-  const res = await fetch(`${BASE}facilities_map_data.json`);
-  if (!res.ok) throw new Error(`Failed to load facility data: ${res.status}`);
-  fullData = await res.json();
-  return fullData;
-}
-
 // ═══════════════════════════════════════════════════════════
 // Hook 1: useFacilityData — full dataset for search, map, etc.
-// Loads all state files in parallel instead of one 53MB monolith
+// Loads per-state files under /data/states/. The old public monolith
+// is not deployed.
 // ═══════════════════════════════════════════════════════════
 export function useFacilityData() {
   const [data, setData] = useState(null);

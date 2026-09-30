@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, readdirSync, writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import jspdfModule from 'jspdf';
@@ -8,8 +8,13 @@ const { jsPDF } = jspdfModule;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Load facility data
-const data = JSON.parse(readFileSync(join(__dirname, 'public/facilities_map_data.json'), 'utf8'));
+// Load facility data from the per-state files the site actually serves.
+const statesDir = join(__dirname, 'public/data/states');
+const data = { states: {} };
+for (const file of readdirSync(statesDir).filter((name) => name.endsWith('.json'))) {
+  const code = file.replace(/\.json$/, '');
+  data.states[code] = JSON.parse(readFileSync(join(statesDir, file), 'utf8'));
+}
 
 const targetCCN = process.argv[2] || '145995';
 let facility = null;
