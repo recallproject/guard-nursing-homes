@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { generateComparisonPDF } from './generateComparisonPDF.js';
+import { decodeJsPdfContent } from './pdfSafeText.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '../..');
@@ -23,10 +24,12 @@ describe('generateComparisonPDF', () => {
     });
     assert.equal(doc.internal.getNumberOfPages(), 1);
     const raw = doc.output();
-    assert.match(raw, /3-home comparison|Compare 3 nursing homes/);
-    assert.match(raw, /August 2026/);
-    assert.match(raw, /Overall rating/);
-    assert.match(raw, /\$29/);
-    assert.doesNotMatch(raw, /buy\.stripe\.com/);
+    const text = `${raw}\n${decodeJsPdfContent(raw)}`;
+    assert.match(text, /3-home comparison|Compare 3 nursing homes/);
+    assert.match(text, /August 2026/);
+    assert.match(text, /Overall rating/);
+    assert.match(text, /Free snapshot/i);
+    assert.match(text, /\$29/);
+    assert.doesNotMatch(text, /buy\.stripe\.com/);
   });
 });
