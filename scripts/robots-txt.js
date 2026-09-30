@@ -32,11 +32,12 @@ Disallow: /
 User-agent: PetalBot
 Disallow: /
 
-# Allow legitimate search engines and all other bots
+# Search engines and every other crawler may read human pages.
+# Bulk JSON stays closed here too: User-agent: * previously allowed these
+# dumps, and generic bots were downloading them.
 User-agent: *
+${DUMP_RULES}
 Allow: /
-Disallow: /ag-toolkit
-Disallow: /screening
 
 Sitemap: https://www.oversightreports.com/sitemap.xml
 `;

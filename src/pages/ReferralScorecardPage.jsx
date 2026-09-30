@@ -77,24 +77,12 @@ export function ReferralScorecardPage() {
   const headerRef = useRef(null);
   const resultsRef = useRef(null);
 
-  // Load postacute data
+  // Unreachable while COMING_SOON is true. The public monolith was removed
+  // from deploy. Live home health, IRF, LTACH, and hospice pages already read
+  // /data/<setting>/. Load those split files before setting COMING_SOON to false.
   useEffect(() => {
-    async function loadPostacuteData() {
-      try {
-        setPostacuteLoading(true);
-        const response = await fetch(`${import.meta.env.BASE_URL}postacute_facility_data.json`);
-        if (!response.ok) {
-          throw new Error(`Failed to load postacute data: ${response.status}`);
-        }
-        const json = await response.json();
-        setPostacuteData(json);
-      } catch (err) {
-        console.error('Error loading postacute data:', err);
-      } finally {
-        setPostacuteLoading(false);
-      }
-    }
-    loadPostacuteData();
+    setPostacuteData(null);
+    setPostacuteLoading(false);
   }, []);
 
   // Animate on mount
