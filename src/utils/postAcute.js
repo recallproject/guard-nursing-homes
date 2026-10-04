@@ -1,4 +1,4 @@
-import { STATE_NAME } from '../data/postAcuteCatalog';
+import { STATE_NAME } from '../data/postAcuteCatalog.js';
 
 const CCN_RE = /^[A-Za-z0-9]{4,12}$/;
 const ZIP_RE = /^[0-9]{5}(-[0-9]{4})?$/;

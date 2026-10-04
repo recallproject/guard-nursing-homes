@@ -1,8 +1,10 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CARE_SETTINGS, getCareSetting } from '../data/careSettings';
 import { buildSettingSearchPath } from '../utils/parseWhere';
+import { suggestFacilities, suggestLocations } from '../utils/searchSuggest';
 import { watchlistComparePath } from '../utils/watchlistCompare';
+import { SearchTypeahead } from './SearchTypeahead';
 
 let cachedSearchIndex = null;
 
@@ -44,21 +46,53 @@ export function HubSearch({
   const navigate = useNavigate();
   const whereId = useId();
   const nameId = useId();
+  const whereRef = useRef(null);
   const [settingId, setSettingId] = useState(initialSettingId);
   const [where, setWhere] = useState(defaultWhere);
   const [name, setName] = useState(defaultName);
-  const whereRef = useRef(null);
+  const [index, setIndex] = useState(cachedSearchIndex);
+  const [indexStatus, setIndexStatus] = useState(cachedSearchIndex ? 'ready' : 'idle');
   const setting = getCareSetting(settingId) || getCareSetting('snf');
 
   useEffect(() => {
     setSettingId(initialSettingId);
   }, [initialSettingId]);
 
+  const ensureIndex = useCallback(() => {
+    if (cachedSearchIndex) {
+      setIndex(cachedSearchIndex);
+      setIndexStatus('ready');
+      return;
+    }
+    setIndexStatus((status) => (status === 'ready' ? status : 'loading'));
+    loadSearchIndex().then((data) => {
+      setIndex(data);
+      setIndexStatus(data ? 'ready' : 'error');
+    });
+  }, []);
+
+  const whereSuggestions = useMemo(
+    () => suggestLocations(index, where, { settingId }),
+    [index, where, settingId]
+  );
+  const nameSuggestions = useMemo(
+    () => suggestFacilities(index, name, { settingId, where }),
+    [index, name, settingId, where]
+  );
+
   async function handleSubmit(e) {
     e.preventDefault();
-    const index = await loadSearchIndex();
-    const path = buildSettingSearchPath(setting, { where, name }, index);
+    const loaded = index || await loadSearchIndex();
+    if (loaded && loaded !== index) setIndex(loaded);
+    const path = buildSettingSearchPath(setting, { where, name }, loaded);
     navigate(path);
+  }
+
+  function pickFacility(item) {
+    setName(item.value);
+    if (!where.trim() && item.city && item.state) {
+      setWhere(`${item.city}, ${item.state}`);
+    }
   }
 
   const browseLabel = `Browse ${setting.familyLabel.toLowerCase()} by state`;
@@ -79,33 +113,35 @@ export function HubSearch({
       )}
 
       <div className="ia-fields">
-        <label className="ia-field" htmlFor={whereId}>
-          <span className="ia-field-lbl">{setting.searchWhereLabel}</span>
-          <input
-            id={whereId}
-            ref={whereRef}
-            className="ia-field-input"
-            type="search"
-            name="where"
-            autoComplete="off"
-            placeholder="Overton, TX or 75684"
-            value={where}
-            onChange={(e) => setWhere(e.target.value)}
-          />
-        </label>
-        <label className="ia-field" htmlFor={nameId}>
-          <span className="ia-field-lbl">{setting.searchNameLabel}</span>
-          <input
-            id={nameId}
-            className="ia-field-input"
-            type="search"
-            name="name"
-            autoComplete="off"
-            placeholder={compact ? setting.searchNamePlaceholder(null) : setting.hubNamePlaceholder}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
+        <SearchTypeahead
+          id={whereId}
+          inputRef={whereRef}
+          label={setting.searchWhereLabel}
+          name="where"
+          placeholder="Overton, TX or 75684"
+          value={where}
+          onValueChange={setWhere}
+          suggestions={whereSuggestions}
+          loading={indexStatus === 'loading'}
+          onFocusField={ensureIndex}
+          onPick={(item) => setWhere(item.value)}
+          resetKey={settingId}
+          emptyText={indexStatus === 'error' ? 'Suggestions unavailable' : 'No matching cities, ZIPs, or states'}
+        />
+        <SearchTypeahead
+          id={nameId}
+          label={setting.searchNameLabel}
+          name="name"
+          placeholder={compact ? setting.searchNamePlaceholder(null) : setting.hubNamePlaceholder}
+          value={name}
+          onValueChange={setName}
+          suggestions={nameSuggestions}
+          loading={indexStatus === 'loading'}
+          onFocusField={ensureIndex}
+          onPick={pickFacility}
+          resetKey={`${settingId}|${where}`}
+          emptyText={indexStatus === 'error' ? 'Suggestions unavailable' : 'No matching facilities'}
+        />
         <button type="submit" className="ia-go">
           Search
         </button>
