@@ -1,37 +1,63 @@
 {
-  "generated_at": "2026-10-03T17:13:02.895Z",
+  "generated_at": "2026-10-05T21:15:33.775Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-02T19:52:06.000Z",
+      "last_pubdate": "2026-10-05T16:12:22.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-05T10:01:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-05T10:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
   "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "matched_unique_ccns": 6,
   "confidence_breakdown": {
     "high": 3,
     "medium": 0
   },
   "feed_items": [
+    {
+      "id": "hospice-news-75g61z",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-05T16:12:22.000Z",
+      "headline": "Hospice East Bay Workers Strike",
+      "summary": "Dozens of workers at California-based Hospice East Bay on Monday launched a seven-day strike. The strike includes 70 bereavement counselors, chaplains, nurses, social workers and pharmacists at the hospice. The workers joined the National Union of Healthcare Workers (NUHW) in...",
+      "url": "https://hospicenews.com/2026/10/05/hospice-east-bay-workers-strike/",
+      "matched_ccns": [
+        "051547",
+        "051526",
+        "381516"
+      ],
+      "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-e7x4sf",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-05T14:30:05.000Z",
+      "headline": "DAI Closes HCA Hospice, Home Health Transaction",
+      "summary": "Deaconess Associations Incorporated (DAI) has closed its acquisition of 31 home health and hospice agencies from HCA Healthcare (NYSE: HCA). The deal includes 24 home health locations and seven hospice locations across eight states. The acquisition is part of DAI’s broader...",
+      "url": "https://hospicenews.com/2026/10/05/dai-closes-hca-hospice-home-health-transaction/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
     {
       "id": "hospice-news-9p24is",
       "source": "Hospice News",
@@ -124,34 +150,19 @@
       "url": "https://hospicenews.com/2026/09/29/lawmakers-hospice-staffing-bill-still-a-priority/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-zgv9wo",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:39:14.000Z",
-      "headline": "How Palliative Care Works Within Home Health",
-      "summary": "Palliative care as delivered by home health agencies can look very different than that provided by a hospice. Earlier this year, the U.S. Centers for Medicare and Medicaid Services (CMS) clarified in its proposed home health rule that palliative care is a billable service under...",
-      "url": "https://hospicenews.com/2026/09/29/how-palliative-care-works-within-home-health/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-v3lvrz",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-28T21:08:43.000Z",
-      "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-      "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief...",
-      "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-      "matched_ccns": [
-        "051508",
-        "051523"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
+    "381516": [
+      {
+        "id": "hospice-news-75g61z",
+        "date": "2026-10-05T16:12:22.000Z",
+        "headline": "Hospice East Bay Workers Strike",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/05/hospice-east-bay-workers-strike/",
+        "summary": "Dozens of workers at California-based Hospice East Bay on Monday launched a seven-day strike. The strike includes 70 bereavement counselors, chaplains, nurses, social workers and pharmacists at the hospice. The workers joined the National Union of Healthcare Workers (NUHW) in..."
+      }
+    ],
     "741687": [
       {
         "id": "hospice-news-9qfxq3",
@@ -172,6 +183,26 @@
         "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took..."
       }
     ],
+    "051547": [
+      {
+        "id": "hospice-news-75g61z",
+        "date": "2026-10-05T16:12:22.000Z",
+        "headline": "Hospice East Bay Workers Strike",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/05/hospice-east-bay-workers-strike/",
+        "summary": "Dozens of workers at California-based Hospice East Bay on Monday launched a seven-day strike. The strike includes 70 bereavement counselors, chaplains, nurses, social workers and pharmacists at the hospice. The workers joined the National Union of Healthcare Workers (NUHW) in..."
+      }
+    ],
+    "051526": [
+      {
+        "id": "hospice-news-75g61z",
+        "date": "2026-10-05T16:12:22.000Z",
+        "headline": "Hospice East Bay Workers Strike",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/05/hospice-east-bay-workers-strike/",
+        "summary": "Dozens of workers at California-based Hospice East Bay on Monday launched a seven-day strike. The strike includes 70 bereavement counselors, chaplains, nurses, social workers and pharmacists at the hospice. The workers joined the National Union of Healthcare Workers (NUHW) in..."
+      }
+    ],
     "A91721": [
       {
         "id": "hospice-news-9qfxq3",
@@ -180,26 +211,6 @@
         "source": "Hospice News",
         "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
         "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
-      }
-    ],
-    "051508": [
-      {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
-      }
-    ],
-    "051523": [
-      {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
       }
     ]
   }
