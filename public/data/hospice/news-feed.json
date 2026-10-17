@@ -1,205 +1,203 @@
 {
-  "generated_at": "2026-10-03T17:13:02.895Z",
+  "generated_at": "2026-10-17T16:20:03.290Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-02T19:52:06.000Z",
+      "last_pubdate": "2026-10-16T18:45:29.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-16T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-16T09:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 10,
-  "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "hospice_filtered": 14,
+  "matched_to_ccn": 1,
+  "matched_unique_ccns": 1,
   "confidence_breakdown": {
-    "high": 3,
+    "high": 1,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-9p24is",
+      "id": "hospice-news-7frzgr",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T19:52:06.000Z",
-      "headline": "Reserve Care, University Hospitals End Joint Venture to Improve Care Coordination",
-      "summary": "Reserve Care has ended its joint venture with University Hospitals in a move designed to reduce burdensome transitions of care and improve timely access to hospice. The hospice and palliative care organization will remain a preferred provider of the hospital system as the two...",
-      "url": "https://hospicenews.com/2026/10/02/reserve-care-university-hospitals-end-joint-venture-to-improve-care-coordination/",
+      "date": "2026-10-16T18:45:29.000Z",
+      "headline": "Legitimate Hospices 'Presumed Guilty' in AI Fraud Hunt",
+      "summary": "Federal and regulatory agencies are using artificial intelligence (AI) tools to address program integrity issues in the hospice space. Some legitimate providers may not sustain the potential unintended consequences of data-driven oversight, according to legal experts. In the...",
+      "url": "https://hospicenews.com/2026/10/16/legitimate-hospices-presumed-guilty-in-ai-fraud-hunt/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-9qfxq3",
+      "id": "hospice-news-uy9d1l",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T13:12:43.000Z",
-      "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
-      "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life...",
-      "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
+      "date": "2026-10-16T18:41:50.000Z",
+      "headline": "What Hospice Buyers Are Looking For in 2026",
+      "summary": "Hospice buyers in the M&A market in 2026 are looking for strong regulatory compliance, solid cash flow and effective leadership as they hunt for deals. Hospice M&A has seen an uptick in late 2025 and to date in 2026 after a three-year slump in deal activity. The M&A advisory...",
+      "url": "https://hospicenews.com/2026/10/16/what-hospice-buyers-are-looking-for-in-2026/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "kff-health-news-ukc4eu",
+      "source": "KFF Health News",
+      "source_url": "https://kffhealthnews.org/feed/",
+      "date": "2026-10-16T09:00:00.000Z",
+      "headline": "After Booting 760K People From ACA Plans, Trump Administration Has Added Some Back",
+      "summary": "The Trump administration has provided few details about its process for canceling hundreds of thousands of Affordable Care Act marketplace enrollments — even as the next stage of the anti-fraud effort is underway.",
+      "url": "https://kffhealthnews.org/insurance/trump-aca-affordable-care-act-obamacare-cms-fraud-cancellations-reinstatements/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "kff-health-news-t9i1j9",
+      "source": "KFF Health News",
+      "source_url": "https://kffhealthnews.org/feed/",
+      "date": "2026-10-16T09:00:00.000Z",
+      "headline": "Next Governor To Face Thorny Choices After California’s Rapid Medicaid Expansion",
+      "summary": "Medi-Cal, the nation’s largest Medicaid program, was in trouble even before the GOP’s One Big Beautiful Bill Act. Rapid expansion, spiraling costs, and billions in federal funding cuts will mean tough challenges for California’s next governor. On the campaign trail, the two men...",
+      "url": "https://kffhealthnews.org/elections/medicaid-cuts-medi-cal-insurance-immigrants-hilton-becerra-california-governor/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-le8fwt",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-15T18:44:02.000Z",
+      "headline": "5 'New Norms' in Hospice Care",
+      "summary": "Hospices with strong quality metrics and low care delivery costs could have a fighting chance of withstanding regulatory and operational headwinds on the horizon. While some hospices are turning to palliative care for improved patient reach and outcomes, others are branching...",
+      "url": "https://hospicenews.com/2026/10/15/5-new-norms-in-hospice-care/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-3xzd9b",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-14T19:01:38.000Z",
+      "headline": "Dartmouth Health Addresses Rural Hospice, Palliative Care Disparities",
+      "summary": "End-of-life care disparities proliferate across rural and remote regions, often due to insufficient clinical home-based resources. Dartmouth Health is seeking to address the significant barriers with a new scalable, research-backed teaching model designed for the next generation...",
+      "url": "https://hospicenews.com/2026/10/14/dartmouth-health-addresses-rural-hospice-palliative-care-disparities/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-my5orn",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-14T11:28:33.000Z",
+      "headline": "Hospice, Home Health Moratoria: What Might Come Next",
+      "summary": "Many hospice providers are struggling to grow amid the U.S. Centers for Medicare & Medicaid Services’ (CMS) temporary moratoria on hospice and home health enrollment in Medicare. Now, they must prepare for what may come next, according to industry experts. The six-month hospice...",
+      "url": "https://hospicenews.com/2026/10/14/hospice-home-health-moratoria-what-might-come-next/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "kff-health-news-v7e7n",
+      "source": "KFF Health News",
+      "source_url": "https://kffhealthnews.org/feed/",
+      "date": "2026-10-14T09:00:00.000Z",
+      "headline": "Aging Life Care Managers Can Be a ‘Godsend’ for Families",
+      "summary": "These service providers, formerly known as geriatric care managers, can arrange a move to a senior living facility, deal with Medicare and Medicaid, recommend doctors, drive a client to the dentist, and much more.",
+      "url": "https://kffhealthnews.org/aging/new-old-age-aging-life-care-managers-geriatric-help/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-e7n8t2",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-13T12:04:35.000Z",
+      "headline": "Hospice Nurses Reach Tentative Bargaining Agreement with Allina Health",
+      "summary": "Allina Health hospice nurses represented by SEIU Healthcare Minnesota & Iowa have reached a tentative agreement with their employer on their first union contract. The agreement came before a deadline in which nurses had planned to vote on authorizing an open-ended unfair labor...",
+      "url": "https://hospicenews.com/2026/10/13/hospice-nurses-reach-tentative-bargaining-agreement-with-allina-health/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-apocz8",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-13T11:46:56.000Z",
+      "headline": "Empassion CEO: MA Can Help with Hospice Program Integrity",
+      "summary": "Structures like Medicare Advantage (MA) can help improve hospice program integrity and reduce the health care spend, according to Robin Heffernan, CEO of Empassion Health. Empassion Health operates in 45 states. Its extensive network of hospice and palliative care providers...",
+      "url": "https://hospicenews.com/2026/10/13/empassion-ceo-ma-can-help-with-hospice-program-integrity/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-9tidi",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-09T14:03:42.000Z",
+      "headline": "Axxess Partners with Eazewell on Bereavement Support",
+      "summary": "The post-acute tech company Axxess is partnering with Eazewell to reduce the burden on families after a loved one dies. The startup Eazewell is an AI platform designed to help families close the accounts of deceased loved ones. Donnell Beverly Jr. and Russell Westbrook founded...",
+      "url": "https://hospicenews.com/2026/10/09/axxess-partners-with-eazewell-on-bereavement-support/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-6eiy16",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-09T11:37:03.000Z",
+      "headline": "Dartmouth Health Unveils New Home-Based Care Initiative",
+      "summary": "Dartmouth Health is launching a suite of home-based care services in partnership with Geisel School of Medicine at Dartmouth College. The program is branded as Dartmouth Health at Home. Supported by a $20 million philanthropic gift, Dartmouth Health at Home aims to transform...",
+      "url": "https://hospicenews.com/2026/10/09/dartmouth-health-unveils-new-home-based-care-initiative/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-s09hmp",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-08T12:48:50.000Z",
+      "headline": "Blue Ridge Care Invests in School-Based Youth Grief Support",
+      "summary": "Blue Ridge Care will expand access to grief support for children and teens through its Adventures Through Grief School Expansion Program. The initiative aims to help more young people cope with the death of a loved one and build resilience in school and community settings. The...",
+      "url": "https://hospicenews.com/2026/10/08/blue-ridge-care-expands-youth-grief-support-in-schools/",
       "matched_ccns": [
-        "741687",
-        "A91721"
+        "491508"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-a2gz3",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T17:49:30.000Z",
-      "headline": "CMS Grants Grace Period for Hospice Election Statement Addendum Compliance",
-      "summary": "Hospices must provide all patients with an addendum to the election statement when they enroll in services to comply with a new requirement that took effect on Thursday. The U.S. Centers for Medicare & Medicaid Services (CMS) mandated the requirement in the final hospice payment...",
-      "url": "https://hospicenews.com/2026/10/01/cms-grants-grace-period-for-addendum-to-hospice-election-statement-compliance/",
+      "id": "propublica-1r0a5o",
+      "source": "ProPublica",
+      "source_url": "https://www.propublica.org/feeds/propublica/main",
+      "date": "2026-10-06T18:55:00.000Z",
+      "headline": "I’ve Covered Death Row Cases for Nearly a Decade. What Happened to Christa Pike Wasn’t an Anomaly.",
+      "summary": "The post I’ve Covered Death Row Cases for Nearly a Decade. What Happened to Christa Pike Wasn’t an Anomaly. appeared first on ProPublica .",
+      "url": "https://www.propublica.org/article/christa-pike-tennessee-execution-lethal-injection-failure",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-nneooj",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T12:30:25.000Z",
-      "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
-      "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took...",
-      "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
-      "matched_ccns": [
-        "751584"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-glucpb",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T18:02:24.000Z",
-      "headline": "YoloCares Launches Basketball Grief Program for Male Youths",
-      "summary": "YoloCares recently rolled out a new bereavement program aimed at reaching the underserved demographic of young males. The California-based hospice’s GriefBall initiative included a two-day basketball camp for bereaved boys and young men. YoloCares’ Center for Loss & Hope...",
-      "url": "https://hospicenews.com/2026/09/30/yolocares-launches-basketball-grief-program-for-male-youths/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-4wz2di",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T13:29:58.000Z",
-      "headline": "Hospice Tech Execs Have Changing Role in Age of AI",
-      "summary": "The proliferation of artificial intelligence (AI) in the hospice space is changing how chief information officers and other technology-focused leaders are approaching their jobs. Hospices nationwide are investing in AI systems to transform virtually every aspect of their...",
-      "url": "https://hospicenews.com/2026/09/30/hospice-tech-execs-have-changing-role-in-age-of-ai/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-oc7ghn",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T19:33:58.000Z",
-      "headline": "Human Oversight Lagging in AI-Driven Hospice Fraud Fight",
-      "summary": "Some legal and technology experts have grown increasingly concerned by a potential lack of human oversight in artificial intelligence-assisted hospice regulatory enforcement. The AI-driven efforts to crackdown on fraudulent activity could bring significant impacts for legitimate...",
-      "url": "https://hospicenews.com/2026/09/29/human-oversight-lagging-in-ai-driven-hospice-fraud-fight/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-sk7kvm",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:57:14.000Z",
-      "headline": "Lawmakers: Hospice Staffing Bill Still a Priority",
-      "summary": "U.S. Sens. Tammy Baldwin (D-Wis.) and Shelley Moore Capito (R-W.Va.) remain committed to passing the Palliative Care and Hospice Education Training Act (PCHETA). If enacted, PCHETA would provide support for hospice and palliative care training programs for physicians, nurses,...",
-      "url": "https://hospicenews.com/2026/09/29/lawmakers-hospice-staffing-bill-still-a-priority/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-zgv9wo",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:39:14.000Z",
-      "headline": "How Palliative Care Works Within Home Health",
-      "summary": "Palliative care as delivered by home health agencies can look very different than that provided by a hospice. Earlier this year, the U.S. Centers for Medicare and Medicaid Services (CMS) clarified in its proposed home health rule that palliative care is a billable service under...",
-      "url": "https://hospicenews.com/2026/09/29/how-palliative-care-works-within-home-health/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-v3lvrz",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-28T21:08:43.000Z",
-      "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-      "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief...",
-      "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-      "matched_ccns": [
-        "051508",
-        "051523"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
-    "741687": [
+    "491508": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-s09hmp",
+        "date": "2026-10-08T12:48:50.000Z",
+        "headline": "Blue Ridge Care Invests in School-Based Youth Grief Support",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
-      }
-    ],
-    "751584": [
-      {
-        "id": "hospice-news-nneooj",
-        "date": "2026-10-01T12:30:25.000Z",
-        "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
-        "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took..."
-      }
-    ],
-    "A91721": [
-      {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
-      }
-    ],
-    "051508": [
-      {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
-      }
-    ],
-    "051523": [
-      {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/10/08/blue-ridge-care-expands-youth-grief-support-in-schools/",
+        "summary": "Blue Ridge Care will expand access to grief support for children and teens through its Adventures Through Grief School Expansion Program. The initiative aims to help more young people cope with the death of a loved one and build resilience in school and community settings. The..."
       }
     ]
   }
