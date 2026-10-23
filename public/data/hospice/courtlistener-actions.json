@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-03T17:13:08.842Z",
+  "generated_at": "2026-10-23T17:52:00.686Z",
   "source": "CourtListener",
   "source_url": "https://www.courtlistener.com",
   "coverage_note": "CourtListener RECAP archive coverage depends on RECAP user uploads. Snapshot, not a backfill.",
@@ -7,22 +7,22 @@
     {
       "query": "hospice \"False Claims Act\"",
       "label": "fca",
-      "pulled": 20
+      "pulled": 0
     },
     {
       "query": "hospice qui tam",
       "label": "qui-tam",
-      "pulled": 13
+      "pulled": 0
     },
     {
       "query": "hospice fraud settlement",
       "label": "fraud-settlement",
-      "pulled": 17
+      "pulled": 0
     }
   ],
-  "api_soft_failures": 0,
-  "total_search_results": 50,
-  "hospice_filtered": 3,
+  "api_soft_failures": 3,
+  "total_search_results": 0,
+  "hospice_filtered": 0,
   "matched_to_ccn": 0,
   "matched_high_confidence": 0,
   "matched_medium_confidence": 0,
