@@ -1,205 +1,304 @@
 {
-  "generated_at": "2026-10-03T17:13:02.895Z",
+  "generated_at": "2026-10-25T17:01:58.393Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-02T19:52:06.000Z",
+      "last_pubdate": "2026-10-23T20:36:42.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-23T09:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-25T04:00:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
   "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "matched_unique_ccns": 14,
   "confidence_breakdown": {
     "high": 3,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-9p24is",
+      "id": "hospice-news-c9m5hq",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T19:52:06.000Z",
-      "headline": "Reserve Care, University Hospitals End Joint Venture to Improve Care Coordination",
-      "summary": "Reserve Care has ended its joint venture with University Hospitals in a move designed to reduce burdensome transitions of care and improve timely access to hospice. The hospice and palliative care organization will remain a preferred provider of the hospital system as the two...",
-      "url": "https://hospicenews.com/2026/10/02/reserve-care-university-hospitals-end-joint-venture-to-improve-care-coordination/",
+      "date": "2026-10-23T20:36:42.000Z",
+      "headline": "Responsible AI Adoption Key to Workforce Retention",
+      "summary": "Hospices could see a challenging scope of staff retention as they work to adapt around a fast-paced evolution of artificial intelligence (AI) technologies. Providers have leveraged AI tools in new ways to better address clinicians’ priorities. These technologies can help to...",
+      "url": "https://hospicenews.com/2026/10/23/responsible-ai-adoption-key-to-workforce-retention/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-9qfxq3",
+      "id": "hospice-news-gwsuve",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T13:12:43.000Z",
-      "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
-      "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life...",
-      "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
+      "date": "2026-10-23T11:23:56.000Z",
+      "headline": "CommonSpirit Health at Home’s 3 Pillars for Hospice Growth",
+      "summary": "CommonSpirit Health at Home is heavily focused on hospice growth, though the company had to pivot its strategy when the U.S. Centers for Medicare & Medicaid Services (CMS) implemented its six-month enrollment moratorium. This is because the strategy was largely focused on de...",
+      "url": "https://hospicenews.com/2026/10/23/commonspirit-health-at-homes-3-pillars-for-hospice-growth/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-9pkyuw",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-22T19:11:45.000Z",
+      "headline": "Hospices’ Future AI 'Battles'",
+      "summary": "Hospices need adaptive policies that address the various uses of artificial intelligence (AI) across their clinical and organizational operations. Providers lacking governance around these evolving technologies may face significant operational and compliance risks, according to...",
+      "url": "https://hospicenews.com/2026/10/22/hospices-future-ai-battles/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-7vggpz",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-21T19:16:38.000Z",
+      "headline": "Hospices Make C-Suite Transitions",
+      "summary": "Some hospices have undergone c-suite executive changes during the last month. Ennoble Care’s 2 New Executives Ennoble Care recently saw two new leadership changes. Marc Hudak has become the organization's chief managed care officer and president of health plans. He previously...",
+      "url": "https://hospicenews.com/2026/10/21/hospices-make-c-suite-transitions/",
       "matched_ccns": [
-        "741687",
-        "A91721"
+        "851512"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-a2gz3",
+      "id": "hospice-news-urcwvg",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T17:49:30.000Z",
-      "headline": "CMS Grants Grace Period for Hospice Election Statement Addendum Compliance",
-      "summary": "Hospices must provide all patients with an addendum to the election statement when they enroll in services to comply with a new requirement that took effect on Thursday. The U.S. Centers for Medicare & Medicaid Services (CMS) mandated the requirement in the final hospice payment...",
-      "url": "https://hospicenews.com/2026/10/01/cms-grants-grace-period-for-addendum-to-hospice-election-statement-compliance/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-nneooj",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T12:30:25.000Z",
-      "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
-      "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took...",
-      "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
+      "date": "2026-10-21T12:40:01.000Z",
+      "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+      "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group...",
+      "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
       "matched_ccns": [
-        "751584"
+        "451748",
+        "451765",
+        "671556",
+        "671650",
+        "671699",
+        "671704",
+        "671759",
+        "741664"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-glucpb",
+      "id": "hospice-news-1gw7gl",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T18:02:24.000Z",
-      "headline": "YoloCares Launches Basketball Grief Program for Male Youths",
-      "summary": "YoloCares recently rolled out a new bereavement program aimed at reaching the underserved demographic of young males. The California-based hospice’s GriefBall initiative included a two-day basketball camp for bereaved boys and young men. YoloCares’ Center for Loss & Hope...",
-      "url": "https://hospicenews.com/2026/09/30/yolocares-launches-basketball-grief-program-for-male-youths/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-4wz2di",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T13:29:58.000Z",
-      "headline": "Hospice Tech Execs Have Changing Role in Age of AI",
-      "summary": "The proliferation of artificial intelligence (AI) in the hospice space is changing how chief information officers and other technology-focused leaders are approaching their jobs. Hospices nationwide are investing in AI systems to transform virtually every aspect of their...",
-      "url": "https://hospicenews.com/2026/09/30/hospice-tech-execs-have-changing-role-in-age-of-ai/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-oc7ghn",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T19:33:58.000Z",
-      "headline": "Human Oversight Lagging in AI-Driven Hospice Fraud Fight",
-      "summary": "Some legal and technology experts have grown increasingly concerned by a potential lack of human oversight in artificial intelligence-assisted hospice regulatory enforcement. The AI-driven efforts to crackdown on fraudulent activity could bring significant impacts for legitimate...",
-      "url": "https://hospicenews.com/2026/09/29/human-oversight-lagging-in-ai-driven-hospice-fraud-fight/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-sk7kvm",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:57:14.000Z",
-      "headline": "Lawmakers: Hospice Staffing Bill Still a Priority",
-      "summary": "U.S. Sens. Tammy Baldwin (D-Wis.) and Shelley Moore Capito (R-W.Va.) remain committed to passing the Palliative Care and Hospice Education Training Act (PCHETA). If enacted, PCHETA would provide support for hospice and palliative care training programs for physicians, nurses,...",
-      "url": "https://hospicenews.com/2026/09/29/lawmakers-hospice-staffing-bill-still-a-priority/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-zgv9wo",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:39:14.000Z",
-      "headline": "How Palliative Care Works Within Home Health",
-      "summary": "Palliative care as delivered by home health agencies can look very different than that provided by a hospice. Earlier this year, the U.S. Centers for Medicare and Medicaid Services (CMS) clarified in its proposed home health rule that palliative care is a billable service under...",
-      "url": "https://hospicenews.com/2026/09/29/how-palliative-care-works-within-home-health/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-v3lvrz",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-28T21:08:43.000Z",
-      "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-      "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief...",
-      "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
+      "date": "2026-10-20T19:34:50.000Z",
+      "headline": "New Hospice Locations Crop Up as Facility Relaunches",
+      "summary": "Some hospices have seen recent growth through new locations in the South, Midwest and East. Meanwhile, one organization plans to soon reopen its hospice facility after a temporary closure. Gentiva unveils Midwest de novo Gentiva has plans to open a new location in Peoria,...",
+      "url": "https://hospicenews.com/2026/10/20/new-hospice-locations-crop-up-as-facility-relaunches/",
       "matched_ccns": [
-        "051508",
-        "051523"
+        "101540",
+        "101548",
+        "141666",
+        "231524",
+        "331560"
       ],
       "match_confidence": "high"
+    },
+    {
+      "id": "hospice-news-hy2n8x",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-20T14:19:51.000Z",
+      "headline": "Voices: Jamey Taylor, Chief Information Officer, Dragonfly Health",
+      "summary": "This article is sponsored by Dragonfly Health. As hospice and post-acute care organizations look to reduce complexity across care delivery, technology is playing a growing role in connecting workflows, improving coordination and supporting clinicians at the point of care....",
+      "url": "https://hospicenews.com/2026/10/20/voices-jamey-taylor-chief-information-officer-dragonfly-health/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-wle2fj",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-20T11:42:58.000Z",
+      "headline": "Medicaid Plans Failing to Reimburse Hospices for Nursing Home Room-and-Board",
+      "summary": "Some Medicaid managed care plans are continuing to fail to make pass-through room-and-board payments to hospices for patients in California nursing homes. The issue pertains to nursing home residents who are dually eligible for Medicare and Medicaid. Hospices typically cover...",
+      "url": "https://hospicenews.com/2026/10/20/medicaid-plans-failing-to-reimburse-hospices-for-nursing-home-room-and-board/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-fejgo9",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-19T21:11:19.000Z",
+      "headline": "'High Stakes’ Decisions in Goal-Concordant Palliative Care",
+      "summary": "Lagging goal-concordant coordination can result in poor quality care for seriously ill patients and exacerbate stress among emergency and palliative care clinicians. Patients and their families often navigate complex, difficult decisions as a serious illness progresses,...",
+      "url": "https://hospicenews.com/2026/10/19/high-stakes-decisions-in-goal-concordant-palliative-care/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-54u4yi",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-19T18:47:21.000Z",
+      "headline": "Homestead Hospice Settles $1.9M Qui Tam Lawsuit",
+      "summary": "Homestead Hospice has reached a $1.93 million settlement agreement for the company’s alleged involvement in False Claims Act violations. U.S. District Judge Thomas Thrash Jr. recently released the settlement agreement in a lawsuit brought under qui tam provisions more than a...",
+      "url": "https://hospicenews.com/2026/10/19/homestead-hospice-settles-1-9m-qui-tam-lawsuit/",
+      "matched_ccns": [],
+      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
-    "741687": [
+    "101540": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-1gw7gl",
+        "date": "2026-10-20T19:34:50.000Z",
+        "headline": "New Hospice Locations Crop Up as Facility Relaunches",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/10/20/new-hospice-locations-crop-up-as-facility-relaunches/",
+        "summary": "Some hospices have seen recent growth through new locations in the South, Midwest and East. Meanwhile, one organization plans to soon reopen its hospice facility after a temporary closure. Gentiva unveils Midwest de novo Gentiva has plans to open a new location in Peoria,..."
       }
     ],
-    "751584": [
+    "101548": [
       {
-        "id": "hospice-news-nneooj",
-        "date": "2026-10-01T12:30:25.000Z",
-        "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
+        "id": "hospice-news-1gw7gl",
+        "date": "2026-10-20T19:34:50.000Z",
+        "headline": "New Hospice Locations Crop Up as Facility Relaunches",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
-        "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took..."
+        "url": "https://hospicenews.com/2026/10/20/new-hospice-locations-crop-up-as-facility-relaunches/",
+        "summary": "Some hospices have seen recent growth through new locations in the South, Midwest and East. Meanwhile, one organization plans to soon reopen its hospice facility after a temporary closure. Gentiva unveils Midwest de novo Gentiva has plans to open a new location in Peoria,..."
       }
     ],
-    "A91721": [
+    "141666": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-1gw7gl",
+        "date": "2026-10-20T19:34:50.000Z",
+        "headline": "New Hospice Locations Crop Up as Facility Relaunches",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/10/20/new-hospice-locations-crop-up-as-facility-relaunches/",
+        "summary": "Some hospices have seen recent growth through new locations in the South, Midwest and East. Meanwhile, one organization plans to soon reopen its hospice facility after a temporary closure. Gentiva unveils Midwest de novo Gentiva has plans to open a new location in Peoria,..."
       }
     ],
-    "051508": [
+    "231524": [
       {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
+        "id": "hospice-news-1gw7gl",
+        "date": "2026-10-20T19:34:50.000Z",
+        "headline": "New Hospice Locations Crop Up as Facility Relaunches",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/10/20/new-hospice-locations-crop-up-as-facility-relaunches/",
+        "summary": "Some hospices have seen recent growth through new locations in the South, Midwest and East. Meanwhile, one organization plans to soon reopen its hospice facility after a temporary closure. Gentiva unveils Midwest de novo Gentiva has plans to open a new location in Peoria,..."
       }
     ],
-    "051523": [
+    "331560": [
       {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
+        "id": "hospice-news-1gw7gl",
+        "date": "2026-10-20T19:34:50.000Z",
+        "headline": "New Hospice Locations Crop Up as Facility Relaunches",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/10/20/new-hospice-locations-crop-up-as-facility-relaunches/",
+        "summary": "Some hospices have seen recent growth through new locations in the South, Midwest and East. Meanwhile, one organization plans to soon reopen its hospice facility after a temporary closure. Gentiva unveils Midwest de novo Gentiva has plans to open a new location in Peoria,..."
+      }
+    ],
+    "451748": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "451765": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "671556": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "671650": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "671699": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "671704": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "671759": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "741664": [
+      {
+        "id": "hospice-news-urcwvg",
+        "date": "2026-10-21T12:40:01.000Z",
+        "headline": "Elara Caring Board Chair Paul Kusserow: More Payers Will Buy in Hospice, Home Health",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/elara-caring-board-chair-paul-kusserow-more-payers-will-buy-in-hospice-home-health/",
+        "summary": "The home-based care landscape has changed considerably between Paul Kusserow’s time as chairman and CEO of Amedisys and his return to the field as board chair of Elara Caring. Kusserow led Amedisys from 2014 to August 2025 when the company was acquired by the UnitedHealth Group..."
+      }
+    ],
+    "851512": [
+      {
+        "id": "hospice-news-7vggpz",
+        "date": "2026-10-21T19:16:38.000Z",
+        "headline": "Hospices Make C-Suite Transitions",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/21/hospices-make-c-suite-transitions/",
+        "summary": "Some hospices have undergone c-suite executive changes during the last month. Ennoble Care’s 2 New Executives Ennoble Care recently saw two new leadership changes. Marc Hudak has become the organization's chief managed care officer and president of health plans. He previously..."
       }
     ]
   }
