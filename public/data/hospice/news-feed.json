@@ -1,205 +1,226 @@
 {
-  "generated_at": "2026-10-03T17:13:02.895Z",
+  "generated_at": "2026-10-31T17:40:26.065Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-02T19:52:06.000Z",
+      "last_pubdate": "2026-10-30T16:46:31.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-30T09:01:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-10-30T15:10:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 7,
   "confidence_breakdown": {
-    "high": 3,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-9p24is",
+      "id": "hospice-news-hfl8wy",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T19:52:06.000Z",
-      "headline": "Reserve Care, University Hospitals End Joint Venture to Improve Care Coordination",
-      "summary": "Reserve Care has ended its joint venture with University Hospitals in a move designed to reduce burdensome transitions of care and improve timely access to hospice. The hospice and palliative care organization will remain a preferred provider of the hospital system as the two...",
-      "url": "https://hospicenews.com/2026/10/02/reserve-care-university-hospitals-end-joint-venture-to-improve-care-coordination/",
+      "date": "2026-10-30T16:46:31.000Z",
+      "headline": "BrightSpring Leverages Hospice in PACE, Home Care Expansion",
+      "summary": "BrightSpring Health Services (Nasdaq: BTSG) has focused on expanding its presence in home-based care. The company’s investments in hospice and home health are fueling opportunities on the horizon. Having diversified services has uniquely-positioned the company for sustainable...",
+      "url": "https://hospicenews.com/2026/10/30/brightspring-leverages-hospice-in-pace-home-care-expansion/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-9qfxq3",
+      "id": "hospice-news-ejz073",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T13:12:43.000Z",
-      "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
-      "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life...",
-      "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
+      "date": "2026-10-30T11:42:08.000Z",
+      "headline": "How the Government is Thinking About Hospice Payment Reform",
+      "summary": "Congress and federal agencies have been examining the prospect of adjusting – or overhauling – hospice reimbursement systems. This is based on introduced pieces of legislation and a series of government reports from agencies like the Government Accountability Office (GAO), the...",
+      "url": "https://hospicenews.com/2026/10/30/how-the-government-is-thinking-about-hospice-payment-reform/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-3pwvgx",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-29T17:42:45.000Z",
+      "headline": "VITAS Sees Referral 'Migration' Amid Regulatory Fraud Hunt",
+      "summary": "An influx of referrals in the West has brought VITAS Healthcare increased revenue and patient census volumes in the third quarter. The growth in the western United States is in part due to program integrity issues in the region, which have led families to seek legitimate...",
+      "url": "https://hospicenews.com/2026/10/29/vitas-sees-referral-migration-amid-regulatory-fraud-hunt/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-vhp9ax",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-29T10:37:07.000Z",
+      "headline": "CMS COO: Hospice, Home Health Moratoria a Successful Approach",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services’ (CMS) temporary moratoria on hospice and home health provider enrollment in Medicare has been working, according to Kimberly Brandt, the agency’s deputy administrator and COO. To date, during the six-month enrollment freeze, CMS...",
+      "url": "https://hospicenews.com/2026/10/29/cms-coo-hospice-home-health-moratoria-a-successful-approach/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-4h6b5i",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-29T00:08:23.000Z",
+      "headline": "VNA Health COO: Regulatory Scrutiny a Chance to Show Hospices’ Integrity",
+      "summary": "The tightening regulatory scrutiny on hospice providers is an opportunity for hospices to demonstrate their ethics and integrity, according to Sena Woodall, COO of VNA Health. VNA Health appointed Woodall as its COO earlier this month. She first joined VNA Health in 2018,...",
+      "url": "https://hospicenews.com/2026/10/28/vna-health-coo-regulatory-scrutiny-a-chance-to-show-hospices-integrity/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-f8toaw",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-28T20:20:44.000Z",
+      "headline": "Final Deadline for the 2026 Aspect Marketing & Advertising Awards Is October 31",
+      "summary": "The final deadline for the 2026 Aspect Marketing & Advertising Awards is Saturday, October 31, 2026 at 11:59pm CDT. The Aspect Marketing & Advertising Awards recognize outstanding creativity, innovation, and impact in marketing and advertising campaigns across the healthcare,...",
+      "url": "https://hospicenews.com/2026/10/28/final-deadline-for-the-2026-aspect-marketing-advertising-awards-is-october-31/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-603n4z",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-28T17:44:23.000Z",
+      "headline": "3 Hospices Reveal Leadership Changes",
+      "summary": "Two hospices have unveiled new operational and community engagement leadership roles. Meanwhile, one organization has promoted a clinical executive. HopeHealth Creates New Community Engagement Role, Program HopeHealth has named Helena Moronta as its director of community...",
+      "url": "https://hospicenews.com/2026/10/28/3-hospices-reveal-leadership-changes/",
       "matched_ccns": [
-        "741687",
-        "A91721"
+        "061500",
+        "061504"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-a2gz3",
+      "id": "hospice-news-6qipk4",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T17:49:30.000Z",
-      "headline": "CMS Grants Grace Period for Hospice Election Statement Addendum Compliance",
-      "summary": "Hospices must provide all patients with an addendum to the election statement when they enroll in services to comply with a new requirement that took effect on Thursday. The U.S. Centers for Medicare & Medicaid Services (CMS) mandated the requirement in the final hospice payment...",
-      "url": "https://hospicenews.com/2026/10/01/cms-grants-grace-period-for-addendum-to-hospice-election-statement-compliance/",
+      "date": "2026-10-28T12:11:26.000Z",
+      "headline": "The Rose Program: Expanding Palliative Care in Nursing Homes",
+      "summary": "“Palliative medicine saved my life.” These words from his daughter Rose inspired Dr. David Thimons to launch a new palliative care company. Rose is a survivor of bone cancer. The result of her family’s ordeal is the Rose Program, a for-profit company that provides palliative...",
+      "url": "https://hospicenews.com/2026/10/28/the-rose-program-expanding-palliative-care-in-nursing-homes/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-nneooj",
+      "id": "hospice-news-3ufvo9",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T12:30:25.000Z",
-      "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
-      "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took...",
-      "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
+      "date": "2026-10-27T20:12:30.000Z",
+      "headline": "Closing the Gap: LGBTQ-Inclusive Hospice Bereavement Care",
+      "summary": "Certain communities lack sufficient access to inclusive grief support due to gaps in hospices’ bereavement programs. The U.S. Centers for Medicare & Medicaid Services (CMS) requires hospice providers to offer bereavement care to patients’ families for 13 months following a loved...",
+      "url": "https://hospicenews.com/2026/10/27/closing-the-gap-lgbtq-inclusive-hospice-bereavement-care/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-kifo6e",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-10-26T18:53:41.000Z",
+      "headline": "6 Suspects Arrested in $138M Hospice Fraud Scheme",
+      "summary": "Six medical professionals were recently arrested for their alleged involvement in a $138 million scheme that spanned three separate hospices. The suspects are accused of submitting false Medicare billing claims for patients who were not eligible to receive hospice care. The...",
+      "url": "https://hospicenews.com/2026/10/26/6-suspects-arrested-in-138m-hospice-fraud-scheme/",
       "matched_ccns": [
-        "751584"
-      ],
-      "match_confidence": "high"
-    },
-    {
-      "id": "hospice-news-glucpb",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T18:02:24.000Z",
-      "headline": "YoloCares Launches Basketball Grief Program for Male Youths",
-      "summary": "YoloCares recently rolled out a new bereavement program aimed at reaching the underserved demographic of young males. The California-based hospice’s GriefBall initiative included a two-day basketball camp for bereaved boys and young men. YoloCares’ Center for Loss & Hope...",
-      "url": "https://hospicenews.com/2026/09/30/yolocares-launches-basketball-grief-program-for-male-youths/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-4wz2di",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T13:29:58.000Z",
-      "headline": "Hospice Tech Execs Have Changing Role in Age of AI",
-      "summary": "The proliferation of artificial intelligence (AI) in the hospice space is changing how chief information officers and other technology-focused leaders are approaching their jobs. Hospices nationwide are investing in AI systems to transform virtually every aspect of their...",
-      "url": "https://hospicenews.com/2026/09/30/hospice-tech-execs-have-changing-role-in-age-of-ai/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-oc7ghn",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T19:33:58.000Z",
-      "headline": "Human Oversight Lagging in AI-Driven Hospice Fraud Fight",
-      "summary": "Some legal and technology experts have grown increasingly concerned by a potential lack of human oversight in artificial intelligence-assisted hospice regulatory enforcement. The AI-driven efforts to crackdown on fraudulent activity could bring significant impacts for legitimate...",
-      "url": "https://hospicenews.com/2026/09/29/human-oversight-lagging-in-ai-driven-hospice-fraud-fight/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-sk7kvm",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:57:14.000Z",
-      "headline": "Lawmakers: Hospice Staffing Bill Still a Priority",
-      "summary": "U.S. Sens. Tammy Baldwin (D-Wis.) and Shelley Moore Capito (R-W.Va.) remain committed to passing the Palliative Care and Hospice Education Training Act (PCHETA). If enacted, PCHETA would provide support for hospice and palliative care training programs for physicians, nurses,...",
-      "url": "https://hospicenews.com/2026/09/29/lawmakers-hospice-staffing-bill-still-a-priority/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-zgv9wo",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:39:14.000Z",
-      "headline": "How Palliative Care Works Within Home Health",
-      "summary": "Palliative care as delivered by home health agencies can look very different than that provided by a hospice. Earlier this year, the U.S. Centers for Medicare and Medicaid Services (CMS) clarified in its proposed home health rule that palliative care is a billable service under...",
-      "url": "https://hospicenews.com/2026/09/29/how-palliative-care-works-within-home-health/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-v3lvrz",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-28T21:08:43.000Z",
-      "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-      "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief...",
-      "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-      "matched_ccns": [
-        "051508",
-        "051523"
+        "921665",
+        "A11760",
+        "B31686",
+        "A11587",
+        "B51627"
       ],
       "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
-    "741687": [
+    "921665": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-kifo6e",
+        "date": "2026-10-26T18:53:41.000Z",
+        "headline": "6 Suspects Arrested in $138M Hospice Fraud Scheme",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/10/26/6-suspects-arrested-in-138m-hospice-fraud-scheme/",
+        "summary": "Six medical professionals were recently arrested for their alleged involvement in a $138 million scheme that spanned three separate hospices. The suspects are accused of submitting false Medicare billing claims for patients who were not eligible to receive hospice care. The..."
       }
     ],
-    "751584": [
+    "061500": [
       {
-        "id": "hospice-news-nneooj",
-        "date": "2026-10-01T12:30:25.000Z",
-        "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
+        "id": "hospice-news-603n4z",
+        "date": "2026-10-28T17:44:23.000Z",
+        "headline": "3 Hospices Reveal Leadership Changes",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
-        "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took..."
+        "url": "https://hospicenews.com/2026/10/28/3-hospices-reveal-leadership-changes/",
+        "summary": "Two hospices have unveiled new operational and community engagement leadership roles. Meanwhile, one organization has promoted a clinical executive. HopeHealth Creates New Community Engagement Role, Program HopeHealth has named Helena Moronta as its director of community..."
       }
     ],
-    "A91721": [
+    "061504": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-603n4z",
+        "date": "2026-10-28T17:44:23.000Z",
+        "headline": "3 Hospices Reveal Leadership Changes",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/10/28/3-hospices-reveal-leadership-changes/",
+        "summary": "Two hospices have unveiled new operational and community engagement leadership roles. Meanwhile, one organization has promoted a clinical executive. HopeHealth Creates New Community Engagement Role, Program HopeHealth has named Helena Moronta as its director of community..."
       }
     ],
-    "051508": [
+    "A11760": [
       {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
+        "id": "hospice-news-kifo6e",
+        "date": "2026-10-26T18:53:41.000Z",
+        "headline": "6 Suspects Arrested in $138M Hospice Fraud Scheme",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/10/26/6-suspects-arrested-in-138m-hospice-fraud-scheme/",
+        "summary": "Six medical professionals were recently arrested for their alleged involvement in a $138 million scheme that spanned three separate hospices. The suspects are accused of submitting false Medicare billing claims for patients who were not eligible to receive hospice care. The..."
       }
     ],
-    "051523": [
+    "B31686": [
       {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
+        "id": "hospice-news-kifo6e",
+        "date": "2026-10-26T18:53:41.000Z",
+        "headline": "6 Suspects Arrested in $138M Hospice Fraud Scheme",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/10/26/6-suspects-arrested-in-138m-hospice-fraud-scheme/",
+        "summary": "Six medical professionals were recently arrested for their alleged involvement in a $138 million scheme that spanned three separate hospices. The suspects are accused of submitting false Medicare billing claims for patients who were not eligible to receive hospice care. The..."
+      }
+    ],
+    "A11587": [
+      {
+        "id": "hospice-news-kifo6e",
+        "date": "2026-10-26T18:53:41.000Z",
+        "headline": "6 Suspects Arrested in $138M Hospice Fraud Scheme",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/26/6-suspects-arrested-in-138m-hospice-fraud-scheme/",
+        "summary": "Six medical professionals were recently arrested for their alleged involvement in a $138 million scheme that spanned three separate hospices. The suspects are accused of submitting false Medicare billing claims for patients who were not eligible to receive hospice care. The..."
+      }
+    ],
+    "B51627": [
+      {
+        "id": "hospice-news-kifo6e",
+        "date": "2026-10-26T18:53:41.000Z",
+        "headline": "6 Suspects Arrested in $138M Hospice Fraud Scheme",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/10/26/6-suspects-arrested-in-138m-hospice-fraud-scheme/",
+        "summary": "Six medical professionals were recently arrested for their alleged involvement in a $138 million scheme that spanned three separate hospices. The suspects are accused of submitting false Medicare billing claims for patients who were not eligible to receive hospice care. The..."
       }
     ]
   }
