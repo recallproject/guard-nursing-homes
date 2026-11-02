@@ -1,6 +1,14 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { trackDownload } from '../utils/analytics';
 import '../styles/evidence-sample.css';
+
+function trackEvidenceSampleDownload() {
+  trackDownload('sample-evidence', {
+    type: 'evidence',
+    placement: 'evidence-sample',
+  }, 'Sample-PDF-Download');
+}
 
 export default function EvidenceSamplePage() {
   return (
@@ -75,6 +83,7 @@ export default function EvidenceSamplePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ev-sample-download-btn"
+                onClick={trackEvidenceSampleDownload}
               >
                 Download Full Sample Report (PDF)
               </a>

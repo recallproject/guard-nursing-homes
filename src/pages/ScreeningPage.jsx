@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { useStateData } from '../hooks/useFacilityData';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
+import { trackDownload } from '../utils/analytics';
 import '../styles/screening.css';
 
 const US_STATES = {
@@ -251,6 +252,11 @@ export function ScreeningPage() {
 
   const downloadPDF = async () => {
     if (!filteredFacilities.length) return;
+    trackDownload('screening', {
+      reportType: 'screening',
+      state: selectedState || '',
+      placement: 'screening',
+    }, 'Screening-PDF-Download');
     const { default: jsPDF } = await import('jspdf');
     await import('jspdf-autotable');
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'letter' });

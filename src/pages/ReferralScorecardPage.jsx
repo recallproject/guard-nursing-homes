@@ -7,6 +7,7 @@ import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { UpgradePrompt } from '../components/UpgradePrompt';
 import ComingSoonPage from '../components/ComingSoonPage';
 import ReferralScorecardComingSoon from '../components/ReferralScorecardComingSoon';
+import { trackDownload } from '../utils/analytics';
 import '../styles/referral-scorecard.css';
 
 const US_STATES = {
@@ -445,6 +446,10 @@ export function ReferralScorecardPage() {
   // Download PDF
   const downloadPDF = async () => {
     if (!sortedFacilities.length) return;
+    trackDownload('referral-scorecard', {
+      reportType: 'referral-scorecard',
+      placement: 'referral-scorecard',
+    }, 'Referral-Scorecard-PDF-Download');
 
     const { default: jsPDF } = await import('jspdf');
     await import('jspdf-autotable');

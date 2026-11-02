@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { generatePDF } from '../utils/generatePDF';
+import { trackDownload } from '../utils/analytics';
 
 export function DownloadButton({ facility, nearbyFacilities = [], allFacilities = [], antipsychoticData = null, label = "Download PDF Report", className = "", variant = "default" }) {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -7,13 +8,12 @@ export function DownloadButton({ facility, nearbyFacilities = [], allFacilities 
   const handleDownload = async () => {
     if (!facility || isGenerating) return;
 
-    window.plausible && window.plausible('Free-PDF-Download', {
-      props: {
-        ccn: facility.ccn || facility.provider_number || '',
-        state: facility.state,
-        composite_score: String(facility.composite || '')
-      }
-    });
+    trackDownload('family', {
+      ccn: facility.ccn || facility.provider_number || '',
+      state: facility.state,
+      composite_score: String(facility.composite || ''),
+      placement: 'download-button',
+    }, 'Free-PDF-Download');
     try {
       setIsGenerating(true);
       setTimeout(() => {

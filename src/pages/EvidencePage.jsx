@@ -6,6 +6,7 @@ import { haversineDistance } from '../utils/haversine';
 import { generateFacilityBriefPDF } from '../utils/generateFacilityBriefPDF';
 import { buildFacilityBriefModel } from '../utils/facilityBriefContent';
 import { checkoutSingleReport } from '../utils/stripe';
+import { trackDownload } from '../utils/analytics';
 import { useSubscription, canAccess } from '../hooks/useSubscription';
 import { FacilityBriefDocument } from '../components/FacilityBriefDocument';
 
@@ -104,9 +105,12 @@ export function EvidencePage({ tokenVerified = false, ccnOverride = null }) {
       }
       const facilityAntipsychoticData = antipsychoticAlerts ? (antipsychoticAlerts[String(facility.ccn)] || null) : null;
       generateFacilityBriefPDF(enrichedFacility, nearbyAlternatives, allFacilities, facilityAntipsychoticData, dataAsOf);
-      window.plausible && window.plausible('PDF-Download', {
-        props: { facility: facility.name, ccn: facility.ccn, state: facility.state, reportType: 'facility-brief' },
-      });
+      trackDownload('facility-brief', {
+        facility: facility.name,
+        ccn: facility.ccn,
+        state: facility.state,
+        reportType: 'facility-brief',
+      }, 'PDF-Download');
     } finally {
       setPdfLoading(false);
     }

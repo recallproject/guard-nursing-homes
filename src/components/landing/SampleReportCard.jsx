@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { generatePDF } from '../../utils/generatePDF';
+import { trackDownload } from '../../utils/analytics';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,6 +121,7 @@ export default function SampleReportCard({ onSearch }) {
   }, []);
 
   const handleDownloadSample = () => {
+    trackDownload('sample-family', { type: 'family', placement: 'sample-report-card' }, 'Sample-PDF-Download');
     try {
       generatePDF(SAMPLE_FACILITY, {
         nearbyFacilities: SAMPLE_NEARBY,
