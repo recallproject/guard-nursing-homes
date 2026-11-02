@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { submitLead } from '../../utils/submitLead';
-import { track } from '../../utils/analytics';
+import { track, trackDownload } from '../../utils/analytics';
 import '../../styles/landing-v5.css';
 
 // ISO 8601 timestamp of the most recent CMS data refresh. Update when new data is pulled.
@@ -756,7 +756,7 @@ export default function LandingV5({ onSearch, onExplore, searchFacilities }) {
           <div className="v5-method-links">
             <Link to="/methodology" className="v5-method-link">Read full methodology</Link>
             <Link to="/methodology" className="v5-method-link">View data sources</Link>
-            <a href="/samples/OversightReport_Sample_Evidence_Report.pdf" className="v5-method-link" download>See a sample report</a>
+            <a href="/samples/OversightReport_Sample_Evidence_Report.pdf" className="v5-method-link" download onClick={() => trackDownload('sample-evidence', { type: 'evidence', placement: 'landing-v5' }, 'Sample-PDF-Download')}>See a sample report</a>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { trackDownload } from '../utils/analytics';
 
 const SAMPLE_PDF = '/samples/OversightReport_Sample_Evidence_Report.pdf';
 
@@ -190,6 +191,7 @@ export default function HeroReportPreview() {
               target="_blank"
               rel="noopener noreferrer"
               className="pa-preview-btn pa-preview-btn--ghost"
+              onClick={() => trackDownload('sample-evidence', { type: 'evidence', placement: 'hero-preview' }, 'Sample-PDF-Download')}
             >
               <Icon name="download" />
               Download PDF

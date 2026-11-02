@@ -48,6 +48,30 @@ export function track(event, properties = {}, options) {
 }
 
 /**
+ * Dual-write a file download.
+ * PostHog event is always `pdf_downloaded`, with `report` set from the first argument.
+ * Plausible keeps the existing goal name and the caller's custom props (unchanged).
+ * REDIRECT_CAPTURE so a new-tab or file navigation still delivers the PostHog hit.
+ * Never throws. Never blocks the download.
+ */
+export function trackDownload(report, properties = {}, plausibleGoal) {
+  const extra = properties && typeof properties === 'object' ? properties : {};
+  const reportName = String(report ?? extra.report ?? '').trim();
+  track('pdf_downloaded', { ...extra, report: reportName }, REDIRECT_CAPTURE);
+
+  if (!plausibleGoal) return;
+  const win = pageWindow();
+  if (!win || typeof win.plausible !== 'function') return;
+  try {
+    const keys = Object.keys(extra);
+    if (keys.length) win.plausible(plausibleGoal, { props: { ...extra } });
+    else win.plausible(plausibleGoal);
+  } catch {
+    // Analytics must not block the download.
+  }
+}
+
+/**
  * Fire once per browser session. Uses sessionStorage so it re-fires
  * if the user opens a new tab or comes back after the session expires.
  */

@@ -6,6 +6,7 @@ import { useWatchlistFacilities } from '../hooks/useFacilityData';
 import { CMS_SNF_AS_OF_ISO } from '../data/careSettings';
 import { buildCompareBriefModel } from '../utils/compareBriefContent';
 import { generateCompareBriefPDF } from '../utils/generateCompareBriefPDF';
+import { trackDownload } from '../utils/analytics';
 import '../styles/compare-brief.css';
 
 export function CompareBriefDownload({ ccns, sample = false }) {
@@ -26,6 +27,21 @@ export function CompareBriefDownload({ ccns, sample = false }) {
 
   const download = () => {
     if (pdfLoading || facilities.length < 2) return;
+    const count = String(facilities.length);
+    if (sample) {
+      trackDownload('compare-brief-sample', {
+        type: 'compare-brief',
+        count,
+        placement: 'compare-brief-sample',
+      }, 'Sample-PDF-Download');
+    } else {
+      trackDownload('compare-brief', {
+        reportType: 'compare-brief',
+        count,
+        ccns: facilities.map((facility) => facility.ccn).filter(Boolean).join(','),
+        placement: 'compare-brief-download',
+      }, 'PDF-Download');
+    }
     setPdfLoading(true);
     setTimeout(() => {
       try {

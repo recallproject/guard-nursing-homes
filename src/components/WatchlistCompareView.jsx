@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { generateComparisonPDF } from '../utils/generateComparisonPDF';
 import { checkoutCompareBrief } from '../utils/stripe';
 import { compareBriefOfferForCount } from '../utils/compareBriefOffer';
-import { track } from '../utils/analytics';
+import { track, trackDownload } from '../utils/analytics';
 import { FREE_VS_PAID_COPY } from './facilityReportCopy';
 import { CMS_SNF_AS_OF_ISO } from '../data/careSettings';
 import {
@@ -49,17 +49,13 @@ function CompareFacilityCtas({ facility }) {
 
   const downloadFamilyReport = () => {
     if (!facility || familyLoading) return;
-    if (typeof window !== 'undefined' && window.plausible) {
-      window.plausible('Free-PDF-Download', {
-        props: {
-          ccn,
-          state: facility.state,
-          report: 'family',
-          placement: 'watchlist-compare',
-          composite_score: String(facility.composite || ''),
-        },
-      });
-    }
+    trackDownload('family', {
+      ccn,
+      state: facility.state,
+      report: 'family',
+      placement: 'watchlist-compare',
+      composite_score: String(facility.composite || ''),
+    }, 'Free-PDF-Download');
     setFamilyLoading(true);
     setTimeout(async () => {
       try {
@@ -208,15 +204,11 @@ export function WatchlistCompareView({ facilities, onChangeHomes, dataAsOf = CMS
 
   const downloadComparison = () => {
     if (snapLoading) return;
-    if (typeof window !== 'undefined' && window.plausible) {
-      window.plausible('Free-PDF-Download', {
-        props: {
-          report: 'compare-snapshot',
-          placement: 'watchlist-compare',
-          count: String(count),
-        },
-      });
-    }
+    trackDownload('compare-snapshot', {
+      report: 'compare-snapshot',
+      placement: 'watchlist-compare',
+      count: String(count),
+    }, 'Free-PDF-Download');
     setSnapLoading(true);
     setTimeout(() => {
       try {

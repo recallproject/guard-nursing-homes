@@ -12,6 +12,7 @@ import {
   purchaseDedupeKey,
   track,
   trackBeforeRedirect,
+  trackDownload,
   trackPurchaseCompleted,
 } from './analytics.js';
 
@@ -369,4 +370,110 @@ describe('commerce wiring on main', () => {
     assert.match(readSrc('src/components/careAtHome/CareAtHomeDialog.jsx'), /form: 'claim'/);
     assert.match(readSrc('src/pages/CareAtHomePage.jsx'), /form: 'request'/);
   });
+});
+
+describe('trackDownload', () => {
+  const previousWindow = globalThis.window;
+
+  afterEach(() => {
+    if (previousWindow === undefined) delete globalThis.window;
+    else globalThis.window = previousWindow;
+  });
+
+  function installAnalytics() {
+    const captures = [];
+    const plausibles = [];
+    globalThis.window = {
+      posthog: {
+        capture(event, properties, options) {
+          captures.push({ event, properties, options });
+        },
+      },
+      plausible(...args) {
+        plausibles.push(args);
+      },
+    };
+    return { captures, plausibles };
+  }
+
+  it('writes pdf_downloaded with report and keeps the Plausible goal props', () => {
+    const { captures, plausibles } = installAnalytics();
+    const props = { ccn: '055559', state: 'CA', placement: 'cta-rail' };
+    trackDownload('family', props, 'Free-PDF-Download');
+    assert.equal(captures.length, 1);
+    assert.equal(captures[0].event, 'pdf_downloaded');
+    assert.deepEqual(captures[0].properties, {
+      ccn: '055559',
+      state: 'CA',
+      placement: 'cta-rail',
+      report: 'family',
+    });
+    assert.deepEqual(captures[0].options, REDIRECT_CAPTURE);
+    assert.deepEqual(plausibles, [['Free-PDF-Download', { props }]]);
+    assert.equal(props.report, undefined);
+  });
+
+  it('forwards a report prop the caller already sent to Plausible', () => {
+    const { captures, plausibles } = installAnalytics();
+    trackDownload('family', { report: 'family', placement: 'downloads-section' }, 'Free-PDF-Download');
+    assert.equal(captures[0].properties.report, 'family');
+    assert.equal(plausibles[0][1].props.report, 'family');
+    assert.equal(plausibles[0][0], 'Free-PDF-Download');
+  });
+
+  it('sends a bare Plausible goal when there are no custom props', () => {
+    const { captures, plausibles } = installAnalytics();
+    trackDownload('hospice-compare-csv', {}, 'Hospice-Compare-CSV-Download');
+    assert.equal(captures[0].properties.report, 'hospice-compare-csv');
+    assert.deepEqual(captures[0].options, REDIRECT_CAPTURE);
+    assert.deepEqual(plausibles, [['Hospice-Compare-CSV-Download']]);
+  });
+
+  it('still calls Plausible when PostHog is missing and does not throw when both are missing', () => {
+    const plausibles = [];
+    globalThis.window = {
+      plausible(...args) { plausibles.push(args); },
+    };
+    trackDownload('sample-evidence', { type: 'evidence' }, 'Sample-PDF-Download');
+    assert.deepEqual(plausibles, [['Sample-PDF-Download', { props: { type: 'evidence' } }]]);
+
+    globalThis.window = {};
+    assert.doesNotThrow(() => trackDownload('family', { ccn: '1' }, 'Free-PDF-Download'));
+    globalThis.window = {
+      posthog: { capture() { throw new Error('posthog down'); } },
+      plausible() { throw new Error('plausible down'); },
+    };
+    assert.doesNotThrow(() => trackDownload('family', { ccn: '1' }, 'Free-PDF-Download'));
+  });
+});
+
+describe('pdf download call sites', () => {
+  const spots = [
+    ['src/components/FacilityDownloads.jsx', /trackDownload\(\s*'family'/, 'Free-PDF-Download'],
+    ['src/components/DownloadButton.jsx', /trackDownload\(\s*'family'/, 'Free-PDF-Download'],
+    ['src/components/WatchlistCompareView.jsx', /trackDownload\(\s*'family'/, 'Free-PDF-Download'],
+    ['src/components/WatchlistCompareView.jsx', /trackDownload\(\s*'compare-snapshot'/, 'Free-PDF-Download'],
+    ['src/pages/EvidencePage.jsx', /trackDownload\(\s*'facility-brief'/, 'PDF-Download'],
+    ['src/components/landing/TwoReportsSection.jsx', /trackDownload\(\s*'sample-family'/, 'Sample-PDF-Download'],
+    ['src/components/landing/TwoReportsSection.jsx', /trackDownload\(\s*'sample-evidence'/, 'Sample-PDF-Download'],
+    ['src/components/landing/SampleReportCard.jsx', /trackDownload\(\s*'sample-family'/, 'Sample-PDF-Download'],
+    ['src/pages/EvidenceSamplePage.jsx', /trackDownload\(\s*'sample-evidence'/, 'Sample-PDF-Download'],
+    ['src/components/HeroReportPreview.jsx', /trackDownload\(\s*'sample-evidence'/, 'Sample-PDF-Download'],
+    ['src/components/landing/LandingV4.jsx', /trackDownload\(\s*'sample-evidence'/, 'Sample-PDF-Download'],
+    ['src/components/landing/LandingV5.jsx', /trackDownload\(\s*'sample-evidence'/, 'Sample-PDF-Download'],
+    ['src/pages/CompareBriefDownload.jsx', /trackDownload\(\s*'compare-brief-sample'/, 'Sample-PDF-Download'],
+    ['src/pages/CompareBriefDownload.jsx', /trackDownload\(\s*'compare-brief',/, 'PDF-Download'],
+    ['src/pages/ScreeningPage.jsx', /trackDownload\(\s*'screening'/, 'Screening-PDF-Download'],
+    ['src/pages/ReferralScorecardPage.jsx', /trackDownload\(\s*'referral-scorecard'/, 'Referral-Scorecard-PDF-Download'],
+    ['src/pages/HospiceComparePage.jsx', /trackDownload\(\s*'hospice-compare-csv'/, 'Hospice-Compare-CSV-Download'],
+  ];
+
+  for (const [file, reportCall, goal] of spots) {
+    it(`${file} dual-writes ${goal}`, () => {
+      const src = readSrc(file);
+      assert.match(src, reportCall);
+      assert.match(src, new RegExp(`['"]${goal}['"]`));
+      assert.doesNotMatch(src, new RegExp(`plausible\\(\\s*['"]${goal}['"]`));
+    });
+  }
 });

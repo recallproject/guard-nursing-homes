@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { generatePDF } from '../../utils/generatePDF';
+import { trackDownload } from '../../utils/analytics';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,7 +79,7 @@ export default function TwoReportsSection({ onSearch }) {
   }, []);
 
   const handleDownloadFamily = () => {
-    window.plausible && window.plausible('Sample-PDF-Download', {props: {type: 'family'}});
+    trackDownload('sample-family', { type: 'family', placement: 'two-reports' }, 'Sample-PDF-Download');
     setGeneratingFamily(true);
     setTimeout(() => {
       try {
@@ -216,7 +217,7 @@ export default function TwoReportsSection({ onSearch }) {
               className="btn btn-primary two-reports-download"
               href="/samples/OversightReport_Sample_Evidence_Report.pdf"
               download
-              onClick={() => { window.plausible && window.plausible('Sample-PDF-Download', {props: {type: 'evidence'}}); }}
+              onClick={() => { trackDownload('sample-evidence', { type: 'evidence', placement: 'two-reports' }, 'Sample-PDF-Download'); }}
             >
               Download Free Sample
             </a>

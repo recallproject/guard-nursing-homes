@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { trackDownload } from '../../utils/analytics';
 import HowItWorks from './HowItWorks';
 import '../../styles/landing-v4.css';
 import '../../styles/how-it-works.css';
@@ -321,7 +322,7 @@ export default function LandingV4({ onSearch, onExplore, searchFacilities }) {
           <div className="v4-method-links">
             <Link to="/methodology" className="v4-method-link">Read full methodology</Link>
             <Link to="/methodology" className="v4-method-link">View data sources</Link>
-            <a href="/samples/OversightReport_Sample_Evidence_Report.pdf" className="v4-method-link" download>See a sample report</a>
+            <a href="/samples/OversightReport_Sample_Evidence_Report.pdf" className="v4-method-link" download onClick={() => trackDownload('sample-evidence', { type: 'evidence', placement: 'landing-v4' }, 'Sample-PDF-Download')}>See a sample report</a>
           </div>
         </div>
       </div>

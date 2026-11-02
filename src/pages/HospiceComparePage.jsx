@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { trackDownload } from '../utils/analytics';
 
 // HospiceComparePage — side-by-side hospice comparison.
 // Reads URL params (zip, city, state, ccns), resolves ZIP/city through the
@@ -859,7 +860,7 @@ export default function HospiceComparePage() {
   };
 
   const handleCsvDownload = () => {
-    if (window.plausible) window.plausible('Hospice-Compare-CSV-Download');
+    trackDownload('hospice-compare-csv', {}, 'Hospice-Compare-CSV-Download');
   };
 
   return (

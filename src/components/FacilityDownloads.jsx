@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { generatePDF } from '../utils/generatePDF';
 import { checkoutSingleReport } from '../utils/stripe';
+import { trackDownload } from '../utils/analytics';
 import { CONTACT_EMAIL, CONTACT_MAILTO } from '../data/contact';
 import { FREE_VS_PAID_COPY } from './facilityReportCopy';
 import '../styles/facility-downloads.css';
@@ -32,13 +33,13 @@ function useFacilityReportActions(facility, nearbyFacilities, allFacilities, ant
 
   const downloadFamilyReport = () => {
     if (!facility || familyLoading) return;
-    trackEvent('Free-PDF-Download', {
+    trackDownload('family', {
       ccn: facilityCcn(facility),
       state: facility.state,
       report: 'family',
       placement,
       composite_score: String(facility.composite || ''),
-    });
+    }, 'Free-PDF-Download');
     setFamilyLoading(true);
     setTimeout(() => {
       try {
