@@ -1,205 +1,204 @@
 {
-  "generated_at": "2026-10-03T17:13:02.895Z",
+  "generated_at": "2026-11-11T20:09:10.984Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-02T19:52:06.000Z",
+      "last_pubdate": "2026-11-11T12:33:29.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-11-10T10:00:00.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-11-11T17:30:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
-  "hospice_filtered": 10,
-  "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "hospice_filtered": 12,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 3,
   "confidence_breakdown": {
-    "high": 3,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-9p24is",
+      "id": "hospice-news-ju8rp7",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T19:52:06.000Z",
-      "headline": "Reserve Care, University Hospitals End Joint Venture to Improve Care Coordination",
-      "summary": "Reserve Care has ended its joint venture with University Hospitals in a move designed to reduce burdensome transitions of care and improve timely access to hospice. The hospice and palliative care organization will remain a preferred provider of the hospital system as the two...",
-      "url": "https://hospicenews.com/2026/10/02/reserve-care-university-hospitals-end-joint-venture-to-improve-care-coordination/",
+      "date": "2026-11-11T12:33:29.000Z",
+      "headline": "CAPC to Build National Palliative Care Program Inventory",
+      "summary": "A new national initiative aims to identify where palliative care services are available and where patients continue to face gaps in access. The Center to Advance Palliative Care (CAPC) has launched the Palliative Care Program Inventory, a national effort to collect information...",
+      "url": "https://hospicenews.com/2026/11/11/capc-to-build-national-palliative-care-program-inventory/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-9qfxq3",
+      "id": "propublica-aqdnab",
+      "source": "ProPublica",
+      "source_url": "https://www.propublica.org/feeds/propublica/main",
+      "date": "2026-11-11T10:00:00.000Z",
+      "headline": "“We Have No One”: How Trump’s Dismantling of the VA Left a Veterans Hospital in Crisis",
+      "summary": "The post “We Have No One”: How Trump’s Dismantling of the VA Left a Veterans Hospital in Crisis appeared first on ProPublica .",
+      "url": "https://www.propublica.org/article/east-orange-va-hospital-veterans-decline-new-jersey",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-8s92t9",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T13:12:43.000Z",
-      "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
-      "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life...",
-      "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
+      "date": "2026-11-10T21:11:24.000Z",
+      "headline": "Home Health Rule Brings 'Unfettered' Hospice Oversight",
+      "summary": "Hospices could see some potentially significant impacts from recent regulatory provisions in the U.S Centers for Medicare & Medicaid Services’ (CMS) recently finalized 2027 home health rule. Through the rule, the agency rolled out new measures designed to improve program...",
+      "url": "https://hospicenews.com/2026/11/10/home-health-rule-brings-unfettered-hospice-oversight/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-bio8ff",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-11-10T13:55:26.000Z",
+      "headline": "What the Mid-Term Elections Mean for Hospices",
+      "summary": "The 2026 mid-term elections will dramatically alter the legislative landscape in which hospice policy is decided. Democrats dominated in the election, upending years of Republican control in both chambers of Congress. Though a few races remain undecided, to date Democrats will...",
+      "url": "https://hospicenews.com/2026/11/10/what-the-mid-term-elections-mean-for-hospices/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-92ge2a",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-11-09T18:18:28.000Z",
+      "headline": "CMS’ Rural Health Program Builds Momentum",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) recently funneled $10 billion into a federal program designed to improve rural health disparities. The new funding comes in the second year of CMS’ Rural Health Transformation Program (RHTP), which is designed to make...",
+      "url": "https://hospicenews.com/2026/11/09/cms-rural-health-program-builds-momentum/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-pwhvt4",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-11-09T16:22:43.000Z",
+      "headline": "LiveWell Partners Expands Michigan Footprint With Assured Home Health and Hospice Acquisition",
+      "summary": "LiveWell Partners is continuing to expand its Michigan footprint through the acquisition of Detroit-based Assured Home Health and Hospice. The St. Louis-based company has closed on the transaction, through which it will provide home health and hospice services throughout...",
+      "url": "https://hospicenews.com/2026/11/09/livewell-partners-expands-michigan-footprint-with-assured-home-health-and-hospice-acquisition/",
       "matched_ccns": [
-        "741687",
-        "A91721"
+        "231686",
+        "231568"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-a2gz3",
+      "id": "hospice-news-ayv47h",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T17:49:30.000Z",
-      "headline": "CMS Grants Grace Period for Hospice Election Statement Addendum Compliance",
-      "summary": "Hospices must provide all patients with an addendum to the election statement when they enroll in services to comply with a new requirement that took effect on Thursday. The U.S. Centers for Medicare & Medicaid Services (CMS) mandated the requirement in the final hospice payment...",
-      "url": "https://hospicenews.com/2026/10/01/cms-grants-grace-period-for-addendum-to-hospice-election-statement-compliance/",
+      "date": "2026-11-09T13:35:51.000Z",
+      "headline": "Lily Hospice Partners With Ex-Navy SEAL to Expand Veterans’ Programs",
+      "summary": "For one veteran receiving hospice care at Lily Hospice, a simple recognition ceremony made an extraordinary difference. The patient, who was living with dementia, had become increasingly withdrawn, rarely interacting with others in his community. But when Evan Shelline, a U.S....",
+      "url": "https://hospicenews.com/2026/11/09/lily-hospice-partners-with-ex-navy-seal-to-expand-veterans-programs/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-nneooj",
+      "id": "propublica-nhgq4c",
+      "source": "ProPublica",
+      "source_url": "https://www.propublica.org/feeds/propublica/main",
+      "date": "2026-11-08T10:00:00.000Z",
+      "headline": "An 11-Day-Old Baby Couldn’t Stop Bleeding. For Hours, the ER Didn’t Provide a Critical Vitamin Shot.",
+      "summary": "The post An 11-Day-Old Baby Couldn’t Stop Bleeding. For Hours, the ER Didn’t Provide a Critical Vitamin Shot. appeared first on ProPublica .",
+      "url": "https://www.propublica.org/article/vitamin-k-shot-texas-lonestar-emergency-room-nicole-malouf",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-htf96m",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T12:30:25.000Z",
-      "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
-      "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took...",
-      "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
+      "date": "2026-11-06T22:02:38.000Z",
+      "headline": "Physicians Seek to Reframe Palliative Care Referral Paths",
+      "summary": "Seriously ill patients often navigate a complex referral system for pain and symptom management in the United States. A pair of physicians recently published a strategic framework to improve access and support for these individuals. Some patients with chronic conditions often...",
+      "url": "https://hospicenews.com/2026/11/06/physicians-seek-to-reframe-palliative-care-referral-paths/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-fxv8bn",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-11-06T20:23:41.000Z",
+      "headline": "Hospices See Growth as Other Programs Close",
+      "summary": "Some hospices are expanding and revamping their inpatient programs, while other providers recently have shuttered their services. Bristol Hospice Expands in Washington Bristol Hospice has received a regulatory greenlight to expand its geographic footprint in Washington. The...",
+      "url": "https://hospicenews.com/2026/11/06/hospices-see-growth-as-other-programs-close/",
       "matched_ccns": [
-        "751584"
+        "301500"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-glucpb",
+      "id": "hospice-news-q6hxf6",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T18:02:24.000Z",
-      "headline": "YoloCares Launches Basketball Grief Program for Male Youths",
-      "summary": "YoloCares recently rolled out a new bereavement program aimed at reaching the underserved demographic of young males. The California-based hospice’s GriefBall initiative included a two-day basketball camp for bereaved boys and young men. YoloCares’ Center for Loss & Hope...",
-      "url": "https://hospicenews.com/2026/09/30/yolocares-launches-basketball-grief-program-for-male-youths/",
+      "date": "2026-11-06T11:49:06.000Z",
+      "headline": "VITAS Exec: Pull on Heartstrings to Recruit Hospice Staff",
+      "summary": "To sustain the Medicare Hospice Benefit, staffing needs to be a top-of-mind issue for organization leaders, according to Patty Husted, executive vice president of patient and family supportive services at VITAS Healthcare, a subsidiary of Chemed Corp. (NYSE: CHE). Husted has...",
+      "url": "https://hospicenews.com/2026/11/06/vitas-exec-pull-on-heartstrings-to-recruit-hospice-staff/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-4wz2di",
+      "id": "hospice-news-d97s7m",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T13:29:58.000Z",
-      "headline": "Hospice Tech Execs Have Changing Role in Age of AI",
-      "summary": "The proliferation of artificial intelligence (AI) in the hospice space is changing how chief information officers and other technology-focused leaders are approaching their jobs. Hospices nationwide are investing in AI systems to transform virtually every aspect of their...",
-      "url": "https://hospicenews.com/2026/09/30/hospice-tech-execs-have-changing-role-in-age-of-ai/",
+      "date": "2026-11-05T20:26:05.000Z",
+      "headline": "George Mark Children’s House Raises the Bar on Pediatric Innovation",
+      "summary": "George Mark Children’s House (GMCH) is building a “more cohesive ecosystem” of integrated pediatric palliative care, according to the organization. Located in San Leandro, California, GMCH provides pediatric palliative, respite, end-of-life and bereavement care to children and...",
+      "url": "https://hospicenews.com/2026/11/05/george-mark-childrens-house-raises-the-bar-on-pediatric-innovation/",
       "matched_ccns": [],
       "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-oc7ghn",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T19:33:58.000Z",
-      "headline": "Human Oversight Lagging in AI-Driven Hospice Fraud Fight",
-      "summary": "Some legal and technology experts have grown increasingly concerned by a potential lack of human oversight in artificial intelligence-assisted hospice regulatory enforcement. The AI-driven efforts to crackdown on fraudulent activity could bring significant impacts for legitimate...",
-      "url": "https://hospicenews.com/2026/09/29/human-oversight-lagging-in-ai-driven-hospice-fraud-fight/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-sk7kvm",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:57:14.000Z",
-      "headline": "Lawmakers: Hospice Staffing Bill Still a Priority",
-      "summary": "U.S. Sens. Tammy Baldwin (D-Wis.) and Shelley Moore Capito (R-W.Va.) remain committed to passing the Palliative Care and Hospice Education Training Act (PCHETA). If enacted, PCHETA would provide support for hospice and palliative care training programs for physicians, nurses,...",
-      "url": "https://hospicenews.com/2026/09/29/lawmakers-hospice-staffing-bill-still-a-priority/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-zgv9wo",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:39:14.000Z",
-      "headline": "How Palliative Care Works Within Home Health",
-      "summary": "Palliative care as delivered by home health agencies can look very different than that provided by a hospice. Earlier this year, the U.S. Centers for Medicare and Medicaid Services (CMS) clarified in its proposed home health rule that palliative care is a billable service under...",
-      "url": "https://hospicenews.com/2026/09/29/how-palliative-care-works-within-home-health/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-v3lvrz",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-28T21:08:43.000Z",
-      "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-      "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief...",
-      "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-      "matched_ccns": [
-        "051508",
-        "051523"
-      ],
-      "match_confidence": "high"
     }
   ],
   "items_by_ccn": {
-    "741687": [
+    "231568": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-pwhvt4",
+        "date": "2026-11-09T16:22:43.000Z",
+        "headline": "LiveWell Partners Expands Michigan Footprint With Assured Home Health and Hospice Acquisition",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/11/09/livewell-partners-expands-michigan-footprint-with-assured-home-health-and-hospice-acquisition/",
+        "summary": "LiveWell Partners is continuing to expand its Michigan footprint through the acquisition of Detroit-based Assured Home Health and Hospice. The St. Louis-based company has closed on the transaction, through which it will provide home health and hospice services throughout..."
       }
     ],
-    "751584": [
+    "231686": [
       {
-        "id": "hospice-news-nneooj",
-        "date": "2026-10-01T12:30:25.000Z",
-        "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
+        "id": "hospice-news-pwhvt4",
+        "date": "2026-11-09T16:22:43.000Z",
+        "headline": "LiveWell Partners Expands Michigan Footprint With Assured Home Health and Hospice Acquisition",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
-        "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took..."
+        "url": "https://hospicenews.com/2026/11/09/livewell-partners-expands-michigan-footprint-with-assured-home-health-and-hospice-acquisition/",
+        "summary": "LiveWell Partners is continuing to expand its Michigan footprint through the acquisition of Detroit-based Assured Home Health and Hospice. The St. Louis-based company has closed on the transaction, through which it will provide home health and hospice services throughout..."
       }
     ],
-    "A91721": [
+    "301500": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-fxv8bn",
+        "date": "2026-11-06T20:23:41.000Z",
+        "headline": "Hospices See Growth as Other Programs Close",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
-      }
-    ],
-    "051508": [
-      {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
-      }
-    ],
-    "051523": [
-      {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-        "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/11/06/hospices-see-growth-as-other-programs-close/",
+        "summary": "Some hospices are expanding and revamping their inpatient programs, while other providers recently have shuttered their services. Bristol Hospice Expands in Washington Bristol Hospice has received a regulatory greenlight to expand its geographic footprint in Washington. The..."
       }
     ]
   }
