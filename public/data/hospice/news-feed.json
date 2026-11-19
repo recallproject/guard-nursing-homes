@@ -1,205 +1,303 @@
 {
-  "generated_at": "2026-10-03T17:13:02.895Z",
+  "generated_at": "2026-11-19T21:25:52.821Z",
   "sources": [
     {
       "name": "Hospice News",
       "url": "https://hospicenews.com/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-02T19:52:06.000Z",
+      "last_pubdate": "2026-11-19T13:25:10.000Z",
       "error": null
     },
     {
       "name": "KFF Health News",
       "url": "https://kffhealthnews.org/feed/",
       "items_pulled": 10,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-11-19T10:00:13.000Z",
       "error": null
     },
     {
       "name": "ProPublica",
       "url": "https://www.propublica.org/feeds/propublica/main",
       "items_pulled": 20,
-      "last_pubdate": "2026-10-03T09:00:00.000Z",
+      "last_pubdate": "2026-11-19T16:15:00.000Z",
       "error": null
     }
   ],
   "total_items_pulled": 40,
   "hospice_filtered": 10,
-  "matched_to_ccn": 3,
-  "matched_unique_ccns": 5,
+  "matched_to_ccn": 2,
+  "matched_unique_ccns": 14,
   "confidence_breakdown": {
-    "high": 3,
+    "high": 2,
     "medium": 0
   },
   "feed_items": [
     {
-      "id": "hospice-news-9p24is",
+      "id": "hospice-news-lsbqjb",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T19:52:06.000Z",
-      "headline": "Reserve Care, University Hospitals End Joint Venture to Improve Care Coordination",
-      "summary": "Reserve Care has ended its joint venture with University Hospitals in a move designed to reduce burdensome transitions of care and improve timely access to hospice. The hospice and palliative care organization will remain a preferred provider of the hospital system as the two...",
-      "url": "https://hospicenews.com/2026/10/02/reserve-care-university-hospitals-end-joint-venture-to-improve-care-coordination/",
-      "matched_ccns": [],
-      "match_confidence": "none"
-    },
-    {
-      "id": "hospice-news-9qfxq3",
-      "source": "Hospice News",
-      "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-02T13:12:43.000Z",
-      "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
-      "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life...",
-      "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
+      "date": "2026-11-19T13:25:10.000Z",
+      "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
+      "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across...",
+      "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
       "matched_ccns": [
+        "031685",
+        "291574",
         "741687",
+        "461609",
+        "851546",
         "A91721"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-a2gz3",
+      "id": "hospice-news-31i91t",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T17:49:30.000Z",
-      "headline": "CMS Grants Grace Period for Hospice Election Statement Addendum Compliance",
-      "summary": "Hospices must provide all patients with an addendum to the election statement when they enroll in services to comply with a new requirement that took effect on Thursday. The U.S. Centers for Medicare & Medicaid Services (CMS) mandated the requirement in the final hospice payment...",
-      "url": "https://hospicenews.com/2026/10/01/cms-grants-grace-period-for-addendum-to-hospice-election-statement-compliance/",
+      "date": "2026-11-18T21:23:46.000Z",
+      "headline": "Introducing the Winners of the 2026 SHN Architecture & Design Awards",
+      "summary": "Senior Housing News (SHN), an Arrowfly publication, is pleased to announce the winners of the 2026 SHN Architecture & Design Awards. Organizations across the United States and Canada submitted new construction and renovation/repositioning projects, vying for top honors across...",
+      "url": "https://hospicenews.com/2026/11/18/introducing-the-winners-of-the-2026-shn-architecture-design-awards/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-nneooj",
+      "id": "hospice-news-2zxldc",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-10-01T12:30:25.000Z",
-      "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
-      "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took...",
-      "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
+      "date": "2026-11-18T18:36:17.000Z",
+      "headline": "4 Hospices Appoint New Leaders",
+      "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary...",
+      "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
       "matched_ccns": [
-        "751584"
+        "101523",
+        "041568",
+        "261586",
+        "261598",
+        "921565",
+        "B41628",
+        "071518",
+        "261578"
       ],
       "match_confidence": "high"
     },
     {
-      "id": "hospice-news-glucpb",
+      "id": "hospice-news-mk5f29",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T18:02:24.000Z",
-      "headline": "YoloCares Launches Basketball Grief Program for Male Youths",
-      "summary": "YoloCares recently rolled out a new bereavement program aimed at reaching the underserved demographic of young males. The California-based hospice’s GriefBall initiative included a two-day basketball camp for bereaved boys and young men. YoloCares’ Center for Loss & Hope...",
-      "url": "https://hospicenews.com/2026/09/30/yolocares-launches-basketball-grief-program-for-male-youths/",
+      "date": "2026-11-18T12:55:11.000Z",
+      "headline": "Organic Growth Takes Center Stage as Hospice Providers Face Uncertainty Around Expansion",
+      "summary": "With new hospice development facing uncertainty and competition for patients intensifying, providers may need to take a closer look at the growth opportunities within their existing markets. The federal hospice moratorium has made organic growth a more immediate consideration...",
+      "url": "https://hospicenews.com/2026/11/18/organic-growth-takes-center-stage-as-hospice-providers-face-uncertainty-around-expansion/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-4wz2di",
+      "id": "hospice-news-hp5inf",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-30T13:29:58.000Z",
-      "headline": "Hospice Tech Execs Have Changing Role in Age of AI",
-      "summary": "The proliferation of artificial intelligence (AI) in the hospice space is changing how chief information officers and other technology-focused leaders are approaching their jobs. Hospices nationwide are investing in AI systems to transform virtually every aspect of their...",
-      "url": "https://hospicenews.com/2026/09/30/hospice-tech-execs-have-changing-role-in-age-of-ai/",
+      "date": "2026-11-18T12:31:11.000Z",
+      "headline": "Providence Builds Systemwide Palliative Care Model Around Whole-Person Care",
+      "summary": "The Providence health system is working to transform how patients with serious illnesses receive care, expanding palliative care across its operations while building a model that emphasizes the needs of patients, families and the communities in which they live. Through its...",
+      "url": "https://hospicenews.com/2026/11/18/providence-builds-systemwide-palliative-care-model-around-whole-person-care/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-oc7ghn",
+      "id": "hospice-news-7p9qef",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T19:33:58.000Z",
-      "headline": "Human Oversight Lagging in AI-Driven Hospice Fraud Fight",
-      "summary": "Some legal and technology experts have grown increasingly concerned by a potential lack of human oversight in artificial intelligence-assisted hospice regulatory enforcement. The AI-driven efforts to crackdown on fraudulent activity could bring significant impacts for legitimate...",
-      "url": "https://hospicenews.com/2026/09/29/human-oversight-lagging-in-ai-driven-hospice-fraud-fight/",
+      "date": "2026-11-17T20:58:03.000Z",
+      "headline": "NEW RESEARCH: The State of Post-Acute Triage 2026 Benchmark Report",
+      "summary": "Picture this: the adult child of a person on hospice sees their loved one’s breathing change suddenly at two in the morning, and does not know what that means or what to do next. They call their healthcare provider for help. What happens in the next 90 seconds is one of the...",
+      "url": "https://hospicenews.com/2026/11/17/new-research-the-state-of-post-acute-triage-2026-benchmark-report/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-sk7kvm",
+      "id": "hospice-news-xx1k5x",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:57:14.000Z",
-      "headline": "Lawmakers: Hospice Staffing Bill Still a Priority",
-      "summary": "U.S. Sens. Tammy Baldwin (D-Wis.) and Shelley Moore Capito (R-W.Va.) remain committed to passing the Palliative Care and Hospice Education Training Act (PCHETA). If enacted, PCHETA would provide support for hospice and palliative care training programs for physicians, nurses,...",
-      "url": "https://hospicenews.com/2026/09/29/lawmakers-hospice-staffing-bill-still-a-priority/",
+      "date": "2026-11-17T20:49:30.000Z",
+      "headline": "Improper Fee-For-Service Medicare Payments Rise to $33B",
+      "summary": "Medicare fee-for-service programs made an estimated $33.96 billion in improper payments during Fiscal Year 2026, an increase from the same period the prior year. During that time frame, improper payments represented 7.32% of all original Medicare claims, the U.S. Centers for...",
+      "url": "https://hospicenews.com/2026/11/17/improper-fee-for-service-medicare-payments-rise-to-33b/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-zgv9wo",
+      "id": "hospice-news-lr3uef",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-29T11:39:14.000Z",
-      "headline": "How Palliative Care Works Within Home Health",
-      "summary": "Palliative care as delivered by home health agencies can look very different than that provided by a hospice. Earlier this year, the U.S. Centers for Medicare and Medicaid Services (CMS) clarified in its proposed home health rule that palliative care is a billable service under...",
-      "url": "https://hospicenews.com/2026/09/29/how-palliative-care-works-within-home-health/",
+      "date": "2026-11-17T00:10:00.000Z",
+      "headline": "CMS Seeks to Expand Authority With Program Integrity Proposed Rule",
+      "summary": "The U.S. Centers for Medicare & Medicaid Services (CMS) has proposed an extensive set of program integrity reforms that the agency estimates could save taxpayers nearly $90 billion over 10 years. The Comprehensive Regulations to Uncover Suspicious Healthcare (CRUSH) proposed...",
+      "url": "https://hospicenews.com/2026/11/16/cms-seeks-to-expand-authority-with-program-integrity-proposed-rule/",
       "matched_ccns": [],
       "match_confidence": "none"
     },
     {
-      "id": "hospice-news-v3lvrz",
+      "id": "hospice-news-a4ano2",
       "source": "Hospice News",
       "source_url": "https://hospicenews.com/feed/",
-      "date": "2026-09-28T21:08:43.000Z",
-      "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
-      "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief...",
-      "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-      "matched_ccns": [
-        "051508",
-        "051523"
-      ],
-      "match_confidence": "high"
+      "date": "2026-11-16T20:18:38.000Z",
+      "headline": "Family Caregiving Isolation Reaches 'High Levels' Amid AI Evolution",
+      "summary": "Quickly evolving developments in artificial intelligence (AI) may bring challenges such as increased risk of isolation and loneliness among seriously ill individuals. This is according to Dr. Vivek Murthy, former U.S. Surgeon General. Humans have increasingly sought AI-assisted...",
+      "url": "https://hospicenews.com/2026/11/16/family-caregiving-isolation-reaches-high-levels-amid-ai-evolution/",
+      "matched_ccns": [],
+      "match_confidence": "none"
+    },
+    {
+      "id": "hospice-news-l8aeg3",
+      "source": "Hospice News",
+      "source_url": "https://hospicenews.com/feed/",
+      "date": "2026-11-16T18:52:40.000Z",
+      "headline": "Vynca's 4-State Expansion to Fill Access Gaps",
+      "summary": "California-based Vynca has expanded its geographic service reach across four new states. The home-based healthcare company now serves Georgia, Hawaii, New Jersey and Texas. Vynca is among the first providers to launch a program in New Jersey following the state’s new...",
+      "url": "https://hospicenews.com/2026/11/16/vyncas-4-state-expansion-to-fill-access-gaps/",
+      "matched_ccns": [],
+      "match_confidence": "none"
     }
   ],
   "items_by_ccn": {
-    "741687": [
+    "101523": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
       }
     ],
-    "751584": [
+    "261578": [
       {
-        "id": "hospice-news-nneooj",
-        "date": "2026-10-01T12:30:25.000Z",
-        "headline": "Rep. Panetta: Congress Must Listen to Hospice Providers",
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/01/rep-panetta-congress-must-listen-to-hospice-providers/",
-        "summary": "Though the U.S. Centers for Medicare and Medicaid Services (CMS) has regulatory authority over hospices, Congress has a role to play. To fulfill that role, they should listen to the concerns of hospice providers, according to Rep. Jimmy Panetta (D-Calif.). Panetta first took..."
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
+      }
+    ],
+    "261586": [
+      {
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
+      }
+    ],
+    "261598": [
+      {
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
+      }
+    ],
+    "291574": [
+      {
+        "id": "hospice-news-lsbqjb",
+        "date": "2026-11-19T13:25:10.000Z",
+        "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
+        "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across..."
+      }
+    ],
+    "461609": [
+      {
+        "id": "hospice-news-lsbqjb",
+        "date": "2026-11-19T13:25:10.000Z",
+        "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
+        "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across..."
+      }
+    ],
+    "741687": [
+      {
+        "id": "hospice-news-lsbqjb",
+        "date": "2026-11-19T13:25:10.000Z",
+        "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
+        "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across..."
+      }
+    ],
+    "851546": [
+      {
+        "id": "hospice-news-lsbqjb",
+        "date": "2026-11-19T13:25:10.000Z",
+        "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
+        "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across..."
+      }
+    ],
+    "921565": [
+      {
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
+      }
+    ],
+    "031685": [
+      {
+        "id": "hospice-news-lsbqjb",
+        "date": "2026-11-19T13:25:10.000Z",
+        "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
+        "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across..."
       }
     ],
     "A91721": [
       {
-        "id": "hospice-news-9qfxq3",
-        "date": "2026-10-02T13:12:43.000Z",
-        "headline": "Former Star of Texas CEO: Preparing to Sell Starts at the Beginning",
+        "id": "hospice-news-lsbqjb",
+        "date": "2026-11-19T13:25:10.000Z",
+        "headline": "Uplift Hospice Acquires Elevation Hospice of Utah",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/10/02/former-star-of-texas-ceo-preparing-to-sell-starts-at-the-beginning/",
-        "summary": "Hospices need to keep some under-the-radar issues in mind when preparing to sell to a larger organization, according to Satavia Hazley Austin, author and educator and former CEO and owner of Star of Texas Hospice. Hazley Austin has more than two decades of working in end-of-life..."
+        "url": "https://hospicenews.com/2026/11/19/uplift-hospice-acquires-elevation-hospice-of-utah/",
+        "summary": "Uplift Hospice has acquired Elevation Hospice of Utah, expanding its geographic footprint to five states. The transaction, facilitated by mergers and acquisitions advisory firm Agenda Health, marks Uplift’s latest expansion as the company continues to grow its presence across..."
       }
     ],
-    "051508": [
+    "041568": [
       {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
       }
     ],
-    "051523": [
+    "B41628": [
       {
-        "id": "hospice-news-v3lvrz",
-        "date": "2026-09-28T21:08:43.000Z",
-        "headline": "Rebranding a 'Huge Success' in Improved Hospice Access",
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
         "source": "Hospice News",
-        "url": "https://hospicenews.com/2026/09/28/rebranding-a-huge-success-in-improved-hospice-access/",
-        "summary": "Some rebranded organizations that have recently removed “hospice” from their company name are seeing increased awareness, utilization and other positive results. A rebrand can sometimes better position a hospice in terms of improved awareness, according to Tony Kudner, chief..."
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
+      }
+    ],
+    "071518": [
+      {
+        "id": "hospice-news-2zxldc",
+        "date": "2026-11-18T18:36:17.000Z",
+        "headline": "4 Hospices Appoint New Leaders",
+        "source": "Hospice News",
+        "url": "https://hospicenews.com/2026/11/18/4-hospices-appoint-new-leaders/",
+        "summary": "Hospices from coast-to-coast have announced clinical and financial leadership changes. Big Bend Hospice’s New Clinician Florida-based Big Bend Hospice has named Dr. Roman Nation as its new hospice physician. Nation provides clinical guidance to the hospice’s interdisciplinary..."
       }
     ]
   }
